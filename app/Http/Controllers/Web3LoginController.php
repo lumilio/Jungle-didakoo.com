@@ -107,4 +107,12 @@ class Web3LoginController extends Controller
         Session::forget('loggedIn');
         return true;
     }
+
+    //Get users
+
+    public function getUsers()
+    {
+        $players = Player::all()->toArray();
+        echo json_encode(['playersData'=>$players]);
+    }
 }

@@ -51,6 +51,7 @@
                         <img style='width:30px;' src="images/extra_objects/ff.png" alt="">
                         <span style='padding:2px 10px; margin:0 0px; border-radius:100px;'> 4 / 6</span>
                     </span>  --> 
+                    <!----------------------------------------------------->
                 </p> 
             </button>
             <!---------------------------- User record examaples ---------------------------->
@@ -73,7 +74,31 @@
                 <span class='align-items-center' style='color:black; margin-right: 10px; white-space: nowrap; padding:0 10px; border-radius: 20px; display:flex;'> 6  <i class="fa-solid fa-bolt ml-1"></i></span>
             </div>
             <!------------------------------------------------------------------------------>
-                 
+
+            
+
+
+
+            <!-- Looping through players --------------------------------------------------->
+                  <!-- <div v-for="players in playersArray" v-bind:key="players.id" style="background-color:#EDEB52;"  class="record">
+                  
+                    <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
+                        <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='img/images/images3/iconaplayB.png'>  {{players.wallet_address}}
+                    </p> 
+                    <div class='d-flex align-items-center flex-row flex-nowrap'>
+                        <p>𓆃</p>
+                        <img style='width:30px; ' src='img/images/images3/icon-59.png' alt="">
+                        <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i>
+                    </div>
+                    <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
+                </div> -->
+            <!------------------------------------------------------------------------------>
+
+
+
+
+
+            <!------------------------------------------------------------------------------>
             <!--    RANK LIST EXAMPLE
             <div style="background-color:#EDEB52;"  class="record">
                 <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
