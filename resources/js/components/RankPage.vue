@@ -235,21 +235,26 @@
 
 
 <script>
-    export default {
-    //      data(){
-    //           return {
-    //  loggedIn: localStorage.getItem('user_status')?true:false,
-    //                 }
-    //       },
-    //   watch:{
-    //         loggedIn:function(newValue)
-    //         {
-    //            this.loggedIn = newValue;
-    //        },
-    //         },
-    //  mounted () {
-    //   //this.status();
-    //    console.log("Rank PAge Component mounted."); 
-    //         },
-    }
+import axios from 'axios';
+ export default {
+    data(){
+        return{
+            playersArray: [],
+            url: '',
+        }
+    },
+    methods:{
+            async getAllUsers()
+            {
+                this.url = window.location.host;
+                const response = await axios.get('http://'+this.url+'/api/getUsers');
+                this.playersArray = response.data.playersData;
+            }
+    },
+    async mounted() 
+    {
+            await this.getAllUsers();
+    },
+
+ }
 </script>
