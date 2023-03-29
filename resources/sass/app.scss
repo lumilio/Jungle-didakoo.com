@@ -1,0 +1,656 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Variables
+@import 'variables.scss';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+/* ----------------------------------------------------------------------------- */
+/* ---------------------------- INITIAL ---------------------------------------- */
+/* ----------------------------------------------------------------------------- */
+
+body,html {
+    height: 100%;
+    margin: 0px;
+    background-color: black;
+    /* overflow: hidden; */
+    font-family: 'Poppins', sans-serif;             
+}
+
+.centratore{
+    justify-items: center;
+    height: 100%;
+    margin: 0px;
+    background-color: black;
+    /* overflow: hidden; */
+    font-family: 'Poppins', sans-serif;   
+}
+
+body, .centratore {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* ------------------------- INITIAL DISPLAY PAGES ----------------------------- */
+/* ----------------------------------------------------------------------------- */
+
+#page2{
+    display: block;
+}
+#page1,
+#page3,
+#page4,
+#page5 {
+    display: none;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* ---------------------------- LAYOUT PAGES ----------------------------------- */
+/* ----------------------------------------------------------------------------- */
+
+#page1{
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.1), 
+      rgba(0, 0, 0, 0.1)
+    ),
+    url("images/wallpepars/sky.png"); 
+    background-position:  bottom ;
+    background-repeat: repeat;
+    min-height: 100vh;
+    background-size: cover;
+}
+
+#page2{
+    background:
+    url("images/wallpepars/space.jpeg"); 
+    background-repeat: repeat;
+    background-size: 100vh;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    background-position: top;
+}
+
+/* #page3{
+    background:
+    url("images/wallpepars/space.jpeg");     
+    background-repeat: repeat;
+    background-position: left;
+} */
+
+#page3{
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ), 
+    url("images/wallpepars/jungle.jpg") ; 
+    background-repeat: repeat ;
+    background-size: 100vh ;
+    min-height: 100vh ;
+    height: 100% ;
+    background-position: center ;
+}
+
+/* #page4{
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ), 
+    url("images/wallpepars/jungle.jpg") ; 
+    background-repeat: repeat ;
+    background-size: 100vh ;
+    min-height: 100vh ;
+    height: 100% ;
+    background-position: center ;
+} */
+
+#page4{
+    background:
+    url("images/wallpepars/space.jpeg") ; 
+    background-repeat: repeat ;
+    background-size: 100vh ;
+    min-height: 100vh ;
+    height: 100% ;
+    background-position: center ;
+}
+
+#page5{
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ), 
+    url("images/wallpepars/jungle.jpg") ; 
+    background-repeat: repeat ;
+    background-size: 100vh ;
+    min-height: 100vh ;
+    height: 100% ;
+    background-position: center ;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* --------------------------- UTILITY CONTAINERS ------------------------------ */
+/* ----------------------------------------------------------------------------- */
+
+.allineatore {
+    width: 100%;
+    /* height: 100%; */
+    margin-bottom: 300px;
+    /* padding-top: 70px ; */
+}
+
+.allineatore2 {
+    width: 100vw;
+    /* height: 100vh; */
+    position: relative;
+}
+
+#page4 .allineatore{
+    /* height: calc(100vh - 100px); */
+    margin-bottom: 0 !important;
+}
+
+#page3 .allineatore2{
+    height: 100vh;
+}
+
+#page5 a:hover {text-decoration: underline;}
+
+/* #page5 .allineatore{
+    text-align: center;
+    height: 80vh;
+} */
+    
+/* ----------------------------------------------------------------------------- */
+/* -------------------------- MENU PAGE BUTTONS -------------------------------- */
+/* ----------------------------------------------------------------------------- */
+
+.bt {
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    bottom: 35px;
+    margin-left:55px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.bt a {
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none ;
+}
+
+.bt span {
+    font-size: 10px;
+    padding: 5px;
+    color: black;
+    text-decoration: none;
+}
+
+.bt i {
+    color: white;
+    font-size: 25px;
+}
+
+.square {
+    background-color: black;
+    width: 75px;
+    height: 75px;
+    border-radius: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.bt #buttton_v_1 {
+    height: 20px;
+}
+
+.bt #buttton_v_2 {
+    height: 35px;
+}
+
+.bt #buttton_v_3 {
+    font-size: 35px;
+}
+
+%test {
+    position: absolute;
+    content: '';
+    transition: all .5s;
+}
+
+.bt a { 
+    transform: translate(-50%, -50%);
+    vertical-align: middle;
+    text-decoration: none;
+    transition: all .5s;
+    background-color: black;
+  
+    &::before {
+        @extend %test;
+        bottom: -15px;
+        height: 15px;
+        width: 100%;
+        left: 8px;
+        transform: skewX(45deg);
+        background-color: darken(blue, 25%);
+        border-bottom: 3px solid black;
+        border-left: 3px solid black;
+    }
+
+    &::after {
+        @extend %test;
+        right: -15px;
+        height: 100%;
+        width: 15px;
+        bottom: -8px;
+        transform: skewY(45deg);
+        background-color: blue;
+        border-top: 3px solid black;
+        border-right: 3px solid black;
+        border-bottom: 3px solid black;
+    }
+
+/*     &:active {
+        margin-left: 10px;
+        margin-top: 10px;
+        &::before {
+            bottom: -5px;
+            height: 5px;
+            left: 3px;
+        }
+        
+        &::after {
+            right: -5px;
+            width: 5px;
+            bottom: -3px;
+        } 
+    } */
+
+}
+
+#modalz:before{
+    background-color: darken(red, 25%);
+}
+#modaly:before{
+    background-color: darken(yellow, 25%);
+}
+#modalz:after{
+    background-color: red;
+}
+#modaly:after{
+    background-color: yellow;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* ------------------------ PAGE 2 RANK UTILITY -------------------------------- */
+/* ----------------------------------------------------------------------------- */
+    
+.fa-bars{
+    color: white;
+    margin-top: 25px;
+    margin-left: 10px;
+    position: absolute;   
+    font-size: 30px;
+}
+
+.call_button {
+    /* width: 20%; */
+    border-radius: 20px;
+    margin: 4px;
+    margin-top: 0px !important;
+    background-color: black;
+    color: white;
+    padding: 5px
+}
+
+.record{
+    /* padding: 10px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#page2 .record{
+    margin: 3px ;
+}
+
+/* .players_counter {
+    height: 40px;
+    width: 300px;
+    border-radius: 30px;
+    margin-top: 22px;
+    margin-bottom: 15px;
+    border: 3px solid #EDEB52;
+    color: white; 
+    background-color: #EE3634 !important;
+} */
+
+/* .players_counter p {
+    margin: 0;
+} */
+
+/* #scarabeo {
+    width: 100%;
+    margin-bottom: 15px;
+} */
+
+/* ----------------------------------------------------------------------------- */
+/* ---------------------- PAGE 3 BOARD RESPONSIVE ------------------------------ */
+/* ----------------------------------------------------------------------------- */
+
+@media screen and (min-width: 350px) and (min-height: 550px){
+    .board{
+        width: 350px;
+        /* height: 450px; */
+    }
+    .board-player{
+        
+        width: calc(350px - 30px) ;
+    }
+    .avatar_helper_1{
+        display: none;
+    }
+    .banner-board-helper{
+        justify-content: space-around;
+    }
+
+    #scarabeo {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    #page3 .fa-bars{
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+}
+
+@media screen and (min-width: 460px) and (min-height: 620px){
+    .board{
+        width: 437.5px;
+        /* height: 562.5px; */
+    }
+    .board-player{
+        width: calc(437.5px - 30px) ;
+    }
+
+    .banner-board-helper{
+        justify-content: space-around;
+    }
+
+    .avatar_helper_1{
+        display: inline;
+    }
+
+    #scarabeo {
+        width: auto;
+        margin-bottom: 15px;
+    }
+
+    #page3 .fa-bars{
+        margin-top: 30px;
+        margin-left: 0px;
+    }
+}
+
+
+
+/* ----------------------------------------------------------------------------- */
+/* ------------------------ PAGE 4 AVATAR RESPONSIVE --------------------------- */
+/* ----------------------------------------------------------------------------- */
+
+.profile_cover{
+    height: 100%;
+    object-fit: cover
+}
+
+@media screen and (min-width: 350px) and (min-height: 550px){
+    .avatar{
+        margin-bottom: 150px;
+        border-radius: 35px;
+        margin: 20px;
+        position: relative;
+    }
+}
+
+@media screen and (min-width: 460px) and (min-height: 600px){
+    .avatar{
+        width: 370px;
+        margin-top: 35px;
+        border-radius: 35px;
+        /* background-color: #3C5FA1;
+        background-color: #EE3734;
+        background-color: #EDEB51;
+        background-color: #EE5E81; */
+        position: relative;
+    } 
+}
+
+/* ----------------------------------------------------------------------------- */
+/* ----------------------- PAGE 5 INFO RESPONSIVE ------------------------------ */
+/* ----------------------------------------------------------------------------- */
+
+.pepar{
+    margin-top: 40px !important;
+}
+
+@media screen and (min-width: 350px) and (min-height: 550px){
+    .pepar{
+        width: 350px;
+        /* height: 450px; */
+        /* margin-top: 130px !important; */
+    }
+}
+
+@media screen and (min-width: 460px) and (min-height: 600px){
+    .pepar{
+        width: 437.5px;
+        /* height: 562.5px; */
+        margin-bottom: 130px;
+        /* margin-top: 130px !important; */
+    }
+}
+
+.pepar p {
+    color: white;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* --------------------------- UTILITY MODALS ---------------------------------- */
+/* ----------------------------------------------------------------------------- */
+ 
+.modal img {width: 100px;}
+
+.modal button{
+    width: 100px;
+    min-height: 60px;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.85); /* Black w/ opacity */
+    padding-top: 1rem;
+    animation: fade-in 0.6s;
+}
+
+#myModalkoo6 {
+    display: none; /* Hidden by default */
+    z-index: 100; /* Sit on top */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0); /* Black w/ opacity */
+    padding-top: 0;
+    animation: fade-in 0.6s;
+}
+
+#myModalkoo6 .modal-content{
+    background-color: black;
+    border: 1px solid purple;
+    display: flex;
+}
+
+#myModalkoo6 .modal-content p{
+    margin: 0;
+}
+
+.modal-content {
+    background-color: blue;
+    border-radius: 30px;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid BLACK;
+    width: 180px;
+    height: fit-content;
+}
+  
+#modalx div{
+    background-color: black;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* ---------------------- LED LIGHT FEATURE ------------------------------------ */
+/* ----------------------------------------------------------------------------- */
+
+#led{
+    position: absolute;
+    font-size: 5px;
+    top: 12px;
+    right: 12px;
+}
+.red-led {
+    color: red !important;
+}
+.green-led {
+    color: #00ff4c !important;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* ------------------------ UTILITY ANIMATIONS --------------------------------- */
+/* ----------------------------------------------------------------------------- */
+
+.shake{
+    animation: shake 0s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 0px)  }
+    10% { transform: translate(-1px,  0px)   }
+    20% { transform: translate(-3px, 0px)  }
+    30% { transform: translate(3px, 0px)  }
+    40% { transform: translate(1px,  0px)  }
+    50% { transform: translate(-1px, 0px)   }
+    60% { transform: translate(-3px, 0px)  }
+    70% { transform: translate(3px, 0px)   }
+    80% { transform: translate(-1px,  0px)  }
+    90% { transform: translate(1px, 0px)  }
+    100% { transform: translate(1px,  0px)   }
+}
+
+@keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}
+
+/* ----------------------------------------------------------------------------- */
+/* ------------------------ UTILITY CLOSE FEATURE ------------------------------ */
+/* ----------------------------------------------------------------------------- */
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.closek{
+    font-size: 30px;
+}
+
+.closek:hover {
+    cursor: pointer;
+}
+
+.closekoo ,
+.closekoo2 , 
+.closekoo3 ,
+.closekoo4 {
+    /* color: #aaa; */
+    float: right;
+    /* font-size: 28px; */
+    font-weight: bold;
+}
+
+.closekoo:hover ,
+.closekoo2:hover , 
+.closekoo3:hover ,
+.closekoo4:hover ,
+.closekoo:focus,
+.closekoo2:focus, 
+.closekoo3:focus,
+.closekoo4:focus
+{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#btnkoo3,
+#btnkoo4,
+#btnkoo5
+{
+    position: relative;
+}
+
+/* ----------------------------------------------------------------------------- */
+/* -------------------------------- EXTRA -------------------------------------- */
+/* ----------------------------------------------------------------------------- */
+
+.ra{
+    z-index: 10;
+    /* margin-bottom: 100px; */
+    width: 140px;
+    margin-left: 20px;
+    height: auto;
+    /* margin-left: -106px; */
+    /* position: absolute; */
+}
+
+.fa-gamepad:before{
+    color: white;
+}

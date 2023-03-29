@@ -1,0 +1,866 @@
+@charset "UTF-8";
+
+/* ----------------------------------------------------------- */
+
+#page2 {
+  display: block;
+}
+
+#page1,
+#page3,
+#page4,
+#page5 {
+  display: none;
+}
+
+/* ----------------------------------------------------------- */
+
+/* ----------------------------------------------------------- */
+
+#page1 {
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(/images/_.png?ad417205d06e387a899c67413e4b8c1c);
+  background-position: bottom;
+  background-repeat: repeat;
+  min-height: 100vh;
+  background-size: cover;
+}
+
+#page2 {
+  background: url("/images/starry sky wallpaper by Circus_Wallpapers - Download on ZEDGE™ _ 6a72.jpeg?8452bf57c94af83becf96f44b42789da");
+  background-repeat: repeat;
+  background-size: 100vh;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  background-position: top;
+}
+
+#page3 {
+  background: url("/images/starry sky wallpaper by Circus_Wallpapers - Download on ZEDGE™ _ 6a72.jpeg?8452bf57c94af83becf96f44b42789da");
+  background-repeat: repeat;
+  background-position: left;
+}
+
+#page4 {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/leaf.jpg?54f07cfba400658d1602af6599e3b817);
+  background-repeat: repeat;
+  background-position: bottom;
+  background-repeat: repeat;
+  min-height: 100vh;
+}
+
+#page5 {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/gy.jpg?fae7961d43318cc72ad47574982756ae);
+  background-repeat: repeat;
+  background-size: 100vh;
+  min-height: 100vh;
+  height: 100%;
+  background-position: center;
+}
+
+/* ----------------------------------------------------------- */
+
+/* --------------------------------     INITIAL   --------------------------------------- */
+
+body,
+html {
+  height: 100%;
+  margin: 0px;
+  background-color: black;
+  /* overflow: hidden; */
+  font-family: "Poppins", sans-serif;
+  /* ---------------------- */
+}
+
+.centratore {
+  justify-items: center;
+  height: 100%;
+  margin: 0px;
+  background-color: black;
+  /* overflow: hidden; */
+  font-family: "Poppins", sans-serif;
+}
+
+body,
+.centratore {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+}
+
+#green img {
+  width: 30px;
+  height: auto;
+}
+
+#green {
+  background-color: black;
+}
+
+/* --------------------------------     INITIAL   --------------------------------------- */
+
+.bt img {
+  height: 20px;
+}
+
+.bt i {
+  color: white;
+  font-size: 25px;
+}
+
+.fa-chess-board:before {
+  font-size: 23px;
+}
+
+.square {
+  background-color: red;
+  width: 50px;
+  height: 50px;
+  border-radius: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* border: 1px solid white; */
+}
+
+#blue {
+  background-color: black;
+}
+
+#purple {
+  background-color: black;
+}
+
+#orange {
+  background-color: black;
+}
+
+#twitter {
+  background-color: black;
+}
+
+#starspecial {
+  color: black;
+  position: absolute;
+  font-size: 13px;
+  z-index: 3;
+  top: 13px;
+}
+
+#starspecial2 {
+  color: #edbc94;
+  position: absolute;
+  font-size: 10px;
+  z-index: 4;
+  top: 10px;
+}
+
+.bt {
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  bottom: 55px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* background-color: black; */
+  border-radius: 20px;
+}
+
+.bt a {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  /* padding-top: 195%; */
+}
+
+.bt span {
+  font-size: 10px;
+  padding: 5px;
+  color: black;
+  text-decoration: none;
+}
+
+/* --------------------------------     INITIAL   --------------------------------------- */
+
+/* --------------------------------     INITIAL   --------------------------------------- */
+
+.players_counter {
+  height: 40px;
+  width: 300px;
+  border-radius: 30px;
+  margin-top: 22px;
+  margin-bottom: 15px;
+  border: 3px solid #EDEB52;
+  /* color: white; */
+  background-color: #EE3634 !important;
+}
+
+/* .players_counter p {
+    margin: 0;
+} */
+
+/* #scarabeo {
+    width: 100%;
+    margin-bottom: 15px;
+} */
+
+.call_button {
+  /* width: 20%; */
+  border-radius: 20px;
+  margin: 4px;
+  margin-top: 0px !important;
+  background-color: black;
+  color: white;
+  padding: 5px;
+}
+
+.fa-bars {
+  color: white;
+  margin-top: 8px;
+}
+
+.record {
+  margin: 3px;
+  /* padding: 10px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fa-bars {
+  color: white;
+  margin-top: 25px;
+  margin-left: 10px;
+  position: relative;
+  font-size: 30px;
+}
+
+.allineatore {
+  width: 100%;
+  /* height: 100%; */
+  margin-bottom: 300px;
+  /* padding-top: 70px ; */
+}
+
+/* --------------------------------     INITIAL   --------------------------------------- */
+
+/* -------------- ------------------     INITIAL   ------------------    --------------------- */
+
+@media screen and (min-width: 350px) and (min-height: 550px) {
+  .board {
+    width: 350px;
+    height: 450px;
+  }
+
+  .board-player {
+    width: 320px;
+  }
+
+  .avatar_helper_1 {
+    display: none;
+  }
+
+  .banner-board-helper {
+    justify-content: space-around;
+  }
+
+  #scarabeo {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 460px) and (min-height: 600px) {
+  .board {
+    width: 437.5px;
+    height: 562.5px;
+  }
+
+  .board-player {
+    width: 407.5px;
+  }
+
+  .banner-board-helper {
+    justify-content: space-around;
+  }
+
+  .avatar_helper_1 {
+    display: inline;
+  }
+
+  #scarabeo {
+    width: auto;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 350px) and (min-height: 550px) {
+  .avatar {
+    width: 350px;
+    /* min-height: 450px; */
+    margin-bottom: 150px;
+    border-radius: 35px;
+    background-color: #EDEB51;
+    background-color: #EE3734;
+    background-color: #3C5FA1;
+    background-color: #EE5E81;
+    margin: 20px;
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 460px) and (min-height: 600px) {
+  .avatar {
+    width: 437.5px;
+    min-height: 537.5px;
+    border-radius: 35px;
+    background-color: #3C5FA1;
+    background-color: #EE3734;
+    background-color: #EDEB51;
+    background-color: #EE5E81;
+    position: relative;
+  }
+}
+
+hr {
+  border: 0;
+  clear: both;
+  display: block;
+  width: 96%;
+  background-color: black;
+  height: 1px;
+}
+
+.pepar {
+  margin-top: 40px !important;
+}
+
+@media screen and (min-width: 350px) and (min-height: 550px) {
+  .pepar {
+    width: 350px;
+    /* height: 450px; */
+    /* margin-top: 130px !important; */
+  }
+}
+
+@media screen and (min-width: 460px) and (min-height: 600px) {
+  .pepar {
+    width: 437.5px;
+    /* height: 562.5px; */
+    margin-bottom: 130px;
+    /* margin-top: 130px !important; */
+  }
+}
+
+.allineatore2 {
+  width: 100vw;
+  /* height: 100vh; */
+  position: relative;
+}
+
+.closek {
+  font-size: 30px;
+}
+
+.closek:hover {
+  cursor: pointer;
+}
+
+/* --------------------------------     INITIAL   --------------------------------------- */
+
+/* --------------------------------     INITIAL   --------------------------------------- */
+
+.modal img {
+  width: 100px;
+}
+
+.modal button {
+  width: 100px;
+  min-height: 60px;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 100;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.85);
+  /* Black w/ opacity */
+  padding-top: 1rem;
+  -webkit-animation: fade-in 0.6s;
+          animation: fade-in 0.6s;
+}
+
+#myModalkoo6 {
+  display: none;
+  /* Hidden by default */
+  z-index: 100;
+  /* Sit on top */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0);
+  /* Black w/ opacity */
+  padding-top: 0;
+  -webkit-animation: fade-in 0.6s;
+          animation: fade-in 0.6s;
+}
+
+#myModalkoo6 .modal-content {
+  background-color: black;
+  border: 1px solid red;
+  display: flex;
+}
+
+#myModalkoo6 .modal-content p {
+  margin: 0;
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Content/Box */
+
+.modal-content {
+  background-color: blue;
+  border-radius: 30px;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid BLACK;
+  width: 180px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+/* The Close Button */
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* --------------------------------     INITIAL   --------------------------------------- */
+
+.profile_cover {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.rainbow-button {
+  width: calc(20vw + 6px);
+  background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.rainbow-button:hover {
+  -webkit-animation: slidebg 2s linear infinite;
+          animation: slidebg 2s linear infinite;
+}
+
+.fa-bars {
+  position: absolute;
+}
+
+#modalx div {
+  background-color: black;
+}
+
+.fa-gamepad:before {
+  color: white;
+}
+
+.ra {
+  z-index: 10;
+  /* margin-bottom: 100px; */
+  width: 140px;
+  margin-left: 20px;
+  height: auto;
+  /* margin-left: -106px; */
+  /* position: absolute; */
+}
+
+#page4 .allineatore {
+  /* height: calc(100vh - 100px); */
+  margin-bottom: 0 !important;
+}
+
+#page3 .allineatore2 {
+  height: 100vh;
+}
+
+#page5 a:hover {
+  text-decoration: underline;
+}
+
+/* #page5 .allineatore{
+    text-align: center;
+    height: 80vh;
+} */
+
+#led {
+  position: absolute;
+  font-size: 5px;
+  top: 12px;
+  right: 12px;
+}
+
+.red-led {
+  color: red !important;
+}
+
+.green-led {
+  color: #00ff4c !important;
+}
+
+#end-match {
+  color: red;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.closekoo,
+.closekoo2,
+.closekoo3,
+.closekoo4 {
+  /* color: #aaa; */
+  float: right;
+  /* font-size: 28px; */
+  font-weight: bold;
+}
+
+.closekoo:hover,
+.closekoo2:hover,
+.closekoo3:hover,
+.closekoo4:hover,
+.closekoo:focus,
+.closekoo2:focus,
+.closekoo3:focus,
+.closekoo4:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* #btnkoo_2_1 ,
+#btnkoo_3_1 ,
+#btnkoo_4_1 ,
+#btnkoo_5_1 {
+    font-size: 20px;
+} */
+
+#btnkoo3,
+#btnkoo4,
+#btnkoo5 {
+  position: relative;
+}
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+
+.pepar p {
+  color: white;
+}
+
+.square {
+  width: 75px;
+  height: 75px;
+}
+
+.shake {
+  -webkit-animation: shake 0s;
+          animation: shake 0s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes shake {
+  0% {
+    transform: translate(1px, 0px);
+  }
+
+  10% {
+    transform: translate(-1px, 0px);
+  }
+
+  20% {
+    transform: translate(-3px, 0px);
+  }
+
+  30% {
+    transform: translate(3px, 0px);
+  }
+
+  40% {
+    transform: translate(1px, 0px);
+  }
+
+  50% {
+    transform: translate(-1px, 0px);
+  }
+
+  60% {
+    transform: translate(-3px, 0px);
+  }
+
+  70% {
+    transform: translate(3px, 0px);
+  }
+
+  80% {
+    transform: translate(-1px, 0px);
+  }
+
+  90% {
+    transform: translate(1px, 0px);
+  }
+
+  100% {
+    transform: translate(1px, 0px);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 0px);
+  }
+
+  10% {
+    transform: translate(-1px, 0px);
+  }
+
+  20% {
+    transform: translate(-3px, 0px);
+  }
+
+  30% {
+    transform: translate(3px, 0px);
+  }
+
+  40% {
+    transform: translate(1px, 0px);
+  }
+
+  50% {
+    transform: translate(-1px, 0px);
+  }
+
+  60% {
+    transform: translate(-3px, 0px);
+  }
+
+  70% {
+    transform: translate(3px, 0px);
+  }
+
+  80% {
+    transform: translate(-1px, 0px);
+  }
+
+  90% {
+    transform: translate(1px, 0px);
+  }
+
+  100% {
+    transform: translate(1px, 0px);
+  }
+}
+
