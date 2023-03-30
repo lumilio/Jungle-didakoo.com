@@ -11063,30 +11063,6 @@ body,
   background-color: black;
 }
 
-/* #page4{
-    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.7), 
-      rgba(0, 0, 0, 0.7)
-    ), 
-    url("images/wallpepars/jungle.jpg") ; 
-    background-repeat: repeat ;
-    background-size: 100vh ;
-    min-height: 100vh ;
-    height: 100% ;
-    background-position: center ;
-} */
-
-/* #page4{
-    background:
-    url("images/wallpepars/space.jpeg") ; 
-    background-repeat: repeat ;
-    background-size: 100vh ;
-    min-height: 100vh ;
-    height: 100% ;
-    background-position: center ;
-} */
-
 #page4 {
   background-color: black;
 }
@@ -11212,21 +11188,6 @@ body,
   text-decoration: none;
   transition: all 0.5s;
   background-color: black;
-  /*     &:active {
-          margin-left: 10px;
-          margin-top: 10px;
-          &::before {
-              bottom: -5px;
-              height: 5px;
-              left: 3px;
-          }
-
-          &::after {
-              right: -5px;
-              width: 5px;
-              bottom: -3px;
-          } 
-      } */
 }
 
 .bt a::before {
@@ -11279,7 +11240,7 @@ body,
   margin-top: 25px;
   margin-left: 10px;
   position: absolute;
-  font-size: 30px;
+  font-size: 27px;
 }
 
 .call_button {
@@ -11304,25 +11265,34 @@ body,
   margin: 3px;
 }
 
-/* .players_counter {
-    height: 40px;
-    width: 300px;
-    border-radius: 30px;
-    margin-top: 22px;
-    margin-bottom: 15px;
-    border: 3px solid #EDEB52;
-    color: white; 
-    background-color: #EE3634 !important;
-} */
+#scarabeo {
+  width: 100%;
+  margin-bottom: 15px;
+}
 
-/* .players_counter p {
-    margin: 0;
-} */
+/* ----------------------------------------------------------------------------- */
 
-/* #scarabeo {
+/* ---------------------- PAGE 2 RANK RESPONSIVE ------------------------------ */
+
+/* ----------------------------------------------------------------------------- */
+
+.banner-board-helper {
+  justify-content: center;
+}
+
+@media screen and (max-width: 899px) {
+  #scarabeo {
     width: 100%;
     margin-bottom: 15px;
-} */
+  }
+}
+
+@media screen and (min-width: 900px) {
+  #scarabeo {
+    width: auto;
+    margin-bottom: 15px;
+  }
+}
 
 /* ----------------------------------------------------------------------------- */
 
@@ -11330,7 +11300,40 @@ body,
 
 /* ----------------------------------------------------------------------------- */
 
-@media screen and (min-width: 350px) and (min-height: 550px) {
+@media screen and (min-width: 10px) and (min-height: 10px) {
+  .board {
+    width: 200px;
+    /* height: 450px; */
+  }
+
+  .board-player {
+    width: 170px;
+  }
+}
+
+@media screen and (min-width: 319px) and (min-height: 403px) {
+  .board {
+    width: 250px;
+    /* height: 450px; */
+  }
+
+  .board-player {
+    width: 220px;
+  }
+}
+
+@media screen and (min-width: 348px) and (min-height: 500px) {
+  .board {
+    width: 280px;
+    /* height: 450px; */
+  }
+
+  .board-player {
+    width: 250px;
+  }
+}
+
+@media screen and (min-width: 370px) and (min-height: 542px) {
   .board {
     width: 350px;
     /* height: 450px; */
@@ -11339,42 +11342,71 @@ body,
   .board-player {
     width: 320px;
   }
-
-  .avatar_helper_1 {
-    display: none;
-  }
-
-  .banner-board-helper {
-    justify-content: space-around;
-  }
-
-  #scarabeo {
-    width: 100%;
-    margin-bottom: 15px;
-  }
 }
 
-@media screen and (min-width: 460px) and (min-height: 620px) {
+@media screen and (min-width: 482px) and (min-height: 590px) {
   .board {
-    width: 437.5px;
-    /* height: 562.5px; */
+    width: 340px;
+    /* height: 450px; */
   }
 
   .board-player {
-    width: 407.5px;
+    width: 310px;
+  }
+}
+
+@media screen and (min-width: 638px) and (min-height: 638px) {
+  .board {
+    width: 390px;
+    /* height: 450px; */
   }
 
-  .banner-board-helper {
-    justify-content: space-around;
+  .board-player {
+    width: 360px;
+  }
+}
+
+@media screen and (min-width: 662px) and (min-height: 730px) {
+  .board {
+    width: 430px;
+    /* height: 450px; */
   }
 
-  .avatar_helper_1 {
-    display: inline;
+  .board-player {
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 700px) and (min-height: 750px) {
+  .board {
+    width: 490px;
+    /* height: 450px; */
   }
 
-  #scarabeo {
-    width: auto;
-    margin-bottom: 15px;
+  .board-player {
+    width: 460px;
+  }
+}
+
+@media screen and (min-width: 710px) and (min-height: 850px) {
+  .board {
+    width: 550px;
+    /* height: 450px; */
+  }
+
+  .board-player {
+    width: 520px;
+  }
+}
+
+@media screen and (min-width: 795px) and (min-height: 969px) {
+  .board {
+    width: 700px;
+    /* height: 450px; */
+  }
+
+  .board-player {
+    width: 670px;
   }
 }
 
@@ -11735,12 +11767,9 @@ body,
 
 .ra {
   z-index: 10;
-  /* margin-bottom: 100px; */
   width: 140px;
   margin-left: 20px;
   height: auto;
-  /* margin-left: -106px; */
-  /* position: absolute; */
 }
 
 .fa-gamepad:before {

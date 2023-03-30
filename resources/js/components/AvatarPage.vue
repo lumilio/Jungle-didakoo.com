@@ -3,8 +3,6 @@
         <div class='allineatore2'>
 
             <!----------------- NAV ------------------->
-
-
             <div class="d-flex banner-board-helper align-items-center" style=' background-color:black; height:80px;    color: black; '>    
                 <div class="d-flex align-items-center position:absolute; top:0;">
                     <img style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
@@ -93,18 +91,6 @@
             <!----------------------------------------------->
                 
                 <!-- history example  --> 
-                <!-- <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
-                        </p> 
-                        <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
-                        </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
-                    </div>
-                    <p style="color:white; margin:0; padding-left:5px;" >W</p>
-                </div>
                 <div style='' class="d-flex align-items-center">
                     <div style="; width: 350px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
@@ -272,7 +258,19 @@
                         <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
-                </div> -->
+                </div>
+                <div style='' class="d-flex align-items-center">
+                    <div style="; width: 350px !important;"  class="record">
+                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
+                        </p> 
+                        <div class='d-flex align-items-center flex-row flex-nowrap'>
+                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
+                        </div>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
+                    </div>
+                    <p style="color:white; margin:0; padding-left:5px;" >W</p>
+                </div>
                
             
             </div> 

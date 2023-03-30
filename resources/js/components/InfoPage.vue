@@ -15,8 +15,6 @@
             </div>
             <!------------------------------------------------>
 
-
-
             <!--------------------- NAV -------------------->
             <div class="d-flex banner-board-helper align-items-center" style='margin-bottom: 0px; background-color:black; height:80px;    color: black; '>
                 <div class="d-flex align-items-center ">
@@ -26,8 +24,6 @@
                 </div>
             </div>
             <!---------------------------------------------->
-
-
 
             <!---------------------- BODY ------------------->
             <div class="allineatore d-flex justify-content-top "> 

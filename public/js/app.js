@@ -3120,7 +3120,817 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v("18 "), _c("i", {
     staticClass: "fa-solid fa-bolt"
-  })])])])])]);
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record",
+    staticStyle: {
+      width: "350px !important"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "padding-left": "5px"
+    }
+  }, [_vm._v("W")])])])])]);
 }];
 render._withStripped = true;
 
@@ -4476,7 +5286,7 @@ var staticRenderFns = [function () {
       id: "btnkoo_2_3"
     }
   }, [_vm._v(" LOG𐍈UT ")])])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex banner-board-helper align-items-center",
+    staticClass: "d-flex banner-board-helper justify-content-center align-items-center",
     staticStyle: {
       "margin-bottom": "18px",
       "background-color": "black",
@@ -4618,7 +5428,7 @@ var staticRenderFns = [function () {
     }
   }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("p", [_vm._v("𓆃")]), _vm._v(" "), _c("img", {
+  }, [_c("img", {
     staticStyle: {
       width: "30px"
     },
@@ -4681,745 +5491,6 @@ var staticRenderFns = [function () {
       display: "flex"
     }
   }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#EDEB52"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "black",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record shake",
-    staticStyle: {
-      "background-color": "#EE3634"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      id: "shake",
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#3C5FA1"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record shake",
-    staticStyle: {
-      "background-color": "#EE3634"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      id: "shake",
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#3C5FA1"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#EDEB52"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "black",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record shake",
-    staticStyle: {
-      "background-color": "#EE3634"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      id: "shake",
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#3C5FA1"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#EDEB52"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "black",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record shake",
-    staticStyle: {
-      "background-color": "#EE3634"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      id: "shake",
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#3C5FA1"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#EDEB52"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "black",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record shake",
-    staticStyle: {
-      "background-color": "#EE3634"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      id: "shake",
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#3C5FA1"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#EE5E81"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "black",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record shake",
-    staticStyle: {
-      "background-color": "#EE3634"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      id: "shake",
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#3C5FA1"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#EE5E81"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "black",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record shake",
-    staticStyle: {
-      "background-color": "#EE3634"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      id: "shake",
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#3C5FA1"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])])])]);
 }];
