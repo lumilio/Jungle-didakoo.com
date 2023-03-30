@@ -27,6 +27,8 @@
         </div>
         <!---------------------------------------------------->
 
+
+
         <!----------------------- LOGO ----------------------->
         <div id="_box1_" class="container-sm d-flex justify-content-center align-items-center flex-column">
             <button id="modalx" class="no-wrap align-items-center d-flex call_button"> Play <img style='width:130px; margin-left:10px; margin-bottom:15px; ' src='images/extra_objects/ddd.jpg' alt=""> </button> 
@@ -34,6 +36,9 @@
         </div>
         <div class="d-flex container-sm  mt-3 flex-column"></div>
         <!---------------------------------------------------->
+
+
+
 
         <!--------------------------------------- RANK LIST ------------------------------------------>
         <div style='max-width:800px' class="rank d-flex container-sm mt-4 flex-column text-white">           
@@ -75,10 +80,7 @@
             </div>
             <!------------------------------------------------------------------------------>
 
-            
-
-
-
+    
             <!-- Looping through players --------------------------------------------------->
                   <!-- <div v-for="players in playersArray" v-bind:key="players.id" style="background-color:#EDEB52;"  class="record">
                   
@@ -98,8 +100,8 @@
 
 
 
-            <!------------------------------------------------------------------------------>
-            <!--    RANK LIST EXAMPLE
+            <!-------------------------------- RANK LIST EXAMPLE ---------------------------------------------->
+               
             <div style="background-color:#EDEB52;"  class="record">
                 <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                     <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
@@ -221,7 +223,7 @@
                 </p> 
                 <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
             </div>
-            -->
+           
         </div>
         <!-------------------------------------------------------------------------------------------->
 

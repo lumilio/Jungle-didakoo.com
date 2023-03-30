@@ -11045,13 +11045,22 @@ body,
     background-position: left;
 } */
 
+/* #page3{
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ), 
+    url("images/wallpepars/chess3.jpg") ; 
+    background-repeat: repeat ;
+    background-size: 100vh ;
+    min-height: 100vh ;
+    width: 100% ;
+    background-position: center  ;
+} */
+
 #page3 {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/jungle.jpg?fae7961d43318cc72ad47574982756ae);
-  background-repeat: repeat;
-  background-size: 100vh;
-  min-height: 100vh;
-  height: 100%;
-  background-position: center;
+  background-color: black;
 }
 
 /* #page4{
@@ -11068,13 +11077,18 @@ body,
     background-position: center ;
 } */
 
+/* #page4{
+    background:
+    url("images/wallpepars/space.jpeg") ; 
+    background-repeat: repeat ;
+    background-size: 100vh ;
+    min-height: 100vh ;
+    height: 100% ;
+    background-position: center ;
+} */
+
 #page4 {
-  background: url(/images/space.jpeg?8452bf57c94af83becf96f44b42789da);
-  background-repeat: repeat;
-  background-size: 100vh;
-  min-height: 100vh;
-  height: 100%;
-  background-position: center;
+  background-color: black;
 }
 
 #page5 {
@@ -11338,11 +11352,6 @@ body,
     width: 100%;
     margin-bottom: 15px;
   }
-
-  #page3 .fa-bars {
-    margin-top: 20px;
-    margin-left: 0px;
-  }
 }
 
 @media screen and (min-width: 460px) and (min-height: 620px) {
@@ -11366,11 +11375,6 @@ body,
   #scarabeo {
     width: auto;
     margin-bottom: 15px;
-  }
-
-  #page3 .fa-bars {
-    margin-top: 30px;
-    margin-left: 0px;
   }
 }
 

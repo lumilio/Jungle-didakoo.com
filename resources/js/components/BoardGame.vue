@@ -43,19 +43,18 @@
 
         
         <!----------------- NAV ------------------->
-        <div style ='background-color:black; ' class="d-flex justify-content-center align-items-center" >
-            <i id='btnkoo2' style='display:inline; margin-bottom:0px;position:relative; ' class="fa-solid fa-bars"></i>
-            <!-- <img id='btnkoo2' style=" width:60px;  margin-bottom:5px;   margin-top: 6px;" src=" images/extra_objects/backend.png"  alt=""> -->
-            <!-- <div class="d-none">
-                <img style='width:50px;  margin-top:15px; margin-left:15px;' src='images/extra_objects/ff.png' alt="">
-                <p style=' margin:0; margin-left:5px; font-size:15px; left:70px; margin-top:28px; color:white;'> x </p>
-                <p style=' margin:0;  margin-left:5px;font-size:20px; left:84px; margin-top:24px; color:white;'>  0</p>
-            </div> -->
+
+        <div class="d-flex banner-board-helper align-items-center" style=' background-color:black; height:80px;    color: black; '>    
+            <div class="d-flex align-items-center position:absolute; top:0;">
+                <img style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
+                <i id='btnkoo2' style='display:inline; margin-bottom:25px;position:relative; margin-right:0px' class="fa-solid fa-bars"></i>
+                <!-- <p class='avatar_helper_' style='color:white;    border: 1px solid white; padding: 5px; margin:0;margin-left: 15px; '>v 2.1</p> -->
+            </div>
         </div>
         <!----------------------------------------->
 
 
-        <div class="allineatore d-flex flex-column justify-content-center align-items-center" style="padding-top: 0px; height:90%;">
+        <div class="allineatore d-flex flex-column justify-content-center align-items-center" style="padding-top: 0px; margin-top: -30px;height:90%;">
             <!-------------- PLAYER 2 DATA ---------------->
             <div class="board-player" >
                 <div style="background-color:#EDEB52;  width:100%; border:0;" class="record   ">
@@ -72,6 +71,7 @@
             <!--------------------------------------------->
             <div class="container-sm board d-flex justify-content-center bg-transparent align-items-center">
                 <Game/>
+                <!-- <img class='board ' src="images/concepts/blue-red.jpeg" alt=""> -->
             </div> 
             <!-------------- PLAYER 1 DATA ---------------->
             <div class="board-player" >

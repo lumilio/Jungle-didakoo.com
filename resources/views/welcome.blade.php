@@ -15,7 +15,7 @@
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
-    <title>didakoo.jg 1.0 </title>
+    <title>didakoo v 1.0 </title>
 </head>
 
 <body>

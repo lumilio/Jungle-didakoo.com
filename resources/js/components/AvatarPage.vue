@@ -3,9 +3,13 @@
         <div class='allineatore2'>
 
             <!----------------- NAV ------------------->
-            <div class='d-flex justify-content-around align-items-center ' style='background-color:black; height:80px;'>
-                <div>  
+
+
+            <div class="d-flex banner-board-helper align-items-center" style=' background-color:black; height:80px;    color: black; '>    
+                <div class="d-flex align-items-center position:absolute; top:0;">
+                    <img style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
                     <i id='btnkoo23' style='display:inline; margin-bottom:25px;position:relative; margin-right:0px' class="fa-solid fa-bars"></i>
+                    <!-- <p class='avatar_helper_' style='color:white;    border: 1px solid white; padding: 5px; margin:0;margin-left: 15px; '>v 2.1</p> -->
                 </div>
             </div>
             <!----------------------------------------->
@@ -32,7 +36,7 @@
             <!----------------------------------------------->
 
             <!-------------------- YELLOW --------------------->
-                <div style='margin-bottom:50px; background-color: #EDEB51;' class="container-sm avatar d-flex flex-column  align-items-center px-3">
+                <!-- <div style='margin-bottom:50px; background-color: #EDEB51;' class="container-sm avatar d-flex flex-column  align-items-center px-3">
                     <img style='width:50px; position: absolute; top:15px; left:15px;' src='images/extra_objects/ff.png' alt="">
                     <p style='position:absolute; display:block; font-size:25px; left:75px; top:20px; color:black;'> 3/6</p>
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:black;'> </p>
@@ -47,7 +51,7 @@
                         </p> 
                     </div>  
                     <p style='font-size:33px;'>18 <i class="fa-solid fa-bolt"></i></p>
-                </div>
+                </div> -->
             <!----------------------------------------------->
 
             <!-------------------- RED --------------------->
@@ -70,7 +74,7 @@
             <!----------------------------------------------->
 
             <!-------------------- BLUE --------------------->
-                <!-- <div style='margin-bottom:50px; background-color: #3C5FA1;' class="container-sm avatar d-flex flex-column  align-items-center px-3">
+                <div style='margin-bottom:50px; background-color: #3C5FA1;' class="container-sm avatar d-flex flex-column  align-items-center px-3">
                     <img style='width:50px; position: absolute; top:15px; left:15px;' src='images/extra_objects/ff.png' alt="">
                     <p style='position:absolute; display:block; font-size:25px; left:75px; top:20px; color:white;'> 3/6</p>
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:white;'> </p>
@@ -85,7 +89,7 @@
                         </p> 
                     </div>  
                     <p style='font-size:33px; color:white;'>18 <i class="fa-solid fa-bolt"></i></p>
-                </div> -->
+                </div>
             <!----------------------------------------------->
                 
                 <!-- history example  --> 
