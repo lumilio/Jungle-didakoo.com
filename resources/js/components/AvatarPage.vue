@@ -58,8 +58,8 @@
                     <p style='position:absolute; display:block; font-size:25px; left:75px; top:20px; color:white;'> 3/6</p>
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:white;'> </p>
                     <p style='position:absolute; display:block; margin-top:10px;  font-size:33px; right:15px; top:5px; color:white;'>32°</p>
-                    <img class='' style='width:100px; margin-top:80px; margin-bottom:20px;' src='images/extra_objects/iconaplayW.png' alt=""> 
-                    <div class='d-flex justify-content-center flex-row align-items-center' style='margin-bottom:20px;' >
+                    <img class='' style='width:80px; margin-top:80px; margin-bottom:20px;' src='images/extra_objects/iconaplayW.png' alt=""> 
+                    <div class='d-flex justify-content-center flex-row align-items-center' style='margin-bottom:0;' >
                         <img style='width:50px; ' src='images/board/animals/icon-60.png' alt="">
                     </div>
                     <div style="background-color:#EE3734; width:100%;" >
@@ -92,7 +92,7 @@
                 
                 <!-- history example  --> 
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 
@@ -104,7 +104,7 @@
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 
@@ -116,7 +116,7 @@
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 
@@ -128,7 +128,7 @@
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 
@@ -140,7 +140,7 @@
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 
@@ -152,7 +152,7 @@
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 
@@ -164,7 +164,7 @@
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 
@@ -176,7 +176,7 @@
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 
@@ -188,7 +188,7 @@
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 
@@ -200,7 +200,7 @@
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 
@@ -212,7 +212,7 @@
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 
@@ -224,7 +224,7 @@
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 
@@ -236,7 +236,7 @@
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 
@@ -248,7 +248,7 @@
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 
@@ -260,7 +260,7 @@
                     <p style="color:white; margin:0; padding-left:5px;" >W</p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div style="; width: 350px !important;"  class="record">
+                    <div style="; width: 280px !important;"  class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                         </p> 

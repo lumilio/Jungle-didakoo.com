@@ -265,11 +265,39 @@ body, .centratore {
 
 
 
+@media screen and (max-height: 586px){
+
+    .square {
+        width: 75px;
+        height: 75px;
+    }
+
+    .bt i {
+        font-size: 25px;
+    }
+    .bt {
+        margin-bottom: -45px;
+    }
+
+}
+
 @media screen and (min-height: 700px){
     .bt {
         margin-bottom: 100px;
     }
 
+}
+
+@media screen and (min-height: 700px){
+    .bt {
+        margin-bottom: 100px;
+    }
+}
+
+@media screen and (min-height: 1010px){
+    .bt {
+        margin-bottom: 280px;
+    }
 }
 
 /* ----------------------------------------------------------------------------- */
@@ -320,6 +348,10 @@ body, .centratore {
 
 #page2 .record{
     margin: 3px ;
+}
+
+#page4 .record{
+    width: 280px ;
 }
 
 #scarabeo {
@@ -495,8 +527,9 @@ body, .centratore {
     object-fit: cover
 }
 
-@media screen and (min-width: 350px) and (min-height: 550px){
+@media screen and (min-width: 350px) and (min-height: 150px){
     .avatar{
+        width: 290px;
         margin-bottom: 150px;
         border-radius: 35px;
         margin: 20px;
@@ -504,9 +537,9 @@ body, .centratore {
     }
 }
 
-@media screen and (min-width: 460px) and (min-height: 600px){
+@media screen and (min-width: 460px) and (min-height: 200px){
     .avatar{
-        width: 370px;
+        width: 290px;
         margin-top: 35px;
         border-radius: 35px;
         /* background-color: #3C5FA1;
@@ -533,6 +566,7 @@ body, .centratore {
     }
 }
 
+
 @media screen and (min-width: 460px) and (min-height: 600px){
     .pepar{
         width: 437.5px;
@@ -541,7 +575,7 @@ body, .centratore {
         /* margin-top: 130px !important; */
     }
 }
-
+record
 .pepar p {
     color: white;
 }
