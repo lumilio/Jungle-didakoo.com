@@ -11020,23 +11020,29 @@ body,
 
 /* ----------------------------------------------------------------------------- */
 
-#page1 {
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(/images/sky.png?ad417205d06e387a899c67413e4b8c1c);
-  background-position: bottom;
-  background-repeat: repeat;
-  min-height: 100vh;
-  background-size: cover;
-}
+/* #page1{
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.1), 
+      rgba(0, 0, 0, 0.1)
+    ),
+    url("images/wallpepars/sky.png"); 
+    background-position:  bottom ;
+    background-repeat: repeat;
+    min-height: 100vh;
+    background-size: cover;
+} */
 
-#page2 {
-  background: url(/images/space.jpeg?8452bf57c94af83becf96f44b42789da);
-  background-repeat: repeat;
-  background-size: 100vh;
-  min-height: 100vh;
-  height: 100%;
-  width: 100%;
-  background-position: top;
-}
+/* #page2{
+    background:
+    url("images/wallpepars/space.jpeg"); 
+    background-repeat: repeat;
+    background-size: 100vh;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    background-position: top;
+} */
 
 /* #page3{
     background:
@@ -11157,11 +11163,13 @@ body,
   background-color: black;
   width: 105px;
   height: 105px;
-  border-radius: 20%;
+  /* border-radius: 20%; */
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  border-top: 3px solid blue;
+  border-left: 3px solid navy;
 }
 
 .bt #buttton_v_1 {
@@ -11195,7 +11203,7 @@ body,
   bottom: -15px;
   height: 15px;
   width: 100%;
-  left: 8px;
+  left: 4px;
   transform: skewX(45deg);
   background-color: navy;
   border-bottom: 3px solid black;
@@ -11209,7 +11217,7 @@ body,
   bottom: -8px;
   transform: skewY(45deg);
   background-color: blue;
-  border-top: 3px solid black;
+  z-index: 100;
   border-right: 3px solid black;
   border-bottom: 3px solid black;
 }
@@ -11218,13 +11226,62 @@ body,
   display: none !important;
 }
 
+#led {
+  font-size: 7px;
+}
+
+@media screen and (max-height: 586px) {
+  .square {
+    width: 75px;
+    height: 75px;
+  }
+
+  #led {
+    font-size: 5px;
+  }
+
+  .bt i {
+    font-size: 25px;
+  }
+
+  .bt #buttton_v_1 {
+    height: 20px;
+  }
+
+  .bt {
+    margin-bottom: -45px;
+  }
+}
+
 @media screen and (min-height: 700px) {
   .bt {
     margin-bottom: 100px;
   }
 }
 
+@media screen and (min-height: 700px) {
+  .bt {
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and (min-height: 1010px) {
+  .bt {
+    margin-bottom: 280px;
+  }
+}
+
 /* ----------------------------------------------------------------------------- */
+
+#modalz .square {
+  border-top: 3px solid red;
+  border-left: 3px solid maroon;
+}
+
+#modaly .square {
+  border-top: 3px solid yellow;
+  border-left: 3px solid olive;
+}
 
 #modalz:before {
   background-color: maroon;
@@ -11276,6 +11333,11 @@ body,
 
 #page2 .record {
   margin: 3px;
+}
+
+#page4 .record {
+  width: 280px;
+  border: 1px solid white;
 }
 
 #scarabeo {
@@ -11441,8 +11503,9 @@ body,
      object-fit: cover;
 }
 
-@media screen and (min-width: 350px) and (min-height: 550px) {
+@media screen and (min-width: 350px) and (min-height: 150px) {
   .avatar {
+    width: 290px;
     margin-bottom: 150px;
     border-radius: 35px;
     margin: 20px;
@@ -11450,9 +11513,9 @@ body,
   }
 }
 
-@media screen and (min-width: 460px) and (min-height: 600px) {
+@media screen and (min-width: 460px) and (min-height: 200px) {
   .avatar {
-    width: 370px;
+    width: 290px;
     margin-top: 35px;
     border-radius: 35px;
     /* background-color: #3C5FA1;

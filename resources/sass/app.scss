@@ -201,11 +201,13 @@ body, .centratore {
     background-color: black;
     width: 105px;
     height: 105px;
-    border-radius: 20%;
+    /* border-radius: 20%; */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    border-top: 3px solid blue;
+    border-left: 3px solid darken(blue, 25%)
 }
 
 .bt #buttton_v_1 {
@@ -238,7 +240,7 @@ body, .centratore {
         bottom: -15px;
         height: 15px;
         width: 100%;
-        left: 8px;
+        left: 4px;
         transform: skewX(45deg);
         background-color: darken(blue, 25%);
         border-bottom: 3px solid black;
@@ -253,7 +255,7 @@ body, .centratore {
         bottom: -8px;
         transform: skewY(45deg);
         background-color: blue;
-        border-top: 3px solid black;
+        z-index: 100;
         border-right: 3px solid black;
         border-bottom: 3px solid black;
     }
@@ -313,6 +315,14 @@ body, .centratore {
 
 /* ----------------------------------------------------------------------------- */
 
+#modalz .square{
+    border-top: 3px solid red;
+    border-left: 3px solid darken(red, 25%);
+}
+#modaly .square{
+    border-top: 3px solid yellow;
+    border-left: 3px solid darken(yellow, 25%);
+}
 
 #modalz:before{
     background-color: darken(red, 25%);
