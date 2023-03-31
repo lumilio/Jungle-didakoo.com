@@ -53,7 +53,7 @@
             <!----------------------------------------------->
 
             <!-------------------- RED --------------------->
-                <!-- <div style='margin-bottom:50px; background-color: #EE3734;' class="container-sm avatar d-flex flex-column  align-items-center px-3">
+                <div style='margin-bottom:50px; background-color: #EE3734;' class="container-sm avatar d-flex flex-column  align-items-center px-3">
                     <img style='width:50px; position: absolute; top:15px; left:15px;' src='images/extra_objects/ff.png' alt="">
                     <p style='position:absolute; display:block; font-size:25px; left:75px; top:20px; color:white;'> 3/6</p>
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:white;'> </p>
@@ -68,11 +68,11 @@
                         </p> 
                     </div>  
                     <p style='font-size:33px; color:white;'>18 <i class="fa-solid fa-bolt"></i></p>
-                </div> -->
+                </div>
             <!----------------------------------------------->
 
             <!-------------------- BLUE --------------------->
-                <div style='margin-bottom:50px; background-color: #3C5FA1;' class="container-sm avatar d-flex flex-column  align-items-center px-3">
+                <!-- <div style='margin-bottom:50px; background-color: #3C5FA1;' class="container-sm avatar d-flex flex-column  align-items-center px-3">
                     <img style='width:50px; position: absolute; top:15px; left:15px;' src='images/extra_objects/ff.png' alt="">
                     <p style='position:absolute; display:block; font-size:25px; left:75px; top:20px; color:white;'> 3/6</p>
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:white;'> </p>
@@ -87,7 +87,7 @@
                         </p> 
                     </div>  
                     <p style='font-size:33px; color:white;'>18 <i class="fa-solid fa-bolt"></i></p>
-                </div>
+                </div> -->
             <!----------------------------------------------->
                 
                 <!-- history example  --> 

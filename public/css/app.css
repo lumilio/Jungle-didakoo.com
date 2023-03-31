@@ -11123,12 +11123,13 @@ body,
   z-index: 2;
   position: absolute;
   display: flex;
-  bottom: 35px;
+  bottom: 55px;
   margin-left: 55px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   border-radius: 20px;
+  flex-direction: column !important;
 }
 
 .bt a {
@@ -11149,13 +11150,13 @@ body,
 
 .bt i {
   color: white;
-  font-size: 25px;
+  font-size: 45px;
 }
 
 .square {
   background-color: black;
-  width: 75px;
-  height: 75px;
+  width: 105px;
+  height: 105px;
   border-radius: 20%;
   display: flex;
   justify-content: center;
@@ -11164,7 +11165,7 @@ body,
 }
 
 .bt #buttton_v_1 {
-  height: 20px;
+  height: 30px;
 }
 
 .bt #buttton_v_2 {
@@ -11212,6 +11213,18 @@ body,
   border-right: 3px solid black;
   border-bottom: 3px solid black;
 }
+
+.ra {
+  display: none !important;
+}
+
+@media screen and (min-height: 700px) {
+  .bt {
+    margin-bottom: 100px;
+  }
+}
+
+/* ----------------------------------------------------------------------------- */
 
 #modalz:before {
   background-color: maroon;
@@ -11269,6 +11282,12 @@ body,
   width: 100%;
   margin-bottom: 15px;
 }
+
+/* ----------------------------------------------------------------------------- */
+
+/* ---------------------- PAGE 1 MENU RESPONSIVE ------------------------------ */
+
+/* ----------------------------------------------------------------------------- */
 
 /* ----------------------------------------------------------------------------- */
 
@@ -11401,12 +11420,12 @@ body,
 
 @media screen and (min-width: 795px) and (min-height: 969px) {
   .board {
-    width: 700px;
+    width: 650px;
     /* height: 450px; */
   }
 
   .board-player {
-    width: 670px;
+    width: 620px;
   }
 }
 

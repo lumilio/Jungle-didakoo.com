@@ -3022,7 +3022,7 @@ var staticRenderFns = [function () {
     staticClass: "container-sm avatar d-flex flex-column align-items-center px-3",
     staticStyle: {
       "margin-bottom": "50px",
-      "background-color": "#3C5FA1"
+      "background-color": "#EE3734"
     }
   }, [_c("img", {
     staticStyle: {
@@ -3088,7 +3088,7 @@ var staticRenderFns = [function () {
     }
   })]), _vm._v(" "), _c("div", {
     staticStyle: {
-      "background-color": "#3C5FA1",
+      "background-color": "#EE3734",
       width: "100%"
     }
   }, [_c("p", {
@@ -4143,17 +4143,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("div", {
     staticClass: "d-flex align-items-center position:absolute; top:0;"
-  }, [_c("img", {
-    staticStyle: {
-      width: "100px",
-      "margin-left": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/ddd.jpg",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("i", {
+  }, [_c("i", {
     staticClass: "fa-solid fa-bars",
     staticStyle: {
       display: "inline",
@@ -4164,7 +4154,16 @@ var staticRenderFns = [function () {
     attrs: {
       id: "btnkoo2"
     }
-  })])]);
+  }), _vm._v(" "), _c("p", {
+    staticClass: "avatar_helper_",
+    staticStyle: {
+      color: "white",
+      border: "1px solid white",
+      padding: "5px",
+      margin: "0",
+      "margin-left": "15px"
+    }
+  }, [_vm._v("v 1")])])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -5385,6 +5384,7 @@ var staticRenderFns = [function () {
       "max-width": "800px"
     }
   }, [_c("button", {
+    staticClass: "mx-5",
     staticStyle: {
       "background-color": "black"
     }
@@ -5402,7 +5402,7 @@ var staticRenderFns = [function () {
       "font-size": "20px"
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
+    staticClass: "record mx-5 mx-5",
     staticStyle: {
       "background-color": "#EDEB52"
     }
@@ -5456,7 +5456,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
+    staticClass: "record mx-5",
     staticStyle: {
       "background-color": "#EE5E81"
     }
@@ -5491,6 +5491,745 @@ var staticRenderFns = [function () {
       display: "flex"
     }
   }, [_vm._v(" 6  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5",
+    staticStyle: {
+      "background-color": "#EDEB52"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "black",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "black",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 6  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5 shake",
+    staticStyle: {
+      "background-color": "#EE3634"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      id: "shake",
+      src: "images/extra_objects/iconaplayW.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 1  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5",
+    staticStyle: {
+      "background-color": "#3C5FA1"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayW.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 1  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5 shake",
+    staticStyle: {
+      "background-color": "#EE3634"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      id: "shake",
+      src: "images/extra_objects/iconaplayW.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 1  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5",
+    staticStyle: {
+      "background-color": "#3C5FA1"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayW.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 1  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5",
+    staticStyle: {
+      "background-color": "#EDEB52"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "black",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "black",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 6  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5 shake",
+    staticStyle: {
+      "background-color": "#EE3634"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      id: "shake",
+      src: "images/extra_objects/iconaplayW.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 1  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5",
+    staticStyle: {
+      "background-color": "#3C5FA1"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayW.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 1  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5",
+    staticStyle: {
+      "background-color": "#EDEB52"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "black",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "black",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 6  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5 shake",
+    staticStyle: {
+      "background-color": "#EE3634"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      id: "shake",
+      src: "images/extra_objects/iconaplayW.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 1  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5",
+    staticStyle: {
+      "background-color": "#3C5FA1"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayW.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 1  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5",
+    staticStyle: {
+      "background-color": "#EDEB52"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "black",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "black",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 6  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5 shake",
+    staticStyle: {
+      "background-color": "#EE3634"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      id: "shake",
+      src: "images/extra_objects/iconaplayW.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 1  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5",
+    staticStyle: {
+      "background-color": "#3C5FA1"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayW.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 1  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5",
+    staticStyle: {
+      "background-color": "#EE5E81"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "black",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "black",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 6  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5 shake",
+    staticStyle: {
+      "background-color": "#EE3634"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      id: "shake",
+      src: "images/extra_objects/iconaplayW.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 1  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5",
+    staticStyle: {
+      "background-color": "#3C5FA1"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayW.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 1  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5",
+    staticStyle: {
+      "background-color": "#EE5E81"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "black",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "black",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 6  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5 shake",
+    staticStyle: {
+      "background-color": "#EE3634"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      id: "shake",
+      src: "images/extra_objects/iconaplayW.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 1  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "record mx-5",
+    staticStyle: {
+      "background-color": "#3C5FA1"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("2°\n                    "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayW.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])])])]);
 }];

@@ -1,5 +1,5 @@
 <template>
-    <div id="page1" style="" class="centratore justify-content-center align-items-center">
+    <div id="page1" style="" class="centratore justify-content-center  align-items-center">
 
         <!------------------------ UTILITY MODEAL --------------------->
         <div id="myModalkoo6" class="modal justify-content-center align-items-center" >
