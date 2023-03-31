@@ -17,7 +17,7 @@
         <div class="d-flex banner-board-helper justify-content-center align-items-center" style='margin-bottom: 18px; background-color:black; height:80px;    color: black; '>    
             <div class="d-flex align-items-center ">
                 <button id='ready_player_1.2' style='disaply:none;border:1px solid black;       padding:15px; padding-right:5px; color:white; background-color:black; border-radius:20px;  '><p ></p>  <img style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;'   src='images/extra_objects/iconaplay1.png' alt=""></button> 
-                <button onclick="web3Login();" id='ready_player_3.1' style='display:none;border:1px solid black;       padding: 20px 0px 15px 15px; padding-right:0px; color:white; background-color:black; border-radius:20px;  '><p style='display:inline;' >Login</p><!-- <img style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;'   src='images/extra_objects/iconaplay1.png' alt=""> --></button> 
+                <button onclick="web3Login();" id='ready_player_3.1' style='display:none;border:1px solid black;       padding: 20px 0px 15px 15px; padding-right:0px; color:white; background-color:black; border-radius:20px;  '><p style='display:inline;' ><!-- Login --></p><img style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;'   src='images/extra_objects/iconaplay1.png' alt=""></button> 
                 <i id='modalkoo' style='display:inline; margin-bottom:25px;position:relative; margin-right:0px' class="fa-solid fa-bars"></i>
                 <!-- <p class='avatar_helper_' style='color:white;    border: 1px solid white; padding: 5px; margin:0;margin-left: 15px; '>v 2.1</p> -->
             </div>
@@ -52,7 +52,7 @@
                 </p> 
             </button>
 
-            <p class='mx-5'>Next rank photo : 6g 9h 34m 59s</p>
+            <!-- <p class='mx-5'>Next rank photo : 6g 9h 34m 59s</p> -->
             
             
             <!---------------------------- User record examaples ---------------------------->

@@ -263,6 +263,10 @@ body, .centratore {
     display: none !important;
 }
 
+#led {
+    font-size: 7px;
+}
+
 
 
 @media screen and (max-height: 586px){
@@ -272,8 +276,15 @@ body, .centratore {
         height: 75px;
     }
 
+    #led {
+        font-size: 5px;
+    }
+
     .bt i {
         font-size: 25px;
+    }
+    .bt #buttton_v_1 {
+        height: 20px;
     }
     .bt {
         margin-bottom: -45px;
@@ -352,6 +363,7 @@ body, .centratore {
 
 #page4 .record{
     width: 280px ;
+    border:1px solid white;
 }
 
 #scarabeo {
@@ -575,7 +587,7 @@ body, .centratore {
         /* margin-top: 130px !important; */
     }
 }
-record
+
 .pepar p {
     color: white;
 }
