@@ -96,7 +96,7 @@
 
 
             <!-------------------------------- RANK LIST EXAMPLE ---------------------------------------------- -->
-            
+                <!-- <div>
                 <div style="background-color:#EDEB52;"  class="record ">
                     <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
@@ -218,6 +218,7 @@
                     </p> 
                     <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
+                </div> -->
             
             
         <!--  ---------------------------------------------------------------------------------------------->
