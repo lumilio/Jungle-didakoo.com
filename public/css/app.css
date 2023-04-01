@@ -11130,7 +11130,6 @@ body,
   position: absolute;
   display: flex;
   bottom: 55px;
-  margin-left: 55px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -11156,24 +11155,24 @@ body,
 
 .bt i {
   color: white;
-  font-size: 45px;
+  font-size: 35px;
 }
 
 .square {
   background-color: black;
   width: 105px;
   height: 105px;
-  /* border-radius: 20%; */
+  border-radius: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  border-top: 3px solid blue;
-  border-left: 3px solid navy;
+  border: 3px solid blue;
+  /* border: 3px solid darken(blue, 25%) */
 }
 
 .bt #buttton_v_1 {
-  height: 30px;
+  height: 25px;
 }
 
 .bt #buttton_v_2 {
@@ -11182,44 +11181,6 @@ body,
 
 .bt #buttton_v_3 {
   font-size: 35px;
-}
-
-.bt a::after,
-.bt a::before {
-  position: absolute;
-  content: "";
-  transition: all 0.5s;
-}
-
-.bt a {
-  transform: translate(-50%, -50%);
-  vertical-align: middle;
-  text-decoration: none;
-  transition: all 0.5s;
-  background-color: black;
-}
-
-.bt a::before {
-  bottom: -15px;
-  height: 15px;
-  width: 100%;
-  left: 4px;
-  transform: skewX(45deg);
-  background-color: navy;
-  border-bottom: 3px solid black;
-  border-left: 3px solid black;
-}
-
-.bt a::after {
-  right: -15px;
-  height: 100%;
-  width: 15px;
-  bottom: -8px;
-  transform: skewY(45deg);
-  background-color: blue;
-  z-index: 100;
-  border-right: 3px solid black;
-  border-bottom: 3px solid black;
 }
 
 .ra {
@@ -11274,13 +11235,13 @@ body,
 /* ----------------------------------------------------------------------------- */
 
 #modalz .square {
-  border-top: 3px solid red;
-  border-left: 3px solid maroon;
+  border: 3px solid red;
+  /* border: 3px solid darken(red, 25%); */
 }
 
 #modaly .square {
-  border-top: 3px solid yellow;
-  border-left: 3px solid olive;
+  border: 3px solid yellow;
+  /* border: 3px solid darken(yellow, 25%); */
 }
 
 #modalz:before {
@@ -11460,12 +11421,12 @@ body,
 
 @media screen and (min-width: 700px) and (min-height: 750px) {
   .board {
-    width: 490px;
+    width: 470px;
     /* height: 450px; */
   }
 
   .board-player {
-    width: 460px;
+    width: 440px;
   }
 }
 
