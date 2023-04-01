@@ -34,7 +34,7 @@
 
         <!--------------------------------------- RANK LIST ------------------------------------------>
         <div style='max-width:800px' class="rank d-flex container-sm mt-4 flex-column text-white">           
-            <button class='mx-4' style='background-color:black;'>
+            <button class='refresh-button' style='background-color:black;'>
                 <p class='d-flex justify-content-between align-items-center' style='color:white; padding: 10px; margin: 0;'>  
                     <span>Click to refresh</span>  
                     <i style='color:white; font-size:20px;' class="fa-solid fa-rotate"></i>
@@ -56,7 +56,7 @@
             
             
             <!---------------------------- User record examaples ---------------------------->
-            <div style="background-color:#EDEB52;"  class="record mx-4 mx-4">
+            <div style="background-color:#EDEB52;"  class="record  ">
                 <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                     <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                 </p> 
@@ -67,7 +67,7 @@
                 <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
             </div>
             <!------------------------------------------------------------------------------>
-            <div style="background-color:#EE5E81;"  class="record mx-4">
+            <div style="background-color:#EE5E81;"  class="record ">
                 <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                     <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;' src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                 </p> 
@@ -77,7 +77,7 @@
 
     
             <!-- Looping through players --------------------------------------------------->
-                  <!-- <div v-for="players in playersArray" v-bind:key="players.id" style="background-color:#EDEB52;"  class="record mx-4">
+                  <!-- <div v-for="players in playersArray" v-bind:key="players.id" style="background-color:#EDEB52;"  class="record ">
                   
                     <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='img/images/images3/iconaplayB.png'>  {{players.wallet_address}}
@@ -97,122 +97,122 @@
 
             <!-------------------------------- RANK LIST EXAMPLE ---------------------------------------------- -->
             
-                <div style="background-color:#EDEB52;"  class="record mx-4">
+                <div style="background-color:#EDEB52;"  class="record ">
                     <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 6  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#EE3634;"  class="record mx-4 shake">
+                <div style="background-color:#EE3634;"  class="record  shake">
                     <p  style='color:; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img id='shake' style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#3C5FA1;"  class="record mx-4">
+                <div style="background-color:#3C5FA1;"  class="record ">
                     <p  style='color:; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
 
-                <div style="background-color:#EE3634;"  class="record mx-4 shake">
+                <div style="background-color:#EE3634;"  class="record  shake">
                     <p  style='color:; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img id='shake' style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#3C5FA1;"  class="record mx-4">
+                <div style="background-color:#3C5FA1;"  class="record ">
                     <p  style='color:; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#EDEB52;"  class="record mx-4">
+                <div style="background-color:#EDEB52;"  class="record ">
                     <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 6  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#EE3634;"  class="record mx-4 shake">
+                <div style="background-color:#EE3634;"  class="record  shake">
                     <p  style='color:; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img id='shake' style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#3C5FA1;"  class="record mx-4">
+                <div style="background-color:#3C5FA1;"  class="record ">
                     <p  style='color:; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#EDEB52;"  class="record mx-4">
+                <div style="background-color:#EDEB52;"  class="record ">
                     <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 6  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#EE3634;"  class="record mx-4 shake">
+                <div style="background-color:#EE3634;"  class="record  shake">
                     <p  style='color:; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img id='shake' style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#3C5FA1;"  class="record mx-4">
+                <div style="background-color:#3C5FA1;"  class="record ">
                     <p  style='color:; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#EDEB52;"  class="record mx-4">
+                <div style="background-color:#EDEB52;"  class="record ">
                     <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 6  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#EE3634;"  class="record mx-4 shake">
+                <div style="background-color:#EE3634;"  class="record  shake">
                     <p  style='color:; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img id='shake' style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#3C5FA1;"  class="record mx-4">
+                <div style="background-color:#3C5FA1;"  class="record ">
                     <p  style='color:; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#EE5E81;"  class="record mx-4">
+                <div style="background-color:#EE5E81;"  class="record ">
                     <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 6  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#EE3634;"  class="record mx-4 shake">
+                <div style="background-color:#EE3634;"  class="record  shake">
                     <p  style='color:; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img id='shake' style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#3C5FA1;"  class="record mx-4">
+                <div style="background-color:#3C5FA1;"  class="record ">
                     <p  style='color:; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#EE5E81;"  class="record mx-4">
+                <div style="background-color:#EE5E81;"  class="record ">
                     <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 6  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#EE3634;"  class="record mx-4 shake">
+                <div style="background-color:#EE3634;"  class="record  shake">
                     <p  style='color:; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img id='shake' style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 
                     <span class='align-items-center' style='color:; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 1  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-                <div style="background-color:#3C5FA1;"  class="record mx-4">
+                <div style="background-color:#3C5FA1;"  class="record ">
                     <p  style='color:; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>2°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                     </p> 

@@ -165,7 +165,7 @@ body, .centratore {
 
 .bt {
     z-index: 2;
-    position: absolute;
+    
     display: flex;
     bottom: 55px;
     flex-direction: row;
@@ -262,24 +262,7 @@ body, .centratore {
 
 }
 
-@media screen and (min-height: 700px){
-    .bt {
-        margin-bottom: 100px;
-    }
 
-}
-
-@media screen and (min-height: 700px){
-    .bt {
-        margin-bottom: 100px;
-    }
-}
-
-@media screen and (min-height: 1010px){
-    .bt {
-        margin-bottom: 280px;
-    }
-}
 
 /* ----------------------------------------------------------------------------- */
 
@@ -389,6 +372,12 @@ body, .centratore {
 }
 
 
+@media screen and (min-width: 359px) {
+    #page2 .record, .refresh-button {
+        margin-left: 50px;
+        margin-right:  50px;
+    }
+}
 
 /* ----------------------------------------------------------------------------- */
 /* ---------------------- PAGE 3 BOARD RESPONSIVE ------------------------------ */
@@ -402,6 +391,18 @@ body, .centratore {
     }
     .board-player{
         width: calc(200px - 30px)
+    }
+
+}
+
+
+@media screen and (min-width: 278px) and (min-height: 552px){
+    .board{
+        width: 250px;
+        /* height: 450px; */
+    }
+    .board-player{
+        width: calc(250px - 30px)
     }
 
 }
@@ -517,6 +518,24 @@ body, .centratore {
     object-fit: cover
 }
 
+
+
+
+@media screen and (min-width: 150px) and (min-height: 100px){
+    .avatar{
+        width: 210px;
+        margin-bottom: 150px;
+        border-radius: 35px;
+        margin: 20px;
+        position: relative;
+    }
+
+    #page4 .record {
+        width: 180px ;
+    }
+}
+
+
 @media screen and (min-width: 350px) and (min-height: 150px){
     .avatar{
         width: 290px;
@@ -524,6 +543,10 @@ body, .centratore {
         border-radius: 35px;
         margin: 20px;
         position: relative;
+    }
+
+    #page4 .record {
+        width: 280px ;
     }
 }
 
@@ -538,6 +561,9 @@ body, .centratore {
         background-color: #EE5E81; */
         position: relative;
     } 
+    #page4 .record {
+        width: 280px ;
+    }
 }
 
 /* ----------------------------------------------------------------------------- */
