@@ -14,7 +14,7 @@
 
             <div class="allineatore d-flex container-fluid flex-column justify-content-center px-4 align-items-center">
 
-
+                <!------------------------ AVATAR CARD ---------------------->
                 <div style='margin-bottom:50px; background-color:black; border:3px solid white;' class="container-sm avatar d-flex flex-column  align-items-center px-3">
                     <img style='width:50px; position: absolute; top:15px; left:15px;' src='images/extra_objects/ff.png' alt="">
                     <p style='position:absolute; display:block; font-size:25px; left:75px; top:20px; color:white;'> 3/6</p>
@@ -31,9 +31,10 @@
                     </div>
                     <p style='font-size:33px; color:white;'>18 <i style='color:#EE5E81' class="fa-solid fa-bolt"></i></p>
                 </div>
+                <!------------------------------------------------------------>
 
-                
-                <!-- history example  --> 
+                <!------------------------ HISTORY EXAMPLE ----------------------> 
+                <div>
                 <div style='' class="d-flex align-items-center">
                     <div   class="record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
@@ -214,7 +215,8 @@
                     </div>
                     <p style="color:white; margin:0; padding-left:10px;" >W</p>
                 </div>
-               
+                </div>
+                <!------------------------------------------------------------->
             
             </div> 
         </div> 
