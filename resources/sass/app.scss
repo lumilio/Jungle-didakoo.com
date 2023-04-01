@@ -141,11 +141,6 @@ body, .centratore {
     margin-bottom: 0 !important;
 }
 
-
-
-
-
-
 #page3 .allineatore2{
     height: 100vh;
 }
@@ -160,7 +155,6 @@ body, .centratore {
 /* ----------------------------------------------------------------------------- */
 /* -------------------------- MENU PAGE BUTTONS -------------------------------- */
 /* ----------------------------------------------------------------------------- */
-
 
 
 .bt {
@@ -227,8 +221,6 @@ body, .centratore {
     transition: all .5s;
 }
 
-
-
 .ra{
     display: none !important;
 }
@@ -237,61 +229,18 @@ body, .centratore {
     font-size: 7px;
 }
 
-
-
-@media screen and (max-height: 586px){
-
-    .square {
-        width: 75px;
-        height: 75px;
-    }
-
-    #led {
-        font-size: 5px;
-    }
-
-    .bt i {
-        font-size: 25px;
-    }
-    .bt #buttton_v_1 {
-        height: 20px;
-    }
-    .bt {
-        margin-bottom: -45px;
-    }
-
-}
-
-
-
-/* ----------------------------------------------------------------------------- */
-
 #modalz .square{
     border: 3px solid red;
-    /* border: 3px solid darken(red, 25%); */
 }
 #modaly .square{
     border: 3px solid yellow;
-    /* border: 3px solid darken(yellow, 25%); */
-}
-
-#modalz:before{
-    background-color: darken(red, 25%);
-}
-#modaly:before{
-    background-color: darken(yellow, 25%);
-}
-#modalz:after{
-    background-color: red;
-}
-#modaly:after{
-    background-color: yellow;
 }
 
 /* ----------------------------------------------------------------------------- */
 /* ------------------------ PAGE 2 RANK UTILITY -------------------------------- */
 /* ----------------------------------------------------------------------------- */
     
+
 .fa-bars{
     color: white;
     margin-top: 25px;
@@ -333,19 +282,32 @@ body, .centratore {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /* ----------------------------------------------------------------------------- */
 /* ---------------------- PAGE 1 MENU RESPONSIVE ------------------------------ */
 /* ----------------------------------------------------------------------------- */
+
+@media screen and (max-height: 586px){
+
+    .square {
+        width: 75px;
+        height: 75px;
+    }
+
+    #led {
+        font-size: 5px;
+    }
+
+    .bt i {
+        font-size: 25px;
+    }
+    .bt #buttton_v_1 {
+        height: 20px;
+    }
+    .bt {
+        margin-bottom: -45px;
+    }
+
+}
 
 
 /* ----------------------------------------------------------------------------- */
@@ -524,8 +486,6 @@ body, .centratore {
     height: 100%;
     object-fit: cover
 }
-
-
 
 
 @media screen and (min-width: 150px) and (min-height: 100px){
