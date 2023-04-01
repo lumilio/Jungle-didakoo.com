@@ -4,9 +4,9 @@
 
             <!----------------- NAV ------------------->
             <div class="d-flex banner-board-helper align-items-center" style=' background-color:black; height:80px;    color: black; '>    
-                <div class="d-flex align-items-center position:absolute; top:0;">
+                <div id='btnkoo23' class="d-flex align-items-center position:absolute; top:0;">
                     <img style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
-                    <i id='btnkoo23' style='display:inline; margin-bottom:25px;position:relative; margin-right:0px' class="fa-solid fa-bars"></i>
+                    <i style='display:inline; margin-bottom:25px;position:relative; margin-right:0px' class="fa-solid fa-bars"></i>
                     <!-- <p class='avatar_helper_' style='color:white;    border: 1px solid white; padding: 5px; margin:0;margin-left: 15px; '>v 2.1</p> -->
                 </div>
             </div>

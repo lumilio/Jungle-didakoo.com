@@ -59,24 +59,30 @@ btnxkoo22.onclick = function(){
     page5.style.display = "none";
 }
 btnxkoo23.onclick = function(){
-    page1.style.display = "flex";
-    page2.style.display = "none";
-    page3.style.display = "none";
-    page4.style.display = "none";
-    page5.style.display = "none";
-}
-
-
-const ready1 = document.getElementById("ready_player_1");   
-const ready12 = document.getElementById("ready_player_1.2");  
-
-ready1.onclick = function() {
     page1.style.display = "none";
     page2.style.display = "block";
     page3.style.display = "none";
     page4.style.display = "none";
     page5.style.display = "none";
 }
+
+
+/* menu logo redirect */
+
+/* const ready1 = document.getElementById("ready_player_1"); */ 
+
+/* ready1.onclick = function() {
+    page1.style.display = "none";
+    page2.style.display = "block";
+    page3.style.display = "none";
+    page4.style.display = "none";
+    page5.style.display = "none";
+} */
+
+
+
+const ready12 = document.getElementById("ready_player_1.2");  
+
 ready12.onclick = function(){
     page1.style.display = "none";
     page2.style.display = "none";

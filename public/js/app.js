@@ -2991,7 +2991,10 @@ var staticRenderFns = [function () {
       color: "black"
     }
   }, [_c("div", {
-    staticClass: "d-flex align-items-center position:absolute; top:0;"
+    staticClass: "d-flex align-items-center position:absolute; top:0;",
+    attrs: {
+      id: "btnkoo23"
+    }
   }, [_c("img", {
     staticStyle: {
       width: "100px",
@@ -3009,15 +3012,9 @@ var staticRenderFns = [function () {
       "margin-bottom": "25px",
       position: "relative",
       "margin-right": "0px"
-    },
-    attrs: {
-      id: "btnkoo23"
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "allineatore d-flex container-fluid flex-column justify-content-center px-4 align-items-center",
-    staticStyle: {
-      "margin-top": "20px"
-    }
+    staticClass: "allineatore d-flex container-fluid flex-column justify-content-center px-4 align-items-center"
   }, [_c("div", {
     staticClass: "container-sm avatar d-flex flex-column align-items-center px-3",
     staticStyle: {
@@ -3124,13 +3121,10 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", [_c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3179,15 +3173,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
   }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3236,15 +3227,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
   }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3293,15 +3281,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
   }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3350,15 +3335,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
   }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3404,15 +3386,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
   }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3458,15 +3437,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
   }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3512,15 +3488,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
   }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3566,15 +3539,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
   }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3620,15 +3590,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
   }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3674,15 +3641,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
   }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3728,15 +3692,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
   }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3782,15 +3743,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
   }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3836,15 +3794,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
   }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3890,15 +3845,12 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
   }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record",
-    staticStyle: {
-      width: "280px !important"
-    }
+    staticClass: "record"
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -3944,9 +3896,9 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
-      "padding-left": "5px"
+      "padding-left": "10px"
     }
-  }, [_vm._v("W")])])])])]);
+  }, [_vm._v("W")])])])])])]);
 }];
 render._withStripped = true;
 
@@ -5411,7 +5363,7 @@ var staticRenderFns = [function () {
       "max-width": "800px"
     }
   }, [_c("button", {
-    staticClass: "mx-4",
+    staticClass: "refresh-button",
     staticStyle: {
       "background-color": "black"
     }
@@ -5429,7 +5381,7 @@ var staticRenderFns = [function () {
       "font-size": "20px"
     }
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4 mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#EDEB52"
     }
@@ -5483,7 +5435,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#EE5E81"
     }
@@ -5520,7 +5472,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 6  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#EDEB52"
     }
@@ -5558,7 +5510,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 6  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4 shake",
+    staticClass: "record shake",
     staticStyle: {
       "background-color": "#EE3634"
     }
@@ -5595,7 +5547,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#3C5FA1"
     }
@@ -5631,7 +5583,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4 shake",
+    staticClass: "record shake",
     staticStyle: {
       "background-color": "#EE3634"
     }
@@ -5668,7 +5620,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#3C5FA1"
     }
@@ -5704,7 +5656,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#EDEB52"
     }
@@ -5742,7 +5694,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 6  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4 shake",
+    staticClass: "record shake",
     staticStyle: {
       "background-color": "#EE3634"
     }
@@ -5779,7 +5731,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#3C5FA1"
     }
@@ -5815,7 +5767,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#EDEB52"
     }
@@ -5853,7 +5805,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 6  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4 shake",
+    staticClass: "record shake",
     staticStyle: {
       "background-color": "#EE3634"
     }
@@ -5890,7 +5842,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#3C5FA1"
     }
@@ -5926,7 +5878,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#EDEB52"
     }
@@ -5964,7 +5916,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 6  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4 shake",
+    staticClass: "record shake",
     staticStyle: {
       "background-color": "#EE3634"
     }
@@ -6001,7 +5953,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#3C5FA1"
     }
@@ -6037,7 +5989,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#EE5E81"
     }
@@ -6075,7 +6027,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 6  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4 shake",
+    staticClass: "record shake",
     staticStyle: {
       "background-color": "#EE3634"
     }
@@ -6112,7 +6064,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#3C5FA1"
     }
@@ -6148,7 +6100,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#EE5E81"
     }
@@ -6186,7 +6138,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 6  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4 shake",
+    staticClass: "record shake",
     staticStyle: {
       "background-color": "#EE3634"
     }
@@ -6223,7 +6175,7 @@ var staticRenderFns = [function () {
   }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("div", {
-    staticClass: "record mx-4",
+    staticClass: "record",
     staticStyle: {
       "background-color": "#3C5FA1"
     }
@@ -59230,23 +59182,26 @@ btnxkoo22.onclick = function () {
 };
 
 btnxkoo23.onclick = function () {
-  page1.style.display = "flex";
-  page2.style.display = "none";
-  page3.style.display = "none";
-  page4.style.display = "none";
-  page5.style.display = "none";
-};
-
-var ready1 = document.getElementById("ready_player_1");
-var ready12 = document.getElementById("ready_player_1.2");
-
-ready1.onclick = function () {
   page1.style.display = "none";
   page2.style.display = "block";
   page3.style.display = "none";
   page4.style.display = "none";
   page5.style.display = "none";
 };
+/* menu logo redirect */
+
+/* const ready1 = document.getElementById("ready_player_1"); */
+
+/* ready1.onclick = function() {
+    page1.style.display = "none";
+    page2.style.display = "block";
+    page3.style.display = "none";
+    page4.style.display = "none";
+    page5.style.display = "none";
+} */
+
+
+var ready12 = document.getElementById("ready_player_1.2");
 
 ready12.onclick = function () {
   page1.style.display = "none";

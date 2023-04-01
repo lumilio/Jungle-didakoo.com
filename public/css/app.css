@@ -11127,7 +11127,6 @@ body,
 
 .bt {
   z-index: 2;
-  position: absolute;
   display: flex;
   bottom: 55px;
   flex-direction: row;
@@ -11191,73 +11190,12 @@ body,
   font-size: 7px;
 }
 
-@media screen and (max-height: 586px) {
-  .square {
-    width: 75px;
-    height: 75px;
-  }
-
-  #led {
-    font-size: 5px;
-  }
-
-  .bt i {
-    font-size: 25px;
-  }
-
-  .bt #buttton_v_1 {
-    height: 20px;
-  }
-
-  .bt {
-    margin-bottom: -45px;
-  }
-}
-
-@media screen and (min-height: 700px) {
-  .bt {
-    margin-bottom: 100px;
-  }
-}
-
-@media screen and (min-height: 700px) {
-  .bt {
-    margin-bottom: 100px;
-  }
-}
-
-@media screen and (min-height: 1010px) {
-  .bt {
-    margin-bottom: 280px;
-  }
-}
-
-/* ----------------------------------------------------------------------------- */
-
 #modalz .square {
   border: 3px solid red;
-  /* border: 3px solid darken(red, 25%); */
 }
 
 #modaly .square {
   border: 3px solid yellow;
-  /* border: 3px solid darken(yellow, 25%); */
-}
-
-#modalz:before {
-  background-color: maroon;
-}
-
-#modaly:before {
-  background-color: olive;
-}
-
-#modalz:after {
-  background-color: red;
-}
-
-#modaly:after {
-  background-color: yellow;
 }
 
 /* ----------------------------------------------------------------------------- */
@@ -11312,6 +11250,29 @@ body,
 
 /* ----------------------------------------------------------------------------- */
 
+@media screen and (max-height: 586px) {
+  .square {
+    width: 75px;
+    height: 75px;
+  }
+
+  #led {
+    font-size: 5px;
+  }
+
+  .bt i {
+    font-size: 25px;
+  }
+
+  .bt #buttton_v_1 {
+    height: 20px;
+  }
+
+  .bt {
+    margin-bottom: -45px;
+  }
+}
+
 /* ----------------------------------------------------------------------------- */
 
 /* ---------------------- PAGE 2 RANK RESPONSIVE ------------------------------ */
@@ -11336,6 +11297,22 @@ body,
   }
 }
 
+@media screen and (min-width: 519px) {
+  #page2 .record,
+  .refresh-button {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+}
+
+@media screen and (min-width: 359px) {
+  #page2 .record,
+  .refresh-button {
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+}
+
 /* ----------------------------------------------------------------------------- */
 
 /* ---------------------- PAGE 3 BOARD RESPONSIVE ------------------------------ */
@@ -11350,6 +11327,17 @@ body,
 
   .board-player {
     width: 170px;
+  }
+}
+
+@media screen and (min-width: 278px) and (min-height: 552px) {
+  .board {
+    width: 250px;
+    /* height: 450px; */
+  }
+
+  .board-player {
+    width: 220px;
   }
 }
 
@@ -11464,6 +11452,20 @@ body,
      object-fit: cover;
 }
 
+@media screen and (min-width: 150px) and (min-height: 100px) {
+  .avatar {
+    width: 210px;
+    margin-bottom: 150px;
+    border-radius: 35px;
+    margin: 20px;
+    position: relative;
+  }
+
+  #page4 .record {
+    width: 180px;
+  }
+}
+
 @media screen and (min-width: 350px) and (min-height: 150px) {
   .avatar {
     width: 290px;
@@ -11471,6 +11473,10 @@ body,
     border-radius: 35px;
     margin: 20px;
     position: relative;
+  }
+
+  #page4 .record {
+    width: 280px;
   }
 }
 
@@ -11484,6 +11490,10 @@ body,
     background-color: #EDEB51;
     background-color: #EE5E81; */
     position: relative;
+  }
+
+  #page4 .record {
+    width: 280px;
   }
 }
 
