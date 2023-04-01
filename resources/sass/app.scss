@@ -372,10 +372,17 @@ body, .centratore {
 }
 
 
-@media screen and (min-width: 359px) {
+@media screen and (min-width: 519px) {
     #page2 .record, .refresh-button {
         margin-left: 50px;
         margin-right:  50px;
+    }
+}
+
+@media screen and (min-width: 359px) {
+    #page2 .record, .refresh-button {
+        margin-left: 25px;
+        margin-right:  25px;
     }
 }
 
