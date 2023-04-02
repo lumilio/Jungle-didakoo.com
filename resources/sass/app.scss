@@ -608,10 +608,10 @@ body, .centratore {
     overflow: auto; /* Enable scroll if needed */
     background:
     linear-gradient(
-    rgba(0, 0, 0, 0.4), 
-    rgba(0, 0, 0, 0.4)
+    rgba(0, 0, 0, 0.8), 
+    rgba(0, 0, 0, 0.8)
     ),
-    url("images/board/water4.jpg");
+    /* url("images/board/water4.jpg"); */
     /* padding-top: 1rem; */
     
     /* animation: fade-in 0.6s; */
@@ -642,6 +642,7 @@ body, .centratore {
 .modal-content {
 
     background-color: #00b3ff;
+    box-shadow: 10px 10px purple;
     border-radius: 30px;
     margin: 15% auto;
     padding: 20px;
