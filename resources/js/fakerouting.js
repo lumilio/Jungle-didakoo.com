@@ -197,13 +197,27 @@ btnkoo_2_1.onclick = function() {
     page4.style.display = "none";
     page5.style.display = "none";
 }
+
+
+
+
 btnkoo_3_1.onclick = function() {
     page1.style.display = "none";
     page2.style.display = "block";
     page3.style.display = "none";
     page4.style.display = "none";
     page5.style.display = "none";
+    modalkoo2.style.display = "none";
+
+
 }
+
+
+
+
+
+
+
 btnkoo_4_1.onclick = function() {
     page1.style.display = "flex";
     page2.style.display = "none";

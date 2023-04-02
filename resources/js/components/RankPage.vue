@@ -26,8 +26,18 @@
 
         <!----------------------- LOGO ----------------------->
         <div id="_box1_" class="container-sm d-flex justify-content-center align-items-center flex-column">
-            <button id="modalx" class="no-wrap align-items-center d-flex call_button"> Play <img style='width:130px; margin-left:10px; margin-bottom:15px; ' src='images/extra_objects/ddd.jpg' alt=""> </button> 
-            <img id='scarabeo' style=' margin-top:15px;' src='images/extra_objects/1.svg' alt="">        
+            <div class="d-flex container-sm justify-content-center alingn-items-center">
+                <!-- <img style=' width:30px; ' src='images/board/tree.png' alt="">  -->
+                <img style="width: 60px; margin-bottom: 20px; display: inline; transform: scaleX(-1);" src="images/extra_objects/icon-06.png" alt=""/>
+                <button id="modalx" class="no-wrap align-items-center d-flex call_button"> Play <img style='width:130px; margin-left:10px; margin-bottom:15px; ' src='images/extra_objects/ddd.jpg' alt=""> </button> 
+                <img style="width: 60px; margin-bottom: 20px; display: inline" src="images/extra_objects/icon-05.png" alt="" />
+                <!-- <img  style='width:30px; ' src='images/board/tree.png' alt="">  -->
+            </div>
+
+            <img id='scarabeo'  style=' margin-top:15px;' src='images/extra_objects/1.svg' alt=""> 
+
+
+                   
         </div>
         <div class="d-flex container-sm  mt-3 flex-column"></div>
         <!---------------------------------------------------->

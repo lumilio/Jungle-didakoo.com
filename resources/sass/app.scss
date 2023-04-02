@@ -5,6 +5,7 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+/* @import url(https://fonts.googleapis.com/css?family=VT323); */
 /* ----------------------------------------------------------------------------- */
 /* ---------------------------- INITIAL ---------------------------------------- */
 /* ----------------------------------------------------------------------------- */
@@ -14,7 +15,8 @@ body,html {
     margin: 0px;
     background-color: black;
     /* overflow: hidden; */
-    font-family: 'Poppins', sans-serif;             
+    font-family: 'Poppins', sans-serif;  
+    /* font-family: 'VT323', monospace ; */           
 }
 
 .centratore{
@@ -274,7 +276,7 @@ body, .centratore {
 }
 
 #scarabeo {
-    width: 100%;
+    max-width: 600px;
     margin-bottom: 15px;
 }
 
@@ -357,8 +359,7 @@ body, .centratore {
 
 }
 
-
-@media screen and (min-width: 278px) and (min-height: 552px){
+@media screen and (min-width: 278px) and (min-height: 400px){
     .board{
         width: 250px;
         /* height: 450px; */
@@ -492,8 +493,11 @@ body, .centratore {
     #page4 .record {
         width: 180px ;
     }
-}
 
+    #avataricon{
+        width: 50px;
+    }
+}
 
 @media screen and (min-width: 350px) and (min-height: 150px){
     .avatar{
@@ -506,6 +510,10 @@ body, .centratore {
 
     #page4 .record {
         width: 280px ;
+    }
+
+    #avataricon{
+        width: 60px;
     }
 }
 
@@ -523,7 +531,15 @@ body, .centratore {
     #page4 .record {
         width: 280px ;
     }
+
+    #avataricon{
+        width: 80px;
+    }
 }
+
+
+
+
 
 /* ----------------------------------------------------------------------------- */
 /* ----------------------- PAGE 5 INFO RESPONSIVE ------------------------------ */
@@ -540,7 +556,6 @@ body, .centratore {
         /* margin-top: 130px !important; */
     }
 }
-
 
 @media screen and (min-width: 460px) and (min-height: 600px){
     .pepar{
@@ -562,10 +577,14 @@ body, .centratore {
 .modal img {width: 100px;}
 
 .modal button{
-    width: 100px;
+    width: 200px;
     min-height: 60px;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     margin: 10px;
+    color: white !important;
+    border : 1px solid black;
+    padding :19px;
+    border-radius: 30px;
 }
 
 .modal {
@@ -578,9 +597,12 @@ body, .centratore {
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.85); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
     padding-top: 1rem;
-    animation: fade-in 0.6s;
+    /* animation: fade-in 0.6s; */
+    /* font-family: 'VT323', monospace ; */
+    /* font-size: 20px !important; */
+    
 }
 
 #myModalkoo6 {
@@ -589,7 +611,7 @@ body, .centratore {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0); /* Black w/ opacity */
     padding-top: 0;
-    animation: fade-in 0.6s;
+    /* animation: fade-in 0.6s; */
 }
 
 #myModalkoo6 .modal-content{
@@ -603,12 +625,18 @@ body, .centratore {
 }
 
 .modal-content {
-    background-color: blue;
+
+    background:
+    linear-gradient(
+    rgba(0, 0, 0, 0.1), 
+    rgba(0, 0, 0, 0.1)
+    ),
+    url("images/board/water2.png");
     border-radius: 30px;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid BLACK;
-    width: 180px;
+    /* border: 5px solid BLACK; */
+    width: 280px;
     height: fit-content;
 }
   

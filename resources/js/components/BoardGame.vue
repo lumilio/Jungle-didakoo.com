@@ -2,23 +2,61 @@
     <div class="allineatore2">
 
 
+
+
+
+
+
+
+
+
+
+
+
+
         <!----------------- MODALS UTILITY ------------------->
         <div id="myModalkoo2" class="modal align-items-center">
             <!-- Modal content -->
-            <div style='background-color:black; margin-bottom:17rem; ' class="modal-content d-flex flex-column align-items-center">
+            <div style=' margin-bottom:17rem; ' class="modal-content d-flex flex-column align-items-center">
+                <!--                 
                 <img style=" width:60px;" src=" images/extra_objects/backend.png"  alt="">
                 <div class="d-flex my-2 align-items-center">
                     <img style='width:30px; position: ; top:15px; left:15px;' src='images/extra_objects/ff.png' alt="">
                     <p style='margin:0; margin-left:5px; color:white' > 5 / 5</p>
-                </div>
-                <p style='color:red'> start in 00:15</p>
-                <button style='background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);'> <p class="m-0" >OPEN ROOM</p><div><img style='width:20px; margin:2px' src='images/extra_objects/ff.png' alt=""></div></button> 
-                <button style='background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);'> <p class="m-0" >PRIVATE ROOM</p><div><img style='width:20px; margin:2px' src='images/extra_objects/ff.png' alt=""></div></button> 
-                <button class="closekoo2" > <p class="m-0">RESUME</p><div><img style='width:30px; margin:2px' src='images/extra_objects/icon-33.png' alt=""></div></button>
-                <button style='background-color:purple;'> SEND INVITATION  </button>
-                <button id='btnkoo_3_1' > QUIT  </button>
+                </div> 
+                -->
+                <p style='color:white'> Pause</p>
+                <button  style='background-color:black; display:flex; justify-content:center; align-items:center;'>  <p class="m-0" > INVITE PLAYER 2   </p><div><img style='width:30px; margin-left:8px' src='images/extra_objects/iconaplay1.png' alt=""></div></button> 
+                <!-- <button style='background-color:black; colr:white; '> SEND INVITATION  <i class="fa-solid ml-2 fa-arrow-up-from-bracket"></i></button> -->
+                <button   style='background-color:black;' class="closekoo2" > <p class="m-0">REASUME</p><div><!-- <img style='width:30px; margin:2px;' src='images/extra_objects/icon-33.png' alt=""> --></div></button>
+                <button id='btnkoo_3_1' style='background-color:black;' >  QUIT  </button>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         <!-- modale per scegliere partita privata o pubblica -->
         <div id="myModalkoo12" class="modal align-items-center">
             <!-- Modal content -->
@@ -40,10 +78,7 @@
             </div>
         </div>
         <!---------------------------------------------------->
-
-        
         <!----------------- NAV ------------------->
-
         <div class="d-flex banner-board-helper align-items-center" style=' background-color:black; height:80px;    color: black; '>    
             <div class="d-flex align-items-center position:absolute; top:0;">
                 <!-- <img id='btnkoo2' style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" /> -->
@@ -52,8 +87,6 @@
             </div>
         </div>
         <!----------------------------------------->
-
-
         <div class="allineatore d-flex flex-column justify-content-center align-items-center" style="padding-top: 0px; margin-top: -30px;height:90%;">
             <!-------------- PLAYER 2 DATA ---------------->
             <div class="board-player" >
@@ -88,8 +121,6 @@
             </div>
             <!--------------------------------------------->
         </div>  
-
-
     </div>
 </template>
 
