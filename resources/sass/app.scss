@@ -67,10 +67,14 @@ body, .centratore {
 
 /* #page2{
     background:
-    url("images/wallpepars/space.jpeg"); 
+    linear-gradient(
+    rgba(0, 0, 0, 0.8), 
+    rgba(0, 0, 0, 0.8)
+    ),
+    url("images/board/water4.jpg"); 
     background-repeat: repeat;
-    background-size: 100vh;
-    min-height: 100vh;
+    background-size: 100vw;
+    min-height: 100vw;
     height: 100%;
     width: 100%;
     background-position: top;
@@ -98,7 +102,12 @@ body, .centratore {
 } */
 
 #page3{
-    background-color: black;
+    background:
+    linear-gradient(
+    rgba(0, 0, 0, 0.8), 
+    rgba(0, 0, 0, 0.8)
+    ),
+    url("images/board/water4.jpg");
 }
 
 #page4{
@@ -642,7 +651,7 @@ body, .centratore {
 .modal-content {
 
     background-color: #00b3ff;
-    box-shadow: 10px 10px purple;
+    /* box-shadow: 10px 10px purple; */
     border-radius: 30px;
     margin: 15% auto;
     padding: 20px;

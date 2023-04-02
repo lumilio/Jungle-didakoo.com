@@ -80,7 +80,7 @@
         </div>
         <!---------------------------------------------------->
         <!----------------- NAV ------------------->
-        <div class="d-flex banner-board-helper align-items-center" style=' background-color:black; height:80px;    color: black; '>    
+        <div class="d-flex banner-board-helper align-items-center" style='  height:80px;    color: black; '>    
             <div id='btnkoo2' class="d-flex align-items-center position:absolute; top:0;">
                 <!-- <img id='btnkoo2' style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
                 <i id='btnkoo2' style='display:inline; margin-bottom:25px;position:relative; margin-right:0px' class="fa-solid fa-bars"></i>
