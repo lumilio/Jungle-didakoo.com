@@ -104,8 +104,8 @@ body, .centratore {
 #page3{
     background:
     linear-gradient(
-    rgba(0, 0, 0, 0.8), 
-    rgba(0, 0, 0, 0.8)
+    rgba(0, 0, 0, 1), 
+    rgba(0, 0, 0, 1)
     ),
     url("images/board/water4.jpg");
 }
@@ -601,7 +601,7 @@ body, .centratore {
     /* border-radius: 20px; */
     margin: 10px;
     color: white !important;
-    border : 1px solid black;
+    border : 2px solid white;
     padding :19px;
     border-radius: 30px;
 }
@@ -620,7 +620,7 @@ body, .centratore {
     rgba(0, 0, 0, 0.8), 
     rgba(0, 0, 0, 0.8)
     ),
-    /* url("images/board/water4.jpg"); */
+    url("images/board/water4.jpg");
     /* padding-top: 1rem; */
     
     /* animation: fade-in 0.6s; */
@@ -650,7 +650,7 @@ body, .centratore {
 
 .modal-content {
 
-    background-color: #00b3ff;
+    background-color: black;
     /* box-shadow: 10px 10px purple; */
     border-radius: 30px;
     margin: 15% auto;

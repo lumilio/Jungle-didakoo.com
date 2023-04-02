@@ -27,15 +27,21 @@
                 -->
                 <!-- <p class='avatar_helper_' style=' padding: 5px; margin:0;margin-left: 5px; '>v 1</p> -->
                 <button  style='background-color:black; display:flex; justify-content:center; align-items:center;'>  <p class="m-0 " style='color:black;' > Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis sed ratione accusantium temporibus eveniet saepe modi a odit obcaecati eligendi.</p><div><!-- <img style='width:30px; margin-left:8px' src='images/extra_objects/iconaplay1.png' alt=""> --></div></button> 
-                <!-- <button style='background-color:black; colr:white; '> SEND INVITATION  <i class="fa-solid ml-2 fa-arrow-up-from-bracket"></i></button> -->
-                <button   style='background-color:black;' class="closekoo2 jusify-content-around" > <span>REASUME</span> <img style='width:30px; margin-left:8px' src='images/board/tree.png' alt=""></button>
-                <button id='btnkoo_3_1' class="jusify-content-around" style='background-color:black;' >  <span>QUIT</span> <img style='width:30px; margin-left:8px' src='images/board/animals/icon-17.png' alt=""></button> <!-- icon-17 rosso --> <!-- icon-41 bianco -->
                 <button  style='background-color:black; d-flex justify-content-center'> 
+                    <div class="d-flex no-wrap justify-content-center align-items-center"> 
+                        <p class="m-0" > START</p>
+                        <i style='font-size:20px; margin-left:15px;' class="fa-solid fa-bolt"></i>
+                    </div>
+                </button> 
+                <!-- <button style='background-color:black; colr:white; '> SEND INVITATION  <i class="fa-solid ml-2 fa-arrow-up-from-bracket"></i></button> -->
+                 <button  style='background-color:black; d-flex justify-content-center'> 
                     <div class="d-flex no-wrap justify-content-center"> 
                         <p class="m-0" > INVITE P2</p>
                         <img style='width:30px; margin-left:8px' src='images/extra_objects/iconaplay1.png' alt="">
                     </div>
                 </button> 
+                <button   style='background-color:black;' class="closekoo2 jusify-content-around" > <span>BOARD</span> <img style='width:30px; margin-left:8px' src='images/board/tree.png' alt=""></button>
+                <button id='btnkoo_3_1' class="jusify-content-around" style='background-color:black;' >  <span>QUIT</span> <img style='width:30px; margin-left:8px' src='images/board/animals/icon-17.png' alt=""></button> <!-- icon-17 rosso --> <!-- icon-41 bianco -->
             </div>
         </div>
 
