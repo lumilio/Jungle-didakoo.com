@@ -59,8 +59,8 @@ btnxkoo22.onclick = function(){
     page5.style.display = "none";
 }
 btnxkoo23.onclick = function(){
-    page1.style.display = "none";
-    page2.style.display = "block";
+    page1.style.display = "flex";
+    page2.style.display = "none";
     page3.style.display = "none";
     page4.style.display = "none";
     page5.style.display = "none";

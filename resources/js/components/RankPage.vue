@@ -43,7 +43,7 @@
         <!---------------------------------------------------->
 
         <!--------------------------------------- RANK LIST ------------------------------------------>
-        <div style='max-width:800px' class="rank d-flex container-sm mt-4 flex-column text-white">           
+        <div style='max-width:800px' class="rank d-flex container-sm mt-4 flex-column align-items-center text-white">           
             <button class='refresh-button' style='background-color:black;'>
                 <p class='d-flex justify-content-between align-items-center' style='color:white; padding: 10px; margin: 0;'>  
                     <span>Click to refresh</span>  
@@ -66,7 +66,7 @@
             
             
             <!---------------------------- User record examaples ---------------------------->
-            <div style="background-color:#EDEB52;"  class="record  ">
+            <div style="background-color:#EDEB52;"  class="record">
                 <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                     <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                 </p> 
@@ -100,9 +100,6 @@
                     <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div> -->
             <!------------------------------------------------------------------------------>
-
-
-
 
 
             <!-------------------------------- RANK LIST EXAMPLE ---------------------------------------------- -->

@@ -17,7 +17,7 @@
         <!----------------- MODALS UTILITY ------------------->
         <div id="myModalkoo2" class="modal align-items-center">
             <!-- Modal content -->
-            <div style=' margin-bottom:17rem; ' class="modal-content d-flex flex-column align-items-center">
+            <div style='' class="modal-content d-flex flex-column align-items-center">
                 <!--                 
                 <img style=" width:60px;" src=" images/extra_objects/backend.png"  alt="">
                 <div class="d-flex my-2 align-items-center">
@@ -25,11 +25,12 @@
                     <p style='margin:0; margin-left:5px; color:white' > 5 / 5</p>
                 </div> 
                 -->
-                <p style='color:white'> Pause</p>
-                <button  style='background-color:black; display:flex; justify-content:center; align-items:center;'>  <p class="m-0" > INVITE PLAYER 2   </p><div><img style='width:30px; margin-left:8px' src='images/extra_objects/iconaplay1.png' alt=""></div></button> 
+                <!-- <p class='avatar_helper_' style=' padding: 5px; margin:0;margin-left: 5px; '>v 1</p> -->
+                <button  style='background-color:black; display:flex; justify-content:center; align-items:center;'>  <p class="m-0 " style='color:black;' > Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis sed ratione accusantium temporibus eveniet saepe modi a odit obcaecati eligendi.</p><div><!-- <img style='width:30px; margin-left:8px' src='images/extra_objects/iconaplay1.png' alt=""> --></div></button> 
                 <!-- <button style='background-color:black; colr:white; '> SEND INVITATION  <i class="fa-solid ml-2 fa-arrow-up-from-bracket"></i></button> -->
-                <button   style='background-color:black;' class="closekoo2" > <p class="m-0">REASUME</p><div><!-- <img style='width:30px; margin:2px;' src='images/extra_objects/icon-33.png' alt=""> --></div></button>
-                <button id='btnkoo_3_1' style='background-color:black;' >  QUIT  </button>
+                <button   style='background-color:black;' class="closekoo2 jusify-content-around" > <span>REASUME</span> <img style='width:30px; margin-left:8px' src='images/board/tree.png' alt=""></button>
+                <button id='btnkoo_3_1' class="jusify-content-around" style='background-color:black;' >  <span>QUIT</span> <img style='width:30px; margin-left:8px' src='images/board/animals/icon-17.png' alt=""></button> <!-- icon-17 rosso --> <!-- icon-41 bianco -->
+                <button  style='background-color:black; <!-- border: 3px solid blueviolet; --> display:flex; justify-content:center; align-items:center;'>  <p class="m-0" > INVITE P2</p><div><img style='width:30px; margin-left:8px' src='images/extra_objects/iconaplay1.png' alt=""></div></button> 
             </div>
         </div>
 
@@ -80,10 +81,13 @@
         <!---------------------------------------------------->
         <!----------------- NAV ------------------->
         <div class="d-flex banner-board-helper align-items-center" style=' background-color:black; height:80px;    color: black; '>    
-            <div class="d-flex align-items-center position:absolute; top:0;">
-                <!-- <img id='btnkoo2' style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" /> -->
+            <div id='btnkoo2' class="d-flex align-items-center position:absolute; top:0;">
+                <!-- <img id='btnkoo2' style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
                 <i id='btnkoo2' style='display:inline; margin-bottom:25px;position:relative; margin-right:0px' class="fa-solid fa-bars"></i>
-                <p class='avatar_helper_' style='color:white;    border: 1px solid white; padding: 5px; margin:0;margin-left: 15px; '>v 1</p>
+                -->
+                <!-- <img id='btnkoo2' style="width: 25px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/gab.png" alt="" /> -->
+                <p class='avatar_helper_' style='color:white;  padding: 5px; margin:0;margin-left: 5px; '>Console</p>
+                <i style="font-size: 25px; margin-left: 5px; margin-bottom: 3px" class="fa-solid fa-gamepad"></i>
             </div>
         </div>
         <!----------------------------------------->
