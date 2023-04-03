@@ -6,7 +6,9 @@
         <!----------------- MODALS UTILITY ------------------->
         <div id="myModalkoo2" class="modal align-items-center">
             <!-- Modal content -->
-            <div style='' class="modal-content d-flex flex-column align-items-center">
+
+
+            <div style='' class="modal-content container-sm d-flex flex-column align-items-center">
                 <div class="d-flex align-items-center">
                     <img style="" src=" images/extra_objects/ddd.jpg"  alt=""> 
                     <span style="color:white; margin:0; margin-top:5px; margin-left:8px;">v 1.0</span>
