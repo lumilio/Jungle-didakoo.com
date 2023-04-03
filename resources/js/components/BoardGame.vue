@@ -18,15 +18,19 @@
         <div id="myModalkoo2" class="modal align-items-center">
             <!-- Modal content -->
             <div style='' class="modal-content d-flex flex-column align-items-center">
+                <div class="d-flex align-items-center">
+                    <img style="" src=" images/extra_objects/ddd.jpg"  alt=""> 
+                    <span style="color:white; margin:0; margin-top:5px; margin-left:8px;">v 1.0</span>
+                    <!-- <p class='avatar_helper_' style='color:white;  padding: 5px; margin:0;margin-left: 5px; '>v 1</p> -->
+                </div>
                 <!--                 
-                <img style=" width:60px;" src=" images/extra_objects/backend.png"  alt="">
                 <div class="d-flex my-2 align-items-center">
                     <img style='width:30px; position: ; top:15px; left:15px;' src='images/extra_objects/ff.png' alt="">
                     <p style='margin:0; margin-left:5px; color:white' > 5 / 5</p>
                 </div> 
                 -->
                 <!-- <p class='avatar_helper_' style=' padding: 5px; margin:0;margin-left: 5px; '>v 1</p> -->
-                <button id='console-screen' style='background-color:black; display:flex; justify-content:center; border:none; align-items:center;'>  <p class="m-0 " style='color:white;' > Game strat in 00:10 see the board</p><div><!-- <img style='width:30px; margin-left:8px' src='images/extra_objects/iconaplay1.png' alt=""> --></div></button> 
+                <button id='console-screen' style='background-color:black; display:flex; justify-content:center; align-items:center;'>  <p class="m-0 " style='color:white; font-size:17px;' > Game strat in 00:10 see the board</p><div><!-- <img style='width:30px; margin-left:8px' src='images/extra_objects/iconaplay1.png' alt=""> --></div></button> 
                 <button  style='background-color:black; d-flex justify-content-center'> 
                     <div class="d-flex no-wrap justify-content-center align-items-center"> 
                         <p class="m-0" > START</p>
