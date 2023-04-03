@@ -3,17 +3,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
         <!----------------- MODALS UTILITY ------------------->
         <div id="myModalkoo2" class="modal align-items-center">
             <!-- Modal content -->
@@ -58,20 +47,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         
         <!-- modale per scegliere partita privata o pubblica -->
         <div id="myModalkoo12" class="modal align-items-center">
@@ -97,16 +72,12 @@
         <!----------------- NAV ------------------->
         <div class="d-flex banner-board-helper align-items-center" style='  height:80px;    color: black; '>    
             <div id='btnkoo2' class="d-flex align-items-center position:absolute; top:0;">
-                <!-- <img id='btnkoo2' style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
-                <i id='btnkoo2' style='display:inline; margin-bottom:25px;position:relative; margin-right:0px' class="fa-solid fa-bars"></i>
-                -->
-                <!-- <img id='btnkoo2' style="width: 25px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/gab.png" alt="" /> -->
                 <p class='avatar_helper_' style='color:white;  padding: 5px; margin:0;margin-left: 5px; '>Console</p>
                 <i style="font-size: 25px; margin-left: 5px; margin-bottom: 3px" class="fa-solid fa-gamepad"></i>
             </div>
         </div>
         <!----------------------------------------->
-        <div class="allineatore d-flex flex-column justify-content-center align-items-center" style="padding-top: 0px; margin-top: -30px;height:90%;">
+        <div class="allineatore d-flex flex-column container-sm justify-content-center align-items-center" style="padding-top: 0px; margin-top: -30px;height:90%;">
             <!-------------- PLAYER 2 DATA ---------------->
             <div class="board-player" >
                 <div style="background-color:#EDEB52;  width:100%; border:0;" class="record   ">
@@ -121,7 +92,7 @@
                 </div>
             </div>
             <!--------------------------------------------->
-            <div class="container-sm board d-flex justify-content-center bg-transparent align-items-center">
+            <div class=" board d-flex justify-content-center bg-transparent align-items-center">
                 <Game/>
                 <!-- <img class='board ' src="images/concepts/blue-red.jpeg" alt=""> -->
             </div> 
