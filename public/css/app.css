@@ -10966,6 +10966,8 @@ a.text-dark:focus {
   }
 }
 
+/* @import url(https://fonts.googleapis.com/css?family=VT323); */
+
 /* ----------------------------------------------------------------------------- */
 
 /* ---------------------------- INITIAL ---------------------------------------- */
@@ -10979,6 +10981,7 @@ html {
   background-color: black;
   /* overflow: hidden; */
   font-family: "Poppins", sans-serif;
+  /* font-family: 'VT323', monospace ; */
 }
 
 .centratore {
@@ -11003,11 +11006,11 @@ body,
 
 /* ----------------------------------------------------------------------------- */
 
-#page2 {
-  display: block;
+#page1 {
+  display: flex;
 }
 
-#page1,
+#page2,
 #page3,
 #page4,
 #page5 {
@@ -11035,10 +11038,14 @@ body,
 
 /* #page2{
     background:
-    url("images/wallpepars/space.jpeg"); 
+    linear-gradient(
+    rgba(0, 0, 0, 0.8), 
+    rgba(0, 0, 0, 0.8)
+    ),
+    url("images/board/water4.jpg"); 
     background-repeat: repeat;
-    background-size: 100vh;
-    min-height: 100vh;
+    background-size: 100vw;
+    min-height: 100vw;
     height: 100%;
     width: 100%;
     background-position: top;
@@ -11066,7 +11073,7 @@ body,
 } */
 
 #page3 {
-  background-color: black;
+  background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)), url(/images/water4.jpg?0a53390684384b5f43b5383cff54c9b4);
 }
 
 #page4 {
@@ -11232,6 +11239,7 @@ body,
 
 #page2 .record {
   margin: 3px;
+  width: 100%;
 }
 
 #page4 .record {
@@ -11239,8 +11247,12 @@ body,
   border: 1px solid white;
 }
 
-#scarabeo {
+.refresh-button {
   width: 100%;
+}
+
+#scarabeo {
+  max-width: 600px;
   margin-bottom: 15px;
 }
 
@@ -11319,6 +11331,10 @@ body,
 
 /* ----------------------------------------------------------------------------- */
 
+#console-screen {
+  font-family: "VT323", monospace;
+}
+
 @media screen and (min-width: 10px) and (min-height: 10px) {
   .board {
     width: 200px;
@@ -11326,18 +11342,26 @@ body,
   }
 
   .board-player {
-    width: 170px;
+    width: 200px;
+  }
+
+  .modal-content {
+    width: 200px;
   }
 }
 
-@media screen and (min-width: 278px) and (min-height: 552px) {
+@media screen and (min-width: 278px) and (min-height: 400px) {
   .board {
     width: 250px;
     /* height: 450px; */
   }
 
   .board-player {
-    width: 220px;
+    width: 250px;
+  }
+
+  .modal-content {
+    width: 250px;
   }
 }
 
@@ -11348,7 +11372,11 @@ body,
   }
 
   .board-player {
-    width: 220px;
+    width: 250px;
+  }
+
+  .modal-content {
+    width: 250px;
   }
 }
 
@@ -11359,7 +11387,11 @@ body,
   }
 
   .board-player {
-    width: 250px;
+    width: 280px;
+  }
+
+  .modal-content {
+    width: 280px;
   }
 }
 
@@ -11370,7 +11402,11 @@ body,
   }
 
   .board-player {
-    width: 320px;
+    width: 350px;
+  }
+
+  .modal-content {
+    width: 350px;
   }
 }
 
@@ -11381,7 +11417,11 @@ body,
   }
 
   .board-player {
-    width: 310px;
+    width: 340px;
+  }
+
+  .modal-content {
+    width: 340px;
   }
 }
 
@@ -11392,7 +11432,11 @@ body,
   }
 
   .board-player {
-    width: 360px;
+    width: 390px;
+  }
+
+  .modal-content {
+    width: 390px;
   }
 }
 
@@ -11403,7 +11447,11 @@ body,
   }
 
   .board-player {
-    width: 400px;
+    width: 430px;
+  }
+
+  .modal-content {
+    width: 430px;
   }
 }
 
@@ -11414,7 +11462,11 @@ body,
   }
 
   .board-player {
-    width: 440px;
+    width: 470px;
+  }
+
+  .modal-content {
+    width: 470px;
   }
 }
 
@@ -11425,7 +11477,11 @@ body,
   }
 
   .board-player {
-    width: 520px;
+    width: 550px;
+  }
+
+  .modal-content {
+    width: 550px;
   }
 }
 
@@ -11436,7 +11492,11 @@ body,
   }
 
   .board-player {
-    width: 620px;
+    width: 650px;
+  }
+
+  .modal-content {
+    width: 650px;
   }
 }
 
@@ -11464,6 +11524,10 @@ body,
   #page4 .record {
     width: 180px;
   }
+
+  #avataricon {
+    width: 50px;
+  }
 }
 
 @media screen and (min-width: 350px) and (min-height: 150px) {
@@ -11478,12 +11542,16 @@ body,
   #page4 .record {
     width: 280px;
   }
+
+  #avataricon {
+    width: 60px;
+  }
 }
 
 @media screen and (min-width: 460px) and (min-height: 200px) {
   .avatar {
     width: 290px;
-    margin-top: 35px;
+    /* margin-top: 35px; */
     border-radius: 35px;
     /* background-color: #3C5FA1;
     background-color: #EE3734;
@@ -11495,6 +11563,16 @@ body,
   #page4 .record {
     width: 280px;
   }
+
+  #avataricon {
+    width: 80px;
+  }
+}
+
+#page4 .record {
+  margin-bottom: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
 }
 
 /* ----------------------------------------------------------------------------- */
@@ -11538,11 +11616,21 @@ body,
   width: 100px;
 }
 
-.modal button {
-  width: 100px;
+.modal button,
+#console-screen {
+  width: 200px;
   min-height: 60px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   margin: 10px;
+  color: white !important;
+  border: 2px solid white;
+  padding: 19px;
+  border-radius: 30px;
+}
+
+#console-screen {
+  border: 2px solid white;
+  border-radius: 0px;
 }
 
 .modal {
@@ -11560,13 +11648,11 @@ body,
   /* Full height */
   overflow: auto;
   /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0);
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.85);
-  /* Black w/ opacity */
-  padding-top: 1rem;
-  -webkit-animation: fade-in 0.6s;
-          animation: fade-in 0.6s;
+  background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)), url(/images/grass2.jpeg?49b89941838eccee64239d42591c4722);
+  /* padding-top: 1rem; */
+  /* animation: fade-in 0.6s; */
+  /* font-family: 'VT323', monospace ; */
+  /* font-size: 20px !important; */
 }
 
 #myModalkoo6 {
@@ -11579,8 +11665,7 @@ body,
   background-color: rgba(0, 0, 0, 0);
   /* Black w/ opacity */
   padding-top: 0;
-  -webkit-animation: fade-in 0.6s;
-          animation: fade-in 0.6s;
+  /* animation: fade-in 0.6s; */
 }
 
 #myModalkoo6 .modal-content {
@@ -11594,15 +11679,17 @@ body,
 }
 
 .modal-content {
-  background-color: blue;
+  background-color: black;
+  /* box-shadow: 10px 10px purple; */
   border-radius: 30px;
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid BLACK;
-  width: 180px;
+  /* border: 8px solid BLACK; */
+  /* width: 280px; */
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  border: 5px solid #FCB341;
 }
 
 #modalx div {

@@ -2995,17 +2995,7 @@ var staticRenderFns = [function () {
     attrs: {
       id: "btnkoo23"
     }
-  }, [_c("img", {
-    staticStyle: {
-      width: "100px",
-      "margin-left": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/ddd.jpg",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("i", {
+  }, [_c("i", {
     staticClass: "fa-solid fa-bars",
     staticStyle: {
       display: "inline",
@@ -3019,6 +3009,7 @@ var staticRenderFns = [function () {
     staticClass: "container-sm avatar d-flex flex-column align-items-center px-3",
     staticStyle: {
       "margin-bottom": "50px",
+      "margin-top": "-1px",
       "background-color": "black",
       border: "3px solid white"
     }
@@ -3063,12 +3054,12 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v("32°")]), _vm._v(" "), _c("img", {
     staticStyle: {
-      width: "80px",
       "margin-top": "80px",
       "margin-bottom": "20px"
     },
     attrs: {
-      src: "images/extra_objects/iconaplay1.png",
+      id: "avataricon",
+      src: "images/extra_objects/iconaplayW.png",
       alt: ""
     }
   }), _vm._v(" "), _c("div", {
@@ -3165,179 +3156,20 @@ var staticRenderFns = [function () {
       display: "flex"
     }
   }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1",
-    staticStyle: {
-      color: "yellow"
-    }
+    staticClass: "fa-solid fa-bolt ml-1"
   })])]), _vm._v(" "), _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
+      "margin-bottom": "5px",
       "padding-left": "10px"
     }
-  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
-    }
-  })]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "white",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1",
-    staticStyle: {
-      color: "red"
-    }
-  })])]), _vm._v(" "), _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
-    }
-  })]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "white",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1",
-    staticStyle: {
-      color: "blue"
-    }
-  })])]), _vm._v(" "), _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
-    }
-  })]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "white",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 100  "), _c("i", {
+  }, [_vm._v("+1 "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1",
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
     staticClass: "record"
@@ -3386,9 +3218,15 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
+      "margin-bottom": "5px",
       "padding-left": "10px"
     }
-  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("+1 "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1",
+    staticStyle: {
+      color: "#EE5E81"
+    }
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
     staticClass: "record"
@@ -3437,9 +3275,15 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
+      "margin-bottom": "5px",
       "padding-left": "10px"
     }
-  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("+1 "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1",
+    staticStyle: {
+      color: "#EE5E81"
+    }
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
     staticClass: "record"
@@ -3488,9 +3332,15 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
+      "margin-bottom": "5px",
       "padding-left": "10px"
     }
-  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("+1 "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1",
+    staticStyle: {
+      color: "#EE5E81"
+    }
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
     staticClass: "record"
@@ -3539,9 +3389,15 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
+      "margin-bottom": "5px",
       "padding-left": "10px"
     }
-  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("+1 "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1",
+    staticStyle: {
+      color: "#EE5E81"
+    }
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
     staticClass: "record"
@@ -3590,9 +3446,15 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
+      "margin-bottom": "5px",
       "padding-left": "10px"
     }
-  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("+1 "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1",
+    staticStyle: {
+      color: "#EE5E81"
+    }
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
     staticClass: "record"
@@ -3641,9 +3503,15 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
+      "margin-bottom": "5px",
       "padding-left": "10px"
     }
-  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("+1 "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1",
+    staticStyle: {
+      color: "#EE5E81"
+    }
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
     staticClass: "record"
@@ -3692,9 +3560,15 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
+      "margin-bottom": "5px",
       "padding-left": "10px"
     }
-  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("+1 "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1",
+    staticStyle: {
+      color: "#EE5E81"
+    }
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
     staticClass: "record"
@@ -3743,9 +3617,15 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
+      "margin-bottom": "5px",
       "padding-left": "10px"
     }
-  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("+1 "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1",
+    staticStyle: {
+      color: "#EE5E81"
+    }
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
     staticClass: "record"
@@ -3794,9 +3674,15 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
+      "margin-bottom": "5px",
       "padding-left": "10px"
     }
-  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("+1 "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1",
+    staticStyle: {
+      color: "#EE5E81"
+    }
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
     staticClass: "record"
@@ -3845,9 +3731,15 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
+      "margin-bottom": "5px",
       "padding-left": "10px"
     }
-  }, [_vm._v("W")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("+1 "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1",
+    staticStyle: {
+      color: "#EE5E81"
+    }
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
     staticClass: "record"
@@ -3896,9 +3788,186 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "white",
       margin: "0",
+      "margin-bottom": "5px",
       "padding-left": "10px"
     }
-  }, [_vm._v("W")])])])])])]);
+  }, [_vm._v("+1 "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1",
+    staticStyle: {
+      color: "#EE5E81"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "margin-bottom": "5px",
+      "padding-left": "10px"
+    }
+  }, [_vm._v("+1 "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1",
+    staticStyle: {
+      color: "blue"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "margin-bottom": "5px",
+      "padding-left": "10px"
+    }
+  }, [_vm._v("+1 "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1",
+    staticStyle: {
+      color: "blue"
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      "font-size": "20px",
+      color: "white"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "align-items-center",
+    staticStyle: {
+      color: "white",
+      "margin-right": "10px",
+      "white-space": "nowrap",
+      "background-color": "",
+      padding: "0 10px",
+      "border-radius": "20px",
+      display: "flex"
+    }
+  }, [_vm._v(" 100  "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })])]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "margin-bottom": "5px",
+      "padding-left": "10px"
+    }
+  }, [_vm._v("+1 "), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1",
+    staticStyle: {
+      color: "blue"
+    }
+  })])])])])])]);
 }];
 render._withStripped = true;
 
@@ -3923,14 +3992,14 @@ var render = function render() {
   return _c("div", {
     staticClass: "allineatore2"
   }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _c("div", {
-    staticClass: "allineatore d-flex flex-column justify-content-center align-items-center",
+    staticClass: "allineatore d-flex flex-column container-sm justify-content-center align-items-center",
     staticStyle: {
       "padding-top": "0px",
       "margin-top": "-30px",
       height: "90%"
     }
   }, [_vm._m(4), _vm._v(" "), _c("div", {
-    staticClass: "container-sm board d-flex justify-content-center bg-transparent align-items-center"
+    staticClass: "board d-flex justify-content-center bg-transparent align-items-center"
   }, [_c("Game")], 1), _vm._v(" "), _vm._m(5)])]);
 };
 
@@ -3944,94 +4013,100 @@ var staticRenderFns = [function () {
       id: "myModalkoo2"
     }
   }, [_c("div", {
-    staticClass: "modal-content d-flex flex-column align-items-center",
+    staticClass: "modal-content d-flex flex-column align-items-center"
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("img", {
+    attrs: {
+      src: " images/extra_objects/ddd.jpg",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("span", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "margin-top": "5px",
+      "margin-left": "8px"
+    }
+  }, [_vm._v("v 1.0")])]), _vm._v(" "), _c("button", {
     staticStyle: {
       "background-color": "black",
-      "margin-bottom": "17rem"
-    }
-  }, [_c("img", {
-    staticStyle: {
-      width: "60px"
+      display: "flex",
+      "justify-content": "center",
+      "align-items": "center"
     },
     attrs: {
-      src: " images/extra_objects/backend.png",
-      alt: ""
+      id: "console-screen"
     }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "d-flex my-2 align-items-center"
-  }, [_c("img", {
+  }, [_c("p", {
+    staticClass: "m-0",
+    staticStyle: {
+      color: "white",
+      "font-size": "17px"
+    }
+  }, [_vm._v(" Game strat in 00:10 see the board")]), _c("div")]), _vm._v(" "), _c("button", {
+    staticStyle: {
+      "background-color": "black"
+    }
+  }, [_c("div", {
+    staticClass: "d-flex no-wrap justify-content-center align-items-center"
+  }, [_c("p", {
+    staticClass: "m-0"
+  }, [_vm._v(" START")]), _vm._v(" "), _c("i", {
+    staticClass: "fa-solid fa-bolt",
+    staticStyle: {
+      "font-size": "20px",
+      "margin-left": "15px"
+    }
+  })])]), _vm._v(" "), _c("button", {
+    staticStyle: {
+      "background-color": "black"
+    }
+  }, [_c("div", {
+    staticClass: "d-flex no-wrap justify-content-center"
+  }, [_c("p", {
+    staticClass: "m-0"
+  }, [_vm._v(" INVITE P2")]), _vm._v(" "), _c("img", {
     staticStyle: {
       width: "30px",
-      position: "",
-      top: "15px",
-      left: "15px"
+      "margin-left": "8px"
     },
     attrs: {
-      src: "images/extra_objects/ff.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("p", {
-    staticStyle: {
-      margin: "0",
-      "margin-left": "5px",
-      color: "white"
-    }
-  }, [_vm._v(" 5 / 5")])]), _vm._v(" "), _c("p", {
-    staticStyle: {
-      color: "red"
-    }
-  }, [_vm._v(" start in 00:15")]), _vm._v(" "), _c("button", {
-    staticStyle: {
-      "background-image": "linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%)"
-    }
-  }, [_c("p", {
-    staticClass: "m-0"
-  }, [_vm._v("OPEN ROOM")]), _c("div", [_c("img", {
-    staticStyle: {
-      width: "20px",
-      margin: "2px"
-    },
-    attrs: {
-      src: "images/extra_objects/ff.png",
+      src: "images/extra_objects/iconaplay1.png",
       alt: ""
     }
   })])]), _vm._v(" "), _c("button", {
+    staticClass: "closekoo2 jusify-content-around",
     staticStyle: {
-      "background-image": "linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%)"
+      "background-color": "black"
     }
-  }, [_c("p", {
-    staticClass: "m-0"
-  }, [_vm._v("PRIVATE ROOM")]), _c("div", [_c("img", {
-    staticStyle: {
-      width: "20px",
-      margin: "2px"
-    },
-    attrs: {
-      src: "images/extra_objects/ff.png",
-      alt: ""
-    }
-  })])]), _vm._v(" "), _c("button", {
-    staticClass: "closekoo2"
-  }, [_c("p", {
-    staticClass: "m-0"
-  }, [_vm._v("RESUME")]), _c("div", [_c("img", {
+  }, [_c("span", [_vm._v("BOARD")]), _vm._v(" "), _c("img", {
     staticStyle: {
       width: "30px",
-      margin: "2px"
+      "margin-left": "8px"
     },
     attrs: {
-      src: "images/extra_objects/icon-33.png",
+      src: "images/board/tree.png",
       alt: ""
     }
-  })])]), _vm._v(" "), _c("button", {
+  })]), _vm._v(" "), _c("button", {
+    staticClass: "jusify-content-around",
     staticStyle: {
-      "background-color": "purple"
-    }
-  }, [_vm._v(" SEND INVITATION  ")]), _vm._v(" "), _c("button", {
+      "background-color": "black"
+    },
     attrs: {
       id: "btnkoo_3_1"
     }
-  }, [_vm._v(" QUIT  ")])])]);
+  }, [_c("span", [_vm._v("QUIT")]), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "30px",
+      "margin-left": "8px"
+    },
+    attrs: {
+      src: "images/board/animals/icon-17.png",
+      alt: ""
+    }
+  })])])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -4105,33 +4180,30 @@ var staticRenderFns = [function () {
   return _c("div", {
     staticClass: "d-flex banner-board-helper align-items-center",
     staticStyle: {
-      "background-color": "black",
       height: "80px",
       color: "black"
     }
   }, [_c("div", {
-    staticClass: "d-flex align-items-center position:absolute; top:0;"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-bars",
-    staticStyle: {
-      display: "inline",
-      "margin-bottom": "25px",
-      position: "relative",
-      "margin-right": "0px"
-    },
+    staticClass: "d-flex align-items-center position:absolute; top:0;",
     attrs: {
       id: "btnkoo2"
     }
-  }), _vm._v(" "), _c("p", {
+  }, [_c("p", {
     staticClass: "avatar_helper_",
     staticStyle: {
       color: "white",
-      border: "1px solid white",
       padding: "5px",
       margin: "0",
-      "margin-left": "15px"
+      "margin-left": "5px"
     }
-  }, [_vm._v("v 1")])])]);
+  }, [_vm._v("Console")]), _vm._v(" "), _c("i", {
+    staticClass: "fa-solid fa-gamepad",
+    staticStyle: {
+      "font-size": "25px",
+      "margin-left": "5px",
+      "margin-bottom": "3px"
+    }
+  })])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -5331,7 +5403,20 @@ var staticRenderFns = [function () {
     attrs: {
       id: "_box1_"
     }
-  }, [_c("button", {
+  }, [_c("div", {
+    staticClass: "d-flex container-sm justify-content-center alingn-items-center"
+  }, [_c("img", {
+    staticStyle: {
+      width: "60px",
+      "margin-bottom": "20px",
+      display: "inline",
+      transform: "scaleX(-1)"
+    },
+    attrs: {
+      src: "images/extra_objects/icon-06.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("button", {
     staticClass: "no-wrap align-items-center d-flex call_button",
     attrs: {
       id: "modalx"
@@ -5348,6 +5433,16 @@ var staticRenderFns = [function () {
     }
   })]), _vm._v(" "), _c("img", {
     staticStyle: {
+      width: "60px",
+      "margin-bottom": "20px",
+      display: "inline"
+    },
+    attrs: {
+      src: "images/extra_objects/icon-05.png",
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("img", {
+    staticStyle: {
       "margin-top": "15px"
     },
     attrs: {
@@ -5358,7 +5453,7 @@ var staticRenderFns = [function () {
   })]), _vm._v(" "), _c("div", {
     staticClass: "d-flex container-sm mt-3 flex-column"
   }), _vm._v(" "), _c("div", {
-    staticClass: "rank d-flex container-sm mt-4 flex-column text-white",
+    staticClass: "rank d-flex container-sm mt-4 flex-column align-items-center text-white",
     staticStyle: {
       "max-width": "800px"
     }
@@ -5470,745 +5565,6 @@ var staticRenderFns = [function () {
       display: "flex"
     }
   }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#EDEB52"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "black",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record shake",
-    staticStyle: {
-      "background-color": "#EE3634"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      id: "shake",
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#3C5FA1"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record shake",
-    staticStyle: {
-      "background-color": "#EE3634"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      id: "shake",
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#3C5FA1"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#EDEB52"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "black",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record shake",
-    staticStyle: {
-      "background-color": "#EE3634"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      id: "shake",
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#3C5FA1"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#EDEB52"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "black",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record shake",
-    staticStyle: {
-      "background-color": "#EE3634"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      id: "shake",
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#3C5FA1"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#EDEB52"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "black",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record shake",
-    staticStyle: {
-      "background-color": "#EE3634"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      id: "shake",
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#3C5FA1"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#EE5E81"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "black",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record shake",
-    staticStyle: {
-      "background-color": "#EE3634"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      id: "shake",
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#3C5FA1"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#EE5E81"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "black",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record shake",
-    staticStyle: {
-      "background-color": "#EE3634"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      id: "shake",
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#3C5FA1"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                    "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayW.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
   })])])])]);
 }];
@@ -59277,6 +58633,7 @@ btnx.onclick = function () {
   page3.style.display = "block";
   page4.style.display = "none";
   page5.style.display = "none";
+  modalkoo2.style.display = "flex";
 };
 
 btnz.onclick = function () {
@@ -59309,6 +58666,7 @@ btnkoo_3_1.onclick = function () {
   page3.style.display = "none";
   page4.style.display = "none";
   page5.style.display = "none";
+  modalkoo2.style.display = "none";
 };
 
 btnkoo_4_1.onclick = function () {
