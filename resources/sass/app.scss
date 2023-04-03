@@ -38,10 +38,10 @@ body, .centratore {
 /* ------------------------- INITIAL DISPLAY PAGES ----------------------------- */
 /* ----------------------------------------------------------------------------- */
 
-#page2{
-    display: block;
+#page1{
+    display: flex;
 }
-#page1,
+#page2,
 #page3,
 #page4,
 #page5 {
@@ -372,6 +372,9 @@ body, .centratore {
     .board-player{
         width: calc(200px - 30px)
     }
+    .modal-content{
+        width: calc(200px - 30px)
+    }
 
 }
 
@@ -381,6 +384,9 @@ body, .centratore {
         /* height: 450px; */
     }
     .board-player{
+        width: calc(250px - 30px)
+    }
+    .modal-content{
         width: calc(250px - 30px)
     }
 
@@ -394,6 +400,9 @@ body, .centratore {
     .board-player{
         width: calc(250px - 30px)
     }
+    .modal-content{
+        width: calc(250px - 30px)
+    }
 
 }
 
@@ -403,6 +412,9 @@ body, .centratore {
         /* height: 450px; */
     }
     .board-player{
+        width: calc(280px - 30px)
+    }
+    .modal-content{
         width: calc(280px - 30px)
     }
 
@@ -417,6 +429,9 @@ body, .centratore {
     .board-player{
         width: calc(350px - 30px)
     }
+    .modal-content{
+        width: calc(350px - 30px)
+    }
     
 
 }
@@ -427,6 +442,9 @@ body, .centratore {
         /* height: 450px; */
     }
     .board-player{
+        width: calc(340px - 30px)
+    }
+    .modal-content{
         width: calc(340px - 30px)
     }
 
@@ -440,6 +458,9 @@ body, .centratore {
     .board-player{
         width: calc(390px - 30px)
     }
+    .modal-content{
+        width: calc(390px - 30px)
+    }
 
 }
 
@@ -449,6 +470,9 @@ body, .centratore {
         /* height: 450px; */
     }
     .board-player{
+        width: calc(430px - 30px)
+    }
+    .modal-content{
         width: calc(430px - 30px)
     }
 
@@ -462,6 +486,9 @@ body, .centratore {
     .board-player{
         width: calc(470px - 30px)
     }
+    .modal-content{
+        width: calc(470px - 30px)
+    }
 
 }
 
@@ -473,6 +500,9 @@ body, .centratore {
     .board-player{
         width: calc(550px - 30px)
     }
+    .modal-content{
+        width: calc(550px - 30px)
+    }
 
 }
 
@@ -482,6 +512,9 @@ body, .centratore {
         /* height: 450px; */
     }
     .board-player{
+        width: calc(650px - 30px)
+    }
+    .modal-content{
         width: calc(650px - 30px)
     }
 
@@ -626,10 +659,10 @@ body, .centratore {
     overflow: auto; /* Enable scroll if needed */
     background:
     linear-gradient(
-    rgba(0, 0, 0, 0.3), 
-    rgba(0, 0, 0, 0.3)
+    rgba(0, 0, 0, 1), 
+    rgba(0, 0, 0, 1)
     ),
-    url("images/board/water4.jpg");
+    url("images/wallpepars/grass2.jpeg");
     /* padding-top: 1rem; */
     /* animation: fade-in 0.6s; */
     /* font-family: 'VT323', monospace ; */
@@ -664,8 +697,9 @@ body, .centratore {
     margin: 15% auto;
     padding: 20px;
     /* border: 8px solid BLACK; */
-    width: 280px;
+    /* width: 280px; */
     height: fit-content;
+    border: 5px solid #FCB341 ;
 }
   
 #modalx div{

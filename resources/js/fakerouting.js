@@ -172,6 +172,8 @@ btnx.onclick = function() {
     page3.style.display = "block";
     page4.style.display = "none";
     page5.style.display = "none";
+    modalkoo2.style.display = "flex";
+
 }
 btnz.onclick = function() {
     page1.style.display = "none";

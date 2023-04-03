@@ -43,9 +43,9 @@
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1" style='color:yellow'></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1" ></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:blue'></i></p>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
                     <div   class="record">
@@ -55,9 +55,9 @@
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1" style='color:red'></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1" ></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:red'></i></p>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
                     <div   class="record">
@@ -67,9 +67,9 @@
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1" style='color:red'></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1" ></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:red'></i></p>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
                     <div   class="record">
@@ -79,21 +79,9 @@
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1" ></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:red'></i></p>
-                </div>
-                <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
-                        </p> 
-                        <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
-                        </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
-                    </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:red'></i></p>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
                     <div   class="record">
@@ -105,7 +93,7 @@
                         </div>
                         <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:red'></i></p>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
                     <div   class="record">
@@ -117,7 +105,7 @@
                         </div>
                         <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:red'></i></p>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
                     <div   class="record">
@@ -129,7 +117,7 @@
                         </div>
                         <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:red'></i></p>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
                     <div   class="record">
@@ -141,7 +129,7 @@
                         </div>
                         <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:red'></i></p>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
                     <div   class="record">
@@ -153,7 +141,7 @@
                         </div>
                         <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:red'></i></p>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
                     <div   class="record">
@@ -165,7 +153,7 @@
                         </div>
                         <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:red'></i></p>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
                     <div   class="record">
@@ -177,7 +165,7 @@
                         </div>
                         <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:red'></i></p>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
                     <div   class="record">
@@ -189,7 +177,7 @@
                         </div>
                         <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:blue'></i></p>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
                     <div   class="record">
@@ -201,7 +189,7 @@
                         </div>
                         <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:blue'></i></p>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:blue'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
                     <div   class="record">
@@ -213,7 +201,19 @@
                         </div>
                         <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >-1 <i class="fa-solid fa-bolt ml-1" style='color:blue'></i></p>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:blue'></i></p>
+                </div>
+                <div style='' class="d-flex align-items-center">
+                    <div   class="record">
+                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
+                        </p> 
+                        <div class='d-flex align-items-center flex-row flex-nowrap'>
+                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
+                        </div>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
+                    </div>
+                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:blue'></i></p>
                 </div>
                 </div>
                 <!------------------------------------------------------------->
