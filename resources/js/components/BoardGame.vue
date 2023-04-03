@@ -26,7 +26,7 @@
                 </div> 
                 -->
                 <!-- <p class='avatar_helper_' style=' padding: 5px; margin:0;margin-left: 5px; '>v 1</p> -->
-                <button  style='background-color:black; display:flex; justify-content:center; align-items:center;'>  <p class="m-0 " style='color:black;' > Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis sed ratione accusantium temporibus eveniet saepe modi a odit obcaecati eligendi.</p><div><!-- <img style='width:30px; margin-left:8px' src='images/extra_objects/iconaplay1.png' alt=""> --></div></button> 
+                <button id='console-screen' style='background-color:black; display:flex; justify-content:center; border:none; align-items:center;'>  <p class="m-0 " style='color:white;' > Game strat in 00:10 see the board</p><div><!-- <img style='width:30px; margin-left:8px' src='images/extra_objects/iconaplay1.png' alt=""> --></div></button> 
                 <button  style='background-color:black; d-flex justify-content-center'> 
                     <div class="d-flex no-wrap justify-content-center align-items-center"> 
                         <p class="m-0" > START</p>

@@ -360,6 +360,9 @@ body, .centratore {
 /* ---------------------- PAGE 3 BOARD RESPONSIVE ------------------------------ */
 /* ----------------------------------------------------------------------------- */
 
+#console-screen{
+    font-family: 'VT323', monospace ;
+}
 
 @media screen and (min-width: 10px) and (min-height: 10px){
     .board{
@@ -617,8 +620,8 @@ body, .centratore {
     overflow: auto; /* Enable scroll if needed */
     background:
     linear-gradient(
-    rgba(0, 0, 0, 0.8), 
-    rgba(0, 0, 0, 0.8)
+    rgba(0, 0, 0, 0.3), 
+    rgba(0, 0, 0, 0.3)
     ),
     url("images/board/water4.jpg");
     /* padding-top: 1rem; */
