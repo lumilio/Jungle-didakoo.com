@@ -18,9 +18,13 @@
             <!--------------------- NAV -------------------->
             <div class="d-flex banner-board-helper align-items-center" style='margin-bottom: 0px; background-color:black; height:80px;    color: black; '>
                 <div class="d-flex align-items-center ">
-                    <button id='btnkoo22' style='display:none; border:1px solid black; padding:15px; padding-right:5px; color:white; background-color:black; border-radius:20px;  '><p style='display:inline;' ></p>  <img style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;' src='images/extra_objects/iconaplay1.png' alt=""></button> 
-                    <button onclick="web3Login();" id='btninfoLogin' style='display:none;border:1px solid black; padding: 20px 0px 15px 15px; color:white; background-color:black; border-radius:20px;  '><p style='display:inline;' >Login </p> </button> 
+                    <img style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
                     <i id='btnkoo4' style='display:inline; margin-bottom:25px;position:relative; margin-right:0px' class="fa-solid fa-bars"></i>
+                    <button style='display:;border:1px solid black; padding: 20px 0px 15px 15px; color:white; background-color:black; border-radius:20px;  '>
+                        <p  id='btnkoo22' style='display:none;' >Login </p>
+                        <img  style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;'   src='images/extra_objects/iconaplay1.png' alt="">
+                    </button>
+                    <!-- <button onclick="web3Login();" id='btninfoLogin' style='display:none;border:1px solid black; padding: 20px 0px 15px 15px; color:white; background-color:black; border-radius:20px;  '><p style='display:inline;' >Login </p> </button> --> 
                 </div>
             </div>
             <!---------------------------------------------->
@@ -28,7 +32,7 @@
             <!---------------------- BODY ------------------->
             <div class="allineatore d-flex justify-content-top "> 
                 <div style="margin-top:30px;" class="container-sm pepar  ">
-                    <p style=''>DIDAKOO v 2.1 <img style="width:40px; padding-bottom:20px;  margin: 0 5px;"   src='images/extra_objects/cubo2.png' alt=""><img style="width:40px; padding-bottom:20px;"   src='images/extra_objects/sunflower_1f33b.png' alt=""></p>
+                    <p style=''>v 1.0.0<img style="width:40px; padding-bottom:20px;  margin: 0 5px;"   src='images/extra_objects/cubo2.png' alt=""><img style="width:40px; padding-bottom:20px;"   src='images/extra_objects/sunflower_1f33b.png' alt=""></p>
                     <p>An online arcade platform playable with the ethereum blockchain.</p>
                     <!-- <p>At the cout down end an immage of the entire rank will be mint. </p> -->
                     <p>To play you need  <a style="color:#D1230F;" href="https://metamask.io/">Metamask</a>  wallet with <a style="color:#FAEA09;" href="https://rarible.com/token/0xd07dc4262bcdbf85190c01c996b4c06a461d2430:628469?tab=overview">sun flower </a> token.</p>

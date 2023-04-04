@@ -6,9 +6,9 @@
         <div id="myModalkoo2" class="modal align-items-center">
             <!-- Modal content -->
             <div style='' class="modal-content container-sm d-flex flex-column align-items-center">
-                <div class="d-flex container-sm align-items-center justify-content-between flex-row">
+                <div class="d-flex container-sm align-items-center justify-content-start flex-row">
                     <img style="width:80px" src=" images/extra_objects/ddd.jpg"  alt=""> 
-                    <span style="color:white; margin:0; margin-top:5px; margin-left:8px;"> v 1.0</span>
+                    <!-- <span style="color:white; margin:0; margin-top:5px; margin-left:8px;"> v 1.0.0</span> -->
                     <!-- <p class='avatar_helper_' style='color:white;  padding: 5px; margin:0;margin-left: 5px; '>v 1</p> -->
                 </div>
                 <div class="d-flex justify-content-center align-items-center" id='console-screen' style='background-color:black; display:flex;  justify-content:center; align-items:center;'>  

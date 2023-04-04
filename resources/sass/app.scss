@@ -117,8 +117,8 @@ body, .centratore {
 #page5{
     background:
     linear-gradient(
-      rgba(0, 0, 0, 0.7), 
-      rgba(0, 0, 0, 0.7)
+      rgba(0, 0, 0, 1), 
+      rgba(0, 0, 0, 1)
     ), 
     url("images/wallpepars/jungle.jpg") ; 
     background-repeat: repeat ;
@@ -187,16 +187,12 @@ body, .centratore {
     text-decoration: none ;
 }
 
-.bt span {
-    font-size: 10px;
-    padding: 5px;
-    color: black;
-    text-decoration: none;
-}
-
 .bt i , .bt span{
     color: white;
     font-size: 35px;
+}
+.bt span {
+    font-size: 25px;
 }
 
 .square {

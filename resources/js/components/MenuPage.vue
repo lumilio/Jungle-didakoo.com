@@ -68,8 +68,8 @@
             </a>
             <a id="modaly" href="#">
                 <div class="square">
-                   <!--  <i class="fa-solid fa-sheet-plastic"></i> -->
-                    <span class="text-white">v. 1</span>
+                    <!-- <i class="fa-solid fa-sheet-plastic"></i> -->
+                    <span class="text-white">1.0</span>
                 </div>
             </a>
         </div>

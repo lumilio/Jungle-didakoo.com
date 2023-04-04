@@ -16,39 +16,30 @@
         <!----------------------- NAV ----------------------->
         <div class="d-flex banner-board-helper justify-content-center align-items-center" style='margin-bottom: 18px; background-color:black; height:80px;    color: black; '>    
             <div class="d-flex align-items-center ">
-                <button id='ready_player_1.2' style='disaply:none;border:1px solid black;       padding:15px; padding-right:5px; color:white; background-color:black; border-radius:20px;  '><p ></p>  <img style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;'   src='images/extra_objects/iconaplay1.png' alt=""></button> 
-                <button onclick="web3Login();" id='ready_player_3.1' style='display:none;border:1px solid black;       padding: 20px 0px 15px 15px; padding-right:0px; color:white; background-color:black; border-radius:20px;  '><p style='display:inline;' ><!-- Login --></p><img style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;'   src='images/extra_objects/iconaplay1.png' alt=""></button> 
+                <img style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
                 <i id='modalkoo' style='display:inline; margin-bottom:25px;position:relative; margin-right:0px' class="fa-solid fa-bars"></i>
-                <!-- <p class='avatar_helper_' style='color:white;    border: 1px solid white; padding: 5px; margin:0;margin-left: 15px; '>v 2.1</p> -->
+                <button id='ready_player_1.2' style='disaply:none;border:1px solid black;       padding:15px; padding-right:5px; color:white; background-color:black; border-radius:20px;  '><p ></p>  <img style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;'   src='images/extra_objects/iconaplay1.png' alt=""></button> 
+                <button onclick="web3Login();" id='ready_player_3.1' style='display:;border:1px solid black;       padding: 20px 0px 15px 15px; padding-right:0px; color:white; background-color:black; border-radius:20px;  '>
+                    <img style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;'   src='images/extra_objects/iconaplay1.png' alt="">
+                </button> 
             </div>
         </div>
+
         <!---------------------------------------------------->
 
         <!----------------------- LOGO ----------------------->
         <div id="_box1_" class="container-sm d-flex justify-content-center align-items-center flex-column">
+            <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Sun Dec 17 1995 03:24:00 UTC+1 ROME</p>
             <div class="d-flex container-sm justify-content-center alingn-items-center">
                 <!-- <img style=' width:30px; ' src='images/board/tree.png' alt="">  -->
                 <img style="width: 60px; margin-bottom: 20px; display: inline; transform: scaleX(-1);" src="images/extra_objects/icon-06.png" alt=""/>
                 <button id="modalx" class="no-wrap align-items-center d-flex call_button"> Play Jungle Chess<!-- <img style='width:130px; margin-left:10px; margin-bottom:15px; ' src='images/extra_objects/ddd.jpg' alt=""> --> </button> 
                 <img style="width: 60px; margin-bottom: 20px; display: inline" src="images/extra_objects/icon-05.png" alt="" /> 
-<!--                 <img style=' width:40px; margin-bottom: 20px ' src='images/board/tree.png' alt="">  
-                <img  style='  width:40px; height:40px; margin-top: 20px; margin-left:10px; ' src='images/board/water2.png' alt="">  -->
             </div>
 
             <!-- BANNER EVENT IMPORTANT  -->
             <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-top:15px; '>Sun Dec 17 1995 03:24:00 UTC+1 ROME</p> -->
-
-
-
-            <img id='scarabeo'  style='display:;' src='images/extra_objects/1.svg' alt=""> 
-            
-
-
-
-
-
-
-                   
+            <img id='scarabeo'  style='display:;' src='images/extra_objects/1.svg' alt="">         
         </div>
         <div class="d-flex container-sm  mt-3 flex-column"></div>
         <!---------------------------------------------------->
@@ -56,33 +47,12 @@
         <!--------------------------------------- RANK LIST ------------------------------------------>
         <div style='max-width:800px' class="rank d-flex container-sm  flex-column align-items-center text-white"> 
 
-            <!-- <div class="d-flex justify-content-center " style=''>
-                <img  style='  width:40px; height:40px; margin-top: 20px; margin-left:10px; ' src='images/board/water2.png' alt="">          
-                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt=""> 
-                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt=""> 
-                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt=""> 
-                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt=""> 
-                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt=""> 
-                <img  style='  width:40px; height:40px; margin-top: 20px; margin-left:10px; ' src='images/board/water2.png' alt=""> >
-                <img  style='  width:40px; height:40px; margin-top: 20px; margin-left:10px; ' src='images/board/water2.png' alt="">  
-                <img  style='  width:40px; height:40px; margin-top: 20px; margin-left:10px; ' src='images/board/water2.png' alt=""> 
-                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt=""> 
-                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt="">  
-                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt="">  
-                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt=""> 
-                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt="">  
-            </div>  -->
-
-            
             <button class='refresh-button' style='background-color:black;'>
                 <p class='d-flex justify-content-between align-items-center' style='color:white; padding: 10px; margin: 0;'>  
                     <span>Click to refresh</span>  
                     <i style='color:white; font-size:20px;' class="fa-solid fa-rotate"></i>
                 </p> 
             </button>
-            
-
-            
             
             <!---------------------------- User record examaples ---------------------------->
             <div style="background-color:#EDEB52;"  class="record">
