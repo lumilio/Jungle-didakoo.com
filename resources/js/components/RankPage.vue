@@ -29,12 +29,23 @@
             <div class="d-flex container-sm justify-content-center alingn-items-center">
                 <!-- <img style=' width:30px; ' src='images/board/tree.png' alt="">  -->
                 <img style="width: 60px; margin-bottom: 20px; display: inline; transform: scaleX(-1);" src="images/extra_objects/icon-06.png" alt=""/>
-                <button id="modalx" class="no-wrap align-items-center d-flex call_button"> Play <img style='width:130px; margin-left:10px; margin-bottom:15px; ' src='images/extra_objects/ddd.jpg' alt=""> </button> 
-                <img style="width: 60px; margin-bottom: 20px; display: inline" src="images/extra_objects/icon-05.png" alt="" />
-                <!-- <img  style='width:30px; ' src='images/board/tree.png' alt="">  -->
+                <button id="modalx" class="no-wrap align-items-center d-flex call_button"> Play Jungle Chess<!-- <img style='width:130px; margin-left:10px; margin-bottom:15px; ' src='images/extra_objects/ddd.jpg' alt=""> --> </button> 
+                <img style="width: 60px; margin-bottom: 20px; display: inline" src="images/extra_objects/icon-05.png" alt="" /> 
+<!--                 <img style=' width:40px; margin-bottom: 20px ' src='images/board/tree.png' alt="">  
+                <img  style='  width:40px; height:40px; margin-top: 20px; margin-left:10px; ' src='images/board/water2.png' alt="">  -->
             </div>
 
-            <img id='scarabeo'  style=' margin-top:15px;' src='images/extra_objects/1.svg' alt=""> 
+            <!-- BANNER EVENT IMPORTANT  -->
+            <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-top:15px; '>Sun Dec 17 1995 03:24:00 UTC+1 ROME</p> -->
+
+
+
+            <img id='scarabeo'  style='display:;' src='images/extra_objects/1.svg' alt=""> 
+            
+
+
+
+
 
 
                    
@@ -43,26 +54,34 @@
         <!---------------------------------------------------->
 
         <!--------------------------------------- RANK LIST ------------------------------------------>
-        <div style='max-width:800px' class="rank d-flex container-sm mt-4 flex-column align-items-center text-white">           
+        <div style='max-width:800px' class="rank d-flex container-sm  flex-column align-items-center text-white"> 
+
+            <!-- <div class="d-flex justify-content-center " style=''>
+                <img  style='  width:40px; height:40px; margin-top: 20px; margin-left:10px; ' src='images/board/water2.png' alt="">          
+                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt=""> 
+                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt=""> 
+                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt=""> 
+                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt=""> 
+                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt=""> 
+                <img  style='  width:40px; height:40px; margin-top: 20px; margin-left:10px; ' src='images/board/water2.png' alt=""> >
+                <img  style='  width:40px; height:40px; margin-top: 20px; margin-left:10px; ' src='images/board/water2.png' alt="">  
+                <img  style='  width:40px; height:40px; margin-top: 20px; margin-left:10px; ' src='images/board/water2.png' alt=""> 
+                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt=""> 
+                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt="">  
+                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt="">  
+                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt=""> 
+                <img style=' width:2rem; margin-top: 20px ' src='images/board/tree.png' alt="">  
+            </div>  -->
+
+            
             <button class='refresh-button' style='background-color:black;'>
                 <p class='d-flex justify-content-between align-items-center' style='color:white; padding: 10px; margin: 0;'>  
                     <span>Click to refresh</span>  
                     <i style='color:white; font-size:20px;' class="fa-solid fa-rotate"></i>
-                    <!----------------- deprecated ----------------------->                 
-                    <!-- <span class='d-flex justify-content-center'>
-                        <span>Click to refresh</span>  
-                        <i style='color:white; font-size:20px; margin-left:12px; margin-top:2px;' class="fa-solid fa-rotate"></i>
-                    </span>
-                    
-                    <span>
-                        <img style='width:30px;' src="images/extra_objects/ff.png" alt="">
-                        <span style='padding:2px 10px; margin:0 0px; border-radius:100px;'> 4 / 6</span>
-                    </span>  --> 
-                    <!----------------------------------------------------->
                 </p> 
             </button>
+            
 
-            <!-- <p class='mx-5'>Next rank photo : 6g 9h 34m 59s</p> -->
             
             
             <!---------------------------- User record examaples ---------------------------->
