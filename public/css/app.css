@@ -11159,7 +11159,8 @@ body,
   text-decoration: none;
 }
 
-.bt i {
+.bt i,
+.bt span {
   color: white;
   font-size: 35px;
 }
@@ -11245,6 +11246,8 @@ body,
 #page4 .record {
   width: 280px;
   border: 1px solid white;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
 .refresh-button {
@@ -11252,7 +11255,7 @@ body,
 }
 
 #scarabeo {
-  max-width: 600px;
+  max-width: 800px;
   margin-bottom: 15px;
 }
 
@@ -11347,25 +11350,57 @@ body,
 
   .modal-content {
     width: 200px;
+    height: 358px;
+  }
+
+  #console-screen {
+    width: 150px;
+  }
+
+  .modal button {
+    width: 50px;
+    min-height: 60px;
+    font-size: 10px;
+    margin: 5px;
+    color: white !important;
+    border: 1px solid white;
+    border-radius: 30px;
+    font-size: small;
   }
 }
 
 @media screen and (min-width: 278px) and (min-height: 400px) {
   .board {
-    width: 250px;
+    width: 225px;
     /* height: 450px; */
   }
 
   .board-player {
-    width: 250px;
+    width: 225px;
   }
 
   .modal-content {
-    width: 250px;
+    width: 225px;
+    height: 389px;
+  }
+
+  #console-screen {
+    width: 100%;
+  }
+
+  .modal button {
+    width: 50px;
+    min-height: 60px;
+    font-size: 10px;
+    margin: 5px;
+    color: white !important;
+    border: 1px solid white;
+    border-radius: 30px;
+    font-size: small;
   }
 }
 
-@media screen and (min-width: 319px) and (min-height: 403px) {
+@media screen and (min-width: 319px) and (min-height: 475px) {
   .board {
     width: 250px;
     /* height: 450px; */
@@ -11377,6 +11412,22 @@ body,
 
   .modal-content {
     width: 250px;
+    height: 421px;
+  }
+
+  #console-screen {
+    width: 100%;
+  }
+
+  .modal button {
+    width: 50px;
+    min-height: 60px;
+    font-size: 10px;
+    margin: 5px;
+    color: white !important;
+    border: 1px solid white;
+    border-radius: 30px;
+    font-size: small;
   }
 }
 
@@ -11391,56 +11442,120 @@ body,
   }
 
   .modal-content {
+    width: 260px;
+    height: 460px;
+  }
+
+  #console-screen {
+    width: 200px;
+  }
+
+  .modal button {
+    width: 90px;
+    min-height: 60px;
+    font-size: 10px;
+    margin: 5px;
+    color: white !important;
+    border: 1px solid white;
+    border-radius: 30px;
+    font-size: small;
+  }
+}
+
+@media screen and (min-width: 370px) and (min-height: 582px) {
+  .board {
+    width: 330px;
+    /* height: 450px; */
+  }
+
+  .board-player {
+    width: 330px;
+  }
+
+  .modal-content {
+    width: 280px;
+    height: 524px;
+  }
+
+  #console-screen {
+    width: 200px;
+  }
+
+  .modal button {
+    width: 100px;
+    min-height: 60px;
+    font-size: 10px;
+    margin: 5px;
+    color: white !important;
+    border: 1px solid white;
+    border-radius: 30px;
+    font-size: small;
+  }
+}
+
+@media screen and (min-width: 482px) and (min-height: 600px) {
+  .board {
+    width: 350px;
+    /* height: 450px; */
+  }
+
+  .board-player {
+    width: 350px;
+  }
+
+  .modal-content {
+    width: 300px;
+    height: 550px;
+  }
+
+  #console-screen {
+    width: 240px;
+  }
+
+  .modal button {
+    width: 110px;
+    min-height: 60px;
+    font-size: 10px;
+    margin: 5px;
+    color: white !important;
+    border: 1px solid white;
+    border-radius: 30px;
+    font-size: small;
+  }
+}
+
+@media screen and (min-width: 638px) and (min-height: 670px) {
+  .board {
+    width: 390px;
+    /* height: 450px; */
+  }
+
+  .board-player {
+    width: 390px;
+  }
+
+  .modal-content {
+    width: 330px;
+    height: 600px;
+  }
+
+  #console-screen {
     width: 280px;
   }
-}
 
-@media screen and (min-width: 370px) and (min-height: 542px) {
-  .board {
-    width: 350px;
-    /* height: 450px; */
-  }
-
-  .board-player {
-    width: 350px;
-  }
-
-  .modal-content {
-    width: 350px;
+  .modal button {
+    width: 130px;
+    min-height: 60px;
+    font-size: 10px;
+    margin: 5px;
+    color: white !important;
+    border: 1px solid white;
+    border-radius: 30px;
+    font-size: small;
   }
 }
 
-@media screen and (min-width: 482px) and (min-height: 590px) {
-  .board {
-    width: 340px;
-    /* height: 450px; */
-  }
-
-  .board-player {
-    width: 340px;
-  }
-
-  .modal-content {
-    width: 340px;
-  }
-}
-
-@media screen and (min-width: 638px) and (min-height: 638px) {
-  .board {
-    width: 390px;
-    /* height: 450px; */
-  }
-
-  .board-player {
-    width: 390px;
-  }
-
-  .modal-content {
-    width: 390px;
-  }
-}
-
-@media screen and (min-width: 662px) and (min-height: 730px) {
+@media screen and (min-width: 662px) and (min-height: 726px) {
   .board {
     width: 430px;
     /* height: 450px; */
@@ -11451,11 +11566,27 @@ body,
   }
 
   .modal-content {
-    width: 430px;
+    width: 350px;
+    height: 652px;
+  }
+
+  #console-screen {
+    width: 290px;
+  }
+
+  .modal button {
+    width: 140px;
+    min-height: 60px;
+    font-size: 10px;
+    margin: 7px;
+    color: white !important;
+    border: 1px solid white;
+    border-radius: 30px;
+    font-size: small;
   }
 }
 
-@media screen and (min-width: 700px) and (min-height: 750px) {
+@media screen and (min-width: 700px) and (min-height: 790px) {
   .board {
     width: 470px;
     /* height: 450px; */
@@ -11466,11 +11597,26 @@ body,
   }
 
   .modal-content {
-    width: 470px;
+    width: 370px;
+    height: 704px;
+  }
+
+  #console-screen {
+    width: 280px;
+  }
+
+  .modal button {
+    width: 140px;
+    min-height: 60px;
+    margin: 10px;
+    color: white !important;
+    border: 1px solid white;
+    border-radius: 30px;
+    font-size: small;
   }
 }
 
-@media screen and (min-width: 710px) and (min-height: 850px) {
+@media screen and (min-width: 710px) and (min-height: 898px) {
   .board {
     width: 550px;
     /* height: 450px; */
@@ -11481,11 +11627,26 @@ body,
   }
 
   .modal-content {
-    width: 550px;
+    width: 500px;
+    height: 807px;
+  }
+
+  #console-screen {
+    width: 350px;
+  }
+
+  .modal button {
+    width: 170px;
+    min-height: 60px;
+    margin: 10px;
+    color: white !important;
+    border: 1px solid white;
+    border-radius: 30px;
+    font-size: small;
   }
 }
 
-@media screen and (min-width: 795px) and (min-height: 969px) {
+@media screen and (min-width: 795px) and (min-height: 1043px) {
   .board {
     width: 650px;
     /* height: 450px; */
@@ -11496,7 +11657,22 @@ body,
   }
 
   .modal-content {
-    width: 650px;
+    width: 600px;
+    height: 935px;
+  }
+
+  #console-screen {
+    width: 350px;
+  }
+
+  .modal button {
+    width: 170px;
+    min-height: 60px;
+    margin: 10px;
+    color: white !important;
+    border: 1px solid white;
+    border-radius: 30px;
+    font-size: small;
   }
 }
 
@@ -11569,12 +11745,6 @@ body,
   }
 }
 
-#page4 .record {
-  margin-bottom: 10px;
-  border: 2px solid white;
-  border-radius: 10px;
-}
-
 /* ----------------------------------------------------------------------------- */
 
 /* ----------------------- PAGE 5 INFO RESPONSIVE ------------------------------ */
@@ -11616,21 +11786,22 @@ body,
   width: 100px;
 }
 
-.modal button,
-#console-screen {
-  width: 200px;
-  min-height: 60px;
-  /* border-radius: 20px; */
-  margin: 10px;
-  color: white !important;
-  border: 2px solid white;
-  padding: 19px;
-  border-radius: 30px;
-}
+/* .modal button {
+    width: 170px;
+    min-height: 60px;
+    margin: 10px;
+    color: white !important;
+    border : 2px solid white;
+    border-radius: 30px;
+} */
 
 #console-screen {
-  border: 2px solid white;
+  border: 4px solid white;
   border-radius: 0px;
+  /* width: 350px; */
+  margin: 30px 30px 30px 30px;
+  padding-bottom: 40px;
+  margin-top: 10px;
 }
 
 .modal {
@@ -11648,7 +11819,7 @@ body,
   /* Full height */
   overflow: auto;
   /* Enable scroll if needed */
-  background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)), url(/images/grass2.jpeg?49b89941838eccee64239d42591c4722);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
   /* padding-top: 1rem; */
   /* animation: fade-in 0.6s; */
   /* font-family: 'VT323', monospace ; */
@@ -11689,7 +11860,7 @@ body,
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  border: 5px solid #FCB341;
+  /* border: 5px solid #FCB341 ; */
 }
 
 #modalx div {

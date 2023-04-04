@@ -5,8 +5,6 @@
         <!----------------- MODALS UTILITY ------------------->
         <div id="myModalkoo2" class="modal align-items-center">
             <!-- Modal content -->
-
-
             <div style='' class="modal-content container-sm d-flex flex-column align-items-center">
                 <div class="d-flex container-sm align-items-center justify-content-between flex-row">
                     <img style="width:80px" src=" images/extra_objects/ddd.jpg"  alt=""> 
@@ -36,7 +34,6 @@
                 </div>
                 <!-- <button style='background-color:black; colr:white; '> SEND INVITATION  <i class="fa-solid ml-2 fa-arrow-up-from-bracket"></i></button> -->
             </div>
-            
         </div>
 
 

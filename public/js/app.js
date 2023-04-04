@@ -4013,10 +4013,13 @@ var staticRenderFns = [function () {
       id: "myModalkoo2"
     }
   }, [_c("div", {
-    staticClass: "modal-content d-flex flex-column align-items-center"
+    staticClass: "modal-content container-sm d-flex flex-column align-items-center"
   }, [_c("div", {
-    staticClass: "d-flex align-items-center"
+    staticClass: "d-flex container-sm align-items-center justify-content-between flex-row"
   }, [_c("img", {
+    staticStyle: {
+      width: "80px"
+    },
     attrs: {
       src: " images/extra_objects/ddd.jpg",
       alt: ""
@@ -4028,7 +4031,8 @@ var staticRenderFns = [function () {
       "margin-top": "5px",
       "margin-left": "8px"
     }
-  }, [_vm._v("v 1.0")])]), _vm._v(" "), _c("button", {
+  }, [_vm._v(" v 1.0")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex justify-content-center align-items-center",
     staticStyle: {
       "background-color": "black",
       display: "flex",
@@ -4039,12 +4043,14 @@ var staticRenderFns = [function () {
       id: "console-screen"
     }
   }, [_c("p", {
-    staticClass: "m-0",
     staticStyle: {
       color: "white",
-      "font-size": "17px"
+      "font-size": "17px",
+      padding: "10px"
     }
-  }, [_vm._v(" Game strat in 00:10 see the board")]), _c("div")]), _vm._v(" "), _c("button", {
+  }, [_vm._v(" Game strat in 00:10 see the board")])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex flex-wrap justify-content-center"
+  }, [_c("button", {
     staticStyle: {
       "background-color": "black"
     }
@@ -4075,7 +4081,9 @@ var staticRenderFns = [function () {
       src: "images/extra_objects/iconaplay1.png",
       alt: ""
     }
-  })])]), _vm._v(" "), _c("button", {
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex flex-wrap justify-content-center"
+  }, [_c("button", {
     staticClass: "closekoo2 jusify-content-around",
     staticStyle: {
       "background-color": "black"
@@ -4106,7 +4114,7 @@ var staticRenderFns = [function () {
       src: "images/board/animals/icon-17.png",
       alt: ""
     }
-  })])])]);
+  })])])])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -5111,17 +5119,6 @@ var staticRenderFns = [function () {
       id: "page1"
     }
   }, [_c("div", {
-    staticClass: "modal justify-content-center align-items-center",
-    attrs: {
-      id: "myModalkoo6"
-    }
-  }, [_c("div", {
-    staticClass: "modal-content d-flex flex-column align-items-center justify-content-center"
-  }, [_c("p", {
-    staticStyle: {
-      color: "red"
-    }
-  }, [_vm._v("Login failed")])])]), _vm._v(" "), _c("div", {
     staticClass: "container-fluid bg-black",
     staticStyle: {
       "padding-bottom": "0px",
@@ -5147,17 +5144,6 @@ var staticRenderFns = [function () {
     staticClass: "avatar_helper_1"
   }), _vm._v(" "), _c("div", {
     staticClass: "avatar_helper_1"
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "60px",
-      "margin-bottom": "20px",
-      display: "inline",
-      transform: "scaleX(-1)"
-    },
-    attrs: {
-      src: "images/extra_objects/icon-06.png",
-      alt: ""
-    }
   }), _vm._v(" "), _c("div", [_c("button", {
     staticStyle: {
       display: "inline",
@@ -5183,17 +5169,7 @@ var staticRenderFns = [function () {
       src: "images/extra_objects/ddd.jpg",
       alt: ""
     }
-  })])]), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "60px",
-      "margin-bottom": "20px",
-      display: "inline"
-    },
-    attrs: {
-      src: "images/extra_objects/icon-05.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("div", {
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "avatar_helper_1"
   }), _vm._v(" "), _c("div", {
     staticClass: "avatar_helper_1"
@@ -5267,9 +5243,9 @@ var staticRenderFns = [function () {
     }
   }, [_c("div", {
     staticClass: "square"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-sheet-plastic"
-  })])])])]);
+  }, [_c("span", {
+    staticClass: "text-white"
+  }, [_vm._v("v. 1")])])])])]);
 }];
 render._withStripped = true;
 
@@ -5421,17 +5397,7 @@ var staticRenderFns = [function () {
     attrs: {
       id: "modalx"
     }
-  }, [_vm._v(" Play "), _c("img", {
-    staticStyle: {
-      width: "130px",
-      "margin-left": "10px",
-      "margin-bottom": "15px"
-    },
-    attrs: {
-      src: "images/extra_objects/ddd.jpg",
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("img", {
+  }, [_vm._v(" Play Jungle Chess")]), _vm._v(" "), _c("img", {
     staticStyle: {
       width: "60px",
       "margin-bottom": "20px",
@@ -5442,9 +5408,7 @@ var staticRenderFns = [function () {
       alt: ""
     }
   })]), _vm._v(" "), _c("img", {
-    staticStyle: {
-      "margin-top": "15px"
-    },
+    staticStyle: {},
     attrs: {
       id: "scarabeo",
       src: "images/extra_objects/1.svg",
@@ -5453,7 +5417,7 @@ var staticRenderFns = [function () {
   })]), _vm._v(" "), _c("div", {
     staticClass: "d-flex container-sm mt-3 flex-column"
   }), _vm._v(" "), _c("div", {
-    staticClass: "rank d-flex container-sm mt-4 flex-column align-items-center text-white",
+    staticClass: "rank d-flex container-sm flex-column align-items-center text-white",
     staticStyle: {
       "max-width": "800px"
     }
@@ -5490,7 +5454,7 @@ var staticRenderFns = [function () {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("1°\n                "), _c("img", {
+  }, [_vm._v("1°\n                    "), _c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -5500,7 +5464,7 @@ var staticRenderFns = [function () {
     attrs: {
       src: "images/extra_objects/iconaplayB.png"
     }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("div", {
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("img", {
     staticStyle: {
@@ -5544,7 +5508,7 @@ var staticRenderFns = [function () {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("2°\n                "), _c("img", {
+  }, [_vm._v("2°\n                    "), _c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -5554,7 +5518,7 @@ var staticRenderFns = [function () {
     attrs: {
       src: "images/extra_objects/iconaplayB.png"
     }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "black",
@@ -58633,7 +58597,7 @@ btnx.onclick = function () {
   page3.style.display = "block";
   page4.style.display = "none";
   page5.style.display = "none";
-  modalkoo2.style.display = "flex";
+  modalkoo2.style.display = "none";
 };
 
 btnz.onclick = function () {
