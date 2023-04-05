@@ -38,10 +38,10 @@ body, .centratore {
 /* ------------------------- INITIAL DISPLAY PAGES ----------------------------- */
 /* ----------------------------------------------------------------------------- */
 
-#page2{
-    display: block;
+#page1{
+    display: flex;
 }
-#page1,
+#page2,
 #page3,
 #page4,
 #page5 {
@@ -408,6 +408,12 @@ body, .centratore {
 /* ---------------------- PAGE 3 BOARD RESPONSIVE ------------------------------ */
 /* ----------------------------------------------------------------------------- */
 
+
+
+
+
+
+
 #console-screen{
     font-family: 'VT323', monospace ;
 }
@@ -632,6 +638,9 @@ body, .centratore {
         border-radius: 30px;
         font-size: small;
     }
+    .modal-ingame{
+        background-size: 500px ;
+    }
 }
 
 @media screen and (min-width: 700px) and (min-height: 790px){
@@ -660,6 +669,9 @@ body, .centratore {
         border-radius: 30px;
         font-size: small;
     }
+    .modal-ingame{
+        background-size: 500px ;
+    }
 
 }
 
@@ -687,6 +699,9 @@ body, .centratore {
         border-radius: 30px;
         font-size: small;
     }
+    .modal-ingame{
+        background-size: 500px ;
+    }
 }
 
 @media screen and (min-width: 795px) and (min-height: 1043px){
@@ -713,7 +728,18 @@ body, .centratore {
         border-radius: 30px;
         font-size: small;
     }
+    .modal-ingame{
+        background-size: 500px ;
+    }
 }
+
+
+
+
+
+
+
+
 
 /* ----------------------------------------------------------------------------- */
 /* ------------------------ PAGE 4 AVATAR RESPONSIVE --------------------------- */
