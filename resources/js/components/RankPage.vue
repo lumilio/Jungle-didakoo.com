@@ -31,11 +31,11 @@
         <!----------------------- LOGO ----------------------->
         <div id="_box1_" class="container-sm d-flex justify-content-center align-items-center flex-column">
             <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Sun Dec 17 1995 03:24:00 UTC+1 ROME </p> -->
-            <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Next token recharge 23h 59m 59s</p>
+            <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Next token recharge 23h 59m 59s</p> -->
             <div class="d-flex container-sm justify-content-center alingn-items-center">
                 <!-- <img style=' width:30px; ' src='images/board/tree.png' alt="">  -->
                 <img style="width: 60px; margin-bottom: 20px; display: inline; transform: scaleX(-1);" src="images/extra_objects/icon-06.png" alt=""/>
-                <button id="modalx" class="no-wrap align-items-center d-flex call_button"> Play Jungle Chess<!-- <img style='width:130px; margin-left:10px; margin-bottom:15px; ' src='images/extra_objects/ddd.jpg' alt=""> --> </button> 
+                <button id="modalx" class="no-wrap align-items-center text-big d-flex px-4 call_button"> Jungle Game<!-- <img style='width:130px; margin-left:10px; margin-bottom:15px; ' src='images/extra_objects/ddd.jpg' alt=""> --> </button> 
                 <img style="width: 60px; margin-bottom: 20px; display: inline" src="images/extra_objects/icon-05.png" alt="" /> 
             </div>
 
