@@ -1,9 +1,8 @@
 <template>
     <div id='page2' >  
         
-        <!----------------------- UTILITY MODAL ----------------------->
+        <!----------------------- UTILITY MODAL usless now ----------------------->
         <div id='myModalkoo' class="modal">
-            <!-- Modal content -->
             <div class="modal-content d-flex flex-column align-items-center">
                 <span class="closekoo_rank">&times;</span>
                 <button id='btnkoo_2_1' class="rainbow-button" > H𐍈ME </button>
@@ -30,17 +29,22 @@
 
         <!----------------------- LOGO ----------------------->
         <div id="_box1_" class="container-sm d-flex justify-content-center align-items-center flex-column">
+
+            <!-- BANNER EVENT IMPORTANT  -->
             <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Sun Dec 17 1995 03:24:00 UTC+1 ROME </p> -->
             <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Next token recharge 23h 59m 59s</p> -->
-            <div class="d-flex container-sm justify-content-center alingn-items-center">
-                <!-- <img style=' width:30px; ' src='images/board/tree.png' alt="">  -->
-                <img style="width: 60px; margin-bottom: 20px; display: inline; transform: scaleX(-1);" src="images/extra_objects/icon-06.png" alt=""/>
-                <button id="modalx" class="no-wrap align-items-center text-big d-flex px-4 call_button"> Jungle Game<!-- <img style='width:130px; margin-left:10px; margin-bottom:15px; ' src='images/extra_objects/ddd.jpg' alt=""> --> </button> 
-                <img style="width: 60px; margin-bottom: 20px; display: inline" src="images/extra_objects/icon-05.png" alt="" /> 
+
+
+            <div class="d-flex container-sm justify-content-center align-items-center ">
+                <img style=" height:60px;  display: inline; transform: scaleX(-1);" src="images/extra_objects/icon-06.png" alt=""/>
+                <button id="modalx" class="no-wrap align-items-center text-big d-flex p-4 call_button"> <span>Jungle Game</span> <!-- <img style='width:130px; margin-left:10px; margin-bottom:15px; ' src='images/extra_objects/ddd.jpg' alt=""> --> </button> 
+                <img style=" height:60px;  display: inline" src="images/extra_objects/icon-05.png" alt="" /> 
             </div>
 
             <!-- BANNER EVENT IMPORTANT  -->
             <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-top:15px; '>Sun Dec 17 1995 03:24:00 UTC+1 ROME</p> -->
+
+
             <img id='scarabeo'  style='display:;' src='images/extra_objects/1.svg' alt="">         
         </div>
         <div class="d-flex container-sm  mt-3 flex-column"></div>

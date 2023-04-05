@@ -29,7 +29,7 @@
 
 
 
-        <!-------------------------------- EYE HAND ----------------------------------->
+        <!-------------------------------- EYE HAND deprecated ----------------------------------->
         <div class="d-flex align-items-center flex-column">
             <img id="img_xxx" class="ra" style="display:none;margin-bottom: 100px;" src="images/extra_objects/xxx.png" alt=""/>
             <img id="img_xxxxy" class="ra" style="display:none;margin-bottom: 100px" src="images/extra_objects/xxxxy.png" alt=""/>
