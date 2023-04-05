@@ -12,7 +12,7 @@
                     <!-- <p class='avatar_helper_' style='color:white;  padding: 5px; margin:0;margin-left: 5px; '>v 1</p> -->
                 </div>
                 <div class="d-flex justify-content-center align-items-center" id='console-screen' style='background-color:black; display:flex;  justify-content:center; align-items:center;'>  
-                    <p class="" style='color:white; font-size:17px; padding:10px;' > Game strat in 00:10 see the board</p>
+                    <p class="" style='color:white; font-size:17px; padding:10px;' > You win / You Lose / Other data</p>
                 </div> 
                 <div class="d-flex flex-wrap justify-content-center">
                     <button  style='background-color:black; d-flex justify-content-center'> 

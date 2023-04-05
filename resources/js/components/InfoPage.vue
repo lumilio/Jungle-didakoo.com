@@ -31,7 +31,7 @@
 
             <!---------------------- BODY ------------------->
             <div class="allineatore d-flex justify-content-top "> 
-                <div style="margin-top:30px;" class="container-sm pepar  ">
+                <div style="margin-top:30px; background-color:black;" class="container-sm pepar  ">
                     <p style='font-size:30px;'>v 1.0.0
                         <!-- <img style="width:40px; padding-bottom:20px;  margin: 0 5px;"   src='images/extra_objects/cubo2.png' alt=""><img style="width:40px; padding-bottom:20px;"   src='images/extra_objects/sunflower_1f33b.png' alt=""> -->
                     </p>
@@ -51,7 +51,7 @@
                     <p>&#8203;</p>
                     <!-- <p>&#8203;</p> -->
                     <!-- <p>Click the purple button to create a link for player 2</p> -->
-                <p>The flowers token <img style='width:30px;' src='images/extra_objects/ff.png' alt=""> will be recharged in 24:00:00 </p>
+                <p>The flowers token Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni odio ipsam neque facilis eaque in quasi, inventore quos officia quaerat cupiditate. Exercitationem magnam suscipit autem cupiditate unde officia ipsam, enim quibusdam esse ipsa temporibus ut harum placeat, pariatur molestiae quod dolorum velit dicta eius fuga ipsum iste! Assumenda, voluptas. Quis sequi, rerum modi quod repudiandae, fuga tempora aut recusandae non rem nemo molestias consequuntur quam provident culpa nobis aspernatur doloremque dolor dolores necessitatibus dolore architecto quo. Vel unde corporis, perspiciatis ratione, officiis modi atque eum quidem quis quam voluptates suscipit incidunt sint quos ab facere accusantium, nobis nihil eius! Molestias.<img style='width:30px;' src='images/extra_objects/ff.png' alt=""> will be recharged in 24:00:00 </p>
                 </div>
             </div>   
             <!----------------------------------------------->
