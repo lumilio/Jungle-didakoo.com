@@ -3,7 +3,7 @@
 
 
         <!----------------- MODALS UTILITY ------------------->
-        <div id="myModalkoo2" class="modal align-items-center">
+        <div id="myModalkoo2" class="modal modal-ingame align-items-center">
             <!-- Modal content -->
             <div style='' class="modal-content container-sm d-flex flex-column align-items-center">
                 <div class="d-flex container-sm align-items-center justify-content-between flex-row">
