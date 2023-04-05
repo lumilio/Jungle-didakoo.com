@@ -1,8 +1,5 @@
 <template>
-    <div id="page1" style="" class="centratore justify-content-center  align-items-center">
-
-
-
+    <div id="page1" style="" class="centratore flex-column  align-items-center">
 
 
         <!------------------------ modal DEPRECATED --------------------->
@@ -15,36 +12,22 @@
 
 
 
-
-
         <!-------------------------- NAV  ------------------------------>
-        <div style="padding-bottom: 0px; height: 80px; position: absolute; top: 0; background-color: black; " class="container-fluid bg-black" >
-            <div class="justify-content-around d-flex align-items-center" style="z-index: 1000" >
-                <div class="avatar_helper_1"></div>
-                <div class="avatar_helper_1"></div>
-                <div class="avatar_helper_1"></div>
-                <div class="avatar_helper_1"></div>
-                <div class="avatar_helper_1"></div>
-                <div class="avatar_helper_1"></div>
-
-                <!-- <img style="width: 60px; margin-bottom: 20px; display: inline; transform: scaleX(-1);" src="images/extra_objects/icon-06.png" alt=""/> -->
-                <div>
-                    <button id="ready_player_1" style="display: inline; border: 1px solid black; margin-top: 13px; padding: 15px; padding-right: 5px; color: white; background-color: black; border-radius: 20px; margin-bottom: 30px;">
-                        <img style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
-                        <!-- <p class="avatar_helper_1" style='color:white;   border: 1px solid white; padding: 5px; margin-left: 9px; '>v 2.1</p> -->
-                    </button>
-                </div>
-                <!-- <img style="width: 60px; margin-bottom: 20px; display: inline" src="images/extra_objects/icon-05.png" alt="" /> -->
-
-                <div class="avatar_helper_1"></div>
-                <div class="avatar_helper_1"></div>
-                <div class="avatar_helper_1"></div>
-                <div class="avatar_helper_1"></div>
-                <div class="avatar_helper_1"></div>
-                <div class="avatar_helper_1"></div>
+        <div class="d-flex banner-board-helper align-items-center" style=' background-color:black; height:80px;  color: black; '>    
+            <div id='' class="d-flex align-items-center position:absolute; top:0;">
+                <img style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
+                <i style='display:inline; margin-bottom:25px;position:relative; margin-right:0px' class="fa-solid fa-bars"></i>
+                <button style='display:;border:1px solid black; padding: 20px 0px 15px 15px; color:white; background-color:black; border-radius:20px;  '>
+                    <!-- <p style='display:inline; background:white; border-radius:10px; background-color:black; color:white; border:1px solid white; padding:10px;' >Login </p> -->
+                    <img style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;'   src='images/extra_objects/iconaplay1.png' alt="">
+                </button>
             </div>
         </div>
         <!-------------------------------------------------------------->
+
+
+
+
 
         <!-------------------------------- EYE HAND ----------------------------------->
         <div class="d-flex align-items-center flex-column">
@@ -54,24 +37,26 @@
         <!----------------------------------------------------------------------------->
 
         <!-------------------------- BUTTONS  ------------------------------>
-        <div class="bt">
-            <a href="#">
-                <div class="square" onclick="web3Login();">
-                    <i id="led" class="fa-solid fa-circle" ></i>
-                    <i class="fa-solid fa-power-off"></i>
-                </div>
-            </a>
-            <a id="modalz" href="#">
-                <div class="square">
-                    <img id="buttton_v_1" src="images/extra_objects/scarabeo.png" alt="" />
-                </div>
-            </a>
-            <a id="modaly" href="#">
-                <div class="square">
-                    <!-- <i class="fa-solid fa-sheet-plastic"></i> -->
-                    <span class="text-white">1.0</span>
-                </div>
-            </a>
+        <div style="height:calc(80vh - 80px);" class="justify-content-center align-content-center d-flex">
+            <div class="bt">
+                <a href="#">
+                    <div class="square" onclick="web3Login();">
+                        <i id="led" class="fa-solid fa-circle" ></i>
+                        <i class="fa-solid fa-power-off"></i>
+                    </div>
+                </a>
+                <a id="modalz" href="#">
+                    <div class="square">
+                        <img id="buttton_v_1" src="images/extra_objects/scarabeo.png" alt="" />
+                    </div>
+                </a>
+                <a id="modaly" href="#">
+                    <div class="square">
+                        <!-- <i class="fa-solid fa-sheet-plastic"></i> -->
+                        <span class="text-white">1.0</span>
+                    </div>
+                </a>
+            </div>
         </div>
         <!------------------------------------------------------------------>
 

@@ -2995,7 +2995,17 @@ var staticRenderFns = [function () {
     attrs: {
       id: "btnkoo23"
     }
-  }, [_c("i", {
+  }, [_c("img", {
+    staticStyle: {
+      width: "100px",
+      "margin-left": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/ddd.jpg",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("i", {
     staticClass: "fa-solid fa-bars",
     staticStyle: {
       display: "inline",
@@ -3003,7 +3013,26 @@ var staticRenderFns = [function () {
       position: "relative",
       "margin-right": "0px"
     }
-  })])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("button", {
+    staticStyle: {
+      border: "1px solid black",
+      padding: "20px 0px 15px 15px",
+      color: "white",
+      "background-color": "black",
+      "border-radius": "20px"
+    }
+  }, [_c("img", {
+    staticStyle: {
+      display: "inline",
+      width: "30px",
+      "margin-left": "0px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplay1.png",
+      alt: ""
+    }
+  })])])]), _vm._v(" "), _c("div", {
     staticClass: "allineatore d-flex container-fluid flex-column justify-content-center px-4 align-items-center"
   }, [_c("div", {
     staticClass: "container-sm avatar d-flex flex-column align-items-center px-3",
@@ -4015,7 +4044,7 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "modal-content container-sm d-flex flex-column align-items-center"
   }, [_c("div", {
-    staticClass: "d-flex container-sm align-items-center justify-content-between flex-row"
+    staticClass: "d-flex container-sm align-items-center justify-content-start flex-row"
   }, [_c("img", {
     staticStyle: {
       width: "80px"
@@ -4024,14 +4053,7 @@ var staticRenderFns = [function () {
       src: " images/extra_objects/ddd.jpg",
       alt: ""
     }
-  }), _vm._v(" "), _c("span", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-top": "5px",
-      "margin-left": "8px"
-    }
-  }, [_vm._v(" v 1.0")])]), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-content-center align-items-center",
     staticStyle: {
       "background-color": "black",
@@ -4910,29 +4932,45 @@ var staticRenderFns = [function () {
   }, [_vm._v(" LOG𐍈UT ")])])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex banner-board-helper align-items-center",
     staticStyle: {
-      "margin-bottom": "0px",
       "background-color": "black",
       height: "80px",
       color: "black"
     }
   }, [_c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("button", {
+    staticClass: "d-flex align-items-center position:absolute; top:0;",
+    attrs: {
+      id: "btnkoo4"
+    }
+  }, [_c("img", {
     staticStyle: {
-      display: "none",
+      width: "100px",
+      "margin-left": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/ddd.jpg",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("i", {
+    staticClass: "fa-solid fa-bars",
+    staticStyle: {
+      display: "inline",
+      "margin-bottom": "25px",
+      position: "relative",
+      "margin-right": "0px"
+    }
+  }), _vm._v(" "), _c("button", {
+    staticStyle: {
       border: "1px solid black",
-      padding: "15px",
-      "padding-right": "5px",
+      padding: "20px 0px 15px 15px",
       color: "white",
       "background-color": "black",
       "border-radius": "20px"
-    },
+    }
+  }, [_c("div", {
+    staticClass: "d-none",
     attrs: {
       id: "btnkoo22"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      display: "inline"
     }
   }), _vm._v(" "), _c("img", {
     staticStyle: {
@@ -4945,61 +4983,18 @@ var staticRenderFns = [function () {
       src: "images/extra_objects/iconaplay1.png",
       alt: ""
     }
-  })]), _vm._v(" "), _c("button", {
-    staticStyle: {
-      display: "none",
-      border: "1px solid black",
-      padding: "20px 0px 15px 15px",
-      color: "white",
-      "background-color": "black",
-      "border-radius": "20px"
-    },
-    attrs: {
-      onclick: "web3Login();",
-      id: "btninfoLogin"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      display: "inline"
-    }
-  }, [_vm._v("Login ")])]), _vm._v(" "), _c("i", {
-    staticClass: "fa-solid fa-bars",
-    staticStyle: {
-      display: "inline",
-      "margin-bottom": "25px",
-      position: "relative",
-      "margin-right": "0px"
-    },
-    attrs: {
-      id: "btnkoo4"
-    }
-  })])]), _vm._v(" "), _c("div", {
+  })])])]), _vm._v(" "), _c("div", {
     staticClass: "allineatore d-flex justify-content-top"
   }, [_c("div", {
     staticClass: "container-sm pepar",
     staticStyle: {
       "margin-top": "30px"
     }
-  }, [_c("p", {}, [_vm._v("DIDAKOO v 2.1 "), _c("img", {
+  }, [_c("p", {
     staticStyle: {
-      width: "40px",
-      "padding-bottom": "20px",
-      margin: "0 5px"
-    },
-    attrs: {
-      src: "images/extra_objects/cubo2.png",
-      alt: ""
+      "font-size": "30px"
     }
-  }), _c("img", {
-    staticStyle: {
-      width: "40px",
-      "padding-bottom": "20px"
-    },
-    attrs: {
-      src: "images/extra_objects/sunflower_1f33b.png",
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("p", [_vm._v("An online arcade platform playable with the ethereum blockchain.")]), _vm._v(" "), _c("p", [_vm._v("To play you need  "), _c("a", {
+  }, [_vm._v("v 1.0.0\n                    ")]), _vm._v(" "), _c("p", [_vm._v("An online arcade platform playable with the ethereum blockchain.")]), _vm._v(" "), _c("p", [_vm._v("To play you need  "), _c("a", {
     staticStyle: {
       color: "#D1230F"
     },
@@ -5114,50 +5109,21 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "centratore justify-content-center align-items-center",
+    staticClass: "centratore flex-column align-items-center",
     attrs: {
       id: "page1"
     }
   }, [_c("div", {
-    staticClass: "container-fluid bg-black",
+    staticClass: "d-flex banner-board-helper align-items-center",
     staticStyle: {
-      "padding-bottom": "0px",
-      height: "80px",
-      position: "absolute",
-      top: "0",
-      "background-color": "black"
-    }
-  }, [_c("div", {
-    staticClass: "justify-content-around d-flex align-items-center",
-    staticStyle: {
-      "z-index": "1000"
-    }
-  }, [_c("div", {
-    staticClass: "avatar_helper_1"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "avatar_helper_1"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "avatar_helper_1"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "avatar_helper_1"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "avatar_helper_1"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "avatar_helper_1"
-  }), _vm._v(" "), _c("div", [_c("button", {
-    staticStyle: {
-      display: "inline",
-      border: "1px solid black",
-      "margin-top": "13px",
-      padding: "15px",
-      "padding-right": "5px",
-      color: "white",
       "background-color": "black",
-      "border-radius": "20px",
-      "margin-bottom": "30px"
-    },
+      height: "80px",
+      color: "black"
+    }
+  }, [_c("div", {
+    staticClass: "d-flex align-items-center position:absolute; top:0;",
     attrs: {
-      id: "ready_player_1"
+      id: ""
     }
   }, [_c("img", {
     staticStyle: {
@@ -5169,19 +5135,34 @@ var staticRenderFns = [function () {
       src: "images/extra_objects/ddd.jpg",
       alt: ""
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "avatar_helper_1"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "avatar_helper_1"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "avatar_helper_1"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "avatar_helper_1"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "avatar_helper_1"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "avatar_helper_1"
-  })])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("i", {
+    staticClass: "fa-solid fa-bars",
+    staticStyle: {
+      display: "inline",
+      "margin-bottom": "25px",
+      position: "relative",
+      "margin-right": "0px"
+    }
+  }), _vm._v(" "), _c("button", {
+    staticStyle: {
+      border: "1px solid black",
+      padding: "20px 0px 15px 15px",
+      color: "white",
+      "background-color": "black",
+      "border-radius": "20px"
+    }
+  }, [_c("img", {
+    staticStyle: {
+      display: "inline",
+      width: "30px",
+      "margin-left": "0px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplay1.png",
+      alt: ""
+    }
+  })])])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center flex-column"
   }, [_c("img", {
     staticClass: "ra",
@@ -5206,6 +5187,11 @@ var staticRenderFns = [function () {
       alt: ""
     }
   })]), _vm._v(" "), _c("div", {
+    staticClass: "justify-content-center align-content-center d-flex",
+    staticStyle: {
+      height: "calc(80vh - 80px)"
+    }
+  }, [_c("div", {
     staticClass: "bt"
   }, [_c("a", {
     attrs: {
@@ -5245,7 +5231,7 @@ var staticRenderFns = [function () {
     staticClass: "square"
   }, [_c("span", {
     staticClass: "text-white"
-  }, [_vm._v("v. 1")])])])])]);
+  }, [_vm._v("1.0")])])])])])]);
 }];
 render._withStripped = true;
 
@@ -5310,7 +5296,28 @@ var staticRenderFns = [function () {
     }
   }, [_c("div", {
     staticClass: "d-flex align-items-center"
-  }, [_c("button", {
+  }, [_c("img", {
+    staticStyle: {
+      width: "100px",
+      "margin-left": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/ddd.jpg",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("i", {
+    staticClass: "fa-solid fa-bars",
+    staticStyle: {
+      display: "inline",
+      "margin-bottom": "25px",
+      position: "relative",
+      "margin-right": "0px"
+    },
+    attrs: {
+      id: "modalkoo"
+    }
+  }), _vm._v(" "), _c("button", {
     staticStyle: {
       disaply: "none",
       border: "1px solid black",
@@ -5336,7 +5343,6 @@ var staticRenderFns = [function () {
     }
   })]), _vm._v(" "), _c("button", {
     staticStyle: {
-      display: "none",
       border: "1px solid black",
       padding: "20px 0px 15px 15px",
       "padding-right": "0px",
@@ -5348,11 +5354,7 @@ var staticRenderFns = [function () {
       onclick: "web3Login();",
       id: "ready_player_3.1"
     }
-  }, [_c("p", {
-    staticStyle: {
-      display: "inline"
-    }
-  }), _c("img", {
+  }, [_c("img", {
     staticStyle: {
       display: "inline",
       width: "30px",
@@ -5363,23 +5365,18 @@ var staticRenderFns = [function () {
       src: "images/extra_objects/iconaplay1.png",
       alt: ""
     }
-  })]), _vm._v(" "), _c("i", {
-    staticClass: "fa-solid fa-bars",
-    staticStyle: {
-      display: "inline",
-      "margin-bottom": "25px",
-      position: "relative",
-      "margin-right": "0px"
-    },
-    attrs: {
-      id: "modalkoo"
-    }
-  })])]), _vm._v(" "), _c("div", {
+  })])])]), _vm._v(" "), _c("div", {
     staticClass: "container-sm d-flex justify-content-center align-items-center flex-column",
     attrs: {
       id: "_box1_"
     }
-  }, [_c("div", {
+  }, [_c("p", {
+    staticClass: "text-white",
+    staticStyle: {
+      "font-family": '"VT323", monospace',
+      "margin-bottom": "35px"
+    }
+  }, [_vm._v("Next token recharge 23h 59m 59s")]), _vm._v(" "), _c("div", {
     staticClass: "d-flex container-sm justify-content-center alingn-items-center"
   }, [_c("img", {
     staticStyle: {
@@ -5454,7 +5451,7 @@ var staticRenderFns = [function () {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("1°\n                    "), _c("img", {
+  }, [_vm._v("1°\n                "), _c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -5464,7 +5461,7 @@ var staticRenderFns = [function () {
     attrs: {
       src: "images/extra_objects/iconaplayB.png"
     }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("div", {
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("img", {
     staticStyle: {
@@ -5508,7 +5505,7 @@ var staticRenderFns = [function () {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("2°\n                    "), _c("img", {
+  }, [_vm._v("2°\n                "), _c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -5518,7 +5515,7 @@ var staticRenderFns = [function () {
     attrs: {
       src: "images/extra_objects/iconaplayB.png"
     }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                ")]), _vm._v(" "), _c("span", {
+  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "black",
@@ -58597,7 +58594,7 @@ btnx.onclick = function () {
   page3.style.display = "block";
   page4.style.display = "none";
   page5.style.display = "none";
-  modalkoo2.style.display = "none";
+  modalkoo2.style.display = "flex";
 };
 
 btnz.onclick = function () {

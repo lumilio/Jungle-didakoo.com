@@ -21,6 +21,7 @@
                 <button id='ready_player_1.2' style='disaply:none;border:1px solid black;       padding:15px; padding-right:5px; color:white; background-color:black; border-radius:20px;  '><p ></p>  <img style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;'   src='images/extra_objects/iconaplay1.png' alt=""></button> 
                 <button onclick="web3Login();" id='ready_player_3.1' style='display:;border:1px solid black;       padding: 20px 0px 15px 15px; padding-right:0px; color:white; background-color:black; border-radius:20px;  '>
                     <img style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;'   src='images/extra_objects/iconaplay1.png' alt="">
+                    <!-- <p style='display:inline; background:white; border-radius:10px; background-color:black; color:white; border:1px solid white; padding:10px;' >Login </p> -->
                 </button> 
             </div>
         </div>
@@ -29,7 +30,8 @@
 
         <!----------------------- LOGO ----------------------->
         <div id="_box1_" class="container-sm d-flex justify-content-center align-items-center flex-column">
-            <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Sun Dec 17 1995 03:24:00 UTC+1 ROME</p>
+            <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Sun Dec 17 1995 03:24:00 UTC+1 ROME </p> -->
+            <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Next token recharge 23h 59m 59s</p>
             <div class="d-flex container-sm justify-content-center alingn-items-center">
                 <!-- <img style=' width:30px; ' src='images/board/tree.png' alt="">  -->
                 <img style="width: 60px; margin-bottom: 20px; display: inline; transform: scaleX(-1);" src="images/extra_objects/icon-06.png" alt=""/>

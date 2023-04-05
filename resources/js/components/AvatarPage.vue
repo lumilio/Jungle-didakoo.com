@@ -9,7 +9,7 @@
                     <img style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
                     <i style='display:inline; margin-bottom:25px;position:relative; margin-right:0px' class="fa-solid fa-bars"></i>
                     <button style='display:;border:1px solid black; padding: 20px 0px 15px 15px; color:white; background-color:black; border-radius:20px;  '>
-                        <!-- <p style='display:inline;' >Login </p> -->
+                        <!-- <p style='display:inline; background:white; border-radius:10px; background-color:black; color:white; border:1px solid white; padding:10px;' >Login </p> -->
                         <img style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;'   src='images/extra_objects/iconaplay1.png' alt="">
                     </button>
                     <!-- <p class='avatar_helper_' style='color:white;    border: 1px solid white; padding: 5px; margin:0;margin-left: 15px; '>v 2.1</p> -->
