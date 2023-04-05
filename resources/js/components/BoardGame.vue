@@ -17,19 +17,19 @@
                 <div class="d-flex flex-wrap justify-content-center">
                     <button  style='background-color:black; d-flex justify-content-center'> 
                         <div class="d-flex no-wrap justify-content-center align-items-center"> 
-                            <p class="m-0" > START</p>
+                            <p class="m-0" > QUICK GAME</p>
                             <i style='font-size:20px; margin-left:15px;' class="fa-solid fa-bolt"></i>
                         </div>
                     </button> 
                     <button  style='background-color:black; d-flex justify-content-center'> 
                         <div class="d-flex no-wrap justify-content-center"> 
-                            <p class="m-0" > INVITE P2</p>
+                            <p class="m-0" >  PRIVATE GAME P2</p>
                             <img style='width:30px; margin-left:8px' src='images/extra_objects/iconaplay1.png' alt="">
                         </div>
                     </button> 
                 </div>
                 <div class="d-flex flex-wrap justify-content-center">
-                    <button   style='background-color:black;' class="closekoo2 jusify-content-around" > <span>BOARD</span> <img style='width:30px; margin-left:8px' src='images/board/tree.png' alt=""></button>
+                    <button   style='background-color:black;' class="closekoo2 jusify-content-around" > <span>REASUME</span> <img style='width:30px; margin-left:8px' src='images/board/tree.png' alt=""></button>
                     <button id='btnkoo_3_1' class="jusify-content-around" style='background-color:black;' >  <span>QUIT</span> <img style='width:30px; margin-left:8px' src='images/board/animals/icon-17.png' alt=""></button> <!-- icon-17 rosso --> <!-- icon-41 bianco -->
                 </div>
                 <!-- <button style='background-color:black; colr:white; '> SEND INVITATION  <i class="fa-solid ml-2 fa-arrow-up-from-bracket"></i></button> -->
