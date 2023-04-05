@@ -3,7 +3,7 @@
         <div class='allineatore2'>
 
             <!----------------- NAV ------------------->
-            <div class="d-flex banner-board-helper align-items-center" style=' background-color:black; height:80px;    color: black; '>    
+            <div class="d-flex banner-board-helper align-items-center" style=' background-color:black; height:80px; color: black; '>    
                 <div id='btnkoo23' class="d-flex align-items-center position:absolute; top:0;">
                     <!-- <img style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/gab.png" alt="" /> -->
                     <img style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
@@ -17,7 +17,7 @@
             </div>
             <!----------------------------------------->
 
-            <div class="allineatore d-flex container-fluid flex-column justify-content-center px-4 align-items-center">
+            <div class="allineatore d-flex container-fluid flex-column justify-content-center px-4 mt-2 align-items-center">
 
                 <!------------------------ AVATAR CARD ---------------------->
                 <div style='margin-bottom:50px; margin-top:-1px; background-color:black; border:3px solid white;' class="container-sm avatar d-flex flex-column  align-items-center px-3">
