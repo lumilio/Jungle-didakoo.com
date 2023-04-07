@@ -1,9 +1,7 @@
 <template>
     <div class="allineatore2">
-
-
-        <!----------------- MODALS UTILITY ------------------->
-        <div id="myModalkoo2" class="modal modal-ingame align-items-center">
+                <!----------------- MODALS UTILITY ------------------->
+        <div id="myModalkoo2" :class="{'d-flex': modalOpen}" class="modal  modal-ingame align-items-center">
             <!-- Modal content -->
             <div style='' class="modal-content container-sm d-flex flex-column align-items-center">
                 <div class="d-flex container-sm align-items-center justify-content-between flex-row">
@@ -15,13 +13,13 @@
                     <p class="" style='color:white; font-size:17px; padding:10px;' > You win / You Lose / Other data</p>
                 </div>
                 <div class="d-flex flex-wrap justify-content-center">
-                    <button  style='background-color:black; d-flex justify-content-center'>
+                    <button @click="() => {modalOpen = false}"  style='background-color:black; d-flex justify-content-center'>
                         <div class="d-flex no-wrap justify-content-center align-items-center">
                             <p class="m-0" > START</p>
                             <i style='font-size:20px; margin-left:15px;' class="fa-solid fa-bolt"></i>
                         </div>
                     </button>
-                    <button  style='background-color:black; d-flex justify-content-center'>
+                    <button  style='background-color:black' class=" d-flex justify-content-center">
                         <div class="d-flex no-wrap justify-content-center">
                             <p class="m-0" > INVITE P2</p>
                             <img style='width:30px; margin-left:8px' src='images/extra_objects/iconaplay1.png' alt="">
@@ -29,8 +27,8 @@
                     </button>
                 </div>
                 <div class="d-flex flex-wrap justify-content-center">
-                    <button   style='background-color:black;' class="closekoo2 jusify-content-around" > <span>REASUME</span> <img style='width:30px; margin-left:8px' src='images/board/tree.png' alt=""></button>
-                    <button id='btnkoo_3_1' class="jusify-content-around" style='background-color:black;' >  <span>QUIT</span> <img style='width:30px; margin-left:8px' src='images/board/animals/icon-17.png' alt=""></button> <!-- icon-17 rosso --> <!-- icon-41 bianco -->
+                    <button  @click="() => {modalOpen = false}"  style='background-color:black;' class="closekoo2 jusify-content-around" > <span>REASUME</span> <img style='width:30px; margin-left:8px' src='images/board/tree.png' alt=""></button>
+                    <router-link to="rank"><button id='btnkoo_3_1' class="jusify-content-around" style='background-color:black;' >  <span>QUIT</span> <img style='width:30px; margin-left:8px' src='images/board/animals/icon-17.png' alt=""></button> <!-- icon-17 rosso --> <!-- icon-41 bianco --></router-link>
                 </div>
                 <!-- <button style='background-color:black; colr:white; '> SEND INVITATION  <i class="fa-solid ml-2 fa-arrow-up-from-bracket"></i></button> -->
             </div>
@@ -54,7 +52,7 @@
             <!-- Modal content -->
             <div style='background-color:black;' class="modal-content d-flex flex-column align-items-center">
                 <img style=" width:60px;" src=" images/extra_objects/backend.png"  alt="">
-                <button class="closekoo2" > RESUME </button>
+                <button class="closekoo2"> RESUME </button>
                 <button id='btnkoo_3_1' > QUIT  </button>
                 <button style='background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);'> Open room </button>
             </div>
@@ -68,7 +66,7 @@
             </div>
         </div>
         <!----------------------------------------->
-        <div class="allineatore d-flex flex-column container-sm justify-content-center align-items-center" style="padding-top: 0px; margin-top: -30px;height:90%;">
+        <div @keyup="keyup" class="allineatore d-flex flex-column container-sm justify-content-center align-items-center" style="padding-top: 0px; margin-top: -30px;height:90%;">
             <!-------------- PLAYER 2 DATA ---------------->
             <div class="board-player" >
                 <div style="background-color:#EDEB52;  width:100%; border:0;" class="record   ">
@@ -83,7 +81,7 @@
                 </div>
             </div>
             <!--------------------------------------------->
-            <div class=" board d-flex justify-content-center bg-transparent align-items-center">
+            <div  class=" board d-flex justify-content-center bg-transparent align-items-center">
                 <Game/>
                 <!-- <img class='board ' src="images/concepts/blue-red.jpeg" alt=""> -->
             </div>
@@ -108,10 +106,23 @@
 <script>
     import Game from "../Game/Game";
     export default {
+        data () {
+            return {
+                modalOpen: true
+            }
+        },
+        methods: {
+            keyup(ev){
+                if(ev.which === 27){
+                    this.modalOpen = true
+                }
+            }
+        },
         components: {
             Game
         },
         mounted() {
+            window.addEventListener('keyup', this.keyup)
             console.log('Board GAme Component mounted.')
         }
     }

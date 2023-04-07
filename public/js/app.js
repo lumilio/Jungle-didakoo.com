@@ -2815,10 +2815,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Game_Game__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Game/Game */ "./resources/js/components/Game/Game.vue");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      modalOpen: true
+    };
+  },
+  methods: {
+    keyup: function keyup(ev) {
+      if (ev.which === 27) {
+        this.modalOpen = true;
+      }
+    }
+  },
   components: {
     Game: _Game_Game__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   mounted: function mounted() {
+    window.addEventListener('keyup', this.keyup);
     console.log('Board GAme Component mounted.');
   }
 });
@@ -3651,34 +3664,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("Navbar"), _vm._v(" "), _c("div", {
-    staticClass: "d-flex text-light justify-content-center"
-  }, [_c("router-link", {
-    staticClass: "p-4",
-    attrs: {
-      to: "/game"
-    }
-  }, [_vm._v("game")]), _vm._v(" "), _c("router-link", {
-    staticClass: "p-4",
-    attrs: {
-      to: "/avatar"
-    }
-  }, [_vm._v("avatar")]), _vm._v(" "), _c("router-link", {
-    staticClass: "p-4",
-    attrs: {
-      to: "/rank"
-    }
-  }, [_vm._v("rank")]), _vm._v(" "), _c("router-link", {
-    staticClass: "p-4",
-    attrs: {
-      to: "/menu"
-    }
-  }, [_vm._v("menu")]), _vm._v(" "), _c("router-link", {
-    staticClass: "p-4",
-    attrs: {
-      to: "/info"
-    }
-  }, [_vm._v("info")])], 1), _vm._v(" "), _c("router-view")], 1);
+  return _c("div", [_c("Navbar"), _vm._v(" "), _c("router-view")], 1);
 };
 
 var staticRenderFns = [];
@@ -4703,104 +4689,40 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "allineatore2"
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _c("div", {
-    staticClass: "allineatore d-flex flex-column container-sm justify-content-center align-items-center",
-    staticStyle: {
-      "padding-top": "0px",
-      "margin-top": "-30px",
-      height: "90%"
-    }
-  }, [_vm._m(4), _vm._v(" "), _c("div", {
-    staticClass: "board d-flex justify-content-center bg-transparent align-items-center"
-  }, [_c("Game")], 1), _vm._v(" "), _vm._m(5)])]);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "modal align-items-center",
+  }, [_c("div", {
+    staticClass: "modal modal-ingame align-items-center",
+    "class": {
+      "d-flex": _vm.modalOpen
+    },
     attrs: {
       id: "myModalkoo2"
     }
   }, [_c("div", {
     staticClass: "modal-content container-sm d-flex flex-column align-items-center"
-  }, [_c("div", {
-    staticClass: "d-flex container-sm align-items-center justify-content-between flex-row"
-  }, [_c("img", {
-    staticStyle: {
-      width: "80px"
-    },
-    attrs: {
-      src: " images/extra_objects/ddd.jpg",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("span", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-top": "5px",
-      "margin-left": "8px"
-    }
-  }, [_vm._v(" v 1.0.0")])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex justify-content-center align-items-center",
-    staticStyle: {
-      "background-color": "black",
-      display: "flex",
-      "justify-content": "center",
-      "align-items": "center"
-    },
-    attrs: {
-      id: "console-screen"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "17px",
-      padding: "10px"
-    }
-  }, [_vm._v(" You win / You Lose / Other data")])]), _vm._v(" "), _c("div", {
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
     staticClass: "d-flex flex-wrap justify-content-center"
   }, [_c("button", {
     staticStyle: {
       "background-color": "black"
-    }
-  }, [_c("div", {
-    staticClass: "d-flex no-wrap justify-content-center align-items-center"
-  }, [_c("p", {
-    staticClass: "m-0"
-  }, [_vm._v(" START")]), _vm._v(" "), _c("i", {
-    staticClass: "fa-solid fa-bolt",
-    staticStyle: {
-      "font-size": "20px",
-      "margin-left": "15px"
-    }
-  })])]), _vm._v(" "), _c("button", {
-    staticStyle: {
-      "background-color": "black"
-    }
-  }, [_c("div", {
-    staticClass: "d-flex no-wrap justify-content-center"
-  }, [_c("p", {
-    staticClass: "m-0"
-  }, [_vm._v(" INVITE P2")]), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "30px",
-      "margin-left": "8px"
     },
-    attrs: {
-      src: "images/extra_objects/iconaplay1.png",
-      alt: ""
+    on: {
+      click: function click() {
+        _vm.modalOpen = false;
+      }
     }
-  })])])]), _vm._v(" "), _c("div", {
+  }, [_vm._m(2)]), _vm._v(" "), _vm._m(3)]), _vm._v(" "), _c("div", {
     staticClass: "d-flex flex-wrap justify-content-center"
   }, [_c("button", {
     staticClass: "closekoo2 jusify-content-around",
     staticStyle: {
       "background-color": "black"
+    },
+    on: {
+      click: function click() {
+        _vm.modalOpen = false;
+      }
     }
-  }, [_c("span", [_vm._v("BOARD")]), _vm._v(" "), _c("img", {
+  }, [_c("span", [_vm._v("REASUME")]), _vm._v(" "), _c("img", {
     staticStyle: {
       width: "30px",
       "margin-left": "8px"
@@ -4809,7 +4731,11 @@ var staticRenderFns = [function () {
       src: "images/board/tree.png",
       alt: ""
     }
-  })]), _vm._v(" "), _c("button", {
+  })]), _vm._v(" "), _c("router-link", {
+    attrs: {
+      to: "rank"
+    }
+  }, [_c("button", {
     staticClass: "jusify-content-around",
     staticStyle: {
       "background-color": "black"
@@ -4826,7 +4752,103 @@ var staticRenderFns = [function () {
       src: "images/board/animals/icon-17.png",
       alt: ""
     }
-  })])])])]);
+  })])])], 1)])]), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _c("div", {
+    staticClass: "allineatore d-flex flex-column container-sm justify-content-center align-items-center",
+    staticStyle: {
+      "padding-top": "0px",
+      "margin-top": "-30px",
+      height: "90%"
+    },
+    on: {
+      keyup: _vm.keyup
+    }
+  }, [_vm._m(7), _vm._v(" "), _c("div", {
+    staticClass: "board d-flex justify-content-center bg-transparent align-items-center"
+  }, [_c("Game")], 1), _vm._v(" "), _vm._m(8)])]);
+};
+
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "d-flex container-sm align-items-center justify-content-between flex-row"
+  }, [_c("img", {
+    staticStyle: {
+      width: "80px"
+    },
+    attrs: {
+      src: " images/extra_objects/ddd.jpg",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("span", {
+    staticStyle: {
+      color: "white",
+      margin: "0",
+      "margin-top": "5px",
+      "margin-left": "8px"
+    }
+  }, [_vm._v(" v 1.0.0")])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "d-flex justify-content-center align-items-center",
+    staticStyle: {
+      "background-color": "black",
+      display: "flex",
+      "justify-content": "center",
+      "align-items": "center"
+    },
+    attrs: {
+      id: "console-screen"
+    }
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "17px",
+      padding: "10px"
+    }
+  }, [_vm._v(" You win / You Lose / Other data")])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "d-flex no-wrap justify-content-center align-items-center"
+  }, [_c("p", {
+    staticClass: "m-0"
+  }, [_vm._v(" START")]), _vm._v(" "), _c("i", {
+    staticClass: "fa-solid fa-bolt",
+    staticStyle: {
+      "font-size": "20px",
+      "margin-left": "15px"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("button", {
+    staticClass: "d-flex justify-content-center",
+    staticStyle: {
+      "background-color": "black"
+    }
+  }, [_c("div", {
+    staticClass: "d-flex no-wrap justify-content-center"
+  }, [_c("p", {
+    staticClass: "m-0"
+  }, [_vm._v(" INVITE P2")]), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "30px",
+      "margin-left": "8px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplay1.png",
+      alt: ""
+    }
+  })])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
@@ -5265,7 +5287,6 @@ var staticRenderFns = [function () {
   }, [_c("img", {
     staticClass: "ra",
     staticStyle: {
-      display: "none",
       "margin-bottom": "100px"
     },
     attrs: {
@@ -5276,7 +5297,6 @@ var staticRenderFns = [function () {
   }), _vm._v(" "), _c("img", {
     staticClass: "ra",
     staticStyle: {
-      display: "none",
       "margin-bottom": "100px"
     },
     attrs: {
@@ -5363,7 +5383,7 @@ var render = function render() {
     attrs: {
       id: "modalx"
     }
-  }, [_vm._v(" Jungle Game")])]), _vm._v(" "), _c("img", {
+  }, [_c("span", [_vm._v("\n                        Jungle Game\n                    ")])])]), _vm._v(" "), _c("img", {
     staticStyle: {
       width: "60px",
       "margin-bottom": "20px",
@@ -57499,9 +57519,6 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /* require ('./initial'); */
 
-
-__webpack_require__(/*! ./fakerouting */ "./resources/js/fakerouting.js");
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -58638,246 +58655,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_RankPage_vue_vue_type_template_id_706b6a1e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-/***/ }),
-
-/***/ "./resources/js/fakerouting.js":
-/*!*************************************!*\
-  !*** ./resources/js/fakerouting.js ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var modalkoo = document.getElementById("myModalkoo");
-var modalkoo2 = document.getElementById("myModalkoo2");
-var modalkoo4 = document.getElementById("myModalkoo4");
-var modalkoo6 = document.getElementById("myModalkoo6");
-var btnxkoo = document.getElementById("modalkoo");
-var btnxkoo2 = document.getElementById("btnkoo2");
-var btnxkoo3 = document.getElementById("btnkoo3");
-var btnxkoo4 = document.getElementById("btnkoo4");
-var btnxkoo22 = document.getElementById("btnkoo22");
-var btnxkoo23 = document.getElementById("btnkoo23");
-var spankoo = document.getElementsByClassName("closekoo")[0];
-var spankoo2 = document.getElementsByClassName("closekoo2")[0];
-var spankoo3 = document.getElementsByClassName("closekoo3")[0];
-var spankoo4 = document.getElementsByClassName("closekoo4")[0];
-var spankoo_rank = document.getElementsByClassName("closekoo_rank")[0];
-var btnxkooM = document.getElementById('ready_player_3.1');
-var rank_record = document.getElementsByClassName("record")[0];
-/* ................................. */
-
-rank_record.onclick = function () {
-  page1.style.display = "none";
-  page2.style.display = "none";
-  page3.style.display = "none";
-  page4.style.display = "block";
-  page5.style.display = "none";
-};
-
-btnxkoo.onclick = function () {
-  page1.style.display = "flex";
-  page2.style.display = "none";
-  page3.style.display = "none";
-  page4.style.display = "none";
-  page5.style.display = "none";
-};
-
-btnxkoo2.onclick = function () {
-  modalkoo2.style.display = "flex";
-  page1.style.display = "none";
-  page2.style.display = "none";
-  page4.style.display = "none";
-  page5.style.display = "none";
-};
-
-btnxkoo4.onclick = function () {
-  page1.style.display = "flex";
-  page2.style.display = "none";
-  page3.style.display = "none";
-  page4.style.display = "none";
-  page5.style.display = "none";
-};
-
-btnxkoo22.onclick = function () {
-  page1.style.display = "none";
-  page2.style.display = "none";
-  page3.style.display = "none";
-  page4.style.display = "block";
-  page5.style.display = "none";
-};
-
-btnxkoo23.onclick = function () {
-  page1.style.display = "none";
-  page2.style.display = "block";
-  page3.style.display = "none";
-  page4.style.display = "none";
-  page5.style.display = "none";
-};
-/* menu logo redirect */
-
-/* const ready1 = document.getElementById("ready_player_1"); */
-
-/* ready1.onclick = function() {
-    page1.style.display = "none";
-    page2.style.display = "block";
-    page3.style.display = "none";
-    page4.style.display = "none";
-    page5.style.display = "none";
-} */
-
-
-var ready12 = document.getElementById("ready_player_1.2");
-
-ready12.onclick = function () {
-  page1.style.display = "none";
-  page2.style.display = "none";
-  page3.style.display = "none";
-  page4.style.display = "block";
-  page5.style.display = "none";
-};
-
-spankoo2.onclick = function () {
-  modalkoo2.style.display = "none";
-};
-
-spankoo4.onclick = function () {
-  modalkoo4.style.display = "none";
-};
-
-window.onclick = function (event) {
-  if (event.target == modalkoo2) {
-    modalkoo2.style.display = "none";
-  }
-};
-
-window.onclick = function (event) {
-  if (event.target == modalkoo3) {}
-};
-
-window.onclick = function (event) {
-  if (event.target == modalkoo4) {
-    modalkoo4.style.display = "none";
-  }
-};
-
-window.onclick = function (event) {
-  if (event.target == modalkoo6) {
-    modalkoo6.style.display = "none";
-  }
-};
-
-var btnkoo_2_1 = document.getElementById("btnkoo_2_1");
-var btnkoo_2_2 = document.getElementById("btnkoo_2_2");
-var btnkoo_2_3 = document.getElementById("btnkoo_2_3");
-var btnkoo_3_1 = document.getElementById("btnkoo_3_1");
-var btnkoo_3_2 = document.getElementById("btnkoo_3_2");
-var btnkoo_3_3 = document.getElementById("btnkoo_3_3");
-var btnkoo_4_1 = document.getElementById("btnkoo_4_1");
-var btnkoo_4_2 = document.getElementById("btnkoo_4_2");
-var btnkoo_4_3 = document.getElementById("btnkoo_4_3");
-var btnkoo_5_1 = document.getElementById("btnkoo_5_1");
-var btnkoo_5_2 = document.getElementById("btnkoo_5_2");
-var btnkoo_5_3 = document.getElementById("btnkoo_5_3");
-var page1 = document.getElementById("page1");
-var page2 = document.getElementById("page2");
-var page3 = document.getElementById("page3");
-var page4 = document.getElementById("page4");
-var page5 = document.getElementById("page5");
-var btnx = document.getElementById("modalx");
-var btny = document.getElementById("modaly");
-var btnz = document.getElementById("modalz");
-
-btnkoo_2_3.onclick = function () {
-  page1.style.display = "flex";
-  page2.style.display = "none";
-  page3.style.display = "none";
-  page4.style.display = "none";
-  page5.style.display = "none";
-}; // When the user clicks on the button, open the modal
-
-
-btnx.onclick = function () {
-  page1.style.display = "none";
-  page2.style.display = "none";
-  page3.style.display = "block";
-  page4.style.display = "none";
-  page5.style.display = "none";
-  modalkoo2.style.display = "flex";
-};
-
-btnz.onclick = function () {
-  page1.style.display = "none";
-  page2.style.display = "block";
-  page3.style.display = "none";
-  page4.style.display = "none";
-  page5.style.display = "none";
-};
-
-btny.onclick = function () {
-  page1.style.display = "none";
-  page2.style.display = "none";
-  page3.style.display = "none";
-  page4.style.display = "none";
-  page5.style.display = "block";
-};
-
-btnkoo_2_1.onclick = function () {
-  page1.style.display = "flex";
-  page2.style.display = "none";
-  page3.style.display = "none";
-  page4.style.display = "none";
-  page5.style.display = "none";
-};
-
-btnkoo_3_1.onclick = function () {
-  page1.style.display = "none";
-  page2.style.display = "block";
-  page3.style.display = "none";
-  page4.style.display = "none";
-  page5.style.display = "none";
-  modalkoo2.style.display = "none";
-};
-
-btnkoo_4_1.onclick = function () {
-  page1.style.display = "flex";
-  page2.style.display = "none";
-  page3.style.display = "none";
-  page4.style.display = "none";
-  page5.style.display = "none";
-};
-
-btnkoo_2_2.onclick = function () {
-  page1.style.display = "none";
-  page2.style.display = "none";
-  page3.style.display = "none";
-  page4.style.display = "block";
-  page5.style.display = "none";
-};
-
-btnkoo_3_2.onclick = function () {
-  page1.style.display = "none";
-  page2.style.display = "block";
-  page3.style.display = "none";
-  page4.style.display = "none";
-  page5.style.display = "none";
-};
-
-btnkoo_4_2.onclick = function () {
-  page1.style.display = "none";
-  page2.style.display = "none";
-  page3.style.display = "none";
-  page4.style.display = "block";
-  page5.style.display = "none";
-};
-
-btnkoo_5_2.onclick = function () {
-  page1.style.display = "none";
-  page2.style.display = "none";
-  page3.style.display = "none";
-  page4.style.display = "flex";
-  page5.style.display = "none";
-};
 
 /***/ }),
 

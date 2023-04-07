@@ -25,7 +25,11 @@
                 <!-- <img style=' width:30px; ' src='images/board/tree.png' alt="">  -->
                 <img style="width: 60px; margin-bottom: 20px; display: inline; transform: scaleX(-1);" src="images/extra_objects/icon-06.png" alt=""/>
                 <router-link :to="{ path: 'game' }" style="display: contents">
-                    <button id="modalx" class="no-wrap align-items-center text-big d-flex px-4 call_button"> Jungle Game<!-- <img style='width:130px; margin-left:10px; margin-bottom:15px; ' src='images/extra_objects/ddd.jpg' alt=""> --> </button>
+                    <button id="modalx" class="no-wrap align-items-center text-big d-flex px-4 call_button">
+                        <span>
+                            Jungle Game
+                        </span>
+                    </button>
                 </router-link>
 
                 <img style="width: 60px; margin-bottom: 20px; display: inline" src="images/extra_objects/icon-05.png" alt="" />

@@ -24,7 +24,6 @@ const app = new Vue({
 
 require('./bootstrap');
 /* require ('./initial'); */
-require('./fakerouting');
 
 
 

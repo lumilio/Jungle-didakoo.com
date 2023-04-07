@@ -53,26 +53,20 @@
         window.onload = async function() {
             var led_tag = document.getElementById('led');
             var current_status = localStorage.getItem('user_status', 'LoggedIn');
-            if(current_status)
+            if(current_status || true)
                             {
                                 document.getElementById('img_xxx').style.display = 'block';
-                                document.getElementById('ready_player_1.2').style.display = 'block';
                                 document.getElementById('btnkoo22').style.display = 'block';
-                                document.getElementById('btninfoLogin').style.display = 'none';
                                 document.getElementById('img_xxxxy').style.display = 'none';
-                                document.getElementById('ready_player_3.1').style.display = 'none';
                                 led_tag.style.color = "#46e546";
-                            } 
-                            else 
+                            }
+                            else
                             {
                                 led_tag.style.color = "red";
                                 document.getElementById('img_xxx').style.display = 'none';
-                                document.getElementById('ready_player_1.2').style.display = 'none';
                                 document.getElementById('btnkoo22').style.display = 'none';
-                                document.getElementById('btninfoLogin').style.display = 'block';
                                 document.getElementById('img_xxxxy').style.display = 'block';
-                                document.getElementById('ready_player_3.1').style.display = 'block';
-                            }     
+                            }
         }
 
         async function web3Login() {
@@ -91,8 +85,7 @@
                 toastr.success('Logged out successfully');
             }
             else{
-             
-            var led_tag = document.getElementById('led');
+
             if (!window.ethereum) {
                 toastr.error('MetaMask not detected. Please install MetaMask first.');
                 return;
@@ -104,7 +97,7 @@
 
                     await provider.send("eth_requestAccounts", []);
                     const address = await provider.getSigner().getAddress();
-                    
+
                     const amount = await provider.getSigner().getBalance();
                     const signature = await provider.getSigner().signMessage(message);
 
@@ -150,7 +143,7 @@
                                         document.getElementById('ready_player_3.1').style.display = 'none';
 
                         page2.style.display = "block";
-                            
+
                         toastr.success('Log in succeesfully!');
 
                         response = await fetch('api/web3-register-ethwallet', {
@@ -179,10 +172,10 @@
                                         '_token': '{{ csrf_token() }}'
                                     })
                                 });
-                                
+
                                 console.log("Update successfully!");
                             } else {
-                            
+
                                 console.log("Register successfully!");
                             }
                         });
@@ -191,7 +184,7 @@
                         led_tag.style.color = "red";
                         console.log('access denied');
                     }
-            } 
+            }
         }
 
     </script>

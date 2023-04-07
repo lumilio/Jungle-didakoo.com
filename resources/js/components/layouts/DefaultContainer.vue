@@ -1,13 +1,13 @@
 <template>
     <div>
         <Navbar/>
-        <div class="d-flex text-light justify-content-center">
+<!--        <div class="d-flex text-light justify-content-center">
             <router-link class="p-4" to="/game">game</router-link>
             <router-link class="p-4" to="/avatar">avatar</router-link>
             <router-link class="p-4" to="/rank">rank</router-link>
             <router-link class="p-4" to="/menu">menu</router-link>
             <router-link class="p-4" to="/info">info</router-link>
-        </div>
+        </div>-->
         <router-view ></router-view>
     </div>
 </template>
