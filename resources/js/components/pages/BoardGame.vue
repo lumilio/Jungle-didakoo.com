@@ -7,26 +7,26 @@
             <!-- Modal content -->
             <div style='' class="modal-content container-sm d-flex flex-column align-items-center">
                 <div class="d-flex container-sm align-items-center justify-content-between flex-row">
-                    <img style="width:80px" src=" images/extra_objects/ddd.jpg"  alt=""> 
+                    <img style="width:80px" src=" images/extra_objects/ddd.jpg"  alt="">
                     <span style="color:white; margin:0; margin-top:5px; margin-left:8px;"> v 1.0.0</span>
                     <!-- <p class='avatar_helper_' style='color:white;  padding: 5px; margin:0;margin-left: 5px; '>v 1</p> -->
                 </div>
-                <div class="d-flex justify-content-center align-items-center" id='console-screen' style='background-color:black; display:flex;  justify-content:center; align-items:center;'>  
+                <div class="d-flex justify-content-center align-items-center" id='console-screen' style='background-color:black; display:flex;  justify-content:center; align-items:center;'>
                     <p class="" style='color:white; font-size:17px; padding:10px;' > You win / You Lose / Other data</p>
-                </div> 
+                </div>
                 <div class="d-flex flex-wrap justify-content-center">
-                    <button  style='background-color:black; d-flex justify-content-center'> 
-                        <div class="d-flex no-wrap justify-content-center align-items-center"> 
+                    <button  style='background-color:black; d-flex justify-content-center'>
+                        <div class="d-flex no-wrap justify-content-center align-items-center">
                             <p class="m-0" > START</p>
                             <i style='font-size:20px; margin-left:15px;' class="fa-solid fa-bolt"></i>
                         </div>
-                    </button> 
-                    <button  style='background-color:black; d-flex justify-content-center'> 
-                        <div class="d-flex no-wrap justify-content-center"> 
+                    </button>
+                    <button  style='background-color:black; d-flex justify-content-center'>
+                        <div class="d-flex no-wrap justify-content-center">
                             <p class="m-0" > INVITE P2</p>
                             <img style='width:30px; margin-left:8px' src='images/extra_objects/iconaplay1.png' alt="">
                         </div>
-                    </button> 
+                    </button>
                 </div>
                 <div class="d-flex flex-wrap justify-content-center">
                     <button   style='background-color:black;' class="closekoo2 jusify-content-around" > <span>BOARD</span> <img style='width:30px; margin-left:8px' src='images/board/tree.png' alt=""></button>
@@ -46,7 +46,7 @@
                 <img style=" width:60px;" src=" images/extra_objects/backend.png"  alt="">
                 <button class="closekoo2" > RESUME </button>
                 <button id='btnkoo_3_1' > QUIT  </button>
-                <button style='background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);'> Open room </button> 
+                <button style='background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);'> Open room </button>
             </div>
         </div>
         <!-- modale per visualizzare miniatura profilo -->
@@ -56,12 +56,12 @@
                 <img style=" width:60px;" src=" images/extra_objects/backend.png"  alt="">
                 <button class="closekoo2" > RESUME </button>
                 <button id='btnkoo_3_1' > QUIT  </button>
-                <button style='background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);'> Open room </button> 
+                <button style='background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);'> Open room </button>
             </div>
         </div>
         <!---------------------------------------------------->
         <!----------------- NAV ------------------->
-        <div class="d-flex banner-board-helper align-items-center" style='  height:80px;    color: black; '>    
+        <div class="d-flex banner-board-helper align-items-center" style='  height:80px;    color: black; '>
             <div id='btnkoo2' class="d-flex align-items-center position:absolute; top:0;">
                 <p class='avatar_helper_' style='color:white;  padding: 5px; margin:0;margin-left: 5px; '>Console</p>
                 <i style="font-size: 25px; margin-left: 5px; margin-bottom: 3px" class="fa-solid fa-gamepad"></i>
@@ -74,7 +74,7 @@
                 <div style="background-color:#EDEB52;  width:100%; border:0;" class="record   ">
                     <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
-                    </p> 
+                    </p>
                     <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <img style='width:30px; ' src='images/extra_objects/icon-59.png' alt="">
                         <!-- <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i> -->
@@ -86,13 +86,13 @@
             <div class=" board d-flex justify-content-center bg-transparent align-items-center">
                 <Game/>
                 <!-- <img class='board ' src="images/concepts/blue-red.jpeg" alt=""> -->
-            </div> 
+            </div>
             <!-------------- PLAYER 1 DATA ---------------->
             <div class="board-player" >
                 <div style="background-color:#EDEB52;  width:100%; border:0;" class="record   ">
                     <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
-                    </p> 
+                    </p>
                     <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <img style='width:30px; ' src='images/extra_objects/icon-59.png' alt="">
                         <!-- <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i> -->
@@ -101,12 +101,12 @@
                 </div>
             </div>
             <!--------------------------------------------->
-        </div>  
+        </div>
     </div>
 </template>
 
 <script>
-    import Game from "./Game/Game.vue";
+    import Game from "../Game/Game";
     export default {
         components: {
             Game

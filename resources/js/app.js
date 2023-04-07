@@ -8,22 +8,18 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "./store";
 import router from "./router";
+import App from "./App.vue"
 import {createApp} from 'vue';
 
 Vue.use(VueRouter);
 
-// window.Vue = require('vue');
 
-Vue.component('board-game', require('./components/BoardGame.vue').default);
-Vue.component('menu-page', require('./components/MenuPage.vue').default);
-Vue.component('rank-page', require('./components/RankPage.vue').default);
-Vue.component('avatar-page', require('./components/AvatarPage.vue').default);
-Vue.component('info-page', require('./components/InfoPage.vue').default);
 
 const app = new Vue({
     el: '#app',
     store,
-    router  
+    render: h => h(App),
+    router
 });
 
 require('./bootstrap');

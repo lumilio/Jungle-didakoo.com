@@ -11010,13 +11010,6 @@ body,
   display: block;
 }
 
-#page1,
-#page3,
-#page4,
-#page5 {
-  display: none;
-}
-
 /* ----------------------------------------------------------------------------- */
 
 /* ---------------------------- LAYOUT PAGES ----------------------------------- */
@@ -11026,10 +11019,10 @@ body,
 /* #page1{
     background:
     linear-gradient(
-      rgba(0, 0, 0, 0.1), 
+      rgba(0, 0, 0, 0.1),
       rgba(0, 0, 0, 0.1)
     ),
-    url("images/wallpepars/sky.png"); 
+    url("images/wallpepars/sky.png");
     background-position:  bottom ;
     background-repeat: repeat;
     min-height: 100vh;
@@ -11039,10 +11032,10 @@ body,
 /* #page2{
     background:
     linear-gradient(
-    rgba(0, 0, 0, 0.8), 
+    rgba(0, 0, 0, 0.8),
     rgba(0, 0, 0, 0.8)
     ),
-    url("images/board/water4.jpg"); 
+    url("images/board/water4.jpg");
     background-repeat: repeat;
     background-size: 100vw;
     min-height: 100vw;
@@ -11053,7 +11046,7 @@ body,
 
 /* #page3{
     background:
-    url("images/wallpepars/space.jpeg");     
+    url("images/wallpepars/space.jpeg");
     background-repeat: repeat;
     background-position: left;
 } */
@@ -11061,10 +11054,10 @@ body,
 /* #page3{
     background:
     linear-gradient(
-      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0.7)
-    ), 
-    url("images/wallpepars/chess3.jpg") ; 
+    ),
+    url("images/wallpepars/chess3.jpg") ;
     background-repeat: repeat ;
     background-size: 100vh ;
     min-height: 100vh ;
@@ -11085,18 +11078,13 @@ body,
   /* Sit on top */
   left: 0;
   top: 0;
-  height: 100vh;
+  height: 100%;
   /* Full height */
   overflow: auto;
   /* Enable scroll if needed */
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/images/nilo.jpg?a7af08fedccdb689be60a2c03699c2cb);
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);
   background-repeat: repeat;
-  background-size: 100vh;
-  /* background-size: 100%; */
-  /* padding-top: 1rem; */
-  /* animation: fade-in 0.6s; */
-  /* font-family: 'VT323', monospace ; */
-  /* font-size: 20px !important; */
+  background-size: 900px;
 }
 
 #page4 {
@@ -11104,11 +11092,9 @@ body,
 }
 
 #page5 {
-  background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)), url(/images/nilo.jpg?a7af08fedccdb689be60a2c03699c2cb);
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(/images/water4.jpg?0a53390684384b5f43b5383cff54c9b4);
   background-repeat: repeat;
-  background-size: 100vw;
-  min-height: 100vh;
-  height: 100%;
+  background-size: 700px;
   background-position: center;
 }
 
@@ -11850,7 +11836,7 @@ body,
 .modal-content {
   background-color: black;
   /* box-shadow: 10px 10px purple; */
-  border-radius: 30px;
+  /* border-radius: 30px; */
   margin: 15% auto;
   padding: 20px;
   /* border: 8px solid BLACK; */

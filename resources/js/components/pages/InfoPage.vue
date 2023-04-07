@@ -1,5 +1,5 @@
 <template>
-    <div id='page5'> 
+    <div id='page5'>
         <div class='allineatore2'>
 
 
@@ -13,24 +13,9 @@
                     <button id='btnkoo_5_3' > LOG𐍈UT </button>
                 </div>
             </div>
-            <!------------------------------------------------>
-
-            <!--------------------- NAV -------------------->
-            <div class="d-flex banner-board-helper align-items-center" style=' background-color:black; height:80px;    color: black; '>    
-                <div id='btnkoo4' class="d-flex align-items-center position:absolute; top:0;">
-                    <img style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
-                    <i style='display:inline; margin-bottom:25px;position:relative; margin-right:0px' class="fa-solid fa-bars"></i>
-                    <button style='display:;border:1px solid black; padding: 20px 0px 15px 15px; color:white; background-color:black; border-radius:20px;  '>
-                        <!-- <p style='display:inline; background:white; border-radius:10px; background-color:black; color:white; border:1px solid white; padding:10px;' >Login </p> -->
-                        <div id='btnkoo22' class="d-none"></div>
-                        <img  style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;'   src='images/extra_objects/iconaplay1.png' alt="">
-                    </button>
-                </div>
-            </div>
-            <!---------------------------------------------->
 
             <!---------------------- BODY ------------------->
-            <div class="allineatore d-flex justify-content-top "> 
+            <div class="allineatore d-flex justify-content-top ">
                 <div style="margin-top:30px; background-color:black;" class="container-sm pepar  ">
                     <p style='font-size:30px;'>v 1.0.0
                         <!-- <img style="width:40px; padding-bottom:20px;  margin: 0 5px;"   src='images/extra_objects/cubo2.png' alt=""><img style="width:40px; padding-bottom:20px;"   src='images/extra_objects/sunflower_1f33b.png' alt=""> -->
@@ -53,12 +38,12 @@
                     <!-- <p>Click the purple button to create a link for player 2</p> -->
                 <p>The flowers token Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni odio ipsam neque facilis eaque in quasi, inventore quos officia quaerat cupiditate. Exercitationem magnam suscipit autem cupiditate unde officia ipsam, enim quibusdam esse ipsa temporibus ut harum placeat, pariatur molestiae quod dolorum velit dicta eius fuga ipsum iste! Assumenda, voluptas. Quis sequi, rerum modi quod repudiandae, fuga tempora aut recusandae non rem nemo molestias consequuntur quam provident culpa nobis aspernatur doloremque dolor dolores necessitatibus dolore architecto quo. Vel unde corporis, perspiciatis ratione, officiis modi atque eum quidem quis quam voluptates suscipit incidunt sint quos ab facere accusantium, nobis nihil eius! Molestias.<img style='width:30px;' src='images/extra_objects/ff.png' alt=""> will be recharged in 24:00:00 </p>
                 </div>
-            </div>   
+            </div>
             <!----------------------------------------------->
 
 
         </div>
-    </div> 
+    </div>
 </template>
 
 
@@ -77,7 +62,7 @@ export default {
 //         },
 //  mounted () {
 //   //this.status();
-//    console.log("Info PAge Component mounted."); 
+//    console.log("Info PAge Component mounted.");
 //         },
 }
 </script>

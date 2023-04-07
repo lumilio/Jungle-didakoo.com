@@ -15,8 +15,8 @@ body,html {
     margin: 0px;
     background-color: black;
     /* overflow: hidden; */
-    font-family: 'Poppins', sans-serif;  
-    /* font-family: 'VT323', monospace ; */           
+    font-family: 'Poppins', sans-serif;
+    /* font-family: 'VT323', monospace ; */
 }
 
 .centratore{
@@ -25,7 +25,7 @@ body,html {
     margin: 0px;
     background-color: black;
     /* overflow: hidden; */
-    font-family: 'Poppins', sans-serif;   
+    font-family: 'Poppins', sans-serif;
 }
 
 body, .centratore {
@@ -41,12 +41,6 @@ body, .centratore {
 #page2{
     display: block;
 }
-#page1,
-#page3,
-#page4,
-#page5 {
-    display: none;
-}
 
 /* ----------------------------------------------------------------------------- */
 /* ---------------------------- LAYOUT PAGES ----------------------------------- */
@@ -55,10 +49,10 @@ body, .centratore {
 /* #page1{
     background:
     linear-gradient(
-      rgba(0, 0, 0, 0.1), 
+      rgba(0, 0, 0, 0.1),
       rgba(0, 0, 0, 0.1)
     ),
-    url("images/wallpepars/sky.png"); 
+    url("images/wallpepars/sky.png");
     background-position:  bottom ;
     background-repeat: repeat;
     min-height: 100vh;
@@ -68,10 +62,10 @@ body, .centratore {
 /* #page2{
     background:
     linear-gradient(
-    rgba(0, 0, 0, 0.8), 
+    rgba(0, 0, 0, 0.8),
     rgba(0, 0, 0, 0.8)
     ),
-    url("images/board/water4.jpg"); 
+    url("images/board/water4.jpg");
     background-repeat: repeat;
     background-size: 100vw;
     min-height: 100vw;
@@ -82,7 +76,7 @@ body, .centratore {
 
 /* #page3{
     background:
-    url("images/wallpepars/space.jpeg");     
+    url("images/wallpepars/space.jpeg");
     background-repeat: repeat;
     background-position: left;
 } */
@@ -90,10 +84,10 @@ body, .centratore {
 /* #page3{
     background:
     linear-gradient(
-      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0.7)
-    ), 
-    url("images/wallpepars/chess3.jpg") ; 
+    ),
+    url("images/wallpepars/chess3.jpg") ;
     background-repeat: repeat ;
     background-size: 100vh ;
     min-height: 100vh ;
@@ -104,7 +98,7 @@ body, .centratore {
 #page3{
     background:
     linear-gradient(
-    rgba(0, 0, 0, 1), 
+    rgba(0, 0, 0, 1),
     rgba(0, 0, 0, 1)
     ),
     url("images/board/water4.jpg");
@@ -120,11 +114,11 @@ body, .centratore {
     overflow: auto; /* Enable scroll if needed */
     background:
     linear-gradient(
-      rgba(0, 0, 0, 0.1), 
+      rgba(0, 0, 0, 0.1),
       rgba(0, 0, 0, 0.1)
-    ), 
+    ),
     /* url("images/board/nilo2.jpg") ; */
-    url("images/board/bignilo3.jpg") ; 
+    url("images/board/bignilo3.jpg") ;
     background-repeat: repeat ;
     background-size: 900px ;
 }
@@ -138,10 +132,10 @@ body, .centratore {
 #page5{
     background:
     linear-gradient(
-      rgba(0, 0, 0, 0.1), 
+      rgba(0, 0, 0, 0.1),
       rgba(0, 0, 0, 0.1)
-    ), 
-    url("images/board/water4.jpg") ; 
+    ),
+    url("images/board/water4.jpg") ;
     background-repeat: repeat ;
     background-size: 700px ;
     background-position: center ;
@@ -179,7 +173,7 @@ body, .centratore {
     text-align: center;
     height: 80vh;
 } */
-    
+
 /* ----------------------------------------------------------------------------- */
 /* -------------------------- MENU PAGE BUTTONS -------------------------------- */
 /* ----------------------------------------------------------------------------- */
@@ -187,7 +181,7 @@ body, .centratore {
 
 .bt {
     z-index: 2;
-    
+
     display: flex;
     bottom: 55px;
     flex-direction: row;
@@ -263,12 +257,12 @@ body, .centratore {
 /* ----------------------------------------------------------------------------- */
 /* ------------------------ PAGE 2 RANK UTILITY -------------------------------- */
 /* ----------------------------------------------------------------------------- */
-    
+
 .fa-bars{
     color: white;
     margin-top: 25px;
     margin-left: 10px;
-    position: absolute;   
+    position: absolute;
     font-size: 27px;
 }
 
@@ -344,7 +338,7 @@ body, .centratore {
 
 .banner-board-helper{
     justify-content: center;
-} 
+}
 
 @media screen and (max-width: 899px) {
     #scarabeo {
@@ -497,7 +491,7 @@ body, .centratore {
     .board{
         width: 330px;
         /* height: 450px; */
-        
+
     }
     .board-player{
         width: calc(330px)
@@ -519,7 +513,7 @@ body, .centratore {
         border-radius: 30px;
         font-size: small;
     }
-    
+
 
 }
 
@@ -741,7 +735,7 @@ body, .centratore {
         background-color: #EDEB51;
         background-color: #EE5E81; */
         position: relative;
-    } 
+    }
     #page4 .record {
         width: 280px ;
     }
@@ -789,7 +783,7 @@ body, .centratore {
 /* ----------------------------------------------------------------------------- */
 /* --------------------------- UTILITY MODALS ---------------------------------- */
 /* ----------------------------------------------------------------------------- */
- 
+
 .modal img {width: 100px;}
 
 /* .modal button {
@@ -843,7 +837,7 @@ body, .centratore {
     height: fit-content;
     /* border: 5px solid #FCB341 ; */
 }
-  
+
 #modalx div{
     background-color: black;
 }
@@ -907,7 +901,7 @@ body, .centratore {
     font-size: 28px;
     font-weight: bold;
 }
-  
+
 .close:hover,
 .close:focus {
     color: black;
@@ -924,7 +918,7 @@ body, .centratore {
 }
 
 .closekoo ,
-.closekoo2 , 
+.closekoo2 ,
 .closekoo3 ,
 .closekoo4 {
     /* color: #aaa; */
@@ -934,11 +928,11 @@ body, .centratore {
 }
 
 .closekoo:hover ,
-.closekoo2:hover , 
+.closekoo2:hover ,
 .closekoo3:hover ,
 .closekoo4:hover ,
 .closekoo:focus,
-.closekoo2:focus, 
+.closekoo2:focus,
 .closekoo3:focus,
 .closekoo4:focus
 {
