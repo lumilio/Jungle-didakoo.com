@@ -3,7 +3,7 @@
 
 
         <!----------------- MODALS UTILITY ------------------->
-        <div id="myModalkoo2" class="modal align-items-center">
+        <div id="myModalkoo2" class="modal modal-ingame align-items-center">
             <!-- Modal content -->
             <div style='' class="modal-content container-sm d-flex flex-column align-items-center">
                 <div class="d-flex container-sm align-items-center justify-content-between flex-row">
@@ -29,7 +29,7 @@
                     </button>
                 </div>
                 <div class="d-flex flex-wrap justify-content-center">
-                    <button   style='background-color:black;' class="closekoo2 jusify-content-around" > <span>BOARD</span> <img style='width:30px; margin-left:8px' src='images/board/tree.png' alt=""></button>
+                    <button   style='background-color:black;' class="closekoo2 jusify-content-around" > <span>REASUME</span> <img style='width:30px; margin-left:8px' src='images/board/tree.png' alt=""></button>
                     <button id='btnkoo_3_1' class="jusify-content-around" style='background-color:black;' >  <span>QUIT</span> <img style='width:30px; margin-left:8px' src='images/board/animals/icon-17.png' alt=""></button> <!-- icon-17 rosso --> <!-- icon-41 bianco -->
                 </div>
                 <!-- <button style='background-color:black; colr:white; '> SEND INVITATION  <i class="fa-solid ml-2 fa-arrow-up-from-bracket"></i></button> -->

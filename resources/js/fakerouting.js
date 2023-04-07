@@ -38,6 +38,7 @@ btnxkoo.onclick = function() {
 }
 btnxkoo2.onclick = function(){
     modalkoo2.style.display = "flex";
+    modalkoo2.classList.remove("modal-ingame");
     page1.style.display = "none";
     page2.style.display = "none";
     page4.style.display = "none";
@@ -210,6 +211,7 @@ btnkoo_3_1.onclick = function() {
     page4.style.display = "none";
     page5.style.display = "none";
     modalkoo2.style.display = "none";
+    modalkoo2.classList.add("modal-ingame");
 
 
 }

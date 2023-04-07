@@ -38,8 +38,8 @@ body, .centratore {
 /* ------------------------- INITIAL DISPLAY PAGES ----------------------------- */
 /* ----------------------------------------------------------------------------- */
 
-#page2{
-    display: block;
+#page1{
+    display: flex;
 }
 
 /* ----------------------------------------------------------------------------- */
@@ -73,6 +73,20 @@ body, .centratore {
     width: 100%;
     background-position: top;
 } */
+
+
+
+
+#modalx {
+    background: repeating-linear-gradient(to right, blue 0%, blue 12.5%, yellow 12.5%, yellow 25%, red 25%, red 37.5%, #EE5E81 37.5%, #EE5E81 50%, black 50%, black 62.5%, blue 62.5%, blue 75%, yellow 75%, yellow 87.5%, red 87.5%, red 100%), black;
+    background-size: 100% 10px, 50% 50%;
+    background-repeat: no-repeat;
+    rotate: 180deg;
+}
+
+#modalx span {
+    rotate: 180deg;
+}
 
 /* #page3{
     background:
@@ -114,14 +128,25 @@ body, .centratore {
     overflow: auto; /* Enable scroll if needed */
     background:
     linear-gradient(
-      rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.1)
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    );
+    background-repeat: repeat ;
+    background-size: 700px ;
+}
+
+.modal-ingame{
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
     ),
-    /* url("images/board/nilo2.jpg") ; */
     url("images/board/bignilo3.jpg") ;
     background-repeat: repeat ;
-    background-size: 900px ;
+    background-size: 100vw ;
 }
+
+
 
 
 
@@ -130,16 +155,21 @@ body, .centratore {
 }
 
 #page5{
+
+
     background:
     linear-gradient(
-      rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.1)
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
     ),
     url("images/board/water4.jpg") ;
     background-repeat: repeat ;
-    background-size: 700px ;
+    background-size: 100vh ;
     background-position: center ;
 }
+
+
+
 
 /* ----------------------------------------------------------------------------- */
 /* --------------------------- UTILITY CONTAINERS ------------------------------ */
@@ -371,6 +401,12 @@ body, .centratore {
 /* ----------------------------------------------------------------------------- */
 /* ---------------------- PAGE 3 BOARD RESPONSIVE ------------------------------ */
 /* ----------------------------------------------------------------------------- */
+
+
+
+
+
+
 
 #console-screen{
     font-family: 'VT323', monospace ;
@@ -624,6 +660,9 @@ body, .centratore {
         border-radius: 30px;
         font-size: small;
     }
+    .modal-ingame{
+        background-size: 500px ;
+    }
 
 }
 
@@ -651,6 +690,9 @@ body, .centratore {
         border-radius: 30px;
         font-size: small;
     }
+    .modal-ingame{
+        background-size: 500px ;
+    }
 }
 
 @media screen and (min-width: 795px) and (min-height: 1043px){
@@ -677,7 +719,18 @@ body, .centratore {
         border-radius: 30px;
         font-size: small;
     }
+    .modal-ingame{
+        background-size: 500px ;
+    }
 }
+
+
+
+
+
+
+
+
 
 /* ----------------------------------------------------------------------------- */
 /* ------------------------ PAGE 4 AVATAR RESPONSIVE --------------------------- */

@@ -1,9 +1,8 @@
 <template>
     <div id='page2' >
 
-        <!----------------------- UTILITY MODAL ----------------------->
+        <!----------------------- UTILITY MODAL usless now ----------------------->
         <div id='myModalkoo' class="modal">
-            <!-- Modal content -->
             <div class="modal-content d-flex flex-column align-items-center">
                 <span class="closekoo_rank">&times;</span>
                 <button id='btnkoo_2_1' class="rainbow-button" > H𐍈ME </button>
@@ -18,6 +17,8 @@
 
         <!----------------------- LOGO ----------------------->
         <div id="_box1_" class="container-sm d-flex justify-content-center align-items-center flex-column">
+
+            <!-- BANNER EVENT IMPORTANT  -->
             <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Sun Dec 17 1995 03:24:00 UTC+1 ROME </p> -->
             <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Next token recharge 23h 59m 59s</p> -->
             <div class="d-flex container-sm justify-content-center alingn-items-center">
