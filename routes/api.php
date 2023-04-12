@@ -28,4 +28,6 @@ Route::post('/web3-update-ethwallet', 'Web3LoginController@update');
 
 Route::get('/getSession', 'Web3LoginController@getSession');
 Route::get('/logout', 'Web3LoginController@logout');
- 
+
+Route::get('/make-game', 'GameController@makeGame');
+Route::get('/get-game/{url}', 'GameController@getGame');
