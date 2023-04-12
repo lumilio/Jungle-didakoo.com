@@ -69,17 +69,17 @@
                     <img style='width:20px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/8.png' alt="">
                     <img style='width:20px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/mario.png' alt="">
                     <img style='width:18px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/palm.png' alt="">
-                    <img style='width:22px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/bot.png' alt="">
                     <img style='width:20px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/ghost.png' alt="">
-                    <img style='width:20px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/pepsi.png' alt="">
-                    <img style='width:25px; margin:0px 5px; height:13px; filter: invert(1);' src='images/extra_objects/nike.png' alt="">
-                    <img style='width:20px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/wb.png' alt="">
-                    <img style='width:23px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/raygun.png' alt="">
-                    <img style='width:20px; margin:0px 5px; ' src='images/extra_objects/adidas.png' alt="">
-                    <img style='width:30px; margin:0px 5px; ' src='images/extra_objects/coco.png' alt="">
                     <i style='font-size:20px; color:black; margin:0px 5px;'  class="fa-solid fa-hand-fist"></i>
                     <i style='font-size:20px; color:black; margin:0px 5px;' class="fa-solid fa-egg"></i>
-                    <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i>
+                    <img style='width:25px; margin-left:5px; height:13px; filter: invert(1);' src='images/extra_objects/nike.png' alt="">
+                    <img style='width:25px; margin:0px 5px; ' src='images/extra_objects/adidas.png' alt="">
+                    <img style='width:30px; margin:0px 5px; ' src='images/extra_objects/coco.png' alt="">
+                    <img style='width:20px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/wb.png' alt="">
+                    <img style='width:20px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/pepsi.png' alt="">
+                    <img style='width:22px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/bot.png' alt="">
+                    <img style='width:23px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/raygun.png' alt="">
+                    <i style='font-size:20px; color:black; margin:0px 5px;'  class="fa-solid fa-battery-full"></i>
                 </div>
                 <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
             </div>
