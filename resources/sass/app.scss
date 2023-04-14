@@ -144,6 +144,7 @@ body, .centratore {
     url("images/board/bignilo3.jpg") ;
     background-repeat: repeat ;
     /* background-size: 100vw ; */
+    background-position: right  ;
 }
 
 
@@ -162,10 +163,11 @@ body, .centratore {
       rgba(0, 0, 0, 0.4),
       rgba(0, 0, 0, 0.4)
     ),
-    url("images/board/water4.jpg") ;
+    url("images/board/bignilo3.jpg") ;
     background-repeat: repeat ;
     background-size: 100vh ;
     background-position: center ;
+    background-size: 600px ;
 }
 
 
@@ -810,6 +812,12 @@ body, .centratore {
 
 .pepar{
     margin-top: 40px !important;
+    background-color:black;
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    )
 }
 
 @media screen and (min-width: 350px) and (min-height: 550px){
