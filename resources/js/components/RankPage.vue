@@ -63,11 +63,31 @@
             <!---------------------------- User record examaples ---------------------------->
             <div style="background-color:#EDEB52;"  class="record">
                 <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                    <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
-                </p> 
+                    <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'>
+                    <!-- <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px; filter: invert(1);'   src='images/extra_objects/punk.png'> --> 
+
+                    0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
+                </p>
                 <div class='d-flex align-items-center flex-row flex-nowrap'>
-                    <img style='width:30px; ' src='images/extra_objects/icon-59.png' alt="">
-                    <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i>
+                    <img style='width:35px; ' src='images/board/animals/icon-39.png' alt="">
+                    <img style='width:35px; ' src='images/board/animals/icon-38.png' alt="">
+                    <img style='width:35px; ' src='images/board/animals/icon-37.png' alt="">
+                    <img style='width:35px; ' src='images/board/animals/icon-36.png' alt="">
+                    <img style='width:35px; ' src='images/board/animals/icon-59.png' alt="">
+                    <img style='width:20px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/8.png' alt="">
+                    <img style='width:20px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/mario.png' alt="">
+                    <img style='width:18px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/palm.png' alt="">
+                    <img style='width:20px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/ghost.png' alt="">
+                    <i style='font-size:20px; color:black; margin:0px 5px;'  class="fa-solid fa-hand-fist"></i>
+                    <i style='font-size:20px; color:black; margin:0px 5px;' class="fa-solid fa-egg"></i>
+                    <img style='width:25px; margin-left:5px; height:13px; filter: invert(1);' src='images/extra_objects/nike.png' alt="">
+                    <img style='width:25px; margin:0px 5px; ' src='images/extra_objects/adidas.png' alt="">
+                    <img style='width:30px; margin:0px 5px; ' src='images/extra_objects/coco.png' alt="">
+                    <img style='width:20px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/wb.png' alt="">
+                    <img style='width:20px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/pepsi.png' alt="">
+                    <img style='width:22px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/bot.png' alt="">
+                    <img style='width:23px; margin:0px 5px; filter: invert(1);' src='images/extra_objects/raygun.png' alt="">
+                    <i style='font-size:20px; color:black; margin:0px 5px;'  class="fa-solid fa-battery-full"></i>
                 </div>
                 <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
             </div>
