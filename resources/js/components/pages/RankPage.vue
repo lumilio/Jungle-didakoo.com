@@ -36,7 +36,7 @@
             </div>
 
             <!-- BANNER EVENT IMPORTANT  -->
-            <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-top:15px; '>Sun Dec 17 1995 03:24:00 UTC+1 ROME</p> -->
+            <p class='text-white' style='font-family: "VT323", monospace;   margin-top:25px; '>Sun Dec 17 2034 03:24:00 UTC+1 ROME</p>
             <img id='scarabeo'  style='display:;' src='images/extra_objects/1.svg' alt="">
         </div>
         <div class="d-flex container-sm  mt-3 flex-column"></div>
