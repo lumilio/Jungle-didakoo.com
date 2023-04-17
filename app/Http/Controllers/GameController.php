@@ -32,4 +32,20 @@ class GameController extends Controller
 //        }
         return response()->json(['message' => 'success']);
     }
+    public function deleteGame($url){
+        $game = Game::query()->where('url', $url)->first();
+        if (!$game){
+            return response()->json(['message' => 'Not Found'], 404);
+        }
+        if(!$game->opponent){
+            $game->delete();
+        }
+//        if ($game->creator !== auth('api')->id()){
+//            $game->update([
+//                'opponent' => auth('api')->id()
+//            ]);
+//        }
+        return response()->json(['message' => 'deleted']);
+    }
+
 }

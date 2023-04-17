@@ -31,3 +31,4 @@ Route::get('/logout', 'Web3LoginController@logout');
 
 Route::get('/make-game', 'GameController@makeGame');
 Route::get('/get-game/{url}', 'GameController@getGame');
+Route::get('/delete-game/{url}', 'GameController@deleteGame');
