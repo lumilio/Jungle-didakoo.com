@@ -2004,6 +2004,18 @@ __webpack_require__.r(__webpack_exports__);
       type: Number,
       required: true
     },
+    transformX: {
+      type: Number,
+      required: false
+    },
+    transformY: {
+      type: Number,
+      required: false
+    },
+    isMoves: {
+      type: Boolean,
+      required: false
+    },
     width: {
       type: Number,
       required: true
@@ -2011,6 +2023,26 @@ __webpack_require__.r(__webpack_exports__);
     height: {
       type: Number,
       required: true
+    }
+  },
+  computed: {
+    pieceTransformStyles: function pieceTransformStyles() {
+      if (this.isMoves) {
+        if (this.transformX > 0) {
+          return 'animation-to-right';
+        }
+        if (this.transformX < 0) {
+          return 'animation-to-left';
+        }
+        if (this.transformY < 0) {
+          return 'animation-to-top';
+        }
+        if (this.transformY > 0) {
+          return 'animation-to-bottom';
+        }
+        return '';
+      }
+      return {};
     }
   }
 });
@@ -2166,8 +2198,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     }
   },
   data: function data() {
-    var _ref;
-    return _ref = {
+    return {
       viewBox: {
         x: 560,
         y: 720
@@ -2176,26 +2207,36 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         x: 0,
         y: 0
       }),
-      svg: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])(null),
       squares: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])([]),
       turnNumber: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])(1),
-      possibleMoves: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])([])
-    }, _defineProperty(_ref, "svg", Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])(null)), _defineProperty(_ref, "piecepower", {
-      mouse: 0,
-      cat: 1,
-      monkey: 2,
-      dog: 3,
-      leopard: 4,
-      tiger: 5,
-      lion: 6,
-      elephant: 7
-    }), _defineProperty(_ref, "winPos", {
-      black: "D9",
-      white: "D1"
-    }), _defineProperty(_ref, "isHoldingChessPiece", Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])(false)), _defineProperty(_ref, "holding", Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])({
-      row: null,
-      col: null
-    })), _ref;
+      possibleMoves: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])([]),
+      gamePieceMoveCoords: {
+        piece: null,
+        toX: 0,
+        toY: 0,
+        color: ''
+      },
+      svg: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])(null),
+      piecepower: {
+        mouse: 0,
+        cat: 1,
+        monkey: 2,
+        dog: 3,
+        leopard: 4,
+        tiger: 5,
+        lion: 6,
+        elephant: 7
+      },
+      winPos: {
+        black: "D9",
+        white: "D1"
+      },
+      isHoldingChessPiece: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])(false),
+      holding: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])({
+        row: null,
+        col: null
+      })
+    };
   },
   methods: {
     onMouseMove: function onMouseMove(e) {
@@ -2251,6 +2292,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
      * @returns {void}
      */
     releasePiece: function releasePiece($event, toSquare) {
+      var _this = this;
       var fromSquare = this.squares[this.holding.row][this.holding.col];
       if (!toSquare.isPossibleMove) {
         this.isHoldingChessPiece = null;
@@ -2258,6 +2300,12 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         return this.clearPossibleMoves();
       }
       this.isCheckmate(toSquare);
+      this.gamePieceMoveCoords = {
+        piece: fromSquare.content.piece,
+        toX: toSquare.x - fromSquare.x,
+        toY: toSquare.y - fromSquare.y,
+        color: 'white'
+      };
       toSquare.content.piece = fromSquare.content.piece;
       toSquare.content.color = fromSquare.content.color;
       toSquare.content.stepNumber++;
@@ -2268,7 +2316,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       this.turnNumber++;
       this.clearPossibleMoves();
       this.turn = this.turn == "black" ? "white" : "black";
-      this.playComputer();
+      setTimeout(function () {
+        _this.playComputer();
+      }, 350);
     },
     playAgain: function playAgain() {
       this.initSquares();
@@ -2276,9 +2326,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       _store__WEBPACK_IMPORTED_MODULE_2__["default"].commit("RESET_MOVES_HISTORY");
     },
     isCheckmate: function isCheckmate(squareTo) {
-      var _this = this;
+      var _this2 = this;
       var isFinal = function isFinal() {
-        return squareTo.code == _this.winPos[_this.turn == 'white' ? 'black' : 'white'] ? _this.turn : null;
+        return squareTo.code == _this2.winPos[_this2.turn == 'white' ? 'black' : 'white'] ? _this2.turn : null;
       };
       var winner = null;
       if (winner = isFinal()) {
@@ -2345,6 +2395,12 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           if (flag == false) break;
         }
         this.isCheckmate(toSquare);
+        this.gamePieceMoveCoords = {
+          piece: fromSquare.content.piece,
+          toX: toSquare.x - fromSquare.x,
+          toY: toSquare.y - fromSquare.y,
+          color: 'black'
+        };
         toSquare.content.piece = fromSquare.content.piece;
         toSquare.content.color = fromSquare.content.color;
         toSquare.content.stepNumber++;
@@ -2356,7 +2412,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       }
     },
     minimax: function minimax(board, depth, giliran_now, last_move, alpha, beta) {
-      var _this2 = this;
+      var _this3 = this;
       if (depth == 0) {
         var value = 0;
         var copy = last_move.currentBoard;
@@ -2376,7 +2432,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         myPieces.forEach(function (item) {
           jarakX = 3 - item.j;
           jarakX = Math.abs(jarakX);
-          value += _this2.getShaktiValue(_this2.piecepower[item.content.piece], item.i, item.j);
+          value += _this3.getShaktiValue(_this3.piecepower[item.content.piece], item.i, item.j);
           jarakY = Math.abs(8 - item.i);
           if (jarakY == jarakX && jarakX == 0) {
             value = 200000000;
@@ -2410,7 +2466,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         }
         var boards = [];
         willMove.forEach(function (squ) {
-          var possibMoves = _this2.getPossibleMoves(squ.i, squ.j, board);
+          var possibMoves = _this3.getPossibleMoves(squ.i, squ.j, board);
           possibMoves.forEach(function (move) {
             var temp = [];
             for (var _i2 = 0; _i2 < 9; _i2++) {
@@ -2593,7 +2649,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
      * @returns {void}
      */
     knightPossibleMoves: function knightPossibleMoves(square, squareRowIndex, squareColIndex) {
-      var _this3 = this;
+      var _this4 = this;
       var moveTargets = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getKnightPossibleMoves(squareRowIndex, squareColIndex);
       moveTargets.forEach(function (target) {
         var rowIndex = target.rowIndex,
@@ -2601,48 +2657,48 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         if (square.content.piece == "mouse" || square.content.piece == "tiger" || square.content.piece == "lion") {
           if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6) return;
         } else if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6 || rowIndex > 2 && rowIndex < 6 && colIndex != 0 && colIndex != 3 && colIndex != 6) return;
-        var targetSquare = _this3.squares[rowIndex][colIndex];
+        var targetSquare = _this4.squares[rowIndex][colIndex];
 
         // trap
-        if (_this3.turn == 'white' && (targetSquare.code == 'E1' || targetSquare.code == 'C1' || targetSquare.code == 'D2')) {
-          if (targetSquare.content.color == 'black') _this3.makeItPossible(targetSquare);
+        if (_this4.turn == 'white' && (targetSquare.code == 'E1' || targetSquare.code == 'C1' || targetSquare.code == 'D2')) {
+          if (targetSquare.content.color == 'black') _this4.makeItPossible(targetSquare);
           return;
         }
-        if (_this3.turn == 'black' && (targetSquare.code == 'E9' || targetSquare.code == 'C9' || targetSquare.code == 'D8')) {
-          if (targetSquare.content.color == 'white') _this3.makeItPossible(targetSquare);
+        if (_this4.turn == 'black' && (targetSquare.code == 'E9' || targetSquare.code == 'C9' || targetSquare.code == 'D8')) {
+          if (targetSquare.content.color == 'white') _this4.makeItPossible(targetSquare);
           return;
         }
 
         // tiger and lion can jump over the water
         if ((square.content.piece == "tiger" || square.content.piece == "lion") && targetSquare.color == "dark") if (squareColIndex == colIndex) {
           for (var i = 3; i < 6; i++) {
-            var squ = _this3.squares[i][colIndex];
+            var squ = _this4.squares[i][colIndex];
             if (squ.content.piece) return;
           }
           rowIndex = 8 - squareRowIndex;
         } else {
           if (squareColIndex != 3) colIndex = 3;else colIndex = squareColIndex + (colIndex - squareColIndex) * 3;
           if (colIndex > squareColIndex) for (var _i6 = squareColIndex + 1; _i6 < colIndex; _i6++) {
-            var _squ3 = _this3.squares[rowIndex][_i6];
+            var _squ3 = _this4.squares[rowIndex][_i6];
             if (_squ3.content.piece) return;
           } else for (var _i7 = colIndex + 1; _i7 < squareColIndex; _i7++) {
-            var _squ4 = _this3.squares[rowIndex][_i7];
+            var _squ4 = _this4.squares[rowIndex][_i7];
             if (_squ4.content.piece) return;
           }
         }
-        targetSquare = _this3.squares[rowIndex][colIndex];
-        if (targetSquare.content.piece && targetSquare.content.color == _this3.turn) return;
+        targetSquare = _this4.squares[rowIndex][colIndex];
+        if (targetSquare.content.piece && targetSquare.content.color == _this4.turn) return;
 
         // mouse can move through the water
         if (square.content.piece == "mouse") {
-          if (targetSquare.content.piece && targetSquare.content.color != _this3.turn && 6 >= _this3.piecepower[targetSquare.content.piece] && 0 < _this3.piecepower[targetSquare.content.piece]) return;
+          if (targetSquare.content.piece && targetSquare.content.color != _this4.turn && 6 >= _this4.piecepower[targetSquare.content.piece] && 0 < _this4.piecepower[targetSquare.content.piece]) return;
           if (targetSquare.content.piece && square.color == "dark" && targetSquare.color == "light") return;
         } else {
           if (square.content.piece == "elephant") {
-            if (targetSquare.content.piece && targetSquare.content.color != _this3.turn && _this3.piecepower[targetSquare.content.piece] == 0) return;
-          } else if (targetSquare.content.piece && targetSquare.content.color != _this3.turn && _this3.piecepower[square.content.piece] < _this3.piecepower[targetSquare.content.piece]) return;
+            if (targetSquare.content.piece && targetSquare.content.color != _this4.turn && _this4.piecepower[targetSquare.content.piece] == 0) return;
+          } else if (targetSquare.content.piece && targetSquare.content.color != _this4.turn && _this4.piecepower[square.content.piece] < _this4.piecepower[targetSquare.content.piece]) return;
         }
-        _this3.makeItPossible(targetSquare);
+        _this4.makeItPossible(targetSquare);
       });
     },
     /**
@@ -3216,7 +3272,8 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("g", {
-    staticClass: "chesspiece"
+    staticClass: "chesspiece",
+    "class": _vm.pieceTransformStyles
   }, [_vm.name == "mouse" ? _c("svg", {
     attrs: {
       x: _vm.x,
@@ -3514,6 +3571,21 @@ var render = function render() {
           height: square.height,
           fill: square.isPossibleMove ? _vm.color["possibleMove"] : _vm.color[square.color]
         }
+      }), _vm._v(" "), _c("rect", {
+        directives: [{
+          name: "show",
+          rawName: "v-show",
+          value: square.isPossibleMove,
+          expression: "square.isPossibleMove"
+        }],
+        attrs: {
+          x: square.x + square.width / 2 - 5,
+          y: square.y + square.height / 2 - 5,
+          width: "10",
+          height: "10",
+          rx: "50",
+          fill: "#ffffff"
+        }
       })]);
     }), 0);
   }), 0), _vm._v(" "), _c("g", [_c("Den1", {
@@ -3598,35 +3670,21 @@ var render = function render() {
           }
         }
       }, [square.content.piece ? _c("g", [_c("Piece", {
-        directives: [{
-          name: "show",
-          rawName: "v-show",
-          value: square.visible,
-          expression: "square.visible"
-        }],
         key: square.code,
         attrs: {
           name: square.content.piece,
           x: square.content.x,
           y: square.content.y + 10,
+          transformX: _vm.gamePieceMoveCoords.toX,
+          transformY: _vm.gamePieceMoveCoords.toY,
+          isMoves: square.content.piece === _vm.gamePieceMoveCoords.piece && square.content.color === _vm.gamePieceMoveCoords.color,
           width: square.content.width,
           height: square.content.height,
           color: square.content.color
         }
       })], 1) : _vm._e()]);
     }), 0);
-  }), 0), _vm._v(" "), _c("g", {
-    staticClass: "holding-piece"
-  }, [_vm.isHoldingChessPiece ? _c("Piece", {
-    attrs: {
-      name: _vm.isHoldingChessPiece.content.piece,
-      x: _vm.mouseLocation.x - _vm.isHoldingChessPiece.content.width / 2,
-      y: _vm.mouseLocation.y - _vm.isHoldingChessPiece.content.height / 2,
-      width: _vm.isHoldingChessPiece.content.width,
-      color: _vm.isHoldingChessPiece.content.color,
-      height: _vm.isHoldingChessPiece.content.height
-    }
-  }) : _vm._e()], 1)])]);
+  }), 0)])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -9990,6 +10048,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, ".chessboard {\n  padding-bottom: 97.5%;\n}\n.holding-piece {\n  pointer-events: none;\n}\n.notation {\n  fill: #ccc;\n  font-size: 1.5rem;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Game/Elements/Piece.vue?vue&type=style&index=0&id=3efe07f8&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Game/Elements/Piece.vue?vue&type=style&index=0&id=3efe07f8&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.animation-to-left{\n    animation: moveToLeft 0.3s ease-in;\n}\n@keyframes moveToLeft {\nfrom {transform: translate(80px,0);}\nto {transform: translate(0,0);}\n}\n.animation-to-right{\n    animation: moveToRight 0.3s ease-in;\n}\n@keyframes moveToRight {\nfrom {transform: translate(-80px,0);}\nto {transform: translate(0,0);}\n}\n.animation-to-top{\n    animation: moveToTop 0.3s ease-in;\n}\n@keyframes moveToTop {\nfrom {transform: translate(0,80px);}\nto {transform: translate(0,0);}\n}\n.animation-to-bottom{\n    animation: moveToBottom 0.3s ease-in;\n}\n@keyframes moveToBottom {\nfrom {transform: translate(0,-80px);}\nto {transform: translate(0,0);}\n}\n", ""]);
 
 // exports
 
@@ -41326,6 +41403,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Game/Elements/Piece.vue?vue&type=style&index=0&id=3efe07f8&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Game/Elements/Piece.vue?vue&type=style&index=0&id=3efe07f8&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Piece.vue?vue&type=style&index=0&id=3efe07f8&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Game/Elements/Piece.vue?vue&type=style&index=0&id=3efe07f8&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -58416,7 +58523,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Piece_vue_vue_type_template_id_3efe07f8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Piece.vue?vue&type=template&id=3efe07f8& */ "./resources/js/components/Game/Elements/Piece.vue?vue&type=template&id=3efe07f8&");
 /* harmony import */ var _Piece_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Piece.vue?vue&type=script&lang=js& */ "./resources/js/components/Game/Elements/Piece.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _Piece_vue_vue_type_style_index_0_id_3efe07f8_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Piece.vue?vue&type=style&index=0&id=3efe07f8&lang=css& */ "./resources/js/components/Game/Elements/Piece.vue?vue&type=style&index=0&id=3efe07f8&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -58424,7 +58533,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _Piece_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Piece_vue_vue_type_template_id_3efe07f8___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Piece_vue_vue_type_template_id_3efe07f8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -58453,6 +58562,22 @@ component.options.__file = "resources/js/components/Game/Elements/Piece.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Piece_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Piece.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Game/Elements/Piece.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Piece_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Game/Elements/Piece.vue?vue&type=style&index=0&id=3efe07f8&lang=css&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/Game/Elements/Piece.vue?vue&type=style&index=0&id=3efe07f8&lang=css& ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Piece_vue_vue_type_style_index_0_id_3efe07f8_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Piece.vue?vue&type=style&index=0&id=3efe07f8&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Game/Elements/Piece.vue?vue&type=style&index=0&id=3efe07f8&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Piece_vue_vue_type_style_index_0_id_3efe07f8_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Piece_vue_vue_type_style_index_0_id_3efe07f8_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Piece_vue_vue_type_style_index_0_id_3efe07f8_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Piece_vue_vue_type_style_index_0_id_3efe07f8_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
 
 /***/ }),
 

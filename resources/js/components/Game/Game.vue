@@ -11,7 +11,7 @@
               :y="boardSettings.square.height * 3"
               :width="boardSettings.square.width * 2"
               :height="boardSettings.square.height * 3"
-            /> 
+            />
           </g>
           <g>
             <River
@@ -19,7 +19,7 @@
               :y="boardSettings.square.height * 3"
               :width="boardSettings.square.width * 2"
               :height="boardSettings.square.height * 3"
-            /> 
+            />
           </g>
           <g class="squares">
             <g
@@ -50,7 +50,17 @@
                       ? color['possibleMove']
                       : color[square.color]
                   "
-                ></rect>
+                >
+                </rect>
+                <rect
+                    v-show="square.isPossibleMove"
+                    :x="square.x + square.width / 2 - 5"
+                    :y="square.y + square.height / 2 - 5"
+                    width="10"
+                    height="10"
+                    rx="50"
+                    fill="#ffffff"
+                />
               </g>
             </g>
           </g>
@@ -60,7 +70,7 @@
               :y="0"
               :width="boardSettings.square.width"
               :height="boardSettings.square.height"
-            /> 
+            />
           </g>
           <g>
             <Den2
@@ -68,7 +78,7 @@
               :y="boardSettings.square.height * 8"
               :width="boardSettings.square.width"
               :height="boardSettings.square.height"
-            /> 
+            />
           </g>
           <g>
             <Trap
@@ -76,7 +86,7 @@
               :y="0"
               :width="boardSettings.square.width"
               :height="boardSettings.square.height"
-            /> 
+            />
           </g>
           <g>
             <Trap
@@ -84,7 +94,7 @@
               :y="0"
               :width="boardSettings.square.width"
               :height="boardSettings.square.height"
-            /> 
+            />
           </g>
           <g>
             <Trap
@@ -92,7 +102,7 @@
               :y="boardSettings.square.height"
               :width="boardSettings.square.width"
               :height="boardSettings.square.height"
-            /> 
+            />
           </g>
           <g>
             <Trap
@@ -100,7 +110,7 @@
               :y="boardSettings.square.height * 8"
               :width="boardSettings.square.width"
               :height="boardSettings.square.height"
-            /> 
+            />
           </g>
           <g>
             <Trap
@@ -108,7 +118,7 @@
               :y="boardSettings.square.height * 8"
               :width="boardSettings.square.width"
               :height="boardSettings.square.height"
-            /> 
+            />
           </g>
           <g>
             <Trap
@@ -116,7 +126,7 @@
               :y="boardSettings.square.height * 7"
               :width="boardSettings.square.width"
               :height="boardSettings.square.height"
-            /> 
+            />
           </g>
           <g class="squares">
             <g
@@ -139,11 +149,13 @@
               >
                 <g v-if="square.content.piece">
                   <Piece
-                    v-show="square.visible"
                     :key="square.code"
                     :name="square.content.piece"
                     :x="square.content.x"
                     :y="square.content.y + 10"
+                    :transformX="gamePieceMoveCoords.toX"
+                    :transformY="gamePieceMoveCoords.toY"
+                    :isMoves="square.content.piece === gamePieceMoveCoords.piece && square.content.color === gamePieceMoveCoords.color"
                     :width="square.content.width"
                     :height="square.content.height"
                     :color="square.content.color"
@@ -152,22 +164,11 @@
               </g>
             </g>
           </g>
-          <g class="holding-piece">
-            <Piece
-              v-if="isHoldingChessPiece"
-              :name="isHoldingChessPiece.content.piece"
-              :x="mouseLocation.x - isHoldingChessPiece.content.width / 2"
-              :y="mouseLocation.y - isHoldingChessPiece.content.height / 2"
-              :width="isHoldingChessPiece.content.width"
-              :color="isHoldingChessPiece.content.color"
-              :height="isHoldingChessPiece.content.height"
-            />
-          </g>
         </svg>
         <!-- <img class='profile_cover' src="images/concepts/zzz.png" alt=""> -->
       <!-- </div>
     </div>   -->
-  </div> 
+  </div>
 </template>
 
 <script>
@@ -220,21 +221,26 @@
     computed: {
       turn: {
         get: function() {
-            return store.state.turn;          
+            return store.state.turn;
         },
         set: function(val) {
           return store.commit("CHANGE_TURN", val);
         }
       },
     },
-    data() { 
+    data() {
       return {
         viewBox: {x: 560, y: 720},
         mouseLocation: ref({ x: 0, y: 0 }),
-        svg: ref(null),
         squares: ref([]),
         turnNumber: ref(1),
         possibleMoves: ref([]),
+        gamePieceMoveCoords: {
+            piece: null,
+            toX: 0,
+            toY: 0,
+            color: ''
+        },
         svg: ref(null),
         piecepower: {
           mouse : 0,
@@ -268,10 +274,10 @@
             let code = helper.getSquareCode(i, j);
             let squareContent = helper.getSquareContent(code);
             let pieceSize = {
-              width: this.boardSettings.square.width, 
+              width: this.boardSettings.square.width,
               height: this.boardSettings.square.height,
             };
- 
+
             this.squares[i].push({
               isPossibleMove: false,
               code,
@@ -316,14 +322,18 @@
        */
       releasePiece($event, toSquare) {
         let fromSquare = this.squares[this.holding.row][this.holding.col];
-        if (!toSquare.isPossibleMove) {
+          if (!toSquare.isPossibleMove) {
           this.isHoldingChessPiece = null;
           fromSquare.visible = true;
           return this.clearPossibleMoves();
         }
-
         this.isCheckmate(toSquare);
-
+        this.gamePieceMoveCoords = {
+            piece: fromSquare.content.piece,
+            toX: toSquare.x - fromSquare.x,
+            toY: toSquare.y - fromSquare.y,
+            color: 'white'
+        }
         toSquare.content.piece = fromSquare.content.piece;
         toSquare.content.color = fromSquare.content.color;
         toSquare.content.stepNumber++;
@@ -338,8 +348,9 @@
         this.clearPossibleMoves();
 
         this.turn = this.turn == "black" ? "white" : "black";
-
-        this.playComputer();
+        setTimeout(() => {
+            this.playComputer();
+        },350);
       },
 
       playAgain() {
@@ -397,7 +408,7 @@
           }
         }
 
-        
+
         if (t != null)
         {
           let fromSquare, toSquare;
@@ -438,6 +449,12 @@
               break;
           }
           this.isCheckmate(toSquare);
+            this.gamePieceMoveCoords = {
+                piece: fromSquare.content.piece,
+                toX: toSquare.x - fromSquare.x,
+                toY: toSquare.y - fromSquare.y,
+                color: 'black'
+            }
           toSquare.content.piece = fromSquare.content.piece;
           toSquare.content.color = fromSquare.content.color;
           toSquare.content.stepNumber++;
@@ -445,7 +462,7 @@
           fromSquare.content.piece = null;
           fromSquare.content.color = null;
           this.turnNumber++;
-          this.turn = this.turn == "black" ? "white" : "black";    
+          this.turn = this.turn == "black" ? "white" : "black";
         }
       },
 
@@ -470,7 +487,7 @@
           value += ((myPieces.length - enemyPieces.length) * 100);
           let jarakX = -200000000, jarakY = -200000000;
           let dx = 200000000, dy = 200000000;
-          
+
           myPieces.forEach(item => {
             jarakX = 3 - item.j;
             jarakX = Math.abs(jarakX);
@@ -496,7 +513,7 @@
             last_move,
             value
           };
-        } 
+        }
         else {
           let willMove = [];
           let ctr = 0;
@@ -518,7 +535,7 @@
           }
 
           let boards = [];
-          
+
           willMove.forEach(squ => {
             let possibMoves = this.getPossibleMoves(squ.i, squ.j, board);
             possibMoves.forEach(move => {
@@ -713,7 +730,7 @@
         catch
         {
             return 0;
-        }          
+        }
       },
 
       /**
@@ -738,7 +755,6 @@
           squareRowIndex,
           squareColIndex
         );
-
         let temp = [];
         for (const key in moveTargets) {
           let target = moveTargets[key];
@@ -747,11 +763,11 @@
 
           if (square.content.piece == "mouse" || square.content.piece == "tiger" || square.content.piece == "lion")
           {
-            if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6) 
+            if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6)
               continue;
           }
-          else 
-            if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6 || (rowIndex > 2 && rowIndex < 6) && (colIndex != 0 && colIndex != 3 && colIndex != 6)) 
+          else
+            if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6 || (rowIndex > 2 && rowIndex < 6) && (colIndex != 0 && colIndex != 3 && colIndex != 6))
               continue;
 
           let targetSquare = board[rowIndex][colIndex];
@@ -836,10 +852,10 @@
 
           if (targetSquare.content.piece && targetSquare.content.color == this.turn)
             continue;
-
           temp.push(targetSquare);
         };
-        return temp;
+
+          return temp;
       },
 
       /**
@@ -884,11 +900,11 @@
 
           if (square.content.piece == "mouse" || square.content.piece == "tiger" || square.content.piece == "lion")
           {
-            if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6) 
+            if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6)
               return;
           }
-          else 
-            if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6 || (rowIndex > 2 && rowIndex < 6) && (colIndex != 0 && colIndex != 3 && colIndex != 6)) 
+          else
+            if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6 || (rowIndex > 2 && rowIndex < 6) && (colIndex != 0 && colIndex != 3 && colIndex != 6))
               return;
 
           let targetSquare = this.squares[rowIndex][colIndex];
