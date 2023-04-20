@@ -11020,27 +11020,6 @@ body,
   rotate: 180deg;
 }
 
-/* #page3{
-    background:
-    url("images/wallpepars/space.jpeg");
-    background-repeat: repeat;
-    background-position: left;
-} */
-
-/* #page3{
-    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0.7)
-    ),
-    url("images/wallpepars/chess3.jpg") ;
-    background-repeat: repeat ;
-    background-size: 100vh ;
-    min-height: 100vh ;
-    width: 100% ;
-    background-position: center  ;
-} */
-
 #page3 {
   background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)), url(/images/water4.jpg?0a53390684384b5f43b5383cff54c9b4);
 }
@@ -11058,7 +11037,7 @@ body,
   /* Full height */
   overflow: auto;
   /* Enable scroll if needed */
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+  background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
   background-repeat: repeat;
   background-size: 700px;
 }
@@ -11066,7 +11045,9 @@ body,
 .modal-ingame {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);
   background-repeat: repeat;
-  background-size: 100vw;
+  background-size: 100vh;
+  background-position: center;
+  background-size: 600px;
 }
 
 #page4 {
@@ -11074,10 +11055,11 @@ body,
 }
 
 #page5 {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/water4.jpg?0a53390684384b5f43b5383cff54c9b4);
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);
   background-repeat: repeat;
   background-size: 100vh;
   background-position: center;
+  background-size: 600px;
 }
 
 /* ----------------------------------------------------------------------------- */
@@ -11753,6 +11735,8 @@ body,
 
 .pepar {
   margin-top: 40px !important;
+  background-color: black;
+  background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
 }
 
 @media screen and (min-width: 350px) and (min-height: 550px) {

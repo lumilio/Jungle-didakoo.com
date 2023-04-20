@@ -4235,6 +4235,46 @@ var staticRenderFns = [function () {
       src: "images/board/animals/icon-60.png",
       alt: ""
     }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "29px",
+      margin: "0px 5px",
+      filter: "invert(0)"
+    },
+    attrs: {
+      src: "images/extra_objects/8.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "29px",
+      margin: "0px 5px",
+      filter: "invert(0)"
+    },
+    attrs: {
+      src: "images/extra_objects/mario.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "28px",
+      margin: "0px 5px",
+      filter: "invert(0)"
+    },
+    attrs: {
+      src: "images/extra_objects/palm.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "29px",
+      margin: "0px 5px",
+      filter: "invert(0)"
+    },
+    attrs: {
+      src: "images/extra_objects/ghost.png",
+      alt: ""
+    }
   })]), _vm._v(" "), _c("p", {
     staticStyle: {
       "font-size": "33px",
@@ -5191,8 +5231,7 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "container-sm pepar",
     staticStyle: {
-      "margin-top": "30px",
-      "background-color": "black"
+      "margin-top": "30px"
     }
   }, [_c("p", {
     staticStyle: {
@@ -5682,7 +5721,13 @@ var render = function render() {
       src: "images/extra_objects/icon-05.png",
       alt: ""
     }
-  })], 1), _vm._v(" "), _c("img", {
+  })], 1), _vm._v(" "), _c("p", {
+    staticClass: "text-white",
+    staticStyle: {
+      "font-family": '"VT323", monospace',
+      "margin-top": "25px"
+    }
+  }, [_vm._v("Sun Dec 17 2034 03:24:00 UTC+1 ROME")]), _vm._v(" "), _c("img", {
     staticStyle: {},
     attrs: {
       id: "scarabeo",
@@ -5770,21 +5815,177 @@ var staticRenderFns = [function () {
     attrs: {
       src: "images/extra_objects/iconaplayB.png"
     }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _vm._v(" \n\n                0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("img", {
     staticStyle: {
-      width: "30px"
+      width: "35px"
     },
     attrs: {
-      src: "images/extra_objects/icon-59.png",
+      src: "images/board/animals/icon-39.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "35px"
+    },
+    attrs: {
+      src: "images/board/animals/icon-38.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "35px"
+    },
+    attrs: {
+      src: "images/board/animals/icon-37.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "35px"
+    },
+    attrs: {
+      src: "images/board/animals/icon-36.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "35px"
+    },
+    attrs: {
+      src: "images/board/animals/icon-59.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      margin: "0px 5px",
+      filter: "invert(1)"
+    },
+    attrs: {
+      src: "images/extra_objects/8.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      margin: "0px 5px",
+      filter: "invert(1)"
+    },
+    attrs: {
+      src: "images/extra_objects/mario.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "18px",
+      margin: "0px 5px",
+      filter: "invert(1)"
+    },
+    attrs: {
+      src: "images/extra_objects/palm.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      margin: "0px 5px",
+      filter: "invert(1)"
+    },
+    attrs: {
+      src: "images/extra_objects/ghost.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("i", {
+    staticClass: "fa-solid fa-hand-fist",
+    staticStyle: {
+      "font-size": "20px",
+      color: "black",
+      margin: "0px 5px"
+    }
+  }), _vm._v(" "), _c("i", {
+    staticClass: "fa-solid fa-egg",
+    staticStyle: {
+      "font-size": "20px",
+      color: "black",
+      margin: "0px 5px"
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "25px",
+      "margin-left": "5px",
+      height: "13px",
+      filter: "invert(1)"
+    },
+    attrs: {
+      src: "images/extra_objects/nike.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "25px",
+      margin: "0px 5px"
+    },
+    attrs: {
+      src: "images/extra_objects/adidas.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "30px",
+      margin: "0px 5px"
+    },
+    attrs: {
+      src: "images/extra_objects/coco.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      margin: "0px 5px",
+      filter: "invert(1)"
+    },
+    attrs: {
+      src: "images/extra_objects/wb.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      margin: "0px 5px",
+      filter: "invert(1)"
+    },
+    attrs: {
+      src: "images/extra_objects/pepsi.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "22px",
+      margin: "0px 5px",
+      filter: "invert(1)"
+    },
+    attrs: {
+      src: "images/extra_objects/bot.png",
+      alt: ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      width: "23px",
+      margin: "0px 5px",
+      filter: "invert(1)"
+    },
+    attrs: {
+      src: "images/extra_objects/raygun.png",
       alt: ""
     }
   }), _vm._v(" "), _c("i", {
     staticClass: "fa-solid fa-battery-full",
     staticStyle: {
       "font-size": "20px",
-      color: "black"
+      color: "black",
+      margin: "0px 5px"
     }
   })]), _vm._v(" "), _c("span", {
     staticClass: "align-items-center",
