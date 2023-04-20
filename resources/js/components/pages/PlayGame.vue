@@ -94,7 +94,7 @@
             closeModal(){
                 this.open = false;
             },
-            quitGame: async () => {
+            async quitGame () {
                 try {
                     console.log(window.location.host);
                     const response = await axios.get(`http://${window.location.host}/api/delete-game/${this.$route.params.id}`);

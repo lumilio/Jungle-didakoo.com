@@ -12,8 +12,8 @@
         <div style="height:calc(80vh - 80px);" class="justify-content-center align-content-center d-flex">
             <div class="bt">
                 <a type="button">
-                    <div class="square" onclick="web3Login();">
-                        <i id="led" class="fa-solid fa-circle" ></i>
+                    <div class="square" @click="web3Login">
+                        <i id="led" class="fa-solid fa-circle" :style="{color: user? '#46e546' : 'red'}" ></i>
                         <i class="fa-solid fa-power-off"></i>
                     </div>
                 </a>
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import store from "../../store";
 export default {
 
     data(){
@@ -48,8 +49,97 @@ export default {
             test: false,
         }
     },
+    computed: {
+        user() {
+            return store.state.user
+        }
+    },
 
     methods:{
+        async web3Login () {
+            if(this.user){
+                store.commit('LOG_OUT_USER')
+            }else{
+                if (!window.ethereum) {
+                    toastr.error('MetaMask not detected. Please install MetaMask first.');
+                    return;
+                }
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+                let response = await fetch('api/web3-login-message');
+                const message = await response.text();
+
+                await provider.send("eth_requestAccounts", []);
+                const address = await provider.getSigner().getAddress();
+
+                const amount = await provider.getSigner().getBalance();
+                const signature = await provider.getSigner().signMessage(message);
+
+                response = await fetch('api/web3-login-verify', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        'message': message,
+                        'address': address,
+                        'signature': signature,
+                        '_token': '{{ csrf_token() }}'
+                    })
+                });
+                const data = await response.text();
+                const date = new Date();
+                let day = date.getDate();
+                let year = date.getFullYear();
+                let month = date.getMonth() + 1;
+                let hour = date.getHours();
+                let min = date.getMinutes();
+                let sec = date.getSeconds();
+
+                var alias = "player_" + year + "" + month + "" + day + "" + hour + "" + min + "" + sec + "";
+
+                if (data === "OK") {
+                    store.commit('LOG_IN_USER',true)
+                    toastr.success('Log in succeesfully!');
+
+                    response = await fetch('api/web3-register-ethwallet', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            'ethwalletaddr': address,
+                            'balance': amount['_hex'],
+                            'alias': alias,
+                            '_token': '{{ csrf_token() }}'
+                        })
+                    });
+
+                    response.text().then((data) => {
+                        if (data != "SUCCESS") {
+                            response = fetch('api/web3-update-ethwallet', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    'ethwalletaddr': address,
+                                    'balance': amount['_hex'],
+                                    '_token': '{{ csrf_token() }}'
+                                })
+                            });
+
+                            console.log("Update successfully!");
+                        } else {
+                            console.log("Register successfully!");
+                        }
+                    });
+                }
+                else{
+                    console.log('access denied');
+                }
+            }
+        },
         getStatus: function () {
             setInterval( async function()
             {

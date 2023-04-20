@@ -33,12 +33,6 @@
                 :ref="square.code"
                 :class="{ square: true, [`square-${square.code}`]: true }"
                 @click="squareClick($event, squareRowIndex, squareColIndex)"
-                @mouseenter="
-                  squareMouseEnter($event, squareRowIndex, squareColIndex)
-                "
-                @mouseleave="
-                  squareMouseLeave($event, squareRowIndex, squareColIndex)
-                "
               >
                 <rect
                   :x="square.x"
@@ -47,7 +41,7 @@
                   :height="square.height"
                   :fill="
                     square.isPossibleMove
-                      ? color['possibleMove']
+                      ? possibleMoveColor(squareColIndex,squareRowIndex)
                       : color[square.color]
                   "
                 >
@@ -140,12 +134,7 @@
                 :ref="square.code"
                 :class="{ square: true, [`square-${square.code}`]: true }"
                 @click="squareClick($event, squareRowIndex, squareColIndex)"
-                @mouseenter="
-                  squareMouseEnter($event, squareRowIndex, squareColIndex)
-                "
-                @mouseleave="
-                  squareMouseLeave($event, squareRowIndex, squareColIndex)
-                "
+
               >
                 <g v-if="square.content.piece">
                   <Piece
@@ -181,7 +170,20 @@
   import Den1 from "./Elements/Den1";
   import Den2 from "./Elements/Den2";
   import Trap from "./Elements/Trap";
-
+  const waterCoordinates = [
+      '1_3',
+      '2_3',
+      '1_4',
+      '2_4',
+      '1_5',
+      '2_5',
+      '4_3',
+      '5_3',
+      '4_4',
+      '5_4',
+      '4_5',
+      '5_5',
+  ]
   export default {
     name: "Game",
     components: {
@@ -211,6 +213,7 @@
           light: "#feb442",
           dark: "#55555500",
           possibleMove: "#FFE194",
+          possibleMoveWater: "#00e4ffa3",
           possibleStroke: "#b59f67",
         }),
       },
@@ -261,6 +264,9 @@
       }
     },
     methods: {
+        possibleMoveColor(x,y){
+            return waterCoordinates.includes(x + '_' + y) ? this.color.possibleMoveWater : this.color.possibleMove
+        },
       onMouseMove(e) {
         // let rect = this.svg.value.getBoundingClientRect();
         // this.mouseLocation.x = ((e.clientX - rect.x) * this.viewBox.x) / rect.width;
@@ -309,6 +315,7 @@
           // If user is holding a chess piece, then release it.
           this.releasePiece($event, square);
         } else {
+            this.showPossibleMoves(rowIndex, colIndex)
           // If user is holding not holding chess piece, then hold it.
           this.holding.row = rowIndex;
           this.holding.col = colIndex;

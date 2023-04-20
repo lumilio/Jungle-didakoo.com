@@ -4,6 +4,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
+      user: null,
     turn: "white",
     turnNumber: 1,
     squares: [],
@@ -13,7 +14,7 @@ const store = new Vuex.Store({
         white: {},
       },
     ],
-    svg: null,  
+    svg: null,
     errors: []
   },
 
@@ -36,6 +37,12 @@ const store = new Vuex.Store({
         },
       ];
     },
+      LOG_IN_USER(state, val) {
+          state.user = val;
+      },
+      LOG_OUT_USER (state){
+          state.user = null
+      },
     ADD_MOVE_HISTORY(state, move) {
       let lastMove = state.movesHistory[state.movesHistory.length - 1];
       if (Object.keys(lastMove[move.color]).length) {
@@ -45,7 +52,7 @@ const store = new Vuex.Store({
         };
         state.movesHistory.push(lastMove);
       }
-  
+
       lastMove[move.color] = move;
     },
     setErrors(state, errors) {
@@ -72,7 +79,7 @@ const store = new Vuex.Store({
           // commit("setUserData", response.data.data.user);
           // localStorage.setItem("authToken", response.data.data.token);
         });
-      
+
     }
   },
 })

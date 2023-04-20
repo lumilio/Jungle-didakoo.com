@@ -1,6 +1,6 @@
 <template>
     <div class="allineatore2">
-        <Modal :open="true" :gameStarted="false"/>
+        <Modal :open="true" :gameStarted="false" v-on:quitGame="quitGame"/>
     </div>
 </template>
 
@@ -10,6 +10,9 @@
     export default {
         components: {Modal},
         methods: {
+            quitGame(){
+                this.$router.push('/rank')
+            },
             async createGame(){
                 this.url = window.location.host;
                 const response = await axios.get('http://'+this.url+'/api/make-game');
