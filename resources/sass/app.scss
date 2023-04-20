@@ -88,26 +88,6 @@ body, .centratore {
     rotate: 180deg;
 }
 
-/* #page3{
-    background:
-    url("images/wallpepars/space.jpeg");
-    background-repeat: repeat;
-    background-position: left;
-} */
-
-/* #page3{
-    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0.7)
-    ),
-    url("images/wallpepars/chess3.jpg") ;
-    background-repeat: repeat ;
-    background-size: 100vh ;
-    min-height: 100vh ;
-    width: 100% ;
-    background-position: center  ;
-} */
 
 #page3{
     background:
@@ -128,8 +108,8 @@ body, .centratore {
     overflow: auto; /* Enable scroll if needed */
     background:
     linear-gradient(
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.4)
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 1)
     );
     background-repeat: repeat ;
     background-size: 700px ;
@@ -143,7 +123,9 @@ body, .centratore {
     ),
     url("images/board/bignilo3.jpg") ;
     background-repeat: repeat ;
-    background-size: 100vw ;
+    background-size: 100vh ;
+    background-position: center ;
+    background-size: 600px ;
 }
 
 
@@ -162,10 +144,11 @@ body, .centratore {
       rgba(0, 0, 0, 0.4),
       rgba(0, 0, 0, 0.4)
     ),
-    url("images/board/water4.jpg") ;
+    url("images/board/bignilo3.jpg") ;
     background-repeat: repeat ;
     background-size: 100vh ;
     background-position: center ;
+    background-size: 600px ;
 }
 
 
@@ -810,6 +793,12 @@ body, .centratore {
 
 .pepar{
     margin-top: 40px !important;
+    background-color:black;
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 1)
+    )
 }
 
 @media screen and (min-width: 350px) and (min-height: 550px){

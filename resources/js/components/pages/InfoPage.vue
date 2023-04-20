@@ -16,7 +16,7 @@
 
             <!---------------------- BODY ------------------->
             <div class="allineatore d-flex justify-content-top ">
-                <div style="margin-top:30px; background-color:black;" class="container-sm pepar  ">
+                <div style="margin-top:30px;" class="container-sm pepar  ">
                     <p style='font-size:30px;'>v 1.0.0
                         <!-- <img style="width:40px; padding-bottom:20px;  margin: 0 5px;"   src='images/extra_objects/cubo2.png' alt=""><img style="width:40px; padding-bottom:20px;"   src='images/extra_objects/sunflower_1f33b.png' alt=""> -->
                     </p>

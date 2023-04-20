@@ -20,6 +20,10 @@
                     </div>
                     <div class='d-flex justify-content-center flex-row align-items-center' style='margin-bottom:0;' >
                         <img style='width:50px; ' src='images/board/animals/icon-60.png' alt="">
+                        <img style='width:29px; margin:0px 5px; filter: invert(0);' src='images/extra_objects/8.png' alt="">
+                        <img style='width:29px; margin:0px 5px; filter: invert(0);' src='images/extra_objects/mario.png' alt="">
+                        <img style='width:28px; margin:0px 5px; filter: invert(0);' src='images/extra_objects/palm.png' alt="">
+                        <img style='width:29px; margin:0px 5px; filter: invert(0);' src='images/extra_objects/ghost.png' alt="">
                     </div>
                     <p style='font-size:33px; color:white;'>18 <i style='color:#EE5E81' class="fa-solid fa-bolt"></i></p>
                 </div>
