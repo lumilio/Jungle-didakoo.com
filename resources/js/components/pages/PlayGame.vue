@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="game_main" :class="{loading:isLoading}">
         <div class="allineatore2">
             <template v-if="isLoading">
-                <div style="display: flex; justify-content: center;">
+                <div class="spinner_handler">
                     <div class="spinner-border text-light" role="status">
                         <span class="sr-only">Loading...</span>
                     </div>
@@ -10,10 +10,10 @@
             </template>
             <template v-else>
                 <!----------------- NAV ------------------->
-                <div class="d-flex banner-board-helper align-items-center" style='  height:80px;    color: black; '>
+                <div class="d-flex banner-board-helper align-items-center">
                     <button @click="openModal()" class="d-flex bg-transparent border-0 align-items-center">
-                        <p class='avatar_helper_' style='color:white;  padding: 5px; margin:0;margin-left: 5px; '>Console</p>
-                        <i style="font-size: 25px; margin-left: 5px; margin-bottom: 3px" class="fa-solid fa-gamepad"></i>
+                        <p class='avatar_helper' >Console</p>
+                        <i class="fa-solid gamepad fa-gamepad"></i>
                     </button>
                 </div>
                 <!----------------------------------------->
@@ -21,14 +21,14 @@
                     <!-------------- PLAYER 2 DATA ---------------->
                     <div class="board-player" >
                         <div style="background-color:#EDEB52;  width:100%; border:0;" class="record   ">
-                            <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                                <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
+                            <p >1°
+                                <img src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                             </p>
                             <div class='d-flex align-items-center flex-row flex-nowrap'>
                                 <img style='width:30px; ' src='images/extra_objects/icon-59.png' alt="">
                                 <!-- <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i> -->
                             </div>
-                            <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
+                            <span class='align-items-center'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
                         </div>
                     </div>
                     <!--------------------------------------------->
@@ -53,7 +53,12 @@
                 </div>
             </template>
         </div>
-        <Modal :open="open" :gameStarted="true" v-on:closeModal="closeModal()" v-on:quitGame="quitGame()"/>
+        <Modal
+            :open="open"
+            :gameStarted="true"
+            :delay="canStart"
+            v-on:closeModal="closeModal()"
+            v-on:quitGame="quitGame()"/>
     </div>
 </template>
 
@@ -65,7 +70,8 @@
         data () {
             return {
                 isLoading: true,
-                open: false
+                open: true,
+                canStart: false,
             }
         },
         created() {
@@ -98,7 +104,7 @@
                 try {
                     console.log(window.location.host);
                     const response = await axios.get(`http://${window.location.host}/api/delete-game/${this.$route.params.id}`);
-                    this.$router.push('/game');
+                    this.$router.push('/rank');
                 }catch (e) {
                     console.log(e)
                 }
@@ -106,6 +112,67 @@
         }
     }
 </script>
+<style lang="scss">
+.game_main{
+    &.loading{
+        display: flex;
+        height: 100vh;
+        align-items: center;
+    }
+    .modal-ingame{
+        background:
+            linear-gradient(
+                    rgba(0, 0, 0, 0.4),
+                    rgba(0, 0, 0, 0.4)
+            );
+    }
+    .board-player .record{
+        background-color: rgb(237, 235, 82);
+        width: 100%;
+        border: 0px;
+        p{
+            color: black;
+            padding: 10px;
+            margin: 0px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            img{
+                width: 20px;
+                margin-left: 5px;
+                margin-right: 5px;
+                margin-bottom: 3px;
+            }
+        }
+        span{
+            color: black;
+            margin-right: 10px;
+            white-space: nowrap;
+            padding: 0px 10px;
+            border-radius: 20px;
+            display: flex;
+        }
+    }
+    .banner-board-helper{
+        height: 80px;
+        color: black;
+        .avatar_helper{
+            color: white;
+            padding: 5px;
+            margin: 0px 0px 0px 5px;
+        }
+        .gamepad{
+            font-size: 25px;
+            margin-left: 5px;
+            margin-bottom: 3px;
+        }
+    }
+    .spinner_handler{
+        display: flex;
+        justify-content: center;
+    }
+}
+</style>
 
 
 

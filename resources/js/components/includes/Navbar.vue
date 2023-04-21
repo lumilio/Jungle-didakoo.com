@@ -1,12 +1,12 @@
 <template>
-    <div class="d-flex banner-board-helper align-items-center" style=' background-color:black; height:80px; color: black; '>
-        <div id='btnkoo4' class="d-flex align-items-center position:absolute; top:0;">
-            <img style="width: 100px; margin-left: 5px; margin-bottom: 3px" src="images/extra_objects/ddd.jpg" alt="" />
+    <div class="navbar d-flex banner-board-helper align-items-center">
+        <div class="d-flex align-items-center">
+            <img class="didakoo" src="images/extra_objects/ddd.jpg" alt="" />
             <router-link to="menu">
-                <i style='display:inline; margin-bottom:25px;position:relative; margin-right:0px' class="fa-solid fa-bars"></i>
+                <i class="fa-solid burger_menu fa-bars"></i>
             </router-link>
-            <router-link style="margin-left: 10px;" v-if="user" to="profile">
-                <img  style='display:inline; width:30px; margin-left:0px; margin-bottom:3px;'   src='images/extra_objects/iconaplay1.png' alt="">
+            <router-link class="avatar_link" v-if="user" to="avatar">
+                <img src='images/extra_objects/iconaplay1.png' alt="">
             </router-link>
         </div>
     </div>
@@ -26,6 +26,31 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.navbar{
+    background-color:black;
+    height:80px;
+    color: black;
+    .burger_menu{
+        display: inline;
+        margin-bottom: 25px;
+        position: relative;
+        margin-right: 0px;
+    }
+    .avatar_link{
+        margin-left: 10px;
+        img{
+            display: inline;
+            width: 30px;
+            margin-left: 0px;
+            margin-bottom: 3px;
+        }
+    }
+    img.didakoo{
+        width: 100px;
+        margin-left: 5px;
+        margin-bottom: 3px;
+    }
+}
 
 </style>

@@ -1,16 +1,18 @@
 <template>
     <div v-show="open" class="allineatore2">
         <!----------------- MODALS UTILITY ------------------->
-        <div id="myModalkoo2" class="modal d-flex modal-ingame align-items-center">
+        <div class="modal d-flex main_modal modal-ingame align-items-center">
             <!-- Modal content -->
-            <div class="modal-content container-sm d-flex flex-column align-items-center" style=''>
+            <div class="modal-content container-sm d-flex flex-column align-items-center">
                 <div class="d-flex container-sm align-items-center justify-content-between flex-row">
-                    <img alt="" src=" images/extra_objects/ddd.jpg" style="width:80px">
-                    <span style="color:white; margin:0; margin-top:5px; margin-left:8px;"> v 1.0.0</span>
+                    <img class="modal_logo" src="images/extra_objects/ddd.jpg">
+                    <span class="version_sign">v 1.0.0</span>
                 </div>
-                <div id='console-screen' class="d-flex justify-content-center align-items-center"
-                     style='background-color:black; display:flex;  justify-content:center; align-items:center;'>
-                    <p class="" style='color:white; font-size:17px; padding:10px;'> You win / You Lose / Other data</p>
+                <div id='console-screen' class="d-flex justify-content-center align-items-center">
+                    <p class="main_message">
+                        {{mainMessage}}
+                        <span v-if="!canStart">Your Game Will Start in {{timeoutIndicator}}</span>
+                    </p>
                 </div>
                 <template v-if="!gameStarted">
                     <div class="d-flex flex-wrap flex-column justify-content-center">
@@ -31,7 +33,7 @@
                 </template>
                 <div class="d-flex flex-wrap justify-content-center">
                     <template v-if="gameStarted">
-                        <button class="closekoo2 d-flex align-items-center jusify-content-around" style='background-color:black;'
+                        <button v-if="canStart" class="closekoo2 d-flex align-items-center jusify-content-around" style='background-color:black;'
                                 @click="closeModal()">
                             <span>REASUME</span>
                             <img alt="" src='images/board/tree.png' style='width:30px; margin-left:8px'>
@@ -55,8 +57,55 @@
 import axios from "axios";
 
 export default {
-    props: ['open', 'gameStarted'],
+    props: {
+        open: Boolean,
+        gameStarted: Boolean,
+        message: {
+            type: String,
+            default: 'You win / You Lose / Other data'
+        },
+        delay: {
+            type: Boolean,
+            default: true
+        },
+    },
+    data () {
+        return {
+            canStart:this.delay,
+            timeoutIndicator: null
+        }
+    },
+    computed: {
+        mainMessage(){
+            if(this.gameStarted && !this.canStart){
+                return 'CountDown Message'
+            }
+            return 'You win / You Lose / Other data'
+        }
+    },
+    created() {
+        if(this.gameStarted && !this.canStart){
+            let timeout = 15
+            let interval = setInterval(() => {
+                this.timeoutIndicator = this.numberToTime(timeout)
+                timeout --
+                if(!timeout){
+                    clearInterval(interval)
+                    this.canStart = true
+                    this.closeModal()
+                }
+            },1000)
+        }
+    },
     methods: {
+        numberToTime(time){
+            let minutes = Math.floor(time/60);
+            minutes = minutes < 10 ? '0' + minutes : minutes
+            let seconds = time % 60
+            seconds = seconds < 10 ? '0' + seconds : seconds
+            return minutes + ':' + seconds
+
+        },
         async createGame() {
             this.url = window.location.host;
             const response = await axios.get('http://' + this.url + '/api/make-game');
@@ -71,3 +120,20 @@ export default {
     },
 }
 </script>
+
+<style lang="scss">
+.main_modal{
+    .modal_logo{
+        width:80px
+    }
+    .version_sign{
+        color: white;
+        margin-top: 5px;
+    }
+    .main_message{
+        color: white;
+        font-size: 17px;
+        padding: 10px;
+    }
+}
+</style>

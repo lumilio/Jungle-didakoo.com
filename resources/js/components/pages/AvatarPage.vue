@@ -223,7 +223,15 @@
 
 <script>
     export default {
+        computed: {
+            user () {
+                return this.$store.state.user
+            }
+        },
         mounted() {
+            if(!this.user){
+                this.$router.push('/rank')
+            }
             console.log('Avatar Component mounted.')
         }
     }

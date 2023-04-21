@@ -13,7 +13,6 @@ import BoardGame  from "../components/pages/BoardGame.vue"
 import InfoPage   from "../components/pages/InfoPage.vue"
 import MenuPage   from "../components/pages/MenuPage.vue"
 import PlayGame from "../components/pages/PlayGame.vue";
-import Profile from "../components/pages/Profile.vue";
 
 
 const authGuard = (to, from, next) => {
@@ -49,12 +48,7 @@ const routes = [
                 path: 'info',
                 name: 'info',
                 component: InfoPage,
-            },
-            {
-                path: 'profile',
-                name: 'profile',
-                component: Profile,
-            },
+            }
         ]
     },
     {

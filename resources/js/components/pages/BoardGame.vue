@@ -1,5 +1,5 @@
 <template>
-    <div class="allineatore2">
+    <div class="allineatore2 board_game">
         <Modal :open="true" :gameStarted="false" v-on:quitGame="quitGame"/>
     </div>
 </template>
@@ -21,6 +21,5 @@
         },
     }
 </script>
-
 
 
