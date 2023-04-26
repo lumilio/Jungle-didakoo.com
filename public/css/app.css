@@ -11615,6 +11615,8 @@ body,
 .pepar {
   margin-top: 40px !important;
   background-color: black;
+  padding: 30px;
+  border-radius: 20px;
   background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
 }
 
@@ -11717,7 +11719,9 @@ body,
   /* box-shadow: 10px 10px purple; */
   /* border-radius: 30px; */
   margin: 15% auto;
-  padding: 20px;
+  /* padding: 20px; */
+  padding: 30px;
+  border-radius: 20px;
   /* border: 8px solid BLACK; */
   /* width: 280px; */
   height: -moz-fit-content;
