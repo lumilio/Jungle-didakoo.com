@@ -11045,7 +11045,6 @@ body,
 .modal-ingame {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);
   background-repeat: repeat;
-  background-size: 100vh;
   background-position: center;
   background-size: 600px;
 }

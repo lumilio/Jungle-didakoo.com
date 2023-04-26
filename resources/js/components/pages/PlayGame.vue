@@ -55,9 +55,11 @@
         </div>
         <Modal
             :open="open"
-            :gameStarted="true"
+            :gameStarted="isStarted"
             :delay="canStart"
+            :readyToStart="readyToStart"
             v-on:closeModal="closeModal()"
+            v-on:handelReadyToStart="handelReadyToStart()"
             v-on:quitGame="quitGame()"/>
     </div>
 </template>
@@ -72,6 +74,8 @@
                 isLoading: true,
                 open: true,
                 canStart: false,
+                isStarted: true,
+                readyToStart: false,
             }
         },
         created() {
@@ -100,11 +104,16 @@
             closeModal(){
                 this.open = false;
             },
+            handelReadyToStart(){
+                this.readyToStart = true;
+            },
             async quitGame () {
                 try {
-                    console.log(window.location.host);
                     const response = await axios.get(`http://${window.location.host}/api/delete-game/${this.$route.params.id}`);
-                    this.$router.push('/rank');
+                    if (this.readyToStart){
+                        return this.$router.push('/rank');
+                    }
+                    return this.$router.push('/game');
                 }catch (e) {
                     console.log(e)
                 }
@@ -120,20 +129,19 @@
         align-items: center;
     }
     .modal-ingame{
-        background:
-            linear-gradient(
-                    rgba(0, 0, 0, 0.4),
-                    rgba(0, 0, 0, 0.4)
-            );
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);
+        background-repeat: repeat;
+        background-position: center;
+        background-size: 500px;
     }
     .board-player .record{
         background-color: rgb(237, 235, 82);
         width: 100%;
-        border: 0px;
+        border: 0;
         p{
             color: black;
             padding: 10px;
-            margin: 0px;
+            margin: 0;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
@@ -148,7 +156,7 @@
             color: black;
             margin-right: 10px;
             white-space: nowrap;
-            padding: 0px 10px;
+            padding: 0 10px;
             border-radius: 20px;
             display: flex;
         }
@@ -159,7 +167,7 @@
         .avatar_helper{
             color: white;
             padding: 5px;
-            margin: 0px 0px 0px 5px;
+            margin: 0 0 0 5px;
         }
         .gamepad{
             font-size: 25px;

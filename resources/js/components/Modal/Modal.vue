@@ -68,6 +68,10 @@ export default {
             type: Boolean,
             default: true
         },
+        readyToStart: {
+            type: Boolean,
+            default: false
+        },
     },
     data () {
         return {
@@ -88,12 +92,13 @@ export default {
             let timeout = 15
             let interval = setInterval(() => {
                 this.timeoutIndicator = this.numberToTime(timeout)
-                timeout --
                 if(!timeout){
                     clearInterval(interval)
                     this.canStart = true
-                    this.closeModal()
+                    this.closeModal();
+                    this.$emit("handelReadyToStart")
                 }
+                timeout --;
             },1000)
         }
     },

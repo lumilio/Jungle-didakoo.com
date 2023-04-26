@@ -2784,6 +2784,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     delay: {
       type: Boolean,
       "default": true
+    },
+    readyToStart: {
+      type: Boolean,
+      "default": false
     }
   },
   data: function data() {
@@ -2806,12 +2810,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var timeout = 15;
       var interval = setInterval(function () {
         _this.timeoutIndicator = _this.numberToTime(timeout);
-        timeout--;
         if (!timeout) {
           clearInterval(interval);
           _this.canStart = true;
           _this.closeModal();
+          _this.$emit("handelReadyToStart");
         }
+        timeout--;
       }, 1000);
     }
   },
@@ -3217,7 +3222,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       isLoading: true,
       open: true,
-      canStart: false
+      canStart: false,
+      isStarted: true,
+      readyToStart: false
     };
   },
   created: function created() {},
@@ -3262,6 +3269,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     closeModal: function closeModal() {
       this.open = false;
     },
+    handelReadyToStart: function handelReadyToStart() {
+      this.readyToStart = true;
+    },
     quitGame: function quitGame() {
       var _this2 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
@@ -3270,23 +3280,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
               _context2.prev = 0;
-              console.log(window.location.host);
-              _context2.next = 4;
+              _context2.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("http://".concat(window.location.host, "/api/delete-game/").concat(_this2.$route.params.id));
-            case 4:
+            case 3:
               response = _context2.sent;
-              _this2.$router.push('/rank');
-              _context2.next = 11;
-              break;
-            case 8:
-              _context2.prev = 8;
+              if (!_this2.readyToStart) {
+                _context2.next = 6;
+                break;
+              }
+              return _context2.abrupt("return", _this2.$router.push('/rank'));
+            case 6:
+              return _context2.abrupt("return", _this2.$router.push('/game'));
+            case 9:
+              _context2.prev = 9;
               _context2.t0 = _context2["catch"](0);
               console.log(_context2.t0);
-            case 11:
+            case 12:
             case "end":
               return _context2.stop();
           }
-        }, _callee2, null, [[0, 8]]);
+        }, _callee2, null, [[0, 9]]);
       }))();
     }
   }
@@ -5467,12 +5480,16 @@ var render = function render() {
   }, [_c("Game")], 1), _vm._v(" "), _vm._m(2)])]], 2), _vm._v(" "), _c("Modal", {
     attrs: {
       open: _vm.open,
-      gameStarted: true,
-      delay: _vm.canStart
+      gameStarted: _vm.isStarted,
+      delay: _vm.canStart,
+      readyToStart: _vm.readyToStart
     },
     on: {
       closeModal: function closeModal($event) {
         return _vm.closeModal();
+      },
+      handelReadyToStart: function handelReadyToStart($event) {
+        return _vm.handelReadyToStart();
       },
       quitGame: function quitGame($event) {
         return _vm.quitGame();
@@ -10404,7 +10421,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".game_main.loading {\n  display: flex;\n  height: 100vh;\n  align-items: center;\n}\n.game_main .modal-ingame {\n  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));\n}\n.game_main .board-player .record {\n  background-color: rgb(237, 235, 82);\n  width: 100%;\n  border: 0px;\n}\n.game_main .board-player .record p {\n  color: black;\n  padding: 10px;\n  margin: 0px;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n.game_main .board-player .record p img {\n  width: 20px;\n  margin-left: 5px;\n  margin-right: 5px;\n  margin-bottom: 3px;\n}\n.game_main .board-player .record span {\n  color: black;\n  margin-right: 10px;\n  white-space: nowrap;\n  padding: 0px 10px;\n  border-radius: 20px;\n  display: flex;\n}\n.game_main .banner-board-helper {\n  height: 80px;\n  color: black;\n}\n.game_main .banner-board-helper .avatar_helper {\n  color: white;\n  padding: 5px;\n  margin: 0px 0px 0px 5px;\n}\n.game_main .banner-board-helper .gamepad {\n  font-size: 25px;\n  margin-left: 5px;\n  margin-bottom: 3px;\n}\n.game_main .spinner_handler {\n  display: flex;\n  justify-content: center;\n}", ""]);
+exports.push([module.i, ".game_main.loading {\n  display: flex;\n  height: 100vh;\n  align-items: center;\n}\n.game_main .modal-ingame {\n  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);\n  background-repeat: repeat;\n  background-position: center;\n  background-size: 500px;\n}\n.game_main .board-player .record {\n  background-color: rgb(237, 235, 82);\n  width: 100%;\n  border: 0;\n}\n.game_main .board-player .record p {\n  color: black;\n  padding: 10px;\n  margin: 0;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n.game_main .board-player .record p img {\n  width: 20px;\n  margin-left: 5px;\n  margin-right: 5px;\n  margin-bottom: 3px;\n}\n.game_main .board-player .record span {\n  color: black;\n  margin-right: 10px;\n  white-space: nowrap;\n  padding: 0 10px;\n  border-radius: 20px;\n  display: flex;\n}\n.game_main .banner-board-helper {\n  height: 80px;\n  color: black;\n}\n.game_main .banner-board-helper .avatar_helper {\n  color: white;\n  padding: 5px;\n  margin: 0 0 0 5px;\n}\n.game_main .banner-board-helper .gamepad {\n  font-size: 25px;\n  margin-left: 5px;\n  margin-bottom: 3px;\n}\n.game_main .spinner_handler {\n  display: flex;\n  justify-content: center;\n}", ""]);
 
 // exports
 
