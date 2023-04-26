@@ -35,6 +35,7 @@
                     <div  class=" board d-flex justify-content-center bg-transparent align-items-center">
                         <Game/>
                         <!-- <img class='board ' src="images/concepts/blue-red.jpeg" alt=""> -->
+                        <!-- <img class='board ' src="images/concepts/yellow-blue.jpg" alt=""> -->
                     </div>
                     <!-------------- PLAYER 1 DATA ---------------->
                     <div class="board-player" >
