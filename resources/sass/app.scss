@@ -80,6 +80,7 @@ body, .centratore {
     background-size: 100% 10px, 50% 50%;
     background-repeat: no-repeat;
     rotate: 180deg;
+    border: 1px solid #3c3c3c
 }
 
 #modalx span {
@@ -308,6 +309,7 @@ body, .centratore {
 
 .refresh-button{
     width: 100%;
+    border: 1px solid #a9a9a9;
 }
 
 #scarabeo {
@@ -677,7 +679,7 @@ body, .centratore {
 /* ----------------------------------------------------------------------------- */
 
 .pepar{
-    margin-top: 40px !important;
+    margin-bottom: 40px !important;
     background-color:black;
     padding: 30px;
     border-radius: 20px;
@@ -733,7 +735,7 @@ body, .centratore {
     padding-bottom: 40px;
     transition: 0.5s ease;
     margin-top: 10px;
-    animation: pulse 2s infinite;
+    animation: pulse 3s infinite;
     &:hover{
         box-shadow: 0 0 16px 0 #ffffff94;
     }
@@ -786,7 +788,7 @@ body, .centratore {
 
 .modal-content {
     background-color: black;
-    box-shadow: 0 0 11px 2px #000000;
+    /* box-shadow: 0 0 11px 2px #000000; */
     /* box-shadow: 10px 10px purple; */
     /* border-radius: 30px; */
     margin: 15% auto;
