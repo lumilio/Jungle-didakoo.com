@@ -5663,13 +5663,7 @@ var render = function render() {
       src: "images/extra_objects/icon-05.png",
       alt: ""
     }
-  })], 1), _vm._v(" "), _c("p", {
-    staticClass: "text-white",
-    staticStyle: {
-      "font-family": '"VT323", monospace',
-      "margin-top": "25px"
-    }
-  }, [_vm._v("Sun Dec 17 2034 03:24:00 UTC+1 ROME")]), _vm._v(" "), _c("img", {
+  })], 1), _vm._v(" "), _c("img", {
     staticStyle: {},
     attrs: {
       id: "scarabeo",
