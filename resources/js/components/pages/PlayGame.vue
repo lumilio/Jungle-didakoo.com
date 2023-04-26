@@ -133,7 +133,7 @@
         background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);
         background-repeat: repeat;
         background-position: center;
-        background-size: 500px;
+        background-size: 600px;
     }
     .board-player .record{
         background-color: rgb(237, 235, 82);
