@@ -388,7 +388,7 @@ body, .centratore {
 
 
 
-#console-screen{
+.console-screen{
     font-family: 'VT323', monospace ;
 }
 
@@ -404,18 +404,8 @@ body, .centratore {
         width: calc(200px);
         height:358px;
     }
-    #console-screen{
+    .console-screen{
         width: 150px ;
-    }
-    .modal button {
-        width: 50px;
-        min-height: 60px;
-        font-size: 10px;
-        margin: 5px;
-        color: white !important;
-        border : 1px solid white;
-        border-radius: 30px;
-        font-size: small;
     }
 }
 
@@ -431,18 +421,8 @@ body, .centratore {
         width: calc(225px);
         height:389px;
     }
-    #console-screen{
+    .console-screen{
         width: 100% ;
-    }
-    .modal button {
-        width: 50px;
-        min-height: 60px;
-        font-size: 10px;
-        margin: 5px;
-        color: white !important;
-        border : 1px solid white;
-        border-radius: 30px;
-        font-size: small;
     }
 
 }
@@ -459,18 +439,8 @@ body, .centratore {
         width: calc(250px);
         height:421px;
     }
-    #console-screen{
+    .console-screen{
         width: 100% ;
-    }
-    .modal button {
-        width: 50px;
-        min-height: 60px;
-        font-size: 10px;
-        margin: 5px;
-        color: white !important;
-        border : 1px solid white;
-        border-radius: 30px;
-        font-size: small;
     }
 
 }
@@ -487,20 +457,9 @@ body, .centratore {
         width: calc(260px);
         height:460px;
     }
-    #console-screen{
+    .console-screen{
         width: 200px ;
     }
-    .modal button {
-        width: 90px;
-        min-height: 60px;
-        font-size: 10px;
-        margin: 5px;
-        color: white !important;
-        border : 1px solid white;
-        border-radius: 30px;
-        font-size: small;
-    }
-
 }
 
 @media screen and (min-width: 370px) and (min-height: 582px){
@@ -516,21 +475,9 @@ body, .centratore {
         width: calc(280px);
         height:524px;
     }
-    #console-screen{
+    .console-screen{
         width: 200px ;
     }
-    .modal button {
-        width: 100px;
-        min-height: 60px;
-        font-size: 10px;
-        margin: 5px;
-        color: white !important;
-        border : 1px solid white;
-        border-radius: 30px;
-        font-size: small;
-    }
-
-
 }
 
 @media screen and (min-width: 482px) and (min-height: 600px){
@@ -545,18 +492,8 @@ body, .centratore {
         width: calc(300px);
         height:550px;
     }
-    #console-screen{
+    .console-screen{
         width: 240px ;
-    }
-    .modal button {
-        width: 150px;
-        min-height: 60px;
-        font-size: 10px;
-        margin: 5px;
-        color: white !important;
-        border : 1px solid white;
-        border-radius: 30px;
-        font-size: small;
     }
 }
 
@@ -572,18 +509,8 @@ body, .centratore {
         width: calc(330px);
         height:600px;
     }
-    #console-screen{
+    .console-screen{
         width: 280px ;
-    }
-    .modal button {
-        width: 130px;
-        min-height: 60px;
-        font-size: 10px;
-        margin: 5px;
-        color: white !important;
-        border : 1px solid white;
-        border-radius: 30px;
-        font-size: small;
     }
 }
 
@@ -599,18 +526,8 @@ body, .centratore {
         width: calc(350px);
         height:652px;
     }
-    #console-screen{
+    .console-screen{
         width: 290px ;
-    }
-    .modal button {
-        width: 140px;
-        min-height: 60px;
-        font-size: 10px;
-        margin: 7px;
-        color: white !important;
-        border : 1px solid white;
-        border-radius: 30px;
-        font-size: small;
     }
 }
 
@@ -627,23 +544,12 @@ body, .centratore {
         height:704px;
     }
 
-    #console-screen{
+    .console-screen{
         width: 280px ;
-    }
-
-    .modal button {
-        width: 140px;
-        min-height: 60px;
-        margin: 10px;
-        color: white !important;
-        border : 1px solid white;
-        border-radius: 30px;
-        font-size: small;
     }
     .modal-ingame{
         background-size: 500px ;
     }
-
 }
 
 @media screen and (min-width: 710px) and (min-height: 898px){
@@ -658,17 +564,8 @@ body, .centratore {
         width: calc(500px);
         height:807px;
     }
-    #console-screen{
+    .console-screen{
         width: 350px ;
-    }
-    .modal button {
-        width: 170px;
-        min-height: 60px;
-        margin: 10px;
-        color: white !important;
-        border : 1px solid white;
-        border-radius: 30px;
-        font-size: small;
     }
     .modal-ingame{
         background-size: 500px ;
@@ -687,17 +584,8 @@ body, .centratore {
         width: calc(600px);
         height:935px;
     }
-    #console-screen{
+    .console-screen{
         width: 350px ;
-    }
-    .modal button {
-        width: 170px;
-        min-height: 60px;
-        margin: 10px;
-        color: white !important;
-        border : 1px solid white;
-        border-radius: 30px;
-        font-size: small;
     }
     .modal-ingame{
         background-size: 500px ;
@@ -834,16 +722,45 @@ body, .centratore {
     border-radius: 30px;
 } */
 
-#console-screen{
-    border : 4px solid white;
-    border-radius: 0px;
+.console-screen{
+    box-shadow: 0 0 12px 0 #ffffff63;
+    border: 1px solid #ffffff59;
+    border-radius: 8px;
     /* width: 350px; */
     margin: 30px 30px 30px 30px;
     padding-bottom: 40px;
+    transition: 0.5s ease;
     margin-top: 10px;
-
+    animation: pulse 2s infinite;
+    &:hover{
+        box-shadow: 0 0 16px 0 #ffffff94;
+    }
 }
-
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0.3);
+    }
+    90% {
+        -webkit-box-shadow: 0 0 1px 10px rgba(255,255,255, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+    }
+}
+@keyframes pulse {
+    0% {
+        -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0.3);
+        box-shadow: 0 0 0 0 rgba(255,255,255, 0.3);
+    }
+    90% {
+        -moz-box-shadow: 0 0 1px 10px rgba(255,255,255, 0);
+        box-shadow: 0 0 1px 15px rgba(255,255,255, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+        box-shadow: 0 0 0 0 rgba(255,255,255, 0);
+    }
+}
 
 
 #myModalkoo6 {
@@ -867,6 +784,7 @@ body, .centratore {
 
 .modal-content {
     background-color: black;
+    box-shadow: 0 0 11px 2px #000000;
     /* box-shadow: 10px 10px purple; */
     /* border-radius: 30px; */
     margin: 15% auto;

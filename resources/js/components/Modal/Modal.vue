@@ -8,7 +8,7 @@
                     <img class="modal_logo" src="images/extra_objects/ddd.jpg">
                     <span class="version_sign">v 1.0.0</span>
                 </div>
-                <div id='console-screen' class="d-flex justify-content-center align-items-center">
+                <div class="console-screen d-flex justify-content-center align-items-center">
                     <p class="main_message">
                         {{mainMessage}}
                         <span v-if="!canStart">Your Game Will Start in {{timeoutIndicator}}</span>
@@ -16,37 +16,40 @@
                 </div>
                 <template v-if="!gameStarted">
                     <div class="d-flex flex-wrap flex-column justify-content-center">
-                        <button style='background-color:black; d-flex justify-content-center' @click="createGame()">
-                            <div class="d-flex no-wrap justify-content-center align-items-center">
-                                <p class="m-0">QUICK GAME</p>
-                                <i class="fa-solid fa-bolt" style='font-size:20px; margin-left:15px;'></i>
-                            </div>
-                        </button>
-                        <button class=" d-flex justify-content-center align-items-center" style='background-color:black'>
-                            <div class="d-flex no-wrap justify-content-center">
-                                <p class="m-0"> INVITE P2</p>
-                                <img alt="" src='images/extra_objects/iconaplay1.png'
-                                     style='width:30px; margin-left:8px'>
-                            </div>
-                        </button>
+                        <div class="mb-3">
+                            <Button
+                                v-on:handelClick="createGame()"
+                                title='QUICK GAME'
+                                icons="fa-solid fa-bolt icons"
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <Button
+                                v-on:handelClick="createGame()"
+                                title='INVITE P2'
+                                image="images/extra_objects/iconaplay1.png"
+                            />
+                        </div>
+
                     </div>
                 </template>
-                <div class="d-flex flex-wrap justify-content-center">
+                <div class="gameStarted-wrapper">
                     <template v-if="gameStarted">
-                        <button v-if="canStart" class="closekoo2 d-flex align-items-center jusify-content-around" style='background-color:black;'
-                                @click="closeModal()">
-                            <span>REASUME</span>
-                            <img alt="" src='images/board/tree.png' style='width:30px; margin-left:8px'>
-                        </button>
+                        <Button
+                            v-if="canStart"
+                            v-on:handelClick="closeModal()"
+                            title='REASUME'
+                            image="images/board/tree.png"
+                        />
                     </template>
-                    <button id='btnkoo_3_1' class="jusify-content-around" style='background-color:black;'
-                            @click="quitGame()">
-                        <span>QUIT</span>
-                        <img alt=""
-                             src='images/board/animals/icon-17.png'
-                             style='width:30px; margin-left:8px'
-                        >
-                    </button>
+                    <div>
+                        <Button
+                            v-on:handelClick="quitGame()"
+                            title='QUIT'
+                            image="images/board/animals/icon-17.png"
+                        />
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -55,7 +58,7 @@
 
 <script>
 import axios from "axios";
-
+import Button from "../Button/Button.vue";
 export default {
     props: {
         open: Boolean,
@@ -73,6 +76,7 @@ export default {
             default: false
         },
     },
+    components: { Button },
     data () {
         return {
             canStart:this.delay,
@@ -127,6 +131,11 @@ export default {
 </script>
 
 <style lang="scss">
+.gameStarted-wrapper{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+}
 .main_modal{
     .modal_logo{
         width:80px
