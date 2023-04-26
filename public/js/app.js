@@ -3923,7 +3923,8 @@ var render = function render() {
     }],
     staticClass: "allineatore2"
   }, [_c("div", {
-    staticClass: "modal d-flex main_modal modal-ingame align-items-center"
+    staticClass: "modal d-flex main_modal align-items-center",
+    "class": _vm.readyToStart ? "modal-ingame" : "modal-outgame"
   }, [_c("div", {
     staticClass: "modal-content container-sm d-flex flex-column align-items-center"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
@@ -10377,7 +10378,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".main_modal .modal_logo {\n  width: 80px;\n}\n.main_modal .version_sign {\n  color: white;\n  margin-top: 5px;\n}\n.main_modal .main_message {\n  color: white;\n  font-size: 17px;\n  padding: 10px;\n}", ""]);
+exports.push([module.i, ".modal-ingame {\n  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));\n}\n.modal-outgame {\n  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);\n  background-repeat: repeat;\n  background-position: center;\n  background-size: 500px;\n}\n.main_modal .modal_logo {\n  width: 80px;\n}\n.main_modal .version_sign {\n  color: white;\n  margin-top: 5px;\n}\n.main_modal .main_message {\n  color: white;\n  font-size: 17px;\n  padding: 10px;\n}", ""]);
 
 // exports
 
@@ -10415,7 +10416,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".game_main.loading {\n  display: flex;\n  height: 100vh;\n  align-items: center;\n}\n.game_main .modal-ingame {\n  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);\n  background-repeat: repeat;\n  background-position: center;\n  background-size: 500px;\n}\n.game_main .board-player .record {\n  background-color: rgb(237, 235, 82);\n  width: 100%;\n  border: 0;\n}\n.game_main .board-player .record p {\n  color: black;\n  padding: 10px;\n  margin: 0;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n.game_main .board-player .record p img {\n  width: 20px;\n  margin-left: 5px;\n  margin-right: 5px;\n  margin-bottom: 3px;\n}\n.game_main .board-player .record span {\n  color: black;\n  margin-right: 10px;\n  white-space: nowrap;\n  padding: 0 10px;\n  border-radius: 20px;\n  display: flex;\n}\n.game_main .banner-board-helper {\n  height: 80px;\n  color: black;\n}\n.game_main .banner-board-helper .avatar_helper {\n  color: white;\n  padding: 5px;\n  margin: 0 0 0 5px;\n}\n.game_main .banner-board-helper .gamepad {\n  font-size: 25px;\n  margin-left: 5px;\n  margin-bottom: 3px;\n}\n.game_main .spinner_handler {\n  display: flex;\n  justify-content: center;\n}", ""]);
+exports.push([module.i, ".game_main.loading {\n  display: flex;\n  height: 100vh;\n  align-items: center;\n}\n.game_main .board-player .record {\n  background-color: rgb(237, 235, 82);\n  width: 100%;\n  border: 0;\n}\n.game_main .board-player .record p {\n  color: black;\n  padding: 10px;\n  margin: 0;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n}\n.game_main .board-player .record p img {\n  width: 20px;\n  margin-left: 5px;\n  margin-right: 5px;\n  margin-bottom: 3px;\n}\n.game_main .board-player .record span {\n  color: black;\n  margin-right: 10px;\n  white-space: nowrap;\n  padding: 0 10px;\n  border-radius: 20px;\n  display: flex;\n}\n.game_main .banner-board-helper {\n  height: 80px;\n  color: black;\n}\n.game_main .banner-board-helper .avatar_helper {\n  color: white;\n  padding: 5px;\n  margin: 0 0 0 5px;\n}\n.game_main .banner-board-helper .gamepad {\n  font-size: 25px;\n  margin-left: 5px;\n  margin-bottom: 3px;\n}\n.game_main .spinner_handler {\n  display: flex;\n  justify-content: center;\n}", ""]);
 
 // exports
 

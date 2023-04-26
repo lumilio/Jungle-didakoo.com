@@ -1,7 +1,7 @@
 <template>
     <div v-show="open" class="allineatore2">
         <!----------------- MODALS UTILITY ------------------->
-        <div class="modal d-flex main_modal modal-ingame align-items-center">
+        <div class="modal d-flex main_modal align-items-center" :class="readyToStart ? 'modal-ingame':'modal-outgame'">
             <!-- Modal content -->
             <div class="modal-content container-sm d-flex flex-column align-items-center">
                 <div class="d-flex container-sm align-items-center justify-content-between flex-row">
@@ -127,6 +127,19 @@ export default {
 </script>
 
 <style lang="scss">
+.modal-ingame{
+    background:
+        linear-gradient(
+                rgba(0, 0, 0, 0.4),
+                rgba(0, 0, 0, 0.4)
+        );
+}
+.modal-outgame{
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 500px;
+}
 .main_modal{
     .modal_logo{
         width:80px
