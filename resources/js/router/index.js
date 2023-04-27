@@ -1,7 +1,4 @@
 import VueRouter from "vue-router";
-import store from '../store'
-
-
 // import Login from '../modules/login'
 // import Register from '../modules/register'
 // import Home from "../modules/home/1.vue";
@@ -84,6 +81,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+    mode: 'history',
     routes: routes
 });
 

@@ -5,7 +5,7 @@
             <!-- Modal content -->
             <div class="modal-content container-sm d-flex flex-column align-items-center">
                 <div class="d-flex container-sm align-items-center justify-content-between flex-row">
-                    <img class="modal_logo" src="images/extra_objects/ddd.jpg">
+                    <img class="modal_logo" src="../../../images/extra_objects/ddd.jpg">
                     <span class="version_sign">v 1.0.0</span>
                 </div>
                 <div class="console-screen d-flex justify-content-center align-items-center">
@@ -27,7 +27,7 @@
                             <Button
                                 v-on:handelClick="createGame()"
                                 title='INVITE P2'
-                                image="images/extra_objects/iconaplay1.png"
+                                image="../../../images/extra_objects/iconaplay1.png"
                             />
                         </div>
 
@@ -39,14 +39,14 @@
                             v-if="canStart"
                             v-on:handelClick="closeModal()"
                             title='REASUME'
-                            image="images/board/tree.png"
+                            image="../../../images/board/tree.png"
                         />
                     </template>
                     <div>
                         <Button
                             v-on:handelClick="quitGame()"
                             title='QUIT'
-                            image="images/board/animals/icon-17.png"
+                            image="../../../images/board/animals/icon-17.png"
                         />
                     </div>
 

@@ -22,10 +22,10 @@
                     <div class="board-player" >
                         <div style="background-color:#EDEB52;  width:100%; border:0;" class="record   ">
                             <p >1°
-                                <img src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
+                                <img src='../../../images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                             </p>
                             <div class='d-flex align-items-center flex-row flex-nowrap'>
-                                <img style='width:30px; ' src='images/extra_objects/icon-59.png' alt="">
+                                <img style='width:30px; ' src='../../../images/extra_objects/icon-59.png' alt="">
                                 <!-- <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i> -->
                             </div>
                             <span class='align-items-center'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
@@ -41,10 +41,10 @@
                     <div class="board-player" >
                         <div style="background-color:#EDEB52;  width:100%; border:0;" class="record   ">
                             <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                                <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
+                                <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='../../../images/extra_objects/iconaplayB.png'> 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
                             </p>
                             <div class='d-flex align-items-center flex-row flex-nowrap'>
-                                <img style='width:30px; ' src='images/extra_objects/icon-59.png' alt="">
+                                <img style='width:30px; ' src='../../../images/extra_objects/icon-59.png' alt="">
                                 <!-- <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i> -->
                             </div>
                             <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
