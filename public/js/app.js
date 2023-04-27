@@ -10429,7 +10429,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".gameStarted-wrapper {\n  display: flex;\n  flex-wrap: nowrap;\n  gap: 10px;\n}\n.modal-ingame {\n  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));\n}\n.modal-outgame {\n  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);\n  background-repeat: repeat;\n  background-position: center;\n  background-size: 500px;\n}\n.main_modal .modal_logo {\n  width: 80px;\n}\n.main_modal .version_sign {\n  color: white;\n  margin-top: 5px;\n}\n.main_modal .main_message {\n  color: white;\n  font-size: 17px;\n  padding: 10px;\n}", ""]);
+exports.push([module.i, ".gameStarted-wrapper {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.modal-ingame {\n  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));\n}\n.modal-outgame {\n  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);\n  background-repeat: repeat;\n  background-position: center;\n  background-size: 600px;\n}\n.main_modal .modal_logo {\n  width: 80px;\n}\n.main_modal .version_sign {\n  color: white;\n  margin-top: 5px;\n}\n.main_modal .main_message {\n  color: white;\n  font-size: 17px;\n  padding: 10px;\n}", ""]);
 
 // exports
 

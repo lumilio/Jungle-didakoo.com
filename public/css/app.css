@@ -11010,6 +11010,7 @@ body,
   background-size: 100% 10px, 50% 50%;
   background-repeat: no-repeat;
   rotate: 180deg;
+  border: 1px solid #3c3c3c;
 }
 
 #modalx span {
@@ -11215,6 +11216,7 @@ body,
 
 .refresh-button {
   width: 100%;
+  border: 1px solid #515151;
 }
 
 #scarabeo {
@@ -11609,7 +11611,7 @@ body,
 /* ----------------------------------------------------------------------------- */
 
 .pepar {
-  margin-top: 40px !important;
+  margin-bottom: 40px !important;
   background-color: black;
   padding: 30px;
   border-radius: 20px;
@@ -11665,7 +11667,7 @@ body,
   padding-bottom: 40px;
   transition: 0.5s ease;
   margin-top: 10px;
-  animation: pulse 2s infinite;
+  animation: pulse 3s infinite;
 }
 
 .console-screen:hover {
@@ -11711,7 +11713,7 @@ body,
 
 .modal-content {
   background-color: black;
-  box-shadow: 0 0 11px 2px #000000;
+  /* box-shadow: 0 0 11px 2px #000000; */
   /* box-shadow: 10px 10px purple; */
   /* border-radius: 30px; */
   margin: 15% auto;
