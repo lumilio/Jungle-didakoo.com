@@ -133,7 +133,7 @@ export default {
 <style lang="scss">
 .gameStarted-wrapper{
     display: flex;
-    flex-wrap: nowrap;
+    flex-direction: column;
     gap: 10px;
 }
 .modal-ingame{
@@ -147,7 +147,7 @@ export default {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);
     background-repeat: repeat;
     background-position: center;
-    background-size: 500px;
+    background-size: 600px;
 }
 .main_modal{
     .modal_logo{
