@@ -14,7 +14,7 @@ body,html {
     height: 100%;
     margin: 0px;
     background-color: black;
-    /* overflow: hidden; */
+    //overflow: hidden;
     font-family: 'Poppins', sans-serif;
     /* font-family: 'VT323', monospace ; */
 }
@@ -31,7 +31,6 @@ body,html {
 body, .centratore {
     background-color: black;
     width: 100vw;
-    height: 100vh;
 }
 
 /* ----------------------------------------------------------------------------- */
@@ -103,7 +102,6 @@ body, .centratore {
     left: 0;
     top: 0;
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
     background:
     linear-gradient(
       rgba(0, 0, 0, 1),
@@ -793,6 +791,7 @@ body, .centratore {
     /* padding: 20px; */
     padding: 30px;
     border-radius: 20px;
+    min-width: 350px;
     /* border: 8px solid BLACK; */
     /* width: 280px; */
     height: fit-content;

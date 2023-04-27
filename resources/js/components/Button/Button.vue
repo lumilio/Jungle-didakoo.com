@@ -37,10 +37,10 @@
 
     min-height: auto;
     height: 42px;
-      border: 1px solid #ffffff38;
+    border: 1px solid #ffffff38;
     padding: 0 5px;
-      box-shadow: 0 0 6px 1px rgb(255 255 255 / 43%);
-      transition: 0.2s ease;
+    box-shadow: 0 0 6px 1px rgb(255 255 255 / 43%);
+    transition: 0.2s ease;
     width: 150px;
       &:hover{
           box-shadow: 0 0 7px 1px rgb(255 255 255 / 50%);
@@ -63,5 +63,10 @@
   }
   .icons{
       color: #ffffff;
+  }
+  @media (max-width: 1024px) {
+      .btn-button {
+          width: 110px;
+      }
   }
 </style>

@@ -10391,7 +10391,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".btn-button {\n  background: black;\n  border-radius: 8px;\n  min-height: auto;\n  height: 42px;\n  border: 1px solid rgba(255, 255, 255, 0.2196078431);\n  padding: 0 5px;\n  box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.43);\n  transition: 0.2s ease;\n  width: 150px;\n}\n.btn-button:hover {\n  box-shadow: 0 0 7px 1px rgba(255, 255, 255, 0.5);\n  transform: scale(1.02);\n}\n.btn-content {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 10px;\n}\n.btn-label {\n  font-size: 12px;\n  color: #ffffff;\n}\n.btn-image {\n  max-width: 24px;\n  height: auto;\n}\n.icons {\n  color: #ffffff;\n}", ""]);
+exports.push([module.i, ".btn-button {\n  background: black;\n  border-radius: 8px;\n  min-height: auto;\n  height: 42px;\n  border: 1px solid rgba(255, 255, 255, 0.2196078431);\n  padding: 0 5px;\n  box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.43);\n  transition: 0.2s ease;\n  width: 150px;\n}\n.btn-button:hover {\n  box-shadow: 0 0 7px 1px rgba(255, 255, 255, 0.5);\n  transform: scale(1.02);\n}\n.btn-content {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 10px;\n}\n.btn-label {\n  font-size: 12px;\n  color: #ffffff;\n}\n.btn-image {\n  max-width: 24px;\n  height: auto;\n}\n.icons {\n  color: #ffffff;\n}\n@media (max-width: 1024px) {\n.btn-button {\n    width: 110px;\n}\n}", ""]);
 
 // exports
 
