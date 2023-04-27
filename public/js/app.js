@@ -4103,7 +4103,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("router-link", {
     attrs: {
-      to: "menu"
+      to: this.$route.name === "menu" ? "rank" : "menu"
     }
   }, [_c("i", {
     staticClass: "fa-solid burger_menu fa-bars"

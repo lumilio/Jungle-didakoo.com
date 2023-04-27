@@ -2,7 +2,7 @@
     <div class="navbar d-flex banner-board-helper align-items-center">
         <div class="d-flex align-items-center">
             <img class="didakoo" src="images/extra_objects/ddd.jpg" alt="" />
-            <router-link to="menu">
+            <router-link :to="this.$route.name === 'menu' ? 'rank': 'menu'">
                 <i class="fa-solid burger_menu fa-bars"></i>
             </router-link>
             <router-link class="avatar_link" v-if="user" to="avatar">
@@ -22,6 +22,7 @@ export default {
         }
     },
     mounted() {
+
     }
 }
 </script>
