@@ -21,18 +21,45 @@
             <!-- BANNER EVENT IMPORTANT  -->
             <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Sun Dec 17 1995 03:24:00 UTC+1 ROME </p> -->
             <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Next token recharge 23h 59m 59s</p> -->
-            <div class="d-flex container-sm justify-content-center alingn-items-center">
+            <div class="d-flex flex-column justify-content-center  alingn-items-center">
                 <!-- <img style=' width:30px; ' src='images/board/tree.png' alt="">  -->
-                <img style="width: 60px; margin-bottom: 20px; display: inline; transform: scaleX(-1);" src="images/extra_objects/icon-06.png" alt=""/>
-                <router-link :to="{ path: 'game' }" style="display: contents">
-                    <button id="modalx" class="no-wrap align-items-center text-big d-flex px-4 call_button">
-                        <span>
-                            Jungle Game
-                        </span>
-                    </button>
-                </router-link>
 
-                <img style="width: 60px; margin-bottom: 20px; display: inline" src="images/extra_objects/icon-05.png" alt="" />
+                <div class="d-flex justify-content-center  alingn-items-center">
+                    <img style="width: 60px; margin-bottom: 20px; display: inline; transform: scaleX(-1);" src="images/extra_objects/icon-06.png" alt=""/>
+                    <router-link :to="{ path: 'game' }" style="display: contents">
+                        <button id="modalx" class="no-wrap align-items-center text-big d-flex px-4 call_button">
+                            <span>
+                                Jungle chess
+                            </span>
+                        </button>
+                    </router-link>
+                    <img style="width: 60px; margin-bottom: 20px; display: inline" src="images/extra_objects/icon-05.png" alt="" />
+                </div>
+
+                <!-- <div class="d-flex justify-content-center  alingn-items-center mt-3">
+                    <img style="width: 60px; margin-bottom: 20px; display: inline; transform: scaleX(-1);" src="images/board/animals/icon-38.png" alt=""/>
+                    <router-link :to="{ path: 'game' }" style="display: contents">
+                        <button id="modalx" style='background:black;' class="no-wrap align-items-center text-big d-flex px-4 call_button">
+                            <span>
+                                Classic chess
+                            </span>
+                        </button>
+                    </router-link>
+                    <img style="width: 60px; margin-bottom: 20px; display: inline" src="images/board/animals/icon-38.png" alt="" />
+                </div> -->
+
+                <!-- <div class="d-flex justify-content-center  alingn-items-center mt-3">
+                    <img style="width: 60px; margin-bottom: 20px; display: inline; transform: scaleX(-1);" src="images/board/animals/icon-38.png" alt=""/>
+                    <router-link :to="{ path: 'game' }" style="display: contents">
+                        <button id="modalx" style='background:black;' class="no-wrap align-items-center text-big d-flex px-4 call_button">
+                            <span>
+                                Onitama ches
+                            </span>
+                        </button>
+                    </router-link>
+                    <img style="width: 60px; margin-bottom: 20px; display: inline" src="images/board/animals/icon-38.png" alt="" />
+                </div> -->
+
             </div>
 
             <!-- BANNER EVENT IMPORTANT  -->
