@@ -26,8 +26,8 @@
                     <p><a style="color:#FAEA09;" href="https://rarible.com/token/0xd07dc4262bcdbf85190c01c996b4c06a461d2430:628469?tab=overview">sun flower </a> token.</p>
 
  
-                    <p>🌻 v.1 = + 1/3 GAME TOKENS <img style='width:30px;' src='images/extra_objects/ff.png' alt=""></p>
-                    <p>🌻 v.2 = + 1/1 GAME TOKENS <img style='width:30px;' src='images/extra_objects/ff.png' alt=""></p> 
+                    <p style='font-size:20px;' >🌻  = + 3/3 GAME TOKENS <img style='width:30px;' src='images/extra_objects/ff.png' alt=""></p>
+                    <!-- <p>🌻 v.2 = + 1/1 GAME TOKENS <img style='width:30px;' src='images/extra_objects/ff.png' alt=""></p> --> 
                     
 
                     <p> Every day you total token will recharged:</p>
@@ -54,7 +54,7 @@
                 <p>  1< 2< 3< 4< 5< 6< 7< 8< 1</p>
 
                 <p>
-                    message@didakoo.com
+                    help@didakoo.com
                 </p>
 
                 <p>
