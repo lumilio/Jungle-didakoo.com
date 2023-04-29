@@ -19,14 +19,14 @@
                         <div class="mb-3">
                             <Button
                                 v-on:handelClick="createGame()"
-                                title='OPEN ROOM'
+                                title='QUICK GAME'
                                 icons="fa-solid fa-bolt icons"
                             />
                         </div>
                         <div class="mb-3">
                             <Button
                                 v-on:handelClick="createGame()"
-                                title='PRIVATE ROOM'
+                                title='PRIVATE GAME'
                                 image="../../../images/extra_objects/iconaplay1.png"
                             />
                         </div>
