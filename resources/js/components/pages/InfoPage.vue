@@ -24,8 +24,8 @@
                     <!-- <p>At the cout down end an immage of the entire rank will be mint. </p> -->
                     <span style='color:white;'>To play you need an   <a style="color:#D1230F;" href="https://metamask.io/">Ethereum Wallet</a>  with </span>
                     <p>
-                        <a style="color:#FAEA09;" href="https://rarible.com/token/0xd07dc4262bcdbf85190c01c996b4c06a461d2430:628469?tab=overview">sun flower </a> or
-                        <a style="color:#FAEA09;" href="https://rarible.com/token/0xd07dc4262bcdbf85190c01c996b4c06a461d2430:628469?tab=overview">sun flower v.2 </a>
+                        <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">sun flower </a> or
+                        <a style="color:#FAEA09;" href="https://rarible.com/token/0xbdc8bd87cfd22ef5b90a93a77eebe5bd0628f841:2352475547185321859375352175754401687841756219705495990747967153936990732289?tab=overview">sun flower v.2 </a>
                         token.
                     </p>
 
