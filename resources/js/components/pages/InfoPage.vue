@@ -23,10 +23,14 @@
                     <p>An Ethereum arcade platform.</p>
                     <!-- <p>At the cout down end an immage of the entire rank will be mint. </p> -->
                     <span style='color:white;'>To play you need an   <a style="color:#D1230F;" href="https://metamask.io/">Ethereum Wallet</a>  with </span>
-                    <p><a style="color:#FAEA09;" href="https://rarible.com/token/0xd07dc4262bcdbf85190c01c996b4c06a461d2430:628469?tab=overview">sun flower </a> token.</p>
+                    <p>
+                        <a style="color:#FAEA09;" href="https://rarible.com/token/0xd07dc4262bcdbf85190c01c996b4c06a461d2430:628469?tab=overview">sun flower </a> or
+                        <a style="color:#FAEA09;" href="https://rarible.com/token/0xd07dc4262bcdbf85190c01c996b4c06a461d2430:628469?tab=overview">sun flower v.2 </a>
+                        token.
+                    </p>
 
  
-                    <p style='font-size:20px;' >🌻  = + 3/3 GAME TOKENS <img style='width:30px;' src='images/extra_objects/ff.png' alt=""></p>
+                    <p style='font-size:20px;' >🌻  = + 2/2 GAME TOKENS <img style='width:30px;' src='images/extra_objects/ff.png' alt=""></p>
                     <!-- <p>🌻 v.2 = + 1/1 GAME TOKENS <img style='width:30px;' src='images/extra_objects/ff.png' alt=""></p> --> 
                     
 
@@ -34,7 +38,7 @@
 
                     <p class='text-white' style='font-family: "VT323", monospace;   margin-top:25px; '> 00:00:00 UTC+1 ROME</p>
 
-                    <p style="font-size:30px">  0/3 <img style='width:50px;' src='images/extra_objects/ff.png' alt="">    --->    3/3 <img style='width:50px;' src='images/extra_objects/ff.png' alt=""> </p>
+                    <p style="font-size:30px">  0/2 <img style='width:50px;' src='images/extra_objects/ff.png' alt="">    --->    2/2 <img style='width:50px;' src='images/extra_objects/ff.png' alt=""> </p>
 
                     
 
