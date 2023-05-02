@@ -100,6 +100,7 @@ export default {
 
                 if (data === "OK") {
                     store.commit('LOG_IN_USER',true)
+                    store.commit('SET_USER_ADDRESS',address)
                     toastr.success('Log in succeesfully!');
 
                     response = await fetch('api/web3-register-ethwallet', {

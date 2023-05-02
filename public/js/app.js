@@ -2951,6 +2951,9 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     user: function user() {
       return this.$store.state.user;
+    },
+    address: function address() {
+      return this.$store.state.address;
     }
   },
   mounted: function mounted() {
@@ -3082,7 +3085,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 break;
               }
               _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('LOG_OUT_USER');
-              _context.next = 49;
+              _context.next = 50;
               break;
             case 4:
               if (window.ethereum) {
@@ -3144,12 +3147,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               sec = date.getSeconds();
               alias = "player_" + year + "" + month + "" + day + "" + hour + "" + min + "" + sec + "";
               if (!(data === "OK")) {
-                _context.next = 48;
+                _context.next = 49;
                 break;
               }
               _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('LOG_IN_USER', true);
+              _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('SET_USER_ADDRESS', address);
               toastr.success('Log in succeesfully!');
-              _context.next = 44;
+              _context.next = 45;
               return fetch('api/web3-register-ethwallet', {
                 method: 'POST',
                 headers: {
@@ -3162,7 +3166,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   '_token': '{{ csrf_token() }}'
                 })
               });
-            case 44:
+            case 45:
               response = _context.sent;
               response.text().then(function (data) {
                 if (data != "SUCCESS") {
@@ -3182,11 +3186,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   console.log("Register successfully!");
                 }
               });
-              _context.next = 49;
+              _context.next = 50;
               break;
-            case 48:
-              console.log('access denied');
             case 49:
+              console.log('access denied');
+            case 50:
             case "end":
               return _context.stop();
           }
@@ -3354,10 +3358,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../store */ "./resources/js/store/index.js");
+/* harmony import */ var _constants_nftLinks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants/nftLinks */ "./resources/js/constants/nftLinks.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3365,6 +3373,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       playersArray: [],
       url: ''
     };
+  },
+  computed: {
+    NFT_LINKS: function NFT_LINKS() {
+      return _constants_nftLinks__WEBPACK_IMPORTED_MODULE_2__["default"];
+    },
+    user: function user() {
+      return _store__WEBPACK_IMPORTED_MODULE_1__["default"].state.user;
+    },
+    address: function address() {
+      return _store__WEBPACK_IMPORTED_MODULE_1__["default"].state.address;
+    }
   },
   methods: {
     getAllUsers: function getAllUsers() {
@@ -3376,10 +3395,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _this.url = window.location.host;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://' + _this.url + '/api/getUsers');
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://' + _this.url + '/api/get-users');
             case 3:
               response = _context.sent;
-              _this.playersArray = response.data.playersData;
+              _this.playersArray = response.data.users;
             case 5:
             case "end":
               return _context.stop();
@@ -3394,9 +3413,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
-            _context2.next = 2;
+            if (!_this2.user) {
+              _context2.next = 3;
+              break;
+            }
+            _context2.next = 3;
             return _this2.getAllUsers();
-          case 2:
+          case 3:
           case "end":
             return _context2.stop();
         }
@@ -4161,11 +4184,6 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm._m(0);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
   return _c("div", {
     attrs: {
       id: "page4"
@@ -4258,20 +4276,419 @@ var staticRenderFns = [function () {
     attrs: {
       src: "images/extra_objects/Logomark-BlueB.png"
     }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex justify-content-center flex-row align-items-center",
+  }), _vm._v("\n                        " + _vm._s(_vm.address) + "\n                    ")])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("div", [_c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
     staticStyle: {
-      "margin-bottom": "0"
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
     }
-  }, [_c("img", {
+  }, [_vm._v("1°\n                        "), _c("img", {
     staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v("\n                        " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3)]), _vm._v(" "), _vm._m(4)]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6)]), _vm._v(" "), _vm._m(7)]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9)]), _vm._v(" "), _vm._m(10)]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(11), _vm._v(" "), _vm._m(12)]), _vm._v(" "), _vm._m(13)]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(14), _vm._v(" "), _vm._m(15)]), _vm._v(" "), _vm._m(16)]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(17), _vm._v(" "), _vm._m(18)]), _vm._v(" "), _vm._m(19)]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(20), _vm._v(" "), _vm._m(21)]), _vm._v(" "), _vm._m(22)]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(23), _vm._v(" "), _vm._m(24)]), _vm._v(" "), _vm._m(25)]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(26), _vm._v(" "), _vm._m(27)]), _vm._v(" "), _vm._m(28)]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(29), _vm._v(" "), _vm._m(30)]), _vm._v(" "), _vm._m(31)]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(32), _vm._v(" "), _vm._m(33)]), _vm._v(" "), _vm._m(34)]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(35), _vm._v(" "), _vm._m(36)]), _vm._v(" "), _vm._m(37)]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(38), _vm._v(" "), _vm._m(39)]), _vm._v(" "), _vm._m(40)]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(41), _vm._v(" "), _vm._m(42)]), _vm._v(" "), _vm._m(43)]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center"
+  }, [_c("div", {
+    staticClass: "record"
+  }, [_c("p", {
+    staticStyle: {
+      color: "white",
+      "font-size": "x-smal",
+      padding: "10px",
+      margin: "0",
+      "text-overflow": "ellipsis",
+      "white-space": "nowrap",
+      overflow: "hidden"
+    }
+  }, [_vm._v("1°\n                        "), _c("img", {
+    staticStyle: {
+      width: "20px",
+      "margin-left": "5px",
+      "margin-right": "5px",
+      "margin-bottom": "3px"
+    },
+    attrs: {
+      src: "images/extra_objects/iconaplayB.png"
+    }
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(44), _vm._v(" "), _vm._m(45)]), _vm._v(" "), _vm._m(46)])])])])]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "icons-wrapper"
+  }, [_c("div", [_c("img", {
+    staticStyle: {
+      filter: "invert(1)",
       width: "50px"
     },
     attrs: {
-      src: "images/board/animals/icon-60.png",
+      src: "images/board/animals/icon-59.png",
       alt: ""
     }
-  }), _vm._v(" "), _c("img", {
+  })]), _vm._v(" "), _c("div", [_c("img", {
+    staticStyle: {
+      filter: "invert(1)",
+      width: "50px"
+    },
+    attrs: {
+      src: "images/board/animals/icon-36.png",
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("div", [_c("img", {
+    staticStyle: {
+      filter: "invert(1)",
+      width: "50px"
+    },
+    attrs: {
+      src: "images/board/animals/icon-39.png",
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("div", [_c("img", {
+    staticStyle: {
+      filter: "invert(1)",
+      width: "50px"
+    },
+    attrs: {
+      src: "images/board/animals/icon-38.png",
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("div", [_c("img", {
+    staticStyle: {
+      filter: "invert(1)",
+      width: "50px"
+    },
+    attrs: {
+      src: "images/board/animals/icon-37.png",
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("div", [_c("img", {
     staticStyle: {
       width: "29px",
       margin: "0px 5px",
@@ -4281,37 +4698,136 @@ var staticRenderFns = [function () {
       src: "images/extra_objects/8.png",
       alt: ""
     }
-  }), _vm._v(" "), _c("img", {
+  })]), _vm._v(" "), _c("div", [_c("img", {
     staticStyle: {
+      filter: "invert(0)",
       width: "29px",
-      margin: "0px 5px",
-      filter: "invert(0)"
+      margin: "0px 5px"
     },
     attrs: {
       src: "images/extra_objects/mario.png",
       alt: ""
     }
-  }), _vm._v(" "), _c("img", {
+  })]), _vm._v(" "), _c("div", [_c("img", {
     staticStyle: {
+      filter: "invert(0)",
       width: "28px",
-      margin: "0px 5px",
-      filter: "invert(0)"
+      margin: "0px 5px"
     },
     attrs: {
       src: "images/extra_objects/palm.png",
       alt: ""
     }
-  }), _vm._v(" "), _c("img", {
+  })]), _vm._v(" "), _c("div", [_c("img", {
     staticStyle: {
-      width: "29px",
-      margin: "0px 5px",
-      filter: "invert(0)"
+      filter: "invert(0)",
+      width: "20px",
+      margin: "0px 5px"
     },
     attrs: {
       src: "images/extra_objects/ghost.png",
       alt: ""
     }
-  })]), _vm._v(" "), _c("p", {
+  })]), _vm._v(" "), _c("div", [_c("i", {
+    staticClass: "fa-solid fa-hand-fist",
+    staticStyle: {
+      filter: "invert(1)",
+      "font-size": "20px",
+      color: "black",
+      margin: "0px 5px"
+    }
+  })]), _vm._v(" "), _c("div", [_c("i", {
+    staticClass: "fa-solid fa-egg",
+    staticStyle: {
+      filter: "invert(1)",
+      "font-size": "20px",
+      color: "black",
+      margin: "0px 5px"
+    }
+  })]), _vm._v(" "), _c("div", [_c("img", {
+    staticStyle: {
+      filter: "invert(0)",
+      width: "25px",
+      "margin-left": "5px",
+      height: "13px"
+    },
+    attrs: {
+      src: "images/extra_objects/nike.png",
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("div", [_c("img", {
+    staticStyle: {
+      filter: "invert(1)",
+      width: "25px",
+      margin: "0px 5px"
+    },
+    attrs: {
+      src: "images/extra_objects/adidas.png",
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("div", [_c("img", {
+    staticStyle: {
+      filter: "invert(1)",
+      width: "30px",
+      margin: "0px 5px"
+    },
+    attrs: {
+      src: "images/extra_objects/coco.png",
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("div", [_c("img", {
+    staticStyle: {
+      filter: "invert(0)",
+      width: "20px",
+      margin: "0px 5px"
+    },
+    attrs: {
+      src: "images/extra_objects/wb.png",
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("div", [_c("img", {
+    staticStyle: {
+      filter: "",
+      width: "20px",
+      margin: "0px 5px"
+    },
+    attrs: {
+      src: "images/extra_objects/pepsi.png",
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("div", [_c("img", {
+    staticStyle: {
+      filter: "",
+      width: "22px",
+      margin: "0px 5px"
+    },
+    attrs: {
+      src: "images/extra_objects/bot.png",
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("div", [_c("img", {
+    staticStyle: {
+      filter: "",
+      width: "23px",
+      margin: "0px 5px"
+    },
+    attrs: {
+      src: "images/extra_objects/raygun.png",
+      alt: ""
+    }
+  })]), _vm._v(" "), _c("div", [_c("i", {
+    staticClass: "fa-solid fa-battery-full",
+    staticStyle: {
+      filter: "invert(1)",
+      "font-size": "20px",
+      color: "black",
+      margin: "0px 5px"
+    }
+  })])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       "font-size": "33px",
       color: "white"
@@ -4321,31 +4837,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("div", [_c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -4353,7 +4849,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -4366,7 +4866,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -4378,31 +4882,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -4410,7 +4894,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -4423,7 +4911,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -4435,31 +4927,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -4467,7 +4939,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -4480,7 +4956,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -4492,31 +4972,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -4524,7 +4984,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -4537,7 +5001,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -4549,31 +5017,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -4581,7 +5029,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -4594,7 +5046,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -4606,31 +5062,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -4638,7 +5074,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -4651,7 +5091,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -4663,31 +5107,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -4695,7 +5119,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -4708,7 +5136,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -4720,31 +5152,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -4752,7 +5164,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -4765,7 +5181,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -4777,31 +5197,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -4809,7 +5209,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -4822,7 +5226,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -4834,31 +5242,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -4866,7 +5254,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -4879,7 +5271,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -4891,31 +5287,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -4923,7 +5299,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -4936,7 +5316,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -4948,31 +5332,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -4980,7 +5344,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -4993,7 +5361,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -5005,31 +5377,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "#EE5E81"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -5037,7 +5389,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -5050,7 +5406,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -5062,31 +5422,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "blue"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -5094,7 +5434,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -5107,7 +5451,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -5119,31 +5467,11 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "blue"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n                    ")]), _vm._v(" "), _c("div", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "d-flex align-items-center flex-row flex-nowrap"
   }, [_c("i", {
     staticClass: "fa-solid fa-battery-full",
@@ -5151,7 +5479,11 @@ var staticRenderFns = [function () {
       "font-size": "20px",
       color: "white"
     }
-  })]), _vm._v(" "), _c("span", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "white",
@@ -5164,7 +5496,11 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("p", {
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
     staticStyle: {
       color: "white",
       margin: "0",
@@ -5176,7 +5512,7 @@ var staticRenderFns = [function () {
     staticStyle: {
       color: "blue"
     }
-  })])])])])])]);
+  })]);
 }];
 render._withStripped = true;
 
@@ -5660,7 +5996,9 @@ var render = function render() {
       id: "_box1_"
     }
   }, [_c("div", {
-    staticClass: "d-flex container-sm justify-content-center alingn-items-center"
+    staticClass: "d-flex flex-column justify-content-center alingn-items-center"
+  }, [_c("div", {
+    staticClass: "d-flex justify-content-center alingn-items-center"
   }, [_c("img", {
     staticStyle: {
       width: "60px",
@@ -5686,7 +6024,7 @@ var render = function render() {
     attrs: {
       id: "modalx"
     }
-  }, [_c("span", [_vm._v("\n                        Jungle Game\n                    ")])])]), _vm._v(" "), _c("img", {
+  }, [_c("span", [_vm._v("\n                                Jungle chess\n                            ")])])]), _vm._v(" "), _c("img", {
     staticStyle: {
       width: "60px",
       "margin-bottom": "20px",
@@ -5696,7 +6034,7 @@ var render = function render() {
       src: "images/extra_objects/icon-05.png",
       alt: ""
     }
-  })], 1), _vm._v(" "), _c("img", {
+  })], 1)]), _vm._v(" "), _c("img", {
     staticStyle: {},
     attrs: {
       id: "scarabeo",
@@ -5705,7 +6043,52 @@ var render = function render() {
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "d-flex container-sm mt-3 flex-column"
-  }), _vm._v(" "), _vm._m(1)]);
+  }), _vm._v(" "), _c("div", {
+    staticClass: "rank d-flex container-sm flex-column align-items-center text-white",
+    staticStyle: {
+      "max-width": "800px"
+    }
+  }, [_vm._m(1), _vm._v(" "), _vm._l(_vm.playersArray, function (players) {
+    return _c("div", {
+      key: players.id,
+      staticClass: "record",
+      staticStyle: {
+        "background-color": "#EDEB52"
+      }
+    }, [_c("p", {
+      staticStyle: {
+        color: "black",
+        "font-size": "x-smal",
+        padding: "10px",
+        margin: "0",
+        "text-overflow": "ellipsis",
+        "white-space": "nowrap",
+        overflow: "hidden"
+      }
+    }, [_vm._v("1°\n                        "), _c("img", {
+      staticStyle: {
+        width: "20px",
+        "margin-left": "5px",
+        "margin-right": "5px",
+        "margin-bottom": "3px"
+      },
+      attrs: {
+        src: __webpack_require__(/*! ../../../images/extra_objects/iconaplayB.png */ "./resources/images/extra_objects/iconaplayB.png")
+      }
+    }), _vm._v("\n                        " + _vm._s(players.wallet_address) + "\n                    ")]), _vm._v(" "), _c("div", {
+      staticClass: "d-flex align-items-center flex-row flex-nowrap"
+    }, [_vm._l(_vm.NFT_LINKS, function (item, key) {
+      return players[key] > 0 && item ? [_c("img", {
+        staticStyle: {
+          width: "35px"
+        },
+        attrs: {
+          src: item,
+          alt: ""
+        }
+      })] : _vm._e();
+    })], 2), _vm._v(" "), _vm._m(2, true)]);
+  })], 2)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -5736,12 +6119,7 @@ var staticRenderFns = [function () {
 }, function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "rank d-flex container-sm flex-column align-items-center text-white",
-    staticStyle: {
-      "max-width": "800px"
-    }
-  }, [_c("button", {
+  return _c("button", {
     staticClass: "refresh-button",
     staticStyle: {
       "background-color": "black"
@@ -5759,204 +6137,11 @@ var staticRenderFns = [function () {
       color: "white",
       "font-size": "20px"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#EDEB52"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "black",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" "), _vm._v(" \n\n                0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("img", {
-    staticStyle: {
-      width: "35px"
-    },
-    attrs: {
-      src: "images/board/animals/icon-39.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "35px"
-    },
-    attrs: {
-      src: "images/board/animals/icon-38.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "35px"
-    },
-    attrs: {
-      src: "images/board/animals/icon-37.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "35px"
-    },
-    attrs: {
-      src: "images/board/animals/icon-36.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "35px"
-    },
-    attrs: {
-      src: "images/board/animals/icon-59.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      margin: "0px 5px",
-      filter: "invert(1)"
-    },
-    attrs: {
-      src: "images/extra_objects/8.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      margin: "0px 5px",
-      filter: "invert(1)"
-    },
-    attrs: {
-      src: "images/extra_objects/mario.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "18px",
-      margin: "0px 5px",
-      filter: "invert(1)"
-    },
-    attrs: {
-      src: "images/extra_objects/palm.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      margin: "0px 5px",
-      filter: "invert(1)"
-    },
-    attrs: {
-      src: "images/extra_objects/ghost.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("i", {
-    staticClass: "fa-solid fa-hand-fist",
-    staticStyle: {
-      "font-size": "20px",
-      color: "black",
-      margin: "0px 5px"
-    }
-  }), _vm._v(" "), _c("i", {
-    staticClass: "fa-solid fa-egg",
-    staticStyle: {
-      "font-size": "20px",
-      color: "black",
-      margin: "0px 5px"
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "25px",
-      "margin-left": "5px",
-      height: "13px",
-      filter: "invert(1)"
-    },
-    attrs: {
-      src: "images/extra_objects/nike.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "25px",
-      margin: "0px 5px"
-    },
-    attrs: {
-      src: "images/extra_objects/adidas.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "30px",
-      margin: "0px 5px"
-    },
-    attrs: {
-      src: "images/extra_objects/coco.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      margin: "0px 5px",
-      filter: "invert(1)"
-    },
-    attrs: {
-      src: "images/extra_objects/wb.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      margin: "0px 5px",
-      filter: "invert(1)"
-    },
-    attrs: {
-      src: "images/extra_objects/pepsi.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "22px",
-      margin: "0px 5px",
-      filter: "invert(1)"
-    },
-    attrs: {
-      src: "images/extra_objects/bot.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("img", {
-    staticStyle: {
-      width: "23px",
-      margin: "0px 5px",
-      filter: "invert(1)"
-    },
-    attrs: {
-      src: "images/extra_objects/raygun.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "black",
-      margin: "0px 5px"
-    }
-  })]), _vm._v(" "), _c("span", {
+  })])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("span", {
     staticClass: "align-items-center",
     staticStyle: {
       color: "black",
@@ -5969,44 +6154,7 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v(" 100  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "record",
-    staticStyle: {
-      "background-color": "#EE5E81"
-    }
-  }, [_c("p", {
-    staticStyle: {
-      color: "black",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("2°\n                "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" 0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393\n            ")]), _vm._v(" "), _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 6  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })])])]);
+  })]);
 }];
 render._withStripped = true;
 
@@ -10449,6 +10597,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, ".navbar[data-v-2c226879] {\n  background-color: black;\n  height: 80px;\n  color: black;\n}\n.navbar .burger_menu[data-v-2c226879] {\n  display: inline;\n  margin-bottom: 25px;\n  position: relative;\n  margin-right: 0px;\n}\n.navbar .avatar_link[data-v-2c226879] {\n  margin-left: 10px;\n}\n.navbar .avatar_link img[data-v-2c226879] {\n  display: inline;\n  width: 30px;\n  margin-left: 0px;\n  margin-bottom: 3px;\n}\n.navbar img.didakoo[data-v-2c226879] {\n  width: 100px;\n  margin-left: 5px;\n  margin-bottom: 3px;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/AvatarPage.vue?vue&type=style&index=0&id=9f8c08c4&lang=scss&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/AvatarPage.vue?vue&type=style&index=0&id=9f8c08c4&lang=scss& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".icons-wrapper {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-wrap: wrap;\n  margin-bottom: 0;\n  gap: 5px;\n}\n.icons-wrapper > div {\n  width: 50px;\n  height: 50px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}", ""]);
 
 // exports
 
@@ -41913,6 +42080,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/AvatarPage.vue?vue&type=style&index=0&id=9f8c08c4&lang=scss&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/AvatarPage.vue?vue&type=style&index=0&id=9f8c08c4&lang=scss& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./AvatarPage.vue?vue&type=style&index=0&id=9f8c08c4&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/AvatarPage.vue?vue&type=style&index=0&id=9f8c08c4&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/PlayGame.vue?vue&type=style&index=0&id=359081dc&lang=scss&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/PlayGame.vue?vue&type=style&index=0&id=359081dc&lang=scss& ***!
@@ -58755,6 +58952,61 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/images/board/animals/icon-36.png":
+/*!****************************************************!*\
+  !*** ./resources/images/board/animals/icon-36.png ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/icon-36.png?e293d7afd3f4636149c18b6280403260";
+
+/***/ }),
+
+/***/ "./resources/images/board/animals/icon-39.png":
+/*!****************************************************!*\
+  !*** ./resources/images/board/animals/icon-39.png ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/icon-39.png?4ec033b8c9c74e30909c8366fefeed6a";
+
+/***/ }),
+
+/***/ "./resources/images/board/animals/icon-59.png":
+/*!****************************************************!*\
+  !*** ./resources/images/board/animals/icon-59.png ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/icon-59.png?75f19fa34c0bff3302ae745d50440107";
+
+/***/ }),
+
+/***/ "./resources/images/extra_objects/adidas.png":
+/*!***************************************************!*\
+  !*** ./resources/images/extra_objects/adidas.png ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/adidas.png?85fcec14c469c9cf27df199bb81ff725";
+
+/***/ }),
+
+/***/ "./resources/images/extra_objects/coco.png":
+/*!*************************************************!*\
+  !*** ./resources/images/extra_objects/coco.png ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/coco.png?7e7e652e4bb9500f2facac8c54c9ca42";
+
+/***/ }),
+
 /***/ "./resources/images/extra_objects/ddd.jpg":
 /*!************************************************!*\
   !*** ./resources/images/extra_objects/ddd.jpg ***!
@@ -58785,6 +59037,61 @@ module.exports = "/images/icon-59.png?75f19fa34c0bff3302ae745d50440107";
 /***/ (function(module, exports) {
 
 module.exports = "/images/iconaplayB.png?321e18db5df5bb22260fdaff02e0f48d";
+
+/***/ }),
+
+/***/ "./resources/images/extra_objects/mario.png":
+/*!**************************************************!*\
+  !*** ./resources/images/extra_objects/mario.png ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/mario.png?c3aa422a7684219fa4bbb622daefdd05";
+
+/***/ }),
+
+/***/ "./resources/images/extra_objects/nike.png":
+/*!*************************************************!*\
+  !*** ./resources/images/extra_objects/nike.png ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/nike.png?f6e517c70045bfe8f77a3df1279541ae";
+
+/***/ }),
+
+/***/ "./resources/images/extra_objects/palm.png":
+/*!*************************************************!*\
+  !*** ./resources/images/extra_objects/palm.png ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/palm.png?dd3b1aee58655d4006ba8d16019a32bc";
+
+/***/ }),
+
+/***/ "./resources/images/extra_objects/pepsi.png":
+/*!**************************************************!*\
+  !*** ./resources/images/extra_objects/pepsi.png ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/pepsi.png?0b395dba39b6636b51d2b6fd6d1d0225";
+
+/***/ }),
+
+/***/ "./resources/images/extra_objects/wb.png":
+/*!***********************************************!*\
+  !*** ./resources/images/extra_objects/wb.png ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wb.png?a2be732722125beffe810adafda5f7bc";
 
 /***/ }),
 
@@ -59912,7 +60219,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AvatarPage_vue_vue_type_template_id_9f8c08c4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AvatarPage.vue?vue&type=template&id=9f8c08c4& */ "./resources/js/components/pages/AvatarPage.vue?vue&type=template&id=9f8c08c4&");
 /* harmony import */ var _AvatarPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AvatarPage.vue?vue&type=script&lang=js& */ "./resources/js/components/pages/AvatarPage.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _AvatarPage_vue_vue_type_style_index_0_id_9f8c08c4_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AvatarPage.vue?vue&type=style&index=0&id=9f8c08c4&lang=scss& */ "./resources/js/components/pages/AvatarPage.vue?vue&type=style&index=0&id=9f8c08c4&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -59920,7 +60229,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _AvatarPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _AvatarPage_vue_vue_type_template_id_9f8c08c4___WEBPACK_IMPORTED_MODULE_0__["render"],
   _AvatarPage_vue_vue_type_template_id_9f8c08c4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -59949,6 +60258,22 @@ component.options.__file = "resources/js/components/pages/AvatarPage.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AvatarPage.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/AvatarPage.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/AvatarPage.vue?vue&type=style&index=0&id=9f8c08c4&lang=scss&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/pages/AvatarPage.vue?vue&type=style&index=0&id=9f8c08c4&lang=scss& ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarPage_vue_vue_type_style_index_0_id_9f8c08c4_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./AvatarPage.vue?vue&type=style&index=0&id=9f8c08c4&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/AvatarPage.vue?vue&type=style&index=0&id=9f8c08c4&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarPage_vue_vue_type_style_index_0_id_9f8c08c4_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarPage_vue_vue_type_style_index_0_id_9f8c08c4_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarPage_vue_vue_type_style_index_0_id_9f8c08c4_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AvatarPage_vue_vue_type_style_index_0_id_9f8c08c4_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
 
 /***/ }),
 
@@ -60333,6 +60658,76 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/constants/nftLinks.js":
+/*!********************************************!*\
+  !*** ./resources/js/constants/nftLinks.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _images_board_animals_icon_36_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../images/board/animals/icon-36.png */ "./resources/images/board/animals/icon-36.png");
+/* harmony import */ var _images_board_animals_icon_36_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_images_board_animals_icon_36_png__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _images_board_animals_icon_39_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../images/board/animals/icon-39.png */ "./resources/images/board/animals/icon-39.png");
+/* harmony import */ var _images_board_animals_icon_39_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_images_board_animals_icon_39_png__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _images_board_animals_icon_59_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../images/board/animals/icon-59.png */ "./resources/images/board/animals/icon-59.png");
+/* harmony import */ var _images_board_animals_icon_59_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_images_board_animals_icon_59_png__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _images_extra_objects_nike_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../images/extra_objects/nike.png */ "./resources/images/extra_objects/nike.png");
+/* harmony import */ var _images_extra_objects_nike_png__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_images_extra_objects_nike_png__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _images_extra_objects_adidas_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../images/extra_objects/adidas.png */ "./resources/images/extra_objects/adidas.png");
+/* harmony import */ var _images_extra_objects_adidas_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_images_extra_objects_adidas_png__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _images_extra_objects_wb_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../images/extra_objects/wb.png */ "./resources/images/extra_objects/wb.png");
+/* harmony import */ var _images_extra_objects_wb_png__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_images_extra_objects_wb_png__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _images_extra_objects_pepsi_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../images/extra_objects/pepsi.png */ "./resources/images/extra_objects/pepsi.png");
+/* harmony import */ var _images_extra_objects_pepsi_png__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_images_extra_objects_pepsi_png__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _images_extra_objects_coco_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../images/extra_objects/coco.png */ "./resources/images/extra_objects/coco.png");
+/* harmony import */ var _images_extra_objects_coco_png__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_images_extra_objects_coco_png__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _images_extra_objects_palm_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../images/extra_objects/palm.png */ "./resources/images/extra_objects/palm.png");
+/* harmony import */ var _images_extra_objects_palm_png__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_images_extra_objects_palm_png__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _images_extra_objects_mario_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../images/extra_objects/mario.png */ "./resources/images/extra_objects/mario.png");
+/* harmony import */ var _images_extra_objects_mario_png__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_images_extra_objects_mario_png__WEBPACK_IMPORTED_MODULE_9__);
+
+
+
+
+
+
+
+
+
+
+var NFT_LINKS = {
+  nft_1_sunflower_1: '',
+  nft_2_sunflower_2: '',
+  nft_3_battery: '',
+  nft_4_color1: '',
+  nft_5_color2: '',
+  nft_6_color3: '',
+  nft_7_color4: '',
+  nft_8_bot: '',
+  nft_21_raygun: '',
+  nft_9_cat: _images_board_animals_icon_59_png__WEBPACK_IMPORTED_MODULE_2___default.a,
+  nft_10_monkey: _images_board_animals_icon_36_png__WEBPACK_IMPORTED_MODULE_0___default.a,
+  nft_11_punks: '',
+  nft_12_monster: '',
+  nft_13_doodle: '',
+  nft_14_sandbox: _images_extra_objects_mario_png__WEBPACK_IMPORTED_MODULE_9___default.a,
+  nft_15_totem: '',
+  nft_16_nike: _images_extra_objects_nike_png__WEBPACK_IMPORTED_MODULE_3___default.a,
+  nft_17_adidas: _images_extra_objects_adidas_png__WEBPACK_IMPORTED_MODULE_4___default.a,
+  nft_18_pepsi: _images_extra_objects_pepsi_png__WEBPACK_IMPORTED_MODULE_6___default.a,
+  nft_19_lacoste: _images_extra_objects_coco_png__WEBPACK_IMPORTED_MODULE_7___default.a,
+  nft_20_land: _images_extra_objects_palm_png__WEBPACK_IMPORTED_MODULE_8___default.a,
+  nft_22_leo_1: _images_board_animals_icon_39_png__WEBPACK_IMPORTED_MODULE_1___default.a,
+  nft_23_leo_2: _images_board_animals_icon_39_png__WEBPACK_IMPORTED_MODULE_1___default.a,
+  nft_24_leo_3: _images_board_animals_icon_39_png__WEBPACK_IMPORTED_MODULE_1___default.a,
+  nft_25_wb: _images_extra_objects_wb_png__WEBPACK_IMPORTED_MODULE_5___default.a
+};
+/* harmony default export */ __webpack_exports__["default"] = (NFT_LINKS);
+
+/***/ }),
+
 /***/ "./resources/js/router/index.js":
 /*!**************************************!*\
   !*** ./resources/js/router/index.js ***!
@@ -60447,6 +60842,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: {
     user: null,
+    address: null,
     turn: "white",
     turnNumber: 1,
     squares: [],
@@ -60478,8 +60874,12 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     LOG_IN_USER: function LOG_IN_USER(state, val) {
       state.user = val;
     },
+    SET_USER_ADDRESS: function SET_USER_ADDRESS(state, val) {
+      state.address = val;
+    },
     LOG_OUT_USER: function LOG_OUT_USER(state) {
       state.user = null;
+      state.address = null;
     },
     ADD_MOVE_HISTORY: function ADD_MOVE_HISTORY(state, move) {
       var lastMove = state.movesHistory[state.movesHistory.length - 1];

@@ -16,7 +16,7 @@ use App\Player;
 class Web3LoginController extends Controller
 {
     public function message(): string
-    {  
+    {
         $nonce = Str::random();
         $message = "Sign this message to confirm you own this wallet address. This action will not cost any gas fees.\n\nNonce: " . $nonce;
     //    Session::put('sign_message','Sign this message to confirm');
@@ -29,7 +29,7 @@ class Web3LoginController extends Controller
 
         //*******Check if address already exists or not */
         $player_wallet_details = DB::table('players')->where('wallet_address', $request->input('address'))->first();
-       
+
         if($player_wallet_details)
         {
             Session::put('userSession',$player_wallet_details->wallet_address);
@@ -63,19 +63,21 @@ class Web3LoginController extends Controller
     }
 
     public function register(Request $request)
-    {       
+    {
         $validatedData = $request->validate([
             'ethwalletaddr'     => 'required|min:42|max:42|unique:userethwallets',
             'balance'           => 'required|string|min:2|max:255',
             'alias'             => 'required|string|min:3|max:255'
         ]);
-
-        Player::create([
-            'wallet_address'     => $validatedData['ethwalletaddr'],
+        $color_id = rand(1, 4);
+        $player = Player::create([
+            'wallet_address'    => $validatedData['ethwalletaddr'],
             'balance'           => $validatedData['balance'],
-            'alias'             => $validatedData['alias']
+            'alias'             => $validatedData['alias'],
+            'color_id'          => $color_id
         ]);
-     
+        Session::put('userSession',$player->wallet_address);
+
         return "SUCCESS";
 
     }
@@ -89,11 +91,11 @@ class Web3LoginController extends Controller
         DB::update('update players set balance = ? where wallet_address = ?',[$balance, $ethwalletaddr]);
 
         $player_wallet_details = DB::table('players')->where('wallet_address', $ethwalletaddr)->first();
-       
+
         if($player_wallet_details)
         {
             Session::put('userSession',$ethwalletaddr);
-        }   
+        }
 
         return "SUCCESS";
     }

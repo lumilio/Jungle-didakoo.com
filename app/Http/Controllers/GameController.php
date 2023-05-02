@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Player;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -47,5 +48,41 @@ class GameController extends Controller
 //        }
         return response()->json(['message' => 'deleted']);
     }
-
+    public function finishedGame(Request $request){
+        $game_id = $request->game_id;
+        $winner = $request->winner;
+        $game = Game::where('url', $game_id)->where('status', 'pending')->first();
+        if(!$game){
+            return response()->json(['message' => 'Bed request'], 400);
+        }
+        if($winner !== $game->creator->wallet_address){
+            if ($winner !== $game->opponent->wallet_address){
+                return response()->json(['message' => 'Bed request'], 400);
+            }
+        }
+        $winner_is_creator = $game->creator->wallet_address === $winner;
+        $creator = Player::query()->where('wallet_address', $game->creator->wallet_address)->first();
+        $opponent = Player::query()->where('wallet_address', $game->opponent->wallet_address)->first();
+        if ($winner_is_creator){
+            $creator->update([
+                "power" => $creator->power + 3,
+                'wins' => $creator->wins + 1
+            ]);
+            $opponent->update([
+                "power" => $opponent->power + 1
+            ]);
+        }else{
+            $opponent->update([
+                "power" => $opponent->power + 3,
+                'wins' => $opponent->wins + 1
+            ]);
+            $creator->update([
+                "power" => $creator->power + 1
+            ]);
+        }
+        $game->update([
+            'status' => "finished"
+        ]);
+        return response()->json(['message' => 'finished']);
+    }
 }

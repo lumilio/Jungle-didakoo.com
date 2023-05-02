@@ -13,7 +13,11 @@ class ChangeGamesColumnsNameTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('games',function(Blueprint $table){
+            $table->dropColumn('creator', 'opponent');
+            $table->foreignId('opponent_id')->nullable();
+            $table->foreignId('creator_id')->nullable();
+        });
     }
 
     /**

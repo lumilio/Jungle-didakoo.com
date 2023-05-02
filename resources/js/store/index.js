@@ -5,6 +5,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
       user: null,
+      address: null,
     turn: "white",
     turnNumber: 1,
     squares: [],
@@ -40,8 +41,12 @@ const store = new Vuex.Store({
       LOG_IN_USER(state, val) {
           state.user = val;
       },
+      SET_USER_ADDRESS(state, val) {
+          state.address = val;
+      },
       LOG_OUT_USER (state){
-          state.user = null
+          state.user = null;
+          state.address = null;
       },
     ADD_MOVE_HISTORY(state, move) {
       let lastMove = state.movesHistory[state.movesHistory.length - 1];
