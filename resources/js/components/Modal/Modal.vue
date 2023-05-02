@@ -26,7 +26,7 @@
                         <div class="mb-3">
                             <Button
                                 v-on:handelClick="createGame()"
-                                title='INVITE P2'
+                                title='PRIVATE GAME'
                                 image="../../../images/extra_objects/iconaplay1.png"
                             />
                         </div>

@@ -29,7 +29,7 @@
                     <router-link :to="{ path: 'game' }" style="display: contents">
                         <button id="modalx" class="no-wrap align-items-center text-big d-flex px-4 call_button">
                             <span>
-                                Jungle chess
+                                START GAME
                             </span>
                         </button>
                     </router-link>
@@ -63,7 +63,8 @@
             </div>
 
             <!-- BANNER EVENT IMPORTANT  -->
-            <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-top:25px; '>Sun Dec 17 2034 03:24:00 UTC+1 ROME</p> -->
+            <p class='text-white' style='font-family: "VT323", monospace;   margin-top:25px; '>Sun Dec 17 2034 03:24:00 UTC+1 ROME</p>
+            <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Next token recharge 23h 59m 59s</p> -->
             <img id='scarabeo'  style='display:;' src='images/extra_objects/1.svg' alt="">
         </div>
         <div class="d-flex container-sm  mt-3 flex-column"></div>
