@@ -4049,7 +4049,7 @@ var render = function render() {
     staticClass: "mb-3"
   }, [_c("Button", {
     attrs: {
-      title: "INVITE P2",
+      title: "PRIVATE GAME",
       image: "../../../images/extra_objects/iconaplay1.png"
     },
     on: {
@@ -6024,7 +6024,7 @@ var render = function render() {
     attrs: {
       id: "modalx"
     }
-  }, [_c("span", [_vm._v("\n                                Jungle chess\n                            ")])])]), _vm._v(" "), _c("img", {
+  }, [_c("span", [_vm._v("\n                                START GAME\n                            ")])])]), _vm._v(" "), _c("img", {
     staticStyle: {
       width: "60px",
       "margin-bottom": "20px",
@@ -6034,7 +6034,13 @@ var render = function render() {
       src: "images/extra_objects/icon-05.png",
       alt: ""
     }
-  })], 1)]), _vm._v(" "), _c("img", {
+  })], 1)]), _vm._v(" "), _c("p", {
+    staticClass: "text-white",
+    staticStyle: {
+      "font-family": '"VT323", monospace',
+      "margin-top": "25px"
+    }
+  }, [_vm._v("Sun Dec 17 2034 03:24:00 UTC+1 ROME")]), _vm._v(" "), _c("img", {
     staticStyle: {},
     attrs: {
       id: "scarabeo",
