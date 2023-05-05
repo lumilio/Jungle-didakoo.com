@@ -20,9 +20,28 @@
                     <p style='font-size:30px;'>v 1.0.0
                         <!-- <img style="width:40px; padding-bottom:20px;  margin: 0 5px;"   src='images/extra_objects/cubo2.png' alt=""><img style="width:40px; padding-bottom:20px;"   src='images/extra_objects/sunflower_1f33b.png' alt=""> -->
                     </p>
-                    <p>An online arcade platform playable with the ethereum blockchain.</p>
+                    <p>An Ethereum arcade platform.</p>
                     <!-- <p>At the cout down end an immage of the entire rank will be mint. </p> -->
-                    <p>To play you need  <a style="color:#D1230F;" href="https://metamask.io/">Metamask</a>  wallet with <a style="color:#FAEA09;" href="https://rarible.com/token/0xd07dc4262bcdbf85190c01c996b4c06a461d2430:628469?tab=overview">sun flower </a> token.</p>
+                    <span style='color:white;'>To play you need an   <a style="color:#D1230F;" href="https://metamask.io/">Ethereum Wallet</a>  with </span>
+                    <p>
+                        <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">sun flower </a> or
+                        <a style="color:#FAEA09;" href="https://rarible.com/token/0xbdc8bd87cfd22ef5b90a93a77eebe5bd0628f841:2352475547185321859375352175754401687841756219705495990747967153936990732289?tab=overview">sun flower v.2 </a>
+                        token.
+                    </p>
+
+ 
+                    <p style='font-size:20px;' >🌻  = + 2/2 GAME TOKENS <img style='width:30px;' src='images/extra_objects/ff.png' alt=""></p>
+                    <!-- <p>🌻 v.2 = + 1/1 GAME TOKENS <img style='width:30px;' src='images/extra_objects/ff.png' alt=""></p> --> 
+                    
+
+                    <p> Every day you total token will recharged:</p>
+
+                    <p class='text-white' style='font-family: "VT323", monospace;   margin-top:25px; '> 00:00:00 UTC+1 ROME</p>
+
+                    <p style="font-size:30px">  0/2 <img style='width:50px;' src='images/extra_objects/ff.png' alt="">    --->    2/2 <img style='width:50px;' src='images/extra_objects/ff.png' alt=""> </p>
+
+                    
+
                     <p>The following NFTs are recognized by the game and allow you to unlock extra content.</p>
                     <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/cryptopunks">sun flower V.2  (by didakoo) </a> </p>
                     <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/cryptopunks">didakoo items (by didakoo) </a> </p>
@@ -36,7 +55,17 @@
                     <p>&#8203;</p>
                     <!-- <p>&#8203;</p> -->
                     <!-- <p>Click the purple button to create a link for player 2</p> -->
-                <p>The flowers token Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni odio ipsam neque facilis eaque in quasi, inventore quos officia quaerat cupiditate. Exercitationem magnam suscipit autem cupiditate unde officia ipsam, enim quibusdam esse ipsa temporibus ut harum placeat, pariatur molestiae quod dolorum velit dicta eius fuga ipsum iste! Assumenda, voluptas. Quis sequi, rerum modi quod repudiandae, fuga tempora aut recusandae non rem nemo molestias consequuntur quam provident culpa nobis aspernatur doloremque dolor dolores necessitatibus dolore architecto quo. Vel unde corporis, perspiciatis ratione, officiis modi atque eum quidem quis quam voluptates suscipit incidunt sint quos ab facere accusantium, nobis nihil eius! Molestias.<img style='width:30px;' src='images/extra_objects/ff.png' alt=""> will be recharged in 24:00:00 </p>
+                <p>  1 2 3 4 5 6 7 8 1</p>
+
+                <p>
+                    help@didakoo.com
+                </p>
+
+                <p>
+                     Follow on instagram
+                </p>
+
+                <p>Follow on twitter</p>
                 </div>
             </div>
             <!----------------------------------------------->
