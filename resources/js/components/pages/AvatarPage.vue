@@ -304,3 +304,20 @@
         }
     }
 </script>
+<style lang="scss">
+.icons-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom:0;
+    gap: 5px;
+    & > div {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+</style>
