@@ -261,12 +261,6 @@
     </div>
 </template>
 
-
-
-
-
-
-
 <script>
 import axios from 'axios';
 import store from "../../store";
@@ -299,7 +293,7 @@ import NFT_LINKS from "../../constants/nftLinks";
     },
     async mounted()
     {
-        if(this.user) await this.getAllUsers();
+        await this.getAllUsers();
     },
 
  }
