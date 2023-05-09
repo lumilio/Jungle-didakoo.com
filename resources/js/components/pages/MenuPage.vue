@@ -58,6 +58,12 @@ export default {
     methods:{
         async web3Login () {
             if(this.user){
+                const response = await fetch('api/logout', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
                 store.commit('LOG_OUT_USER')
             }else{
                 if (!window.ethereum) {
@@ -74,7 +80,6 @@ export default {
 
                 const amount = await provider.getSigner().getBalance();
                 const signature = await provider.getSigner().signMessage(message);
-
                 response = await fetch('api/web3-login-verify', {
                     method: 'POST',
                     headers: {
@@ -84,7 +89,7 @@ export default {
                         'message': message,
                         'address': address,
                         'signature': signature,
-                        '_token': '{{ csrf_token() }}'
+                        '_token': document.querySelector('meta[name="csrf-token"]').content
                     })
                 });
                 const data = await response.text();
@@ -112,7 +117,7 @@ export default {
                             'ethwalletaddr': address,
                             'balance': amount['_hex'],
                             'alias': alias,
-                            '_token': '{{ csrf_token() }}'
+                            '_token': document.querySelector('meta[name="csrf-token"]').content
                         })
                     });
 
@@ -126,7 +131,7 @@ export default {
                                 body: JSON.stringify({
                                     'ethwalletaddr': address,
                                     'balance': amount['_hex'],
-                                    '_token': '{{ csrf_token() }}'
+                                    '_token': document.querySelector('meta[name="csrf-token"]').content
                                 })
                             });
 

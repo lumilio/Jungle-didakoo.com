@@ -21,15 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('/web3-login-message', 'Web3LoginController@message');
-Route::post('/web3-login-verify', 'Web3LoginController@verify');
-
-Route::post('/web3-register-ethwallet', 'Web3LoginController@register');
-Route::post('/web3-update-ethwallet', 'Web3LoginController@update');
 
 Route::get('/get-users', 'UserController@getUsers');
-
-Route::get('/getSession', 'Web3LoginController@getSession');
-Route::get('/logout', 'Web3LoginController@logout');
 
 Route::get('/make-game', 'GameController@makeGame');
 Route::get('/get-game/{url}', 'GameController@getGame');

@@ -32,13 +32,13 @@ class Web3LoginController extends Controller
 
         if($player_wallet_details)
         {
-            Session::put('userSession',$player_wallet_details->wallet_address);
+            $request->session()->put('userSession', $player_wallet_details->wallet_address);
         }
 
         // If $result is true, perform additional logic like logging the user in, or by creating an account if one doesn't exist based on the Ethereum address
 
         if($result == true) {
-            Session::put('loggedIn', 'success');
+            $request->session()->put('loggedIn', 'success');
         }
         return ($result ? 'OK' : 'ERROR');
     }
@@ -76,7 +76,7 @@ class Web3LoginController extends Controller
             'alias'             => $validatedData['alias'],
             'color_id'          => $color_id
         ]);
-        Session::put('userSession',$player->wallet_address);
+        $request->session()->put('userSession', $player->wallet_address);
 
         return "SUCCESS";
 
@@ -94,19 +94,19 @@ class Web3LoginController extends Controller
 
         if($player_wallet_details)
         {
-            Session::put('userSession',$ethwalletaddr);
+            $request->session()->put('userSession', $ethwalletaddr);
         }
 
         return "SUCCESS";
     }
 
-    public function getSession()
+    public function getSession(Request $request)
     {
-        return Session::has('loggedIn') ? Session::get('loggedIn') : 'failed';
+        return $request->session()->has('loggedIn') ? $request->session()->get('userSession') : 'failed';
     }
-    public function logout()
+    public function logout(Request $request)
     {
-        Session::forget('loggedIn');
+        $request->session()->forget(['loggedIn','userSession']);
         return true;
     }
 
