@@ -6104,7 +6104,7 @@ var render = function render() {
     attrs: {
       id: "modalx"
     }
-  }, [_c("span", [_vm._v("\n                                START GAME\n                            ")])])]), _vm._v(" "), _c("img", {
+  }, [_c("span", [_vm._v("\n                            START GAME\n                        ")])])]), _vm._v(" "), _c("img", {
     staticStyle: {
       width: "60px",
       "margin-bottom": "20px",
@@ -6134,7 +6134,13 @@ var render = function render() {
     staticStyle: {
       "max-width": "800px"
     }
-  }, [_vm._m(1), _vm._v(" "), _vm._l(_vm.playersArray, function (players) {
+  }, [_vm._m(1), _vm._v(" "), _c("router-link", {
+    attrs: {
+      to: {
+        path: "avatar"
+      }
+    }
+  }, _vm._l(_vm.playersArray, function (players) {
     return _c("div", {
       key: players.id,
       staticClass: "record",
@@ -6151,7 +6157,7 @@ var render = function render() {
         "white-space": "nowrap",
         overflow: "hidden"
       }
-    }, [_vm._v("1°\n                        "), _c("img", {
+    }, [_vm._v("1°\n                    "), _c("img", {
       staticStyle: {
         width: "20px",
         "margin-left": "5px",
@@ -6161,7 +6167,7 @@ var render = function render() {
       attrs: {
         src: __webpack_require__(/*! ../../../images/extra_objects/iconaplayB.png */ "./resources/images/extra_objects/iconaplayB.png")
       }
-    }), _vm._v("\n                        " + _vm._s(players.wallet_address) + "\n                    ")]), _vm._v(" "), _c("div", {
+    }), _vm._v("\n                    " + _vm._s(players.wallet_address) + "\n                ")]), _vm._v(" "), _c("div", {
       staticClass: "d-flex align-items-center flex-row flex-nowrap"
     }, [_vm._l(_vm.NFT_LINKS, function (item, key) {
       return players[key] > 0 && item ? [_c("img", {
@@ -6173,8 +6179,21 @@ var render = function render() {
           alt: ""
         }
       })] : _vm._e();
-    })], 2), _vm._v(" "), _vm._m(2, true)]);
-  })], 2)]);
+    })], 2), _vm._v(" "), _c("span", {
+      staticClass: "align-items-center",
+      staticStyle: {
+        color: "black",
+        "margin-right": "10px",
+        "white-space": "nowrap",
+        "background-color": "",
+        padding: "0 10px",
+        "border-radius": "20px",
+        display: "flex"
+      }
+    }, [_vm._v(" 100  "), _c("i", {
+      staticClass: "fa-solid fa-bolt ml-1"
+    })])]);
+  }), 0)], 1)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -6231,23 +6250,6 @@ var staticRenderFns = [function () {
       "font-size": "20px"
     }
   })])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
 }];
 render._withStripped = true;
 
