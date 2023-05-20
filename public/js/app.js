@@ -2402,7 +2402,7 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
       if (domCodes.includes(code)) {
         return {
           type: "dom",
-          position: y === 0 ? "black" : "white"
+          position: code === "D9" ? "black" : "white"
         };
       }
       return {
@@ -2685,9 +2685,9 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
       } else {
         var willMove = [];
         var ctr = 0;
-        for (var _y = 0; _y < 9; _y++) {
+        for (var y = 0; y < 9; y++) {
           for (var x = 0; x < 7; x++) {
-            var node = board[_y][x];
+            var node = board[y][x];
             if (node.content.piece) {
               if (node.content.color === giliran_now) {
                 willMove.push(node);

@@ -364,7 +364,7 @@ export default {
             if (domCodes.includes(code)) {
                 return {
                     type: "dom",
-                    position: y === 0 ? "black" : "white",
+                    position: code === "D9" ? "black" : "white",
                 };
             }
             return {
