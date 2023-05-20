@@ -2101,17 +2101,43 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     pieceTransformStyles: function pieceTransformStyles() {
       if (this.isMoves) {
-        if (this.transformX > 0) {
-          return 'animation-to-right';
-        }
-        if (this.transformX < 0) {
-          return 'animation-to-left';
-        }
-        if (this.transformY < 0) {
-          return 'animation-to-top';
-        }
-        if (this.transformY > 0) {
-          return 'animation-to-bottom';
+        console.log(this.transformX, 'this.transformX');
+        console.log(this.transformY, 'this.transformY');
+        var className = '';
+        if (this.transformX) {
+          switch (this.transformX) {
+            case 80:
+              className = 'animation-to-right';
+              break;
+            case 240:
+              className = 'animation-to-right-2x';
+              break;
+            case -80:
+              className = 'animation-to-left';
+              break;
+            case -240:
+              className = 'animation-to-left-2x';
+              break;
+          }
+          console.log(className, 'className');
+          return className;
+        } else if (this.transformY) {
+          switch (this.transformY) {
+            case 80:
+              className = 'animation-to-bottom';
+              break;
+            case 320:
+              className = 'animation-to-bottom-2x';
+              break;
+            case -80:
+              className = 'animation-to-top';
+              break;
+            case -320:
+              className = 'animation-to-top-2x';
+              break;
+          }
+          console.log(className, 'className');
+          return className;
         }
         return '';
       }
@@ -2220,7 +2246,48 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 
-var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', '4_4', '5_4', '4_5', '5_5'];
+var animals = {
+  mouse: {
+    power: 0,
+    specialPower: {
+      canSwim: true,
+      canBeat: ["elephant"]
+    }
+  },
+  cat: {
+    power: 1
+  },
+  monkey: {
+    power: 2
+  },
+  dog: {
+    power: 3
+  },
+  leopard: {
+    power: 4
+  },
+  tiger: {
+    power: 5,
+    specialPower: {
+      canJumpOverTheRiver: true,
+      jumpDirections: ["vertical"]
+    }
+  },
+  lion: {
+    power: 6,
+    specialPower: {
+      canJumpOverTheRiver: true,
+      jumpDirections: ["vertical", "horizontal"]
+    }
+  },
+  elephant: {
+    power: 7
+  }
+};
+var waterCodes = ["B6", "C6", "B5", "C5", "B4", "C4", "E6", "F6", "E5", "F5", "E4", "F4"];
+var trapCodes = ["C9", "D8", "E9", "C1", "D2", "E1"];
+var domCodes = ["D9", "D1"];
+var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5", "A4", "D4", "G4", "B3", "C3", "E3", "F3"];
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Game",
   components: {
@@ -2289,7 +2356,7 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
         piece: null,
         toX: 0,
         toY: 0,
-        color: ''
+        color: ""
       },
       svg: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])(null),
       piecepower: {
@@ -2314,15 +2381,95 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
     };
   },
   methods: {
-    possibleMoveColor: function possibleMoveColor(x, y) {
-      return waterCoordinates.includes(x + '_' + y) ? this.color.possibleMoveWater : this.color.possibleMove;
+    possibleMoveColor: function possibleMoveColor(code) {
+      return waterCodes.includes(code) ? this.color.possibleMoveWater : this.color.possibleMove;
+    },
+    squareTypeInfo: function squareTypeInfo(code) {
+      // getting info about the square
+      if (!code) return null;
+      if (waterCodes.includes(code)) {
+        return {
+          type: "water",
+          position: waterCodes.indexOf(code) < 6 ? "left" : "right"
+        };
+      }
+      if (trapCodes.includes(code)) {
+        return {
+          type: "trap",
+          position: trapCodes.indexOf(code) < 3 ? "black" : "white"
+        };
+      }
+      if (domCodes.includes(code)) {
+        return {
+          type: "dom",
+          position: y === 0 ? "black" : "white"
+        };
+      }
+      return {
+        type: "land"
+      };
+    },
+    outOfBoard: function outOfBoard(x, y) {
+      // checking if coordinates are out of board
+      return y < 0 || x < 0 || y > 8 || x > 6;
+    },
+    getLandingPosition: function getLandingPosition(animalX, animalY, landingX, landingY) {
+      // getting position of square if animal wants to jump over the river
+      if (animalX === landingX) {
+        if (landingY > animalY) {
+          return {
+            x: landingX,
+            y: landingY + 3
+          };
+        } else {
+          return {
+            x: landingX,
+            y: landingY - 3
+          };
+        }
+      } else {
+        if (landingX > animalX) {
+          return {
+            x: landingX + 2,
+            y: landingY
+          };
+        } else {
+          return {
+            x: landingX - 2,
+            y: landingY
+          };
+        }
+      }
     },
     onMouseMove: function onMouseMove(e) {
       // let rect = this.svg.value.getBoundingClientRect();
       // this.mouseLocation.x = ((e.clientX - rect.x) * this.viewBox.x) / rect.width;
       // this.mouseLocation.y = ((e.clientY - rect.y) * this.viewBox.y) / rect.height;
     },
+    canBeatAnimal: function canBeatAnimal(animal, attacker) {
+      var _attacker$specialPowe, _attacker$specialPowe2;
+      // checking if one animal can beat another
+      return attacker.color !== animal.color && (attacker.power >= animal.power || ((_attacker$specialPowe = attacker.specialPower) === null || _attacker$specialPowe === void 0 ? void 0 : (_attacker$specialPowe2 = _attacker$specialPowe.canBeat) === null || _attacker$specialPowe2 === void 0 ? void 0 : _attacker$specialPowe2.includes(attacker)));
+    },
+    getAnimalByCode: function getAnimalByCode(x, y) {
+      var _square$content;
+      // getting animal info with square coordinates
+      var square = this.squares[y][x];
+      if ((_square$content = square.content) !== null && _square$content !== void 0 && _square$content.piece) {
+        return {
+          animal: square.content.piece,
+          color: square.content.color
+        };
+      }
+      return null;
+    },
+    canJump: function canJump(animal, directory) {
+      var _animal$specialPower, _animal$specialPower2, _animal$specialPower3;
+      // checking if an animal can jump by given direction
+      return ((_animal$specialPower = animal.specialPower) === null || _animal$specialPower === void 0 ? void 0 : _animal$specialPower.canJumpOverTheRiver) && ((_animal$specialPower2 = animal.specialPower) === null || _animal$specialPower2 === void 0 ? void 0 : (_animal$specialPower3 = _animal$specialPower2.jumpDirections) === null || _animal$specialPower3 === void 0 ? void 0 : _animal$specialPower3.includes(directory));
+    },
     initSquares: function initSquares() {
+      console.log(this.boardSettings, "this.boardSettings");
       for (var i = 0; i < 9; i++) {
         this.squares.push([]);
         for (var j = 0; j < 7; j++) {
@@ -2354,36 +2501,41 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
      * @returns {void}
      */
     squareClick: function squareClick($event, rowIndex, colIndex) {
+      // console.log(this.squares, 'this.squares')
+      console.log("sxmvav");
+      console.log(this.squareTypeInfo(colIndex, rowIndex), "squareTypeInfo");
       var square = this.squares[rowIndex][colIndex];
-      if (this.isHoldingChessPiece) {
-        // If user is holding a chess piece, then release it.
-        this.releasePiece($event, square);
-      } else {
-        this.showPossibleMoves(rowIndex, colIndex);
-        // If user is holding not holding chess piece, then hold it.
-        this.holding.row = rowIndex;
-        this.holding.col = colIndex;
-        this.holdPiece($event, square);
+      if (!this.releasePiece($event, square)) {
+        if (square.content.color === "white") {
+          this.showPossibleMoves(rowIndex, colIndex);
+          this.holding.row = rowIndex;
+          this.holding.col = colIndex;
+          this.holdPiece($event, square);
+        }
       }
     },
     /**
-     * Release a chess piece to a square
-     * @returns {void}
+     *
+     * @param $event
+     * @param toSquare
+     * @returns {boolean}
      */
     releasePiece: function releasePiece($event, toSquare) {
       var _this = this;
+      if (!this.isHoldingChessPiece) return false;
       var fromSquare = this.squares[this.holding.row][this.holding.col];
       if (!toSquare.isPossibleMove) {
         this.isHoldingChessPiece = null;
         fromSquare.visible = true;
-        return this.clearPossibleMoves();
+        this.clearPossibleMoves();
+        return false;
       }
       this.isCheckmate(toSquare);
       this.gamePieceMoveCoords = {
         piece: fromSquare.content.piece,
         toX: toSquare.x - fromSquare.x,
         toY: toSquare.y - fromSquare.y,
-        color: 'white'
+        color: "white"
       };
       toSquare.content.piece = fromSquare.content.piece;
       toSquare.content.color = fromSquare.content.color;
@@ -2394,10 +2546,11 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
       this.isHoldingChessPiece = false;
       this.turnNumber++;
       this.clearPossibleMoves();
-      this.turn = this.turn == "black" ? "white" : "black";
+      this.turn = this.turn === "black" ? "white" : "black";
       setTimeout(function () {
         _this.playComputer();
-      }, 350);
+      }, 500);
+      return true;
     },
     playAgain: function playAgain() {
       this.initSquares();
@@ -2407,7 +2560,7 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
     isCheckmate: function isCheckmate(squareTo) {
       var _this2 = this;
       var isFinal = function isFinal() {
-        return squareTo.code == _this2.winPos[_this2.turn == 'white' ? 'black' : 'white'] ? _this2.turn : null;
+        return squareTo.code === _this2.winPos[_this2.turn === "white" ? "black" : "white"] ? _this2.turn : null;
       };
       var winner = null;
       if (winner = isFinal()) {
@@ -2435,50 +2588,50 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
       };
       var m = this.minimax(clone, 3, "black", move, minv, maxv);
       var t = m.last_move;
-      while (t.nextMove.nextMove != null) {
-        if (t.nextMove != null) {
+      while (t.nextMove.nextMove !== null) {
+        if (t.nextMove !== null) {
           t = t.nextMove;
         } else {
           break;
         }
       }
-      if (t != null) {
+      if (t !== null) {
         var fromSquare, toSquare;
         var flag = true;
         for (var _i = 0; _i < 9; _i++) {
           for (var _j = 0; _j < 7; _j++) {
             if (this.squares[_i][_j].content.piece && !t.currentBoard[_i][_j].content.piece) {
               fromSquare = this.squares[_i][_j];
-              if (_i < 8 && (this.squares[_i + 1][_j].content.piece != t.currentBoard[_i + 1][_j].content.piece || this.squares[_i + 1][_j].content.piece == t.currentBoard[_i + 1][_j].content.piece && this.squares[_i + 1][_j].content.color != t.currentBoard[_i + 1][_j].content.color)) {
+              if (_i < 8 && (this.squares[_i + 1][_j].content.piece !== t.currentBoard[_i + 1][_j].content.piece || this.squares[_i + 1][_j].content.piece === t.currentBoard[_i + 1][_j].content.piece && this.squares[_i + 1][_j].content.color !== t.currentBoard[_i + 1][_j].content.color)) {
                 toSquare = this.squares[_i + 1][_j];
                 flag = false;
                 break;
               }
-              if (_i > 0 && (this.squares[_i - 1][_j].content.piece != t.currentBoard[_i - 1][_j].content.piece || this.squares[_i - 1][_j].content.piece == t.currentBoard[_i - 1][_j].content.piece && this.squares[_i - 1][_j].content.color != t.currentBoard[_i - 1][_j].content.color)) {
+              if (_i > 0 && (this.squares[_i - 1][_j].content.piece !== t.currentBoard[_i - 1][_j].content.piece || this.squares[_i - 1][_j].content.piece === t.currentBoard[_i - 1][_j].content.piece && this.squares[_i - 1][_j].content.color !== t.currentBoard[_i - 1][_j].content.color)) {
                 toSquare = this.squares[_i - 1][_j];
                 flag = false;
                 break;
               }
-              if (_j < 6 && (this.squares[_i][_j + 1].content.piece != t.currentBoard[_i][_j + 1].content.piece || this.squares[_i][_j + 1].content.piece == t.currentBoard[_i][_j + 1].content.piece && this.squares[_i][_j + 1].content.color != t.currentBoard[_i][_j + 1].content.color)) {
+              if (_j < 6 && (this.squares[_i][_j + 1].content.piece !== t.currentBoard[_i][_j + 1].content.piece || this.squares[_i][_j + 1].content.piece === t.currentBoard[_i][_j + 1].content.piece && this.squares[_i][_j + 1].content.color !== t.currentBoard[_i][_j + 1].content.color)) {
                 toSquare = this.squares[_i][_j + 1];
                 flag = false;
                 break;
               }
-              if (_j > 0 && (this.squares[_i][_j - 1].content.piece != t.currentBoard[_i][_j - 1].content.piece || this.squares[_i][_j - 1].content.piece == t.currentBoard[_i][_j - 1].content.piece && this.squares[_i][_j - 1].content.color != t.currentBoard[_i][_j - 1].content.color)) {
+              if (_j > 0 && (this.squares[_i][_j - 1].content.piece !== t.currentBoard[_i][_j - 1].content.piece || this.squares[_i][_j - 1].content.piece === t.currentBoard[_i][_j - 1].content.piece && this.squares[_i][_j - 1].content.color !== t.currentBoard[_i][_j - 1].content.color)) {
                 toSquare = this.squares[_i][_j - 1];
                 flag = false;
                 break;
               }
             }
           }
-          if (flag == false) break;
+          if (flag === false) break;
         }
         this.isCheckmate(toSquare);
         this.gamePieceMoveCoords = {
           piece: fromSquare.content.piece,
           toX: toSquare.x - fromSquare.x,
           toY: toSquare.y - fromSquare.y,
-          color: 'black'
+          color: "black"
         };
         toSquare.content.piece = fromSquare.content.piece;
         toSquare.content.color = fromSquare.content.color;
@@ -2487,12 +2640,12 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
         fromSquare.content.piece = null;
         fromSquare.content.color = null;
         this.turnNumber++;
-        this.turn = this.turn == "black" ? "white" : "black";
+        this.turn = this.turn === "black" ? "white" : "black";
       }
     },
     minimax: function minimax(board, depth, giliran_now, last_move, alpha, beta) {
       var _this3 = this;
-      if (depth == 0) {
+      if (depth === 0) {
         var value = 0;
         var copy = last_move.currentBoard;
         var myPieces = [];
@@ -2500,7 +2653,7 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
         for (var i = 0; i < 9; i++) {
           for (var j = 0; j < 7; j++) {
             var currentPiece = copy[i][j];
-            if (currentPiece.content.piece && currentPiece.content.color == "black") myPieces.push(currentPiece);else if (currentPiece.content.piece && currentPiece.content.color != "black") enemyPieces.push(currentPiece);
+            if (currentPiece.content.piece && currentPiece.content.color === "black") myPieces.push(currentPiece);else if (currentPiece.content.piece && currentPiece.content.color !== "black") enemyPieces.push(currentPiece);
           }
         }
         value += (myPieces.length - enemyPieces.length) * 100;
@@ -2513,7 +2666,7 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
           jarakX = Math.abs(jarakX);
           value += _this3.getShaktiValue(_this3.piecepower[item.content.piece], item.i, item.j);
           jarakY = Math.abs(8 - item.i);
-          if (jarakY == jarakX && jarakX == 0) {
+          if (jarakY === jarakX && jarakX === 0) {
             value = 200000000;
             return {
               last_move: last_move,
@@ -2532,11 +2685,11 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
       } else {
         var willMove = [];
         var ctr = 0;
-        for (var y = 0; y < 9; y++) {
+        for (var _y = 0; _y < 9; _y++) {
           for (var x = 0; x < 7; x++) {
-            var node = board[y][x];
+            var node = board[_y][x];
             if (node.content.piece) {
-              if (node.content.color == giliran_now) {
+              if (node.content.color === giliran_now) {
                 willMove.push(node);
                 ++ctr;
               }
@@ -2577,11 +2730,11 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
             currentBoard: clonedBoard,
             nextMove: last_move
           };
-          var tampung = this.minimax(clonedBoard, depth - 1, giliran_now == "black" ? "white" : "black", now, alpha, beta);
-          if (kembalian.length == 0) {
+          var tampung = this.minimax(clonedBoard, depth - 1, giliran_now === "black" ? "white" : "black", now, alpha, beta);
+          if (kembalian.length === 0) {
             kembalian = tampung;
           }
-          if (giliran_now == "black") {
+          if (giliran_now === "black") {
             // get Max
             if (alpha < tampung.value) {
               // swap
@@ -2643,21 +2796,21 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
         var target = moveTargets[key];
         var rowIndex = target.rowIndex,
           colIndex = target.colIndex;
-        if (square.content.piece == "mouse" || square.content.piece == "tiger" || square.content.piece == "lion") {
+        if (square.content.piece === "mouse" || square.content.piece === "tiger" || square.content.piece === "lion") {
           if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6) continue;
-        } else if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6 || rowIndex > 2 && rowIndex < 6 && colIndex != 0 && colIndex != 3 && colIndex != 6) continue;
+        } else if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6 || rowIndex > 2 && rowIndex < 6 && colIndex !== 0 && colIndex !== 3 && colIndex !== 6) continue;
         var targetSquare = board[rowIndex][colIndex];
 
         // trap
-        if (this.turn == 'white' && (targetSquare.code == 'E1' || targetSquare.code == 'C1' || targetSquare.code == 'D2')) {
-          if (targetSquare.content.color == 'black') {
+        if (this.turn === "white" && (targetSquare.code === "E1" || targetSquare.code === "C1" || targetSquare.code === "D2")) {
+          if (targetSquare.content.color === "black") {
             temp.push(targetSquare);
             continue;
           }
           continue;
         }
-        if (this.turn == 'black' && (targetSquare.code == 'E9' || targetSquare.code == 'C9' || targetSquare.code == 'D8')) {
-          if (targetSquare.content.color == 'white') {
+        if (this.turn === "black" && (targetSquare.code === "E9" || targetSquare.code === "C9" || targetSquare.code === "D8")) {
+          if (targetSquare.content.color === "white") {
             temp.push(targetSquare);
             continue;
           }
@@ -2665,15 +2818,15 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
         }
 
         // tiger and lion can jump over the water
-        if ((square.content.piece == "tiger" || square.content.piece == "lion") && targetSquare.color == "dark") {
-          if (squareColIndex == colIndex) {
+        if ((square.content.piece === "tiger" || square.content.piece === "lion") && targetSquare.color === "dark") {
+          if (squareColIndex === colIndex) {
             for (var i = 3; i < 6; i++) {
               var squ = board[i][colIndex];
               if (squ.content.piece) continue;
             }
             rowIndex = 8 - squareRowIndex;
           } else {
-            if (squareColIndex != 3) colIndex = 3;else colIndex = squareColIndex + (colIndex - squareColIndex) * 3;
+            if (squareColIndex !== 3) colIndex = 3;else colIndex = squareColIndex + (colIndex - squareColIndex) * 3;
             if (colIndex > squareColIndex) for (var _i4 = squareColIndex + 1; _i4 < colIndex; _i4++) {
               var _squ = board[rowIndex][_i4];
               if (_squ.content.piece) continue;
@@ -2685,21 +2838,20 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
           targetSquare = board[rowIndex][colIndex];
         } else {
           // mouse can move through the water
-          if (square.content.piece == "mouse") {
-            if (targetSquare.content.piece && targetSquare.content.color != this.turn && 6 >= this.piecepower[targetSquare.content.piece] && 0 < this.piecepower[targetSquare.content.piece]) continue;
-            if (targetSquare.content.piece && square.color == "dark" && targetSquare.color == "light") continue;
+          if (square.content.piece === "mouse") {
+            if (targetSquare.content.piece && targetSquare.content.color !== this.turn && 6 >= this.piecepower[targetSquare.content.piece] && 0 < this.piecepower[targetSquare.content.piece]) continue;
+            if (targetSquare.content.piece && square.color === "dark" && targetSquare.color === "light") continue;
           } else {
-            if (square.content.piece == "elephant") {
-              if (targetSquare.content.piece && targetSquare.content.color != this.turn && this.piecepower[targetSquare.content.piece] == 0) continue;
+            if (square.content.piece === "elephant") {
+              if (targetSquare.content.piece && targetSquare.content.color !== this.turn && this.piecepower[targetSquare.content.piece] === 0) continue;
             } else {
-              if (targetSquare.content.piece && targetSquare.content.color != this.turn && this.piecepower[square.content.piece] < this.piecepower[targetSquare.content.piece]) continue;
+              if (targetSquare.content.piece && targetSquare.content.color !== this.turn && this.piecepower[square.content.piece] < this.piecepower[targetSquare.content.piece]) continue;
             }
           }
         }
-        if (targetSquare.content.piece && targetSquare.content.color == this.turn) continue;
+        if (targetSquare.content.piece && targetSquare.content.color === this.turn) continue;
         temp.push(targetSquare);
       }
-      ;
       return temp;
     },
     /**
@@ -2712,7 +2864,7 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
     squareMouseEnter: function squareMouseEnter($event, squareRowIndex, squareColIndex) {
       // If hover on a piece and the color is the current turn, show possible moves
       var square = this.squares[squareRowIndex][squareColIndex];
-      if (square.content.piece && square.content.color == this.turn && !this.isHoldingChessPiece) {
+      if (square.content.piece && square.content.color === this.turn && !this.isHoldingChessPiece) {
         this.showPossibleMoves(squareRowIndex, squareColIndex);
         document.body.style.cursor = "pointer";
       }
@@ -2722,62 +2874,103 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
       this.possibleMoves.push(square);
     },
     /**
-     * Show knight's possible moves by row and column index
-     * @param {Number} squareRowIndex
-     * @param {Number} squareColIndex
-     * @returns {void}
+     *
+     * @param square
+     * @param squareRowIndex
+     * @param squareColIndex
      */
     knightPossibleMoves: function knightPossibleMoves(square, squareRowIndex, squareColIndex) {
-      var _this4 = this;
+      var _square$content2,
+        _square$content3,
+        _this4 = this;
+      // possible move positions
       var moveTargets = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getKnightPossibleMoves(squareRowIndex, squareColIndex);
+      // possibilities and color of current chosen animal
+      var currentAnimalInfo = _objectSpread(_objectSpread({}, animals[square.content.piece]), {}, {
+        color: (_square$content2 = square.content) === null || _square$content2 === void 0 ? void 0 : _square$content2.color
+      });
+      // color of current chosen animal
+      var currentSquareColor = (_square$content3 = square.content) === null || _square$content3 === void 0 ? void 0 : _square$content3.color;
+      var currentSquareType = this.squareTypeInfo(square.code);
+      if (currentSquareType.type === "trap" && currentSquareType.position !== currentSquareColor) {
+        currentAnimalInfo.power = 0;
+      }
+      // loop over all possible positions
       moveTargets.forEach(function (target) {
+        var _currentAnimalInfo$sp;
         var rowIndex = target.rowIndex,
           colIndex = target.colIndex;
-        if (square.content.piece == "mouse" || square.content.piece == "tiger" || square.content.piece == "lion") {
-          if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6) return;
-        } else if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6 || rowIndex > 2 && rowIndex < 6 && colIndex != 0 && colIndex != 3 && colIndex != 6) return;
+        // checking if possible move is out of game board
+        if (_this4.outOfBoard(colIndex, rowIndex)) return;
         var targetSquare = _this4.squares[rowIndex][colIndex];
+        var targetSquareInfo = _this4.squareTypeInfo(targetSquare.code);
 
-        // trap
-        if (_this4.turn == 'white' && (targetSquare.code == 'E1' || targetSquare.code == 'C1' || targetSquare.code == 'D2')) {
-          if (targetSquare.content.color == 'black') _this4.makeItPossible(targetSquare);
+        // getting the animal of target square if exists
+        var targetSquareAnimal = targetSquare.content.piece ? _objectSpread(_objectSpread({}, animals[targetSquare.content.piece]), {}, {
+          color: targetSquare.content.color
+        }) : null;
+
+        // checking if target square animal is the same color as chosen animal
+        if (!targetSquareInfo || targetSquareAnimal && targetSquareAnimal.color === currentSquareColor) {
           return;
         }
-        if (_this4.turn == 'black' && (targetSquare.code == 'E9' || targetSquare.code == 'C9' || targetSquare.code == 'D8')) {
-          if (targetSquare.content.color == 'white') _this4.makeItPossible(targetSquare);
-          return;
+        // checking different types of possible move square
+        switch (targetSquareInfo.type) {
+          // the possible move square is water
+          case "water":
+            // if our animal can swim , the move is possible
+            if ((_currentAnimalInfo$sp = currentAnimalInfo.specialPower) !== null && _currentAnimalInfo$sp !== void 0 && _currentAnimalInfo$sp.canSwim) {
+              _this4.makeItPossible(targetSquare);
+              return;
+            }
+            // if our animal can jump over the river
+            // and beat the animal on the other side the move is possible
+            // To Do ---> check if water is blocked
+            else if (_this4.canJump(currentAnimalInfo, squareRowIndex === rowIndex ? "vertical" : "horizontal")) {
+              var jumpingTargetCoordinates = _this4.getLandingPosition(squareColIndex, squareRowIndex, colIndex, rowIndex);
+              var possibleTargetAnimal = _this4.getAnimalByCode(jumpingTargetCoordinates.x, jumpingTargetCoordinates.y);
+              if (!possibleTargetAnimal || _this4.canBeatAnimal(_objectSpread(_objectSpread({}, animals[possibleTargetAnimal.animal]), {}, {
+                color: possibleTargetAnimal.color
+              }), currentAnimalInfo)) {
+                var newTarget = _this4.squares[jumpingTargetCoordinates.y][jumpingTargetCoordinates.x];
+                _this4.makeItPossible(newTarget);
+                return;
+              }
+            }
+            break;
+          // the possible move square is trap
+          case "trap":
+            // if target is ours the move is possible
+            if (targetSquareInfo.position === currentSquareColor) {
+              _this4.makeItPossible(targetSquare);
+              return;
+            }
+            //else if there's no animal, or we can beat the animal the move is possible
+            else if (!targetSquareAnimal || _this4.canBeatAnimal(targetSquareAnimal, currentAnimalInfo)) {
+              _this4.makeItPossible(targetSquare);
+              return;
+            }
+            break;
+          // the possible move square is dom
+          case "dom":
+            // if it's the opponents dom the move is possible (even winning)
+            if (targetSquareInfo.position !== currentSquareColor) {
+              _this4.makeItPossible(targetSquare);
+              return;
+            }
+            break;
+          // the possible move square is land
+          case "land":
+            if (!targetSquareAnimal) {
+              _this4.makeItPossible(targetSquare);
+              return;
+            } else {
+              if (currentSquareType.type !== "water" && _this4.canBeatAnimal(targetSquareAnimal, currentAnimalInfo)) {
+                _this4.makeItPossible(targetSquare);
+                return;
+              }
+            }
         }
-
-        // tiger and lion can jump over the water
-        if ((square.content.piece == "tiger" || square.content.piece == "lion") && targetSquare.color == "dark") if (squareColIndex == colIndex) {
-          for (var i = 3; i < 6; i++) {
-            var squ = _this4.squares[i][colIndex];
-            if (squ.content.piece) return;
-          }
-          rowIndex = 8 - squareRowIndex;
-        } else {
-          if (squareColIndex != 3) colIndex = 3;else colIndex = squareColIndex + (colIndex - squareColIndex) * 3;
-          if (colIndex > squareColIndex) for (var _i6 = squareColIndex + 1; _i6 < colIndex; _i6++) {
-            var _squ3 = _this4.squares[rowIndex][_i6];
-            if (_squ3.content.piece) return;
-          } else for (var _i7 = colIndex + 1; _i7 < squareColIndex; _i7++) {
-            var _squ4 = _this4.squares[rowIndex][_i7];
-            if (_squ4.content.piece) return;
-          }
-        }
-        targetSquare = _this4.squares[rowIndex][colIndex];
-        if (targetSquare.content.piece && targetSquare.content.color == _this4.turn) return;
-
-        // mouse can move through the water
-        if (square.content.piece == "mouse") {
-          if (targetSquare.content.piece && targetSquare.content.color != _this4.turn && 6 >= _this4.piecepower[targetSquare.content.piece] && 0 < _this4.piecepower[targetSquare.content.piece]) return;
-          if (targetSquare.content.piece && square.color == "dark" && targetSquare.color == "light") return;
-        } else {
-          if (square.content.piece == "elephant") {
-            if (targetSquare.content.piece && targetSquare.content.color != _this4.turn && _this4.piecepower[targetSquare.content.piece] == 0) return;
-          } else if (targetSquare.content.piece && targetSquare.content.color != _this4.turn && _this4.piecepower[square.content.piece] < _this4.piecepower[targetSquare.content.piece]) return;
-        }
-        _this4.makeItPossible(targetSquare);
       });
     },
     /**
@@ -2813,7 +3006,7 @@ var waterCoordinates = ['1_3', '2_3', '1_4', '2_4', '1_5', '2_5', '4_3', '5_3', 
      * Hold a chess piece to a square
      */
     holdPiece: function holdPiece($event, square) {
-      if (!square.content.piece || square.content.color !== this.turn || this.possibleMoves.length == 0) return;
+      if (!square.content.piece || square.content.color !== this.turn || this.possibleMoves.length === 0) return;
       this.isHoldingChessPiece = square;
       square.visible = false;
     }
@@ -3305,7 +3498,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       isLoading: true,
       open: true,
-      canStart: false,
+      canStart: true,
       isStarted: true,
       readyToStart: false
     };
@@ -3633,7 +3826,7 @@ var render = function render() {
   return _c("g", {
     staticClass: "chesspiece",
     "class": _vm.pieceTransformStyles
-  }, [_vm.name == "mouse" ? _c("svg", {
+  }, [_vm.name === "mouse" ? _c("svg", {
     attrs: {
       x: _vm.x,
       y: _vm.y,
@@ -3651,7 +3844,7 @@ var render = function render() {
       fill: _vm.color,
       "fill-rule": "evenodd"
     }
-  })]) : _vm._e(), _vm._v(" "), _vm.name == "cat" ? _c("svg", {
+  })]) : _vm._e(), _vm._v(" "), _vm.name === "cat" ? _c("svg", {
     attrs: {
       x: _vm.x,
       y: _vm.y,
@@ -3669,7 +3862,7 @@ var render = function render() {
       fill: _vm.color,
       "fill-rule": "evenodd"
     }
-  })]) : _vm._e(), _vm._v(" "), _vm.name == "dog" ? _c("svg", {
+  })]) : _vm._e(), _vm._v(" "), _vm.name === "dog" ? _c("svg", {
     attrs: {
       x: _vm.x,
       y: _vm.y,
@@ -3687,7 +3880,7 @@ var render = function render() {
       fill: _vm.color,
       "fill-rule": "evenodd"
     }
-  })]) : _vm._e(), _vm._v(" "), _vm.name == "monkey" ? _c("svg", {
+  })]) : _vm._e(), _vm._v(" "), _vm.name === "monkey" ? _c("svg", {
     attrs: {
       x: _vm.x,
       y: _vm.y,
@@ -3705,7 +3898,7 @@ var render = function render() {
       fill: _vm.color,
       "fill-rule": "evenodd"
     }
-  })]) : _vm._e(), _vm._v(" "), _vm.name == "leopard" ? _c("svg", {
+  })]) : _vm._e(), _vm._v(" "), _vm.name === "leopard" ? _c("svg", {
     attrs: {
       x: _vm.x,
       y: _vm.y + 10,
@@ -3723,7 +3916,7 @@ var render = function render() {
       fill: _vm.color,
       "fill-rule": "evenodd"
     }
-  })]) : _vm._e(), _vm._v(" "), _vm.name == "tiger" ? _c("svg", {
+  })]) : _vm._e(), _vm._v(" "), _vm.name === "tiger" ? _c("svg", {
     attrs: {
       x: _vm.x,
       y: _vm.y,
@@ -3741,7 +3934,7 @@ var render = function render() {
       fill: _vm.color,
       "fill-rule": "evenodd"
     }
-  })]) : _vm._e(), _vm._v(" "), _vm.name == "lion" ? _c("svg", {
+  })]) : _vm._e(), _vm._v(" "), _vm.name === "lion" ? _c("svg", {
     attrs: {
       x: _vm.x,
       y: _vm.y,
@@ -3759,7 +3952,7 @@ var render = function render() {
       fill: _vm.color,
       "fill-rule": "evenodd"
     }
-  })]) : _vm._e(), _vm._v(" "), _vm.name == "elephant" ? _c("svg", {
+  })]) : _vm._e(), _vm._v(" "), _vm.name === "elephant" ? _c("svg", {
     attrs: {
       x: _vm.x,
       y: _vm.y,
@@ -3922,7 +4115,7 @@ var render = function render() {
           y: square.y,
           width: square.width,
           height: square.height,
-          fill: square.isPossibleMove ? _vm.possibleMoveColor(squareColIndex, squareRowIndex) : _vm.color[square.color]
+          fill: square.isPossibleMove ? _vm.possibleMoveColor(square.code) : _vm.color[square.color]
         }
       }), _vm._v(" "), _c("rect", {
         directives: [{
@@ -10748,7 +10941,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.animation-to-left{\n    animation: moveToLeft 0.3s ease-in;\n}\n@keyframes moveToLeft {\nfrom {transform: translate(80px,0);}\nto {transform: translate(0,0);}\n}\n.animation-to-right{\n    animation: moveToRight 0.3s ease-in;\n}\n@keyframes moveToRight {\nfrom {transform: translate(-80px,0);}\nto {transform: translate(0,0);}\n}\n.animation-to-top{\n    animation: moveToTop 0.3s ease-in;\n}\n@keyframes moveToTop {\nfrom {transform: translate(0,80px);}\nto {transform: translate(0,0);}\n}\n.animation-to-bottom{\n    animation: moveToBottom 0.3s ease-in;\n}\n@keyframes moveToBottom {\nfrom {transform: translate(0,-80px);}\nto {transform: translate(0,0);}\n}\n", ""]);
+exports.push([module.i, "\n.animation-to-left{\n    animation: moveToLeft 0.3s ease-in;\n}\n.animation-to-left-2x{\n    animation: moveToLeft2X 0.5s ease-in;\n}\n.animation-to-right{\n    animation: moveToRight 0.3s ease-in;\n}\n.animation-to-right-2x{\n    animation: moveToRight2X 0.5s ease-in;\n}\n.animation-to-top{\n    animation: moveToTop 0.3s ease-in;\n}\n.animation-to-top-2x{\n    animation: moveToTop2X 0.5s ease-in;\n}\n.animation-to-bottom{\n    animation: moveToBottom 0.3s ease-in;\n}\n.animation-to-bottom-2x{\n    animation: moveToBottom2X 0.5s ease-in;\n}\n@keyframes moveToLeft {\nfrom {transform: translate(80px,0);}\nto {transform: translate(0,0);}\n}\n@keyframes moveToLeft2X {\nfrom {transform: translate(240px,0);}\nto {transform: translate(0,0);}\n}\n@keyframes moveToRight {\nfrom {transform: translate(-80px,0);}\nto {transform: translate(0,0);}\n}\n@keyframes moveToRight2X {\nfrom {transform: translate(-240px,0);}\nto {transform: translate(0,0);}\n}\n@keyframes moveToTop {\nfrom {transform: translate(0,80px);}\nto {transform: translate(0,0);}\n}\n@keyframes moveToTop2X {\nfrom {transform: translate(0,320px);}\nto {transform: translate(0,0);}\n}\n@keyframes moveToBottom {\nfrom {transform: translate(0,-80px);}\nto {transform: translate(0,0);}\n}\n@keyframes moveToBottom2X {\nfrom {transform: translate(0,-320px);}\nto {transform: translate(0,0);}\n}\n", ""]);
 
 // exports
 

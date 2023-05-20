@@ -74,7 +74,7 @@
             return {
                 isLoading: true,
                 open: true,
-                canStart: false,
+                canStart: true,
                 isStarted: true,
                 readyToStart: false,
             }
