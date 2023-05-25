@@ -2232,6 +2232,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Elements_Den2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Elements/Den2 */ "./resources/js/components/Game/Elements/Den2.vue");
 /* harmony import */ var _Elements_Trap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Elements/Trap */ "./resources/js/components/Game/Elements/Trap.vue");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2345,6 +2352,7 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
         x: 560,
         y: 720
       },
+      counterStrike: 0,
       mouseLocation: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])({
         x: 0,
         y: 0
@@ -2441,11 +2449,6 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
         }
       }
     },
-    onMouseMove: function onMouseMove(e) {
-      // let rect = this.svg.value.getBoundingClientRect();
-      // this.mouseLocation.x = ((e.clientX - rect.x) * this.viewBox.x) / rect.width;
-      // this.mouseLocation.y = ((e.clientY - rect.y) * this.viewBox.y) / rect.height;
-    },
     canBeatAnimal: function canBeatAnimal(animal, attacker) {
       var _attacker$specialPowe, _attacker$specialPowe2;
       // checking if one animal can beat another
@@ -2495,17 +2498,11 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
           }, squarePosition), this.boardSettings.square));
         }
       }
+      console.log('this.squares', this.squares);
     },
-    /**
-     * Event fire on square click
-     * @returns {void}
-     */
     squareClick: function squareClick($event, rowIndex, colIndex) {
-      // console.log(this.squares, 'this.squares')
-      console.log("sxmvav");
-      console.log(this.squareTypeInfo(colIndex, rowIndex), "squareTypeInfo");
       var square = this.squares[rowIndex][colIndex];
-      if (!this.releasePiece($event, square)) {
+      if (!this.releasePiece(square)) {
         if (square.content.color === "white") {
           this.showPossibleMoves(rowIndex, colIndex);
           this.holding.row = rowIndex;
@@ -2514,13 +2511,23 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
         }
       }
     },
-    /**
-     *
-     * @param $event
-     * @param toSquare
-     * @returns {boolean}
-     */
-    releasePiece: function releasePiece($event, toSquare) {
+    makeMove: function makeMove(fromSquare, toSquare) {
+      var _fromSquare$content, _fromSquare$content2, _fromSquare$content3;
+      console.log('makeMove');
+      this.gamePieceMoveCoords = {
+        piece: (_fromSquare$content = fromSquare.content) === null || _fromSquare$content === void 0 ? void 0 : _fromSquare$content.piece,
+        toX: toSquare.x - fromSquare.x,
+        toY: toSquare.y - fromSquare.y,
+        color: this.turn
+      };
+      toSquare.content.piece = (_fromSquare$content2 = fromSquare.content) === null || _fromSquare$content2 === void 0 ? void 0 : _fromSquare$content2.piece;
+      toSquare.content.color = (_fromSquare$content3 = fromSquare.content) === null || _fromSquare$content3 === void 0 ? void 0 : _fromSquare$content3.color;
+      toSquare.content.stepNumber++;
+      toSquare.visible = true;
+      fromSquare.content.piece = null;
+      fromSquare.content.color = null;
+    },
+    releasePiece: function releasePiece(toSquare) {
       var _this = this;
       if (!this.isHoldingChessPiece) return false;
       var fromSquare = this.squares[this.holding.row][this.holding.col];
@@ -2531,22 +2538,11 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
         return false;
       }
       this.isCheckmate(toSquare);
-      this.gamePieceMoveCoords = {
-        piece: fromSquare.content.piece,
-        toX: toSquare.x - fromSquare.x,
-        toY: toSquare.y - fromSquare.y,
-        color: "white"
-      };
-      toSquare.content.piece = fromSquare.content.piece;
-      toSquare.content.color = fromSquare.content.color;
-      toSquare.content.stepNumber++;
-      toSquare.visible = true;
-      fromSquare.content.piece = null;
-      fromSquare.content.color = null;
+      this.makeMove(fromSquare, toSquare);
       this.isHoldingChessPiece = false;
       this.turnNumber++;
       this.clearPossibleMoves();
-      this.turn = this.turn === "black" ? "white" : "black";
+      this.turn = this.getOpponentColor(this.turn);
       setTimeout(function () {
         _this.playComputer();
       }, 500);
@@ -2556,6 +2552,21 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
       this.initSquares();
       this.turn = "white";
       _store__WEBPACK_IMPORTED_MODULE_2__["default"].commit("RESET_MOVES_HISTORY");
+    },
+    playComputer: function playComputer() {
+      var move = this.calculateBestMove(_toConsumableArray(this.squares), this.turn, 2);
+      var fromRow = move.fromRow,
+        fromCol = move.fromCol,
+        toRow = move.toRow,
+        toCol = move.toCol;
+      var fromSquare = this.squares[fromRow][fromCol];
+      var toSquare = this.squares[toRow][toCol];
+      console.log(fromRow, 'fromRow');
+      console.log(fromCol, 'fromCol');
+      console.log(toRow, 'toRow');
+      console.log(toCol, 'toCol');
+      this.makeMove(fromSquare, toSquare);
+      this.turn = this.getOpponentColor(this.turn);
     },
     isCheckmate: function isCheckmate(squareTo) {
       var _this2 = this;
@@ -2571,321 +2582,30 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
         if (again) this.playAgain();
       }
     },
-    playComputer: function playComputer() {
-      var minv = -200000000,
-        maxv = 200000000;
-      var clone = [];
-      for (var i = 0; i < 9; i++) {
-        clone.push([]);
-        for (var j = 0; j < 7; j++) {
-          clone[i][j] = Object.assign({}, this.squares[i][j]);
-          clone[i][j].content = Object.assign({}, this.squares[i][j].content);
-        }
-      }
-      var move = {
-        currentBoard: clone,
-        nextMove: null
-      };
-      var m = this.minimax(clone, 3, "black", move, minv, maxv);
-      var t = m.last_move;
-      while (t.nextMove.nextMove !== null) {
-        if (t.nextMove !== null) {
-          t = t.nextMove;
-        } else {
-          break;
-        }
-      }
-      if (t !== null) {
-        var fromSquare, toSquare;
-        var flag = true;
-        for (var _i = 0; _i < 9; _i++) {
-          for (var _j = 0; _j < 7; _j++) {
-            if (this.squares[_i][_j].content.piece && !t.currentBoard[_i][_j].content.piece) {
-              fromSquare = this.squares[_i][_j];
-              if (_i < 8 && (this.squares[_i + 1][_j].content.piece !== t.currentBoard[_i + 1][_j].content.piece || this.squares[_i + 1][_j].content.piece === t.currentBoard[_i + 1][_j].content.piece && this.squares[_i + 1][_j].content.color !== t.currentBoard[_i + 1][_j].content.color)) {
-                toSquare = this.squares[_i + 1][_j];
-                flag = false;
-                break;
-              }
-              if (_i > 0 && (this.squares[_i - 1][_j].content.piece !== t.currentBoard[_i - 1][_j].content.piece || this.squares[_i - 1][_j].content.piece === t.currentBoard[_i - 1][_j].content.piece && this.squares[_i - 1][_j].content.color !== t.currentBoard[_i - 1][_j].content.color)) {
-                toSquare = this.squares[_i - 1][_j];
-                flag = false;
-                break;
-              }
-              if (_j < 6 && (this.squares[_i][_j + 1].content.piece !== t.currentBoard[_i][_j + 1].content.piece || this.squares[_i][_j + 1].content.piece === t.currentBoard[_i][_j + 1].content.piece && this.squares[_i][_j + 1].content.color !== t.currentBoard[_i][_j + 1].content.color)) {
-                toSquare = this.squares[_i][_j + 1];
-                flag = false;
-                break;
-              }
-              if (_j > 0 && (this.squares[_i][_j - 1].content.piece !== t.currentBoard[_i][_j - 1].content.piece || this.squares[_i][_j - 1].content.piece === t.currentBoard[_i][_j - 1].content.piece && this.squares[_i][_j - 1].content.color !== t.currentBoard[_i][_j - 1].content.color)) {
-                toSquare = this.squares[_i][_j - 1];
-                flag = false;
-                break;
-              }
-            }
-          }
-          if (flag === false) break;
-        }
-        this.isCheckmate(toSquare);
-        this.gamePieceMoveCoords = {
-          piece: fromSquare.content.piece,
-          toX: toSquare.x - fromSquare.x,
-          toY: toSquare.y - fromSquare.y,
-          color: "black"
-        };
-        toSquare.content.piece = fromSquare.content.piece;
-        toSquare.content.color = fromSquare.content.color;
-        toSquare.content.stepNumber++;
-        toSquare.visible = true;
-        fromSquare.content.piece = null;
-        fromSquare.content.color = null;
-        this.turnNumber++;
-        this.turn = this.turn === "black" ? "white" : "black";
-      }
-    },
-    minimax: function minimax(board, depth, giliran_now, last_move, alpha, beta) {
-      var _this3 = this;
-      if (depth === 0) {
-        var value = 0;
-        var copy = last_move.currentBoard;
-        var myPieces = [];
-        var enemyPieces = [];
-        for (var i = 0; i < 9; i++) {
-          for (var j = 0; j < 7; j++) {
-            var currentPiece = copy[i][j];
-            if (currentPiece.content.piece && currentPiece.content.color === "black") myPieces.push(currentPiece);else if (currentPiece.content.piece && currentPiece.content.color !== "black") enemyPieces.push(currentPiece);
-          }
-        }
-        value += (myPieces.length - enemyPieces.length) * 100;
-        var jarakX = -200000000,
-          jarakY = -200000000;
-        var dx = 200000000,
-          dy = 200000000;
-        myPieces.forEach(function (item) {
-          jarakX = 3 - item.j;
-          jarakX = Math.abs(jarakX);
-          value += _this3.getShaktiValue(_this3.piecepower[item.content.piece], item.i, item.j);
-          jarakY = Math.abs(8 - item.i);
-          if (jarakY === jarakX && jarakX === 0) {
-            value = 200000000;
-            return {
-              last_move: last_move,
-              value: value
-            };
-          } else {
-            if (dx > jarakX) dx = jarakX;
-            if (dy > jarakY) dy = jarakY;
-          }
-        });
-        value += (jarakX + jarakY) / 2 * -1;
-        return {
-          last_move: last_move,
-          value: value
-        };
-      } else {
-        var willMove = [];
-        var ctr = 0;
-        for (var y = 0; y < 9; y++) {
-          for (var x = 0; x < 7; x++) {
-            var node = board[y][x];
-            if (node.content.piece) {
-              if (node.content.color === giliran_now) {
-                willMove.push(node);
-                ++ctr;
-              }
-            }
-          }
-        }
-        var boards = [];
-        willMove.forEach(function (squ) {
-          var possibMoves = _this3.getPossibleMoves(squ.i, squ.j, board);
-          possibMoves.forEach(function (move) {
-            var temp = [];
-            for (var _i2 = 0; _i2 < 9; _i2++) {
-              temp.push([]);
-              for (var _j2 = 0; _j2 < 7; _j2++) {
-                temp[_i2][_j2] = Object.assign({}, board[_i2][_j2]);
-                temp[_i2][_j2].content = Object.assign({}, board[_i2][_j2].content);
-              }
-            }
-            temp[move.i][move.j].content.color = squ.content.color;
-            temp[move.i][move.j].content.piece = squ.content.piece;
-            temp[squ.i][squ.j].content.color = null;
-            temp[squ.i][squ.j].content.piece = null;
-            boards.push(temp);
-          });
-        });
-        var kembalian = [];
-        for (var k in boards) {
-          var item = boards[k];
-          var clonedBoard = [];
-          for (var _i3 = 0; _i3 < 9; _i3++) {
-            clonedBoard.push([]);
-            for (var _j3 = 0; _j3 < 7; _j3++) {
-              clonedBoard[_i3][_j3] = Object.assign({}, item[_i3][_j3]);
-              clonedBoard[_i3][_j3].content = Object.assign({}, item[_i3][_j3].content);
-            }
-          }
-          var now = {
-            currentBoard: clonedBoard,
-            nextMove: last_move
-          };
-          var tampung = this.minimax(clonedBoard, depth - 1, giliran_now === "black" ? "white" : "black", now, alpha, beta);
-          if (kembalian.length === 0) {
-            kembalian = tampung;
-          }
-          if (giliran_now === "black") {
-            // get Max
-            if (alpha < tampung.value) {
-              // swap
-              alpha = tampung.value;
-              kembalian = tampung;
-            }
-          } else {
-            // get Min
-            if (beta > tampung.value) {
-              beta = tampung.value;
-              kembalian = tampung;
-            }
-          }
-
-          // PRUNE
-          if (alpha >= beta) {
-            break;
-          }
-        }
-        return kembalian;
-      }
-    },
-    getShaktiValue: function getShaktiValue(str, i, j) {
-      var mouse_magic_number = [[8, 8, 8, 0, 8, 8, 8], [8, 8, 8, 9, 9, 9, 9], [8, 8, 8, 9, 10, 10, 10], [8, 9, 9, 10, 12, 12, 11], [8, 9, 9, 11, 12, 12, 12], [8, 9, 9, 11, 12, 12, 13], [10, 11, 11, 13, 13, 13, 13], [11, 12, 13, 50, 13, 13, 13], [11, 13, 50, 200000000, 50, 13, 13]];
-      var cat_magic_number = [[8, 8, 8, 0, 8, 8, 8], [13, 10, 8, 8, 8, 8, 8], [10, 10, 10, 8, 8, 8, 8], [10, 0, 0, 8, 0, 0, 8], [10, 0, 0, 8, 0, 0, 8], [10, 0, 0, 10, 0, 0, 8], [10, 11, 11, 15, 11, 11, 10], [11, 11, 15, 50, 15, 11, 11], [11, 15, 50, 200000000, 50, 15, 11]];
-      var monkey_magic_number = [[8, 12, 12, 0, 8, 8, 8], [8, 12, 13, 8, 8, 8, 8], [8, 8, 10, 8, 8, 8, 8], [8, 0, 0, 8, 0, 0, 8], [8, 0, 0, 8, 0, 0, 8], [9, 0, 0, 10, 0, 0, 9], [9, 10, 11, 15, 11, 10, 9], [10, 11, 15, 50, 15, 11, 10], [11, 15, 50, 200000000, 50, 15, 11]];
-      var dog_magic_number = [[8, 8, 8, 0, 12, 12, 8], [8, 8, 8, 8, 13, 10, 8], [8, 8, 8, 8, 8, 8, 8], [8, 0, 0, 8, 0, 0, 8], [8, 0, 0, 8, 0, 0, 8], [9, 0, 0, 10, 0, 0, 9], [9, 10, 11, 15, 11, 10, 9], [10, 11, 15, 50, 15, 11, 10], [11, 15, 50, 200000000, 50, 15, 11]];
-      var leopard_magic_number = [[9, 9, 9, 0, 9, 9, 9], [9, 9, 9, 9, 9, 9, 9], [9, 9, 9, 10, 10, 9, 9], [10, 0, 0, 13, 0, 0, 10], [11, 0, 0, 14, 0, 0, 11], [12, 0, 0, 15, 0, 0, 12], [13, 13, 14, 15, 14, 13, 13], [13, 14, 15, 50, 15, 14, 13], [14, 15, 50, 200000000, 50, 15, 14]];
-      var tiger_magic_number = [[10, 12, 12, 0, 12, 12, 10], [12, 14, 12, 12, 12, 12, 12], [14, 16, 16, 14, 16, 16, 14], [15, 0, 0, 15, 0, 0, 15], [15, 0, 0, 15, 0, 0, 15], [15, 0, 0, 15, 0, 0, 15], [18, 20, 20, 30, 20, 20, 18], [25, 25, 30, 50, 30, 25, 25], [25, 30, 50, 200000000, 50, 30, 25]];
-      var lion_magic_number = [[10, 12, 12, 0, 12, 12, 10], [12, 12, 12, 12, 12, 14, 12], [14, 16, 16, 14, 16, 16, 14], [15, 0, 0, 15, 0, 0, 15], [15, 0, 0, 15, 0, 0, 15], [15, 0, 0, 15, 0, 0, 15], [18, 20, 20, 30, 20, 20, 18], [25, 25, 30, 50, 30, 25, 25], [25, 30, 50, 200000000, 50, 30, 25]];
-      var elephant_magic_number = [[11, 11, 11, 0, 11, 11, 11], [11, 11, 11, 11, 11, 11, 11], [10, 15, 14, 14, 14, 14, 12], [12, 0, 0, 12, 0, 0, 12], [14, 0, 0, 14, 0, 0, 14], [16, 0, 0, 16, 0, 0, 16], [18, 20, 20, 30, 20, 20, 18], [25, 25, 30, 50, 30, 25, 25], [25, 30, 50, 200000000, 50, 30, 25]];
-      var magic_numbers = [mouse_magic_number, cat_magic_number, monkey_magic_number, dog_magic_number, leopard_magic_number, tiger_magic_number, lion_magic_number, elephant_magic_number];
-      try {
-        return magic_numbers[str][i][j];
-      } catch (_unused) {
-        return 0;
-      }
-    },
-    /**
-     * Get possible moves from a square
-     * @param {Object} square
-     * @returns {void}
-     */
-    getPossibleMoves: function getPossibleMoves(squareRowIndex, squareColIndex, board) {
-      /*eslint no-unused-vars: "off"*/
-      var square = board[squareRowIndex][squareColIndex];
-      return this.getPossMoves(square, squareRowIndex, squareColIndex, board);
-    },
-    /**
-     * Show knight's possible moves by row and column index
-     * @param {Number} squareRowIndex
-     * @param {Number} squareColIndex
-     * @returns {void}
-     */
-    getPossMoves: function getPossMoves(square, squareRowIndex, squareColIndex, board) {
-      var moveTargets = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getKnightPossibleMoves(squareRowIndex, squareColIndex);
-      var temp = [];
-      for (var key in moveTargets) {
-        var target = moveTargets[key];
-        var rowIndex = target.rowIndex,
-          colIndex = target.colIndex;
-        if (square.content.piece === "mouse" || square.content.piece === "tiger" || square.content.piece === "lion") {
-          if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6) continue;
-        } else if (rowIndex < 0 || colIndex < 0 || rowIndex > 8 || colIndex > 6 || rowIndex > 2 && rowIndex < 6 && colIndex !== 0 && colIndex !== 3 && colIndex !== 6) continue;
-        var targetSquare = board[rowIndex][colIndex];
-
-        // trap
-        if (this.turn === "white" && (targetSquare.code === "E1" || targetSquare.code === "C1" || targetSquare.code === "D2")) {
-          if (targetSquare.content.color === "black") {
-            temp.push(targetSquare);
-            continue;
-          }
-          continue;
-        }
-        if (this.turn === "black" && (targetSquare.code === "E9" || targetSquare.code === "C9" || targetSquare.code === "D8")) {
-          if (targetSquare.content.color === "white") {
-            temp.push(targetSquare);
-            continue;
-          }
-          continue;
-        }
-
-        // tiger and lion can jump over the water
-        if ((square.content.piece === "tiger" || square.content.piece === "lion") && targetSquare.color === "dark") {
-          if (squareColIndex === colIndex) {
-            for (var i = 3; i < 6; i++) {
-              var squ = board[i][colIndex];
-              if (squ.content.piece) continue;
-            }
-            rowIndex = 8 - squareRowIndex;
-          } else {
-            if (squareColIndex !== 3) colIndex = 3;else colIndex = squareColIndex + (colIndex - squareColIndex) * 3;
-            if (colIndex > squareColIndex) for (var _i4 = squareColIndex + 1; _i4 < colIndex; _i4++) {
-              var _squ = board[rowIndex][_i4];
-              if (_squ.content.piece) continue;
-            } else for (var _i5 = colIndex + 1; _i5 < squareColIndex; _i5++) {
-              var _squ2 = board[rowIndex][_i5];
-              if (_squ2.content.piece) continue;
-            }
-          }
-          targetSquare = board[rowIndex][colIndex];
-        } else {
-          // mouse can move through the water
-          if (square.content.piece === "mouse") {
-            if (targetSquare.content.piece && targetSquare.content.color !== this.turn && 6 >= this.piecepower[targetSquare.content.piece] && 0 < this.piecepower[targetSquare.content.piece]) continue;
-            if (targetSquare.content.piece && square.color === "dark" && targetSquare.color === "light") continue;
-          } else {
-            if (square.content.piece === "elephant") {
-              if (targetSquare.content.piece && targetSquare.content.color !== this.turn && this.piecepower[targetSquare.content.piece] === 0) continue;
-            } else {
-              if (targetSquare.content.piece && targetSquare.content.color !== this.turn && this.piecepower[square.content.piece] < this.piecepower[targetSquare.content.piece]) continue;
-            }
-          }
-        }
-        if (targetSquare.content.piece && targetSquare.content.color === this.turn) continue;
-        temp.push(targetSquare);
-      }
-      return temp;
-    },
-    /**
-     * Event trigerred on square onmouseenter
-     * @param {MouseEvent} $event
-     * @param {Number} squareRowIndex
-     * @param {Number} squareColIndex
-     * @returns {void}
-     */
-    squareMouseEnter: function squareMouseEnter($event, squareRowIndex, squareColIndex) {
-      // If hover on a piece and the color is the current turn, show possible moves
-      var square = this.squares[squareRowIndex][squareColIndex];
-      if (square.content.piece && square.content.color === this.turn && !this.isHoldingChessPiece) {
-        this.showPossibleMoves(squareRowIndex, squareColIndex);
-        document.body.style.cursor = "pointer";
-      }
-    },
     makeItPossible: function makeItPossible(square) {
       square.isPossibleMove = true;
       this.possibleMoves.push(square);
     },
+    clearPossibleMoves: function clearPossibleMoves() {
+      for (var i = 0; i < this.possibleMoves.length; i++) {
+        this.possibleMoves[i].isPossibleMove = false;
+      }
+      this.possibleMoves = Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])([]);
+    },
     /**
-     *
-     * @param square
-     * @param squareRowIndex
-     * @param squareColIndex
+     * Hold a chess piece to a square
      */
-    knightPossibleMoves: function knightPossibleMoves(square, squareRowIndex, squareColIndex) {
+    holdPiece: function holdPiece($event, square) {
+      if (!square.content.piece || square.content.color !== this.turn || this.possibleMoves.length === 0) return;
+      this.isHoldingChessPiece = square;
+      square.visible = false;
+    },
+    getPossibleMoves: function getPossibleMoves(squareRowIndex, squareColIndex) {
       var _square$content2,
         _square$content3,
-        _this4 = this;
-      // possible move positions
+        _this3 = this;
+      var square = this.squares[squareRowIndex][squareColIndex];
       var moveTargets = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getKnightPossibleMoves(squareRowIndex, squareColIndex);
-      // possibilities and color of current chosen animal
       var currentAnimalInfo = _objectSpread(_objectSpread({}, animals[square.content.piece]), {}, {
         color: (_square$content2 = square.content) === null || _square$content2 === void 0 ? void 0 : _square$content2.color
       });
@@ -2895,15 +2615,23 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
       if (currentSquareType.type === "trap" && currentSquareType.position !== currentSquareColor) {
         currentAnimalInfo.power = 0;
       }
-      // loop over all possible positions
+      var possibleMovesResult = [];
+      var collectPossible = function collectPossible(row, col) {
+        possibleMovesResult.push({
+          fromRow: squareRowIndex,
+          fromCol: squareColIndex,
+          toRow: row,
+          toCol: col
+        });
+      };
       moveTargets.forEach(function (target) {
         var _currentAnimalInfo$sp;
         var rowIndex = target.rowIndex,
           colIndex = target.colIndex;
         // checking if possible move is out of game board
-        if (_this4.outOfBoard(colIndex, rowIndex)) return;
-        var targetSquare = _this4.squares[rowIndex][colIndex];
-        var targetSquareInfo = _this4.squareTypeInfo(targetSquare.code);
+        if (_this3.outOfBoard(colIndex, rowIndex)) return;
+        var targetSquare = _this3.squares[rowIndex][colIndex];
+        var targetSquareInfo = _this3.squareTypeInfo(targetSquare.code);
 
         // getting the animal of target square if exists
         var targetSquareAnimal = targetSquare.content.piece ? _objectSpread(_objectSpread({}, animals[targetSquare.content.piece]), {}, {
@@ -2920,20 +2648,19 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
           case "water":
             // if our animal can swim , the move is possible
             if ((_currentAnimalInfo$sp = currentAnimalInfo.specialPower) !== null && _currentAnimalInfo$sp !== void 0 && _currentAnimalInfo$sp.canSwim) {
-              _this4.makeItPossible(targetSquare);
+              collectPossible(rowIndex, colIndex);
               return;
             }
             // if our animal can jump over the river
             // and beat the animal on the other side the move is possible
             // To Do ---> check if water is blocked
-            else if (_this4.canJump(currentAnimalInfo, squareRowIndex === rowIndex ? "vertical" : "horizontal")) {
-              var jumpingTargetCoordinates = _this4.getLandingPosition(squareColIndex, squareRowIndex, colIndex, rowIndex);
-              var possibleTargetAnimal = _this4.getAnimalByCode(jumpingTargetCoordinates.x, jumpingTargetCoordinates.y);
-              if (!possibleTargetAnimal || _this4.canBeatAnimal(_objectSpread(_objectSpread({}, animals[possibleTargetAnimal.animal]), {}, {
+            else if (_this3.canJump(currentAnimalInfo, squareRowIndex === rowIndex ? "vertical" : "horizontal")) {
+              var jumpingTargetCoordinates = _this3.getLandingPosition(squareColIndex, squareRowIndex, colIndex, rowIndex);
+              var possibleTargetAnimal = _this3.getAnimalByCode(jumpingTargetCoordinates.x, jumpingTargetCoordinates.y);
+              if (!possibleTargetAnimal || _this3.canBeatAnimal(_objectSpread(_objectSpread({}, animals[possibleTargetAnimal.animal]), {}, {
                 color: possibleTargetAnimal.color
               }), currentAnimalInfo)) {
-                var newTarget = _this4.squares[jumpingTargetCoordinates.y][jumpingTargetCoordinates.x];
-                _this4.makeItPossible(newTarget);
+                collectPossible(jumpingTargetCoordinates.y, jumpingTargetCoordinates.x);
                 return;
               }
             }
@@ -2942,12 +2669,12 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
           case "trap":
             // if target is ours the move is possible
             if (targetSquareInfo.position === currentSquareColor) {
-              _this4.makeItPossible(targetSquare);
+              collectPossible(rowIndex, colIndex);
               return;
             }
             //else if there's no animal, or we can beat the animal the move is possible
-            else if (!targetSquareAnimal || _this4.canBeatAnimal(targetSquareAnimal, currentAnimalInfo)) {
-              _this4.makeItPossible(targetSquare);
+            else if (!targetSquareAnimal || _this3.canBeatAnimal(targetSquareAnimal, currentAnimalInfo)) {
+              collectPossible(rowIndex, colIndex);
               return;
             }
             break;
@@ -2955,60 +2682,167 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
           case "dom":
             // if it's the opponents dom the move is possible (even winning)
             if (targetSquareInfo.position !== currentSquareColor) {
-              _this4.makeItPossible(targetSquare);
+              collectPossible(rowIndex, colIndex);
               return;
             }
             break;
           // the possible move square is land
           case "land":
             if (!targetSquareAnimal) {
-              _this4.makeItPossible(targetSquare);
+              collectPossible(rowIndex, colIndex);
               return;
             } else {
-              if (currentSquareType.type !== "water" && _this4.canBeatAnimal(targetSquareAnimal, currentAnimalInfo)) {
-                _this4.makeItPossible(targetSquare);
+              if (currentSquareType.type !== "water" && _this3.canBeatAnimal(targetSquareAnimal, currentAnimalInfo)) {
+                collectPossible(rowIndex, colIndex);
                 return;
               }
             }
         }
       });
+      return possibleMovesResult;
     },
-    /**
-     * Show possible moves from a square
-     * @param {Object} square
-     * @returns {void}
-     */
     showPossibleMoves: function showPossibleMoves(squareRowIndex, squareColIndex) {
-      /*eslint no-unused-vars: "off"*/
-      var square = this.squares[squareRowIndex][squareColIndex];
-      return this.knightPossibleMoves(square, squareRowIndex, squareColIndex);
+      var _this4 = this;
+      var moves = this.getPossibleMoves(squareRowIndex, squareColIndex);
+      console.log(moves);
+      moves.forEach(function (move) {
+        var square = _this4.squares[move.toRow][move.toCol];
+        square.isPossibleMove = true;
+        _this4.possibleMoves.push(square);
+      });
     },
-    /**
-     * Remove all possible moves
-     */
-    clearPossibleMoves: function clearPossibleMoves() {
-      for (var i = 0; i < this.possibleMoves.length; i++) {
-        this.possibleMoves[i].isPossibleMove = false;
+    calculateBestMove: function calculateBestMove(board, color, depth) {
+      var bestMove = null;
+      var bestScore = -Infinity;
+      var possibleMoves = this.generatePossibleMoves(board, color);
+      for (var i = 0; i < possibleMoves.length; i++) {
+        var move = possibleMoves[i];
+        var newBoard = this.cloneBoard(board);
+        this.makeVirtualMove(newBoard, move);
+        var score = this.recursiveSwim(newBoard, depth - 1, -Infinity, Infinity, false, color);
+        if (score > bestScore) {
+          bestScore = score;
+          bestMove = move;
+        }
       }
-      this.possibleMoves = Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])([]);
+      return bestMove;
     },
-    /**
-     * Event trigerred on square onmouseleave
-     * @param {MouseEvent} $event
-     * @param {Object} square
-     * @returns {void}
-     */
-    squareMouseLeave: function squareMouseLeave($event, square) {
-      document.body.style.cursor = "initial";
-      if (!this.isHoldingChessPiece) this.clearPossibleMoves();
+    recursiveSwim: function recursiveSwim(board, depth, alpha, beta, isMaximizingPlayer, color) {
+      this.counterStrike++;
+      if (depth === 0) {
+        return this.evaluateBoard(board, color);
+      }
+      var currentPlayer = isMaximizingPlayer ? color : this.getOpponentColor(color);
+      var possibleMoves = this.generatePossibleMoves(board, currentPlayer);
+      if (isMaximizingPlayer) {
+        var maxScore = -Infinity;
+        for (var i = 0; i < possibleMoves.length; i++) {
+          var move = possibleMoves[i];
+          var newBoard = this.cloneBoard(board);
+          this.makeVirtualMove(newBoard, move);
+          var score = this.recursiveSwim(newBoard, depth - 1, alpha, beta, false, color);
+          maxScore = Math.max(maxScore, score);
+          alpha = Math.max(alpha, score);
+          if (beta <= alpha) {
+            break;
+          }
+        }
+        return maxScore;
+      } else {
+        var minScore = Infinity;
+        for (var _i = 0; _i < possibleMoves.length; _i++) {
+          var _move = possibleMoves[_i];
+          var _newBoard = this.cloneBoard(board);
+          this.makeVirtualMove(_newBoard, _move);
+          var _score = this.recursiveSwim(_newBoard, depth - 1, alpha, beta, true, color);
+          minScore = Math.min(minScore, _score);
+          beta = Math.min(beta, _score);
+          if (beta <= alpha) {
+            break;
+          }
+        }
+        return minScore;
+      }
     },
-    /**
-     * Hold a chess piece to a square
-     */
-    holdPiece: function holdPiece($event, square) {
-      if (!square.content.piece || square.content.color !== this.turn || this.possibleMoves.length === 0) return;
-      this.isHoldingChessPiece = square;
-      square.visible = false;
+    cloneBoard: function cloneBoard(board) {
+      var clonedBoard = [];
+      for (var row = 0; row < 9; row++) {
+        var newRow = [];
+        for (var col = 0; col < 7; col++) {
+          var square = _objectSpread({}, board[row][col]);
+          newRow.push(square);
+        }
+        clonedBoard.push(newRow);
+      }
+      return clonedBoard;
+    },
+    makeVirtualMove: function makeVirtualMove(board, move) {
+      var zzz = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      var fromRow = move.fromRow,
+        fromCol = move.fromCol,
+        toRow = move.toRow,
+        toCol = move.toCol;
+      var fromSquare = board[fromRow][fromCol];
+      var toSquare = board[toRow][toCol];
+      if (zzz) {
+        console.log('fromSquare', fromSquare);
+        console.log('toSquare', toSquare);
+      }
+      toSquare.content = fromSquare.content;
+      fromSquare.content = {
+        piece: null,
+        color: null
+      };
+    },
+    evaluateBoard: function evaluateBoard(board, color) {
+      var score = 0;
+      for (var row = 0; row < 9; row++) {
+        for (var col = 0; col < 7; col++) {
+          var square = board[row][col];
+          if (square.content && square.content.color === color) {
+            var pieceValue = this.getPieceValue(square.content.piece);
+            var positionValue = this.getPositionValue(row, col, color);
+            score += pieceValue + positionValue;
+          }
+        }
+      }
+      return score;
+    },
+    getPieceValue: function getPieceValue(piece) {
+      var _animals$piece;
+      return ((_animals$piece = animals[piece]) === null || _animals$piece === void 0 ? void 0 : _animals$piece.power) || 0;
+    },
+    getPositionValue: function getPositionValue(row, col, color) {
+      var distanceFromHouse = color === 'black' ? 8 - row : row;
+      var distanceFromCenter = Math.abs(col - 3);
+      return -(distanceFromHouse + distanceFromCenter);
+    },
+    generatePossibleMoves: function generatePossibleMoves(board, color) {
+      var moves = [];
+      for (var row = 0; row < 9; row++) {
+        for (var col = 0; col < 7; col++) {
+          var square = board[row][col];
+          if (square.content && square.content.color === color) {
+            var pieceMoves = this.getPossibleMoves(row, col);
+            var _iterator = _createForOfIteratorHelper(pieceMoves),
+              _step;
+            try {
+              for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                var move = _step.value;
+                moves.push(move);
+              }
+            } catch (err) {
+              _iterator.e(err);
+            } finally {
+              _iterator.f();
+            }
+          }
+        }
+      }
+      return moves;
+    },
+    getOpponentColor: function getOpponentColor(color) {
+      return color === 'black' ? 'white' : 'black';
     }
   }
 });
@@ -4072,9 +3906,6 @@ var render = function render() {
     },
     attrs: {
       viewBox: "0 0 ".concat(_vm.viewBox.x, " ").concat(_vm.viewBox.y)
-    },
-    on: {
-      mousemove: _vm.onMouseMove
     }
   }, [_c("g", [_c("River", {
     attrs: {
@@ -60098,6 +59929,45 @@ __webpack_require__.r(__webpack_exports__);
    * @param {Number} col
    * @returns {String}
    */
+  animals: {
+    mouse: {
+      power: 0,
+      specialPower: {
+        canSwim: true,
+        canBeat: ["elephant"]
+      }
+    },
+    cat: {
+      power: 1
+    },
+    monkey: {
+      power: 2
+    },
+    dog: {
+      power: 3
+    },
+    leopard: {
+      power: 4
+    },
+    tiger: {
+      power: 5,
+      specialPower: {
+        canJumpOverTheRiver: true,
+        jumpDirections: ["vertical"]
+      }
+    },
+    lion: {
+      power: 6,
+      specialPower: {
+        canJumpOverTheRiver: true,
+        jumpDirections: ["vertical", "horizontal"]
+      }
+    },
+    elephant: {
+      power: 7
+    }
+  },
+  waterCodes: ["B6", "C6", "B5", "C5", "B4", "C4", "E6", "F6", "E5", "F5", "E4", "F4"],
   getSquareCode: function getSquareCode(row, col) {
     var rowMapping = ["9", "8", "7", "6", "5", "4", "3", "2", "1"];
     var colMapping = ["A", "B", "C", "D", "E", "F", "G"];
