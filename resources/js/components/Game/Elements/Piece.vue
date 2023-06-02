@@ -140,8 +140,6 @@
     computed: {
         pieceTransformStyles(){
             if (this.isMoves){
-                console.log(this.transformX, 'this.transformX')
-                console.log(this.transformY, 'this.transformY')
                 let className = '';
                 if(this.transformX){
                     switch (this.transformX){
@@ -158,7 +156,6 @@
                             className =  'animation-to-left-2x';
                             break;
                     }
-                    console.log(className, 'className')
                     return className;
                 }else if(this.transformY){
                     switch (this.transformY){
@@ -175,7 +172,6 @@
                             className =  'animation-to-top-2x';
                             break;
                     }
-                    console.log(className, 'className')
                     return className
                 }
                 return '';

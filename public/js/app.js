@@ -2101,8 +2101,6 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     pieceTransformStyles: function pieceTransformStyles() {
       if (this.isMoves) {
-        console.log(this.transformX, 'this.transformX');
-        console.log(this.transformY, 'this.transformY');
         var className = '';
         if (this.transformX) {
           switch (this.transformX) {
@@ -2119,7 +2117,6 @@ __webpack_require__.r(__webpack_exports__);
               className = 'animation-to-left-2x';
               break;
           }
-          console.log(className, 'className');
           return className;
         } else if (this.transformY) {
           switch (this.transformY) {
@@ -2136,7 +2133,6 @@ __webpack_require__.r(__webpack_exports__);
               className = 'animation-to-top-2x';
               break;
           }
-          console.log(className, 'className');
           return className;
         }
         return '';
@@ -2255,6 +2251,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 var animals = {
   mouse: {
+    name: "mouse",
     power: 0,
     specialPower: {
       canSwim: true,
@@ -2262,25 +2259,31 @@ var animals = {
     }
   },
   cat: {
+    name: "cat",
     power: 1
   },
   monkey: {
+    name: "monkey",
     power: 2
   },
   dog: {
+    name: "dog",
     power: 3
   },
   leopard: {
+    name: "leopard",
     power: 4
   },
   tiger: {
     power: 5,
+    name: "tiger",
     specialPower: {
       canJumpOverTheRiver: true,
       jumpDirections: ["vertical"]
     }
   },
   lion: {
+    name: "lion",
     power: 6,
     specialPower: {
       canJumpOverTheRiver: true,
@@ -2288,6 +2291,7 @@ var animals = {
     }
   },
   elephant: {
+    name: "elephant",
     power: 7
   }
 };
@@ -2389,6 +2393,19 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
     };
   },
   methods: {
+    isRiverBlocked: function isRiverBlocked(side) {
+      var rowStart = 3,
+        colStart;
+      colStart = side === "left" ? 1 : 4;
+      for (var i = rowStart; i < rowStart + 3; i++) {
+        for (var j = colStart; j < colStart + 2; j++) {
+          if (this.squares[i][j].content.piece === "mouse") {
+            return true;
+          }
+        }
+      }
+      return false;
+    },
     possibleMoveColor: function possibleMoveColor(code) {
       return waterCodes.includes(code) ? this.color.possibleMoveWater : this.color.possibleMove;
     },
@@ -2452,7 +2469,7 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
     canBeatAnimal: function canBeatAnimal(animal, attacker) {
       var _attacker$specialPowe, _attacker$specialPowe2;
       // checking if one animal can beat another
-      return attacker.color !== animal.color && (attacker.power >= animal.power || ((_attacker$specialPowe = attacker.specialPower) === null || _attacker$specialPowe === void 0 ? void 0 : (_attacker$specialPowe2 = _attacker$specialPowe.canBeat) === null || _attacker$specialPowe2 === void 0 ? void 0 : _attacker$specialPowe2.includes(attacker)));
+      return attacker.color !== animal.color && (attacker.power >= animal.power || ((_attacker$specialPowe = attacker.specialPower) === null || _attacker$specialPowe === void 0 ? void 0 : (_attacker$specialPowe2 = _attacker$specialPowe.canBeat) === null || _attacker$specialPowe2 === void 0 ? void 0 : _attacker$specialPowe2.includes(animal.name)));
     },
     getAnimalByCode: function getAnimalByCode(x, y) {
       var _square$content;
@@ -2472,7 +2489,7 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
       return ((_animal$specialPower = animal.specialPower) === null || _animal$specialPower === void 0 ? void 0 : _animal$specialPower.canJumpOverTheRiver) && ((_animal$specialPower2 = animal.specialPower) === null || _animal$specialPower2 === void 0 ? void 0 : (_animal$specialPower3 = _animal$specialPower2.jumpDirections) === null || _animal$specialPower3 === void 0 ? void 0 : _animal$specialPower3.includes(directory));
     },
     initSquares: function initSquares() {
-      console.log(this.boardSettings, "this.boardSettings");
+      this.squares = [];
       for (var i = 0; i < 9; i++) {
         this.squares.push([]);
         for (var j = 0; j < 7; j++) {
@@ -2488,6 +2505,10 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
             code: code,
             i: i,
             j: j,
+            row: i,
+            col: j,
+            rowIndex: i,
+            colIndex: j,
             visible: true,
             color: _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getSquareColor(i, j),
             content: _objectSpread(_objectSpread({
@@ -2498,12 +2519,12 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
           }, squarePosition), this.boardSettings.square));
         }
       }
-      console.log('this.squares', this.squares);
+      console.log("this.squares", this.squares);
     },
     squareClick: function squareClick($event, rowIndex, colIndex) {
       var square = this.squares[rowIndex][colIndex];
       if (!this.releasePiece(square)) {
-        if (square.content.color === "white") {
+        if (square.content.piece && square.content.color === "white") {
           this.showPossibleMoves(rowIndex, colIndex);
           this.holding.row = rowIndex;
           this.holding.col = colIndex;
@@ -2513,7 +2534,6 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
     },
     makeMove: function makeMove(fromSquare, toSquare) {
       var _fromSquare$content, _fromSquare$content2, _fromSquare$content3;
-      console.log('makeMove');
       this.gamePieceMoveCoords = {
         piece: (_fromSquare$content = fromSquare.content) === null || _fromSquare$content === void 0 ? void 0 : _fromSquare$content.piece,
         toX: toSquare.x - fromSquare.x,
@@ -2554,18 +2574,15 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
       _store__WEBPACK_IMPORTED_MODULE_2__["default"].commit("RESET_MOVES_HISTORY");
     },
     playComputer: function playComputer() {
-      var move = this.calculateBestMove(_toConsumableArray(this.squares), this.turn, 2);
+      var move = this.calculateBestMove(_toConsumableArray(this.squares), this.turn, 3);
       var fromRow = move.fromRow,
         fromCol = move.fromCol,
         toRow = move.toRow,
         toCol = move.toCol;
       var fromSquare = this.squares[fromRow][fromCol];
       var toSquare = this.squares[toRow][toCol];
-      console.log(fromRow, 'fromRow');
-      console.log(fromCol, 'fromCol');
-      console.log(toRow, 'toRow');
-      console.log(toCol, 'toCol');
       this.makeMove(fromSquare, toSquare);
+      this.isCheckmate(toSquare);
       this.turn = this.getOpponentColor(this.turn);
     },
     isCheckmate: function isCheckmate(squareTo) {
@@ -2604,7 +2621,8 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
       var _square$content2,
         _square$content3,
         _this3 = this;
-      var square = this.squares[squareRowIndex][squareColIndex];
+      var board = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.squares;
+      var square = board[squareRowIndex][squareColIndex];
       var moveTargets = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getKnightPossibleMoves(squareRowIndex, squareColIndex);
       var currentAnimalInfo = _objectSpread(_objectSpread({}, animals[square.content.piece]), {}, {
         color: (_square$content2 = square.content) === null || _square$content2 === void 0 ? void 0 : _square$content2.color
@@ -2630,7 +2648,7 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
           colIndex = target.colIndex;
         // checking if possible move is out of game board
         if (_this3.outOfBoard(colIndex, rowIndex)) return;
-        var targetSquare = _this3.squares[rowIndex][colIndex];
+        var targetSquare = board[rowIndex][colIndex];
         var targetSquareInfo = _this3.squareTypeInfo(targetSquare.code);
 
         // getting the animal of target square if exists
@@ -2654,7 +2672,7 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
             // if our animal can jump over the river
             // and beat the animal on the other side the move is possible
             // To Do ---> check if water is blocked
-            else if (_this3.canJump(currentAnimalInfo, squareRowIndex === rowIndex ? "vertical" : "horizontal")) {
+            else if (_this3.canJump(currentAnimalInfo, squareRowIndex === rowIndex ? "horizontal" : "vertical") && !_this3.isRiverBlocked(colIndex > 3 ? "right" : "left")) {
               var jumpingTargetCoordinates = _this3.getLandingPosition(squareColIndex, squareRowIndex, colIndex, rowIndex);
               var possibleTargetAnimal = _this3.getAnimalByCode(jumpingTargetCoordinates.x, jumpingTargetCoordinates.y);
               if (!possibleTargetAnimal || _this3.canBeatAnimal(_objectSpread(_objectSpread({}, animals[possibleTargetAnimal.animal]), {}, {
@@ -2704,65 +2722,11 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
     showPossibleMoves: function showPossibleMoves(squareRowIndex, squareColIndex) {
       var _this4 = this;
       var moves = this.getPossibleMoves(squareRowIndex, squareColIndex);
-      console.log(moves);
       moves.forEach(function (move) {
         var square = _this4.squares[move.toRow][move.toCol];
         square.isPossibleMove = true;
         _this4.possibleMoves.push(square);
       });
-    },
-    calculateBestMove: function calculateBestMove(board, color, depth) {
-      var bestMove = null;
-      var bestScore = -Infinity;
-      var possibleMoves = this.generatePossibleMoves(board, color);
-      for (var i = 0; i < possibleMoves.length; i++) {
-        var move = possibleMoves[i];
-        var newBoard = this.cloneBoard(board);
-        this.makeVirtualMove(newBoard, move);
-        var score = this.recursiveSwim(newBoard, depth - 1, -Infinity, Infinity, false, color);
-        if (score > bestScore) {
-          bestScore = score;
-          bestMove = move;
-        }
-      }
-      return bestMove;
-    },
-    recursiveSwim: function recursiveSwim(board, depth, alpha, beta, isMaximizingPlayer, color) {
-      this.counterStrike++;
-      if (depth === 0) {
-        return this.evaluateBoard(board, color);
-      }
-      var currentPlayer = isMaximizingPlayer ? color : this.getOpponentColor(color);
-      var possibleMoves = this.generatePossibleMoves(board, currentPlayer);
-      if (isMaximizingPlayer) {
-        var maxScore = -Infinity;
-        for (var i = 0; i < possibleMoves.length; i++) {
-          var move = possibleMoves[i];
-          var newBoard = this.cloneBoard(board);
-          this.makeVirtualMove(newBoard, move);
-          var score = this.recursiveSwim(newBoard, depth - 1, alpha, beta, false, color);
-          maxScore = Math.max(maxScore, score);
-          alpha = Math.max(alpha, score);
-          if (beta <= alpha) {
-            break;
-          }
-        }
-        return maxScore;
-      } else {
-        var minScore = Infinity;
-        for (var _i = 0; _i < possibleMoves.length; _i++) {
-          var _move = possibleMoves[_i];
-          var _newBoard = this.cloneBoard(board);
-          this.makeVirtualMove(_newBoard, _move);
-          var _score = this.recursiveSwim(_newBoard, depth - 1, alpha, beta, true, color);
-          minScore = Math.min(minScore, _score);
-          beta = Math.min(beta, _score);
-          if (beta <= alpha) {
-            break;
-          }
-        }
-        return minScore;
-      }
     },
     cloneBoard: function cloneBoard(board) {
       var clonedBoard = [];
@@ -2778,63 +2742,313 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
     },
     makeVirtualMove: function makeVirtualMove(board, move) {
       var zzz = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      var boardClone = this.cloneBoard(board);
       var fromRow = move.fromRow,
         fromCol = move.fromCol,
         toRow = move.toRow,
         toCol = move.toCol;
-      var fromSquare = board[fromRow][fromCol];
-      var toSquare = board[toRow][toCol];
-      if (zzz) {
-        console.log('fromSquare', fromSquare);
-        console.log('toSquare', toSquare);
-      }
+      var fromSquare = boardClone[fromRow][fromCol];
+      var toSquare = boardClone[toRow][toCol];
       toSquare.content = fromSquare.content;
       fromSquare.content = {
         piece: null,
         color: null
       };
+      return boardClone;
     },
-    evaluateBoard: function evaluateBoard(board, color) {
-      var score = 0;
-      for (var row = 0; row < 9; row++) {
-        for (var col = 0; col < 7; col++) {
-          var square = board[row][col];
-          if (square.content && square.content.color === color) {
-            var pieceValue = this.getPieceValue(square.content.piece);
-            var positionValue = this.getPositionValue(row, col, color);
-            score += pieceValue + positionValue;
-          }
+    trapIsSafe: function trapIsSafe(board, code) {
+      var trapCodes = {
+        black: ["C9", "D8", "E9"],
+        white: ["C1", "D2", "E1"]
+      };
+      var guardCodes = {
+        C1: ["C2", "B1"],
+        D2: ["C2", "D3", "E2"],
+        E1: ["E2", "F1"],
+        C9: ["B9", "C8"],
+        D8: ["C8", "D7", "E8"],
+        E9: ["E8", "F9"]
+      };
+      var color = trapCodes.black.includes(code) ? "black" : "white";
+      var secured = false;
+      guardCodes[code].forEach(function (val) {
+        var coord = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getIndexesByCode(val);
+        var square = board[coord.rowIndex][coord.colIndex];
+        if (square.content.piece && square.content.color === color) {
+          secured = true;
         }
+      });
+      return secured;
+    },
+    evaluateBoard: function evaluateBoard(squares, color) {
+      var _this5 = this;
+      var ismax = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      var pieceValue = {
+        mouse: 0,
+        cat: 1,
+        monkey: 2,
+        dog: 3,
+        leopard: 4,
+        tiger: 5,
+        lion: 6,
+        elephant: 7
+      };
+      var ownTeam = color;
+      var opponentTeam = color === "black" ? "white" : "black";
+      var trapCodes = {
+        black: ["C9", "D8", "E9"],
+        white: ["C1", "D2", "E1"]
+      };
+      var houseCodes = {
+        black: "D9",
+        white: "D1"
+      };
+      var res = "";
+      squares.forEach(function (row) {
+        row.forEach(function (col) {
+          res += col.content.piece ? '1' : '*';
+        });
+        res += "\n";
+      });
+      var ownPieceValue = 0;
+      var opponentPieceValue = 0;
+      var ownPieceMobility = 0;
+      var opponentPieceMobility = 0;
+      var ownControlledSquares = 0;
+      var opponentControlledSquares = 0;
+      var ownProximityToTraps = 0;
+      var opponentProximityToTraps = 0;
+      var ownThreatsToOpponentHouse = 0;
+      var opponentThreatsToOwnHouse = 0;
+      var ownAttackOptions = 0;
+      var opponentAttackOptions = 0;
+      squares.forEach(function (row) {
+        row.forEach(function (square) {
+          var _square$content4 = square.content,
+            piece = _square$content4.piece,
+            squareColor = _square$content4.color;
+          if (piece) {
+            var piecePower = pieceValue[piece];
+            if (squareColor === ownTeam) {
+              ownPieceValue += piecePower;
+              if (ownTeam === 'black' && square.rowIndex > 6 || ownTeam === 'white' && square.rowIndex < 3) {
+                ownPieceValue += 100;
+              }
+              ownPieceMobility += _this5.getPossibleMoves(square.rowIndex, square.colIndex, squares).length;
+              ownControlledSquares += 1;
+              if (trapCodes[ownTeam].includes(square.code)) {
+                ownProximityToTraps += 1;
+              } else if (trapCodes[opponentTeam].includes(square.code) && !_this5.trapIsSafe(squares, square.code)) {
+                ownThreatsToOpponentHouse += 200000;
+              }
+              if (houseCodes[opponentTeam] === square.code) {
+                ownThreatsToOpponentHouse += 1000000;
+              }
+            } else {
+              opponentPieceValue += piecePower;
+              if (opponentTeam === 'black' && square.rowIndex > 6 || opponentTeam === 'white' && square.rowIndex < 3) {
+                opponentPieceValue += 100;
+              }
+              opponentPieceMobility += _this5.getPossibleMoves(square.rowIndex, square.colIndex, squares).length;
+              opponentControlledSquares += 1;
+              if (trapCodes[ownTeam].includes(square.code)) {
+                if (_this5.trapIsSafe(squares, square.code)) {
+                  opponentThreatsToOwnHouse += 1;
+                } else {
+                  opponentThreatsToOwnHouse += 10000;
+                }
+              } else if (trapCodes[opponentTeam].includes(square.code)) {
+                opponentProximityToTraps += 1;
+              }
+              if (houseCodes[ownTeam] === square.code) {
+                opponentThreatsToOwnHouse += 1000000;
+              }
+            }
+          }
+        });
+      });
+
+      // Calculate overall evaluation scores
+      var ownPieceValueScore = ownPieceValue;
+      var opponentPieceValueScore = opponentPieceValue;
+      var ownPieceMobilityScore = ownPieceMobility;
+      var opponentPieceMobilityScore = opponentPieceMobility;
+      var ownControlledSquaresScore = ownControlledSquares;
+      var opponentControlledSquaresScore = opponentControlledSquares;
+      var ownProximityToTrapsScore = ownProximityToTraps;
+      var opponentProximityToTrapsScore = opponentProximityToTraps;
+      var ownThreatsToOpponentHouseScore = ownThreatsToOpponentHouse;
+      var opponentThreatsToOwnHouseScore = opponentThreatsToOwnHouse;
+      var ownAttackOptionsScore = ownAttackOptions;
+      var opponentAttackOptionsScore = opponentAttackOptions;
+
+      // Calculate the evaluation scores for each team
+      var ownScore = ownPieceValueScore + ownPieceMobilityScore + ownControlledSquaresScore + ownProximityToTrapsScore + ownThreatsToOpponentHouseScore + ownAttackOptionsScore;
+      var opponentScore = opponentPieceValueScore + opponentPieceMobilityScore + opponentControlledSquaresScore + opponentProximityToTrapsScore + opponentThreatsToOwnHouseScore + opponentAttackOptionsScore;
+
+      // Return the evaluation score difference between the teams
+      return ownScore - opponentScore;
+    },
+    evaluateMove: function evaluateMove(move, board, color) {
+      var keySquares = {
+        black: "D9",
+        white: "D1"
+      };
+      var trapSquares = {
+        black: ["C9", "D8", "E9"],
+        white: ["C1", "D2", "E1"]
+      };
+      var score = 0;
+      var factors = {
+        trapFactor: 10,
+        protectTrapFactor: 10,
+        opponentHouseDistanceFactor: 5,
+        ownHouseSecurityFactor: 5,
+        winFactor: 1000000,
+        beatAnimalFactor: 10,
+        defenceFactor: 10
+      };
+      var pieceValues = {
+        mouse: 1,
+        cat: 3,
+        dog: 5,
+        leopard: 7,
+        tiger: 9,
+        lion: 11,
+        elephant: 13
+      };
+      var fromRow = move.fromRow,
+        fromCol = move.fromCol,
+        toRow = move.toRow,
+        toCol = move.toCol;
+      var square = board[fromRow][fromCol];
+      var target = board[toRow][toCol];
+      if (keySquares[this.getOpponentColor(color)] === target.code) {
+        return factors.winFactor;
+      }
+      if (target.content.piece) {
+        score += factors.beatAnimalFactor + pieceValues[target.content.piece];
+      }
+      if (toRow > fromRow) {
+        score += factors.opponentHouseDistanceFactor;
+      }
+      if (trapSquares[this.getOpponentColor(color)].includes(target.code)) {
+        score += factors.trapFactor;
+      } else if (trapSquares[color].includes(target.code)) {
+        score += factors.protectTrapFactor;
       }
       return score;
     },
-    getPieceValue: function getPieceValue(piece) {
-      var _animals$piece;
-      return ((_animals$piece = animals[piece]) === null || _animals$piece === void 0 ? void 0 : _animals$piece.power) || 0;
+    calculateBestMoveManual: function calculateBestMoveManual(board, color) {
+      var validMoves = this.getBoardPossibleMoves(board, color);
+      var bestMove = null;
+      var bestScore = 10000000;
+      for (var i = 0; i < validMoves.length; i++) {
+        var move = validMoves[i];
+        var score = this.evaluateMove(move, board, color);
+        if (score < bestScore) {
+          bestScore = score;
+          bestMove = move;
+        }
+      }
+      return bestMove;
     },
-    getPositionValue: function getPositionValue(row, col, color) {
-      var distanceFromHouse = color === 'black' ? 8 - row : row;
-      var distanceFromCenter = Math.abs(col - 3);
-      return -(distanceFromHouse + distanceFromCenter);
+    calculateBestMove: function calculateBestMove(board, color) {
+      var depth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 3;
+      var alpha = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : -Infinity;
+      var beta = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : Infinity;
+      var validMoves = this.getBoardPossibleMoves(board, color);
+      var bestScore = -Infinity;
+      var bestMove = null;
+      for (var i = 0; i < validMoves.length; i++) {
+        var move = validMoves[i];
+        var newBoard = this.makeVirtualMove(_toConsumableArray(board), move);
+        var score = this.recursiveMove(newBoard, depth, alpha, beta, false, color);
+        if (score > bestScore) {
+          bestScore = score;
+          bestMove = move;
+        }
+        alpha = Math.max(alpha, score);
+        if (alpha >= beta) {
+          break; // Beta cutoff
+        }
+      }
+
+      return bestMove;
     },
-    generatePossibleMoves: function generatePossibleMoves(board, color) {
+    isWin: function isWin(board, color) {
+      var row,
+        col = 3;
+      if (color === 'white') row = 0;else row = 8;
+      return board[row][col].content.piece;
+    },
+    recursiveMove: function recursiveMove(board, depth, alpha, beta, isMaximizingPlayer, playerColor) {
+      var domCodes = {
+        black: "D9",
+        white: "D1"
+      };
+      // Check for terminal conditions or maximum depth reached
+      if (depth === 0 || this.isWin(board, playerColor)) {
+        return this.evaluateBoard(board, playerColor, isMaximizingPlayer);
+      }
+      // Get the current player's color based on the maximizing/minimizing turn
+      var currentPlayerColor = isMaximizingPlayer ? playerColor : this.getOpponentColor(playerColor);
+
+      // Get possible moves for the current player
+      var moves = this.getBoardPossibleMoves(board, currentPlayerColor);
+      if (isMaximizingPlayer) {
+        var maxEval = -Infinity;
+        var _iterator = _createForOfIteratorHelper(moves),
+          _step;
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var move = _step.value;
+            var newBoard = this.makeVirtualMove(board, move);
+            var eval1 = this.recursiveMove(newBoard, depth - 1, alpha, beta, false, playerColor);
+            maxEval = Math.max(maxEval, eval1);
+            alpha = Math.max(alpha, eval1);
+            if (beta <= alpha) {
+              break;
+            }
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+        return maxEval;
+      } else {
+        var minEval = Infinity;
+        var _iterator2 = _createForOfIteratorHelper(moves),
+          _step2;
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var _move = _step2.value;
+            var _newBoard = this.makeVirtualMove(board, _move);
+            var eval2 = this.recursiveMove(_newBoard, depth - 1, alpha, beta, true, playerColor);
+            minEval = Math.min(minEval, eval2);
+            beta = Math.min(beta, eval2);
+            if (beta <= alpha) {
+              break;
+            }
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+        return minEval;
+      }
+    },
+    getBoardPossibleMoves: function getBoardPossibleMoves(board, color) {
       var moves = [];
-      for (var row = 0; row < 9; row++) {
-        for (var col = 0; col < 7; col++) {
+      for (var row = 0; row < board.length; row++) {
+        for (var col = 0; col < board[row].length; col++) {
           var square = board[row][col];
-          if (square.content && square.content.color === color) {
-            var pieceMoves = this.getPossibleMoves(row, col);
-            var _iterator = _createForOfIteratorHelper(pieceMoves),
-              _step;
-            try {
-              for (_iterator.s(); !(_step = _iterator.n()).done;) {
-                var move = _step.value;
-                moves.push(move);
-              }
-            } catch (err) {
-              _iterator.e(err);
-            } finally {
-              _iterator.f();
+          if (square.content.piece && square.content.color === color) {
+            var possibleMoves = this.getPossibleMoves(row, col);
+            for (var k = 0; k < possibleMoves.length; k++) {
+              moves.push(possibleMoves[k]);
             }
           }
         }
@@ -2842,7 +3056,10 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
       return moves;
     },
     getOpponentColor: function getOpponentColor(color) {
-      return color === 'black' ? 'white' : 'black';
+      return {
+        black: "white",
+        white: "black"
+      }[color];
     }
   }
 });
@@ -59827,14 +60044,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************************!*\
   !*** ./resources/js/components/Game/Game.vue ***!
   \***********************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Game_vue_vue_type_template_id_afd91298___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Game.vue?vue&type=template&id=afd91298& */ "./resources/js/components/Game/Game.vue?vue&type=template&id=afd91298&");
 /* harmony import */ var _Game_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Game.vue?vue&type=script&lang=js& */ "./resources/js/components/Game/Game.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _Game_vue_vue_type_style_index_0_id_afd91298_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Game.vue?vue&type=style&index=0&id=afd91298&lang=scss& */ "./resources/js/components/Game/Game.vue?vue&type=style&index=0&id=afd91298&lang=scss&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Game_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Game_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _Game_vue_vue_type_style_index_0_id_afd91298_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Game.vue?vue&type=style&index=0&id=afd91298&lang=scss& */ "./resources/js/components/Game/Game.vue?vue&type=style&index=0&id=afd91298&lang=scss&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -59866,7 +60084,7 @@ component.options.__file = "resources/js/components/Game/Game.vue"
 /*!************************************************************************!*\
   !*** ./resources/js/components/Game/Game.vue?vue&type=script&lang=js& ***!
   \************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59972,6 +60190,14 @@ __webpack_require__.r(__webpack_exports__);
     var rowMapping = ["9", "8", "7", "6", "5", "4", "3", "2", "1"];
     var colMapping = ["A", "B", "C", "D", "E", "F", "G"];
     return colMapping[col] + rowMapping[row];
+  },
+  getIndexesByCode: function getIndexesByCode(code) {
+    var rowMapping = ["9", "8", "7", "6", "5", "4", "3", "2", "1"];
+    var colMapping = ["A", "B", "C", "D", "E", "F", "G"];
+    return {
+      rowIndex: rowMapping.indexOf(code[1]),
+      colIndex: colMapping.indexOf(code[0])
+    };
   },
   /**
    * Get a square color based on given row and column index

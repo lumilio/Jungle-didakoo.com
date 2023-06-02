@@ -189,6 +189,7 @@ import Den2 from "./Elements/Den2";
 import Trap from "./Elements/Trap";
 const animals = {
     mouse: {
+        name: "mouse",
         power: 0,
         specialPower: {
             canSwim: true,
@@ -196,25 +197,31 @@ const animals = {
         },
     },
     cat: {
+        name: "cat",
         power: 1,
     },
     monkey: {
+        name: "monkey",
         power: 2,
     },
     dog: {
+        name: "dog",
         power: 3,
     },
     leopard: {
+        name: "leopard",
         power: 4,
     },
     tiger: {
         power: 5,
+        name: "tiger",
         specialPower: {
             canJumpOverTheRiver: true,
             jumpDirections: ["vertical"],
         },
     },
     lion: {
+        name: "lion",
         power: 6,
         specialPower: {
             canJumpOverTheRiver: true,
@@ -222,6 +229,7 @@ const animals = {
         },
     },
     elephant: {
+        name: "elephant",
         power: 7,
     },
 };
@@ -342,6 +350,19 @@ export default {
         };
     },
     methods: {
+        isRiverBlocked(side) {
+            let rowStart = 3,
+                colStart;
+            colStart = side === "left" ? 1 : 4;
+            for (let i = rowStart; i < rowStart + 3; i++) {
+                for (let j = colStart; j < colStart + 2; j++) {
+                    if (this.squares[i][j].content.piece === "mouse") {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        },
         possibleMoveColor(code) {
             return waterCodes.includes(code)
                 ? this.color.possibleMoveWater
@@ -409,7 +430,7 @@ export default {
             return (
                 attacker.color !== animal.color &&
                 (attacker.power >= animal.power ||
-                    attacker.specialPower?.canBeat?.includes(attacker))
+                    attacker.specialPower?.canBeat?.includes(animal.name))
             );
         },
         getAnimalByCode(x, y) {
@@ -431,7 +452,7 @@ export default {
             );
         },
         initSquares() {
-            console.log(this.boardSettings, "this.boardSettings");
+            this.squares = [];
             for (let i = 0; i < 9; i++) {
                 this.squares.push([]);
                 for (let j = 0; j < 7; j++) {
@@ -452,6 +473,10 @@ export default {
                         code,
                         i,
                         j,
+                        row: i,
+                        col: j,
+                        rowIndex: i,
+                        colIndex: j,
                         visible: true,
                         color: helper.getSquareColor(i, j),
                         content: {
@@ -466,14 +491,13 @@ export default {
                     });
                 }
             }
-            console.log('this.squares', this.squares)
+            console.log("this.squares", this.squares);
         },
-
 
         squareClick($event, rowIndex, colIndex) {
             let square = this.squares[rowIndex][colIndex];
             if (!this.releasePiece(square)) {
-                if (square.content.color === "white") {
+                if (square.content.piece && square.content.color === "white") {
                     this.showPossibleMoves(rowIndex, colIndex);
                     this.holding.row = rowIndex;
                     this.holding.col = colIndex;
@@ -481,8 +505,7 @@ export default {
                 }
             }
         },
-        makeMove(fromSquare, toSquare){
-            console.log( 'makeMove')
+        makeMove(fromSquare, toSquare) {
             this.gamePieceMoveCoords = {
                 piece: fromSquare.content?.piece,
                 toX: toSquare.x - fromSquare.x,
@@ -506,14 +529,14 @@ export default {
                 return false;
             }
             this.isCheckmate(toSquare);
-            this.makeMove(fromSquare,toSquare)
+            this.makeMove(fromSquare, toSquare);
             this.isHoldingChessPiece = false;
 
             this.turnNumber++;
 
             this.clearPossibleMoves();
 
-            this.turn = this.getOpponentColor(this.turn)
+            this.turn = this.getOpponentColor(this.turn);
             setTimeout(() => {
                 this.playComputer();
             }, 500);
@@ -526,16 +549,13 @@ export default {
             store.commit("RESET_MOVES_HISTORY");
         },
         playComputer() {
-            let move = this.calculateBestMove([...this.squares],this.turn,2)
+            let move = this.calculateBestMove([...this.squares], this.turn, 3);
             const { fromRow, fromCol, toRow, toCol } = move;
-            const fromSquare = this.squares[fromRow][fromCol]
-            const toSquare = this.squares[toRow][toCol]
-            console.log(fromRow, 'fromRow')
-            console.log(fromCol, 'fromCol')
-            console.log(toRow, 'toRow')
-            console.log(toCol, 'toCol')
-            this.makeMove(fromSquare, toSquare)
-            this.turn = this.getOpponentColor(this.turn)
+            const fromSquare = this.squares[fromRow][fromCol];
+            const toSquare = this.squares[toRow][toCol];
+            this.makeMove(fromSquare, toSquare);
+            this.isCheckmate(toSquare);
+            this.turn = this.getOpponentColor(this.turn);
         },
         isCheckmate(squareTo) {
             const isFinal = () =>
@@ -567,7 +587,6 @@ export default {
             this.possibleMoves = ref([]);
         },
 
-
         /**
          * Hold a chess piece to a square
          */
@@ -582,8 +601,8 @@ export default {
             square.visible = false;
         },
 
-        getPossibleMoves(squareRowIndex, squareColIndex){
-            const square = this.squares[squareRowIndex][squareColIndex];
+        getPossibleMoves(squareRowIndex, squareColIndex, board = this.squares) {
+            const square = board[squareRowIndex][squareColIndex];
             let moveTargets = helper.getKnightPossibleMoves(
                 squareRowIndex,
                 squareColIndex
@@ -602,27 +621,27 @@ export default {
                 currentAnimalInfo.power = 0;
             }
             const possibleMovesResult = [];
-            const collectPossible = (row,col) => {
+            const collectPossible = (row, col) => {
                 possibleMovesResult.push({
                     fromRow: squareRowIndex,
                     fromCol: squareColIndex,
                     toRow: row,
                     toCol: col,
-                })
-            }
+                });
+            };
             moveTargets.forEach((target) => {
                 let { rowIndex, colIndex } = target;
                 // checking if possible move is out of game board
                 if (this.outOfBoard(colIndex, rowIndex)) return;
-                const targetSquare = this.squares[rowIndex][colIndex];
+                const targetSquare = board[rowIndex][colIndex];
                 const targetSquareInfo = this.squareTypeInfo(targetSquare.code);
 
                 // getting the animal of target square if exists
                 const targetSquareAnimal = targetSquare.content.piece
                     ? {
-                        ...animals[targetSquare.content.piece],
-                        color: targetSquare.content.color,
-                    }
+                          ...animals[targetSquare.content.piece],
+                          color: targetSquare.content.color,
+                      }
                     : null;
 
                 // checking if target square animal is the same color as chosen animal
@@ -639,7 +658,7 @@ export default {
                     case "water":
                         // if our animal can swim , the move is possible
                         if (currentAnimalInfo.specialPower?.canSwim) {
-                            collectPossible(rowIndex,colIndex)
+                            collectPossible(rowIndex, colIndex);
                             return;
                         }
                         // if our animal can jump over the river
@@ -649,8 +668,11 @@ export default {
                             this.canJump(
                                 currentAnimalInfo,
                                 squareRowIndex === rowIndex
-                                    ? "vertical"
-                                    : "horizontal"
+                                    ? "horizontal"
+                                    : "vertical"
+                            ) &&
+                            !this.isRiverBlocked(
+                                colIndex > 3 ? "right" : "left"
                             )
                         ) {
                             let jumpingTargetCoordinates =
@@ -674,7 +696,10 @@ export default {
                                     currentAnimalInfo
                                 )
                             ) {
-                                collectPossible(jumpingTargetCoordinates.y,jumpingTargetCoordinates.x)
+                                collectPossible(
+                                    jumpingTargetCoordinates.y,
+                                    jumpingTargetCoordinates.x
+                                );
                                 return;
                             }
                         }
@@ -683,7 +708,7 @@ export default {
                     case "trap":
                         // if target is ours the move is possible
                         if (targetSquareInfo.position === currentSquareColor) {
-                            collectPossible(rowIndex,colIndex)
+                            collectPossible(rowIndex, colIndex);
                             return;
                         }
                         //else if there's no animal, or we can beat the animal the move is possible
@@ -694,7 +719,7 @@ export default {
                                 currentAnimalInfo
                             )
                         ) {
-                            collectPossible(rowIndex,colIndex)
+                            collectPossible(rowIndex, colIndex);
                             return;
                         }
                         break;
@@ -702,14 +727,14 @@ export default {
                     case "dom":
                         // if it's the opponents dom the move is possible (even winning)
                         if (targetSquareInfo.position !== currentSquareColor) {
-                            collectPossible(rowIndex,colIndex)
+                            collectPossible(rowIndex, colIndex);
                             return;
                         }
                         break;
                     // the possible move square is land
                     case "land":
                         if (!targetSquareAnimal) {
-                            collectPossible(rowIndex,colIndex)
+                            collectPossible(rowIndex, colIndex);
                             return;
                         } else {
                             if (
@@ -719,7 +744,7 @@ export default {
                                     currentAnimalInfo
                                 )
                             ) {
-                                collectPossible(rowIndex,colIndex)
+                                collectPossible(rowIndex, colIndex);
                                 return;
                             }
                         }
@@ -730,70 +755,11 @@ export default {
 
         showPossibleMoves(squareRowIndex, squareColIndex) {
             let moves = this.getPossibleMoves(squareRowIndex, squareColIndex);
-            console.log(moves);
             moves.forEach((move) => {
-                let square = this.squares[move.toRow][move.toCol]
+                let square = this.squares[move.toRow][move.toCol];
                 square.isPossibleMove = true;
                 this.possibleMoves.push(square);
-            })
-        },
-        calculateBestMove(board, color, depth) {
-            let bestMove = null;
-            let bestScore = -Infinity;
-
-            const possibleMoves = this.generatePossibleMoves(board, color);
-
-            for (let i = 0; i < possibleMoves.length; i++) {
-                const move = possibleMoves[i];
-                const newBoard = this.cloneBoard(board);
-                this.makeVirtualMove(newBoard, move);
-                const score = this.recursiveSwim(newBoard, depth - 1, -Infinity, Infinity, false, color);
-                if (score > bestScore) {
-                    bestScore = score;
-                    bestMove = move;
-                }
-            }
-            return bestMove;
-        },
-        recursiveSwim(board, depth, alpha, beta, isMaximizingPlayer, color) {
-            this.counterStrike ++;
-            if (depth === 0) {
-                return this.evaluateBoard(board, color);
-            }
-            const currentPlayer = isMaximizingPlayer ? color :this.getOpponentColor(color);
-            const possibleMoves = this.generatePossibleMoves(board, currentPlayer);
-
-            if (isMaximizingPlayer) {
-                let maxScore = -Infinity;
-                for (let i = 0; i < possibleMoves.length; i++) {
-                    const move = possibleMoves[i];
-                    const newBoard = this.cloneBoard(board);
-                    this.makeVirtualMove(newBoard, move);
-
-                    const score = this.recursiveSwim(newBoard, depth - 1, alpha, beta, false, color);
-                    maxScore = Math.max(maxScore, score);
-
-                    alpha = Math.max(alpha, score);
-                    if (beta <= alpha) {
-                        break;
-                    }
-                }
-                return maxScore;
-            } else {
-                let minScore = Infinity;
-                for (let i = 0; i < possibleMoves.length; i++) {
-                    const move = possibleMoves[i];
-                    const newBoard = this.cloneBoard(board);
-                    this.makeVirtualMove(newBoard, move);
-                    const score = this.recursiveSwim(newBoard, depth - 1, alpha, beta, true, color);
-                    minScore = Math.min(minScore, score);
-                    beta = Math.min(beta, score);
-                    if (beta <= alpha) {
-                        break;
-                    }
-                }
-                return minScore;
-            }
+            });
         },
         cloneBoard(board) {
             const clonedBoard = [];
@@ -808,50 +774,352 @@ export default {
             return clonedBoard;
         },
         makeVirtualMove(board, move, zzz = false) {
+            let boardClone = this.cloneBoard(board);
             const { fromRow, fromCol, toRow, toCol } = move;
-            const fromSquare = board[fromRow][fromCol];
-            const toSquare = board[toRow][toCol];
-            if(zzz){
-                console.log('fromSquare',fromSquare)
-                console.log('toSquare',toSquare)
-            }
+            const fromSquare = boardClone[fromRow][fromCol];
+            const toSquare = boardClone[toRow][toCol];
             toSquare.content = fromSquare.content;
             fromSquare.content = {
                 piece: null,
                 color: null,
-            }
+            };
+            return boardClone;
         },
-        evaluateBoard(board, color) {
-            let score = 0;
-            for (let row = 0; row < 9; row++) {
-                for (let col = 0; col < 7; col++) {
-                    const square = board[row][col];
-                    if (square.content && square.content.color === color) {
-                        const pieceValue = this.getPieceValue(square.content.piece);
-                        const positionValue = this.getPositionValue(row, col, color);
-                        score += pieceValue + positionValue;
-                    }
+        trapIsSafe(board, code) {
+            const trapCodes = {
+                black: ["C9", "D8", "E9"],
+                white: ["C1", "D2", "E1"],
+            };
+            const guardCodes = {
+                C1: ["C2", "B1"],
+                D2: ["C2", "D3", "E2"],
+                E1: ["E2", "F1"],
+                C9: ["B9", "C8"],
+                D8: ["C8", "D7", "E8"],
+                E9: ["E8", "F9"],
+            };
+            const color = trapCodes.black.includes(code) ? "black" : "white";
+            let secured = false;
+            guardCodes[code].forEach((val) => {
+                let coord = helper.getIndexesByCode(val);
+                let square = board[coord.rowIndex][coord.colIndex];
+                if (square.content.piece && square.content.color === color) {
+                    secured = true;
                 }
+            });
+            return secured;
+        },
+        evaluateBoard(squares, color , ismax = false) {
+            const pieceValue = {
+                mouse: 0,
+                cat: 1,
+                monkey: 2,
+                dog: 3,
+                leopard: 4,
+                tiger: 5,
+                lion: 6,
+                elephant: 7,
+            };
+
+            const ownTeam = color;
+            const opponentTeam = color === "black" ? "white" : "black";
+            const trapCodes = {
+                black: ["C9", "D8", "E9"],
+                white: ["C1", "D2", "E1"],
+            };
+            const houseCodes = {
+                black: "D9",
+                white: "D1",
+            };
+            let res = "";
+            squares.forEach(row => {
+                row.forEach(col => {
+                    res += col.content.piece ? '1' : '*'
+                })
+                res += "\n"
+            })
+
+
+            let ownPieceValue = 0;
+            let opponentPieceValue = 0;
+            let ownPieceMobility = 0;
+            let opponentPieceMobility = 0;
+            let ownControlledSquares = 0;
+            let opponentControlledSquares = 0;
+            let ownProximityToTraps = 0;
+            let opponentProximityToTraps = 0;
+            let ownThreatsToOpponentHouse = 0;
+            let opponentThreatsToOwnHouse = 0;
+            let ownAttackOptions = 0;
+            let opponentAttackOptions = 0;
+
+            squares.forEach((row) => {
+                row.forEach((square) => {
+                    const { piece, color: squareColor } = square.content;
+                    if (piece) {
+                        const piecePower = pieceValue[piece];
+                        if (squareColor === ownTeam) {
+                            ownPieceValue += piecePower;
+                            if((ownTeam === 'black' && square.rowIndex > 6) || (ownTeam === 'white' && square.rowIndex < 3)){
+                                ownPieceValue += 100
+                            }
+                            ownPieceMobility += this.getPossibleMoves(
+                                square.rowIndex,
+                                square.colIndex,
+                                squares
+                            ).length;
+                            ownControlledSquares += 1;
+                            if (trapCodes[ownTeam].includes(square.code)) {
+                                ownProximityToTraps += 1;
+                            } else if (
+                                trapCodes[opponentTeam].includes(square.code) && !this.trapIsSafe(squares, square.code)
+                            ) {
+                                ownThreatsToOpponentHouse += 200000;
+                            }
+                            if (houseCodes[opponentTeam] === square.code) {
+                                ownThreatsToOpponentHouse += 1000000;
+                            }
+                        } else {
+                            opponentPieceValue += piecePower;
+                            if((opponentTeam === 'black' && square.rowIndex > 6) || (opponentTeam === 'white' && square.rowIndex < 3)){
+                                opponentPieceValue += 100
+                            }
+                            opponentPieceMobility += this.getPossibleMoves(
+                                square.rowIndex,
+                                square.colIndex,
+                                squares
+                            ).length;
+                            opponentControlledSquares += 1;
+                            if (trapCodes[ownTeam].includes(square.code)) {
+                                if (this.trapIsSafe(squares, square.code)) {
+                                    opponentThreatsToOwnHouse += 1;
+                                } else {
+                                    opponentThreatsToOwnHouse += 10000;
+                                }
+                            } else if (
+                                trapCodes[opponentTeam].includes(square.code)
+                            ) {
+                                opponentProximityToTraps += 1;
+                            }
+                            if (houseCodes[ownTeam] === square.code) {
+                                opponentThreatsToOwnHouse += 1000000;
+                            }
+                        }
+                    }
+                });
+            });
+
+            // Calculate overall evaluation scores
+            const ownPieceValueScore = ownPieceValue;
+            const opponentPieceValueScore = opponentPieceValue;
+            const ownPieceMobilityScore = ownPieceMobility;
+            const opponentPieceMobilityScore = opponentPieceMobility;
+            const ownControlledSquaresScore = ownControlledSquares;
+            const opponentControlledSquaresScore = opponentControlledSquares;
+            const ownProximityToTrapsScore = ownProximityToTraps;
+            const opponentProximityToTrapsScore = opponentProximityToTraps;
+            const ownThreatsToOpponentHouseScore = ownThreatsToOpponentHouse;
+            const opponentThreatsToOwnHouseScore = opponentThreatsToOwnHouse;
+            const ownAttackOptionsScore = ownAttackOptions;
+            const opponentAttackOptionsScore = opponentAttackOptions;
+
+            // Calculate the evaluation scores for each team
+            const ownScore =
+                ownPieceValueScore +
+                ownPieceMobilityScore +
+                ownControlledSquaresScore +
+                ownProximityToTrapsScore +
+                ownThreatsToOpponentHouseScore +
+                ownAttackOptionsScore;
+
+            const opponentScore =
+                opponentPieceValueScore +
+                opponentPieceMobilityScore +
+                opponentControlledSquaresScore +
+                opponentProximityToTrapsScore +
+                opponentThreatsToOwnHouseScore +
+                opponentAttackOptionsScore;
+
+            // Return the evaluation score difference between the teams
+            return ownScore - opponentScore;
+        },
+        evaluateMove(move, board, color) {
+            const keySquares = {
+                black: "D9",
+                white: "D1",
+            };
+
+            const trapSquares = {
+                black: ["C9", "D8", "E9"],
+                white: ["C1", "D2", "E1"],
+            };
+            let score = 0;
+            const factors = {
+                trapFactor: 10,
+                protectTrapFactor: 10,
+                opponentHouseDistanceFactor: 5,
+                ownHouseSecurityFactor: 5,
+                winFactor: 1000000,
+                beatAnimalFactor: 10,
+                defenceFactor: 10,
+            };
+            const pieceValues = {
+                mouse: 1,
+                cat: 3,
+                dog: 5,
+                leopard: 7,
+                tiger: 9,
+                lion: 11,
+                elephant: 13,
+            };
+            const { fromRow, fromCol, toRow, toCol } = move;
+            let square = board[fromRow][fromCol];
+            let target = board[toRow][toCol];
+            if (keySquares[this.getOpponentColor(color)] === target.code) {
+                return factors.winFactor;
+            }
+            if (target.content.piece) {
+                score +=
+                    factors.beatAnimalFactor +
+                    pieceValues[target.content.piece];
+            }
+            if (toRow > fromRow) {
+                score += factors.opponentHouseDistanceFactor;
+            }
+            if (
+                trapSquares[this.getOpponentColor(color)].includes(target.code)
+            ) {
+                score += factors.trapFactor;
+            } else if (trapSquares[color].includes(target.code)) {
+                score += factors.protectTrapFactor;
             }
             return score;
         },
-        getPieceValue(piece) {
-            return animals[piece]?.power || 0
+        calculateBestMoveManual(board, color) {
+            const validMoves = this.getBoardPossibleMoves(board, color);
+            let bestMove = null;
+            let bestScore = 10000000;
+            for (let i = 0; i < validMoves.length; i++) {
+                const move = validMoves[i];
+                const score = this.evaluateMove(move, board, color);
+                if (score < bestScore) {
+                    bestScore = score;
+                    bestMove = move;
+                }
+            }
+            return bestMove;
         },
-        getPositionValue(row, col, color) {
-            const distanceFromHouse = color === 'black' ? 8 - row : row;
-            const distanceFromCenter = Math.abs(col - 3);
-            return -(distanceFromHouse + distanceFromCenter);
+        calculateBestMove(
+            board,
+            color,
+            depth = 3,
+            alpha = -Infinity,
+            beta = Infinity
+        ) {
+            const validMoves = this.getBoardPossibleMoves(board, color);
+
+            let bestScore = -Infinity;
+            let bestMove = null;
+
+            for (let i = 0; i < validMoves.length; i++) {
+                const move = validMoves[i];
+                const newBoard = this.makeVirtualMove([...board], move);
+                const score = this.recursiveMove(
+                    newBoard,
+                    depth,
+                    alpha,
+                    beta,
+                    false,
+                    color
+                );
+
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestMove = move;
+                }
+                alpha = Math.max(alpha, score);
+                if (alpha >= beta) {
+                    break; // Beta cutoff
+                }
+            }
+            return bestMove;
         },
-        generatePossibleMoves(board, color) {
+        isWin(board,color){
+            let row,col = 3;
+            if(color === 'white') row = 0
+            else row = 8;
+            return board[row][col].content.piece
+        },
+        recursiveMove(board, depth, alpha, beta, isMaximizingPlayer, playerColor) {
+
+            const domCodes = {
+                black: "D9",
+                white: "D1",
+            };
+            // Check for terminal conditions or maximum depth reached
+            if (depth === 0 || this.isWin(board,playerColor)) {
+                return this.evaluateBoard(board, playerColor, isMaximizingPlayer);
+            }
+            // Get the current player's color based on the maximizing/minimizing turn
+            const currentPlayerColor = isMaximizingPlayer
+                ? playerColor
+                : this.getOpponentColor(playerColor);
+
+            // Get possible moves for the current player
+            const moves = this.getBoardPossibleMoves(board, currentPlayerColor);
+
+            if (isMaximizingPlayer) {
+                let maxEval = -Infinity;
+                for (const move of moves) {
+                    const newBoard = this.makeVirtualMove(board, move);
+                    const eval1 = this.recursiveMove(
+                        newBoard,
+                        depth - 1,
+                        alpha,
+                        beta,
+                        false,
+                        playerColor
+                    );
+                    maxEval = Math.max(maxEval, eval1);
+                    alpha = Math.max(alpha, eval1);
+                    if (beta <= alpha) {
+                        break;
+                    }
+                }
+                return maxEval;
+            } else {
+                let minEval = Infinity;
+                for (const move of moves) {
+                    const newBoard = this.makeVirtualMove(board, move);
+                    const eval2 = this.recursiveMove(
+                        newBoard,
+                        depth - 1,
+                        alpha,
+                        beta,
+                        true,
+                        playerColor
+                    );
+                    minEval = Math.min(minEval, eval2);
+                    beta = Math.min(beta, eval2);
+                    if (beta <= alpha) {
+                        break;
+                    }
+                }
+                return minEval;
+            }
+        },
+        getBoardPossibleMoves(board, color) {
             const moves = [];
-            for (let row = 0; row < 9; row++) {
-                for (let col = 0; col < 7; col++) {
+            for (let row = 0; row < board.length; row++) {
+                for (let col = 0; col < board[row].length; col++) {
                     const square = board[row][col];
-                    if (square.content && square.content.color === color) {
-                        const pieceMoves = this.getPossibleMoves(row, col);
-                        for (const move of pieceMoves) {
-                            moves.push(move);
+                    if (
+                        square.content.piece &&
+                        square.content.color === color
+                    ) {
+                        let possibleMoves = this.getPossibleMoves(row, col);
+                        for (let k = 0; k < possibleMoves.length; k++) {
+                            moves.push(possibleMoves[k]);
                         }
                     }
                 }
@@ -859,9 +1127,8 @@ export default {
             return moves;
         },
         getOpponentColor(color) {
-            return color === 'black' ? 'white' : 'black';
-        }
-
+            return {black: "white", white: "black"}[color];
+        },
     },
 };
 </script>

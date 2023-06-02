@@ -65,6 +65,14 @@ export default {
 
         return colMapping[col] + rowMapping[row];
     },
+    getIndexesByCode(code) {
+        let rowMapping = ["9", "8", "7", "6", "5", "4", "3", "2", "1"];
+        let colMapping = ["A", "B", "C", "D", "E", "F", "G"];
+        return {
+            rowIndex: rowMapping.indexOf(code[1]),
+            colIndex: colMapping.indexOf(code[0]),
+        };
+    },
 
     /**
      * Get a square color based on given row and column index
