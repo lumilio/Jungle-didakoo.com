@@ -1,64 +1,6 @@
 import { iteratee } from "lodash";
 
 export default {
-    /**
-     * A function to get every square code based on array indexes
-     * @param {Number} row
-     * @param {Number} col
-     * @returns {String}
-     */
-    animals: {
-        mouse: {
-            power: 0,
-            specialPower: {
-                canSwim: true,
-                canBeat: ["elephant"],
-            },
-        },
-        cat: {
-            power: 1,
-        },
-        monkey: {
-            power: 2,
-        },
-        dog: {
-            power: 3,
-        },
-        leopard: {
-            power: 4,
-        },
-        tiger: {
-            power: 5,
-            specialPower: {
-                canJumpOverTheRiver: true,
-                jumpDirections: ["vertical"],
-            },
-        },
-        lion: {
-            power: 6,
-            specialPower: {
-                canJumpOverTheRiver: true,
-                jumpDirections: ["vertical", "horizontal"],
-            },
-        },
-        elephant: {
-            power: 7,
-        },
-    },
-    waterCodes: [
-        "B6",
-        "C6",
-        "B5",
-        "C5",
-        "B4",
-        "C4",
-        "E6",
-        "F6",
-        "E5",
-        "F5",
-        "E4",
-        "F4",
-    ],
     getSquareCode(row, col) {
         let rowMapping = ["9", "8", "7", "6", "5", "4", "3", "2", "1"];
         let colMapping = ["A", "B", "C", "D", "E", "F", "G"];

@@ -231,6 +231,7 @@ const animals = {
     elephant: {
         name: "elephant",
         power: 7,
+        vulnerability: ["mouse"],
     },
 };
 
@@ -429,7 +430,8 @@ export default {
             // checking if one animal can beat another
             return (
                 attacker.color !== animal.color &&
-                (attacker.power >= animal.power ||
+                ((attacker.power >= animal.power &&
+                    !attacker.vulnerability?.includes(animal.name)) ||
                     attacker.specialPower?.canBeat?.includes(animal.name))
             );
         },
@@ -444,11 +446,11 @@ export default {
             }
             return null;
         },
-        canJump(animal, directory) {
+        canJump(animal, direction) {
             // checking if an animal can jump by given direction
             return (
                 animal.specialPower?.canJumpOverTheRiver &&
-                animal.specialPower?.jumpDirections?.includes(directory)
+                animal.specialPower?.jumpDirections?.includes(direction)
             );
         },
         initSquares() {
@@ -475,9 +477,8 @@ export default {
                         j,
                         row: i,
                         col: j,
-                        rowIndex: i,
-                        colIndex: j,
                         visible: true,
+                        areaColor: i < 3 ? "black" : i > 5 ? "white" : null,
                         color: helper.getSquareColor(i, j),
                         content: {
                             stepNumber: 1,
@@ -519,6 +520,12 @@ export default {
             fromSquare.content.piece = null;
             fromSquare.content.color = null;
         },
+        alertWin(winner){
+            alert(winner + ' Won !')
+            if(confirm("want to play again")){
+                this.playAgain()
+            }
+        },
         releasePiece(toSquare) {
             if (!this.isHoldingChessPiece) return false;
             let fromSquare = this.squares[this.holding.row][this.holding.col];
@@ -528,18 +535,23 @@ export default {
                 this.clearPossibleMoves();
                 return false;
             }
-            this.isCheckmate(toSquare);
             this.makeMove(fromSquare, toSquare);
             this.isHoldingChessPiece = false;
 
             this.turnNumber++;
 
             this.clearPossibleMoves();
-
-            this.turn = this.getOpponentColor(this.turn);
-            setTimeout(() => {
-                this.playComputer();
-            }, 500);
+            let checkmate = this.isCheckmate(this.squares)
+            if(checkmate){
+                setTimeout(() => {
+                    this.alertWin(checkmate)
+                },500)
+            }else{
+                this.turn = this.getOpponentColor(this.turn);
+                setTimeout(() => {
+                    this.playComputer();
+                }, 500);
+            }
             return true;
         },
 
@@ -548,32 +560,26 @@ export default {
             this.turn = "white";
             store.commit("RESET_MOVES_HISTORY");
         },
-        playComputer() {
-            let move = this.calculateBestMove([...this.squares], this.turn, 3);
-            const { fromRow, fromCol, toRow, toCol } = move;
-            const fromSquare = this.squares[fromRow][fromCol];
-            const toSquare = this.squares[toRow][toCol];
-            this.makeMove(fromSquare, toSquare);
-            this.isCheckmate(toSquare);
-            this.turn = this.getOpponentColor(this.turn);
-        },
-        isCheckmate(squareTo) {
-            const isFinal = () =>
-                squareTo.code ===
-                this.winPos[this.turn === "white" ? "black" : "white"]
-                    ? this.turn
-                    : null;
-
-            let winner = null;
-
-            if ((winner = isFinal())) {
-                alert(`${winner} win!`);
+        isCheckmate(board) {
+            if(board[0][3].content.piece || board[8][3].content.piece){
+                return board[0][3].content.piece ? 'white': 'black'
             }
-
-            if (winner) {
-                let again = confirm("Want to play again?");
-                if (again) this.playAgain();
+            const pieces = {
+                white: false,
+                black:false,
             }
+            for (let row = 0; row < 9; row++) {
+                for (let col = 0; col < 7; col++) {
+                    const square = board[row][col] ;
+                    if(square.content.piece){
+                        pieces[square.content.color] = true
+                    }
+                }
+            }
+            if(!pieces.white || !pieces.black){
+                return !pieces.black ? 'white' : 'black'
+            }
+            return false;
         },
 
         makeItPossible(square) {
@@ -663,7 +669,6 @@ export default {
                         }
                         // if our animal can jump over the river
                         // and beat the animal on the other side the move is possible
-                        // To Do ---> check if water is blocked
                         else if (
                             this.canJump(
                                 currentAnimalInfo,
@@ -778,10 +783,11 @@ export default {
             const { fromRow, fromCol, toRow, toCol } = move;
             const fromSquare = boardClone[fromRow][fromCol];
             const toSquare = boardClone[toRow][toCol];
+            const animal = toSquare.content.piece
             toSquare.content = fromSquare.content;
             fromSquare.content = {
                 piece: null,
-                color: null,
+                color: null
             };
             return boardClone;
         },
@@ -809,20 +815,26 @@ export default {
             });
             return secured;
         },
-        evaluateBoard(squares, color , ismax = false) {
-            const pieceValue = {
-                mouse: 0,
-                cat: 1,
-                monkey: 2,
-                dog: 3,
-                leopard: 4,
-                tiger: 5,
-                lion: 6,
-                elephant: 7,
-            };
+        playComputer() {
+            let move = this.calculateBestMove([...this.squares], this.turn);
+            const { fromRow, fromCol, toRow, toCol } = move;
+            const fromSquare = this.squares[fromRow][fromCol];
+            const toSquare = this.squares[toRow][toCol];
+            this.makeMove(fromSquare, toSquare);
+            let checkmate = this.isCheckmate(this.squares)
+            if(checkmate){
+                setTimeout(() => {
+                    this.alertWin(checkmate)
+                },500)
 
-            const ownTeam = color;
-            const opponentTeam = color === "black" ? "white" : "black";
+            }else{
+                this.turn = this.getOpponentColor(this.turn);
+                // setTimeout(() => this.playComputer(), 500)
+            }
+
+        },
+        checkPossibleWin(board, moves, color) {
+            const opponentsColor = this.getOpponentColor(color);
             const trapCodes = {
                 black: ["C9", "D8", "E9"],
                 white: ["C1", "D2", "E1"],
@@ -831,183 +843,41 @@ export default {
                 black: "D9",
                 white: "D1",
             };
-            let res = "";
-            squares.forEach(row => {
-                row.forEach(col => {
-                    res += col.content.piece ? '1' : '*'
-                })
-                res += "\n"
-            })
-
-
-            let ownPieceValue = 0;
-            let opponentPieceValue = 0;
-            let ownPieceMobility = 0;
-            let opponentPieceMobility = 0;
-            let ownControlledSquares = 0;
-            let opponentControlledSquares = 0;
-            let ownProximityToTraps = 0;
-            let opponentProximityToTraps = 0;
-            let ownThreatsToOpponentHouse = 0;
-            let opponentThreatsToOwnHouse = 0;
-            let ownAttackOptions = 0;
-            let opponentAttackOptions = 0;
-
-            squares.forEach((row) => {
-                row.forEach((square) => {
-                    const { piece, color: squareColor } = square.content;
-                    if (piece) {
-                        const piecePower = pieceValue[piece];
-                        if (squareColor === ownTeam) {
-                            ownPieceValue += piecePower;
-                            if((ownTeam === 'black' && square.rowIndex > 6) || (ownTeam === 'white' && square.rowIndex < 3)){
-                                ownPieceValue += 100
-                            }
-                            ownPieceMobility += this.getPossibleMoves(
-                                square.rowIndex,
-                                square.colIndex,
-                                squares
-                            ).length;
-                            ownControlledSquares += 1;
-                            if (trapCodes[ownTeam].includes(square.code)) {
-                                ownProximityToTraps += 1;
-                            } else if (
-                                trapCodes[opponentTeam].includes(square.code) && !this.trapIsSafe(squares, square.code)
-                            ) {
-                                ownThreatsToOpponentHouse += 200000;
-                            }
-                            if (houseCodes[opponentTeam] === square.code) {
-                                ownThreatsToOpponentHouse += 1000000;
-                            }
-                        } else {
-                            opponentPieceValue += piecePower;
-                            if((opponentTeam === 'black' && square.rowIndex > 6) || (opponentTeam === 'white' && square.rowIndex < 3)){
-                                opponentPieceValue += 100
-                            }
-                            opponentPieceMobility += this.getPossibleMoves(
-                                square.rowIndex,
-                                square.colIndex,
-                                squares
-                            ).length;
-                            opponentControlledSquares += 1;
-                            if (trapCodes[ownTeam].includes(square.code)) {
-                                if (this.trapIsSafe(squares, square.code)) {
-                                    opponentThreatsToOwnHouse += 1;
-                                } else {
-                                    opponentThreatsToOwnHouse += 10000;
-                                }
-                            } else if (
-                                trapCodes[opponentTeam].includes(square.code)
-                            ) {
-                                opponentProximityToTraps += 1;
-                            }
-                            if (houseCodes[ownTeam] === square.code) {
-                                opponentThreatsToOwnHouse += 1000000;
-                            }
-                        }
-                    }
-                });
-            });
-
-            // Calculate overall evaluation scores
-            const ownPieceValueScore = ownPieceValue;
-            const opponentPieceValueScore = opponentPieceValue;
-            const ownPieceMobilityScore = ownPieceMobility;
-            const opponentPieceMobilityScore = opponentPieceMobility;
-            const ownControlledSquaresScore = ownControlledSquares;
-            const opponentControlledSquaresScore = opponentControlledSquares;
-            const ownProximityToTrapsScore = ownProximityToTraps;
-            const opponentProximityToTrapsScore = opponentProximityToTraps;
-            const ownThreatsToOpponentHouseScore = ownThreatsToOpponentHouse;
-            const opponentThreatsToOwnHouseScore = opponentThreatsToOwnHouse;
-            const ownAttackOptionsScore = ownAttackOptions;
-            const opponentAttackOptionsScore = opponentAttackOptions;
-
-            // Calculate the evaluation scores for each team
-            const ownScore =
-                ownPieceValueScore +
-                ownPieceMobilityScore +
-                ownControlledSquaresScore +
-                ownProximityToTrapsScore +
-                ownThreatsToOpponentHouseScore +
-                ownAttackOptionsScore;
-
-            const opponentScore =
-                opponentPieceValueScore +
-                opponentPieceMobilityScore +
-                opponentControlledSquaresScore +
-                opponentProximityToTrapsScore +
-                opponentThreatsToOwnHouseScore +
-                opponentAttackOptionsScore;
-
-            // Return the evaluation score difference between the teams
-            return ownScore - opponentScore;
-        },
-        evaluateMove(move, board, color) {
-            const keySquares = {
-                black: "D9",
-                white: "D1",
-            };
-
-            const trapSquares = {
-                black: ["C9", "D8", "E9"],
-                white: ["C1", "D2", "E1"],
-            };
-            let score = 0;
-            const factors = {
-                trapFactor: 10,
-                protectTrapFactor: 10,
-                opponentHouseDistanceFactor: 5,
-                ownHouseSecurityFactor: 5,
-                winFactor: 1000000,
-                beatAnimalFactor: 10,
-                defenceFactor: 10,
-            };
-            const pieceValues = {
-                mouse: 1,
-                cat: 3,
-                dog: 5,
-                leopard: 7,
-                tiger: 9,
-                lion: 11,
-                elephant: 13,
-            };
-            const { fromRow, fromCol, toRow, toCol } = move;
-            let square = board[fromRow][fromCol];
-            let target = board[toRow][toCol];
-            if (keySquares[this.getOpponentColor(color)] === target.code) {
-                return factors.winFactor;
-            }
-            if (target.content.piece) {
-                score +=
-                    factors.beatAnimalFactor +
-                    pieceValues[target.content.piece];
-            }
-            if (toRow > fromRow) {
-                score += factors.opponentHouseDistanceFactor;
-            }
-            if (
-                trapSquares[this.getOpponentColor(color)].includes(target.code)
-            ) {
-                score += factors.trapFactor;
-            } else if (trapSquares[color].includes(target.code)) {
-                score += factors.protectTrapFactor;
-            }
-            return score;
-        },
-        calculateBestMoveManual(board, color) {
-            const validMoves = this.getBoardPossibleMoves(board, color);
-            let bestMove = null;
-            let bestScore = 10000000;
-            for (let i = 0; i < validMoves.length; i++) {
-                const move = validMoves[i];
-                const score = this.evaluateMove(move, board, color);
-                if (score < bestScore) {
-                    bestScore = score;
-                    bestMove = move;
+            for (let i = 0; i < moves.length; i++) {
+                const move = moves[i];
+                const code = helper.getSquareCode(move.toRow, move.toCol);
+                if (
+                    (trapCodes[opponentsColor].includes(code) &&
+                        !this.trapIsSafe(board, code)) ||
+                    houseCodes[opponentsColor] === code
+                ) {
+                    return move;
                 }
             }
-            return bestMove;
+            return null;
+        },
+        getBattleStrategy(board,color){
+            const row = color === 'black' ? 0 : 6
+            const col = 8
+            let defence = false;
+            let attack = false;
+            for(let i = row; i < 9 ; i++){
+                for(let j = 0; j < 7 ; j++){
+                    const square = board[i][j];
+                    if(square.areaColor && square.content.piece && square.content.color !== square.areaColor){
+                        if(square.areaColor === color){
+                            defence = true;
+                        }else{
+                            attack = true;
+                        }
+                    }
+                }
+            }
+            if(attack && defence){
+                return 'normal'
+            }else  if(attack || defence){
+                return attack ? 'attack' : 'defence'
+            }else return 'attack'
         },
         calculateBestMove(
             board,
@@ -1016,49 +886,62 @@ export default {
             alpha = -Infinity,
             beta = Infinity
         ) {
-            const validMoves = this.getBoardPossibleMoves(board, color);
-
+            let validMoves = this.getBoardPossibleMoves(board, color);
+            const factors = this.getBoardFactors(board,color)
+            if (color === "black") {
+                validMoves = validMoves.sort((a, b) => b.fromRow - a.fromRow);
+            }
             let bestScore = -Infinity;
             let bestMove = null;
-
-            for (let i = 0; i < validMoves.length; i++) {
-                const move = validMoves[i];
-                const newBoard = this.makeVirtualMove([...board], move);
-                const score = this.recursiveMove(
-                    newBoard,
-                    depth,
-                    alpha,
-                    beta,
-                    false,
-                    color
-                );
-
-                if (score > bestScore) {
-                    bestScore = score;
-                    bestMove = move;
+            let bestMoves = [];
+            let winMove = this.checkPossibleWin(board, validMoves, color);
+            if(winMove){
+                return winMove
+            }else{
+                for (let i = 0; i < validMoves.length; i++) {
+                    const move = validMoves[i];
+                    const newBoard = this.makeVirtualMove([...board], move);
+                    const score = this.recursiveMove(
+                        newBoard,
+                        depth - 1,
+                        alpha,
+                        beta,
+                        false,
+                        color
+                    );
+                    if (score >= bestScore) {
+                        if (score > bestScore) {
+                            bestScore = score;
+                            bestMove = move;
+                            bestMoves = [move];
+                        } else {
+                            bestMoves.push(move);
+                        }
+                    }
+                    alpha = Math.max(alpha, score);
                 }
-                alpha = Math.max(alpha, score);
-                if (alpha >= beta) {
-                    break; // Beta cutoff
+                if (bestMoves.length) {
+                    return bestMoves[Math.floor(Math.random() * bestMoves.length)];
                 }
+                return validMoves.length ? validMoves[0] : {};
             }
-            return bestMove;
-        },
-        isWin(board,color){
-            let row,col = 3;
-            if(color === 'white') row = 0
-            else row = 8;
-            return board[row][col].content.piece
-        },
-        recursiveMove(board, depth, alpha, beta, isMaximizingPlayer, playerColor) {
 
-            const domCodes = {
-                black: "D9",
-                white: "D1",
-            };
+        },
+        recursiveMove(
+            board,
+            depth,
+            alpha,
+            beta,
+            isMaximizingPlayer,
+            playerColor
+        ) {
             // Check for terminal conditions or maximum depth reached
-            if (depth === 0 || this.isWin(board,playerColor)) {
-                return this.evaluateBoard(board, playerColor, isMaximizingPlayer);
+            if (depth === 0) {
+                return this.evaluateBoard(
+                    board,
+                    playerColor,
+                    isMaximizingPlayer
+                );
             }
             // Get the current player's color based on the maximizing/minimizing turn
             const currentPlayerColor = isMaximizingPlayer
@@ -1066,13 +949,15 @@ export default {
                 : this.getOpponentColor(playerColor);
 
             // Get possible moves for the current player
-            const moves = this.getBoardPossibleMoves(board, currentPlayerColor);
-
+            let moves = this.getBoardPossibleMoves(board, currentPlayerColor);
+            if(currentPlayerColor === "black"){
+                moves = moves.sort((a, b) => b.fromRow - a.fromRow);
+            }
             if (isMaximizingPlayer) {
                 let maxEval = -Infinity;
                 for (const move of moves) {
                     const newBoard = this.makeVirtualMove(board, move);
-                    const eval1 = this.recursiveMove(
+                    const evaluate = this.recursiveMove(
                         newBoard,
                         depth - 1,
                         alpha,
@@ -1080,9 +965,9 @@ export default {
                         false,
                         playerColor
                     );
-                    maxEval = Math.max(maxEval, eval1);
-                    alpha = Math.max(alpha, eval1);
-                    if (beta <= alpha) {
+                    maxEval = Math.max(maxEval, evaluate);
+                    alpha = Math.max(alpha, evaluate);
+                    if (alpha >= beta) {
                         break;
                     }
                 }
@@ -1091,7 +976,7 @@ export default {
                 let minEval = Infinity;
                 for (const move of moves) {
                     const newBoard = this.makeVirtualMove(board, move);
-                    const eval2 = this.recursiveMove(
+                    const evaluate = this.recursiveMove(
                         newBoard,
                         depth - 1,
                         alpha,
@@ -1099,15 +984,181 @@ export default {
                         true,
                         playerColor
                     );
-                    minEval = Math.min(minEval, eval2);
-                    beta = Math.min(beta, eval2);
-                    if (beta <= alpha) {
+                    minEval = Math.min(minEval, evaluate);
+                    beta = Math.min(beta, evaluate);
+                    if (alpha >= beta) {
                         break;
                     }
                 }
                 return minEval;
             }
         },
+        getBoardFactors(board,color){
+            const factors = {
+                controlOfSquare: 20,
+                controlOfOwnTrap: 2,
+                guardOwnTrap: 5,
+
+
+                controlOfOpponentsSquare: 5,
+                controlOfOpponentsTrap: 5,
+                guardOpponentsTrap: 0,
+
+
+                winFactor: 1000000,
+                attack: 5
+            }
+            const strategy = this.getBattleStrategy(board,color)
+
+            if(strategy === 'attack'){
+                factors.guardOpponentsTrap = 10
+                factors.controlOfOpponentsTrap = 20
+            }else if(strategy === 'defence'){
+                factors.guardOwnTrap = 20
+                factors.controlOfOwnTrap = 10
+            }
+            return factors;
+        },
+        evaluateBoard(squares, color, isMaximizingPlayer) {
+            const piecePowers = {
+                mouse: 8,
+                cat: 5,
+                monkey: 6,
+                dog: 7,
+                leopard: 10,
+                tiger: 15,
+                lion: 25,
+                elephant: 20,
+            };
+            const factors = this.getBoardFactors(squares,color)
+            const ownTeamColor = color;
+            const opponentTeamColor = this.getOpponentColor(color);
+            const trapCodes = {
+                black: ["C9", "D8", "E9"],
+                white: ["C1", "D2", "E1"],
+            };
+            const trapGuardCodes = {
+                black: ["B9", "C8", "D7", "E8", "F9"],
+                white: ["C2", "B1", "D3", "E2", "F1"],
+            };
+            const houseCodes = {
+                black: "D9",
+                white: "D1",
+            };
+            const score = {
+                white: {
+                    pieceValue: 0,
+                    pieceMobility: 0,
+                    controlledSquares: 0,
+                    opponentsControlledSquares: 0,
+                    controlOfOwnTraps: 0,
+                    controlOfOpponentsTraps: 0,
+                    winFactor: 0,
+                },
+                black: {
+                    pieceValue: 0,
+                    pieceMobility: 0,
+                    controlledSquares: 0,
+                    opponentsControlledSquares: 0,
+                    controlOfOwnTraps: 0,
+                    controlOfOpponentsTraps: 0,
+                    winFactor: 0,
+                },
+            };
+            let highestAnimalRows = {
+                black: 0,
+                white: 0,
+            };
+            squares.forEach((row) => {
+                row.forEach((square) => {
+                    const { piece, color: squareColor } = square.content;
+                    if (piece) {
+                        score[squareColor].controlledSquares +=
+                            factors.controlOfSquare;
+                        const opponentsColor =
+                            this.getOpponentColor(squareColor);
+                        const piecePower = piecePowers[piece];
+                        score[squareColor].pieceValue += piecePower;
+                        score[squareColor].pieceMobility +=
+                            this.getPossibleMoves(
+                                square.row,
+                                square.col,
+                                squares
+                            ).length;
+                        if (
+                            squareColor === "black" &&
+                            square.row > highestAnimalRows.black
+                        ) {
+                            highestAnimalRows.black = square.row;
+                        } else if (
+                            squareColor === "white" &&
+                            8 - square.row > highestAnimalRows.white
+                        ) {
+                            highestAnimalRows.white = 8 - square.row;
+                        }
+                        if (
+                            square.areaColor &&
+                            squareColor !== square.areaColor
+                        ) {
+                            score[squareColor].opponentsControlledSquares +=
+                                factors.controlOfOpponentsSquare;
+                        }
+                        if (trapCodes[squareColor].includes(square.code)) {
+                            score[squareColor].controlOfOwnTraps +=
+                                factors.controlOfOwnTrap;
+                        } else if (
+                            trapCodes[opponentsColor].includes(square.code) &&
+                            (!this.trapIsSafe(squares, square.code) ||
+                                !isMaximizingPlayer)
+                        ) {
+                            score[squareColor].controlOfOpponentsTraps +=
+                                factors.controlOfOpponentsTrap;
+                        } else if (houseCodes[opponentsColor] === square.code) {
+                            score[squareColor].winFactor += factors.winFactor;
+                        } else if (
+                            trapGuardCodes[ownTeamColor].includes(square.code)
+                        ) {
+                            score[squareColor].controlOfOpponentsTraps +=
+                                factors.guardOwnTrap;
+                        } else if (
+                            trapGuardCodes[opponentsColor].includes(square.code)
+                        ) {
+                            score[squareColor].controlOfOpponentsTraps +=
+                                factors.guardOpponentsTrap;
+                        }
+                    }
+                });
+            });
+
+            const ownScore =
+                score[ownTeamColor].pieceValue +
+                score[ownTeamColor].pieceMobility +
+                score[ownTeamColor].controlledSquares +
+                score[ownTeamColor].opponentsControlledSquares +
+                score[ownTeamColor].controlOfOwnTraps +
+                score[ownTeamColor].controlOfOpponentsTraps +
+                score[ownTeamColor].winFactor +
+                highestAnimalRows[ownTeamColor] * factors.attack;
+            const opponentScore =
+                score[opponentTeamColor].pieceValue +
+                score[opponentTeamColor].pieceMobility +
+                score[opponentTeamColor].controlledSquares +
+                score[opponentTeamColor].opponentsControlledSquares +
+                score[opponentTeamColor].controlOfOwnTraps +
+                score[opponentTeamColor].controlOfOpponentsTraps +
+                score[opponentTeamColor].winFactor +
+                highestAnimalRows[opponentTeamColor] * factors.attack;
+            return ownScore - opponentScore;
+        },
+
+        isWin(board, color) {
+            let row,
+                col = 3;
+            if (color === "white") row = 0;
+            else row = 8;
+            return board[row][col].content.piece;
+        },
+
         getBoardPossibleMoves(board, color) {
             const moves = [];
             for (let row = 0; row < board.length; row++) {
@@ -1127,7 +1178,7 @@ export default {
             return moves;
         },
         getOpponentColor(color) {
-            return {black: "white", white: "black"}[color];
+            return { black: "white", white: "black" }[color];
         },
     },
 };
