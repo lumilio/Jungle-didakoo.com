@@ -2227,6 +2227,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Elements_Den1__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Elements/Den1 */ "./resources/js/components/Game/Elements/Den1.vue");
 /* harmony import */ var _Elements_Den2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Elements/Den2 */ "./resources/js/components/Game/Elements/Den2.vue");
 /* harmony import */ var _Elements_Trap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Elements/Trap */ "./resources/js/components/Game/Elements/Trap.vue");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./constants */ "./resources/js/components/Game/constants.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -2249,57 +2250,12 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 
-var animals = {
-  mouse: {
-    name: "mouse",
-    power: 0,
-    specialPower: {
-      canSwim: true,
-      canBeat: ["elephant"]
-    }
-  },
-  cat: {
-    name: "cat",
-    power: 1
-  },
-  monkey: {
-    name: "monkey",
-    power: 2
-  },
-  dog: {
-    name: "dog",
-    power: 3
-  },
-  leopard: {
-    name: "leopard",
-    power: 4
-  },
-  tiger: {
-    power: 5,
-    name: "tiger",
-    specialPower: {
-      canJumpOverTheRiver: true,
-      jumpDirections: ["vertical"]
-    }
-  },
-  lion: {
-    name: "lion",
-    power: 6,
-    specialPower: {
-      canJumpOverTheRiver: true,
-      jumpDirections: ["vertical", "horizontal"]
-    }
-  },
-  elephant: {
-    name: "elephant",
-    power: 7,
-    vulnerability: ["mouse"]
-  }
-};
-var waterCodes = ["B6", "C6", "B5", "C5", "B4", "C4", "E6", "F6", "E5", "F5", "E4", "F4"];
-var trapCodes = ["C9", "D8", "E9", "C1", "D2", "E1"];
-var domCodes = ["D9", "D1"];
-var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5", "A4", "D4", "G4", "B3", "C3", "E3", "F3"];
+
+var animals = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAnimalPowers();
+var waterCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getWaterCodes();
+var trapCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getTrapCodes();
+var houseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getHouseCodes();
+var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getProtectHouseCodes();
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Game",
   components: {
@@ -2339,6 +2295,10 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
     }
   },
   mounted: function mounted() {
+    console.log(this.getDistanceFromHouse({
+      row: 2,
+      col: 2
+    }, 'white'));
     this.initSquares();
   },
   computed: {
@@ -2372,20 +2332,6 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
         color: ""
       },
       svg: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])(null),
-      piecepower: {
-        mouse: 0,
-        cat: 1,
-        monkey: 2,
-        dog: 3,
-        leopard: 4,
-        tiger: 5,
-        lion: 6,
-        elephant: 7
-      },
-      winPos: {
-        black: "D9",
-        white: "D1"
-      },
       isHoldingChessPiece: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])(false),
       holding: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])({
         row: null,
@@ -2419,13 +2365,13 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
           position: waterCodes.indexOf(code) < 6 ? "left" : "right"
         };
       }
-      if (trapCodes.includes(code)) {
+      if (trapCodes.all.includes(code)) {
         return {
           type: "trap",
-          position: trapCodes.indexOf(code) < 3 ? "black" : "white"
+          position: trapCodes.all.indexOf(code) < 3 ? "black" : "white"
         };
       }
-      if (domCodes.includes(code)) {
+      if (houseCodes.all.includes(code)) {
         return {
           type: "dom",
           position: code === "D9" ? "black" : "white"
@@ -2548,7 +2494,7 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
       fromSquare.content.color = null;
     },
     alertWin: function alertWin(winner) {
-      alert(winner + ' Won !');
+      alert(winner + ' Won in ' + this.turnNumber + ' moves !');
       if (confirm("want to play again")) {
         this.playAgain();
       }
@@ -2583,6 +2529,7 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
     playAgain: function playAgain() {
       this.initSquares();
       this.turn = "white";
+      this.turnNumber = 0;
       _store__WEBPACK_IMPORTED_MODULE_2__["default"].commit("RESET_MOVES_HISTORY");
     },
     isCheckmate: function isCheckmate(board) {
@@ -2755,7 +2702,6 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
         toCol = move.toCol;
       var fromSquare = boardClone[fromRow][fromCol];
       var toSquare = boardClone[toRow][toCol];
-      var animal = toSquare.content.piece;
       toSquare.content = fromSquare.content;
       fromSquare.content = {
         piece: null,
@@ -2764,21 +2710,9 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
       return boardClone;
     },
     trapIsSafe: function trapIsSafe(board, code) {
-      var trapCodes = {
-        black: ["C9", "D8", "E9"],
-        white: ["C1", "D2", "E1"]
-      };
-      var guardCodes = {
-        C1: ["C2", "B1"],
-        D2: ["C2", "D3", "E2"],
-        E1: ["E2", "F1"],
-        C9: ["B9", "C8"],
-        D8: ["C8", "D7", "E8"],
-        E9: ["E8", "F9"]
-      };
       var color = trapCodes.black.includes(code) ? "black" : "white";
       var secured = false;
-      guardCodes[code].forEach(function (val) {
+      _constants__WEBPACK_IMPORTED_MODULE_9__["trapGuards"][code].forEach(function (val) {
         var coord = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getIndexesByCode(val);
         var square = board[coord.rowIndex][coord.colIndex];
         if (square.content.piece && square.content.color === color) {
@@ -2789,7 +2723,7 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
     },
     playComputer: function playComputer() {
       var _this4 = this;
-      var move = this.calculateBestMove(_toConsumableArray(this.squares), this.turn);
+      var move = this.calculateBestMove(_toConsumableArray(this.squares), this.turn, 3);
       var fromRow = move.fromRow,
         fromCol = move.fromCol,
         toRow = move.toRow,
@@ -2797,6 +2731,7 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
       var fromSquare = this.squares[fromRow][fromCol];
       var toSquare = this.squares[toRow][toCol];
       this.makeMove(fromSquare, toSquare);
+      this.turnNumber++;
       var checkmate = this.isCheckmate(this.squares);
       if (checkmate) {
         setTimeout(function () {
@@ -2804,19 +2739,10 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
         }, 500);
       } else {
         this.turn = this.getOpponentColor(this.turn);
-        // setTimeout(() => this.playComputer(), 500)
       }
     },
     checkPossibleWin: function checkPossibleWin(board, moves, color) {
       var opponentsColor = this.getOpponentColor(color);
-      var trapCodes = {
-        black: ["C9", "D8", "E9"],
-        white: ["C1", "D2", "E1"]
-      };
-      var houseCodes = {
-        black: "D9",
-        white: "D1"
-      };
       for (var i = 0; i < moves.length; i++) {
         var move = moves[i];
         var code = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getSquareCode(move.toRow, move.toCol);
@@ -2826,35 +2752,51 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
       }
       return null;
     },
+    getDistanceFromHouse: function getDistanceFromHouse(square, color) {
+      var row = color === 'black' ? 0 : 8,
+        col = 3;
+      return Math.abs(row - square.row) + Math.abs(col - square.col);
+    },
     getBattleStrategy: function getBattleStrategy(board, color) {
-      var row = color === 'black' ? 0 : 6;
-      var col = 8;
       var defence = false;
       var attack = false;
-      for (var i = row; i < 9; i++) {
+      var defenceDistance = 20;
+      var attackDistance = 20;
+      for (var i = 0; i < 9; i++) {
         for (var j = 0; j < 7; j++) {
           var square = board[i][j];
           if (square.areaColor && square.content.piece && square.content.color !== square.areaColor) {
             if (square.areaColor === color) {
+              if (protectHouseCodes[square.areaColor].includes(square.code)) {
+                defenceDistance = Math.min(defenceDistance, this.getDistanceFromHouse(square, square.areaColor));
+              }
               defence = true;
             } else {
+              if (protectHouseCodes[square.areaColor].includes(square.code)) {
+                attackDistance = Math.min(attackDistance, this.getDistanceFromHouse(square, square.areaColor));
+              }
               attack = true;
             }
           }
         }
       }
-      if (attack && defence) {
-        return 'normal';
-      } else if (attack || defence) {
-        return attack ? 'attack' : 'defence';
-      } else return 'attack';
+      if (defenceDistance !== attackDistance) {
+        if (defenceDistance < attackDistance) {
+          attack = false;
+        } else {
+          defence = false;
+        }
+      }
+      var scenario = attack && defence ? 'normal' : attack || defence ? attack ? 'attack' : 'defence' : 'attack';
+      return {
+        scenario: scenario
+      };
     },
     calculateBestMove: function calculateBestMove(board, color) {
       var depth = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 3;
       var alpha = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : -Infinity;
       var beta = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : Infinity;
       var validMoves = this.getBoardPossibleMoves(board, color);
-      var factors = this.getBoardFactors(board, color);
       if (color === "black") {
         validMoves = validMoves.sort(function (a, b) {
           return b.fromRow - a.fromRow;
@@ -2959,10 +2901,10 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
         attack: 5
       };
       var strategy = this.getBattleStrategy(board, color);
-      if (strategy === 'attack') {
+      if (strategy.scenario === 'attack') {
         factors.guardOpponentsTrap = 10;
         factors.controlOfOpponentsTrap = 20;
-      } else if (strategy === 'defence') {
+      } else if (strategy.scenario === 'defence') {
         factors.guardOwnTrap = 20;
         factors.controlOfOwnTrap = 10;
       }
@@ -2978,23 +2920,11 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
         leopard: 10,
         tiger: 15,
         lion: 25,
-        elephant: 20
+        elephant: 30
       };
       var factors = this.getBoardFactors(squares, color);
       var ownTeamColor = color;
       var opponentTeamColor = this.getOpponentColor(color);
-      var trapCodes = {
-        black: ["C9", "D8", "E9"],
-        white: ["C1", "D2", "E1"]
-      };
-      var trapGuardCodes = {
-        black: ["B9", "C8", "D7", "E8", "F9"],
-        white: ["C2", "B1", "D3", "E2", "F1"]
-      };
-      var houseCodes = {
-        black: "D9",
-        white: "D1"
-      };
       var score = {
         white: {
           pieceValue: 0,
@@ -3003,7 +2933,8 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
           opponentsControlledSquares: 0,
           controlOfOwnTraps: 0,
           controlOfOpponentsTraps: 0,
-          winFactor: 0
+          winFactor: 0,
+          progress: 0
         },
         black: {
           pieceValue: 0,
@@ -3012,7 +2943,8 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
           opponentsControlledSquares: 0,
           controlOfOwnTraps: 0,
           controlOfOpponentsTraps: 0,
-          winFactor: 0
+          winFactor: 0,
+          progress: 0
         }
       };
       var highestAnimalRows = {
@@ -3030,10 +2962,16 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
             var piecePower = piecePowers[piece];
             score[squareColor].pieceValue += piecePower;
             score[squareColor].pieceMobility += _this5.getPossibleMoves(square.row, square.col, squares).length;
-            if (squareColor === "black" && square.row > highestAnimalRows.black) {
-              highestAnimalRows.black = square.row;
-            } else if (squareColor === "white" && 8 - square.row > highestAnimalRows.white) {
-              highestAnimalRows.white = 8 - square.row;
+            if (squareColor === "black") {
+              if (square.row > highestAnimalRows.black) {
+                highestAnimalRows.black = square.row;
+              }
+              score[squareColor].progress += square.row * 2;
+            } else {
+              if (8 - square.row > highestAnimalRows.white) {
+                highestAnimalRows.white = 8 - square.row;
+              }
+              score[squareColor].progress += (8 - square.row) * 2;
             }
             if (square.areaColor && squareColor !== square.areaColor) {
               score[squareColor].opponentsControlledSquares += factors.controlOfOpponentsSquare;
@@ -3044,16 +2982,16 @@ var nearRiverCodes = ["B7", "C7", "E7", "F7", "A6", "D6", "G6", "A5", "D5", "G5"
               score[squareColor].controlOfOpponentsTraps += factors.controlOfOpponentsTrap;
             } else if (houseCodes[opponentsColor] === square.code) {
               score[squareColor].winFactor += factors.winFactor;
-            } else if (trapGuardCodes[ownTeamColor].includes(square.code)) {
+            } else if (_constants__WEBPACK_IMPORTED_MODULE_9__["highGuardCodes"][ownTeamColor].includes(square.code)) {
               score[squareColor].controlOfOpponentsTraps += factors.guardOwnTrap;
-            } else if (trapGuardCodes[opponentsColor].includes(square.code)) {
+            } else if (_constants__WEBPACK_IMPORTED_MODULE_9__["highGuardCodes"][opponentsColor].includes(square.code)) {
               score[squareColor].controlOfOpponentsTraps += factors.guardOpponentsTrap;
             }
           }
         });
       });
-      var ownScore = score[ownTeamColor].pieceValue + score[ownTeamColor].pieceMobility + score[ownTeamColor].controlledSquares + score[ownTeamColor].opponentsControlledSquares + score[ownTeamColor].controlOfOwnTraps + score[ownTeamColor].controlOfOpponentsTraps + score[ownTeamColor].winFactor + highestAnimalRows[ownTeamColor] * factors.attack;
-      var opponentScore = score[opponentTeamColor].pieceValue + score[opponentTeamColor].pieceMobility + score[opponentTeamColor].controlledSquares + score[opponentTeamColor].opponentsControlledSquares + score[opponentTeamColor].controlOfOwnTraps + score[opponentTeamColor].controlOfOpponentsTraps + score[opponentTeamColor].winFactor + highestAnimalRows[opponentTeamColor] * factors.attack;
+      var ownScore = score[ownTeamColor].pieceValue + score[ownTeamColor].pieceMobility + score[ownTeamColor].controlledSquares + score[ownTeamColor].opponentsControlledSquares + score[ownTeamColor].controlOfOwnTraps + score[ownTeamColor].controlOfOpponentsTraps + score[ownTeamColor].winFactor + score[ownTeamColor].progress + highestAnimalRows[ownTeamColor] * factors.attack;
+      var opponentScore = score[opponentTeamColor].pieceValue + score[opponentTeamColor].pieceMobility + score[opponentTeamColor].controlledSquares + score[opponentTeamColor].opponentsControlledSquares + score[opponentTeamColor].controlOfOwnTraps + score[opponentTeamColor].controlOfOpponentsTraps + score[opponentTeamColor].winFactor + score[opponentTeamColor].progress + highestAnimalRows[opponentTeamColor] * factors.attack;
       return ownScore - opponentScore;
     },
     isWin: function isWin(board, color) {
@@ -60158,8 +60096,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./resources/js/components/Game/constants.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   getSquareCode: function getSquareCode(row, col) {
@@ -60182,15 +60119,14 @@ __webpack_require__.r(__webpack_exports__);
    * @returns {String}
    */
   getSquareColor: function getSquareColor(row, col) {
-    if (row > 2 && row < 6 && col != 0 && col != 3 && col != 6
-    // ((row == 0 || row == 8) && col >= 2 && col <= 4) ||
-    // ((row == 1 || row == 7) && col == 3)
-    ) return "dark";else return "light";
+    if (row > 2 && row < 6 && col !== 0 && col !== 3 && col !== 6) return "dark";else return "light";
   },
   /**
    * Get Square Position Coordinate (x,y)
-   * @param {Number} row square row index
-   * @param {Number} col square column index
+   * @param row
+   * @param col
+   * @param option
+   * @returns {{x: *, y: number}}
    */
   getSquarePosition: function getSquarePosition(row, col) {
     var option = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
@@ -60198,21 +60134,6 @@ __webpack_require__.r(__webpack_exports__);
       x: col * option.square.width + option.padding,
       y: row * option.square.height
     };
-  },
-  isDen: function isDen(i, j) {
-    if (i == 2 && j == 0 || i == 4 && j == 0 || i == 3 && j == 1 || i == 2 && j == 8 || i == 4 && j == 8 || i == 3 && j == 7) return true;else return false;
-  },
-  denOwner: function denOwner(i, j) {
-    if (i == 2 && j == 0 || i == 4 && j == 0 || i == 3 && j == 1) return 1;else if (i == 2 && j == 8 || i == 4 && j == 8 || i == 3 && j == 7) return 2;else return -1;
-  },
-  isTrap: function isTrap(i, j) {
-    if (i == 3 && j == 0 || i == 3 && j == 8) return true;else return false;
-  },
-  trapOwner: function trapOwner(i, j) {
-    if (i == 3 && j == 0) return 1;else if (i == 3 && j == 8) return 2;else return -1;
-  },
-  isWater: function isWater(i, j) {
-    if (j >= 3 && j <= 5 && (i == 1 || i == 2 || i == 4 || i == 5)) return true;else return false;
   },
   /**
    * Get chess piece mapped by square code.
@@ -60261,67 +60182,131 @@ __webpack_require__.r(__webpack_exports__);
       colIndex: squareColIndex
     }];
   },
-  /**
-   * Get king possible moves mapping array
-   * @param {Number} squareRowIndex The current row index number
-   * @param {Number} squareColIndex The current col index number
-   * @returns {Array}
-   */
-  getKingPossibleMoves: function getKingPossibleMoves(squareRowIndex, squareColIndex) {
-    return [{
-      targetRow: squareRowIndex + 1,
-      targetCol: squareColIndex
-    }, {
-      targetRow: squareRowIndex - 1,
-      targetCol: squareColIndex
-    }, {
-      targetRow: squareRowIndex,
-      targetCol: squareColIndex + 1
-    }, {
-      targetRow: squareRowIndex,
-      targetCol: squareColIndex - 1
-    },
-    // diagonal
-    {
-      targetRow: squareRowIndex + 1,
-      targetCol: squareColIndex + 1
-    }, {
-      targetRow: squareRowIndex + 1,
-      targetCol: squareColIndex - 1
-    }, {
-      targetRow: squareRowIndex - 1,
-      targetCol: squareColIndex + 1
-    }, {
-      targetRow: squareRowIndex - 1,
-      targetCol: squareColIndex - 1
-    }];
+  getAnimalPowers: function getAnimalPowers() {
+    return _constants__WEBPACK_IMPORTED_MODULE_0__["animals"];
   },
-  /**
-   * Convert object to chess move notations
-   * @param {Object} move
-   * @returns String
-   */
-  notationsFromObject: function notationsFromObject(move) {
-    if (!Object.keys(move).length) return "";
-    var pieceNotationMapping = {
-      mouse: "1",
-      cat: "2",
-      dog: "3",
-      monkey: "4",
-      leopard: "5",
-      tiger: "6",
-      lion: "7",
-      elephant: "8"
-    };
-    // console.log("piece notation: ", pieceNotationMapping[move.piece]);
-
-    var fromKey = move.from.toLowerCase();
-    var toKey = move.to.toLowerCase();
-    if (fromKey[0] == toKey[0]) fromKey = fromKey.substr(1, 2);
-    if (fromKey[1] == toKey[1]) fromKey = fromKey.substr(0, 1);
-    return pieceNotationMapping[move.piece] + fromKey.toLowerCase() + toKey.toLowerCase();
+  getWaterCodes: function getWaterCodes() {
+    return _constants__WEBPACK_IMPORTED_MODULE_0__["waterCodes"];
+  },
+  getTrapCodes: function getTrapCodes() {
+    return _constants__WEBPACK_IMPORTED_MODULE_0__["trapCodes"];
+  },
+  getHouseCodes: function getHouseCodes() {
+    return _constants__WEBPACK_IMPORTED_MODULE_0__["houseCodes"];
+  },
+  getHighGuardCodes: function getHighGuardCodes() {
+    return _constants__WEBPACK_IMPORTED_MODULE_0__["highGuardCodes"];
+  },
+  getLowGuardCodes: function getLowGuardCodes() {
+    return _constants__WEBPACK_IMPORTED_MODULE_0__["lowGuardCodes"];
+  },
+  getTrapGuards: function getTrapGuards() {
+    return _constants__WEBPACK_IMPORTED_MODULE_0__["trapGuards"];
+  },
+  getProtectHouseCodes: function getProtectHouseCodes() {
+    return _constants__WEBPACK_IMPORTED_MODULE_0__["protectHouseCodes"];
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/components/Game/constants.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/Game/constants.js ***!
+  \***************************************************/
+/*! exports provided: waterCodes, animals, trapCodes, lowGuardCodes, highGuardCodes, trapGuards, houseCodes, protectHouseCodes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "waterCodes", function() { return waterCodes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "animals", function() { return animals; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "trapCodes", function() { return trapCodes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lowGuardCodes", function() { return lowGuardCodes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "highGuardCodes", function() { return highGuardCodes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "trapGuards", function() { return trapGuards; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "houseCodes", function() { return houseCodes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "protectHouseCodes", function() { return protectHouseCodes; });
+var animals = {
+  mouse: {
+    name: "mouse",
+    power: 0,
+    specialPower: {
+      canSwim: true,
+      canBeat: ["elephant"]
+    }
+  },
+  cat: {
+    name: "cat",
+    power: 1
+  },
+  monkey: {
+    name: "monkey",
+    power: 2
+  },
+  dog: {
+    name: "dog",
+    power: 3
+  },
+  leopard: {
+    name: "leopard",
+    power: 4
+  },
+  tiger: {
+    power: 5,
+    name: "tiger",
+    specialPower: {
+      canJumpOverTheRiver: true,
+      jumpDirections: ["vertical"]
+    }
+  },
+  lion: {
+    name: "lion",
+    power: 6,
+    specialPower: {
+      canJumpOverTheRiver: true,
+      jumpDirections: ["vertical", "horizontal"]
+    }
+  },
+  elephant: {
+    name: "elephant",
+    power: 7,
+    vulnerability: ["mouse"]
+  }
+};
+var protectHouseCodes = {
+  black: ["A9", "B8", "C7", "E7", "F8", "G9", "B7", "F7", "D7"],
+  white: ["A1", "B2", "C3", "E3", "F2", "G1", "B3", "F3", "D3"]
+};
+var AllBoardCodes = ["A9", "B9", "C9", "D9", "E9", "F9", "G9", "A8", "B8", "C8", "D8", "E8", "F8", "G8", "A7", "B7", "C7", "D7", "E7", "F7", "G7", "A6", "!B6!", "!C6!", "D6", "!E6!", "!F6!", "G6", "A5", "!B5!", "!C5!", "D5", "!E5!", "!F5!", "G5", "A4", "!B4!", "!C4!", "D4", "!E4!", "!F4!", "G4", "A3", "B3", "C3", "D3", "E3", "F3", "G3", "A2", "B2", "C2", "D2", "E2", "F2", "G2", "A1", "B1", "C1", "D1", "E1", "F1", "G1"];
+var waterCodes = ["B6", "C6", "B5", "C5", "B4", "C4", "E6", "F6", "E5", "F5", "E4", "F4"];
+var trapCodes = {
+  black: ["C9", "D8", "E9"],
+  white: ["C1", "D2", "E1"],
+  all: ["C9", "D8", "E9", "C1", "D2", "E1"]
+};
+var trapGuards = {
+  C1: ["C2", "B1"],
+  D2: ["C2", "D3", "E2"],
+  E1: ["E2", "F1"],
+  C9: ["B9", "C8"],
+  D8: ["C8", "D7", "E8"],
+  E9: ["E8", "F9"]
+};
+var lowGuardCodes = {
+  black: ["D7", "F9", "E8"],
+  white: ["B1", "D3", "E2"]
+};
+var highGuardCodes = {
+  black: ["C8", "E8"],
+  white: ["C2", "E2"]
+};
+var houseCodes = {
+  black: "D9",
+  white: "D1",
+  all: ["D9", "D1"]
+};
+
 
 /***/ }),
 
