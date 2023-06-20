@@ -146,7 +146,7 @@
             :y="y"
             :width="width"
             :height="height"
-            viewBox="0 0 400 400"
+            :viewBox="viewPort"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >
@@ -195,6 +195,12 @@ export default {
         avatarColor: Number
     },
     computed: {
+        viewPort(){
+            if(this.name ==='mouse'){
+                return '0 0 300 400'
+            }
+            return '0 0 400 400'
+        },
         pieceTransformStyles() {
             if (this.isMoves) {
                 let className = "";

@@ -2100,6 +2100,12 @@ __webpack_require__.r(__webpack_exports__);
     avatarColor: Number
   },
   computed: {
+    viewPort: function viewPort() {
+      if (this.name === 'mouse') {
+        return '0 0 300 400';
+      }
+      return '0 0 400 400';
+    },
     pieceTransformStyles: function pieceTransformStyles() {
       if (this.isMoves) {
         var className = "";
@@ -3870,7 +3876,7 @@ var render = function render() {
       y: _vm.y,
       width: _vm.width,
       height: _vm.height,
-      viewBox: "0 0 400 400",
+      viewBox: _vm.viewPort,
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg"
     }
