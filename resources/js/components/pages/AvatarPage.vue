@@ -24,20 +24,20 @@
                     </div>
                     <div class='icons-wrapper' >
                         <div>
-                            <img style=' filter: invert(1); width:50px; ' src='images/board/animals/icon-59.png' alt=""> <!-- nft_9_cat  -->
+                            <img style='  width:50px; ' src='images/board/animals/cat_1.png' alt=""> <!-- nft_9_cat  -->
                         </div>
                         <div>
-                            <img style=' filter: invert(1); width:50px; ' src='images/board/animals/icon-36.png' alt=""> <!-- nft_10_monkey -->
+                            <img style='filter: invert(1);  width:50px; ' src='images/board/animals/monkey_2.png' alt=""> <!-- nft_10_monkey -->
 
                         </div>
                         <div>
-                            <img style=' filter: invert(1); width:50px; ' src='images/board/animals/icon-39.png' alt=""> <!-- nft_22_leo_3 -->
+                            <img style='filter: invert(1);  width:50px; ' src='images/board/animals/leopard_3.png' alt=""> <!-- nft_22_leo_3 -->
                         </div>
                         <div>
-                            <img style=' filter: invert(1); width:50px; ' src='images/board/animals/icon-38.png' alt="">   <!-- nft_22_leo_2 -->
+                            <img style='  width:50px; ' src='images/board/animals/lion_4.png' alt="">   <!-- nft_22_leo_2 -->
                         </div>
                         <div>
-                            <img style=' filter: invert(1); width:50px; ' src='images/board/animals/icon-37.png' alt=""> <!-- nft_22_leo_1 -->
+                            <img style='  width:50px; ' src='images/board/animals/tiger_6.png' alt=""> <!-- nft_22_leo_1 -->
                         </div>
                         <div>
                             <img style='width:29px; margin:0px 5px; filter: invert(0);' src='images/extra_objects/8.png' alt=""> <!-- nft_13_doodle -->

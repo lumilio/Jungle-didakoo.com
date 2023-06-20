@@ -40,7 +40,7 @@
                             [`square-${square.code}`]: true,
                         }"
                         @click="
-                            squareClick($event, squareRowIndex, squareColIndex)
+                            squareClick(squareRowIndex, squareColIndex)
                         "
                     >
                         <rect
@@ -66,15 +66,16 @@
                     </g>
                 </g>
             </g>
-            <g>
+            <g @click="squareClick(0,3)">
                 <Den1
+
                     :x="boardSettings.padding + boardSettings.square.width * 3"
                     :y="0"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
                 />
             </g>
-            <g>
+            <g @click="squareClick(8,3)">
                 <Den2
                     :x="boardSettings.padding + boardSettings.square.width * 3"
                     :y="boardSettings.square.height * 8"
@@ -82,7 +83,7 @@
                     :height="boardSettings.square.height"
                 />
             </g>
-            <g>
+            <g @click="squareClick(0,2)">
                 <Trap
                     :x="boardSettings.padding + boardSettings.square.width * 2"
                     :y="0"
@@ -90,7 +91,7 @@
                     :height="boardSettings.square.height"
                 />
             </g>
-            <g>
+            <g @click="squareClick(0,4)">
                 <Trap
                     :x="boardSettings.padding + boardSettings.square.width * 4"
                     :y="0"
@@ -98,7 +99,7 @@
                     :height="boardSettings.square.height"
                 />
             </g>
-            <g>
+            <g @click="squareClick(1,3)">
                 <Trap
                     :x="boardSettings.padding + boardSettings.square.width * 3"
                     :y="boardSettings.square.height"
@@ -106,7 +107,7 @@
                     :height="boardSettings.square.height"
                 />
             </g>
-            <g>
+            <g @click="squareClick(8,2)">
                 <Trap
                     :x="boardSettings.padding + boardSettings.square.width * 2"
                     :y="boardSettings.square.height * 8"
@@ -114,7 +115,7 @@
                     :height="boardSettings.square.height"
                 />
             </g>
-            <g>
+            <g @click="squareClick(8,4)">
                 <Trap
                     :x="boardSettings.padding + boardSettings.square.width * 4"
                     :y="boardSettings.square.height * 8"
@@ -122,7 +123,7 @@
                     :height="boardSettings.square.height"
                 />
             </g>
-            <g>
+            <g @click="squareClick(7,3)">
                 <Trap
                     :x="boardSettings.padding + boardSettings.square.width * 3"
                     :y="boardSettings.square.height * 7"
@@ -145,11 +146,12 @@
                             [`square-${square.code}`]: true,
                         }"
                         @click="
-                            squareClick($event, squareRowIndex, squareColIndex)
+                            squareClick(squareRowIndex, squareColIndex)
                         "
                     >
                         <g v-if="square.content.piece">
                             <Piece
+                                :avatar-color="avatarColors[square.content.color]"
                                 :key="square.code"
                                 :name="square.content.piece"
                                 :x="square.content.x"
@@ -230,8 +232,16 @@ export default {
         },
     },
     mounted() {
-        console.log(this.getDistanceFromHouse({row: 2, col: 2},'white'))
         this.initSquares();
+        let blackColor = 1 + Math.floor(Math.random() * 6)
+        let whiteColor = blackColor
+        while (blackColor === whiteColor){
+            whiteColor = 1 + Math.floor(Math.random() * 6)
+        }
+        this.avatarColors = {
+            black:blackColor,
+            white:whiteColor,
+        }
     },
     computed: {
         turn: {
@@ -246,6 +256,10 @@ export default {
     data() {
         return {
             viewBox: { x: 560, y: 720 },
+            avatarColors: {
+                black:1,
+                white:2
+            },
             counterStrike: 0,
             mouseLocation: ref({ x: 0, y: 0 }),
             squares: ref([]),
@@ -407,14 +421,15 @@ export default {
             console.log("this.squares", this.squares);
         },
 
-        squareClick($event, rowIndex, colIndex) {
+        squareClick( rowIndex, colIndex) {
             let square = this.squares[rowIndex][colIndex];
+            console.log(square.content.piece)
             if (!this.releasePiece(square)) {
-                if (square.content.piece && square.content.color === "white") {
+                if (square.content.piece && square.content.color === "white" && this.turn === 'white') {
                     this.showPossibleMoves(rowIndex, colIndex);
                     this.holding.row = rowIndex;
                     this.holding.col = colIndex;
-                    this.holdPiece($event, square);
+                    this.holdPiece( square);
                 }
             }
         },
@@ -509,7 +524,7 @@ export default {
         /**
          * Hold a chess piece to a square
          */
-        holdPiece($event, square) {
+        holdPiece( square) {
             if (
                 !square.content.piece ||
                 square.content.color !== this.turn ||
@@ -757,17 +772,20 @@ export default {
             let attack = false;
             let defenceDistance = 20;
             let attackDistance = 20;
+            let urgency = false;
             for(let i = 0; i < 9 ; i++){
                 for(let j = 0; j < 7 ; j++){
                     const square = board[i][j];
                     if(square.areaColor && square.content.piece && square.content.color !== square.areaColor){
                         if(square.areaColor === color){
                             if(protectHouseCodes[square.areaColor].includes(square.code)){
+                                urgency = true
                                 defenceDistance = Math.min(defenceDistance,this.getDistanceFromHouse(square,square.areaColor))
                             }
                             defence = true;
                         }else{
                             if(protectHouseCodes[square.areaColor].includes(square.code)){
+                                urgency = true
                                 attackDistance = Math.min(attackDistance,this.getDistanceFromHouse(square,square.areaColor))
                             }
                             attack = true;
@@ -785,6 +803,7 @@ export default {
             const scenario = attack && defence ? 'normal' : (attack || defence) ? attack ? 'attack' : 'defence' : 'attack';
             return {
                 scenario,
+                urgency
             }
         },
         calculateBestMove(
@@ -920,10 +939,18 @@ export default {
             if(strategy.scenario === 'attack'){
                 factors.guardOpponentsTrap = 10
                 factors.controlOfOpponentsTrap = 20
+                if(strategy.urgency){
+                    factors.guardOpponentsTrap = 100
+                    factors.controlOfOpponentsTrap = 200
+                }
 
             }else if(strategy.scenario === 'defence'){
                 factors.guardOwnTrap = 20
                 factors.controlOfOwnTrap = 10
+                if(strategy.urgency){
+                    factors.guardOwnTrap = 200
+                    factors.controlOfOpponentsTrap = 300
+                }
             }
             return factors;
         },
@@ -936,11 +963,23 @@ export default {
                 leopard: 10,
                 tiger: 15,
                 lion: 25,
-                elephant: 30,
+                elephant: 20,
             };
             const factors = this.getBoardFactors(squares,color)
             const ownTeamColor = color;
             const opponentTeamColor = this.getOpponentColor(color);
+            const trapCodes = {
+                black: ["C9", "D8", "E9"],
+                white: ["C1", "D2", "E1"],
+            };
+            const trapGuardCodes = {
+                black: ["B9", "C8", "D7", "E8", "F9"],
+                white: ["C2", "B1", "D3", "E2", "F1"],
+            };
+            const houseCodes = {
+                black: "D9",
+                white: "D1",
+            };
             const score = {
                 white: {
                     pieceValue: 0,
@@ -950,7 +989,6 @@ export default {
                     controlOfOwnTraps: 0,
                     controlOfOpponentsTraps: 0,
                     winFactor: 0,
-                    progress: 0,
                 },
                 black: {
                     pieceValue: 0,
@@ -960,7 +998,6 @@ export default {
                     controlOfOwnTraps: 0,
                     controlOfOpponentsTraps: 0,
                     winFactor: 0,
-                    progress:0,
                 },
             };
             let highestAnimalRows = {
@@ -983,18 +1020,17 @@ export default {
                                 square.col,
                                 squares
                             ).length;
-                        if(squareColor === "black"){
-                            if(square.row > highestAnimalRows.black){
-                                highestAnimalRows.black = square.row;
-                            }
-                            score[squareColor].progress += square.row * 2
-                        }else{
-                            if(8 - square.row > highestAnimalRows.white){
-                                highestAnimalRows.white = 8 - square.row;
-                            }
-                            score[squareColor].progress += (8 - square.row) * 2
+                        if (
+                            squareColor === "black" &&
+                            square.row > highestAnimalRows.black
+                        ) {
+                            highestAnimalRows.black = square.row;
+                        } else if (
+                            squareColor === "white" &&
+                            8 - square.row > highestAnimalRows.white
+                        ) {
+                            highestAnimalRows.white = 8 - square.row;
                         }
-
                         if (
                             square.areaColor &&
                             squareColor !== square.areaColor
@@ -1015,12 +1051,12 @@ export default {
                         } else if (houseCodes[opponentsColor] === square.code) {
                             score[squareColor].winFactor += factors.winFactor;
                         } else if (
-                            highGuardCodes[ownTeamColor].includes(square.code)
+                            trapGuardCodes[ownTeamColor].includes(square.code)
                         ) {
                             score[squareColor].controlOfOpponentsTraps +=
                                 factors.guardOwnTrap;
                         } else if (
-                            highGuardCodes[opponentsColor].includes(square.code)
+                            trapGuardCodes[opponentsColor].includes(square.code)
                         ) {
                             score[squareColor].controlOfOpponentsTraps +=
                                 factors.guardOpponentsTrap;
@@ -1037,7 +1073,6 @@ export default {
                 score[ownTeamColor].controlOfOwnTraps +
                 score[ownTeamColor].controlOfOpponentsTraps +
                 score[ownTeamColor].winFactor +
-                score[ownTeamColor].progress +
                 highestAnimalRows[ownTeamColor] * factors.attack;
             const opponentScore =
                 score[opponentTeamColor].pieceValue +
@@ -1047,7 +1082,6 @@ export default {
                 score[opponentTeamColor].controlOfOwnTraps +
                 score[opponentTeamColor].controlOfOpponentsTraps +
                 score[opponentTeamColor].winFactor +
-                score[opponentTeamColor].progress +
                 highestAnimalRows[opponentTeamColor] * factors.attack;
             return ownScore - opponentScore;
         },
