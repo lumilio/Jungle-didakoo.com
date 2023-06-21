@@ -45,6 +45,44 @@ const animals =  {
         vulnerability: ["mouse"],
     },
 };
+const initialState = {
+    A1: { color: "white", piece: "tiger"},
+    G1: { color: "white", piece: "lion"},
+    B2: { color: "white", piece: "cat"},
+    F2: { color: "white", piece: "dog"},
+    A3: { color: "white", piece: "elephant"},
+    C3: { color: "white", piece: "monkey"},
+    E3: { color: "white", piece: "leopard"},
+    G3: { color: "white", piece: "mouse"},
+
+    A9: { color: "black", piece: "lion" },
+    G9: { color: "black", piece: "tiger" },
+    B8: { color: "black", piece: "dog" },
+    F8: { color: "black", piece: "cat" },
+    A7: { color: "black", piece: "mouse" },
+    C7: { color: "black", piece: "leopard" },
+    E7: { color: "black", piece: "monkey" },
+    G7: { color: "black", piece: "elephant" },
+}
+let contentMapping = {
+    A1: "tiger",
+    C9: "lion",
+    B2: "cat",
+    F2: "dog",
+    A3: "elephant",
+    C3: "monkey",
+    E3: "leopard",
+    G3: "mouse",
+
+    A9: "lion",
+    G9: "tiger",
+    B8: "dog",
+    F8: "cat",
+    A7: "mouse",
+    C7: "leopard",
+    E7: "monkey",
+    G7: "elephant",
+};
 const protectHouseCodes = {
     black:["A9", "B8", "C7", "E7", "F8", "G9", "B7", "F7", "D7"],
     white:["A1", "B2", "C3", "E3", "F2", "G1", "B3", "F3", "D3"],
@@ -104,5 +142,6 @@ export {
     highGuardCodes,
     trapGuards,
     houseCodes,
-    protectHouseCodes
+    protectHouseCodes,
+    initialState
 }

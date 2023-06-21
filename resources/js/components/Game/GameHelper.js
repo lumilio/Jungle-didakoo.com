@@ -6,7 +6,8 @@ import {
     highGuardCodes,
     lowGuardCodes,
     trapGuards,
-    protectHouseCodes
+    protectHouseCodes,
+    initialState
 } from "./constants";
 export default {
     getSquareCode(row, col) {
@@ -64,7 +65,7 @@ export default {
     getSquareContent(squareCode) {
         let contentMapping = {
             A1: "tiger",
-            G1: "lion",
+            C9: "lion",
             B2: "cat",
             F2: "dog",
             A3: "elephant",
@@ -81,7 +82,10 @@ export default {
             E7: "monkey",
             G7: "elephant",
         };
-        return contentMapping[squareCode];
+        return {
+            piece:contentMapping[squareCode],
+            color: parseInt(squareCode[1]) > 6 &&  squareCode !== 'C9'? 'black' : 'white'
+        };
     },
 
     /**
@@ -123,5 +127,8 @@ export default {
     },
     getProtectHouseCodes(){
         return protectHouseCodes
+    },
+    getInitialState(){
+        return initialState
     }
 };

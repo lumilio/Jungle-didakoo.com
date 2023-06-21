@@ -31,7 +31,17 @@ class GameController extends Controller
 //                'opponent' => auth('api')->id()
 //            ]);
 //        }
-        return response()->json(['message' => 'success']);
+        return response()->json(['message' => 'success', 'game' => $game]);
+    }
+    public function setState(Request $request){
+        $id = $request->id;
+        $game = Game::where('url',$id)->first();
+        $game -> state = ['state' => $request->state, 'turn' => $request->turn];
+        $game->save();
+        return response()->json([
+            'data' => $request->all(),
+            'game' => $game
+        ]);
     }
     public function deleteGame($url){
         $game = Game::query()->where('url', $url)->first();

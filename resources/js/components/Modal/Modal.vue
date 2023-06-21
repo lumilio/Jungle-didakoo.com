@@ -88,12 +88,12 @@ export default {
             if(this.gameStarted && !this.canStart){
                 return 'CountDown Message'
             }
-            return 'You win / You Lose / Other data'
-        }
+            return this.message ? this.message :'You win / You Lose / Other data'
+        },
     },
     created() {
         if(this.gameStarted && !this.canStart){
-            let timeout = 15
+            let timeout = 0
             let interval = setInterval(() => {
                 this.timeoutIndicator = this.numberToTime(timeout)
                 if(!timeout){

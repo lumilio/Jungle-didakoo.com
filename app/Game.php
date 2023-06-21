@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Mutations\Json;
 use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
@@ -10,7 +11,12 @@ class Game extends Model
         'creator_id',
         'opponent_id',
         'url',
-        'status'
+        'status',
+        'state'
+    ];
+
+    protected $casts = [
+        'state' => Json::class,
     ];
     public function creator(){
         return $this->belongsTo(Player::class, 'creator_id');

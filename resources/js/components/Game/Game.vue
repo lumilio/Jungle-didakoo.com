@@ -206,6 +206,7 @@ export default {
         Den2,
         Trap,
     },
+    emits: ['gameover'],
     props: {
         boardSettings: {
             required: false,
@@ -220,6 +221,8 @@ export default {
                 },
             }),
         },
+        id: String,
+        game: Object,
         color: {
             type: Object,
             default: () => ({
@@ -232,6 +235,10 @@ export default {
         },
     },
     mounted() {
+        if(this.game && this.game.state){
+            this.fillState(this.game.state.state)
+            this.turn = this.game.state.turn
+        }
         this.initSquares();
         let blackColor = 1 + Math.floor(Math.random() * 6)
         let whiteColor = blackColor
@@ -241,6 +248,9 @@ export default {
         this.avatarColors = {
             black:blackColor,
             white:whiteColor,
+        }
+        if(this.turn === 'black'){
+            this.playComputer()
         }
     },
     computed: {
@@ -271,6 +281,7 @@ export default {
                 toY: 0,
                 color: "",
             },
+            state: null,
             svg: ref(null),
             isHoldingChessPiece: ref(false),
             holding: ref({ row: null, col: null }),
@@ -379,6 +390,21 @@ export default {
                 animal.specialPower?.jumpDirections?.includes(direction)
             );
         },
+        getSquareContent(code){
+            if(this.state){
+                return this.state.hasOwnProperty(code) ? this.state[code] : {}
+            }else{
+                return helper.getSquareContent(code);
+            }
+        },
+        fillState(data){
+            if(!data){
+                this.state = helper.getInitialState()
+            }
+            else{
+                this.state = data
+            }
+        },
         initSquares() {
             this.squares = [];
             for (let i = 0; i < 9; i++) {
@@ -390,7 +416,7 @@ export default {
                         this.boardSettings
                     );
                     let code = helper.getSquareCode(i, j);
-                    let squareContent = helper.getSquareContent(code);
+                    let squareContent = this.getSquareContent(code)
                     let pieceSize = {
                         width: this.boardSettings.square.width,
                         height: this.boardSettings.square.height,
@@ -408,8 +434,8 @@ export default {
                         color: helper.getSquareColor(i, j),
                         content: {
                             stepNumber: 1,
-                            color: i < 3 ? "black" : i > 5 ? "white" : null,
-                            piece: squareContent,
+                            color: squareContent.color,
+                            piece: squareContent.piece,
                             ...squarePosition,
                             ...pieceSize,
                         },
@@ -418,12 +444,17 @@ export default {
                     });
                 }
             }
+            if(!this.state){
+                this.fillState()
+            }
             console.log("this.squares", this.squares);
         },
 
         squareClick( rowIndex, colIndex) {
             let square = this.squares[rowIndex][colIndex];
-            console.log(square.content.piece)
+            // this.saveState();
+            console.log(square.content.piece, 'piece')
+            console.log(square.code, 'code')
             if (!this.releasePiece(square)) {
                 if (square.content.piece && square.content.color === "white" && this.turn === 'white') {
                     this.showPossibleMoves(rowIndex, colIndex);
@@ -440,6 +471,12 @@ export default {
                 toY: toSquare.y - fromSquare.y,
                 color: this.turn,
             };
+            this.updateState({
+                fromCode: fromSquare.code,
+                toCode: toSquare.code,
+                piece: fromSquare.content.piece,
+                color: fromSquare.content.color,
+            })
             toSquare.content.piece = fromSquare.content?.piece;
             toSquare.content.color = fromSquare.content?.color;
             toSquare.content.stepNumber++;
@@ -447,7 +484,27 @@ export default {
             fromSquare.content.piece = null;
             fromSquare.content.color = null;
         },
+        updateState(data){
+            const {fromCode, toCode, piece, color } = data
+            this.state[toCode] = {
+                color,
+                piece
+            }
+            if(this.state[fromCode]){
+                delete this.state[fromCode]
+            }
+        },
+        async saveState(){
+            const response = await axios.post('/api/set-state',{
+                state: this.state,
+                turn: this.turn,
+                id:this.id
+            })
+            console.log(response.data, 'response')
+        },
         alertWin(winner){
+            this.$emit('gameover',winner)
+            return;
             alert(winner + ' Won in ' + this.turnNumber + ' moves !')
             if(confirm("want to play again")){
                 this.playAgain()
@@ -475,6 +532,7 @@ export default {
                 },500)
             }else{
                 this.turn = this.getOpponentColor(this.turn);
+                this.saveState()
                 setTimeout(() => {
                     this.playComputer();
                 }, 500);
@@ -745,6 +803,7 @@ export default {
 
             }else{
                 this.turn = this.getOpponentColor(this.turn);
+                this.saveState()
             }
 
         },
