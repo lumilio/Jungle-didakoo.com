@@ -45,6 +45,24 @@ const animals =  {
         vulnerability: ["mouse"],
     },
 };
+const boardColors = {
+    1: '#feb442',
+    2: '#89CD9F'
+}
+const allowedColors = [
+    {
+        animalColors: [5,6],
+        boardColors: {
+            light: 1
+        }
+    },
+    {
+        animalColors: [1,2,3,4],
+        boardColors: {
+            light: 2
+        }
+    }
+]
 const initialState = {
     A1: { color: "white", piece: "tiger"},
     G1: { color: "white", piece: "lion"},
@@ -143,5 +161,7 @@ export {
     trapGuards,
     houseCodes,
     protectHouseCodes,
-    initialState
+    initialState,
+    boardColors,
+    allowedColors
 }

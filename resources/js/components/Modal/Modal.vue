@@ -93,7 +93,7 @@ export default {
     },
     created() {
         if(this.gameStarted && !this.canStart){
-            let timeout = 0
+            let timeout = 4
             let interval = setInterval(() => {
                 this.timeoutIndicator = this.numberToTime(timeout)
                 if(!timeout){

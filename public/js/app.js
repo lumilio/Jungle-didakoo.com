@@ -2266,6 +2266,8 @@ var waterCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getWaterCod
 var trapCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getTrapCodes();
 var houseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getHouseCodes();
 var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getProtectHouseCodes();
+var backgroundColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getBoardColors();
+var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllowedColors();
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Game",
   components: {
@@ -2307,44 +2309,23 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
       }
     }
   },
-  mounted: function mounted() {
-    if (this.game && this.game.state) {
-      this.fillState(this.game.state.state);
-      this.turn = this.game.state.turn;
-    }
-    this.initSquares();
-    var blackColor = 1 + Math.floor(Math.random() * 6);
-    var whiteColor = blackColor;
-    while (blackColor === whiteColor) {
-      whiteColor = 1 + Math.floor(Math.random() * 6);
-    }
-    this.avatarColors = {
-      black: blackColor,
-      white: whiteColor
-    };
-    if (this.turn === 'black') {
-      this.playComputer();
-    }
-  },
-  computed: {
-    turn: {
-      get: function get() {
-        return _store__WEBPACK_IMPORTED_MODULE_2__["default"].state.turn;
-      },
-      set: function set(val) {
-        return _store__WEBPACK_IMPORTED_MODULE_2__["default"].commit("CHANGE_TURN", val);
-      }
-    }
-  },
   data: function data() {
     return {
       viewBox: {
         x: 560,
         y: 720
       },
-      avatarColors: {
+      boardColors: {
         black: 1,
-        white: 2
+        white: 2,
+        board: 1
+      },
+      playColors: {
+        light: '#feb442',
+        dark: this.color.dark,
+        possibleMove: this.color.possibleMove,
+        possibleMoveWater: this.color.possibleMoveWater,
+        possibleStroke: this.color.possibleStroke
       },
       counterStrike: 0,
       mouseLocation: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])({
@@ -2369,7 +2350,37 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
       })
     };
   },
+  mounted: function mounted() {
+    this.setInitialConfig();
+    console.log(this.playColors, 'playcolors');
+    console.log(this.boardColors, 'boardColors');
+    if (this.turn === 'black') {
+      this.playComputer();
+    }
+  },
+  computed: {
+    turn: {
+      get: function get() {
+        return _store__WEBPACK_IMPORTED_MODULE_2__["default"].state.turn;
+      },
+      set: function set(val) {
+        return _store__WEBPACK_IMPORTED_MODULE_2__["default"].commit("CHANGE_TURN", val);
+      }
+    }
+  },
   methods: {
+    setInitialConfig: function setInitialConfig() {
+      if (this.game && this.game.state) {
+        this.fillState(this.game.state.state);
+        this.fillColors(this.game.state);
+        this.turn = this.game.state.turn;
+      } else {
+        this.fillColors();
+        this.fillState();
+        this.saveState();
+      }
+      this.initSquares();
+    },
     isRiverBlocked: function isRiverBlocked(side) {
       var rowStart = 3,
         colStart;
@@ -2467,9 +2478,9 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
     },
     getSquareContent: function getSquareContent(code) {
       if (this.state) {
-        return this.state.hasOwnProperty(code) ? this.state[code] : {};
+        return this.state;
       } else {
-        return _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getSquareContent(code);
+        return _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getInitialState();
       }
     },
     fillState: function fillState(data) {
@@ -2479,14 +2490,41 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
         this.state = data;
       }
     },
+    fillColors: function fillColors(data) {
+      var _this = this;
+      if (data) {
+        this.boardColors = data.colors;
+        this.playColors.light = backgroundColors[data.colors.board];
+      } else {
+        var blackColor = 1 + Math.floor(Math.random() * 6);
+        var whiteColor = blackColor;
+        allowedColors.forEach(function (block) {
+          if (block.animalColors.includes(blackColor) && block.animalColors.length > 1) {
+            while (blackColor === whiteColor) {
+              whiteColor = block.animalColors[Math.floor(Math.random() * block.animalColors.length)];
+            }
+            _this.boardColors = {
+              black: blackColor,
+              white: whiteColor,
+              board: block.boardColors.light
+            };
+            _this.playColors.light = backgroundColors[block.boardColors.light];
+          }
+        });
+      }
+    },
     initSquares: function initSquares() {
       this.squares = [];
+      var squareContent = this.getSquareContent();
       for (var i = 0; i < 9; i++) {
         this.squares.push([]);
         for (var j = 0; j < 7; j++) {
           var squarePosition = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getSquarePosition(i, j, this.boardSettings);
           var code = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getSquareCode(i, j);
-          var squareContent = this.getSquareContent(code);
+          console.log(code, 'code');
+          console.log(squareContent, 'squareContent');
+          var content = squareContent[code] || {};
+          console.log(content);
           var pieceSize = {
             width: this.boardSettings.square.width,
             height: this.boardSettings.square.height
@@ -2503,14 +2541,11 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
             color: _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getSquareColor(i, j),
             content: _objectSpread(_objectSpread({
               stepNumber: 1,
-              color: squareContent.color,
-              piece: squareContent.piece
+              color: content.color,
+              piece: content.piece
             }, squarePosition), pieceSize)
           }, squarePosition), this.boardSettings.square));
         }
-      }
-      if (!this.state) {
-        this.fillState();
       }
       console.log("this.squares", this.squares);
     },
@@ -2563,7 +2598,7 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
       }
     },
     saveState: function saveState() {
-      var _this = this;
+      var _this2 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var response;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -2571,9 +2606,10 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
             case 0:
               _context.next = 2;
               return axios.post('/api/set-state', {
-                state: _this.state,
-                turn: _this.turn,
-                id: _this.id
+                state: _this2.state,
+                turn: _this2.turn,
+                id: _this2.id,
+                colors: _this2.boardColors
               });
             case 2:
               response = _context.sent;
@@ -2594,7 +2630,7 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
       }
     },
     releasePiece: function releasePiece(toSquare) {
-      var _this2 = this;
+      var _this3 = this;
       if (!this.isHoldingChessPiece) return false;
       var fromSquare = this.squares[this.holding.row][this.holding.col];
       if (!toSquare.isPossibleMove) {
@@ -2610,13 +2646,13 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
       var checkmate = this.isCheckmate(this.squares);
       if (checkmate) {
         setTimeout(function () {
-          _this2.alertWin(checkmate);
+          _this3.alertWin(checkmate);
         }, 500);
       } else {
         this.turn = this.getOpponentColor(this.turn);
         this.saveState();
         setTimeout(function () {
-          _this2.playComputer();
+          _this3.playComputer();
         }, 500);
       }
       return true;
@@ -2669,7 +2705,7 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
     getPossibleMoves: function getPossibleMoves(squareRowIndex, squareColIndex) {
       var _square$content2,
         _square$content3,
-        _this3 = this;
+        _this4 = this;
       var board = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.squares;
       var square = board[squareRowIndex][squareColIndex];
       var moveTargets = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getKnightPossibleMoves(squareRowIndex, squareColIndex);
@@ -2696,9 +2732,9 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
         var rowIndex = target.rowIndex,
           colIndex = target.colIndex;
         // checking if possible move is out of game board
-        if (_this3.outOfBoard(colIndex, rowIndex)) return;
+        if (_this4.outOfBoard(colIndex, rowIndex)) return;
         var targetSquare = board[rowIndex][colIndex];
-        var targetSquareInfo = _this3.squareTypeInfo(targetSquare.code);
+        var targetSquareInfo = _this4.squareTypeInfo(targetSquare.code);
 
         // getting the animal of target square if exists
         var targetSquareAnimal = targetSquare.content.piece ? _objectSpread(_objectSpread({}, animals[targetSquare.content.piece]), {}, {
@@ -2720,10 +2756,10 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
             }
             // if our animal can jump over the river
             // and beat the animal on the other side the move is possible
-            else if (_this3.canJump(currentAnimalInfo, squareRowIndex === rowIndex ? "horizontal" : "vertical") && !_this3.isRiverBlocked(colIndex > 3 ? "right" : "left")) {
-              var jumpingTargetCoordinates = _this3.getLandingPosition(squareColIndex, squareRowIndex, colIndex, rowIndex);
-              var possibleTargetAnimal = _this3.getAnimalByCode(jumpingTargetCoordinates.x, jumpingTargetCoordinates.y);
-              if (!possibleTargetAnimal || _this3.canBeatAnimal(_objectSpread(_objectSpread({}, animals[possibleTargetAnimal.animal]), {}, {
+            else if (_this4.canJump(currentAnimalInfo, squareRowIndex === rowIndex ? "horizontal" : "vertical") && !_this4.isRiverBlocked(colIndex > 3 ? "right" : "left")) {
+              var jumpingTargetCoordinates = _this4.getLandingPosition(squareColIndex, squareRowIndex, colIndex, rowIndex);
+              var possibleTargetAnimal = _this4.getAnimalByCode(jumpingTargetCoordinates.x, jumpingTargetCoordinates.y);
+              if (!possibleTargetAnimal || _this4.canBeatAnimal(_objectSpread(_objectSpread({}, animals[possibleTargetAnimal.animal]), {}, {
                 color: possibleTargetAnimal.color
               }), currentAnimalInfo)) {
                 collectPossible(jumpingTargetCoordinates.y, jumpingTargetCoordinates.x);
@@ -2739,7 +2775,7 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
               return;
             }
             //else if there's no animal, or we can beat the animal the move is possible
-            else if (!targetSquareAnimal || _this3.canBeatAnimal(targetSquareAnimal, currentAnimalInfo)) {
+            else if (!targetSquareAnimal || _this4.canBeatAnimal(targetSquareAnimal, currentAnimalInfo)) {
               collectPossible(rowIndex, colIndex);
               return;
             }
@@ -2758,7 +2794,7 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
               collectPossible(rowIndex, colIndex);
               return;
             } else {
-              if (currentSquareType.type !== "water" && _this3.canBeatAnimal(targetSquareAnimal, currentAnimalInfo)) {
+              if (currentSquareType.type !== "water" && _this4.canBeatAnimal(targetSquareAnimal, currentAnimalInfo)) {
                 collectPossible(rowIndex, colIndex);
                 return;
               }
@@ -2768,12 +2804,12 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
       return possibleMovesResult;
     },
     showPossibleMoves: function showPossibleMoves(squareRowIndex, squareColIndex) {
-      var _this4 = this;
+      var _this5 = this;
       var moves = this.getPossibleMoves(squareRowIndex, squareColIndex);
       moves.forEach(function (move) {
-        var square = _this4.squares[move.toRow][move.toCol];
+        var square = _this5.squares[move.toRow][move.toCol];
         square.isPossibleMove = true;
-        _this4.possibleMoves.push(square);
+        _this5.possibleMoves.push(square);
       });
     },
     cloneBoard: function cloneBoard(board) {
@@ -2817,7 +2853,7 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
       return secured;
     },
     playComputer: function playComputer() {
-      var _this5 = this;
+      var _this6 = this;
       var move = this.calculateBestMove(_toConsumableArray(this.squares), this.turn, 3);
       var fromRow = move.fromRow,
         fromCol = move.fromCol,
@@ -2830,7 +2866,7 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
       var checkmate = this.isCheckmate(this.squares);
       if (checkmate) {
         setTimeout(function () {
-          _this5.alertWin(checkmate);
+          _this6.alertWin(checkmate);
         }, 500);
       } else {
         this.turn = this.getOpponentColor(this.turn);
@@ -3019,7 +3055,7 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
       return factors;
     },
     evaluateBoard: function evaluateBoard(squares, color, isMaximizingPlayer) {
-      var _this6 = this;
+      var _this7 = this;
       var piecePowers = {
         mouse: 8,
         cat: 5,
@@ -3076,10 +3112,10 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
             squareColor = _square$content4.color;
           if (piece) {
             score[squareColor].controlledSquares += factors.controlOfSquare;
-            var opponentsColor = _this6.getOpponentColor(squareColor);
+            var opponentsColor = _this7.getOpponentColor(squareColor);
             var piecePower = piecePowers[piece];
             score[squareColor].pieceValue += piecePower;
-            score[squareColor].pieceMobility += _this6.getPossibleMoves(square.row, square.col, squares).length;
+            score[squareColor].pieceMobility += _this7.getPossibleMoves(square.row, square.col, squares).length;
             if (squareColor === "black" && square.row > highestAnimalRows.black) {
               highestAnimalRows.black = square.row;
             } else if (squareColor === "white" && 8 - square.row > highestAnimalRows.white) {
@@ -3090,7 +3126,7 @@ var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getP
             }
             if (trapCodes[squareColor].includes(square.code)) {
               score[squareColor].controlOfOwnTraps += factors.controlOfOwnTrap;
-            } else if (trapCodes[opponentsColor].includes(square.code) && (!_this6.trapIsSafe(squares, square.code) || !isMaximizingPlayer)) {
+            } else if (trapCodes[opponentsColor].includes(square.code) && (!_this7.trapIsSafe(squares, square.code) || !isMaximizingPlayer)) {
               score[squareColor].controlOfOpponentsTraps += factors.controlOfOpponentsTrap;
             } else if (houseCodes[opponentsColor] === square.code) {
               score[squareColor].winFactor += factors.winFactor;
@@ -3193,7 +3229,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {
     var _this = this;
     if (this.gameStarted && !this.canStart) {
-      var timeout = 0;
+      var timeout = 4;
       var interval = setInterval(function () {
         _this.timeoutIndicator = _this.numberToTime(timeout);
         if (!timeout) {
@@ -4116,7 +4152,7 @@ var render = function render() {
           y: square.y,
           width: square.width,
           height: square.height,
-          fill: square.isPossibleMove ? _vm.possibleMoveColor(square.code) : _vm.color[square.color]
+          fill: square.isPossibleMove ? _vm.possibleMoveColor(square.code) : _vm.playColors[square.color]
         }
       }), _vm._v(" "), _c("rect", {
         directives: [{
@@ -4261,7 +4297,7 @@ var render = function render() {
       }, [square.content.piece ? _c("g", [_c("Piece", {
         key: square.code,
         attrs: {
-          "avatar-color": _vm.avatarColors[square.content.color],
+          "avatar-color": _vm.boardColors[square.content.color],
           name: square.content.piece,
           x: square.content.x,
           y: square.content.y + 10,
@@ -60188,29 +60224,29 @@ __webpack_require__.r(__webpack_exports__);
    * @param {String} squareCode
    * @returns {String} The chess piece name
    */
-  getSquareContent: function getSquareContent(squareCode) {
-    var contentMapping = {
-      A1: "tiger",
-      C9: "lion",
-      B2: "cat",
-      F2: "dog",
-      A3: "elephant",
-      C3: "monkey",
-      E3: "leopard",
-      G3: "mouse",
-      A9: "lion",
-      G9: "tiger",
-      B8: "dog",
-      F8: "cat",
-      A7: "mouse",
-      C7: "leopard",
-      E7: "monkey",
-      G7: "elephant"
-    };
-    return {
-      piece: contentMapping[squareCode],
-      color: parseInt(squareCode[1]) > 6 && squareCode !== 'C9' ? 'black' : 'white'
-    };
+  getInitialRandomState: function getInitialRandomState() {
+    var indexes = [0, 1, 2, 3, 4, 5, 6, 7];
+    var whiteIndexes = [].concat(indexes).sort(function (a, b) {
+      return 0.5 - Math.random();
+    });
+    var blackIndexes = [].concat(indexes).sort(function (a, b) {
+      return 0.5 - Math.random();
+    });
+    var animalTypes = ["tiger", "lion", "cat", "dog", "elephant", "monkey", "leopard", "mouse"];
+    var res = {};
+    var blackCodes = ["A9", "G9", "B8", "F8", "A7", "C7", "E7", "G7"];
+    var whiteCodes = ["A1", "G1", "B2", "F2", "A3", "C3", "E3", "G3"];
+    for (var i = 0; i < 8; i++) {
+      res[blackCodes[i]] = {
+        color: "black",
+        piece: animalTypes[blackIndexes[i]]
+      };
+      res[whiteCodes[i]] = {
+        color: "white",
+        piece: animalTypes[whiteIndexes[i]]
+      };
+    }
+    return res;
   },
   /**
    * Get knight possible moves indexes
@@ -60258,7 +60294,13 @@ __webpack_require__.r(__webpack_exports__);
     return _constants__WEBPACK_IMPORTED_MODULE_0__["protectHouseCodes"];
   },
   getInitialState: function getInitialState() {
-    return _constants__WEBPACK_IMPORTED_MODULE_0__["initialState"];
+    return this.getInitialRandomState();
+  },
+  getBoardColors: function getBoardColors() {
+    return _constants__WEBPACK_IMPORTED_MODULE_0__["boardColors"];
+  },
+  getAllowedColors: function getAllowedColors() {
+    return _constants__WEBPACK_IMPORTED_MODULE_0__["allowedColors"];
   }
 });
 
@@ -60268,7 +60310,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************************!*\
   !*** ./resources/js/components/Game/constants.js ***!
   \***************************************************/
-/*! exports provided: waterCodes, animals, trapCodes, lowGuardCodes, highGuardCodes, trapGuards, houseCodes, protectHouseCodes, initialState */
+/*! exports provided: waterCodes, animals, trapCodes, lowGuardCodes, highGuardCodes, trapGuards, houseCodes, protectHouseCodes, initialState, boardColors, allowedColors */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60282,6 +60324,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "houseCodes", function() { return houseCodes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "protectHouseCodes", function() { return protectHouseCodes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "boardColors", function() { return boardColors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "allowedColors", function() { return allowedColors; });
 var animals = {
   mouse: {
     name: "mouse",
@@ -60329,6 +60373,21 @@ var animals = {
     vulnerability: ["mouse"]
   }
 };
+var boardColors = {
+  1: '#feb442',
+  2: '#89CD9F'
+};
+var allowedColors = [{
+  animalColors: [5, 6],
+  boardColors: {
+    light: 1
+  }
+}, {
+  animalColors: [1, 2, 3, 4],
+  boardColors: {
+    light: 2
+  }
+}];
 var initialState = {
   A1: {
     color: "white",

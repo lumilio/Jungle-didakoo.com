@@ -36,7 +36,7 @@ class GameController extends Controller
     public function setState(Request $request){
         $id = $request->id;
         $game = Game::where('url',$id)->first();
-        $game -> state = ['state' => $request->state, 'turn' => $request->turn];
+        $game -> state = ['state' => $request->state, 'turn' => $request->turn, 'colors' => $request->colors];
         $game->save();
         return response()->json([
             'data' => $request->all(),

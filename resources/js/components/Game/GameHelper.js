@@ -7,7 +7,9 @@ import {
     lowGuardCodes,
     trapGuards,
     protectHouseCodes,
-    initialState
+    initialState,
+    boardColors,
+    allowedColors
 } from "./constants";
 export default {
     getSquareCode(row, col) {
@@ -62,30 +64,41 @@ export default {
      * @param {String} squareCode
      * @returns {String} The chess piece name
      */
-    getSquareContent(squareCode) {
-        let contentMapping = {
-            A1: "tiger",
-            C9: "lion",
-            B2: "cat",
-            F2: "dog",
-            A3: "elephant",
-            C3: "monkey",
-            E3: "leopard",
-            G3: "mouse",
+    getInitialRandomState() {
+        const indexes = [0, 1, 2, 3, 4, 5, 6, 7];
+        const whiteIndexes = [...indexes].sort((a, b) => 0.5 - Math.random());
+        const blackIndexes = [...indexes].sort((a, b) => 0.5 - Math.random());
 
-            A9: "lion",
-            G9: "tiger",
-            B8: "dog",
-            F8: "cat",
-            A7: "mouse",
-            C7: "leopard",
-            E7: "monkey",
-            G7: "elephant",
-        };
-        return {
-            piece:contentMapping[squareCode],
-            color: parseInt(squareCode[1]) > 6 &&  squareCode !== 'C9'? 'black' : 'white'
-        };
+        const animalTypes = [
+            "tiger",
+            "lion",
+            "cat",
+            "dog",
+            "elephant",
+            "monkey",
+            "leopard",
+            "mouse"
+        ]
+        const res = {}
+        let blackCodes = [
+            "A9", "G9", "B8", "F8",
+            "A7", "C7", "E7", "G7"
+        ]
+        let whiteCodes = [
+            "A1", "G1", "B2", "F2",
+            "A3", "C3", "E3", "G3"
+        ]
+        for (let i = 0; i < 8; i++){
+            res[blackCodes[i]] = {
+                color: "black",
+                piece: animalTypes[blackIndexes[i]]
+            }
+            res[whiteCodes[i]] = {
+                color: "white",
+                piece: animalTypes[whiteIndexes[i]]
+            }
+        }
+        return res;
     },
 
     /**
@@ -129,6 +142,12 @@ export default {
         return protectHouseCodes
     },
     getInitialState(){
-        return initialState
+        return this.getInitialRandomState()
+    },
+    getBoardColors(){
+        return boardColors
+    },
+    getAllowedColors(){
+        return allowedColors
     }
 };

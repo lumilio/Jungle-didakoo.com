@@ -51,7 +51,7 @@
                             :fill="
                                 square.isPossibleMove
                                     ? possibleMoveColor(square.code)
-                                    : color[square.color]
+                                    : playColors[square.color]
                             "
                         ></rect>
                         <rect
@@ -151,7 +151,7 @@
                     >
                         <g v-if="square.content.piece">
                             <Piece
-                                :avatar-color="avatarColors[square.content.color]"
+                                :avatar-color="boardColors[square.content.color]"
                                 :key="square.code"
                                 :name="square.content.piece"
                                 :x="square.content.x"
@@ -197,6 +197,8 @@ const waterCodes = helper.getWaterCodes()
 const trapCodes = helper.getTrapCodes();
 const houseCodes = helper.getHouseCodes();
 const protectHouseCodes = helper.getProtectHouseCodes();
+const backgroundColors = helper.getBoardColors();
+const allowedColors = helper.getAllowedColors();
 export default {
     name: "Game",
     components: {
@@ -234,41 +236,20 @@ export default {
             }),
         },
     },
-    mounted() {
-        if(this.game && this.game.state){
-            this.fillState(this.game.state.state)
-            this.turn = this.game.state.turn
-        }
-        this.initSquares();
-        let blackColor = 1 + Math.floor(Math.random() * 6)
-        let whiteColor = blackColor
-        while (blackColor === whiteColor){
-            whiteColor = 1 + Math.floor(Math.random() * 6)
-        }
-        this.avatarColors = {
-            black:blackColor,
-            white:whiteColor,
-        }
-        if(this.turn === 'black'){
-            this.playComputer()
-        }
-    },
-    computed: {
-        turn: {
-            get: function () {
-                return store.state.turn;
-            },
-            set: function (val) {
-                return store.commit("CHANGE_TURN", val);
-            },
-        },
-    },
     data() {
         return {
             viewBox: { x: 560, y: 720 },
-            avatarColors: {
+            boardColors: {
                 black:1,
-                white:2
+                white:2,
+                board:1
+            },
+            playColors: {
+                light: '#feb442',
+                dark: this.color.dark,
+                possibleMove: this.color.possibleMove,
+                possibleMoveWater: this.color.possibleMoveWater,
+                possibleStroke: this.color.possibleStroke,
             },
             counterStrike: 0,
             mouseLocation: ref({ x: 0, y: 0 }),
@@ -287,7 +268,37 @@ export default {
             holding: ref({ row: null, col: null }),
         };
     },
+    mounted() {
+        this.setInitialConfig()
+        console.log(this.playColors, 'playcolors')
+        console.log(this.boardColors, 'boardColors')
+        if(this.turn === 'black'){
+            this.playComputer()
+        }
+    },
+    computed: {
+        turn: {
+            get: function () {
+                return store.state.turn;
+            },
+            set: function (val) {
+                return store.commit("CHANGE_TURN", val);
+            },
+        },
+    },
     methods: {
+        setInitialConfig(){
+            if(this.game && this.game.state){
+                this.fillState(this.game.state.state)
+                this.fillColors(this.game.state)
+                this.turn = this.game.state.turn
+            }else{
+                this.fillColors()
+                this.fillState()
+                this.saveState()
+            }
+            this.initSquares();
+        },
         isRiverBlocked(side) {
             let rowStart = 3,
                 colStart;
@@ -392,9 +403,9 @@ export default {
         },
         getSquareContent(code){
             if(this.state){
-                return this.state.hasOwnProperty(code) ? this.state[code] : {}
+                return this.state
             }else{
-                return helper.getSquareContent(code);
+                return helper.getInitialState();
             }
         },
         fillState(data){
@@ -405,8 +416,33 @@ export default {
                 this.state = data
             }
         },
+        fillColors(data){
+            if (data){
+                this.boardColors = data.colors
+                this.playColors.light = backgroundColors[data.colors.board]
+            }else{
+                let blackColor = 1 + Math.floor(Math.random() * 6)
+                let whiteColor = blackColor
+                allowedColors.forEach(block => {
+                    if(block.animalColors.includes(blackColor) && block.animalColors.length > 1){
+                        while (blackColor === whiteColor){
+                            whiteColor = block.animalColors[Math.floor(Math.random() * block.animalColors.length)]
+                        }
+                        this.boardColors = {
+                            black:blackColor,
+                            white:whiteColor,
+                            board: block.boardColors.light
+                        }
+                        this.playColors.light = backgroundColors[block.boardColors.light]
+                    }
+                })
+
+            }
+
+        },
         initSquares() {
             this.squares = [];
+            const squareContent =  this.getSquareContent()
             for (let i = 0; i < 9; i++) {
                 this.squares.push([]);
                 for (let j = 0; j < 7; j++) {
@@ -416,7 +452,10 @@ export default {
                         this.boardSettings
                     );
                     let code = helper.getSquareCode(i, j);
-                    let squareContent = this.getSquareContent(code)
+                    console.log(code, 'code')
+                    console.log(squareContent, 'squareContent')
+                    let content = squareContent[code] || {}
+                    console.log(content)
                     let pieceSize = {
                         width: this.boardSettings.square.width,
                         height: this.boardSettings.square.height,
@@ -434,8 +473,8 @@ export default {
                         color: helper.getSquareColor(i, j),
                         content: {
                             stepNumber: 1,
-                            color: squareContent.color,
-                            piece: squareContent.piece,
+                            color: content.color,
+                            piece: content.piece,
                             ...squarePosition,
                             ...pieceSize,
                         },
@@ -443,9 +482,6 @@ export default {
                         ...this.boardSettings.square,
                     });
                 }
-            }
-            if(!this.state){
-                this.fillState()
             }
             console.log("this.squares", this.squares);
         },
@@ -498,7 +534,8 @@ export default {
             const response = await axios.post('/api/set-state',{
                 state: this.state,
                 turn: this.turn,
-                id:this.id
+                id:this.id,
+                colors: this.boardColors
             })
             console.log(response.data, 'response')
         },
