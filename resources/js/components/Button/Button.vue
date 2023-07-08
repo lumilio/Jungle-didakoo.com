@@ -1,5 +1,5 @@
 <template>
-    <button @click="onClick()" class="btn-button">
+    <button @click="onClick" class="btn-button">
         <div class="btn-content">
             <span v-if="title" class="btn-label">{{ title }}</span>
             <img v-if="image" class="btn-image" alt="" :src="image">
@@ -23,7 +23,7 @@
           }
       },
       methods: {
-          onClick(e) {
+          onClick() {
               this.$emit("handelClick")
           }
       }

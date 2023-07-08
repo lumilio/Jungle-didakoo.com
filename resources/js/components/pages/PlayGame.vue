@@ -132,7 +132,7 @@
             :delay="canStart"
             :message="message"
             :readyToStart="readyToStart"
-            v-on:closeModal="closeModal()"
+            :buttons="buttons"
             v-on:handelReadyToStart="handelReadyToStart()"
             v-on:quitGame="quitGame()"
         />
@@ -153,9 +153,23 @@ export default {
             readyToStart: false,
             game: null,
             message: '',
+            buttons: []
         };
     },
-    created() {},
+    created() {
+        this.buttons = [
+            {
+                title: 'REASUME',
+                image: '../../../images/board/tree.png',
+                onclick: this.closeModal
+            },
+            {
+                title: 'QUIT',
+                image: '../../../images/board/animals/icon-17.png',
+                onclick: this.quitGame
+            }
+        ];
+    },
     components: {
         Game,
         Modal,
@@ -184,6 +198,13 @@ export default {
         },
         gameOver(color) {
             let message = color === 'white' ? 'You Won' : 'You Lost'
+            this.buttons = [
+                {
+                    title: 'QUIT',
+                    image: '../../../images/board/animals/icon-17.png',
+                    onclick: this.quitGame
+                }
+            ];
             this.openModal(message)
         },
         closeModal() {
@@ -191,6 +212,7 @@ export default {
         },
         handelReadyToStart() {
             this.readyToStart = true;
+            this.open = false;
         },
         async quitGame() {
             try {

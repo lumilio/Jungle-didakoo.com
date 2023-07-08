@@ -1979,7 +1979,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    onClick: function onClick(e) {
+    onClick: function onClick() {
       this.$emit("handelClick");
     }
   }
@@ -3207,6 +3207,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     readyToStart: {
       type: Boolean,
       "default": false
+    },
+    startNewGame: {
+      type: Boolean,
+      "default": false
+    },
+    buttons: {
+      type: Array,
+      "default": []
     }
   },
   components: {
@@ -3223,7 +3231,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (this.gameStarted && !this.canStart) {
         return 'CountDown Message';
       }
-      return this.message ? this.message : 'You win / You Lose / Other data';
+      return this.message ? this.message : 'YOU WIN / YOU LOSE / Other data';
     }
   },
   created: function created() {
@@ -3374,6 +3382,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   components: {
     Modal: _Modal_Modal__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  data: function data() {
+    return {
+      buttons: [{
+        title: 'QUICK GAME',
+        icon: 'fa-solid fa-bolt icons',
+        onclick: this.createGame
+      }, {
+        title: 'PRIVATE GAME',
+        image: '../../../images/extra_objects/iconaplay1.png',
+        onclick: this.createGame
+      }, {
+        title: 'QUIT',
+        image: '../../../images/board/animals/icon-17.png',
+        onclick: this.quitGame
+      }]
+    };
+  },
   methods: {
     quitGame: function quitGame() {
       this.$router.push('/rank');
@@ -3385,17 +3410,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
+              _context.prev = 0;
               _this.url = window.location.host;
-              _context.next = 3;
+              _context.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://' + _this.url + '/api/make-game');
-            case 3:
+            case 4:
               response = _context.sent;
               _this.$router.push("/room/".concat(response.data.url));
-            case 5:
+              _context.next = 11;
+              break;
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](0);
+              console.log(_context.t0, '11');
+            case 11:
             case "end":
               return _context.stop();
           }
-        }, _callee);
+        }, _callee, null, [[0, 8]]);
       }))();
     }
   }
@@ -3661,10 +3693,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       isStarted: true,
       readyToStart: false,
       game: null,
-      message: ''
+      message: '',
+      buttons: []
     };
   },
-  created: function created() {},
+  created: function created() {
+    this.buttons = [{
+      title: 'REASUME',
+      image: '../../../images/board/tree.png',
+      onclick: this.closeModal
+    }, {
+      title: 'QUIT',
+      image: '../../../images/board/animals/icon-17.png',
+      onclick: this.quitGame
+    }];
+  },
   components: {
     Game: _Game_Game__WEBPACK_IMPORTED_MODULE_0__["default"],
     Modal: _Modal_Modal__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -3710,6 +3753,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     gameOver: function gameOver(color) {
       var message = color === 'white' ? 'You Won' : 'You Lost';
+      this.buttons = [{
+        title: 'QUIT',
+        image: '../../../images/board/animals/icon-17.png',
+        onclick: this.quitGame
+      }];
       this.openModal(message);
     },
     closeModal: function closeModal() {
@@ -3717,6 +3765,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     handelReadyToStart: function handelReadyToStart() {
       this.readyToStart = true;
+      this.open = false;
     },
     quitGame: function quitGame() {
       var _this2 = this;
@@ -3871,9 +3920,7 @@ var render = function render() {
   return _c("button", {
     staticClass: "btn-button",
     on: {
-      click: function click($event) {
-        return _vm.onClick();
-      }
+      click: _vm.onClick
     }
   }, [_c("div", {
     staticClass: "btn-content"
@@ -4182,7 +4229,8 @@ var render = function render() {
       x: _vm.boardSettings.padding + _vm.boardSettings.square.width * 3,
       y: 0,
       width: _vm.boardSettings.square.width,
-      height: _vm.boardSettings.square.height
+      height: _vm.boardSettings.square.height,
+      color: this.playColors.light
     }
   })], 1), _vm._v(" "), _c("g", {
     on: {
@@ -4195,7 +4243,8 @@ var render = function render() {
       x: _vm.boardSettings.padding + _vm.boardSettings.square.width * 3,
       y: _vm.boardSettings.square.height * 8,
       width: _vm.boardSettings.square.width,
-      height: _vm.boardSettings.square.height
+      height: _vm.boardSettings.square.height,
+      color: this.playColors.dark
     }
   })], 1), _vm._v(" "), _c("g", {
     on: {
@@ -4342,62 +4391,32 @@ var render = function render() {
     staticClass: "allineatore2"
   }, [_c("div", {
     staticClass: "modal d-flex main_modal align-items-center",
-    "class": _vm.readyToStart ? "modal-ingame" : "modal-outgame"
+    "class": _vm.readyToStart && !_vm.message ? "modal-ingame" : "modal-outgame"
   }, [_c("div", {
     staticClass: "modal-content container-sm d-flex flex-column align-items-center"
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "console-screen d-flex justify-content-center align-items-center"
   }, [_c("p", {
     staticClass: "main_message"
-  }, [_vm._v("\n                    " + _vm._s(_vm.mainMessage) + "\n                    "), !_vm.canStart ? _c("span", [_vm._v("Your Game Will Start in " + _vm._s(_vm.timeoutIndicator))]) : _vm._e()])]), _vm._v(" "), !_vm.gameStarted ? [_c("div", {
+  }, [_vm._v("\n                    " + _vm._s(_vm.mainMessage) + "\n                    "), !_vm.canStart ? _c("span", [_vm._v("Your Game Will Start in " + _vm._s(_vm.timeoutIndicator))]) : _vm._e()])]), _vm._v(" "), this.gameStarted && this.canStart || _vm.startNewGame ? [_c("div", {
     staticClass: "d-flex flex-wrap flex-column justify-content-center"
-  }, [_c("div", {
-    staticClass: "mb-3"
-  }, [_c("Button", {
-    attrs: {
-      title: "QUICK GAME",
-      icons: "fa-solid fa-bolt icons"
-    },
-    on: {
-      handelClick: function handelClick($event) {
-        return _vm.createGame();
+  }, _vm._l(_vm.buttons, function (item, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "mb-3"
+    }, [_c("Button", {
+      attrs: {
+        title: item.title,
+        icons: item.icon,
+        image: item.image
+      },
+      on: {
+        handelClick: function handelClick() {
+          return item.onclick();
+        }
       }
-    }
-  })], 1), _vm._v(" "), _c("div", {
-    staticClass: "mb-3"
-  }, [_c("Button", {
-    attrs: {
-      title: "PRIVATE GAME",
-      image: "../../../images/extra_objects/iconaplay1.png"
-    },
-    on: {
-      handelClick: function handelClick($event) {
-        return _vm.createGame();
-      }
-    }
-  })], 1)])] : _vm._e(), _vm._v(" "), _c("div", {
-    staticClass: "gameStarted-wrapper"
-  }, [_vm.gameStarted ? [_vm.canStart ? _c("Button", {
-    attrs: {
-      title: "REASUME",
-      image: "../../../images/board/tree.png"
-    },
-    on: {
-      handelClick: function handelClick($event) {
-        return _vm.closeModal();
-      }
-    }
-  }) : _vm._e()] : _vm._e(), _vm._v(" "), _c("div", [_c("Button", {
-    attrs: {
-      title: "QUIT",
-      image: "../../../images/board/animals/icon-17.png"
-    },
-    on: {
-      handelClick: function handelClick($event) {
-        return _vm.quitGame();
-      }
-    }
-  })], 1)], 2)], 2)])]);
+    })], 1);
+  }), 0)] : _vm._e()], 2)])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -5853,10 +5872,9 @@ var render = function render() {
   }, [_c("Modal", {
     attrs: {
       open: true,
-      gameStarted: false
-    },
-    on: {
-      quitGame: _vm.quitGame
+      gameStarted: false,
+      buttons: _vm.buttons,
+      startNewGame: true
     }
   })], 1);
 };
@@ -6216,12 +6234,10 @@ var render = function render() {
       gameStarted: _vm.isStarted,
       delay: _vm.canStart,
       message: _vm.message,
-      readyToStart: _vm.readyToStart
+      readyToStart: _vm.readyToStart,
+      buttons: _vm.buttons
     },
     on: {
-      closeModal: function closeModal($event) {
-        return _vm.closeModal();
-      },
       handelReadyToStart: function handelReadyToStart($event) {
         return _vm.handelReadyToStart();
       },
@@ -11033,7 +11049,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\nsvg image {\n    width: 100%;\n}\n.animation-to-left {\n    animation: moveToLeft 0.3s ease-in;\n}\n.animation-to-left-2x {\n    animation: moveToLeft2X 0.5s ease-in;\n}\n.animation-to-right {\n    animation: moveToRight 0.3s ease-in;\n}\n.animation-to-right-2x {\n    animation: moveToRight2X 0.5s ease-in;\n}\n.animation-to-top {\n    animation: moveToTop 0.3s ease-in;\n}\n.animation-to-top-2x {\n    animation: moveToTop2X 0.5s ease-in;\n}\n.animation-to-bottom {\n    animation: moveToBottom 0.3s ease-in;\n}\n.animation-to-bottom-2x {\n    animation: moveToBottom2X 0.5s ease-in;\n}\n@keyframes moveToLeft {\nfrom {\n        transform: translate(80px, 0);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToLeft2X {\nfrom {\n        transform: translate(240px, 0);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToRight {\nfrom {\n        transform: translate(-80px, 0);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToRight2X {\nfrom {\n        transform: translate(-240px, 0);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToTop {\nfrom {\n        transform: translate(0, 80px);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToTop2X {\nfrom {\n        transform: translate(0, 320px);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToBottom {\nfrom {\n        transform: translate(0, -80px);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToBottom2X {\nfrom {\n        transform: translate(0, -320px);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n", ""]);
+exports.push([module.i, "\nsvg image {\r\n    width: 100%;\n}\n.animation-to-left {\r\n    animation: moveToLeft 0.3s ease-in;\n}\n.animation-to-left-2x {\r\n    animation: moveToLeft2X 0.5s ease-in;\n}\n.animation-to-right {\r\n    animation: moveToRight 0.3s ease-in;\n}\n.animation-to-right-2x {\r\n    animation: moveToRight2X 0.5s ease-in;\n}\n.animation-to-top {\r\n    animation: moveToTop 0.3s ease-in;\n}\n.animation-to-top-2x {\r\n    animation: moveToTop2X 0.5s ease-in;\n}\n.animation-to-bottom {\r\n    animation: moveToBottom 0.3s ease-in;\n}\n.animation-to-bottom-2x {\r\n    animation: moveToBottom2X 0.5s ease-in;\n}\n@keyframes moveToLeft {\nfrom {\r\n        transform: translate(80px, 0);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToLeft2X {\nfrom {\r\n        transform: translate(240px, 0);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToRight {\nfrom {\r\n        transform: translate(-80px, 0);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToRight2X {\nfrom {\r\n        transform: translate(-240px, 0);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToTop {\nfrom {\r\n        transform: translate(0, 80px);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToTop2X {\nfrom {\r\n        transform: translate(0, 320px);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToBottom {\nfrom {\r\n        transform: translate(0, -80px);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToBottom2X {\nfrom {\r\n        transform: translate(0, -320px);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\r\n", ""]);
 
 // exports
 
@@ -61481,8 +61497,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\OpenServer\domains\YOGURT\didakoo_0.4.6.game\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\OpenServer\domains\YOGURT\didakoo_0.4.6.game\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Armen\Desktop\projects\yogurt\didakoo_0.4.6.game\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Armen\Desktop\projects\yogurt\didakoo_0.4.6.game\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

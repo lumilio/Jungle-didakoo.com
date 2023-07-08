@@ -1,7 +1,7 @@
 <template>
     <div v-show="open" class="allineatore2">
         <!----------------- MODALS UTILITY ------------------->
-        <div class="modal d-flex main_modal align-items-center" :class="readyToStart ? 'modal-ingame':'modal-outgame'">
+        <div class="modal d-flex main_modal align-items-center" :class="readyToStart && !message ? 'modal-ingame' : 'modal-outgame'">
             <!-- Modal content -->
             <div class="modal-content container-sm d-flex flex-column align-items-center">
                 <div class="d-flex container-sm align-items-center justify-content-between flex-row">
@@ -14,43 +14,18 @@
                         <span v-if="!canStart">Your Game Will Start in {{timeoutIndicator}}</span>
                     </p>
                 </div>
-                <template v-if="!gameStarted">
+                <template v-if="(this.gameStarted && this.canStart) || startNewGame">
                     <div class="d-flex flex-wrap flex-column justify-content-center">
-                        <div class="mb-3">
+                        <div class="mb-3" v-for="(item, index) in buttons" :key="index">
                             <Button
-                                v-on:handelClick="createGame()"
-                                title='QUICK GAME'
-                                icons="fa-solid fa-bolt icons"
+                                v-on:handelClick="() => item.onclick()"
+                                :title="item.title"
+                                :icons="item.icon"
+                                :image="item.image"
                             />
                         </div>
-                        <div class="mb-3">
-                            <Button
-                                v-on:handelClick="createGame()"
-                                title='PRIVATE GAME'
-                                image="../../../images/extra_objects/iconaplay1.png"
-                            />
-                        </div>
-
                     </div>
                 </template>
-                <div class="gameStarted-wrapper">
-                    <template v-if="gameStarted">
-                        <Button
-                            v-if="canStart"
-                            v-on:handelClick="closeModal()"
-                            title='REASUME'
-                            image="../../../images/board/tree.png"
-                        />
-                    </template>
-                    <div>
-                        <Button
-                            v-on:handelClick="quitGame()"
-                            title='QUIT'
-                            image="../../../images/board/animals/icon-17.png"
-                        />
-                    </div>
-
-                </div>
             </div>
         </div>
     </div>
@@ -59,6 +34,7 @@
 <script>
 import axios from "axios";
 import Button from "../Button/Button.vue";
+
 export default {
     props: {
         open: Boolean,
@@ -75,6 +51,14 @@ export default {
             type: Boolean,
             default: false
         },
+        startNewGame: {
+            type: Boolean,
+            default: false
+        },
+        buttons: {
+            type: Array,
+            default: [],
+        }
     },
     components: { Button },
     data () {
@@ -88,7 +72,7 @@ export default {
             if(this.gameStarted && !this.canStart){
                 return 'CountDown Message'
             }
-            return this.message ? this.message :'You win / You Lose / Other data'
+            return this.message ? this.message :'YOU WIN / YOU LOSE / Other data'
         },
     },
     created() {

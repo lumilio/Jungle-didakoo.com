@@ -73,6 +73,7 @@
                     :y="0"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
+                    :color="this.playColors.light"
                 />
             </g>
             <g @click="squareClick(8,3)">
@@ -81,6 +82,7 @@
                     :y="boardSettings.square.height * 8"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
+                    :color="this.playColors.dark"
                 />
             </g>
             <g @click="squareClick(0,2)">
