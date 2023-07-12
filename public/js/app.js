@@ -2516,7 +2516,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
           }
         });
       }
-      console.log(this.playColors, 'this.playColors');
+      // console.log(this.playColors,'this.playColors')
     },
     initSquares: function initSquares() {
       this.squares = [];
@@ -2618,8 +2618,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
               });
             case 2:
               response = _context.sent;
-              console.log(response.data, 'response-----------,');
-            case 4:
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -2629,6 +2628,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
     alertWin: function alertWin(winner) {
       localStorage.removeItem('canStart');
       this.$emit('gameover', winner);
+      this.playAgain();
       return;
       alert(winner + ' Won in ' + this.turnNumber + ' moves !');
       if (confirm("want to play again")) {
@@ -3428,7 +3428,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 8:
               _context.prev = 8;
               _context.t0 = _context["catch"](0);
-              console.log(_context.t0, '11');
+              console.log(_context.t0);
             case 11:
             case "end":
               return _context.stop();

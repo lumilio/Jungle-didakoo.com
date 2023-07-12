@@ -191,7 +191,6 @@ import Den2 from "./Elements/Den2";
 import Trap from "./Elements/Trap";
 import {trapGuards} from "./constants";
 
-
 const animals = helper.getAnimalPowers();
 const waterCodes = helper.getWaterCodes()
 const trapCodes = helper.getTrapCodes();
@@ -438,7 +437,7 @@ export default {
                 })
 
             }
-            console.log(this.playColors,'this.playColors')
+            // console.log(this.playColors,'this.playColors')
         },
         initSquares() {
             this.squares = [];
@@ -537,11 +536,12 @@ export default {
                 id:this.id,
                 colors: this.boardColors
             })
-            console.log(response.data, 'response-----------,')
+            // console.log(response.data, 'response-----------,')
         },
         alertWin(winner){
             localStorage.removeItem('canStart')
             this.$emit('gameover',winner)
+            this.playAgain()
             return;
             alert(winner + ' Won in ' + this.turnNumber + ' moves !')
             if(confirm("want to play again")){

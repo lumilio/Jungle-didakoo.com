@@ -45,7 +45,7 @@
                     const response = await axios.get('http://'+this.url+'/api/make-game');
                     this.$router.push(`/room/${response.data.url}`);
                 }catch (e) {
-                    console.log(e,'11')
+                    console.log(e)
                 }
 
             }
