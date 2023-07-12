@@ -2013,6 +2013,9 @@ __webpack_require__.r(__webpack_exports__);
     height: {
       type: Number,
       required: true
+    },
+    color: {
+      type: Number
     }
   }
 });
@@ -2045,6 +2048,9 @@ __webpack_require__.r(__webpack_exports__);
     height: {
       type: Number,
       required: true
+    },
+    color: {
+      type: Number
     }
   }
 });
@@ -2224,17 +2230,16 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store */ "./resources/js/store/index.js");
-/* harmony import */ var _GameHelper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GameHelper */ "./resources/js/components/Game/GameHelper.js");
-/* harmony import */ var _Elements_Piece__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Elements/Piece */ "./resources/js/components/Game/Elements/Piece.vue");
-/* harmony import */ var _Elements_River__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Elements/River */ "./resources/js/components/Game/Elements/River.vue");
-/* harmony import */ var _Elements_Den1__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Elements/Den1 */ "./resources/js/components/Game/Elements/Den1.vue");
-/* harmony import */ var _Elements_Den2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Elements/Den2 */ "./resources/js/components/Game/Elements/Den2.vue");
-/* harmony import */ var _Elements_Trap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Elements/Trap */ "./resources/js/components/Game/Elements/Trap.vue");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./constants */ "./resources/js/components/Game/constants.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../store */ "./resources/js/store/index.js");
+/* harmony import */ var _GameHelper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./GameHelper */ "./resources/js/components/Game/GameHelper.js");
+/* harmony import */ var _Elements_Piece__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Elements/Piece */ "./resources/js/components/Game/Elements/Piece.vue");
+/* harmony import */ var _Elements_River__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Elements/River */ "./resources/js/components/Game/Elements/River.vue");
+/* harmony import */ var _Elements_Den1__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Elements/Den1 */ "./resources/js/components/Game/Elements/Den1.vue");
+/* harmony import */ var _Elements_Den2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Elements/Den2 */ "./resources/js/components/Game/Elements/Den2.vue");
+/* harmony import */ var _Elements_Trap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Elements/Trap */ "./resources/js/components/Game/Elements/Trap.vue");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./constants */ "./resources/js/components/Game/constants.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -2260,22 +2265,21 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 
-
-var animals = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAnimalPowers();
-var waterCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getWaterCodes();
-var trapCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getTrapCodes();
-var houseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getHouseCodes();
-var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getProtectHouseCodes();
-var backgroundColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getBoardColors();
-var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllowedColors();
+var animals = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAnimalPowers();
+var waterCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getWaterCodes();
+var trapCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getTrapCodes();
+var houseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getHouseCodes();
+var protectHouseCodes = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getProtectHouseCodes();
+var backgroundColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getBoardColors();
+var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllowedColors();
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Game",
   components: {
-    Piece: _Elements_Piece__WEBPACK_IMPORTED_MODULE_4__["default"],
-    River: _Elements_River__WEBPACK_IMPORTED_MODULE_5__["default"],
-    Den1: _Elements_Den1__WEBPACK_IMPORTED_MODULE_6__["default"],
-    Den2: _Elements_Den2__WEBPACK_IMPORTED_MODULE_7__["default"],
-    Trap: _Elements_Trap__WEBPACK_IMPORTED_MODULE_8__["default"]
+    Piece: _Elements_Piece__WEBPACK_IMPORTED_MODULE_3__["default"],
+    River: _Elements_River__WEBPACK_IMPORTED_MODULE_4__["default"],
+    Den1: _Elements_Den1__WEBPACK_IMPORTED_MODULE_5__["default"],
+    Den2: _Elements_Den2__WEBPACK_IMPORTED_MODULE_6__["default"],
+    Trap: _Elements_Trap__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
   emits: ['gameover'],
   props: {
@@ -2328,13 +2332,13 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
         possibleStroke: this.color.possibleStroke
       },
       counterStrike: 0,
-      mouseLocation: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])({
+      mouseLocation: Object(vue__WEBPACK_IMPORTED_MODULE_0__["ref"])({
         x: 0,
         y: 0
       }),
-      squares: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])([]),
-      turnNumber: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])(1),
-      possibleMoves: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])([]),
+      squares: Object(vue__WEBPACK_IMPORTED_MODULE_0__["ref"])([]),
+      turnNumber: Object(vue__WEBPACK_IMPORTED_MODULE_0__["ref"])(1),
+      possibleMoves: Object(vue__WEBPACK_IMPORTED_MODULE_0__["ref"])([]),
       gamePieceMoveCoords: {
         piece: null,
         toX: 0,
@@ -2342,9 +2346,9 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
         color: ""
       },
       state: null,
-      svg: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])(null),
-      isHoldingChessPiece: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])(false),
-      holding: Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])({
+      svg: Object(vue__WEBPACK_IMPORTED_MODULE_0__["ref"])(null),
+      isHoldingChessPiece: Object(vue__WEBPACK_IMPORTED_MODULE_0__["ref"])(false),
+      holding: Object(vue__WEBPACK_IMPORTED_MODULE_0__["ref"])({
         row: null,
         col: null
       })
@@ -2352,8 +2356,8 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
   },
   mounted: function mounted() {
     this.setInitialConfig();
-    console.log(this.playColors, 'playcolors');
-    console.log(this.boardColors, 'boardColors');
+    // console.log(this.playColors, 'playcolors')
+    // console.log(this.boardColors, 'boardColors')
     if (this.turn === 'black') {
       this.playComputer();
     }
@@ -2361,10 +2365,10 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
   computed: {
     turn: {
       get: function get() {
-        return _store__WEBPACK_IMPORTED_MODULE_2__["default"].state.turn;
+        return _store__WEBPACK_IMPORTED_MODULE_1__["default"].state.turn;
       },
       set: function set(val) {
-        return _store__WEBPACK_IMPORTED_MODULE_2__["default"].commit("CHANGE_TURN", val);
+        return _store__WEBPACK_IMPORTED_MODULE_1__["default"].commit("CHANGE_TURN", val);
       }
     }
   },
@@ -2480,12 +2484,12 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
       if (this.state) {
         return this.state;
       } else {
-        return _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getInitialState();
+        return _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getInitialState();
       }
     },
     fillState: function fillState(data) {
       if (!data) {
-        this.state = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getInitialState();
+        this.state = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getInitialState();
       } else {
         this.state = data;
       }
@@ -2512,6 +2516,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
           }
         });
       }
+      console.log(this.playColors, 'this.playColors');
     },
     initSquares: function initSquares() {
       this.squares = [];
@@ -2519,12 +2524,12 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
       for (var i = 0; i < 9; i++) {
         this.squares.push([]);
         for (var j = 0; j < 7; j++) {
-          var squarePosition = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getSquarePosition(i, j, this.boardSettings);
-          var code = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getSquareCode(i, j);
-          console.log(code, 'code');
-          console.log(squareContent, 'squareContent');
+          var squarePosition = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getSquarePosition(i, j, this.boardSettings);
+          var code = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getSquareCode(i, j);
+          // console.log(code, 'code')
+          // console.log(squareContent, 'squareContent')
           var content = squareContent[code] || {};
-          console.log(content);
+          // console.log(content)
           var pieceSize = {
             width: this.boardSettings.square.width,
             height: this.boardSettings.square.height
@@ -2538,7 +2543,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
             col: j,
             visible: true,
             areaColor: i < 3 ? "black" : i > 5 ? "white" : null,
-            color: _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getSquareColor(i, j),
+            color: _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getSquareColor(i, j),
             content: _objectSpread(_objectSpread({
               stepNumber: 1,
               color: content.color,
@@ -2547,13 +2552,13 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
           }, squarePosition), this.boardSettings.square));
         }
       }
-      console.log("this.squares", this.squares);
+      // console.log("this.squares", this.squares);
     },
     squareClick: function squareClick(rowIndex, colIndex) {
       var square = this.squares[rowIndex][colIndex];
       // this.saveState();
-      console.log(square.content.piece, 'piece');
-      console.log(square.code, 'code');
+      // console.log(square.content.piece, 'piece')
+      // console.log(square.code, 'code')
       if (!this.releasePiece(square)) {
         if (square.content.piece && square.content.color === "white" && this.turn === 'white') {
           this.showPossibleMoves(rowIndex, colIndex);
@@ -2613,7 +2618,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
               });
             case 2:
               response = _context.sent;
-              console.log(response.data, 'response');
+              console.log(response.data, 'response-----------,');
             case 4:
             case "end":
               return _context.stop();
@@ -2622,6 +2627,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
       }))();
     },
     alertWin: function alertWin(winner) {
+      localStorage.removeItem('canStart');
       this.$emit('gameover', winner);
       return;
       alert(winner + ' Won in ' + this.turnNumber + ' moves !');
@@ -2661,7 +2667,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
       this.initSquares();
       this.turn = "white";
       this.turnNumber = 0;
-      _store__WEBPACK_IMPORTED_MODULE_2__["default"].commit("RESET_MOVES_HISTORY");
+      _store__WEBPACK_IMPORTED_MODULE_1__["default"].commit("RESET_MOVES_HISTORY");
     },
     isCheckmate: function isCheckmate(board) {
       if (board[0][3].content.piece || board[8][3].content.piece) {
@@ -2692,7 +2698,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
       for (var i = 0; i < this.possibleMoves.length; i++) {
         this.possibleMoves[i].isPossibleMove = false;
       }
-      this.possibleMoves = Object(vue__WEBPACK_IMPORTED_MODULE_1__["ref"])([]);
+      this.possibleMoves = Object(vue__WEBPACK_IMPORTED_MODULE_0__["ref"])([]);
     },
     /**
      * Hold a chess piece to a square
@@ -2708,7 +2714,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
         _this4 = this;
       var board = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.squares;
       var square = board[squareRowIndex][squareColIndex];
-      var moveTargets = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getKnightPossibleMoves(squareRowIndex, squareColIndex);
+      var moveTargets = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getKnightPossibleMoves(squareRowIndex, squareColIndex);
       var currentAnimalInfo = _objectSpread(_objectSpread({}, animals[square.content.piece]), {}, {
         color: (_square$content2 = square.content) === null || _square$content2 === void 0 ? void 0 : _square$content2.color
       });
@@ -2843,8 +2849,8 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
     trapIsSafe: function trapIsSafe(board, code) {
       var color = trapCodes.black.includes(code) ? "black" : "white";
       var secured = false;
-      _constants__WEBPACK_IMPORTED_MODULE_9__["trapGuards"][code].forEach(function (val) {
-        var coord = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getIndexesByCode(val);
+      _constants__WEBPACK_IMPORTED_MODULE_8__["trapGuards"][code].forEach(function (val) {
+        var coord = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getIndexesByCode(val);
         var square = board[coord.rowIndex][coord.colIndex];
         if (square.content.piece && square.content.color === color) {
           secured = true;
@@ -2877,7 +2883,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getAllow
       var opponentsColor = this.getOpponentColor(color);
       for (var i = 0; i < moves.length; i++) {
         var move = moves[i];
-        var code = _GameHelper__WEBPACK_IMPORTED_MODULE_3__["default"].getSquareCode(move.toRow, move.toCol);
+        var code = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getSquareCode(move.toRow, move.toCol);
         if (trapCodes[opponentsColor].includes(code) && !this.trapIsSafe(board, code) || houseCodes[opponentsColor] === code) {
           return move;
         }
@@ -3688,8 +3694,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       isLoading: true,
-      open: true,
-      canStart: false,
+      open: !localStorage.getItem('canStart'),
+      canStart: !!localStorage.getItem('canStart'),
       isStarted: true,
       readyToStart: false,
       game: null,
@@ -3765,6 +3771,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     handelReadyToStart: function handelReadyToStart() {
       this.readyToStart = true;
+      localStorage.setItem('canStart', 'true');
       this.open = false;
     },
     quitGame: function quitGame() {
@@ -3779,22 +3786,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/api/delete-game/".concat(_this2.$route.params.id));
             case 3:
               response = _context2.sent;
+              localStorage.removeItem('canStart');
               if (!_this2.readyToStart) {
-                _context2.next = 6;
+                _context2.next = 7;
                 break;
               }
               return _context2.abrupt("return", _this2.$router.push("/rank"));
-            case 6:
+            case 7:
               return _context2.abrupt("return", _this2.$router.push("/game"));
-            case 9:
-              _context2.prev = 9;
+            case 10:
+              _context2.prev = 10;
               _context2.t0 = _context2["catch"](0);
               console.log(_context2.t0);
-            case 12:
+            case 13:
             case "end":
               return _context2.stop();
           }
-        }, _callee2, null, [[0, 9]]);
+        }, _callee2, null, [[0, 10]]);
       }))();
     }
   }
@@ -3968,13 +3976,9 @@ var render = function render() {
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg"
     }
-  }, [_c("path", {
+  }, [_c("image", {
     attrs: {
-      id: "path0",
-      d: "M146.040 123.817 C 119.257 170.542,77.581 243.148,53.426 285.164 C 29.271 327.179,10.187 362.234,11.017 363.064 C 14.531 366.577,384.010 365.514,385.185 361.988 C 386.428 358.259,360.363 307.776,352.223 298.147 C 349.730 295.198,340.803 279.408,332.385 263.059 C 323.967 246.710,310.530 223.307,302.525 211.053 C 294.520 198.800,286.911 185.378,285.617 181.229 C 284.323 177.079,282.122 172.895,280.726 171.930 C 278.530 170.413,264.927 147.442,212.675 57.018 C 197.954 31.543,200.254 29.237,146.040 123.817 M180.020 211.982 C 167.278 222.949,171.680 227.550,185.288 217.489 C 201.473 205.523,221.053 215.186,221.053 235.139 C 221.053 261.253,176.452 261.344,174.485 235.235 C 174.188 231.294,172.533 228.070,170.808 228.070 C 169.082 228.070,168.629 230.568,169.800 233.620 C 170.971 236.673,171.930 241.297,171.930 243.896 C 171.930 246.495,174.310 251.002,177.220 253.912 C 186.817 263.508,176.482 263.285,157.758 253.490 C 125.344 236.535,126.098 230.802,163.158 212.452 C 185.569 201.355,192.595 201.159,180.020 211.982 M228.954 208.515 C 258.838 219.179,275.578 242.105,253.481 242.105 C 250.562 242.105,244.515 246.053,240.044 250.877 C 235.572 255.702,228.365 259.649,224.027 259.649 C 217.893 259.649,217.076 258.713,220.351 255.439 C 229.287 246.503,225.573 214.808,214.912 209.024 C 202.924 202.521,211.306 202.217,228.954 208.515 M190.091 220.523 C 180.269 226.906,186.485 247.368,198.246 247.368 C 208.187 247.368,208.772 246.589,208.772 233.333 C 208.772 218.697,201.049 213.402,190.091 220.523 M207.018 234.777 C 207.018 242.615,205.588 244.719,200.877 243.818 C 197.500 243.171,193.553 242.521,192.105 242.374 C 184.122 241.559,189.982 224.561,198.246 224.561 C 205.594 224.561,207.018 226.220,207.018 234.777 ",
-      stroke: "none",
-      fill: "#000000",
-      "fill-rule": "evenodd"
+      href: "../../../../images/board/piramids/piramid_" + _vm.color + ".png"
     }
   })])]);
 };
@@ -4010,13 +4014,9 @@ var render = function render() {
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg"
     }
-  }, [_c("path", {
+  }, [_c("image", {
     attrs: {
-      id: "path0",
-      d: "M186.869 11.404 C 183.834 15.247,158.916 57.806,134.996 100.000 C 130.620 107.719,118.778 128.246,108.680 145.614 C 98.582 162.982,86.740 183.509,82.364 191.228 C 77.988 198.947,66.146 219.474,56.048 236.842 C 45.951 254.211,34.097 274.737,29.707 282.456 C 25.317 290.175,17.645 303.596,12.659 312.281 C 7.673 320.965,3.574 329.254,3.551 330.702 C 3.528 332.149,87.982 333.333,191.228 333.333 C 322.823 333.333,378.947 332.205,378.947 329.560 C 378.947 326.486,362.674 295.891,347.362 270.175 C 342.440 261.910,265.556 129.146,259.666 118.743 C 227.385 61.720,194.596 7.018,192.698 7.018 C 191.397 7.018,188.774 8.991,186.869 11.404 M264.332 142.830 C 302.283 208.843,333.333 265.212,333.333 268.095 C 333.333 270.977,335.357 274.598,337.831 276.141 C 341.808 278.623,368.421 320.966,368.421 324.813 C 368.421 325.639,289.358 326.316,192.725 326.316 C 50.908 326.316,17.248 325.442,18.164 321.784 C 20.589 312.097,191.346 18.296,193.279 20.485 C 194.407 21.762,226.381 76.818,264.332 142.830 M152.632 173.412 C 110.540 193.641,107.824 202.939,138.018 223.443 C 176.699 249.709,229.227 244.517,260.743 211.312 L 270.609 200.918 255.948 188.369 C 227.409 163.940,185.088 157.814,152.632 173.412 M175.998 177.547 C 160.281 188.556,159.428 215.219,174.429 226.598 C 178.383 229.597,179.039 231.397,176.203 231.467 C 168.641 231.655,146.663 221.347,133.949 211.650 L 121.906 202.464 130.251 195.736 C 134.841 192.036,146.491 185.181,156.140 180.503 C 176.371 170.696,188.319 168.917,175.998 177.547 M221.937 176.936 C 262.676 191.474,265.399 205.650,230.818 223.186 C 211.382 233.043,197.003 235.042,209.746 226.117 C 222.366 217.277,221.125 184.623,207.895 177.446 C 195.907 170.942,204.288 170.638,221.937 176.936 M201.108 182.981 C 216.464 191.064,219.159 210.048,206.237 219.099 C 182.950 235.410,155.441 208.931,175.173 189.199 C 186.509 177.864,189.859 177.061,201.108 182.981 M183.073 188.944 C 173.251 195.327,179.467 215.789,191.228 215.789 C 201.170 215.789,201.754 215.010,201.754 201.754 C 201.754 187.118,194.031 181.823,183.073 188.944 M200.000 202.807 C 200.000 210.947,198.496 212.632,191.228 212.632 C 183.960 212.632,182.456 210.947,182.456 202.807 C 182.456 194.667,183.960 192.982,191.228 192.982 C 198.496 192.982,200.000 194.667,200.000 202.807 ",
-      stroke: "none",
-      fill: "#000000",
-      "fill-rule": "evenodd"
+      href: "../../../../images/board/piramids/piramid_" + _vm.color + ".png"
     }
   })])]);
 };
@@ -4230,7 +4230,7 @@ var render = function render() {
       y: 0,
       width: _vm.boardSettings.square.width,
       height: _vm.boardSettings.square.height,
-      color: this.playColors.light
+      color: _vm.boardColors.black
     }
   })], 1), _vm._v(" "), _c("g", {
     on: {
@@ -4244,7 +4244,7 @@ var render = function render() {
       y: _vm.boardSettings.square.height * 8,
       width: _vm.boardSettings.square.width,
       height: _vm.boardSettings.square.height,
-      color: this.playColors.dark
+      color: _vm.boardColors.white
     }
   })], 1), _vm._v(" "), _c("g", {
     on: {

@@ -68,12 +68,11 @@
             </g>
             <g @click="squareClick(0,3)">
                 <Den1
-
                     :x="boardSettings.padding + boardSettings.square.width * 3"
                     :y="0"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
-                    :color="this.playColors.light"
+                    :color="boardColors.black"
                 />
             </g>
             <g @click="squareClick(8,3)">
@@ -82,7 +81,7 @@
                     :y="boardSettings.square.height * 8"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
-                    :color="this.playColors.dark"
+                    :color="boardColors.white"
                 />
             </g>
             <g @click="squareClick(0,2)">
@@ -182,8 +181,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import store from "../../store";
 import helper from "./GameHelper";
 import Piece from "./Elements/Piece";
@@ -191,7 +189,7 @@ import River from "./Elements/River";
 import Den1 from "./Elements/Den1";
 import Den2 from "./Elements/Den2";
 import Trap from "./Elements/Trap";
-import {highGuardCodes, trapGuards} from "./constants";
+import {trapGuards} from "./constants";
 
 
 const animals = helper.getAnimalPowers();
@@ -272,8 +270,8 @@ export default {
     },
     mounted() {
         this.setInitialConfig()
-        console.log(this.playColors, 'playcolors')
-        console.log(this.boardColors, 'boardColors')
+        // console.log(this.playColors, 'playcolors')
+        // console.log(this.boardColors, 'boardColors')
         if(this.turn === 'black'){
             this.playComputer()
         }
@@ -440,7 +438,7 @@ export default {
                 })
 
             }
-
+            console.log(this.playColors,'this.playColors')
         },
         initSquares() {
             this.squares = [];
@@ -454,10 +452,10 @@ export default {
                         this.boardSettings
                     );
                     let code = helper.getSquareCode(i, j);
-                    console.log(code, 'code')
-                    console.log(squareContent, 'squareContent')
+                    // console.log(code, 'code')
+                    // console.log(squareContent, 'squareContent')
                     let content = squareContent[code] || {}
-                    console.log(content)
+                    // console.log(content)
                     let pieceSize = {
                         width: this.boardSettings.square.width,
                         height: this.boardSettings.square.height,
@@ -485,14 +483,14 @@ export default {
                     });
                 }
             }
-            console.log("this.squares", this.squares);
+            // console.log("this.squares", this.squares);
         },
 
         squareClick( rowIndex, colIndex) {
             let square = this.squares[rowIndex][colIndex];
             // this.saveState();
-            console.log(square.content.piece, 'piece')
-            console.log(square.code, 'code')
+            // console.log(square.content.piece, 'piece')
+            // console.log(square.code, 'code')
             if (!this.releasePiece(square)) {
                 if (square.content.piece && square.content.color === "white" && this.turn === 'white') {
                     this.showPossibleMoves(rowIndex, colIndex);
@@ -539,9 +537,10 @@ export default {
                 id:this.id,
                 colors: this.boardColors
             })
-            console.log(response.data, 'response')
+            console.log(response.data, 'response-----------,')
         },
         alertWin(winner){
+            localStorage.removeItem('canStart')
             this.$emit('gameover',winner)
             return;
             alert(winner + ' Won in ' + this.turnNumber + ' moves !')

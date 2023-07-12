@@ -147,8 +147,8 @@ export default {
     data() {
         return {
             isLoading: true,
-            open: true,
-            canStart: false,
+            open: !localStorage.getItem('canStart'),
+            canStart: !!localStorage.getItem('canStart'),
             isStarted: true,
             readyToStart: false,
             game: null,
@@ -212,6 +212,7 @@ export default {
         },
         handelReadyToStart() {
             this.readyToStart = true;
+            localStorage.setItem('canStart', 'true');
             this.open = false;
         },
         async quitGame() {
@@ -219,6 +220,7 @@ export default {
                 const response = await axios.get(
                     `/api/delete-game/${this.$route.params.id}`
                 );
+                localStorage.removeItem('canStart')
                 if (this.readyToStart) {
                     return this.$router.push("/rank");
                 }
