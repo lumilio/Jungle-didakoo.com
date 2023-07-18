@@ -38,7 +38,7 @@
                                 <img
                                     src="../../../images/extra_objects/iconaplayB.png"
                                 />
-                                0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
+
                             </p>
                             <div
                                 class="d-flex align-items-center flex-row flex-nowrap"
@@ -94,7 +94,7 @@
                                     "
                                     src="../../../images/extra_objects/iconaplayB.png"
                                 />
-                                0xF83611F45e11b590eBB9FdABa9ee12e7Dc9E9393
+                                {{ address }}
                             </p>
                             <div
                                 class="d-flex align-items-center flex-row flex-nowrap"
@@ -143,6 +143,7 @@
 import Game from "../Game/Game";
 import Modal from "../Modal/Modal";
 import axios from "axios";
+import store from "../../store";
 export default {
     data() {
         return {
@@ -173,6 +174,11 @@ export default {
     components: {
         Game,
         Modal,
+    },
+    computed: {
+        address() {
+            return store.state.address
+        }
     },
     async mounted() {
         try {

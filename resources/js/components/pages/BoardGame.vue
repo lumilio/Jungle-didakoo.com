@@ -12,6 +12,7 @@
 <script>
     import axios from "axios";
     import Modal from "../Modal/Modal";
+    import store from "../../store";
     export default {
         components: {Modal},
         data(){
@@ -35,15 +36,26 @@
                 ]
             }
         },
+        computed: {
+            user() {
+                return store.state.user
+            },
+            address() {
+                return store.state.address
+            }
+        },
         methods: {
             quitGame(){
                 this.$router.push('/rank')
             },
             async createGame(){
                 try {
-                    this.url = window.location.host;
-                    const response = await axios.get('http://'+this.url+'/api/make-game');
-                    this.$router.push(`/room/${response.data.url}`);
+                    if(this.user){
+                        this.url = window.location.host;
+                        const response = await axios.post('/api/make-game',{address: this.address});
+                        this.$router.push(`/room/${response.data.url}`);
+                    }
+
                 }catch (e) {
                     console.log(e)
                 }

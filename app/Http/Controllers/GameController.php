@@ -9,12 +9,16 @@ use Illuminate\Support\Str;
 
 class GameController extends Controller
 {
-    public function makeGame(){
+    public function makeGame(Request $request){
         do{
             $uniqueUrl = Str::random(30);
         }while(Game::query()->where('url', $uniqueUrl)->first());
+        $player = Player::where('wallet_address', $request->address)->first();
+        if (!$player){
+            return response()->json(['message' => 'Bed request'], 400);
+        }
         Game::create([
-//            'creator' => auth('api')->id(),
+            'creator_id' => $player->id,
             'url' => $uniqueUrl,
             'status' => 'pending'
         ]);
@@ -61,32 +65,23 @@ class GameController extends Controller
     }
     public function finishedGame(Request $request){
         $game_id = $request->game_id;
-        $winner = $request->winner;
-        $game = Game::where('url', $game_id)->where('status', 'pending')->first();
+        $player = $request->player;
+        $win  = $request->win;
+        $game = Game::where('url', $game_id)->where('status', 'started')->first();
         if(!$game){
             return response()->json(['message' => 'Bed request'], 400);
         }
-        if($winner !== $game->creator->wallet_address){
-            if ($winner !== $game->opponent->wallet_address){
-                return response()->json(['message' => 'Bed request'], 400);
-            }
+        if ($player !== $game->creator->wallet_address){
+            return response()->json(['message' => 'Bed request'], 400);
         }
-        $winner_is_creator = $game->creator->wallet_address === $winner;
-        $creator = Player::query()->where('wallet_address', $game->creator->wallet_address)->first();
-        $opponent = Player::query()->where('wallet_address', $game->opponent->wallet_address)->first();
-        if ($winner_is_creator){
+        $creator = Player::query()->where('wallet_address', $player)->first();
+
+        if ($win){
             $creator->update([
                 "power" => $creator->power + 3,
                 'wins' => $creator->wins + 1
             ]);
-            $opponent->update([
-                "power" => $opponent->power + 1
-            ]);
         }else{
-            $opponent->update([
-                "power" => $opponent->power + 3,
-                'wins' => $opponent->wins + 1
-            ]);
             $creator->update([
                 "power" => $creator->power + 1
             ]);

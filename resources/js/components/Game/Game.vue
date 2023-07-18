@@ -284,6 +284,9 @@ export default {
                 return store.commit("CHANGE_TURN", val);
             },
         },
+        address() {
+            return store.state.address
+        }
     },
     methods: {
         setInitialConfig(){
@@ -538,15 +541,25 @@ export default {
             })
             // console.log(response.data, 'response-----------,')
         },
-        alertWin(winner){
-            localStorage.removeItem('canStart')
-            this.$emit('gameover',winner)
-            this.playAgain()
-            return;
-            alert(winner + ' Won in ' + this.turnNumber + ' moves !')
-            if(confirm("want to play again")){
+        async alertWin(winner){
+            try {
+                await axios.post('/api/finish-game',{
+                    player: this.address,
+                    win: winner === 'white',
+                    game_id: this.id
+                })
+                localStorage.removeItem('canStart')
+                this.$emit('gameover',winner)
                 this.playAgain()
+                return;
+                alert(winner + ' Won in ' + this.turnNumber + ' moves !')
+                if(confirm("want to play again")){
+                    this.playAgain()
+                }
+            }catch (e) {
+                console.log(e,'error message')
             }
+
         },
         releasePiece(toSquare) {
             if (!this.isHoldingChessPiece) return false;
