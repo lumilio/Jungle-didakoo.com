@@ -2,7 +2,7 @@
     <div id='page4'>
         <div class='allineatore2'>
 
-            <!----------------------------------------->
+            <!------------------  white -----------------------> 
 
             <div class="allineatore d-flex container-fluid flex-column justify-content-center px-4 align-items-center">
 
@@ -10,7 +10,7 @@
 
                 <!-- Like in the rank page display logos of selected player (selected playaer = AVATAR CARD -->
                 <!------------------------ AVATAR CARD ---------------------->
-                <div style='margin-bottom:50px; background-color:black; border:3px solid white;' class="container-sm avatar mt-4 d-flex flex-column  align-items-center px-3">
+                <div style='margin-bottom:50px; background-color:black; <!-- border:3px solid white; -->' class="container-sm avatar mt-4 d-flex flex-column  align-items-center px-3">
                     <img style='width:50px; position: absolute; top:15px; left:15px;' src='images/extra_objects/ff.png' alt="">
                     <p style='position:absolute; display:block; font-size:25px; left:75px; top:20px; color:white;'> 3/6</p>
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:white;'> </p>
