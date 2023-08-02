@@ -128,12 +128,19 @@ body, .centratore {
 
 
 #page4{
-    background-color: black;
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("images/board/green_nilo.jpg") ;
+    background-repeat: repeat ;
+    background-size: 100vw ;
+    background-position: left ;
+    background-size: 800px ;
 }
 
 #page5{
-
-
     background:
     linear-gradient(
       rgba(0, 0, 0, 0.4),
