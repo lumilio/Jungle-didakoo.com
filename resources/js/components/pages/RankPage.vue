@@ -85,9 +85,10 @@
 
 
 
-            <!-- 1 May BIG TASK :
-            - display a record class div model for any user in database ordered by power
-            - if user field written in comment is true (or more then 0) show image
+            <!-- 24 JULY TASK - 1 :
+            
+                Keep the same css rule of the thiv .refresh-button on RECORD colored div
+
              -->
 
 
