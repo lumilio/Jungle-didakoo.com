@@ -17,7 +17,7 @@
             <!---------------------- BODY ------------------->
             <div class="allineatore d-flex justify-content-top ">
                 <div style="margin-top:30px;" class="container-sm pepar  ">
-                    <p style='font-size:30px;'> <!-- <img style='width:50px;' src='images/extra_objects/ff.png' alt=""> --> v 1.0.0 <a style="color:white; font-size:20px;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469"> 斗兽棋 </a>
+                    <p style='font-size:30px;'>  <!-- <img style='width:50px;' src='images/extra_objects/ff.png' alt=""> --> v 1.0.0  <a style="color:white; font-size:20px;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">  斗兽棋 </a> &nbsp <a href=""><i class="fa-brands fa-ethereum"></i></a>
                         <!-- <img style="width:40px; padding-bottom:20px;  margin: 0 5px;"   src='images/extra_objects/cubo2.png' alt=""><img style="width:40px; padding-bottom:20px;"   src='images/extra_objects/sunflower_1f33b.png' alt=""> -->
                     </p>
                     <!-- <br width="100%" size="20" color="white"> -->
