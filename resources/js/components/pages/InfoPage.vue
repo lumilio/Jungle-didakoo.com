@@ -35,14 +35,15 @@
                     <br width="100%" size="20" color="white">
                     <!-- <p><a style="color:#D1230F;" href="https://metamask.io/">Coin Base</a></p> -->
                     <!-- <span style='color:white;'>To play you need an   <a style="color:#D1230F;" href="https://metamask.io/">Ethereum Wallet</a>  with </span> -->
-                    <p>Buy Power Up Nft here :</p>
+                    <p>Buy Power Up Nfts here :</p>
 
                     <p style='font-size:20px;' >
-                        >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">sun flower </a> <<< 
-                        &nbsp  &nbsp 🌻  = 50<i class="fa-solid fa-bolt ml-1 "></i>
+                        >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">sun flower 🌻</a> <<< 
+                        &nbsp = &nbsp 70<i class="fa-solid fa-bolt ml-1 "></i>
                     </p>
 
 
+                    <br width="100%" size="20" color="white">
                     <hr width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
 
