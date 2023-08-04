@@ -20,27 +20,37 @@
                     <p style='font-size:30px;'>v 1.0.0
                         <!-- <img style="width:40px; padding-bottom:20px;  margin: 0 5px;"   src='images/extra_objects/cubo2.png' alt=""><img style="width:40px; padding-bottom:20px;"   src='images/extra_objects/sunflower_1f33b.png' alt=""> -->
                     </p>
-                    <p>An Ethereum arcade platform.</p>
+                    <p>Ethereum game platform.</p>
+                    <p>Users Online 20/30 </p>
+                    <p>Actual power required to play:  0 z </p>
                     <!-- <p>At the cout down end an immage of the entire rank will be mint. </p> -->
-                    <span style='color:white;'>To play you need an   <a style="color:#D1230F;" href="https://metamask.io/">Ethereum Wallet</a>  with </span>
+                    <span style='color:white;'>Install an ethereum wallet to play and save your data ,    </span>
+                    <p> Options : <a style="color:#D1230F;" href="https://metamask.io/"> Metamask</a> , <a style="color:#D1230F;" href="https://metamask.io/">Coin Base</a></p>
+                    <!-- <p><a style="color:#D1230F;" href="https://metamask.io/">Coin Base</a></p> -->
+                    <!-- <span style='color:white;'>To play you need an   <a style="color:#D1230F;" href="https://metamask.io/">Ethereum Wallet</a>  with </span> -->
+                    <p>Buy Power Up Nft here :</p>
                     <p>
-                        <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">sun flower </a> or
-                        <a style="color:#FAEA09;" href="https://rarible.com/token/0xbdc8bd87cfd22ef5b90a93a77eebe5bd0628f841:2352475547185321859375352175754401687841756219705495990747967153936990732289?tab=overview">sun flower v.2 </a>
+                        <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">sun flower </a> 
+                        <!-- <a style="color:#FAEA09;" href="https://rarible.com/token/0xbdc8bd87cfd22ef5b90a93a77eebe5bd0628f841:2352475547185321859375352175754401687841756219705495990747967153936990732289?tab=overview">sun flower v.2 </a> -->
                         token.
                     </p>
+                    <p style='font-size:20px;' >🌻  = 100 Z <!-- <img style='width:30px;' src='images/extra_objects/ff.png' alt=""> --></p>
 
- 
-                    <p style='font-size:20px;' >🌻  = + 2/2 GAME TOKENS <img style='width:30px;' src='images/extra_objects/ff.png' alt=""></p>
+
+
+
+
                     <!-- <p>🌻 v.2 = + 1/1 GAME TOKENS <img style='width:30px;' src='images/extra_objects/ff.png' alt=""></p> --> 
                     
-
+                    <!-- 
                     <p> Every day you total token will recharged:</p>
-
                     <p class='text-white' style='font-family: "VT323", monospace;   margin-top:25px; '> 00:00:00 UTC+1 ROME</p>
-
-                    <p style="font-size:30px">  0/2 <img style='width:50px;' src='images/extra_objects/ff.png' alt="">    --->    2/2 <img style='width:50px;' src='images/extra_objects/ff.png' alt=""> </p>
+                    <p style="font-size:30px">  0/2 <img style='width:50px;' src='images/extra_objects/ff.png' alt="">    
+                    --->    <!-- 2/2 <img style='width:50px;' src='images/extra_objects/ff.png' alt=""> </p>  -->
 
                     
+
+
 
                     <p>The following NFTs are recognized by the game and allow you to unlock extra content.</p>
                     <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/cryptopunks">sun flower V.2  (by didakoo) </a> </p>
@@ -55,7 +65,7 @@
                     <p>&#8203;</p>
                     <!-- <p>&#8203;</p> -->
                     <!-- <p>Click the purple button to create a link for player 2</p> -->
-                <p>  1 2 3 4 5 6 7 8 1</p>
+                <!-- <p>  1 2 3 4 5 6 7 8 1</p> -->
 
                 <p>
                     help@didakoo.com
