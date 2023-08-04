@@ -17,17 +17,17 @@
             <!---------------------- BODY ------------------->
             <div class="allineatore d-flex justify-content-top ">
                 <div style="margin-top:30px;" class="container-sm pepar  ">
-                    <p style='font-size:30px;'>v 1.0.0 <a style="color:white; font-size:20px;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469"> 斗兽棋 </a>
+                    <p style='font-size:30px;'> <!-- <img style='width:50px;' src='images/extra_objects/ff.png' alt=""> --> v 1.0.0 <a style="color:white; font-size:20px;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469"> 斗兽棋 </a>
                         <!-- <img style="width:40px; padding-bottom:20px;  margin: 0 5px;"   src='images/extra_objects/cubo2.png' alt=""><img style="width:40px; padding-bottom:20px;"   src='images/extra_objects/sunflower_1f33b.png' alt=""> -->
                     </p>
                     <!-- <br width="100%" size="20" color="white"> -->
                     <!-- <hr width="100%" size="20" color="white"> -->
-                    <p>Users Online : 20/30 </p>
+                    <p>Users Online : 20 </p>
                     <p>Actual power required to play : 0<i class="fa-solid fa-bolt ml-1"></i> </p>
                     <hr width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
                     <!-- <p>At the cout down end an immage of the entire rank will be mint. </p> -->
-                    <span style='color:white;'>Install an ethereum wallet to play and save your data ,  Options :    </span>
+                    <span style='color:white;'>Install an Ethereum wallet to play and save your data :   </span>
                     <span>> <a style="color:#D1230F;" href="https://metamask.io/"> Metamask</a> <</span>
                     <span>> <a style="color:#D1230F;" href="https://metamask.io/">Coin Base</a> <</span>
                     <br width="100%" size="20" color="white">
@@ -35,11 +35,11 @@
                     <br width="100%" size="20" color="white">
                     <!-- <p><a style="color:#D1230F;" href="https://metamask.io/">Coin Base</a></p> -->
                     <!-- <span style='color:white;'>To play you need an   <a style="color:#D1230F;" href="https://metamask.io/">Ethereum Wallet</a>  with </span> -->
-                    <p>Buy Power Up Nfts here :</p>
+                    <span style='color:white;'>Buy Power Up Nft :</span>
 
                     <p style='font-size:20px;' >
-                        >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">sun flower 🌻</a> <<< 
-                        &nbsp = &nbsp 70<i class="fa-solid fa-bolt ml-1 "></i>
+                        >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">sun flower <span style="font-size:30px;">🌻</span> </a> <<< 
+                        &nbsp = &nbsp 60<i class="fa-solid fa-bolt ml-1 "></i>
                     </p>
 
 
