@@ -97,9 +97,9 @@
                 <!------------------------ HISTORY EXAMPLE ---------------------->
                 <div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'>
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'>
                             {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
@@ -110,9 +110,9 @@
                     <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
@@ -122,9 +122,9 @@
                     <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
@@ -134,9 +134,9 @@
                     <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
@@ -146,9 +146,9 @@
                     <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
@@ -158,9 +158,9 @@
                     <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
@@ -170,9 +170,9 @@
                     <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
@@ -182,9 +182,9 @@
                     <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
@@ -194,9 +194,9 @@
                     <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
@@ -206,9 +206,9 @@
                     <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
@@ -218,9 +218,9 @@
                     <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
@@ -230,9 +230,9 @@
                     <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
@@ -242,9 +242,9 @@
                     <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
@@ -254,9 +254,9 @@
                     <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:blue'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
@@ -266,9 +266,9 @@
                     <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:blue'></i></p>
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
+                    <div   class="bg-dark record">
                         <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
