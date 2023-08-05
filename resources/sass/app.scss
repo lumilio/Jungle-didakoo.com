@@ -138,7 +138,7 @@ body, .centratore {
     height: 89vh;
 }
 
-#page4 , #page5  {
+#page4 , #page5 {
     background:
     linear-gradient(
       rgba(0, 0, 0, 0.4),
@@ -149,6 +149,18 @@ body, .centratore {
     background-position: center ;
     background-size: 550px ;
 }
+
+/* #page5  {
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("images/board/green_nilo2.jpg") ;
+    background-repeat: repeat ;
+    background-position: right ;
+    background-size: 800px;
+} */
 
 
 
