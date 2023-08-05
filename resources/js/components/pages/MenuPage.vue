@@ -12,11 +12,12 @@
         <div style="height:calc(80vh - 80px);" class="justify-content-center align-content-center d-flex">
             <div class="bt">
                 <a type="button">
-                    <div class="square" @click="web3Login">
+                    <div class="square" @click="openModal">
                         <i id="led" class="fa-solid fa-circle" :style="{color: user? '#46e546' : 'red'}" ></i>
                         <i class="fa-solid fa-power-off"></i>
                     </div>
                 </a>
+                <ConnectWalletModal :show="showModal" @close="closeModal" style="margin: 0"></ConnectWalletModal>
                 <router-link to="rank">
                     <div id="modalz">
                         <div class="square">
@@ -42,12 +43,18 @@
 
 <script>
 import store from "../../store";
+import ConnectWalletModal from "../Modal/ConnectWalletModal.vue";
 export default {
 
     data(){
         return {
             test: false,
+            showModal: false,
         }
+    },
+
+    components:{
+        ConnectWalletModal
     },
     computed: {
         user() {
@@ -56,110 +63,11 @@ export default {
     },
 
     methods:{
-        async web3Login () {
-            if(this.user){
-                const response = await fetch('api/logout', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-                store.commit('LOG_OUT_USER')
-            }else{
-                if (!window.ethereum) {
-                    toastr.error('MetaMask not detected. Please install MetaMask first.');
-                    return;
-                }
-                const provider = new ethers.providers.Web3Provider(window.ethereum);
-
-                let response = await fetch('api/web3-login-message');
-                const message = await response.text();
-
-                await provider.send("eth_requestAccounts", []);
-                const address = await provider.getSigner().getAddress();
-
-                const amount = await provider.getSigner().getBalance();
-                const signature = await provider.getSigner().signMessage(message);
-                response = await fetch('api/web3-login-verify', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        'message': message,
-                        'address': address,
-                        'signature': signature,
-                        '_token': document.querySelector('meta[name="csrf-token"]').content
-                    })
-                });
-                const data = await response.text();
-                const date = new Date();
-                let day = date.getDate();
-                let year = date.getFullYear();
-                let month = date.getMonth() + 1;
-                let hour = date.getHours();
-                let min = date.getMinutes();
-                let sec = date.getSeconds();
-
-                var alias = "player_" + year + "" + month + "" + day + "" + hour + "" + min + "" + sec + "";
-
-                if (data === "OK") {
-                    store.commit('LOG_IN_USER',true)
-                    store.commit('SET_USER_ADDRESS',address)
-                    toastr.success('Log in succeesfully!');
-
-                    response = await fetch('api/web3-register-ethwallet', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            'ethwalletaddr': address,
-                            'balance': amount['_hex'],
-                            'alias': alias,
-                            '_token': document.querySelector('meta[name="csrf-token"]').content
-                        })
-                    });
-
-                    response.text().then((data) => {
-                        if (data != "SUCCESS") {
-                            response = fetch('api/web3-update-ethwallet', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({
-                                    'ethwalletaddr': address,
-                                    'balance': amount['_hex'],
-                                    '_token': document.querySelector('meta[name="csrf-token"]').content
-                                })
-                            });
-
-                            console.log("Update successfully!");
-                        } else {
-                            console.log("Register successfully!");
-                        }
-                    });
-                }
-                else{
-                    console.log('access denied');
-                }
-            }
+        openModal() {
+            this.showModal = true;
         },
-        getStatus: function () {
-            setInterval( async function()
-            {
-                const {ethereum} = window;
-                const accounts = await ethereum.request({method: 'eth_accounts'});
-                console.log(accounts);
-                if (accounts && accounts.length > 0) {
-                    this.test = true;
-                }
-                else{
-                    // console.log('user not logged in');
-                    this.test = false;
-                }
-            },2000);
+        closeModal() {
+            this.showModal = false;
         },
     },
 
@@ -176,3 +84,4 @@ export default {
 
 };
 </script>
+

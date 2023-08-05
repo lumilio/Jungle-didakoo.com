@@ -3202,6 +3202,225 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store */ "./resources/js/store/index.js");
+/* harmony import */ var _images_extra_objects_MetaMask_Fox_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../images/extra_objects/MetaMask_Fox.png */ "./resources/images/extra_objects/MetaMask_Fox.png");
+/* harmony import */ var _images_extra_objects_MetaMask_Fox_png__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_images_extra_objects_MetaMask_Fox_png__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _images_extra_objects_CoinBaseWallet_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../images/extra_objects/CoinBaseWallet.png */ "./resources/images/extra_objects/CoinBaseWallet.png");
+/* harmony import */ var _images_extra_objects_CoinBaseWallet_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_images_extra_objects_CoinBaseWallet_png__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    show: {
+      type: Boolean,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      MetamaskWalletImg: _images_extra_objects_MetaMask_Fox_png__WEBPACK_IMPORTED_MODULE_1___default.a,
+      CoinBaseWallet: _images_extra_objects_CoinBaseWallet_png__WEBPACK_IMPORTED_MODULE_2___default.a
+    };
+  },
+  methods: {
+    closeModal: function closeModal() {
+      this.$emit("close");
+    },
+    openModal: function openModal() {
+      this.showModal = true;
+    },
+    web3Login: function web3Login(wallet) {
+      var _this = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var response, provider, _response, message, address, amount, signature, data, date, day, year, month, hour, min, sec, alias;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              if (!_this.user) {
+                _context.next = 7;
+                break;
+              }
+              _context.next = 3;
+              return fetch('api/logout', {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              });
+            case 3:
+              response = _context.sent;
+              _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('LOG_OUT_USER');
+              _context.next = 54;
+              break;
+            case 7:
+              if (window.ethereum) {
+                _context.next = 10;
+                break;
+              }
+              toastr.error('MetaMask not detected.Please install MetaMask first.');
+              return _context.abrupt("return");
+            case 10:
+              // const provider = new ethers.providers.Web3Provider(window.ethereum);
+              provider = wallet === 'metamask' ? window.ethereum.providers.find(function (provider) {
+                return provider.isMetaMask;
+              }) : window.ethereum.providers.find(function (provider) {
+                return provider.isCoinbaseWallet;
+              });
+              provider = new ethers.providers.Web3Provider(provider);
+              _context.next = 14;
+              return fetch('api/web3-login-message');
+            case 14:
+              _response = _context.sent;
+              _context.next = 17;
+              return _response.text();
+            case 17:
+              message = _context.sent;
+              _context.next = 20;
+              return provider.send("eth_requestAccounts", []);
+            case 20:
+              _context.next = 22;
+              return provider.getSigner().getAddress();
+            case 22:
+              address = _context.sent;
+              _context.next = 25;
+              return provider.getSigner().getBalance();
+            case 25:
+              amount = _context.sent;
+              _context.next = 28;
+              return provider.getSigner().signMessage(message);
+            case 28:
+              signature = _context.sent;
+              _context.next = 31;
+              return fetch('api/web3-login-verify', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  'message': message,
+                  'address': address,
+                  'signature': signature,
+                  '_token': document.querySelector('meta[name="csrf-token"]').content
+                })
+              });
+            case 31:
+              _response = _context.sent;
+              data = _response.statusText;
+              date = new Date();
+              day = date.getDate();
+              year = date.getFullYear();
+              month = date.getMonth() + 1;
+              hour = date.getHours();
+              min = date.getMinutes();
+              sec = date.getSeconds();
+              alias = "player_" + year + "" + month + "" + day + "" + hour + "" + min + "" + sec + "";
+              if (!(data === "OK")) {
+                _context.next = 52;
+                break;
+              }
+              _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('LOG_IN_USER', true);
+              _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('SET_USER_ADDRESS', address);
+              _this.$emit("close");
+              toastr.success('Log in succeesfully!');
+              _context.next = 48;
+              return fetch('api/web3-register-ethwallet', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  'ethwalletaddr': address,
+                  'balance': amount['_hex'],
+                  'alias': alias,
+                  '_token': document.querySelector('meta[name="csrf-token"]').content
+                })
+              });
+            case 48:
+              _response = _context.sent;
+              _response.text().then(function (data) {
+                if (data !== "SUCCESS") {
+                  _response = fetch('api/web3-update-ethwallet', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                      'ethwalletaddr': address,
+                      'balance': amount['_hex'],
+                      '_token': document.querySelector('meta[name="csrf-token"]').content
+                    })
+                  });
+                  console.log("Update successfully!");
+                } else {
+                  console.log("Register successfully!");
+                }
+              });
+              _context.next = 54;
+              break;
+            case 52:
+              toastr.error('access denied');
+              console.log('access denied');
+            case 54:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee);
+      }))();
+    }
+  },
+  getStatus: function getStatus() {
+    setInterval( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var _window, ethereum, accounts;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            _window = window, ethereum = _window.ethereum;
+            _context2.next = 3;
+            return ethereum.request({
+              method: 'eth_accounts'
+            });
+          case 3:
+            accounts = _context2.sent;
+            console.log(accounts);
+            if (accounts && accounts.length > 0) {
+              this.test = true;
+            } else {
+              // console.log('user not logged in');
+              this.test = false;
+            }
+          case 6:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, this);
+    })), 2000);
+  },
+  watch: {
+    test: function test() {
+      this.getStatus();
+    }
+  },
+  mounted: function mounted() {
+    console.log("Menu PAge Component mounted.");
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal/Modal.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Modal/Modal.vue?vue&type=script&lang=js& ***!
@@ -3519,16 +3738,18 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store */ "./resources/js/store/index.js");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+/* harmony import */ var _Modal_ConnectWalletModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Modal/ConnectWalletModal.vue */ "./resources/js/components/Modal/ConnectWalletModal.vue");
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      test: false
+      test: false,
+      showModal: false
     };
+  },
+  components: {
+    ConnectWalletModal: _Modal_ConnectWalletModal_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   computed: {
     user: function user() {
@@ -3536,165 +3757,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   methods: {
-    web3Login: function web3Login() {
-      var _this = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var response, provider, _response, message, address, amount, signature, data, date, day, year, month, hour, min, sec, alias;
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) switch (_context.prev = _context.next) {
-            case 0:
-              if (!_this.user) {
-                _context.next = 7;
-                break;
-              }
-              _context.next = 3;
-              return fetch('api/logout', {
-                method: 'GET',
-                headers: {
-                  'Content-Type': 'application/json'
-                }
-              });
-            case 3:
-              response = _context.sent;
-              _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('LOG_OUT_USER');
-              _context.next = 53;
-              break;
-            case 7:
-              if (window.ethereum) {
-                _context.next = 10;
-                break;
-              }
-              toastr.error('MetaMask not detected. Please install MetaMask first.');
-              return _context.abrupt("return");
-            case 10:
-              provider = new ethers.providers.Web3Provider(window.ethereum);
-              _context.next = 13;
-              return fetch('api/web3-login-message');
-            case 13:
-              _response = _context.sent;
-              _context.next = 16;
-              return _response.text();
-            case 16:
-              message = _context.sent;
-              _context.next = 19;
-              return provider.send("eth_requestAccounts", []);
-            case 19:
-              _context.next = 21;
-              return provider.getSigner().getAddress();
-            case 21:
-              address = _context.sent;
-              _context.next = 24;
-              return provider.getSigner().getBalance();
-            case 24:
-              amount = _context.sent;
-              _context.next = 27;
-              return provider.getSigner().signMessage(message);
-            case 27:
-              signature = _context.sent;
-              _context.next = 30;
-              return fetch('api/web3-login-verify', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  'message': message,
-                  'address': address,
-                  'signature': signature,
-                  '_token': document.querySelector('meta[name="csrf-token"]').content
-                })
-              });
-            case 30:
-              _response = _context.sent;
-              _context.next = 33;
-              return _response.text();
-            case 33:
-              data = _context.sent;
-              date = new Date();
-              day = date.getDate();
-              year = date.getFullYear();
-              month = date.getMonth() + 1;
-              hour = date.getHours();
-              min = date.getMinutes();
-              sec = date.getSeconds();
-              alias = "player_" + year + "" + month + "" + day + "" + hour + "" + min + "" + sec + "";
-              if (!(data === "OK")) {
-                _context.next = 52;
-                break;
-              }
-              _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('LOG_IN_USER', true);
-              _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('SET_USER_ADDRESS', address);
-              toastr.success('Log in succeesfully!');
-              _context.next = 48;
-              return fetch('api/web3-register-ethwallet', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  'ethwalletaddr': address,
-                  'balance': amount['_hex'],
-                  'alias': alias,
-                  '_token': document.querySelector('meta[name="csrf-token"]').content
-                })
-              });
-            case 48:
-              _response = _context.sent;
-              _response.text().then(function (data) {
-                if (data != "SUCCESS") {
-                  _response = fetch('api/web3-update-ethwallet', {
-                    method: 'POST',
-                    headers: {
-                      'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                      'ethwalletaddr': address,
-                      'balance': amount['_hex'],
-                      '_token': document.querySelector('meta[name="csrf-token"]').content
-                    })
-                  });
-                  console.log("Update successfully!");
-                } else {
-                  console.log("Register successfully!");
-                }
-              });
-              _context.next = 53;
-              break;
-            case 52:
-              console.log('access denied');
-            case 53:
-            case "end":
-              return _context.stop();
-          }
-        }, _callee);
-      }))();
+    openModal: function openModal() {
+      this.showModal = true;
     },
-    getStatus: function getStatus() {
-      setInterval( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        var _window, ethereum, accounts;
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
-            case 0:
-              _window = window, ethereum = _window.ethereum;
-              _context2.next = 3;
-              return ethereum.request({
-                method: 'eth_accounts'
-              });
-            case 3:
-              accounts = _context2.sent;
-              console.log(accounts);
-              if (accounts && accounts.length > 0) {
-                this.test = true;
-              } else {
-                // console.log('user not logged in');
-                this.test = false;
-              }
-            case 6:
-            case "end":
-              return _context2.stop();
-          }
-        }, _callee2, this);
-      })), 2000);
+    closeModal: function closeModal() {
+      this.showModal = false;
     }
   },
   watch: {
@@ -4413,6 +4480,84 @@ render._withStripped = true;
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=template&id=2bce4f17&":
+/*!*********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=template&id=2bce4f17& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _vm.show ? _c("div", {
+    staticClass: "modal1"
+  }, [_c("div", {
+    staticClass: "modal-overlay1",
+    on: {
+      click: _vm.closeModal
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "connect-modal-content"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "buttonCoin",
+    attrs: {
+      id: "metamask"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.web3Login("metamask");
+      }
+    }
+  }, [_c("img", {
+    staticClass: "imgSize",
+    attrs: {
+      src: _vm.MetamaskWalletImg,
+      alt: "MetamaskWallet"
+    }
+  }), _vm._v(" "), _c("p", {
+    staticClass: "animate-charcterMeta"
+  }, [_vm._v("Metamask")])]), _vm._v(" "), _c("div", {
+    staticClass: "buttonCoin",
+    attrs: {
+      id: "coinbase"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.web3Login("coinbase");
+      }
+    }
+  }, [_c("img", {
+    staticClass: "imgSize",
+    attrs: {
+      src: _vm.CoinBaseWallet,
+      alt: "MetamaskWallet"
+    }
+  }), _vm._v(" "), _c("p", {
+    staticClass: "animate-charcterBase"
+  }, [_vm._v("CoinBase")])]), _vm._v(" "), _c("span", {
+    staticClass: "close1",
+    on: {
+      click: _vm.closeModal
+    }
+  }, [_vm._v("×")]), _vm._v(" "), _vm._t("default")], 2)]) : _vm._e();
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", [_c("h1", {
+    staticClass: "animate-charcter"
+  }, [_vm._v("SELECT YOUR WALLET")])]);
+}];
+render._withStripped = true;
+
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal/Modal.vue?vue&type=template&id=5723fbe0&":
 /*!********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Modal/Modal.vue?vue&type=template&id=5723fbe0& ***!
@@ -4574,14 +4719,13 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "allineatore2"
   }, [_c("div", {
-    staticClass: "allineatore d-flex container-fluid flex-column justify-content-center px-4 mt-2 align-items-center"
+    staticClass: "allineatore d-flex container-fluid flex-column justify-content-center px-4 align-items-center"
   }, [_c("div", {
-    staticClass: "container-sm avatar d-flex flex-column align-items-center px-3",
+    staticClass: "container-sm avatar mt-4 d-flex flex-column align-items-center px-3",
     staticStyle: {
       "margin-bottom": "50px",
-      "margin-top": "-1px",
       "background-color": "black",
-      border: "3px solid white"
+      "<!-- border": "3px solid white"
     }
   }, [_c("img", {
     staticStyle: {
@@ -6154,7 +6298,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "square",
     on: {
-      click: _vm.web3Login
+      click: _vm.openModal
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-circle",
@@ -6166,7 +6310,17 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("i", {
     staticClass: "fa-solid fa-power-off"
-  })])]), _vm._v(" "), _c("router-link", {
+  })])]), _vm._v(" "), _c("ConnectWalletModal", {
+    staticStyle: {
+      margin: "0"
+    },
+    attrs: {
+      show: _vm.showModal
+    },
+    on: {
+      close: _vm.closeModal
+    }
+  }), _vm._v(" "), _c("router-link", {
     attrs: {
       to: "rank"
     }
@@ -6475,7 +6629,7 @@ var render = function render() {
     staticStyle: {},
     attrs: {
       id: "scarabeo",
-      src: "images/extra_objects/1.svg",
+      src: "images/extra_objects/14.svg",
       alt: ""
     }
   })]), _vm._v(" "), _c("div", {
@@ -11099,7 +11253,26 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\nsvg image {\r\n    width: 100%;\n}\n.animation-to-left {\r\n    animation: moveToLeft 0.3s ease-in;\n}\n.animation-to-left-2x {\r\n    animation: moveToLeft2X 0.5s ease-in;\n}\n.animation-to-right {\r\n    animation: moveToRight 0.3s ease-in;\n}\n.animation-to-right-2x {\r\n    animation: moveToRight2X 0.5s ease-in;\n}\n.animation-to-top {\r\n    animation: moveToTop 0.3s ease-in;\n}\n.animation-to-top-2x {\r\n    animation: moveToTop2X 0.5s ease-in;\n}\n.animation-to-bottom {\r\n    animation: moveToBottom 0.3s ease-in;\n}\n.animation-to-bottom-2x {\r\n    animation: moveToBottom2X 0.5s ease-in;\n}\n@keyframes moveToLeft {\nfrom {\r\n        transform: translate(80px, 0);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToLeft2X {\nfrom {\r\n        transform: translate(240px, 0);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToRight {\nfrom {\r\n        transform: translate(-80px, 0);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToRight2X {\nfrom {\r\n        transform: translate(-240px, 0);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToTop {\nfrom {\r\n        transform: translate(0, 80px);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToTop2X {\nfrom {\r\n        transform: translate(0, 320px);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToBottom {\nfrom {\r\n        transform: translate(0, -80px);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToBottom2X {\nfrom {\r\n        transform: translate(0, -320px);\n}\nto {\r\n        transform: translate(0, 0);\n}\n}\r\n", ""]);
+exports.push([module.i, "\nsvg image {\n    width: 100%;\n}\n.animation-to-left {\n    animation: moveToLeft 0.3s ease-in;\n}\n.animation-to-left-2x {\n    animation: moveToLeft2X 0.5s ease-in;\n}\n.animation-to-right {\n    animation: moveToRight 0.3s ease-in;\n}\n.animation-to-right-2x {\n    animation: moveToRight2X 0.5s ease-in;\n}\n.animation-to-top {\n    animation: moveToTop 0.3s ease-in;\n}\n.animation-to-top-2x {\n    animation: moveToTop2X 0.5s ease-in;\n}\n.animation-to-bottom {\n    animation: moveToBottom 0.3s ease-in;\n}\n.animation-to-bottom-2x {\n    animation: moveToBottom2X 0.5s ease-in;\n}\n@keyframes moveToLeft {\nfrom {\n        transform: translate(80px, 0);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToLeft2X {\nfrom {\n        transform: translate(240px, 0);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToRight {\nfrom {\n        transform: translate(-80px, 0);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToRight2X {\nfrom {\n        transform: translate(-240px, 0);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToTop {\nfrom {\n        transform: translate(0, 80px);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToTop2X {\nfrom {\n        transform: translate(0, 320px);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToBottom {\nfrom {\n        transform: translate(0, -80px);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n@keyframes moveToBottom2X {\nfrom {\n        transform: translate(0, -320px);\n}\nto {\n        transform: translate(0, 0);\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=style&index=0&id=2bce4f17&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=style&index=0&id=2bce4f17&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n/* Style the modal */\n.modal1 {\n    position: fixed;\n    z-index: 1;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    overflow: auto;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.modal-overlay1 {\n    position: fixed;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.4);\n}\n\n/* Modal Content/Box */\n.connect-modal-content {\n    background: linear-gradient(rgb(42, 39, 65), rgb(42, 39, 65)) padding-box padding-box, linear-gradient(45deg, rgb(39 78 120 / 18%), rgba(39, 141, 254, 0.18)) border-box border-box;\n    padding: 20px;\n    width: 350px;\n    height: 400px;\n    overflow: auto;\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    gap: 15px;\n    justify-content: center;\n    margin: 15% auto;\n    border-radius: 20px;\n    min-width: 350px;\n}\n\n/* The Close Button */\n.close1 {\n    color: #aaa;\n    font-size: 28px;\n    font-weight: bold;\n    position: absolute;\n    top: 5px;\n    right: 10px;\n    cursor: pointer;\n}\n.close1:hover {\n    color: black;\n}\n.buttonCoin{\n    display: flex;\n    text-align: center;\n    align-items: center;\n    width: 100%;\n    background: rgba(49, 46, 71, 0.64);\n    -webkit-box-align: center;\n    box-shadow: none;\n    border: 2px solid transparent;\n    border-radius: 12px;\n    padding: 8px 24px;\n    color: rgb(252, 252, 255);\n    cursor: pointer;\n    gap: 40px;\n    margin: 0;\n    height: 70px;\n}\n.buttonCoin:hover{\n    font-size: 22px;\n}\n.animate-charcter{\n    position: absolute;\n    top: 0;\n    padding-top: 25px;\n    text-transform: uppercase;\n    background-image: linear-gradient(\n        -225deg,\n        #231557 0%,\n        #111da2 29%,\n        #064ae0 67%,\n        #33d1ee 100%\n    );\n    background-size: auto auto;\n    background-clip: border-box;\n    background-size: 200% auto;\n    color: #fff;\n    background-clip: text;\n    text-fill-color: transparent;\n    -webkit-background-clip: text;\n    -webkit-text-fill-color: transparent;\n    animation: textclip 2s linear infinite;\n    display: inline-block;\n    font-size: 28px;\n}\n@keyframes textclip {\nto {\n        background-position: 200% center;\n}\n}\n.animate-charcterMeta{\n    margin: 0;\n    text-transform: uppercase;\n    background-image: linear-gradient(\n        -225deg,\n        #ff4c00 0%,\n        #de6135 29%,\n        #f6885a 67%,\n        #f3c63e 100%\n    );\n    font-size: 18px;\n    background-size: auto auto;\n    background-clip: border-box;\n    background-size: 200% auto;\n    color: #fff;\n    background-clip: text;\n    text-fill-color: transparent;\n    -webkit-background-clip: text;\n    -webkit-text-fill-color: transparent;\n    animation: textclip 4s linear infinite;\n    display: flex;\n    justify-items: center;\n}\n@keyframes textclip {\nto {\n        background-position: 200% center;\n}\n}\n.animate-charcterBase{\n    margin: 0;\n    text-transform: uppercase;\n    background-image: linear-gradient(\n        -225deg,\n        #1b3ad3 0%,\n        #4a56da 29%,\n        #789bea 67%,\n        #a2c0ee 100%\n    );\n    font-size: 18px;\n    background-size: auto auto;\n    background-clip: border-box;\n    background-size: 200% auto;\n    color: #fff;\n    background-clip: text;\n    text-fill-color: transparent;\n    -webkit-background-clip: text;\n    -webkit-text-fill-color: transparent;\n    animation: textclip 4s linear infinite;\n    display: flex;\n    justify-items: center;\n}\n@keyframes textclip {\nto {\n        background-position: 200% center;\n}\n}\n.imgSize{\n    max-width: 40px;\n}\n.WalletText{\n    margin: 0;\n    text-transform: uppercase;\n    background-image: linear-gradient(\n        -225deg,\n        #231557 0%,\n        #111da2 29%,\n        #064ae0 67%,\n        #33d1ee 100%\n    );\n    font-size: 18px;\n    background-size: auto auto;\n    background-clip: border-box;\n    background-size: 200% auto;\n    color: #fff;\n    background-clip: text;\n    text-fill-color: transparent;\n    -webkit-background-clip: text;\n    -webkit-text-fill-color: transparent;\n    animation: textclip 4s linear infinite;\n    display: flex;\n    justify-items: center;\n}\n@keyframes textclip {\nto {\n        background-position: 200% center;\n}\n}\n.WalletText:hover{\n    font-size: 22px;\n}\n.buttonCoin:hover{\n    font-size: 22px;\n}\n\n", ""]);
 
 // exports
 
@@ -42616,6 +42789,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=style&index=0&id=2bce4f17&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=style&index=0&id=2bce4f17&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./ConnectWalletModal.vue?vue&type=style&index=0&id=2bce4f17&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=style&index=0&id=2bce4f17&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -59431,6 +59634,28 @@ module.exports = "/images/monkey_2.png?48534be6802e0e9aef1e299f75973abe";
 
 /***/ }),
 
+/***/ "./resources/images/extra_objects/CoinBaseWallet.png":
+/*!***********************************************************!*\
+  !*** ./resources/images/extra_objects/CoinBaseWallet.png ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/CoinBaseWallet.png?4f997c3c5386e92ef74475251748a39f";
+
+/***/ }),
+
+/***/ "./resources/images/extra_objects/MetaMask_Fox.png":
+/*!*********************************************************!*\
+  !*** ./resources/images/extra_objects/MetaMask_Fox.png ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/MetaMask_Fox.png?d7abffe92ae7cace6eb47c0c91530df9";
+
+/***/ }),
+
 /***/ "./resources/images/extra_objects/adidas.png":
 /*!***************************************************!*\
   !*** ./resources/images/extra_objects/adidas.png ***!
@@ -60574,6 +60799,93 @@ var houseCodes = {
 
 /***/ }),
 
+/***/ "./resources/js/components/Modal/ConnectWalletModal.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/Modal/ConnectWalletModal.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ConnectWalletModal_vue_vue_type_template_id_2bce4f17___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConnectWalletModal.vue?vue&type=template&id=2bce4f17& */ "./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=template&id=2bce4f17&");
+/* harmony import */ var _ConnectWalletModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConnectWalletModal.vue?vue&type=script&lang=js& */ "./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ConnectWalletModal_vue_vue_type_style_index_0_id_2bce4f17_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ConnectWalletModal.vue?vue&type=style&index=0&id=2bce4f17&lang=css& */ "./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=style&index=0&id=2bce4f17&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ConnectWalletModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ConnectWalletModal_vue_vue_type_template_id_2bce4f17___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ConnectWalletModal_vue_vue_type_template_id_2bce4f17___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Modal/ConnectWalletModal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConnectWalletModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ConnectWalletModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConnectWalletModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=style&index=0&id=2bce4f17&lang=css&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=style&index=0&id=2bce4f17&lang=css& ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ConnectWalletModal_vue_vue_type_style_index_0_id_2bce4f17_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./ConnectWalletModal.vue?vue&type=style&index=0&id=2bce4f17&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=style&index=0&id=2bce4f17&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ConnectWalletModal_vue_vue_type_style_index_0_id_2bce4f17_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ConnectWalletModal_vue_vue_type_style_index_0_id_2bce4f17_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ConnectWalletModal_vue_vue_type_style_index_0_id_2bce4f17_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ConnectWalletModal_vue_vue_type_style_index_0_id_2bce4f17_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=template&id=2bce4f17&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=template&id=2bce4f17& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_ConnectWalletModal_vue_vue_type_template_id_2bce4f17___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ref--6!../../../../node_modules/vue-loader/lib??vue-loader-options!./ConnectWalletModal.vue?vue&type=template&id=2bce4f17& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Modal/ConnectWalletModal.vue?vue&type=template&id=2bce4f17&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_ConnectWalletModal_vue_vue_type_template_id_2bce4f17___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_ConnectWalletModal_vue_vue_type_template_id_2bce4f17___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Modal/Modal.vue":
 /*!*************************************************!*\
   !*** ./resources/js/components/Modal/Modal.vue ***!
@@ -61547,8 +61859,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Armen\Desktop\projects\yogurt\didakoo_0.4.6.game\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Armen\Desktop\projects\yogurt\didakoo_0.4.6.game\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/sevan/didakoo_0.4.6.game/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/sevan/didakoo_0.4.6.game/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
