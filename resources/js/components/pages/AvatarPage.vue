@@ -11,8 +11,9 @@
                 <!-- Like in the rank page display logos of selected player (selected playaer = AVATAR CARD -->
                 <!------------------------ AVATAR CARD ---------------------->
                 <div style='margin-bottom:50px; background-color:black; <!-- border:3px solid white; -->' class="container-sm avatar mt-4 d-flex flex-column  align-items-center px-3">
-                    <img style='width:50px; position: absolute; top:15px; left:15px;' src='images/extra_objects/ff.png' alt="">
-                    <p style='position:absolute; display:block; font-size:25px; left:75px; top:20px; color:white;'> 3/6</p>
+                    <!-- <img style='width:50px; position: absolute; top:15px; left:15px;' src='images/extra_objects/ff.png' alt=""> -->
+                    <p style='position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;'> <i  class="fa-solid fa-circle" style="color: red" ></i> &nbsp Offline</p> 
+                    <!-- <p style='position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;'> <i  class="fa-solid fa-circle" style="color: #46e546" ></i> &nbsp Online</p> --> 
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:white;'> </p>
                     <p style='position:absolute; display:block; margin-top:10px;  font-size:33px; right:15px; top:5px; color:white;'>32°</p>
                     <img id='avataricon' style='margin-top:80px; margin-bottom:20px;' src='images/extra_objects/iconaplayW.png' alt="">
@@ -22,20 +23,20 @@
                             {{ address }}
                         </p>
                     </div>
-                    <div class='icons-wrapper' >
-                        <div>
-                            <img style='  width:50px; ' src='images/board/animals/cat_1.png' alt=""> <!-- nft_9_cat  -->
-                        </div>
-                        <div>
-                            <img style='filter: invert(1);  width:50px; ' src='images/board/animals/monkey_2.png' alt=""> <!-- nft_10_monkey -->
 
-                        </div>
-                        <div>
-                            <img style='filter: invert(1);  width:50px; ' src='images/board/animals/leopard_3.png' alt=""> <!-- nft_22_leo_3 -->
-                        </div>
-                        <div>
-                            <img style='  width:50px; ' src='images/board/animals/lion_4.png' alt="">   <!-- nft_22_leo_2 -->
-                        </div>
+                    <div class='icons-wrapper' >
+                        <!-- <div> -->
+                            <!-- <img style='  width:50px; ' src='images/board/animals/cat_1.png' alt=""> --> <!-- nft_9_cat  -->
+                        <!-- </div> -->
+                        <!-- <div> -->
+                            <!-- <img style='filter: invert(1);  width:50px; ' src='images/board/animals/monkey_2.png' alt=""> --> <!-- nft_10_monkey -->
+                        <!-- </div> -->
+                        <!-- <div> -->
+                            <!-- <img style='filter: invert(1);  width:50px; ' src='images/board/animals/leopard_3.png' alt=""> --> <!-- nft_22_leo_3 -->
+                        <!-- </div> -->
+                        <!-- <div> -->
+                            <!-- <img style='  width:50px; ' src='images/board/animals/lion_4.png' alt="">  -->  <!-- nft_22_leo_2 -->
+                        <!-- </div> -->
                         <div>
                             <img style='  width:50px; ' src='images/board/animals/tiger_6.png' alt=""> <!-- nft_22_leo_1 -->
                         </div>
@@ -82,7 +83,7 @@
                             <i style=' filter: invert(1); font-size:20px; color:black; margin:0px 5px;'  class="fa-solid fa-battery-full"></i> <!-- nft_3_battery -->
                         </div>
                     </div>
-                    <p style='font-size:33px; color:white;'>18 <i style='color:#EE5E81' class="fa-solid fa-bolt"></i></p>
+                    <p style='font-size:33px; color:white;'>18 <i style='color:#feb442' class="fa-solid fa-bolt"></i></p>
                 </div>
                 <!------------------------------------------------------------>
 
@@ -96,186 +97,156 @@
                 <!------------------------ HISTORY EXAMPLE ---------------------->
                 <div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'>
+                    <div   style='background-color:black;' class=" record">
+                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'><!-- 1° -->
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'>
                             {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
+                        <!-- <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i> -->
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1" ></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'>+ 1  <i style='color:#feb442' class="fa-solid fa-bolt ml-1" ></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
+                    <!-- <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i style='color:#feb442' class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p> -->
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                    <div   style='background-color:black;' class=" record">
+                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'><!-- 1° -->
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
+                        <!-- <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i> -->
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1" ></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'>+ 1  <i style='color:#feb442' class="fa-solid fa-bolt ml-1" ></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
+                    <!-- <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i style='color:#feb442' class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p> -->
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                    <div   style='background-color:black;' class=" record">
+                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'><!-- 1° -->
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
+                        <!-- <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i> -->
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1" ></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'>+ 1  <i style='color:#feb442' class="fa-solid fa-bolt ml-1" ></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
+                    <!-- <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i style='color:#feb442' class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p> -->
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                    <div   style='background-color:black;' class=" record">
+                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'><!-- 1° -->
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
+                        <!-- <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i> -->
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1" ></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'>+ 1  <i style='color:#feb442' class="fa-solid fa-bolt ml-1" ></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
+                    <!-- <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i style='color:#feb442' class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p> -->
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                    <div   style='background-color:black;' class=" record">
+                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'><!-- 1° -->
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
+                        <!-- <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i> -->
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'>+ 1  <i style='color:#feb442' class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
+                    <!-- <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i style='color:#feb442' class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p> -->
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                    <div   style='background-color:black;' class=" record">
+                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'><!-- 1° -->
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
+                        <!-- <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i> -->
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'>+ 1  <i style='color:#feb442' class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
+                    <!-- <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i style='color:#feb442' class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p> -->
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                    <div   style='background-color:black;' class=" record">
+                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'><!-- 1° -->
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
+                        <!-- <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i> -->
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'>+ 1  <i style='color:#feb442' class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
+                    <!-- <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i style='color:#feb442' class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p> -->
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                    <div   style='background-color:black;' class=" record">
+                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'><!-- 1° -->
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
+                        <!-- <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i> -->
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'>+ 1  <i style='color:#feb442' class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
+                    <!-- <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i style='color:#feb442' class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p> -->
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                    <div   style='background-color:black;' class=" record">
+                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'><!-- 1° -->
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
+                        <!-- <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i> -->
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'>+ 1  <i style='color:#feb442' class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
+                    <!-- <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i style='color:#feb442' class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p> -->
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                    <div   style='background-color:black;' class=" record">
+                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'><!-- 1° -->
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
+                        <!-- <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i> -->
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'>+ 1  <i style='color:#feb442' class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
+                    <!-- <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i style='color:#feb442' class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p> -->
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                    <div   style='background-color:black;' class=" record">
+                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'><!-- 1° -->
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
+                        <!-- <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i> -->
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'>+ 1  <i style='color:#feb442' class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
+                    <!-- <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i style='color:#feb442' class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p> -->
                 </div>
                 <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
+                    <div   style='background-color:black;' class=" record">
+                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'><!-- 1° -->
+                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayW.png'> {{ address }}
                         </p>
                         <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
+                        <!-- <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i> -->
                         </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
+                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'>+ 1  <i style='color:#feb442' class="fa-solid fa-bolt ml-1"></i></span>
                     </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p>
+                    <!-- <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i style='color:#feb442' class="fa-solid fa-bolt ml-1" style='color:#EE5E81'></i></p> -->
                 </div>
-                <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
-                        </p>
-                        <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
-                        </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
-                    </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:blue'></i></p>
-                </div>
-                <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
-                        </p>
-                        <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
-                        </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
-                    </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:blue'></i></p>
-                </div>
-                <div style='' class="d-flex align-items-center">
-                    <div   class="record">
-                        <p  style='color:white; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
-                            <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='images/extra_objects/iconaplayB.png'> {{ address }}
-                        </p>
-                        <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <i style='font-size:20px; color:white;'  class="fa-solid fa-battery-full"></i>
-                        </div>
-                        <span class='align-items-center' style='color:white; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
-                    </div>
-                    <p style="color:white; margin:0; margin-bottom:5px; padding-left:10px;" >+1 <i class="fa-solid fa-bolt ml-1" style='color:blue'></i></p>
-                </div>
+
+
+
+
+
+                
                 </div>
                 <!------------------------------------------------------------->
 

@@ -56,17 +56,14 @@ body, .centratore {
 } */
 
 /* #page2{
+    height: 100vh;
     background:
     linear-gradient(
-    rgba(0, 0, 0, 0.8),
-    rgba(0, 0, 0, 0.8)
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.7)
     ),
     url("images/board/water4.jpg");
     background-repeat: repeat;
-    background-size: 100vw;
-    min-height: 100vw;
-    height: 100%;
-    width: 100%;
     background-position: top;
 } */
 
@@ -127,20 +124,19 @@ body, .centratore {
 
 
 
-#page4{
+#page1 {
     background:
     linear-gradient(
       rgba(0, 0, 0, 0.4),
       rgba(0, 0, 0, 0.4)
     ),
-    url("images/board/green_nilo.jpg") ;
+    url("images/board/green_nilo2.jpg") ;
+    background-size: 100vh ;
+    background-position: center ;
     background-repeat: repeat ;
-    background-size: 100vw ;
-    background-position: left ;
-    background-size: 800px ;
 }
 
-#page5{
+#page4 , #page5 {
     background:
     linear-gradient(
       rgba(0, 0, 0, 0.4),
@@ -150,7 +146,7 @@ body, .centratore {
     background-repeat: repeat ;
     background-size: 100vh ;
     background-position: center ;
-    background-size: 600px ;
+    background-size: 550px ;
 }
 
 
@@ -305,7 +301,7 @@ body, .centratore {
 
 #page4 .record{
     width: 280px ;
-    border:1px solid white;
+    /* border:1px solid white; */
     margin-bottom:10px;
     border-radius: 10px;
 }
@@ -316,7 +312,7 @@ body, .centratore {
 }
 
 #scarabeo {
-    max-width: 800px;
+    max-width: 700px;
     margin-bottom: 15px;
 }
 

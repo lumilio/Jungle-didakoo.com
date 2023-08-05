@@ -4727,27 +4727,7 @@ var render = function render() {
       "background-color": "black",
       "<!-- border": "3px solid white"
     }
-  }, [_c("img", {
-    staticStyle: {
-      width: "50px",
-      position: "absolute",
-      top: "15px",
-      left: "15px"
-    },
-    attrs: {
-      src: "images/extra_objects/ff.png",
-      alt: ""
-    }
-  }), _vm._v(" "), _c("p", {
-    staticStyle: {
-      position: "absolute",
-      display: "block",
-      "font-size": "25px",
-      left: "75px",
-      top: "20px",
-      color: "white"
-    }
-  }, [_vm._v(" 3/6")]), _vm._v(" "), _c("p", {
+  }, [_vm._m(0), _vm._v(" "), _c("p", {
     staticStyle: {
       position: "absolute",
       display: "block",
@@ -4803,10 +4783,13 @@ var render = function render() {
     attrs: {
       src: "images/extra_objects/Logomark-BlueB.png"
     }
-  }), _vm._v("\n                        " + _vm._s(_vm.address) + "\n                    ")])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("div", [_c("div", {
+  }), _vm._v("\n                        " + _vm._s(_vm.address) + "\n                    ")])]), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _c("div", [_c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record"
+    staticClass: "record",
+    staticStyle: {
+      "background-color": "black"
+    }
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -4817,7 +4800,7 @@ var render = function render() {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("1°\n                        "), _c("img", {
+  }, [_c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -4825,12 +4808,17 @@ var render = function render() {
       "margin-bottom": "3px"
     },
     attrs: {
-      src: "images/extra_objects/iconaplayB.png"
+      src: "images/extra_objects/iconaplayW.png"
     }
-  }), _vm._v("\n                        " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3)]), _vm._v(" "), _vm._m(4)]), _vm._v(" "), _c("div", {
+  }), _vm._v("\n                        " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }), _vm._v(" "), _vm._m(3)])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record"
+    staticClass: "record",
+    staticStyle: {
+      "background-color": "black"
+    }
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -4841,7 +4829,7 @@ var render = function render() {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("1°\n                        "), _c("img", {
+  }, [_c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -4849,12 +4837,17 @@ var render = function render() {
       "margin-bottom": "3px"
     },
     attrs: {
-      src: "images/extra_objects/iconaplayB.png"
+      src: "images/extra_objects/iconaplayW.png"
     }
-  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6)]), _vm._v(" "), _vm._m(7)]), _vm._v(" "), _c("div", {
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }), _vm._v(" "), _vm._m(4)])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record"
+    staticClass: "record",
+    staticStyle: {
+      "background-color": "black"
+    }
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -4865,7 +4858,7 @@ var render = function render() {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("1°\n                        "), _c("img", {
+  }, [_c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -4873,12 +4866,17 @@ var render = function render() {
       "margin-bottom": "3px"
     },
     attrs: {
-      src: "images/extra_objects/iconaplayB.png"
+      src: "images/extra_objects/iconaplayW.png"
     }
-  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9)]), _vm._v(" "), _vm._m(10)]), _vm._v(" "), _c("div", {
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }), _vm._v(" "), _vm._m(5)])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record"
+    staticClass: "record",
+    staticStyle: {
+      "background-color": "black"
+    }
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -4889,7 +4887,7 @@ var render = function render() {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("1°\n                        "), _c("img", {
+  }, [_c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -4897,12 +4895,17 @@ var render = function render() {
       "margin-bottom": "3px"
     },
     attrs: {
-      src: "images/extra_objects/iconaplayB.png"
+      src: "images/extra_objects/iconaplayW.png"
     }
-  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(11), _vm._v(" "), _vm._m(12)]), _vm._v(" "), _vm._m(13)]), _vm._v(" "), _c("div", {
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }), _vm._v(" "), _vm._m(6)])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record"
+    staticClass: "record",
+    staticStyle: {
+      "background-color": "black"
+    }
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -4913,7 +4916,7 @@ var render = function render() {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("1°\n                        "), _c("img", {
+  }, [_c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -4921,12 +4924,17 @@ var render = function render() {
       "margin-bottom": "3px"
     },
     attrs: {
-      src: "images/extra_objects/iconaplayB.png"
+      src: "images/extra_objects/iconaplayW.png"
     }
-  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(14), _vm._v(" "), _vm._m(15)]), _vm._v(" "), _vm._m(16)]), _vm._v(" "), _c("div", {
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }), _vm._v(" "), _vm._m(7)])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record"
+    staticClass: "record",
+    staticStyle: {
+      "background-color": "black"
+    }
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -4937,7 +4945,7 @@ var render = function render() {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("1°\n                        "), _c("img", {
+  }, [_c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -4945,12 +4953,17 @@ var render = function render() {
       "margin-bottom": "3px"
     },
     attrs: {
-      src: "images/extra_objects/iconaplayB.png"
+      src: "images/extra_objects/iconaplayW.png"
     }
-  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(17), _vm._v(" "), _vm._m(18)]), _vm._v(" "), _vm._m(19)]), _vm._v(" "), _c("div", {
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }), _vm._v(" "), _vm._m(8)])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record"
+    staticClass: "record",
+    staticStyle: {
+      "background-color": "black"
+    }
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -4961,7 +4974,7 @@ var render = function render() {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("1°\n                        "), _c("img", {
+  }, [_c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -4969,12 +4982,17 @@ var render = function render() {
       "margin-bottom": "3px"
     },
     attrs: {
-      src: "images/extra_objects/iconaplayB.png"
+      src: "images/extra_objects/iconaplayW.png"
     }
-  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(20), _vm._v(" "), _vm._m(21)]), _vm._v(" "), _vm._m(22)]), _vm._v(" "), _c("div", {
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }), _vm._v(" "), _vm._m(9)])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record"
+    staticClass: "record",
+    staticStyle: {
+      "background-color": "black"
+    }
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -4985,7 +5003,7 @@ var render = function render() {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("1°\n                        "), _c("img", {
+  }, [_c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -4993,12 +5011,17 @@ var render = function render() {
       "margin-bottom": "3px"
     },
     attrs: {
-      src: "images/extra_objects/iconaplayB.png"
+      src: "images/extra_objects/iconaplayW.png"
     }
-  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(23), _vm._v(" "), _vm._m(24)]), _vm._v(" "), _vm._m(25)]), _vm._v(" "), _c("div", {
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }), _vm._v(" "), _vm._m(10)])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record"
+    staticClass: "record",
+    staticStyle: {
+      "background-color": "black"
+    }
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -5009,7 +5032,7 @@ var render = function render() {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("1°\n                        "), _c("img", {
+  }, [_c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -5017,12 +5040,17 @@ var render = function render() {
       "margin-bottom": "3px"
     },
     attrs: {
-      src: "images/extra_objects/iconaplayB.png"
+      src: "images/extra_objects/iconaplayW.png"
     }
-  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(26), _vm._v(" "), _vm._m(27)]), _vm._v(" "), _vm._m(28)]), _vm._v(" "), _c("div", {
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }), _vm._v(" "), _vm._m(11)])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record"
+    staticClass: "record",
+    staticStyle: {
+      "background-color": "black"
+    }
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -5033,7 +5061,7 @@ var render = function render() {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("1°\n                        "), _c("img", {
+  }, [_c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -5041,12 +5069,17 @@ var render = function render() {
       "margin-bottom": "3px"
     },
     attrs: {
-      src: "images/extra_objects/iconaplayB.png"
+      src: "images/extra_objects/iconaplayW.png"
     }
-  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(29), _vm._v(" "), _vm._m(30)]), _vm._v(" "), _vm._m(31)]), _vm._v(" "), _c("div", {
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }), _vm._v(" "), _vm._m(12)])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record"
+    staticClass: "record",
+    staticStyle: {
+      "background-color": "black"
+    }
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -5057,7 +5090,7 @@ var render = function render() {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("1°\n                        "), _c("img", {
+  }, [_c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -5065,12 +5098,17 @@ var render = function render() {
       "margin-bottom": "3px"
     },
     attrs: {
-      src: "images/extra_objects/iconaplayB.png"
+      src: "images/extra_objects/iconaplayW.png"
     }
-  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(32), _vm._v(" "), _vm._m(33)]), _vm._v(" "), _vm._m(34)]), _vm._v(" "), _c("div", {
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }), _vm._v(" "), _vm._m(13)])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex align-items-center"
   }, [_c("div", {
-    staticClass: "record"
+    staticClass: "record",
+    staticStyle: {
+      "background-color": "black"
+    }
   }, [_c("p", {
     staticStyle: {
       color: "white",
@@ -5081,7 +5119,7 @@ var render = function render() {
       "white-space": "nowrap",
       overflow: "hidden"
     }
-  }, [_vm._v("1°\n                        "), _c("img", {
+  }, [_c("img", {
     staticStyle: {
       width: "20px",
       "margin-left": "5px",
@@ -5089,122 +5127,36 @@ var render = function render() {
       "margin-bottom": "3px"
     },
     attrs: {
-      src: "images/extra_objects/iconaplayB.png"
+      src: "images/extra_objects/iconaplayW.png"
     }
-  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(35), _vm._v(" "), _vm._m(36)]), _vm._v(" "), _vm._m(37)]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(38), _vm._v(" "), _vm._m(39)]), _vm._v(" "), _vm._m(40)]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(41), _vm._v(" "), _vm._m(42)]), _vm._v(" "), _vm._m(43)]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex align-items-center"
-  }, [_c("div", {
-    staticClass: "record"
-  }, [_c("p", {
-    staticStyle: {
-      color: "white",
-      "font-size": "x-smal",
-      padding: "10px",
-      margin: "0",
-      "text-overflow": "ellipsis",
-      "white-space": "nowrap",
-      overflow: "hidden"
-    }
-  }, [_vm._v("1°\n                        "), _c("img", {
-    staticStyle: {
-      width: "20px",
-      "margin-left": "5px",
-      "margin-right": "5px",
-      "margin-bottom": "3px"
-    },
-    attrs: {
-      src: "images/extra_objects/iconaplayB.png"
-    }
-  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _vm._m(44), _vm._v(" "), _vm._m(45)]), _vm._v(" "), _vm._m(46)])])])])]);
+  }), _vm._v(" " + _vm._s(_vm.address) + "\n                    ")]), _vm._v(" "), _c("div", {
+    staticClass: "d-flex align-items-center flex-row flex-nowrap"
+  }), _vm._v(" "), _vm._m(14)])])])])])]);
 };
 var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("p", {
+    staticStyle: {
+      position: "absolute",
+      display: "block",
+      "font-size": "15px",
+      left: "35px",
+      top: "30px",
+      color: "white"
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-circle",
+    staticStyle: {
+      color: "red"
+    }
+  }), _vm._v("   Offline")]);
+}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "icons-wrapper"
   }, [_c("div", [_c("img", {
-    staticStyle: {
-      width: "50px"
-    },
-    attrs: {
-      src: "images/board/animals/cat_1.png",
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("div", [_c("img", {
-    staticStyle: {
-      filter: "invert(1)",
-      width: "50px"
-    },
-    attrs: {
-      src: "images/board/animals/monkey_2.png",
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("div", [_c("img", {
-    staticStyle: {
-      filter: "invert(1)",
-      width: "50px"
-    },
-    attrs: {
-      src: "images/board/animals/leopard_3.png",
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("div", [_c("img", {
-    staticStyle: {
-      width: "50px"
-    },
-    attrs: {
-      src: "images/board/animals/lion_4.png",
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("div", [_c("img", {
     staticStyle: {
       width: "50px"
     },
@@ -5359,19 +5311,7 @@ var staticRenderFns = [function () {
   }, [_vm._v("18 "), _c("i", {
     staticClass: "fa-solid fa-bolt",
     staticStyle: {
-      color: "#EE5E81"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
+      color: "#feb442"
     }
   })]);
 }, function () {
@@ -5388,35 +5328,10 @@ var staticRenderFns = [function () {
       "border-radius": "20px",
       display: "flex"
     }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
+  }, [_vm._v("+ 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1",
     staticStyle: {
-      color: "#EE5E81"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
+      color: "#feb442"
     }
   })]);
 }, function () {
@@ -5433,35 +5348,10 @@ var staticRenderFns = [function () {
       "border-radius": "20px",
       display: "flex"
     }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
+  }, [_vm._v("+ 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1",
     staticStyle: {
-      color: "#EE5E81"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
+      color: "#feb442"
     }
   })]);
 }, function () {
@@ -5478,35 +5368,10 @@ var staticRenderFns = [function () {
       "border-radius": "20px",
       display: "flex"
     }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
+  }, [_vm._v("+ 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1",
     staticStyle: {
-      color: "#EE5E81"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
+      color: "#feb442"
     }
   })]);
 }, function () {
@@ -5523,35 +5388,10 @@ var staticRenderFns = [function () {
       "border-radius": "20px",
       display: "flex"
     }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
+  }, [_vm._v("+ 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1",
     staticStyle: {
-      color: "#EE5E81"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
+      color: "#feb442"
     }
   })]);
 }, function () {
@@ -5568,35 +5408,10 @@ var staticRenderFns = [function () {
       "border-radius": "20px",
       display: "flex"
     }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
+  }, [_vm._v("+ 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1",
     staticStyle: {
-      color: "#EE5E81"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
+      color: "#feb442"
     }
   })]);
 }, function () {
@@ -5613,35 +5428,10 @@ var staticRenderFns = [function () {
       "border-radius": "20px",
       display: "flex"
     }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
+  }, [_vm._v("+ 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1",
     staticStyle: {
-      color: "#EE5E81"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
+      color: "#feb442"
     }
   })]);
 }, function () {
@@ -5658,35 +5448,10 @@ var staticRenderFns = [function () {
       "border-radius": "20px",
       display: "flex"
     }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
+  }, [_vm._v("+ 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1",
     staticStyle: {
-      color: "#EE5E81"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
+      color: "#feb442"
     }
   })]);
 }, function () {
@@ -5703,35 +5468,10 @@ var staticRenderFns = [function () {
       "border-radius": "20px",
       display: "flex"
     }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
+  }, [_vm._v("+ 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1",
     staticStyle: {
-      color: "#EE5E81"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
+      color: "#feb442"
     }
   })]);
 }, function () {
@@ -5748,35 +5488,10 @@ var staticRenderFns = [function () {
       "border-radius": "20px",
       display: "flex"
     }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
+  }, [_vm._v("+ 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1",
     staticStyle: {
-      color: "#EE5E81"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
+      color: "#feb442"
     }
   })]);
 }, function () {
@@ -5793,35 +5508,10 @@ var staticRenderFns = [function () {
       "border-radius": "20px",
       display: "flex"
     }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
+  }, [_vm._v("+ 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1",
     staticStyle: {
-      color: "#EE5E81"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
+      color: "#feb442"
     }
   })]);
 }, function () {
@@ -5838,35 +5528,10 @@ var staticRenderFns = [function () {
       "border-radius": "20px",
       display: "flex"
     }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
+  }, [_vm._v("+ 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1",
     staticStyle: {
-      color: "#EE5E81"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
+      color: "#feb442"
     }
   })]);
 }, function () {
@@ -5883,158 +5548,10 @@ var staticRenderFns = [function () {
       "border-radius": "20px",
       display: "flex"
     }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
+  }, [_vm._v("+ 1  "), _c("i", {
     staticClass: "fa-solid fa-bolt ml-1",
     staticStyle: {
-      color: "#EE5E81"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "white",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1",
-    staticStyle: {
-      color: "blue"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "white",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1",
-    staticStyle: {
-      color: "blue"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "d-flex align-items-center flex-row flex-nowrap"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-battery-full",
-    staticStyle: {
-      "font-size": "20px",
-      color: "white"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "white",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticStyle: {
-      color: "white",
-      margin: "0",
-      "margin-bottom": "5px",
-      "padding-left": "10px"
-    }
-  }, [_vm._v("+1 "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1",
-    staticStyle: {
-      color: "blue"
+      color: "#feb442"
     }
   })]);
 }];
@@ -6132,70 +5649,110 @@ var staticRenderFns = [function () {
     staticStyle: {
       "font-size": "30px"
     }
-  }, [_vm._v("v 1.0.0\n                    ")]), _vm._v(" "), _c("p", [_vm._v("An Ethereum arcade platform.")]), _vm._v(" "), _c("span", {
+  }, [_vm._v(" v 1.0.0  "), _c("a", {
+    staticStyle: {
+      color: "white",
+      "font-size": "20px"
+    },
+    attrs: {
+      href: "https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469"
+    }
+  }, [_vm._v("  斗兽棋 ")]), _vm._v("   "), _c("a", {
+    attrs: {
+      href: ""
+    }
+  }, [_c("i", {
+    staticClass: "fa-brands fa-ethereum"
+  })])]), _vm._v(" "), _c("p", [_vm._v("Users Online : 20 ")]), _vm._v(" "), _c("p", [_vm._v("Actual power required to play : 0"), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })]), _vm._v(" "), _c("hr", {
+    attrs: {
+      width: "100%",
+      size: "20",
+      color: "white"
+    }
+  }), _vm._v(" "), _c("br", {
+    attrs: {
+      width: "100%",
+      size: "20",
+      color: "white"
+    }
+  }), _vm._v(" "), _c("span", {
     staticStyle: {
       color: "white"
     }
-  }, [_vm._v("To play you need an   "), _c("a", {
+  }, [_vm._v("Install an Ethereum wallet to play and save your data :   ")]), _vm._v(" "), _c("span", [_vm._v("> "), _c("a", {
     staticStyle: {
       color: "#D1230F"
     },
     attrs: {
       href: "https://metamask.io/"
     }
-  }, [_vm._v("Ethereum Wallet")]), _vm._v("  with ")]), _vm._v(" "), _c("p", [_c("a", {
+  }, [_vm._v(" Metamask")]), _vm._v(" <")]), _vm._v(" "), _c("span", [_vm._v("> "), _c("a", {
+    staticStyle: {
+      color: "#D1230F"
+    },
+    attrs: {
+      href: "https://metamask.io/"
+    }
+  }, [_vm._v("Coin Base")]), _vm._v(" <")]), _vm._v(" "), _c("br", {
+    attrs: {
+      width: "100%",
+      size: "20",
+      color: "white"
+    }
+  }), _vm._v(" "), _c("br", {
+    attrs: {
+      width: "100%",
+      size: "20",
+      color: "white"
+    }
+  }), _vm._v(" "), _c("br", {
+    attrs: {
+      width: "100%",
+      size: "20",
+      color: "white"
+    }
+  }), _vm._v(" "), _c("span", {
+    staticStyle: {
+      color: "white"
+    }
+  }, [_vm._v("Buy Power Up Nft :")]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      "font-size": "20px"
+    }
+  }, [_vm._v("\n                    >>> "), _c("a", {
     staticStyle: {
       color: "#FAEA09"
     },
     attrs: {
       href: "https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469"
     }
-  }, [_vm._v("sun flower ")]), _vm._v(" or\n                    "), _c("a", {
-    staticStyle: {
-      color: "#FAEA09"
-    },
-    attrs: {
-      href: "https://rarible.com/token/0xbdc8bd87cfd22ef5b90a93a77eebe5bd0628f841:2352475547185321859375352175754401687841756219705495990747967153936990732289?tab=overview"
-    }
-  }, [_vm._v("sun flower v.2 ")]), _vm._v("\n                    token.\n                ")]), _vm._v(" "), _c("p", {
-    staticStyle: {
-      "font-size": "20px"
-    }
-  }, [_vm._v("🌻  = + 2/2 GAME TOKENS "), _c("img", {
-    staticStyle: {
-      width: "30px"
-    },
-    attrs: {
-      src: "images/extra_objects/ff.png",
-      alt: ""
-    }
-  })]), _vm._v(" "), _c("p", [_vm._v(" Every day you total token will recharged:")]), _vm._v(" "), _c("p", {
-    staticClass: "text-white",
-    staticStyle: {
-      "font-family": '"VT323", monospace',
-      "margin-top": "25px"
-    }
-  }, [_vm._v(" 00:00:00 UTC+1 ROME")]), _vm._v(" "), _c("p", {
+  }, [_vm._v("sun flower "), _c("span", {
     staticStyle: {
       "font-size": "30px"
     }
-  }, [_vm._v("  0/2 "), _c("img", {
-    staticStyle: {
-      width: "50px"
-    },
+  }, [_vm._v("🌻")])]), _vm._v(" <<< \n                      =   60"), _c("i", {
+    staticClass: "fa-solid fa-bolt ml-1"
+  })]), _vm._v(" "), _c("br", {
     attrs: {
-      src: "images/extra_objects/ff.png",
-      alt: ""
+      width: "100%",
+      size: "20",
+      color: "white"
     }
-  }), _vm._v("    --->    2/2 "), _c("img", {
-    staticStyle: {
-      width: "50px"
-    },
+  }), _vm._v(" "), _c("hr", {
     attrs: {
-      src: "images/extra_objects/ff.png",
-      alt: ""
+      width: "100%",
+      size: "20",
+      color: "white"
     }
-  })]), _vm._v(" "), _c("p", [_vm._v("The following NFTs are recognized by the game and allow you to unlock extra content.")]), _vm._v(" "), _c("p", [_vm._v(" > "), _c("a", {
+  }), _vm._v(" "), _c("br", {
+    attrs: {
+      width: "100%",
+      size: "20",
+      color: "white"
+    }
+  }), _vm._v(" "), _c("p", [_vm._v("The following NFTs are recognized by the game and allow you to unlock extra content.")]), _vm._v(" "), _c("p", [_vm._v(" > "), _c("a", {
     staticStyle: {
       color: "#556FEE"
     },
@@ -6258,7 +5815,19 @@ var staticRenderFns = [function () {
     attrs: {
       href: "https://opensea.io/collection/cryptopunks"
     }
-  }, [_vm._v("Hash Masks  ")])]), _vm._v(" "), _c("p", [_vm._v("​")]), _vm._v(" "), _c("p", [_vm._v("  1 2 3 4 5 6 7 8 1")]), _vm._v(" "), _c("p", [_vm._v("\n                help@didakoo.com\n            ")]), _vm._v(" "), _c("p", [_vm._v("\n                 Follow on instagram\n            ")]), _vm._v(" "), _c("p", [_vm._v("Follow on twitter")])])])])]);
+  }, [_vm._v("Hash Masks  ")])]), _vm._v(" "), _c("hr", {
+    attrs: {
+      width: "100%",
+      size: "20",
+      color: "white"
+    }
+  }), _vm._v(" "), _c("br", {
+    attrs: {
+      width: "100%",
+      size: "20",
+      color: "white"
+    }
+  }), _vm._v(" "), _c("p", [_vm._v("\n                help@didakoo.com\n            ")]), _vm._v(" "), _c("p", [_vm._v("\n                 Follow on instagram\n            ")]), _vm._v(" "), _c("p", [_vm._v("Follow on twitter")])])])])]);
 }];
 render._withStripped = true;
 
@@ -6281,6 +5850,9 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "centratore flex-column align-items-center",
+    staticStyle: {
+      height: "100vh"
+    },
     attrs: {
       id: "page1"
     }
@@ -6619,17 +6191,13 @@ var render = function render() {
       src: "images/extra_objects/icon-05.png",
       alt: ""
     }
-  })], 1)]), _vm._v(" "), _c("p", {
-    staticClass: "text-white",
+  })], 1)]), _vm._v(" "), _c("img", {
     staticStyle: {
-      "font-family": '"VT323", monospace',
-      "margin-top": "25px"
-    }
-  }, [_vm._v("Sun Dec 17 2034 03:24:00 UTC+1 ROME")]), _vm._v(" "), _c("img", {
-    staticStyle: {},
+      "margin-top": "20px"
+    },
     attrs: {
       id: "scarabeo",
-      src: "images/extra_objects/14.svg",
+      src: "images/extra_objects/17.svg",
       alt: ""
     }
   })]), _vm._v(" "), _c("div", {
@@ -61848,7 +61416,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleNotFoundError: Module not found: Error: Can't resolve './images/board/green_nilo2.jpg' in '/home/sevan/didakoo_0.4.6.game/resources/sass'\n    at /home/sevan/didakoo_0.4.6.game/node_modules/webpack/lib/Compilation.js:925:10\n    at /home/sevan/didakoo_0.4.6.game/node_modules/webpack/lib/NormalModuleFactory.js:401:22\n    at /home/sevan/didakoo_0.4.6.game/node_modules/webpack/lib/NormalModuleFactory.js:130:21\n    at /home/sevan/didakoo_0.4.6.game/node_modules/webpack/lib/NormalModuleFactory.js:224:22\n    at /home/sevan/didakoo_0.4.6.game/node_modules/neo-async/async.js:2830:7\n    at /home/sevan/didakoo_0.4.6.game/node_modules/neo-async/async.js:6877:13\n    at /home/sevan/didakoo_0.4.6.game/node_modules/webpack/lib/NormalModuleFactory.js:214:25\n    at /home/sevan/didakoo_0.4.6.game/node_modules/enhanced-resolve/lib/Resolver.js:213:14\n    at /home/sevan/didakoo_0.4.6.game/node_modules/enhanced-resolve/lib/Resolver.js:285:5\n    at eval (eval at create (/home/sevan/didakoo_0.4.6.game/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at /home/sevan/didakoo_0.4.6.game/node_modules/enhanced-resolve/lib/UnsafeCachePlugin.js:44:7\n    at /home/sevan/didakoo_0.4.6.game/node_modules/enhanced-resolve/lib/Resolver.js:285:5\n    at eval (eval at create (/home/sevan/didakoo_0.4.6.game/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at /home/sevan/didakoo_0.4.6.game/node_modules/enhanced-resolve/lib/Resolver.js:285:5\n    at eval (eval at create (/home/sevan/didakoo_0.4.6.game/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at /home/sevan/didakoo_0.4.6.game/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js:67:43\n    at /home/sevan/didakoo_0.4.6.game/node_modules/enhanced-resolve/lib/Resolver.js:285:5\n    at eval (eval at create (/home/sevan/didakoo_0.4.6.game/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at /home/sevan/didakoo_0.4.6.game/node_modules/enhanced-resolve/lib/RootPlugin.js:37:38\n    at _next43 (eval at create (/home/sevan/didakoo_0.4.6.game/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:8:1)\n    at eval (eval at create (/home/sevan/didakoo_0.4.6.game/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:31:1)\n    at /home/sevan/didakoo_0.4.6.game/node_modules/enhanced-resolve/lib/Resolver.js:285:5\n    at eval (eval at create (/home/sevan/didakoo_0.4.6.game/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at /home/sevan/didakoo_0.4.6.game/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js:67:43\n    at /home/sevan/didakoo_0.4.6.game/node_modules/enhanced-resolve/lib/Resolver.js:285:5\n    at eval (eval at create (/home/sevan/didakoo_0.4.6.game/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at /home/sevan/didakoo_0.4.6.game/node_modules/enhanced-resolve/lib/Resolver.js:285:5\n    at eval (eval at create (/home/sevan/didakoo_0.4.6.game/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at /home/sevan/didakoo_0.4.6.game/node_modules/enhanced-resolve/lib/DirectoryExistsPlugin.js:27:15\n    at /home/sevan/didakoo_0.4.6.game/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:85:15\n    at processTicksAndRejections (node:internal/process/task_queues:78:11)");
 
 /***/ }),
 
