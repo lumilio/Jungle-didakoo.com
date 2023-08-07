@@ -63,8 +63,21 @@ export default {
     },
 
     methods:{
-        openModal() {
-            this.showModal = true;
+        async openModal() {
+            if (this.user) {
+                const response = await fetch('api/logout', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                store.commit('LOG_OUT_USER')
+                this.showModal = false;
+                toastr.info("User log outed")
+            } else {
+                this.showModal = true;
+            }
+
         },
         closeModal() {
             this.showModal = false;
