@@ -10989,17 +10989,18 @@ body,
     background-size: 300px;
 } */
 
-/* #page2{
-    height: 100vh;
+/* #page2 {
     background:
     linear-gradient(
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0.7)
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.9)
     ),
-    url("images/board/water4.jpg");
-    background-repeat: repeat;
-    background-position: top;
-} */
+    url("images/board/black_forest6.png") ;
+    background-repeat: repeat ;
+    background-position: top ;
+    height: 89vh;
+}
+ */
 
 #modalx {
   background: repeating-linear-gradient(to right, blue 0%, blue 12.5%, yellow 12.5%, yellow 25%, red 25%, red 37.5%, #EE5E81 37.5%, #EE5E81 50%, black 50%, black 62.5%, blue 62.5%, blue 75%, yellow 75%, yellow 87.5%, red 87.5%, red 100%), black;
@@ -11013,9 +11014,14 @@ body,
   rotate: 180deg;
 }
 
-#page3 {
-  background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)), url(/images/water4.jpg?0a53390684384b5f43b5383cff54c9b4);
-}
+/* #page3{
+    background:
+    linear-gradient(
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.4)
+    ),
+    url("images/board/water4.jpg");
+} */
 
 .modal {
   display: none;
@@ -11041,20 +11047,32 @@ body,
 }
 
 #page1 {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/green_nilo2.jpg?b8207c9f4799c04fe4ca20151986b06a);
-  background-size: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);
+  background-size: 550px;
   background-position: center;
   background-repeat: repeat;
+  height: 89vh;
 }
 
 #page4,
 #page5 {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);
   background-repeat: repeat;
-  background-size: 100vh;
   background-position: center;
   background-size: 550px;
 }
+
+/* #page5  {
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("images/board/green_nilo2.jpg") ;
+    background-repeat: repeat ;
+    background-position: right ;
+    background-size: 800px;
+} */
 
 /* ----------------------------------------------------------------------------- */
 

@@ -5885,9 +5885,6 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "centratore flex-column align-items-center",
-    staticStyle: {
-      height: "100vh"
-    },
     attrs: {
       id: "page1"
     }
