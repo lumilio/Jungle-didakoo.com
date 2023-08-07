@@ -55,18 +55,18 @@ body, .centratore {
     background-size: 300px;
 } */
 
-/* #page2{
-    height: 100vh;
+/* #page2 {
     background:
     linear-gradient(
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0.7)
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.9)
     ),
-    url("images/board/water4.jpg");
-    background-repeat: repeat;
-    background-position: top;
-} */
-
+    url("images/board/black_forest6.png") ;
+    background-repeat: repeat ;
+    background-position: top ;
+    height: 89vh;
+}
+ */
 
 
 
@@ -83,14 +83,14 @@ body, .centratore {
 }
 
 
-#page3{
+/* #page3{
     background:
     linear-gradient(
-    rgba(0, 0, 0, 1),
-    rgba(0, 0, 0, 1)
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.4)
     ),
     url("images/board/water4.jpg");
-}
+} */
 
 .modal {
     display: none; /* Hidden by default */
@@ -130,10 +130,11 @@ body, .centratore {
       rgba(0, 0, 0, 0.4),
       rgba(0, 0, 0, 0.4)
     ),
-    url("images/board/green_nilo2.jpg") ;
-    background-size: 100vh ;
+    url("images/board/bignilo3.jpg") ;
+    background-size: 550px ;
     background-position: center ;
     background-repeat: repeat ;
+    height: 89vh;
 }
 
 #page4 , #page5 {
@@ -144,10 +145,21 @@ body, .centratore {
     ),
     url("images/board/bignilo3.jpg") ;
     background-repeat: repeat ;
-    background-size: 100vh ;
     background-position: center ;
     background-size: 550px ;
 }
+
+/* #page5  {
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("images/board/green_nilo2.jpg") ;
+    background-repeat: repeat ;
+    background-position: right ;
+    background-size: 800px;
+} */
 
 
 
