@@ -3,12 +3,14 @@
         <div class="modal-overlay1" @click="closeModal"></div>
         <div class="connect-modal-content">
             <div> <h1 class="animate-charcter">SELECT YOUR WALLET</h1> </div>
-            <div class="buttonCoin" @click="web3Login('metamask')" id="metamask">
-                <img :src=MetamaskWalletImg alt="MetamaskWallet" class="imgSize"> <p class="animate-charcterMeta">Metamask</p>
-            </div>
-            <div class="buttonCoin" @click="web3Login('coinbase')" id="coinbase">
-                <img :src=CoinBaseWallet alt="MetamaskWallet" class="imgSize"> <p class="animate-charcterBase">CoinBase</p>
-            </div>
+            <button class="WalletCoinButton" @click="web3Login('metamask')" id="metamask">
+                <img :src=MetamaskWalletImg alt="MetamaskWallet" class="imgSize">
+                <p class="WalletCoinButtonText"> METAMSK </p>
+            </button>
+            <button class="WalletCoinButton" @click="web3Login('coinbase')" id="coinbase">
+                <img :src=CoinBaseWallet alt="MetamaskWallet" class="imgSize">
+                <p class="WalletCoinButtonText"> COINBASE </p>
+            </button>
             <span class="close1" @click="closeModal">&times;</span>
             <slot></slot>
 
@@ -191,7 +193,7 @@ mounted () {
 
 /* Modal Content/Box */
 .connect-modal-content {
-    background: linear-gradient(rgb(42, 39, 65), rgb(42, 39, 65)) padding-box padding-box, linear-gradient(45deg, rgb(39 78 120 / 18%), rgba(39, 141, 254, 0.18)) border-box border-box;
+    background: black;
     padding: 20px;
     width: 350px;
     height: 400px;
@@ -204,6 +206,7 @@ mounted () {
     margin: 15% auto;
     border-radius: 20px;
     min-width: 350px;
+    align-items: center;
 
 }
 
@@ -221,37 +224,17 @@ mounted () {
 .close1:hover {
     color: black;
 }
-.buttonCoin{
-    display: flex;
-    text-align: center;
-    align-items: center;
-    width: 100%;
-    background: rgba(49, 46, 71, 0.64);
-    -webkit-box-align: center;
-    box-shadow: none;
-    border: 2px solid transparent;
-    border-radius: 12px;
-    padding: 8px 24px;
-    color: rgb(252, 252, 255);
-    cursor: pointer;
-    gap: 40px;
-    margin: 0;
-    height: 70px;
-}
-.buttonCoin:hover{
-    font-size: 22px;
-}
+
 .animate-charcter{
-    position: absolute;
-    top: 0;
-    padding-top: 25px;
+    position: relative;
+    bottom: 90px;
     text-transform: uppercase;
     background-image: linear-gradient(
         -225deg,
-        #231557 0%,
-        #111da2 29%,
-        #064ae0 67%,
-        #33d1ee 100%
+        #fff4f4 0%,
+        #b7b7b9 29%,
+        #9d9d9d 67%,
+        #626262 100%
     );
     background-size: auto auto;
     background-clip: border-box;
@@ -271,103 +254,38 @@ mounted () {
         background-position: 200% center;
     }
 }
-.animate-charcterMeta{
+.WalletCoinButtonText{
     margin: 0;
+    align-self: center;
     text-transform: uppercase;
-    background-image: linear-gradient(
-        -225deg,
-        #ff4c00 0%,
-        #de6135 29%,
-        #f6885a 67%,
-        #f3c63e 100%
-    );
-    font-size: 18px;
-    background-size: auto auto;
     background-clip: border-box;
-    background-size: 200% auto;
     color: #fff;
-    background-clip: text;
-    text-fill-color: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: textclip 4s linear infinite;
-    display: flex;
-    justify-items: center;
+    font-size: 14px;
 }
 
-@keyframes textclip {
-    to {
-        background-position: 200% center;
-    }
-}
-.animate-charcterBase{
-    margin: 0;
-    text-transform: uppercase;
-    background-image: linear-gradient(
-        -225deg,
-        #1b3ad3 0%,
-        #4a56da 29%,
-        #789bea 67%,
-        #a2c0ee 100%
-    );
-    font-size: 18px;
-    background-size: auto auto;
-    background-clip: border-box;
-    background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-    text-fill-color: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: textclip 4s linear infinite;
+.WalletCoinButton{
+    background: black;
+    border-radius: 8px;
+    min-height: auto;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.2196078431);
+    padding: 0 5px;
+    box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.43);
+    transition: 0.2s ease;
+    width: 150px;
     display: flex;
-    justify-items: center;
+    gap: 10px;
 }
-
-@keyframes textclip {
-    to {
-        background-position: 200% center;
-    }
+.WalletCoinButton:hover {
+    box-shadow: 0 0 7px 1px rgba(255, 255, 255, 0.5);
+    transform: scale(1.02);
 }
 .imgSize{
-    max-width: 40px;
-
-}
-.WalletText{
+    max-width: 35px;
     margin: 0;
-    text-transform: uppercase;
-    background-image: linear-gradient(
-        -225deg,
-        #231557 0%,
-        #111da2 29%,
-        #064ae0 67%,
-        #33d1ee 100%
-    );
-    font-size: 18px;
-    background-size: auto auto;
-    background-clip: border-box;
-    background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-    text-fill-color: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: textclip 4s linear infinite;
-    display: flex;
-    justify-items: center;
-}
+    align-self: center;
+    padding: 2px 0;
 
-@keyframes textclip {
-    to {
-        background-position: 200% center;
-    }
-}
-.WalletText:hover{
-    font-size: 22px;
-
-}
-.buttonCoin:hover{
-    font-size: 22px;
 }
 
 </style>
