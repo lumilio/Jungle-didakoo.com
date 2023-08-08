@@ -248,7 +248,6 @@ mounted () {
     display: inline-block;
     font-size: 28px;
 }
-
 @keyframes textclip {
     to {
         background-position: 200% center;
@@ -262,7 +261,6 @@ mounted () {
     color: #fff;
     font-size: 14px;
 }
-
 .WalletCoinButton{
     background: black;
     border-radius: 8px;
@@ -287,5 +285,4 @@ mounted () {
     padding: 2px 0;
 
 }
-
 </style>
