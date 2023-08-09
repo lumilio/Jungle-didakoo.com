@@ -2306,7 +2306,6 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
         return {
           light: "#feb442",
           dark: "#55555500",
-          possibleMove: "#FFE194",
           possibleMoveWater: "#00e4ffa3",
           possibleStroke: "#b59f67"
         };
@@ -2315,6 +2314,9 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
   },
   data: function data() {
     return {
+      possibleMove: "",
+      GreenBoardColor: "#9be8b4",
+      OrangeBoardColor: "#FFE194",
       viewBox: {
         x: 560,
         y: 720
@@ -2399,10 +2401,11 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
           }
         }
       }
+      console.log(this.squares, 'this.squares.value');
       return false;
     },
     possibleMoveColor: function possibleMoveColor(code) {
-      return waterCodes.includes(code) ? this.color.possibleMoveWater : this.color.possibleMove;
+      return waterCodes.includes(code) ? this.color.possibleMoveWater : this.possibleMove;
     },
     squareTypeInfo: function squareTypeInfo(code) {
       // getting info about the square
@@ -2501,6 +2504,11 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
       var _this = this;
       if (data) {
         this.boardColors = data.colors;
+        if (data.colors.board === 2) {
+          this.possibleMove = "#9be8b4";
+        } else {
+          this.possibleMove = "#FFE194";
+        }
         this.playColors.light = backgroundColors[data.colors.board];
       } else {
         var blackColor = 1 + Math.floor(Math.random() * 6);
@@ -2516,6 +2524,11 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
               board: block.boardColors.light
             };
             _this.playColors.light = backgroundColors[block.boardColors.light];
+            if (block.boardColors.light === 2) {
+              _this.possibleMove = "#9be8b4";
+            } else {
+              _this.possibleMove = "#FFE194";
+            }
           }
         });
       }
@@ -2561,7 +2574,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
       var square = this.squares[rowIndex][colIndex];
       // this.saveState();
       // console.log(square.content.piece, 'piece')
-      // console.log(square.code, 'code')
+      console.log(square.code, 'codethis.boardColors');
       if (!this.releasePiece(square)) {
         if (square.content.piece && square.content.color === "white" && this.turn === 'white') {
           this.showPossibleMoves(rowIndex, colIndex);
@@ -4347,7 +4360,7 @@ var render = function render() {
           y: square.y,
           width: square.width,
           height: square.height,
-          fill: square.isPossibleMove ? _vm.possibleMoveColor(square.code) : _vm.playColors[square.color]
+          fill: square.isPossibleMove ? _vm.possibleMoveColor(square.code, square.color) : _vm.playColors[square.color]
         }
       }), _vm._v(" "), _c("rect", {
         directives: [{
@@ -10872,7 +10885,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n/* Style the modal */\n.modal1 {\n    position: fixed;\n    z-index: 1;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    overflow: auto;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.modal-overlay1 {\n    position: fixed;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.4);\n}\n\n/* Modal Content/Box */\n.connect-modal-content {\n    background: black;\n    padding: 20px;\n    width: 350px;\n    height: 400px;\n    overflow: auto;\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    gap: 15px;\n    justify-content: center;\n    margin: 15% auto;\n    border-radius: 20px;\n    min-width: 350px;\n    align-items: center;\n}\n\n/* The Close Button */\n.close1 {\n    color: #aaa;\n    font-size: 28px;\n    font-weight: bold;\n    position: absolute;\n    top: 5px;\n    right: 10px;\n    cursor: pointer;\n}\n.close1:hover {\n    color: black;\n}\n.animate-charcter{\n    position: relative;\n    bottom: 90px;\n    text-transform: uppercase;\n    background-image: linear-gradient(\n        -225deg,\n        #fff4f4 0%,\n        #b7b7b9 29%,\n        #9d9d9d 67%,\n        #626262 100%\n    );\n    background-size: auto auto;\n    background-clip: border-box;\n    background-size: 200% auto;\n    color: #fff;\n    background-clip: text;\n    text-fill-color: transparent;\n    -webkit-background-clip: text;\n    -webkit-text-fill-color: transparent;\n    animation: textclip 2s linear infinite;\n    display: inline-block;\n    font-size: 28px;\n}\n@keyframes textclip {\nto {\n        background-position: 200% center;\n}\n}\n.WalletCoinButtonText{\n    margin: 0;\n    align-self: center;\n    text-transform: uppercase;\n    background-clip: border-box;\n    color: #fff;\n    font-size: 14px;\n}\n.WalletCoinButton{\n    background: black;\n    border-radius: 8px;\n    min-height: auto;\n    height: 42px;\n    border: 1px solid rgba(255, 255, 255, 0.2196078431);\n    padding: 0 5px;\n    box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.43);\n    transition: 0.2s ease;\n    width: 150px;\n    display: flex;\n    gap: 10px;\n}\n.WalletCoinButton:hover {\n    box-shadow: 0 0 7px 1px rgba(255, 255, 255, 0.5);\n    transform: scale(1.02);\n}\n.imgSize{\n    max-width: 35px;\n    margin: 0;\n    align-self: center;\n    padding: 2px 0;\n}\n\n", ""]);
+exports.push([module.i, "\n/* Style the modal */\n.modal1 {\n    position: fixed;\n    z-index: 1;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    overflow: auto;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.modal-overlay1 {\n    position: fixed;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.4);\n}\n\n/* Modal Content/Box */\n.connect-modal-content {\n    background: black;\n    padding: 20px;\n    width: 350px;\n    height: 400px;\n    overflow: auto;\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    gap: 15px;\n    justify-content: center;\n    margin: 15% auto;\n    border-radius: 20px;\n    min-width: 350px;\n    align-items: center;\n}\n\n/* The Close Button */\n.close1 {\n    color: #aaa;\n    font-size: 28px;\n    font-weight: bold;\n    position: absolute;\n    top: 5px;\n    right: 10px;\n    cursor: pointer;\n}\n.close1:hover {\n    color: black;\n}\n.animate-charcter{\n    position: relative;\n    bottom: 90px;\n    text-transform: uppercase;\n    background-image: linear-gradient(\n        -225deg,\n        #fff4f4 0%,\n        #b7b7b9 29%,\n        #9d9d9d 67%,\n        #626262 100%\n    );\n    background-size: auto auto;\n    background-clip: border-box;\n    background-size: 200% auto;\n    color: #fff;\n    background-clip: text;\n    text-fill-color: transparent;\n    -webkit-background-clip: text;\n    -webkit-text-fill-color: transparent;\n    animation: textclip 2s linear infinite;\n    display: inline-block;\n    font-size: 28px;\n}\n@keyframes textclip {\nto {\n        background-position: 200% center;\n}\n}\n.WalletCoinButtonText{\n    margin: 0;\n    align-self: center;\n    text-transform: uppercase;\n    background-clip: border-box;\n    color: #fff;\n    font-size: 14px;\n}\n.WalletCoinButton{\n    background: black;\n    border-radius: 8px;\n    min-height: auto;\n    height: 42px;\n    border: 1px solid rgba(255, 255, 255, 0.2196078431);\n    padding: 0 5px;\n    box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.43);\n    transition: 0.2s ease;\n    width: 150px;\n    display: flex;\n    gap: 10px;\n}\n.WalletCoinButton:hover {\n    box-shadow: 0 0 7px 1px rgba(255, 255, 255, 0.5);\n    transform: scale(1.02);\n}\n.imgSize{\n    max-width: 35px;\n    margin: 0;\n    align-self: center;\n    padding: 2px 0;\n}\n", ""]);
 
 // exports
 

@@ -50,7 +50,8 @@
                             :height="square.height"
                             :fill="
                                 square.isPossibleMove
-                                    ? possibleMoveColor(square.code)
+
+                                    ? possibleMoveColor(square.code,square.color)
                                     : playColors[square.color]
                             "
                         ></rect>
@@ -229,7 +230,6 @@ export default {
             default: () => ({
                 light: "#feb442",
                 dark: "#55555500",
-                possibleMove: "#FFE194",
                 possibleMoveWater: "#00e4ffa3",
                 possibleStroke: "#b59f67",
             }),
@@ -237,6 +237,9 @@ export default {
     },
     data() {
         return {
+            possibleMove:  "" ,
+            GreenBoardColor:"#9be8b4",
+            OrangeBoardColor:"#FFE194",
             viewBox: { x: 560, y: 720 },
             boardColors: {
                 black:1,
@@ -265,8 +268,11 @@ export default {
             svg: ref(null),
             isHoldingChessPiece: ref(false),
             holding: ref({ row: null, col: null }),
+
         };
+
     },
+
     mounted() {
         this.setInitialConfig()
         // console.log(this.playColors, 'playcolors')
@@ -312,12 +318,13 @@ export default {
                     }
                 }
             }
+            console.log(this.squares,'this.squares.value')
             return false;
         },
         possibleMoveColor(code) {
             return waterCodes.includes(code)
                 ? this.color.possibleMoveWater
-                : this.color.possibleMove;
+                : this.possibleMove
         },
         squareTypeInfo(code) {
             // getting info about the square
@@ -421,6 +428,11 @@ export default {
         fillColors(data){
             if (data){
                 this.boardColors = data.colors
+                if (data.colors.board === 2 ){
+                    this.possibleMove = "#9be8b4"
+                }else {
+                    this.possibleMove = "#FFE194"
+                }
                 this.playColors.light = backgroundColors[data.colors.board]
             }else{
                 let blackColor = 1 + Math.floor(Math.random() * 6)
@@ -436,6 +448,12 @@ export default {
                             board: block.boardColors.light
                         }
                         this.playColors.light = backgroundColors[block.boardColors.light]
+                        if (block.boardColors.light === 2 ){
+                            this.possibleMove = "#9be8b4"
+                        }else {
+                            this.possibleMove = "#FFE194"
+
+                        }
                     }
                 })
 
@@ -492,7 +510,7 @@ export default {
             let square = this.squares[rowIndex][colIndex];
             // this.saveState();
             // console.log(square.content.piece, 'piece')
-            // console.log(square.code, 'code')
+            console.log(square.code, 'codethis.boardColors')
             if (!this.releasePiece(square)) {
                 if (square.content.piece && square.content.color === "white" && this.turn === 'white') {
                     this.showPossibleMoves(rowIndex, colIndex);
