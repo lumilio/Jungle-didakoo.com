@@ -22,6 +22,7 @@
 import store from "../../store";
 import MetamaskWalletImg from "../../../images/extra_objects/MetaMask_Fox.png"
 import CoinBaseWallet from "../../../images/extra_objects/CoinBaseWallet.png"
+import {find} from "lodash/collection";
 
 export default {
     props: {
@@ -62,9 +63,26 @@ export default {
 
 
                 // const provider = new ethers.providers.Web3Provider(window.ethereum);
-                let provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
-                provider = new ethers.providers.Web3Provider(provider);
 
+                let provider;
+
+                if (wallet === 'metamask') {
+                    for (const p of window.ethereum.providers) {
+                        if (p.isMetaMask) {
+                            provider = p;
+                            break;
+                        }
+                    }
+                } else {
+                    for (const p of window.ethereum.providers) {
+                        if (p.isCoinbaseWallet) {
+                            provider = p;
+                            break;
+                        }
+                    }
+                }
+
+                provider = new ethers.providers.Web3Provider(provider);
 
                 let response = await fetch('api/web3-login-message');
                 const message = await response.text();

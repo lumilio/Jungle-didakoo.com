@@ -318,7 +318,6 @@ export default {
                     }
                 }
             }
-            console.log(this.squares,'this.squares.value')
             return false;
         },
         possibleMoveColor(code) {
@@ -510,7 +509,6 @@ export default {
             let square = this.squares[rowIndex][colIndex];
             // this.saveState();
             // console.log(square.content.piece, 'piece')
-            console.log(square.code, 'codethis.boardColors')
             if (!this.releasePiece(square)) {
                 if (square.content.piece && square.content.color === "white" && this.turn === 'white') {
                     this.showPossibleMoves(rowIndex, colIndex);

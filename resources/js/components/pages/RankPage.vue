@@ -86,20 +86,21 @@
 
 
             <!-- 24 JULY TASK - 1 :
-            
+
                 Keep the same css rule of the thiv .refresh-button on RECORD colored div
 
              -->
 
 
             <!-- Looping through players --------------------------------------------------->
-            <router-link :to="{path: 'avatar'}">
                 <div v-for="players in playersArray" v-bind:key="players.id" style="background-color:#EDEB52;"  class="record ">
-
+                    <router-link :to="{ path: 'avatar', query: { wallet_address: players.wallet_address } }">
                     <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='../../../images/extra_objects/iconaplayB.png'/>
                         {{players.wallet_address}}
+
                     </p>
+                    </router-link>
                     <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <template v-for="(item, key) in NFT_LINKS" v-if="players[key] > 0 && item">
                             <img style='width:35px;' :src="item" alt=""/>
@@ -129,7 +130,6 @@
                     <!--                      </div>-->
                     <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
-            </router-link>
 
             <!------------------------------------------------------------------------------>
 
