@@ -74,8 +74,8 @@
         <div style='max-width:800px' class="rank d-flex container-sm  flex-column align-items-center text-white">
 
             <button class='refresh-button' style='background-color:black;'>
-                <div class='d-flex justify-content-between align-items-center' style='color:white; padding: 10px; margin: 0;'>
-                    <span class="mr-2 " style="white-space:nowrap;">Click to refresh</span>
+                <div class='d-flex justify-content-center align-items-center' style='color:white; padding: 10px; margin: 0;'>
+                    <!-- <span class="mr-2 " style="font-size:30px; white-space:nowrap;">0 <span style="font-size:30px;">🌻</span>  </span> -->
                     <div class="d-flex">
                         <!-- <div class="container" style="width:100%; background-color:;">100%</div> -->
                         <i style='color:white; font-size:20px;' class="fa-solid fa-rotate ml-2"></i>
