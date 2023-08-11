@@ -3711,7 +3711,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         icon: 'fa-solid fa-bolt icons',
         onclick: this.createGame
       }, {
-        title: 'PRIVATE GAME',
+        title: 'INVITE P2',
         image: '../../../images/extra_objects/iconaplay1.png',
         onclick: this.createGame
       }, {
@@ -4082,8 +4082,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://' + _this.url + '/api/get-users');
             case 3:
               response = _context.sent;
+              console.log(response, "responseRankk");
               _this.playersArray = response.data.users;
-            case 5:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -4611,7 +4612,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "connect-modal-content"
-  }, [_vm._m(0), _vm._v(" "), _c("button", {
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("button", {
     staticClass: "WalletCoinButton",
     attrs: {
       id: "metamask"
@@ -4657,9 +4658,29 @@ var render = function render() {
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_c("h1", {
-    staticClass: "animate-charcter"
-  }, [_vm._v("SELECT YOUR WALLET")])]);
+  return _c("div", {
+    staticClass: "d-flex container-sm align-items-center justify-content-between flex-row"
+  }, [_c("img", {
+    staticClass: "modal_logo",
+    staticStyle: {
+      width: "100px"
+    },
+    attrs: {
+      src: __webpack_require__(/*! ../../../images/extra_objects/ddd.jpg */ "./resources/images/extra_objects/ddd.jpg")
+    }
+  }), _vm._v(" "), _c("span", {
+    staticClass: "version_sign"
+  }, [_vm._v("v 1.0.0")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", [_c("h2", {
+    staticClass: "mt-4 mb-5 ml-3",
+    staticStyle: {
+      "font-family": '"VT323", monospace',
+      color: "white"
+    }
+  }, [_vm._v("Select wallet to login")])]);
 }];
 render._withStripped = true;
 
@@ -6342,7 +6363,7 @@ var render = function render() {
         "white-space": "nowrap",
         overflow: "hidden"
       }
-    }, [_vm._v("1°\n                    "), _c("img", {
+    }, [_vm._v(_vm._s(players.id) + "\n                    "), _c("img", {
       staticStyle: {
         width: "20px",
         "margin-left": "5px",
@@ -6364,7 +6385,20 @@ var render = function render() {
           alt: ""
         }
       })] : _vm._e();
-    })], 2), _vm._v(" "), _vm._m(2, true)], 1);
+    })], 2), _vm._v(" "), _c("span", {
+      staticClass: "align-items-center",
+      staticStyle: {
+        color: "black",
+        "margin-right": "10px",
+        "white-space": "nowrap",
+        "background-color": "",
+        padding: "0 10px",
+        "border-radius": "20px",
+        display: "flex"
+      }
+    }, [_vm._v(" " + _vm._s(players.power) + " "), _c("i", {
+      staticClass: "fa-solid fa-bolt ml-1"
+    })])], 1);
   })], 2)]);
 };
 var staticRenderFns = [function () {
@@ -6402,18 +6436,19 @@ var staticRenderFns = [function () {
       "background-color": "black"
     }
   }, [_c("div", {
-    staticClass: "d-flex justify-content-between align-items-center",
+    staticClass: "d-flex justify-content-center align-items-center",
     staticStyle: {
       color: "white",
       padding: "10px",
       margin: "0"
     }
-  }, [_c("span", {
-    staticClass: "mr-2",
+  }, [_c("p", {
+    staticClass: "text-white",
     staticStyle: {
-      "white-space": "nowrap"
+      "font-family": '"VT323", monospace',
+      "margin-top": "25px"
     }
-  }, [_vm._v("Click to refresh")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Last update list Sun Dec 17 2034 03:24:00 UTC+1 ROME")]), _vm._v(" "), _c("div", {
     staticClass: "d-flex"
   }, [_c("i", {
     staticClass: "fa-solid fa-rotate ml-2",
@@ -6422,23 +6457,6 @@ var staticRenderFns = [function () {
       "font-size": "20px"
     }
   })])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("span", {
-    staticClass: "align-items-center",
-    staticStyle: {
-      color: "black",
-      "margin-right": "10px",
-      "white-space": "nowrap",
-      "background-color": "",
-      padding: "0 10px",
-      "border-radius": "20px",
-      display: "flex"
-    }
-  }, [_vm._v(" 100  "), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]);
 }];
 render._withStripped = true;
 
@@ -10956,7 +10974,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n/* Style the modal */\n.modal1 {\n    position: fixed;\n    z-index: 1;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    overflow: auto;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.modal-overlay1 {\n    position: fixed;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.4);\n}\n\n/* Modal Content/Box */\n.connect-modal-content {\n    background: black;\n    padding: 20px;\n    width: 350px;\n    height: 400px;\n    overflow: auto;\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    gap: 15px;\n    justify-content: center;\n    margin: 15% auto;\n    border-radius: 20px;\n    min-width: 350px;\n    align-items: center;\n}\n\n/* The Close Button */\n.close1 {\n    color:red;\n    font-size: 28px;\n    font-weight: bold;\n    position: absolute;\n    top: 5px;\n    right: 10px;\n    cursor: pointer;\n}\n.close1:hover {\n    color: darkred;\n}\n.animate-charcter{\n    position: relative;\n    bottom: 90px;\n    text-transform: uppercase;\n    background-image: linear-gradient(\n        -225deg,\n        #fff4f4 0%,\n        #b7b7b9 29%,\n        #9d9d9d 67%,\n        #626262 100%\n    );\n    background-size: auto auto;\n    background-clip: border-box;\n    background-size: 200% auto;\n    color: #fff;\n    background-clip: text;\n    text-fill-color: transparent;\n    -webkit-background-clip: text;\n    -webkit-text-fill-color: transparent;\n    animation: textclip 2s linear infinite;\n    display: inline-block;\n    font-size: 28px;\n}\n@keyframes textclip {\nto {\n        background-position: 200% center;\n}\n}\n.WalletCoinButtonText{\n    margin: 0;\n    align-self: center;\n    text-transform: uppercase;\n    background-clip: border-box;\n    color: #fff;\n    font-size: 14px;\n}\n.WalletCoinButton{\n    background: black;\n    border-radius: 8px;\n    min-height: auto;\n    height: 42px;\n    border: 1px solid rgba(255, 255, 255, 0.2196078431);\n    padding: 0 5px;\n    box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.43);\n    transition: 0.2s ease;\n    width: 150px;\n    display: flex;\n    gap: 10px;\n}\n.WalletCoinButton:hover {\n    box-shadow: 0 0 7px 1px rgba(255, 255, 255, 0.5);\n    transform: scale(1.02);\n}\n.imgSize{\n    max-width: 35px;\n    margin: 0;\n    align-self: center;\n    padding: 2px 0;\n}\n", ""]);
+exports.push([module.i, "\n/* Style the modal */\n.modal1 {\n    position: fixed;\n    z-index: 1;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    overflow: auto;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.modal-overlay1 {\n    position: fixed;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    /* background-color: rgba(0, 0, 0, 0.4); NO DARK BACKGROUND for NOW */\n}\n\n/* Modal Content/Box */\n.connect-modal-content {\n    background: black;\n    padding: 20px;\n    width: 350px;\n    height: 400px;\n    overflow: auto;\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    gap: 15px;\n    justify-content: center;\n    margin: 15% auto;\n    border-radius: 20px;\n    min-width: 350px;\n    align-items: center;\n}\n\n/* The Close Button */\n.close1 {\n    color:red;\n    font-size: 28px;\n    font-weight: bold;\n    position: absolute;\n    top: 5px;\n    right: 10px;\n    cursor: pointer;\n}\n.close1:hover {\n    color: darkred;\n}\n.WalletCoinButtonText{\n    margin: 0;\n    align-self: center;\n    text-transform: uppercase;\n    background-clip: border-box;\n    color: #fff;\n    font-size: 14px;\n}\n.WalletCoinButton{\n    background: black;\n    border-radius: 8px;\n    min-height: auto;\n    height: 42px;\n    border: 1px solid rgba(255, 255, 255, 0.2196078431);\n    padding: 0 5px;\n    box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.43);\n    transition: 0.2s ease;\n    width: 150px;\n    display: flex;\n    gap: 10px;\n}\n.WalletCoinButton:hover {\n    box-shadow: 0 0 7px 1px rgba(255, 255, 255, 0.5);\n    transform: scale(1.02);\n}\n.imgSize{\n    max-width: 35px;\n    margin: 0;\n    align-self: center;\n    padding: 2px 0;\n}\n", ""]);
 
 // exports
 

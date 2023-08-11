@@ -96,7 +96,7 @@
             <!-- Looping through players --------------------------------------------------->
                 <div v-for="players in playersArray" v-bind:key="players.id" style="background-color:#EDEB52;"  class="record ">
                     <router-link :to="{ path: 'avatar', query: { wallet_address: players.wallet_address } }">
-                    <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>1°
+                    <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>{{players.id}}
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='../../../images/extra_objects/iconaplayB.png'/>
                         {{players.wallet_address}}
 
@@ -129,7 +129,7 @@
                     <!--                          <img style='width:23px; margin:0 5px; filter: invert(1);' src='../../../images/extra_objects/raygun.png' alt=""> &lt;!&ndash; nft_21_raygun &ndash;&gt;-->
                     <!--                          <i style='font-size:20px; color:black; margin:0 5px;'  class="fa-solid fa-battery-full"></i> &lt;!&ndash; nft_3_battery &ndash;&gt;-->
                     <!--                      </div>-->
-                    <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> 100  <i class="fa-solid fa-bolt ml-1"></i></span>
+                    <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> {{players.power}} <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
 
             <!------------------------------------------------------------------------------>
@@ -293,6 +293,7 @@ import NFT_LINKS from "../../constants/nftLinks";
             {
                 this.url = window.location.host;
                 const response = await axios.get('http://'+this.url+'/api/get-users');
+                console.log(response,"responseRankk")
                 this.playersArray = response.data.users;
             }
     },

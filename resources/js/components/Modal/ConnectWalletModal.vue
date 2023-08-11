@@ -6,7 +6,7 @@
                 <img class="modal_logo" style='width:100px;' src="../../../images/extra_objects/ddd.jpg">
                 <span class="version_sign">v 1.0.0</span>
             </div>
-            <div> <h2 class="animate-charcter-NO! mt-4 mb-5 ml-3" style='font-family: "VT323", monospace; color:white;'>Select wallet to login</h2> </div>
+            <div> <h2 class=" mt-4 mb-5 ml-3" style='font-family: "VT323", monospace; color:white;'>Select wallet to login</h2> </div>
             <button class="WalletCoinButton" @click="web3Login('metamask')" id="metamask">
                 <img :src=MetamaskWalletImg alt="MetamaskWallet" class="imgSize">
                 <p class="WalletCoinButtonText"> METAMSK </p>
@@ -228,34 +228,6 @@ mounted () {
     color: darkred;
 }
 
-.animate-charcter{
-    position: relative;
-    bottom: 90px;
-    text-transform: uppercase;
-    background-image: linear-gradient(
-        -225deg,
-        #fff4f4 0%,
-        #b7b7b9 29%,
-        #9d9d9d 67%,
-        #626262 100%
-    );
-    background-size: auto auto;
-    background-clip: border-box;
-    background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-    text-fill-color: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: textclip 2s linear infinite;
-    display: inline-block;
-    font-size: 28px;
-}
-@keyframes textclip {
-    to {
-        background-position: 200% center;
-    }
-}
 .WalletCoinButtonText{
     margin: 0;
     align-self: center;
