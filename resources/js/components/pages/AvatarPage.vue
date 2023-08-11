@@ -276,7 +276,6 @@
                     const walletAddress = this.$route.query.wallet_address;
                     const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
                     this.userData = response.data.user;
-                    console.log( this.userData," this.userData")
                 } catch (error) {
                     console.error(error);
                     this.user = null;
