@@ -24,7 +24,7 @@
                         onclick: this.createGame
                     },
                     {
-                        title: 'PRIVATE GAME',
+                        title: 'INVITE P2',
                         image: '../../../images/extra_objects/iconaplay1.png',
                         onclick: this.createGame
                     },
