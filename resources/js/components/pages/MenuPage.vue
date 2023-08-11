@@ -9,15 +9,15 @@
         <!----------------------------------------------------------------------------->
 
         <!-------------------------- BUTTONS  ------------------------------>
-        <div style="height:calc(80vh - 80px);" class="justify-content-center align-content-center d-flex">
-            <div class="bt">
-                <a type="button">
+        <div v-show="!showModal" style="height:calc(80vh - 80px);" class="justify-content-center align-content-center d-flex">
+            <div class="bt" v-show="!showModal">
+                <a type="button" >
                     <div class="square" @click="openModal">
                         <i id="led" class="fa-solid fa-circle" :style="{color: user? '#46e546' : 'red'}" ></i>
                         <i class="fa-solid fa-power-off"></i>
                     </div>
                 </a>
-                <ConnectWalletModal :show="showModal" @close="closeModal" style="margin: 0"></ConnectWalletModal>
+
                 <router-link to="rank">
                     <div id="modalz">
                         <div class="square">
@@ -34,6 +34,7 @@
                     </div>
                 </router-link>
             </div>
+            <ConnectWalletModal :show="showModal" @close="closeModal" style="margin: 0"></ConnectWalletModal>
         </div>
         <!------------------------------------------------------------------>
 

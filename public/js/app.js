@@ -5954,11 +5954,23 @@ var render = function render() {
       id: "page1"
     }
   }, [_vm._m(0), _vm._v(" "), _c("div", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: !_vm.showModal,
+      expression: "!showModal"
+    }],
     staticClass: "justify-content-center align-content-center d-flex",
     staticStyle: {
       height: "calc(80vh - 80px)"
     }
   }, [_c("div", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: !_vm.showModal,
+      expression: "!showModal"
+    }],
     staticClass: "bt"
   }, [_c("a", {
     attrs: {
@@ -5979,17 +5991,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("i", {
     staticClass: "fa-solid fa-power-off"
-  })])]), _vm._v(" "), _c("ConnectWalletModal", {
-    staticStyle: {
-      margin: "0"
-    },
-    attrs: {
-      show: _vm.showModal
-    },
-    on: {
-      close: _vm.closeModal
-    }
-  }), _vm._v(" "), _c("router-link", {
+  })])]), _vm._v(" "), _c("router-link", {
     attrs: {
       to: "rank"
     }
@@ -6017,7 +6019,17 @@ var render = function render() {
     staticClass: "square"
   }, [_c("span", {
     staticClass: "text-white"
-  }, [_vm._v("1.0")])])])])], 1)])]);
+  }, [_vm._v("1.0")])])])])], 1), _vm._v(" "), _c("ConnectWalletModal", {
+    staticStyle: {
+      margin: "0"
+    },
+    attrs: {
+      show: _vm.showModal
+    },
+    on: {
+      close: _vm.closeModal
+    }
+  })], 1)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -10944,7 +10956,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n/* Style the modal */\n.modal1 {\n    position: fixed;\n    z-index: 1;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    overflow: auto;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.modal-overlay1 {\n    position: fixed;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.4);\n}\n\n/* Modal Content/Box */\n.connect-modal-content {\n    background: black;\n    padding: 20px;\n    width: 350px;\n    height: 400px;\n    overflow: auto;\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    gap: 15px;\n    justify-content: center;\n    margin: 15% auto;\n    border-radius: 20px;\n    min-width: 350px;\n    align-items: center;\n}\n\n/* The Close Button */\n.close1 {\n    color: #aaa;\n    font-size: 28px;\n    font-weight: bold;\n    position: absolute;\n    top: 5px;\n    right: 10px;\n    cursor: pointer;\n}\n.close1:hover {\n    color: black;\n}\n.animate-charcter{\n    position: relative;\n    bottom: 90px;\n    text-transform: uppercase;\n    background-image: linear-gradient(\n        -225deg,\n        #fff4f4 0%,\n        #b7b7b9 29%,\n        #9d9d9d 67%,\n        #626262 100%\n    );\n    background-size: auto auto;\n    background-clip: border-box;\n    background-size: 200% auto;\n    color: #fff;\n    background-clip: text;\n    text-fill-color: transparent;\n    -webkit-background-clip: text;\n    -webkit-text-fill-color: transparent;\n    animation: textclip 2s linear infinite;\n    display: inline-block;\n    font-size: 28px;\n}\n@keyframes textclip {\nto {\n        background-position: 200% center;\n}\n}\n.WalletCoinButtonText{\n    margin: 0;\n    align-self: center;\n    text-transform: uppercase;\n    background-clip: border-box;\n    color: #fff;\n    font-size: 14px;\n}\n.WalletCoinButton{\n    background: black;\n    border-radius: 8px;\n    min-height: auto;\n    height: 42px;\n    border: 1px solid rgba(255, 255, 255, 0.2196078431);\n    padding: 0 5px;\n    box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.43);\n    transition: 0.2s ease;\n    width: 150px;\n    display: flex;\n    gap: 10px;\n}\n.WalletCoinButton:hover {\n    box-shadow: 0 0 7px 1px rgba(255, 255, 255, 0.5);\n    transform: scale(1.02);\n}\n.imgSize{\n    max-width: 35px;\n    margin: 0;\n    align-self: center;\n    padding: 2px 0;\n}\n", ""]);
+exports.push([module.i, "\n/* Style the modal */\n.modal1 {\n    position: fixed;\n    z-index: 1;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    overflow: auto;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.modal-overlay1 {\n    position: fixed;\n    left: 0;\n    top: 0;\n    width: 100%;\n    height: 100%;\n    background-color: rgba(0, 0, 0, 0.4);\n}\n\n/* Modal Content/Box */\n.connect-modal-content {\n    background: black;\n    padding: 20px;\n    width: 350px;\n    height: 400px;\n    overflow: auto;\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    gap: 15px;\n    justify-content: center;\n    margin: 15% auto;\n    border-radius: 20px;\n    min-width: 350px;\n    align-items: center;\n}\n\n/* The Close Button */\n.close1 {\n    color:red;\n    font-size: 28px;\n    font-weight: bold;\n    position: absolute;\n    top: 5px;\n    right: 10px;\n    cursor: pointer;\n}\n.close1:hover {\n    color: darkred;\n}\n.animate-charcter{\n    position: relative;\n    bottom: 90px;\n    text-transform: uppercase;\n    background-image: linear-gradient(\n        -225deg,\n        #fff4f4 0%,\n        #b7b7b9 29%,\n        #9d9d9d 67%,\n        #626262 100%\n    );\n    background-size: auto auto;\n    background-clip: border-box;\n    background-size: 200% auto;\n    color: #fff;\n    background-clip: text;\n    text-fill-color: transparent;\n    -webkit-background-clip: text;\n    -webkit-text-fill-color: transparent;\n    animation: textclip 2s linear infinite;\n    display: inline-block;\n    font-size: 28px;\n}\n@keyframes textclip {\nto {\n        background-position: 200% center;\n}\n}\n.WalletCoinButtonText{\n    margin: 0;\n    align-self: center;\n    text-transform: uppercase;\n    background-clip: border-box;\n    color: #fff;\n    font-size: 14px;\n}\n.WalletCoinButton{\n    background: black;\n    border-radius: 8px;\n    min-height: auto;\n    height: 42px;\n    border: 1px solid rgba(255, 255, 255, 0.2196078431);\n    padding: 0 5px;\n    box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.43);\n    transition: 0.2s ease;\n    width: 150px;\n    display: flex;\n    gap: 10px;\n}\n.WalletCoinButton:hover {\n    box-shadow: 0 0 7px 1px rgba(255, 255, 255, 0.5);\n    transform: scale(1.02);\n}\n.imgSize{\n    max-width: 35px;\n    margin: 0;\n    align-self: center;\n    padding: 2px 0;\n}\n", ""]);
 
 // exports
 

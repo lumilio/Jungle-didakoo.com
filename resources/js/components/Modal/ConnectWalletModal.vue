@@ -11,7 +11,7 @@
                 <img :src=CoinBaseWallet alt="MetamaskWallet" class="imgSize">
                 <p class="WalletCoinButtonText"> COINBASE </p>
             </button>
-            <span class="close1" @click="closeModal">&times;</span>
+            <span class="close1" @click="closeModal" >&times;</span>
             <slot></slot>
 
         </div>
@@ -212,7 +212,7 @@ mounted () {
 
 /* The Close Button */
 .close1 {
-    color: #aaa;
+    color:red;
     font-size: 28px;
     font-weight: bold;
     position: absolute;
@@ -222,7 +222,7 @@ mounted () {
 }
 
 .close1:hover {
-    color: black;
+    color: darkred;
 }
 
 .animate-charcter{

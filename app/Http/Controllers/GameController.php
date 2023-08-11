@@ -78,12 +78,12 @@ class GameController extends Controller
 
         if ($win){
             $creator->update([
-                "power" => $creator->power + 3,
+                "power" => $creator->power + 1,
                 'wins' => $creator->wins + 1
             ]);
         }else{
             $creator->update([
-                "power" => $creator->power + 1
+                "power" => $creator->power + 0
             ]);
         }
         $game->update([
