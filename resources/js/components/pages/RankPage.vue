@@ -76,7 +76,7 @@
             <button class='refresh-button' style='background-color:black;'>
                 <div class='d-flex justify-content-center align-items-center' style='color:white; padding: 10px; margin: 0;'>
                     <!-- <span class="mr-2 " style="font-size:; white-space:nowrap;">Last list update <span style="font-size:30px;"></span>  </span> -->
-                    <p class='text-white' style='font-family: "VT323", monospace;   margin-top:25px; '>Last update list Sun Dec 17 2034 03:24:00 UTC+1 ROME</p>
+                    <p class='text-white' style='font-family: "VT323", monospace;   margin-top:25px; '>Next update list in 15 sec</p>
                     <div class="d-flex">
                         <!-- <div class="container" style="width:100%; background-color:;">100%</div> -->
                         <i style='color:white; font-size:20px;' class="fa-solid fa-rotate ml-2"></i>
