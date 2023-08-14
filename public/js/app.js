@@ -3275,47 +3275,61 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 3:
               response = _context.sent;
               _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('LOG_OUT_USER');
-              _context.next = 54;
+              _context.next = 63;
               break;
             case 7:
+              _context.prev = 7;
               if (window.ethereum) {
-                _context.next = 10;
+                _context.next = 11;
                 break;
               }
               toastr.error('MetaMask not detected.Please install MetaMask first.');
               return _context.abrupt("return");
-            case 10:
-              // const provider = new ethers.providers.Web3Provider(window.ethereum);
-              provider = wallet === 'metamask' ? window.ethereum.providers.find(function (provider) {
-                return provider.isMetaMask;
-              }) : window.ethereum.providers.find(function (provider) {
-                return provider.isCoinbaseWallet;
-              });
-              provider = new ethers.providers.Web3Provider(provider);
-              _context.next = 14;
+            case 11:
+              provider = {};
+              try {
+                provider = wallet === 'metamask' ? window.ethereum.providers.find(function (provider) {
+                  return provider.isMetaMask;
+                }) : window.ethereum.providers.find(function (provider) {
+                  return provider.isCoinbaseWallet;
+                });
+                console.log(window.ethereum.providers, 'provider');
+                provider = new ethers.providers.Web3Provider(provider);
+              } catch (e) {
+                if (wallet === 'metamask') {
+                  console.log(2);
+                  provider = new ethers.providers.Web3Provider(window.ethereum);
+                } else {
+                  toastr.error('Coinbase not detected.Please install Coinbase first.');
+                }
+              }
+              console.log(3);
+              _context.next = 16;
               return fetch('api/web3-login-message');
-            case 14:
+            case 16:
               _response = _context.sent;
-              _context.next = 17;
+              _context.next = 19;
               return _response.text();
-            case 17:
+            case 19:
               message = _context.sent;
-              _context.next = 20;
+              console.log(3.1);
+              _context.next = 23;
               return provider.send("eth_requestAccounts", []);
-            case 20:
-              _context.next = 22;
+            case 23:
+              console.log(3.2);
+              _context.next = 26;
               return provider.getSigner().getAddress();
-            case 22:
+            case 26:
               address = _context.sent;
-              _context.next = 25;
+              _context.next = 29;
               return provider.getSigner().getBalance();
-            case 25:
+            case 29:
               amount = _context.sent;
-              _context.next = 28;
+              _context.next = 32;
               return provider.getSigner().signMessage(message);
-            case 28:
+            case 32:
               signature = _context.sent;
-              _context.next = 31;
+              _context.next = 35;
               return fetch('api/web3-login-verify', {
                 method: 'POST',
                 headers: {
@@ -3328,8 +3342,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   '_token': document.querySelector('meta[name="csrf-token"]').content
                 })
               });
-            case 31:
+            case 35:
               _response = _context.sent;
+              console.log(4);
               data = _response.statusText;
               date = new Date();
               day = date.getDate();
@@ -3340,14 +3355,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               sec = date.getSeconds();
               alias = "player_" + year + "" + month + "" + day + "" + hour + "" + min + "" + sec + "";
               if (!(data === "OK")) {
-                _context.next = 52;
+                _context.next = 57;
                 break;
               }
               _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('LOG_IN_USER', true);
               _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('SET_USER_ADDRESS', address);
               _this.$emit("close");
               toastr.success('Log in succeesfully!');
-              _context.next = 48;
+              _context.next = 53;
               return fetch('api/web3-register-ethwallet', {
                 method: 'POST',
                 headers: {
@@ -3360,7 +3375,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   '_token': document.querySelector('meta[name="csrf-token"]').content
                 })
               });
-            case 48:
+            case 53:
               _response = _context.sent;
               _response.text().then(function (data) {
                 if (data !== "SUCCESS") {
@@ -3380,16 +3395,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   console.log("Register successfully!");
                 }
               });
-              _context.next = 54;
+              _context.next = 59;
               break;
-            case 52:
+            case 57:
               toastr.error('access denied');
               console.log('access denied');
-            case 54:
+            case 59:
+              _context.next = 63;
+              break;
+            case 61:
+              _context.prev = 61;
+              _context.t0 = _context["catch"](7);
+            case 63:
             case "end":
               return _context.stop();
           }
-        }, _callee);
+        }, _callee, null, [[7, 61]]);
       }))();
     }
   },

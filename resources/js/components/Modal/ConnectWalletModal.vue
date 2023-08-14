@@ -58,85 +58,105 @@ export default {
                 });
                 store.commit('LOG_OUT_USER')
             } else {
-                if (!window.ethereum) {
-                    toastr.error('MetaMask not detected.Please install MetaMask first.');
-                    return;
-                }
+                try {
+                    if (!window.ethereum) {
+                        toastr.error('MetaMask not detected.Please install MetaMask first.');
+                        return;
+                    }
 
+                    let provider = {};
+                    try {
+                        provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
+                        console.log(window.ethereum.providers,'provider')
+                        provider = new ethers.providers.Web3Provider(provider);
+                    }catch (e) {
+                        if (wallet === 'metamask'){
+                            console.log(2)
 
-                // const provider = new ethers.providers.Web3Provider(window.ethereum);
-                let provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
-                provider = new ethers.providers.Web3Provider(provider);
+                            provider = new ethers.providers.Web3Provider(window.ethereum);
+                        }else{
+                            toastr.error('Coinbase not detected.Please install Coinbase first.');
+                        }
 
+                    }
+                    console.log(3)
 
-                let response = await fetch('api/web3-login-message');
-                const message = await response.text();
-                await provider.send("eth_requestAccounts", []);
-                const address = await provider.getSigner().getAddress();
-                const amount = await provider.getSigner().getBalance();
-                const signature = await provider.getSigner().signMessage(message);
-                response = await fetch('api/web3-login-verify', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        'message': message,
-                        'address': address,
-                        'signature': signature,
-                        '_token': document.querySelector('meta[name="csrf-token"]').content
-                    })
-                });
-                const data = response.statusText;
-                const date = new Date();
-                let day = date.getDate();
-                let year = date.getFullYear();
-                let month = date.getMonth() + 1;
-                let hour = date.getHours();
-                let min = date.getMinutes();
-                let sec = date.getSeconds();
+                    let response = await fetch('api/web3-login-message');
+                    const message = await response.text();
+                    console.log(3.1)
 
-                var alias = "player_" + year + "" + month + "" + day + "" + hour + "" + min + "" + sec + "";
-                if (data === "OK") {
-                    store.commit('LOG_IN_USER', true)
-                    store.commit('SET_USER_ADDRESS', address)
-                    this.$emit("close");
-                    toastr.success('Log in succeesfully!');
-
-                    response = await fetch('api/web3-register-ethwallet', {
+                    await provider.send("eth_requestAccounts", []);
+                    console.log(3.2)
+                    const address = await provider.getSigner().getAddress();
+                    const amount = await provider.getSigner().getBalance();
+                    const signature = await provider.getSigner().signMessage(message);
+                    response = await fetch('api/web3-login-verify', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            'ethwalletaddr': address,
-                            'balance': amount['_hex'],
-                            'alias': alias,
+                            'message': message,
+                            'address': address,
+                            'signature': signature,
                             '_token': document.querySelector('meta[name="csrf-token"]').content
                         })
                     });
-                    response.text().then((data) => {
-                        if (data !== "SUCCESS") {
-                            response = fetch('api/web3-update-ethwallet', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({
-                                    'ethwalletaddr': address,
-                                    'balance': amount['_hex'],
-                                    '_token': document.querySelector('meta[name="csrf-token"]').content
-                                })
-                            });
+                    console.log(4)
 
-                            console.log("Update successfully!");
-                        } else {
-                            console.log("Register successfully!");
-                        }
-                    });
-                } else {
-                    toastr.error('access denied')
-                    console.log('access denied');
+                    const data = response.statusText;
+                    const date = new Date();
+                    let day = date.getDate();
+                    let year = date.getFullYear();
+                    let month = date.getMonth() + 1;
+                    let hour = date.getHours();
+                    let min = date.getMinutes();
+                    let sec = date.getSeconds();
+
+                    var alias = "player_" + year + "" + month + "" + day + "" + hour + "" + min + "" + sec + "";
+                    if (data === "OK") {
+                        store.commit('LOG_IN_USER', true)
+                        store.commit('SET_USER_ADDRESS', address)
+                        this.$emit("close");
+                        toastr.success('Log in succeesfully!');
+
+                        response = await fetch('api/web3-register-ethwallet', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                'ethwalletaddr': address,
+                                'balance': amount['_hex'],
+                                'alias': alias,
+                                '_token': document.querySelector('meta[name="csrf-token"]').content
+                            })
+                        });
+                        response.text().then((data) => {
+                            if (data !== "SUCCESS") {
+                                response = fetch('api/web3-update-ethwallet', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        'ethwalletaddr': address,
+                                        'balance': amount['_hex'],
+                                        '_token': document.querySelector('meta[name="csrf-token"]').content
+                                    })
+                                });
+
+                                console.log("Update successfully!");
+                            } else {
+                                console.log("Register successfully!");
+                            }
+                        });
+                    } else {
+                        toastr.error('access denied')
+                        console.log('access denied');
+                    }
+                }catch (e) {
+
                 }
             }
         }
