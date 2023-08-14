@@ -3275,55 +3275,47 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 3:
               response = _context.sent;
               _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('LOG_OUT_USER');
-              _context.next = 59;
+              _context.next = 54;
               break;
             case 7:
-              _context.prev = 7;
               if (window.ethereum) {
-                _context.next = 11;
+                _context.next = 10;
                 break;
               }
               toastr.error('MetaMask not detected.Please install MetaMask first.');
               return _context.abrupt("return");
-            case 11:
-              provider = {};
-              try {
-                provider = wallet === 'metamask' ? window.ethereum.providers.find(function (provider) {
-                  return provider.isMetaMask;
-                }) : window.ethereum.providers.find(function (provider) {
-                  return provider.isCoinbaseWallet;
-                });
-              } catch (e) {
-                if (wallet === 'metamask') {
-                  provider = new ethers.providers.Web3Provider(window.ethereum);
-                } else {
-                  toastr.error('Coinbase not detected.Please install Coinbase first.');
-                }
-              }
-              _context.next = 15;
+            case 10:
+              // const provider = new ethers.providers.Web3Provider(window.ethereum);
+              provider = wallet === 'metamask' ? window.ethereum.providers.find(function (provider) {
+                return provider.isMetaMask;
+              }) : window.ethereum.providers.find(function (provider) {
+                return provider.isCoinbaseWallet;
+              });
+              provider = new ethers.providers.Web3Provider(provider);
+              _context.next = 14;
               return fetch('api/web3-login-message');
-            case 15:
+            case 14:
               _response = _context.sent;
-              _context.next = 18;
+              _context.next = 17;
               return _response.text();
-            case 18:
+            case 17:
               message = _context.sent;
-              _context.next = 21;
+              _context.next = 20;
               return provider.send("eth_requestAccounts", []);
-            case 21:
-              _context.next = 23;
+            case 20:
+              _context.next = 22;
               return provider.getSigner().getAddress();
-            case 23:
+            case 22:
               address = _context.sent;
-              _context.next = 26;
+              _context.next = 25;
               return provider.getSigner().getBalance();
-            case 26:
+            case 25:
               amount = _context.sent;
-              _context.next = 29;
+              _context.next = 28;
               return provider.getSigner().signMessage(message);
-            case 29:
+            case 28:
               signature = _context.sent;
-              _context.next = 32;
+              _context.next = 31;
               return fetch('api/web3-login-verify', {
                 method: 'POST',
                 headers: {
@@ -3336,7 +3328,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   '_token': document.querySelector('meta[name="csrf-token"]').content
                 })
               });
-            case 32:
+            case 31:
               _response = _context.sent;
               data = _response.statusText;
               date = new Date();
@@ -3348,14 +3340,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               sec = date.getSeconds();
               alias = "player_" + year + "" + month + "" + day + "" + hour + "" + min + "" + sec + "";
               if (!(data === "OK")) {
-                _context.next = 53;
+                _context.next = 52;
                 break;
               }
               _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('LOG_IN_USER', true);
               _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('SET_USER_ADDRESS', address);
               _this.$emit("close");
               toastr.success('Log in succeesfully!');
-              _context.next = 49;
+              _context.next = 48;
               return fetch('api/web3-register-ethwallet', {
                 method: 'POST',
                 headers: {
@@ -3368,7 +3360,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   '_token': document.querySelector('meta[name="csrf-token"]').content
                 })
               });
-            case 49:
+            case 48:
               _response = _context.sent;
               _response.text().then(function (data) {
                 if (data !== "SUCCESS") {
@@ -3388,22 +3380,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   console.log("Register successfully!");
                 }
               });
-              _context.next = 55;
+              _context.next = 54;
               break;
-            case 53:
+            case 52:
               toastr.error('access denied');
               console.log('access denied');
-            case 55:
-              _context.next = 59;
-              break;
-            case 57:
-              _context.prev = 57;
-              _context.t0 = _context["catch"](7);
-            case 59:
+            case 54:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[7, 57]]);
+        }, _callee);
       }))();
     }
   },
@@ -4683,7 +4669,7 @@ var staticRenderFns = [function () {
       src: __webpack_require__(/*! ../../../images/extra_objects/ddd.jpg */ "./resources/images/extra_objects/ddd.jpg")
     }
   }), _vm._v(" "), _c("span", {
-    staticClass: "version_sign"
+    staticClass: "version_sign text-white"
   }, [_vm._v("v 1.0.0")])]);
 }, function () {
   var _vm = this,
@@ -4853,6 +4839,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 var render = function render() {
+  var _vm$userData;
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
@@ -4945,7 +4932,7 @@ var render = function render() {
       "font-size": "33px",
       color: "white"
     }
-  }, [_vm._v(_vm._s(_vm.userData.power)), _c("i", {
+  }, [_vm._v(_vm._s((_vm$userData = _vm.userData) === null || _vm$userData === void 0 ? void 0 : _vm$userData.power)), _c("i", {
     staticClass: "fa-solid fa-bolt",
     staticStyle: {
       color: "#feb442"
@@ -5798,9 +5785,26 @@ var staticRenderFns = [function () {
     }
   }, [_c("i", {
     staticClass: "fa-brands fa-ethereum"
-  })])]), _vm._v(" "), _c("p", [_vm._v("Users Online : 20 ")]), _vm._v(" "), _c("p", [_vm._v("Actual power required to play : 0"), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]), _vm._v(" "), _c("hr", {
+  })])]), _vm._v(" "), _c("p", [_vm._v("Players : 20 ")]), _vm._v(" "), _c("p", [_vm._v("Flower to play : 0")]), _c("p", {
+    staticStyle: {
+      color: "white"
+    }
+  }, [_vm._v("Buy sun flower  Nft :")]), _vm._v(" "), _c("p", {
+    staticStyle: {
+      "font-size": "20px"
+    }
+  }, [_vm._v("\n                    >>> "), _c("a", {
+    staticStyle: {
+      color: "#FAEA09"
+    },
+    attrs: {
+      href: "https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469"
+    }
+  }, [_vm._v("sun flower "), _c("span", {
+    staticStyle: {
+      "font-size": "30px"
+    }
+  }, [_vm._v("🌻")])]), _vm._v(" <<< \n        \n                ")]), _vm._v(" "), _c("hr", {
     attrs: {
       width: "100%",
       size: "20",
@@ -5837,39 +5841,6 @@ var staticRenderFns = [function () {
       color: "white"
     }
   }), _vm._v(" "), _c("br", {
-    attrs: {
-      width: "100%",
-      size: "20",
-      color: "white"
-    }
-  }), _vm._v(" "), _c("br", {
-    attrs: {
-      width: "100%",
-      size: "20",
-      color: "white"
-    }
-  }), _vm._v(" "), _c("span", {
-    staticStyle: {
-      color: "white"
-    }
-  }, [_vm._v("Buy Power Up Nft :")]), _vm._v(" "), _c("p", {
-    staticStyle: {
-      "font-size": "20px"
-    }
-  }, [_vm._v("\n                    >>> "), _c("a", {
-    staticStyle: {
-      color: "#FAEA09"
-    },
-    attrs: {
-      href: "https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469"
-    }
-  }, [_vm._v("sun flower "), _c("span", {
-    staticStyle: {
-      "font-size": "30px"
-    }
-  }, [_vm._v("🌻")])]), _vm._v(" <<< \n                      =   60"), _c("i", {
-    staticClass: "fa-solid fa-bolt ml-1"
-  })]), _vm._v(" "), _c("br", {
     attrs: {
       width: "100%",
       size: "20",
@@ -6462,13 +6433,15 @@ var staticRenderFns = [function () {
       "font-family": '"VT323", monospace',
       "margin-top": "25px"
     }
-  }, [_vm._v("Last update list Sun Dec 17 2034 03:24:00 UTC+1 ROME")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Next update list in 15 sec ")]), _vm._v(" "), _c("div", {
     staticClass: "d-flex"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-rotate ml-2",
+  }, [_c("img", {
     staticStyle: {
-      color: "white",
-      "font-size": "20px"
+      width: "30px"
+    },
+    attrs: {
+      src: "images/extra_objects/sandtime.png",
+      alt: ""
     }
   })])])]);
 }];
