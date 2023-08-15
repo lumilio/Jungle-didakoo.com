@@ -4,7 +4,7 @@
 
             <!------------------  white ----------------------->
 
-            <div class="allineatore d-flex container-fluid flex-column justify-content-center px-4 align-items-center">
+            <div style='height:89vh;' class="allineatore d-flex container-fluid flex-column justify-content-center px-4 align-items-center">
 
 
 
@@ -18,7 +18,7 @@
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:white;'> </p>
                     <p style='position:absolute; display:block; margin-top:10px;  font-size:33px; right:15px; top:5px; color:white;'>32°</p>
                     <img id='avataricon' style='margin-top:80px; margin-bottom:20px;' src='images/extra_objects/iconaplayW.png' alt="">
-                    <p class="text-white">Avatar v.1</p>
+                    <!-- <p class="text-white">Avatar v.1</p> -->
                     <div style="background-color:black; width:100%;" >
                         <p  style='color:white; width:100%; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px; filter: invert(1);'  src='images/extra_objects/Logomark-BlueB.png' >
