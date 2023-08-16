@@ -25,66 +25,9 @@
                             {{ address }}
                         </p>
                     </div>
-
-                    <div class='icons-wrapper' >
-                        <!-- <div> -->
-                            <!-- <img style='  width:50px; ' src='images/board/animals/cat_1.png' alt=""> --> <!-- nft_9_cat  -->
-                        <!-- </div> -->
-                        <!-- <div> -->
-                            <!-- <img style='filter: invert(1);  width:50px; ' src='images/board/animals/monkey_2.png' alt=""> --> <!-- nft_10_monkey -->
-                        <!-- </div> -->
-                        <!-- <div> -->
-                            <!-- <img style='filter: invert(1);  width:50px; ' src='images/board/animals/leopard_3.png' alt=""> --> <!-- nft_22_leo_3 -->
-                        <!-- </div> -->
-                        <!-- <div> -->
-                            <!-- <img style='  width:50px; ' src='images/board/animals/lion_4.png' alt="">  -->  <!-- nft_22_leo_2 -->
-                        <!-- </div> -->
-                        <div>
-                            <img style='  width:50px; ' src='images/board/animals/tiger_6.png' alt=""> <!-- nft_22_leo_1 -->
-                        </div>
-                        <div>
-                            <img style='width:29px; margin:0px 5px; filter: invert(0);' src='images/extra_objects/8.png' alt=""> <!-- nft_13_doodle -->
-                        </div>
-                        <div>
-                            <img style=' filter: invert(0); width:29px; margin:0px 5px; ' src='images/extra_objects/mario.png' alt=""> <!-- nft_14_sandbox -->
-                        </div>
-                        <div>
-                            <img style=' filter: invert(0); width:28px; margin:0px 5px; ' src='images/extra_objects/palm.png' alt=""> <!-- nft_20_land -->
-                        </div>
-                        <div>
-                            <img style=' filter: invert(0); width:20px; margin:0px 5px; ' src='images/extra_objects/ghost.png' alt=""> <!-- nft_15_totem -->
-                        </div>
-                        <div>
-                            <i style=' filter: invert(1); font-size:20px; color:black; margin:0px 5px;'  class="fa-solid fa-hand-fist"></i> <!-- nft_11_punks -->
-                        </div>
-                        <div>
-                            <i style=' filter: invert(1); font-size:20px; color:black; margin:0px 5px;' class="fa-solid fa-egg"></i> <!-- nft_12_monster -->
-                        </div>
-                        <div>
-                            <img style=' filter: invert(0); width:25px; margin-left:5px; height:13px;' src='images/extra_objects/nike.png' alt=""> <!-- nft_16_nike  -->
-                        </div>
-                        <div>
-                            <img style=' filter: invert(1); width:25px; margin:0px 5px; ' src='images/extra_objects/adidas.png' alt=""> <!-- nft_17_adidas  -->
-                        </div>
-                        <div>
-                            <img style=' filter: invert(1); width:30px; margin:0px 5px; ' src='images/extra_objects/coco.png' alt=""> <!-- nft_19_lacoste -->
-                        </div>
-                        <div>
-                            <img style=' filter: invert(0); width:20px; margin:0px 5px; ' src='images/extra_objects/wb.png' alt=""> <!--  -->
-                        </div>
-                        <div>
-                            <img style=' filter: invert(1); width:20px; margin:0px 5px; filter: ' src='images/extra_objects/pepsi.png' alt=""> <!-- nft_18_pepsi -->
-                        </div>
-                        <div>
-                            <img style=' filter: invert(1); width:22px; margin:0px 5px; filter: ' src='images/extra_objects/bot.png' alt=""> <!-- nft_8_bot -->
-                        </div>
-                        <div>
-                            <img style=' filter: invert(1); width:23px; margin:0px 5px; filter: ' src='images/extra_objects/raygun.png' alt=""> <!-- nft_21_raygun -->
-                        </div>
-                        <div>
-                            <i style=' filter: invert(1); font-size:20px; color:black; margin:0px 5px;'  class="fa-solid fa-battery-full"></i> <!-- nft_3_battery -->
-                        </div>
-                    </div>
+                <!------------------------ ARCHIVMENTS LOGOS EXAMPLE ---------------------->
+                <!-- see previous branch "avatar checkpoint" -->
+                <!------------------------------------------------------------->
                     <p style='font-size:33px; color:white;'>{{ userData.power }} <i style='color:#feb442' class="fa-solid fa-bolt"></i></p>
                     
                     

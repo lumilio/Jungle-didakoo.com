@@ -124,7 +124,7 @@ body, .centratore {
 
 
 
-#page1 {
+/* #page1 {
     background:
     linear-gradient(
       rgba(0, 0, 0, 0.4),
@@ -135,9 +135,9 @@ body, .centratore {
     background-position: center ;
     background-repeat: repeat ;
     height: 89vh;
-}
+} */
 
-#page4 , #page5 {
+ #page5 , #page1  {
     background:
     linear-gradient(
       rgba(0, 0, 0, 0.4),
@@ -145,8 +145,20 @@ body, .centratore {
     ),
     url("images/board/bignilo3.jpg") ;
     background-repeat: repeat ;
-    background-position: center ;
+    background-position: top ;
     background-size: 550px ;
+}
+
+#page4  {
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("images/board/bignilo3.jpg") ;
+    background-repeat: repeat ;
+    background-position: top ;
+    background-size: 850px ;
 }
 
 /* #page5  {

@@ -1,5 +1,5 @@
 <template>
-    <div id="page1" class="centratore flex-column  align-items-center">
+    <div id="page1" style='height:89vh;' class="centratore flex-column  align-items-center">
 
         <!-------------------------------- EYE HAND ----------------------------------->
         <div class="d-flex align-items-center flex-column">
