@@ -10,7 +10,7 @@
 
                 <!-- Like in the rank page display logos of selected player (selected playaer = AVATAR CARD -->
                 <!------------------------ AVATAR CARD ---------------------->
-                <div style='margin-bottom:50px; background-color:black; border:3px solid blue;' class="container-sm avatar mt-4 d-flex flex-column  align-items-center px-3">
+                <div style='margin-bottom:100px; background-color:black; border:3px solid blue;' class="container-sm avatar mt-4 d-flex flex-column  align-items-center px-3">
                     <!-- <img style='width:50px; position: absolute; top:15px; left:15px;' src='images/extra_objects/ff.png' alt=""> -->
                     <p style='position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;'> <i  class="fa-solid fa-circle" :style="{color: user? 'grey' : 'red'}" ></i> Offline </p>
                     
