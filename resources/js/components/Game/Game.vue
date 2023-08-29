@@ -272,8 +272,9 @@ export default {
         };
 
     },
-
-    mounted() {
+    async mounted()
+    {
+        await this.getUserByWalletAddress();
         this.setInitialConfig()
         // console.log(this.playColors, 'playcolors')
         // console.log(this.boardColors, 'boardColors')
@@ -295,6 +296,16 @@ export default {
         }
     },
     methods: {
+        async getUserByWalletAddress() {
+            try {
+                const walletAddress = this.address;
+                const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
+                this.userData = response.data.user;
+            } catch (error) {
+                console.error(error);
+                this.user = null;
+            }
+        },
         setInitialConfig(){
             if(this.game && this.game.state){
                 this.fillState(this.game.state.state)
@@ -435,7 +446,7 @@ export default {
                 this.playColors.light = backgroundColors[data.colors.board]
             }else{
                 let blackColor = 1 + Math.floor(Math.random() * 6)
-                let whiteColor = blackColor
+                let whiteColor = this.userData?.color_id
                 allowedColors.forEach(block => {
                     if(block.animalColors.includes(blackColor) && block.animalColors.length > 1){
                         while (blackColor === whiteColor){
@@ -457,7 +468,7 @@ export default {
                 })
 
             }
-            // console.log(this.playColors,'this.playColors')
+
         },
         initSquares() {
             this.squares = [];

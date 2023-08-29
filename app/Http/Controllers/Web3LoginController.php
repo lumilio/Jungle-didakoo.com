@@ -88,33 +88,36 @@ class Web3LoginController extends Controller
      */
     public function IfThereNftColor (Request $request)
     {
+        $Nft_4_color1 = $request->nft_4_color1;
+        $Nft_5_color2 = $request->nft_5_color2;
+        $Nft_6_color3 = $request->nft_6_color3;
+        $Nft_7_color4 = $request->nft_7_color4;
         $color = [];
         $i = 0;
         $player = $request->player;
         $creator = Player::query()->where('wallet_address', $player)->first();
         if($creator) {
-            if ($request->nft_4_color1) {
+            if ($Nft_4_color1 != 0) {
                 $color[$i] = 4;
                 $i++;
                 $creator->update(['nft_4_color1'=>$request->nft_4_color1]);
             }
-            if ($request->nft_5_color2) {
+            if ($Nft_5_color2 != 0) {
                 $color[$i]  = 3;
                 $i++;
                 $creator->update(['nft_5_color2'=>$request->nft_5_color2]);
             }
-            if ($request->nft_6_color3) {
+            if ($Nft_6_color3 != 0) {
                 $color[$i]  = 2;
                 $i++;
                 $creator->update(['nft_6_color3'=>$request->nft_6_color3]);
             }
-            if ($request->nft_7_color4) {
+            if ($Nft_7_color4 != 0) {
                 $color[$i]  = 1;
                 $creator->update(['nft_7_color4'=>$request->nft_7_color4]);
             }
         }
-        $randomIndex = 1 + random_int(0, count($color) - 1);
-        $creator->update(['color_id' => $color[$randomIndex]]);
+        $creator->update(['color_id' => $color[rand(0,$i)]]);
     }
 
     public function update(Request $request)
@@ -162,11 +165,11 @@ class Web3LoginController extends Controller
         $creator = Player::query()->where('wallet_address', $player)->first();
         if ($creator){
             if ($Nft_1_sunflower_1 && $Nft_1_sunflower_1 !== $creator->nft_1_sunflower_1) {
-            $Nft_1_sunflower_1_update = ($Nft_1_sunflower_1 - $creator->nft_1_sunflower_1) * 10 + 10;
+            $Nft_1_sunflower_1_update = $Nft_1_sunflower_1 * 10;
                 $creator->update(["nft_1_sunflower_1" => $Nft_1_sunflower_1_update]);
             }
             if ($Nft_2_sunflower_2 && $Nft_2_sunflower_2 !== $creator->nft_2_sunflower_2) {
-                $Nft_2_sunflower_2_update = ($Nft_2_sunflower_2 - $creator->nft_2_sunflower_2) * 10 + 10;
+                $Nft_2_sunflower_2_update = $Nft_2_sunflower_2 * 9;
                 $creator->update(["nft_2_sunflower_2" => $Nft_2_sunflower_2_update]);
             }
         }

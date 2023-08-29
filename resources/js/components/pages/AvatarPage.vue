@@ -87,7 +87,6 @@
             if(!this.user){
                 this.$router.push('/rank')
             }
-            console.log('Avatar Component mounted.')
         }
 
     }

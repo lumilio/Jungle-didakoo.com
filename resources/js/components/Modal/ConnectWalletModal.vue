@@ -98,99 +98,96 @@ export default {
                             '_token': document.querySelector('meta[name="csrf-token"]').content
                         })
                     });
-
-                    // try {
-                    //     const sunFlower_1 = await window.ethereum.request({
-                    //         "method": "wallet_watchAsset",
-                    //         "params": {
-                    //             "type": "ERC-1155",
-                    //             "options": {
-                    //                 "address": "0xd07dc4262BCDbf85190C01c996b4C06a461d2430",
-                    //                 "tokenId": "628469"
-                    //             }
-                    //         }
-                    //     })
-                    //     if (sunFlower_1) {
-                    //         await axios.post('/api/if-there-nft', {
-                    //             Nft_1_sunflower_1: sunFlower_1,
-                    //             player: '0x42Db6137BB24623487238f048fCA7D376C18e74E'
-                    //         })
-                    //     }
-                    // }catch (error) {
-                    //     console.error(error)
-                    // }
-                    // try{
-                    //     const sunFlower_2 = await window.ethereum.request({
-                    //         "method" : "wallet_watchAsset",
-                    //         "params" : {
-                    //             "type" : "ERC-1155",
-                    //             "options" : {
-                    //                 "address" : "0xBdC8bd87CfD22ef5b90a93A77eeBe5BD0628f841",
-                    //                 "tokenId" : "2352475547185321859375352175754401687841756219705495990747967153936990732289",
-                    //             }
-                    //         }
-                    //     })
-                    //     if (sunFlower_2){
-                    //         await axios.post('/api/if-there-nft',{
-                    //             Nft_2_sunflower_2 : sunFlower_2,
-                    //             player :'0x42Db6137BB24623487238f048fCA7D376C18e74E'
-                    //         })
-                    //     }
-                    // }catch (error) {
-                    //     console.error(error)
-                    // }
-                    console.log(1)
-                    const Nft_4_color1 = 1;
-                    const Nft_5_color2 = 1;
-                    const Nft_6_color3 = 1;
-                    const Nft_7_color4 = 1;
-
                     try {
-                        console.log(Nft_4_color1, 2)
-                        await axios.post('/api/if-there-nft-color', {
-                            nft_4_color1: Nft_4_color1,
-                            nft_5_color2: Nft_5_color2,
-                            nft_6_color3: Nft_6_color3,
-                            nft_7_color4: Nft_7_color4,
-                            player: address
+                        // const sunFlower_1 = 10
+                        const sunFlower_1 = await window.ethereum.request({
+                            "method": "wallet_watchAsset",
+                            "params": {
+                                "type": "ERC-1155",
+                                "options": {
+                                    "address": address,
+                                    "tokenId": "628469"
+                                }
+                            }
                         })
-
-                }catch (error){
-                        console.log(error)
+                        // const sunFlower_2 = 10
+                        const sunFlower_2 = await window.ethereum.request({
+                            "method" : "wallet_watchAsset",
+                            "params" : {
+                                "type" : "ERC-1155",
+                                "options" : {
+                                    "address" : address,
+                                    "tokenId" : "2352475547185321859375352175754401687841756219705495990747967153936990732289",
+                                }
+                            }
+                        })
+                        if (sunFlower_1) {
+                            await axios.post('/api/if-there-nft', {
+                                Nft_1_sunflower_1: sunFlower_1,
+                                Nft_2_sunflower_2 : sunFlower_2,
+                                player: address
+                            })
+                        }
+                    }catch (error) {
+                        console.error(error)
                     }
-                // try {
-                //     if (Nft_5_color2) {
-                //         console.log(Nft_5_color2, 3)
-                //         await axios.post('/api/if-there-nft-color', {
-                //             nft_5_color2: Nft_5_color2,
-                //             player: address
-                //         })
-                //     }
-                // }catch (error){
-                //     console.log(error)
-                // }
-                // try {
-                //     if (Nft_6_color3) {
-                //         console.log(Nft_6_color3, 4)
-                //         await axios.post('/api/if-there-nft-color', {
-                //             nft_6_color3: Nft_6_color3,
-                //             player: address
-                //         })
-                //     }
-                // }catch (error){
-                //     console.log(error)
-                // }
-                // try {
-                //     if (Nft_7_color4) {
-                //         console.log(Nft_7_color4, 5)
-                //         await axios.post('/api/if-there-nft-color', {
-                //             nft_7_color4: Nft_7_color4,
-                //             player: address
-                //         })
-                //     }
-                // }catch (error){
-                //     console.log(error)
-                // }
+                    try {
+                        // const nft_4_color1 = 1
+                            const nft_4_color1 = await window.ethereum.request({
+                                "method": "wallet_watchAsset",
+                                "params": {
+                                    "type": "ERC-1155",
+                                    "options": {
+                                        "address": address,
+                                        "tokenId": "109412144875301169681210938441685435107180596113732411917774090345729495139304"
+                                    }
+                                }
+                            })
+                        // const nft_5_color2 = 1
+                            const nft_5_color2 = await window.ethereum.request({
+                                "method": "wallet_watchAsset",
+                                "params": {
+                                    "type": "ERC-1155",
+                                    "options": {
+                                        "address": address,
+                                        "tokenId": "109412144875301169681210938441685435107180596113732411917774090344629983511528"
+                                    }
+                                }
+                            })
+                        // const nft_6_color3 = 1
+                            const nft_6_color3 = await window.ethereum.request({
+                                "method": "wallet_watchAsset",
+                                "params": {
+                                    "type": "ERC-1155",
+                                    "options": {
+                                        "address": address,
+                                        "tokenId": "109412144875301169681210938441685435107180596113732411917774090343530471883752"
+                                    }
+                                }
+                            })
+                        // const nft_7_color4 = 1
+                            const nft_7_color4 = await window.ethereum.request({
+                                "method": "wallet_watchAsset",
+                                "params": {
+                                    "type": "ERC-1155",
+                                    "options": {
+                                        "address": address,
+                                        "tokenId": "109412144875301169681210938441685435107180596113732411917774090342430960255976"
+                                    }
+                                }
+                            })
+
+                            await axios.post('/api/if-there-nft-color', {
+                                nft_4_color1: nft_4_color1,
+                                nft_5_color2: nft_5_color2,
+                                nft_6_color3: nft_6_color3,
+                                nft_7_color4: nft_7_color4,
+                                player: address
+                            })
+                        }catch (error) {
+                            console.error(error)
+                        }
+
                     const data = response.statusText;
                     const date = new Date();
                     let day = date.getDate();

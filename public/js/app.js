@@ -2248,14 +2248,14 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return { value: void 0, done: !0 }; } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable || "" === iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } throw new TypeError(_typeof(iterable) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return { value: void 0, done: !0 }; } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable || "" === iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } throw new TypeError(_typeof(iterable) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
 
@@ -2357,12 +2357,26 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
     };
   },
   mounted: function mounted() {
-    this.setInitialConfig();
-    // console.log(this.playColors, 'playcolors')
-    // console.log(this.boardColors, 'boardColors')
-    if (this.turn === 'black') {
-      this.playComputer();
-    }
+    var _this = this;
+    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return _this.getUserByWalletAddress();
+          case 2:
+            _this.setInitialConfig();
+            // console.log(this.playColors, 'playcolors')
+            // console.log(this.boardColors, 'boardColors')
+            if (_this.turn === 'black') {
+              _this.playComputer();
+            }
+          case 4:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee);
+    }))();
   },
   computed: {
     turn: {
@@ -2378,6 +2392,34 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
     }
   },
   methods: {
+    getUserByWalletAddress: function getUserByWalletAddress() {
+      var _this2 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var walletAddress, response;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              walletAddress = _this2.address;
+              _context2.next = 4;
+              return axios.get("/api/user-by-wallet-address/".concat(walletAddress));
+            case 4:
+              response = _context2.sent;
+              _this2.userData = response.data.user;
+              _context2.next = 12;
+              break;
+            case 8:
+              _context2.prev = 8;
+              _context2.t0 = _context2["catch"](0);
+              console.error(_context2.t0);
+              _this2.user = null;
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, null, [[0, 8]]);
+      }))();
+    },
     setInitialConfig: function setInitialConfig() {
       if (this.game && this.game.state) {
         this.fillState(this.game.state.state);
@@ -2500,7 +2542,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
       }
     },
     fillColors: function fillColors(data) {
-      var _this = this;
+      var _this3 = this;
       if (data) {
         this.boardColors = data.colors;
         if (data.colors.board === 2) {
@@ -2510,28 +2552,28 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
         }
         this.playColors.light = backgroundColors[data.colors.board];
       } else {
+        var _this$userData;
         var blackColor = 1 + Math.floor(Math.random() * 6);
-        var whiteColor = blackColor;
+        var whiteColor = (_this$userData = this.userData) === null || _this$userData === void 0 ? void 0 : _this$userData.color_id;
         allowedColors.forEach(function (block) {
           if (block.animalColors.includes(blackColor) && block.animalColors.length > 1) {
             while (blackColor === whiteColor) {
               whiteColor = block.animalColors[Math.floor(Math.random() * block.animalColors.length)];
             }
-            _this.boardColors = {
+            _this3.boardColors = {
               black: blackColor,
               white: whiteColor,
               board: block.boardColors.light
             };
-            _this.playColors.light = backgroundColors[block.boardColors.light];
+            _this3.playColors.light = backgroundColors[block.boardColors.light];
             if (block.boardColors.light === 2) {
-              _this.possibleMove = "#9be8b4";
+              _this3.possibleMove = "#9be8b4";
             } else {
-              _this.possibleMove = "#FFE194";
+              _this3.possibleMove = "#FFE194";
             }
           }
         });
       }
-      // console.log(this.playColors,'this.playColors')
     },
     initSquares: function initSquares() {
       this.squares = [];
@@ -2617,59 +2659,59 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
       }
     },
     saveState: function saveState() {
-      var _this2 = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var _this4 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
         var response;
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) switch (_context.prev = _context.next) {
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
             case 0:
-              _context.next = 2;
+              _context3.next = 2;
               return axios.post('/api/set-state', {
-                state: _this2.state,
-                turn: _this2.turn,
-                id: _this2.id,
-                colors: _this2.boardColors
+                state: _this4.state,
+                turn: _this4.turn,
+                id: _this4.id,
+                colors: _this4.boardColors
               });
             case 2:
-              response = _context.sent;
+              response = _context3.sent;
             case 3:
             case "end":
-              return _context.stop();
+              return _context3.stop();
           }
-        }, _callee);
+        }, _callee3);
       }))();
     },
     alertWin: function alertWin(winner) {
-      var _this3 = this;
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
+      var _this5 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
             case 0:
-              _context2.prev = 0;
-              _context2.next = 3;
+              _context4.prev = 0;
+              _context4.next = 3;
               return axios.post('/api/finish-game', {
-                player: _this3.address,
+                player: _this5.address,
                 win: winner === 'white',
-                game_id: _this3.id
+                game_id: _this5.id
               });
             case 3:
               localStorage.removeItem('canStart');
-              _this3.$emit('gameover', winner);
-              _this3.playAgain();
-              return _context2.abrupt("return");
+              _this5.$emit('gameover', winner);
+              _this5.playAgain();
+              return _context4.abrupt("return");
             case 11:
-              _context2.prev = 11;
-              _context2.t0 = _context2["catch"](0);
-              console.log(_context2.t0, 'error message');
+              _context4.prev = 11;
+              _context4.t0 = _context4["catch"](0);
+              console.log(_context4.t0, 'error message');
             case 14:
             case "end":
-              return _context2.stop();
+              return _context4.stop();
           }
-        }, _callee2, null, [[0, 11]]);
+        }, _callee4, null, [[0, 11]]);
       }))();
     },
     releasePiece: function releasePiece(toSquare) {
-      var _this4 = this;
+      var _this6 = this;
       if (!this.isHoldingChessPiece) return false;
       var fromSquare = this.squares[this.holding.row][this.holding.col];
       if (!toSquare.isPossibleMove) {
@@ -2685,13 +2727,13 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
       var checkmate = this.isCheckmate(this.squares);
       if (checkmate) {
         setTimeout(function () {
-          _this4.alertWin(checkmate);
+          _this6.alertWin(checkmate);
         }, 500);
       } else {
         this.turn = this.getOpponentColor(this.turn);
         this.saveState();
         setTimeout(function () {
-          _this4.playComputer();
+          _this6.playComputer();
         }, 500);
       }
       return true;
@@ -2744,7 +2786,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
     getPossibleMoves: function getPossibleMoves(squareRowIndex, squareColIndex) {
       var _square$content2,
         _square$content3,
-        _this5 = this;
+        _this7 = this;
       var board = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.squares;
       var square = board[squareRowIndex][squareColIndex];
       var moveTargets = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getKnightPossibleMoves(squareRowIndex, squareColIndex);
@@ -2771,9 +2813,9 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
         var rowIndex = target.rowIndex,
           colIndex = target.colIndex;
         // checking if possible move is out of game board
-        if (_this5.outOfBoard(colIndex, rowIndex)) return;
+        if (_this7.outOfBoard(colIndex, rowIndex)) return;
         var targetSquare = board[rowIndex][colIndex];
-        var targetSquareInfo = _this5.squareTypeInfo(targetSquare.code);
+        var targetSquareInfo = _this7.squareTypeInfo(targetSquare.code);
 
         // getting the animal of target square if exists
         var targetSquareAnimal = targetSquare.content.piece ? _objectSpread(_objectSpread({}, animals[targetSquare.content.piece]), {}, {
@@ -2795,10 +2837,10 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
             }
             // if our animal can jump over the river
             // and beat the animal on the other side the move is possible
-            else if (_this5.canJump(currentAnimalInfo, squareRowIndex === rowIndex ? "horizontal" : "vertical") && !_this5.isRiverBlocked(colIndex > 3 ? "right" : "left")) {
-              var jumpingTargetCoordinates = _this5.getLandingPosition(squareColIndex, squareRowIndex, colIndex, rowIndex);
-              var possibleTargetAnimal = _this5.getAnimalByCode(jumpingTargetCoordinates.x, jumpingTargetCoordinates.y);
-              if (!possibleTargetAnimal || _this5.canBeatAnimal(_objectSpread(_objectSpread({}, animals[possibleTargetAnimal.animal]), {}, {
+            else if (_this7.canJump(currentAnimalInfo, squareRowIndex === rowIndex ? "horizontal" : "vertical") && !_this7.isRiverBlocked(colIndex > 3 ? "right" : "left")) {
+              var jumpingTargetCoordinates = _this7.getLandingPosition(squareColIndex, squareRowIndex, colIndex, rowIndex);
+              var possibleTargetAnimal = _this7.getAnimalByCode(jumpingTargetCoordinates.x, jumpingTargetCoordinates.y);
+              if (!possibleTargetAnimal || _this7.canBeatAnimal(_objectSpread(_objectSpread({}, animals[possibleTargetAnimal.animal]), {}, {
                 color: possibleTargetAnimal.color
               }), currentAnimalInfo)) {
                 collectPossible(jumpingTargetCoordinates.y, jumpingTargetCoordinates.x);
@@ -2814,7 +2856,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
               return;
             }
             //else if there's no animal, or we can beat the animal the move is possible
-            else if (!targetSquareAnimal || _this5.canBeatAnimal(targetSquareAnimal, currentAnimalInfo)) {
+            else if (!targetSquareAnimal || _this7.canBeatAnimal(targetSquareAnimal, currentAnimalInfo)) {
               collectPossible(rowIndex, colIndex);
               return;
             }
@@ -2833,7 +2875,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
               collectPossible(rowIndex, colIndex);
               return;
             } else {
-              if (currentSquareType.type !== "water" && _this5.canBeatAnimal(targetSquareAnimal, currentAnimalInfo)) {
+              if (currentSquareType.type !== "water" && _this7.canBeatAnimal(targetSquareAnimal, currentAnimalInfo)) {
                 collectPossible(rowIndex, colIndex);
                 return;
               }
@@ -2843,12 +2885,12 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
       return possibleMovesResult;
     },
     showPossibleMoves: function showPossibleMoves(squareRowIndex, squareColIndex) {
-      var _this6 = this;
+      var _this8 = this;
       var moves = this.getPossibleMoves(squareRowIndex, squareColIndex);
       moves.forEach(function (move) {
-        var square = _this6.squares[move.toRow][move.toCol];
+        var square = _this8.squares[move.toRow][move.toCol];
         square.isPossibleMove = true;
-        _this6.possibleMoves.push(square);
+        _this8.possibleMoves.push(square);
       });
     },
     cloneBoard: function cloneBoard(board) {
@@ -2892,7 +2934,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
       return secured;
     },
     playComputer: function playComputer() {
-      var _this7 = this;
+      var _this9 = this;
       var move = this.calculateBestMove(_toConsumableArray(this.squares), this.turn, 3);
       var fromRow = move.fromRow,
         fromCol = move.fromCol,
@@ -2905,7 +2947,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
       var checkmate = this.isCheckmate(this.squares);
       if (checkmate) {
         setTimeout(function () {
-          _this7.alertWin(checkmate);
+          _this9.alertWin(checkmate);
         }, 500);
       } else {
         this.turn = this.getOpponentColor(this.turn);
@@ -3094,7 +3136,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
       return factors;
     },
     evaluateBoard: function evaluateBoard(squares, color, isMaximizingPlayer) {
-      var _this8 = this;
+      var _this10 = this;
       var piecePowers = {
         mouse: 8,
         cat: 5,
@@ -3151,10 +3193,10 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
             squareColor = _square$content4.color;
           if (piece) {
             score[squareColor].controlledSquares += factors.controlOfSquare;
-            var opponentsColor = _this8.getOpponentColor(squareColor);
+            var opponentsColor = _this10.getOpponentColor(squareColor);
             var piecePower = piecePowers[piece];
             score[squareColor].pieceValue += piecePower;
-            score[squareColor].pieceMobility += _this8.getPossibleMoves(square.row, square.col, squares).length;
+            score[squareColor].pieceMobility += _this10.getPossibleMoves(square.row, square.col, squares).length;
             if (squareColor === "black" && square.row > highestAnimalRows.black) {
               highestAnimalRows.black = square.row;
             } else if (squareColor === "white" && 8 - square.row > highestAnimalRows.white) {
@@ -3165,7 +3207,7 @@ var allowedColors = _GameHelper__WEBPACK_IMPORTED_MODULE_2__["default"].getAllow
             }
             if (trapCodes[squareColor].includes(square.code)) {
               score[squareColor].controlOfOwnTraps += factors.controlOfOwnTrap;
-            } else if (trapCodes[opponentsColor].includes(square.code) && (!_this8.trapIsSafe(squares, square.code) || !isMaximizingPlayer)) {
+            } else if (trapCodes[opponentsColor].includes(square.code) && (!_this10.trapIsSafe(squares, square.code) || !isMaximizingPlayer)) {
               score[squareColor].controlOfOpponentsTraps += factors.controlOfOpponentsTrap;
             } else if (houseCodes[opponentsColor] === square.code) {
               score[squareColor].winFactor += factors.winFactor;
@@ -3257,7 +3299,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     web3Login: function web3Login(wallet) {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var response, provider, _response, message, address, amount, signature, Nft_4_color1, Nft_5_color2, Nft_6_color3, Nft_7_color4, data, date, day, year, month, hour, min, sec, alias;
+        var response, provider, _response, message, address, amount, signature, sunFlower_1, sunFlower_2, nft_4_color1, nft_5_color2, nft_6_color3, nft_7_color4, data, date, day, year, month, hour, min, sec, alias;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -3275,7 +3317,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 3:
               response = _context.sent;
               _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('LOG_OUT_USER');
-              _context.next = 73;
+              _context.next = 94;
               break;
             case 7:
               _context.prev = 7;
@@ -3340,102 +3382,120 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               });
             case 32:
               _response = _context.sent;
-              // try {
-              //     const sunFlower_1 = await window.ethereum.request({
-              //         "method": "wallet_watchAsset",
-              //         "params": {
-              //             "type": "ERC-1155",
-              //             "options": {
-              //                 "address": "0xd07dc4262BCDbf85190C01c996b4C06a461d2430",
-              //                 "tokenId": "628469"
-              //             }
-              //         }
-              //     })
-              //     if (sunFlower_1) {
-              //         await axios.post('/api/if-there-nft', {
-              //             Nft_1_sunflower_1: sunFlower_1,
-              //             player: '0x42Db6137BB24623487238f048fCA7D376C18e74E'
-              //         })
-              //     }
-              // }catch (error) {
-              //     console.error(error)
-              // }
-              // try{
-              //     const sunFlower_2 = await window.ethereum.request({
-              //         "method" : "wallet_watchAsset",
-              //         "params" : {
-              //             "type" : "ERC-1155",
-              //             "options" : {
-              //                 "address" : "0xBdC8bd87CfD22ef5b90a93A77eeBe5BD0628f841",
-              //                 "tokenId" : "2352475547185321859375352175754401687841756219705495990747967153936990732289",
-              //             }
-              //         }
-              //     })
-              //     if (sunFlower_2){
-              //         await axios.post('/api/if-there-nft',{
-              //             Nft_2_sunflower_2 : sunFlower_2,
-              //             player :'0x42Db6137BB24623487238f048fCA7D376C18e74E'
-              //         })
-              //     }
-              // }catch (error) {
-              //     console.error(error)
-              // }
-              console.log(1);
-              Nft_4_color1 = 1;
-              Nft_5_color2 = 1;
-              Nft_6_color3 = 1;
-              Nft_7_color4 = 1;
-              _context.prev = 38;
-              console.log(Nft_4_color1, 2);
-              _context.next = 42;
-              return axios.post('/api/if-there-nft-color', {
-                nft_4_color1: Nft_4_color1,
-                nft_5_color2: Nft_5_color2,
-                nft_6_color3: Nft_6_color3,
-                nft_7_color4: Nft_7_color4,
+              _context.prev = 33;
+              _context.next = 36;
+              return window.ethereum.request({
+                "method": "wallet_watchAsset",
+                "params": {
+                  "type": "ERC-1155",
+                  "options": {
+                    "address": address,
+                    "tokenId": "628469"
+                  }
+                }
+              });
+            case 36:
+              sunFlower_1 = _context.sent;
+              _context.next = 39;
+              return window.ethereum.request({
+                "method": "wallet_watchAsset",
+                "params": {
+                  "type": "ERC-1155",
+                  "options": {
+                    "address": address,
+                    "tokenId": "2352475547185321859375352175754401687841756219705495990747967153936990732289"
+                  }
+                }
+              });
+            case 39:
+              sunFlower_2 = _context.sent;
+              if (!sunFlower_1) {
+                _context.next = 43;
+                break;
+              }
+              _context.next = 43;
+              return axios.post('/api/if-there-nft', {
+                Nft_1_sunflower_1: sunFlower_1,
+                Nft_2_sunflower_2: sunFlower_2,
                 player: address
               });
-            case 42:
-              _context.next = 47;
+            case 43:
+              _context.next = 48;
               break;
-            case 44:
-              _context.prev = 44;
-              _context.t0 = _context["catch"](38);
-              console.log(_context.t0);
-            case 47:
-              // try {
-              //     if (Nft_5_color2) {
-              //         console.log(Nft_5_color2, 3)
-              //         await axios.post('/api/if-there-nft-color', {
-              //             nft_5_color2: Nft_5_color2,
-              //             player: address
-              //         })
-              //     }
-              // }catch (error){
-              //     console.log(error)
-              // }
-              // try {
-              //     if (Nft_6_color3) {
-              //         console.log(Nft_6_color3, 4)
-              //         await axios.post('/api/if-there-nft-color', {
-              //             nft_6_color3: Nft_6_color3,
-              //             player: address
-              //         })
-              //     }
-              // }catch (error){
-              //     console.log(error)
-              // }
-              // try {
-              //     if (Nft_7_color4) {
-              //         console.log(Nft_7_color4, 5)
-              //         await axios.post('/api/if-there-nft-color', {
-              //             nft_7_color4: Nft_7_color4,
-              //             player: address
-              //         })
-              //     }
-              // }catch (error){
-              //     console.log(error)
-              // }
+            case 45:
+              _context.prev = 45;
+              _context.t0 = _context["catch"](33);
+              console.error(_context.t0);
+            case 48:
+              _context.prev = 48;
+              _context.next = 51;
+              return window.ethereum.request({
+                "method": "wallet_watchAsset",
+                "params": {
+                  "type": "ERC-1155",
+                  "options": {
+                    "address": address,
+                    "tokenId": "109412144875301169681210938441685435107180596113732411917774090345729495139304"
+                  }
+                }
+              });
+            case 51:
+              nft_4_color1 = _context.sent;
+              _context.next = 54;
+              return window.ethereum.request({
+                "method": "wallet_watchAsset",
+                "params": {
+                  "type": "ERC-1155",
+                  "options": {
+                    "address": address,
+                    "tokenId": "109412144875301169681210938441685435107180596113732411917774090344629983511528"
+                  }
+                }
+              });
+            case 54:
+              nft_5_color2 = _context.sent;
+              _context.next = 57;
+              return window.ethereum.request({
+                "method": "wallet_watchAsset",
+                "params": {
+                  "type": "ERC-1155",
+                  "options": {
+                    "address": address,
+                    "tokenId": "109412144875301169681210938441685435107180596113732411917774090343530471883752"
+                  }
+                }
+              });
+            case 57:
+              nft_6_color3 = _context.sent;
+              _context.next = 60;
+              return window.ethereum.request({
+                "method": "wallet_watchAsset",
+                "params": {
+                  "type": "ERC-1155",
+                  "options": {
+                    "address": address,
+                    "tokenId": "109412144875301169681210938441685435107180596113732411917774090342430960255976"
+                  }
+                }
+              });
+            case 60:
+              nft_7_color4 = _context.sent;
+              _context.next = 63;
+              return axios.post('/api/if-there-nft-color', {
+                nft_4_color1: nft_4_color1,
+                nft_5_color2: nft_5_color2,
+                nft_6_color3: nft_6_color3,
+                nft_7_color4: nft_7_color4,
+                player: address
+              });
+            case 63:
+              _context.next = 68;
+              break;
+            case 65:
+              _context.prev = 65;
+              _context.t1 = _context["catch"](48);
+              console.error(_context.t1);
+            case 68:
               data = _response.statusText;
               date = new Date();
               day = date.getDate();
@@ -3446,14 +3506,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               sec = date.getSeconds();
               alias = "player_" + year + "" + month + "" + day + "" + hour + "" + min + "" + sec + "";
               if (!(data === "OK")) {
-                _context.next = 67;
+                _context.next = 88;
                 break;
               }
               _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('LOG_IN_USER', true);
               _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('SET_USER_ADDRESS', address);
               _this.$emit("close");
               toastr.success('Log in succeesfully!');
-              _context.next = 63;
+              _context.next = 84;
               return fetch('api/web3-register-ethwallet', {
                 method: 'POST',
                 headers: {
@@ -3466,7 +3526,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   '_token': document.querySelector('meta[name="csrf-token"]').content
                 })
               });
-            case 63:
+            case 84:
               _response = _context.sent;
               _response.text().then(function (data) {
                 if (data !== "SUCCESS") {
@@ -3486,22 +3546,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   console.log("Register successfully!");
                 }
               });
-              _context.next = 69;
+              _context.next = 90;
               break;
-            case 67:
+            case 88:
               toastr.error('access denied');
               console.log('access denied');
-            case 69:
-              _context.next = 73;
+            case 90:
+              _context.next = 94;
               break;
-            case 71:
-              _context.prev = 71;
-              _context.t1 = _context["catch"](7);
-            case 73:
+            case 92:
+              _context.prev = 92;
+              _context.t2 = _context["catch"](7);
+            case 94:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[7, 71], [38, 44]]);
+        }, _callee, null, [[7, 92], [33, 45], [48, 65]]);
       }))();
     }
   },
@@ -3786,7 +3846,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     if (!this.user) {
       this.$router.push('/rank');
     }
-    console.log('Avatar Component mounted.');
   }
 });
 
