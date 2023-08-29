@@ -11046,20 +11046,32 @@ body,
   background-size: 600px;
 }
 
+/* #page1 {
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("images/board/bignilo3.jpg") ;
+    background-size: 550px ;
+    background-position: center ;
+    background-repeat: repeat ;
+    height: 89vh;
+} */
+
+#page5,
 #page1 {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);
-  background-size: 550px;
-  background-position: center;
   background-repeat: repeat;
-  height: 89vh;
+  background-position: top;
+  background-size: 550px;
 }
 
-#page4,
-#page5 {
+#page4 {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);
   background-repeat: repeat;
   background-position: center;
-  background-size: 550px;
+  background-size: 1150px;
 }
 
 /* #page5  {
@@ -11073,6 +11085,14 @@ body,
     background-position: right ;
     background-size: 800px;
 } */
+
+.avatar-address {
+  /* border: 1px solid blue; */
+  box-shadow: 0 0 6px 1px blue;
+  border-radius: 8px;
+  margin-bottom: 20px !important;
+  margin-top: 15px !important;
+}
 
 /* ----------------------------------------------------------------------------- */
 

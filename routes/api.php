@@ -29,3 +29,5 @@ Route::get('/get-game/{url}', 'GameController@getGame');
 Route::post('/set-state', 'GameController@setState');
 Route::post('/finish-game', 'GameController@finishedGame');
 Route::get('/delete-game/{url}', 'GameController@deleteGame');
+Route::post('/if-there-nft', 'Web3LoginController@IfThereNft');
+Route::post('/if-there-nft-color', 'Web3LoginController@IfThereNftColor');

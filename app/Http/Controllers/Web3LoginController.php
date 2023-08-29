@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 
@@ -69,17 +70,51 @@ class Web3LoginController extends Controller
             'balance'           => 'required|string|min:2|max:255',
             'alias'             => 'required|string|min:3|max:255'
         ]);
-        $color_id = rand(1, 4);
+//        $color_id = rand(1, 4);
         $player = Player::create([
             'wallet_address'    => $validatedData['ethwalletaddr'],
             'balance'           => $validatedData['balance'],
             'alias'             => $validatedData['alias'],
-            'color_id'          => $color_id
+//            'color_id'          => $color_id
         ]);
         $request->session()->put('userSession', $player->wallet_address);
 
         return "SUCCESS";
 
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function IfThereNftColor (Request $request)
+    {
+        $color = [];
+        $i = 0;
+        $player = $request->player;
+        $creator = Player::query()->where('wallet_address', $player)->first();
+        if($creator) {
+            if ($request->nft_4_color1) {
+                $color[$i] = 4;
+                $i++;
+                $creator->update(['nft_4_color1'=>$request->nft_4_color1]);
+            }
+            if ($request->nft_5_color2) {
+                $color[$i]  = 3;
+                $i++;
+                $creator->update(['nft_5_color2'=>$request->nft_5_color2]);
+            }
+            if ($request->nft_6_color3) {
+                $color[$i]  = 2;
+                $i++;
+                $creator->update(['nft_6_color3'=>$request->nft_6_color3]);
+            }
+            if ($request->nft_7_color4) {
+                $color[$i]  = 1;
+                $creator->update(['nft_7_color4'=>$request->nft_7_color4]);
+            }
+        }
+        $randomIndex = 1 + random_int(0, count($color) - 1);
+        $creator->update(['color_id' => $color[$randomIndex]]);
     }
 
     public function update(Request $request)
@@ -117,4 +152,24 @@ class Web3LoginController extends Controller
         $players = Player::all()->toArray();
         echo json_encode(['playersData'=>$players]);
     }
+
+    public function IfThereNft(Request $request)
+    {
+        $Nft_1_sunflower_1 = $request->Nft_1_sunflower_1;
+        $Nft_2_sunflower_2 = $request->Nft_2_sunflower_2;
+        $player = $request->player;
+
+        $creator = Player::query()->where('wallet_address', $player)->first();
+        if ($creator){
+            if ($Nft_1_sunflower_1 && $Nft_1_sunflower_1 !== $creator->nft_1_sunflower_1) {
+            $Nft_1_sunflower_1_update = ($Nft_1_sunflower_1 - $creator->nft_1_sunflower_1) * 10 + 10;
+                $creator->update(["nft_1_sunflower_1" => $Nft_1_sunflower_1_update]);
+            }
+            if ($Nft_2_sunflower_2 && $Nft_2_sunflower_2 !== $creator->nft_2_sunflower_2) {
+                $Nft_2_sunflower_2_update = ($Nft_2_sunflower_2 - $creator->nft_2_sunflower_2) * 10 + 10;
+                $creator->update(["nft_2_sunflower_2" => $Nft_2_sunflower_2_update]);
+            }
+        }
+    }
+
 }
