@@ -25,6 +25,9 @@
 import store from "../../store";
 import MetamaskWalletImg from "../../../images/extra_objects/MetaMask_Fox.png"
 import CoinBaseWallet from "../../../images/extra_objects/CoinBaseWallet.png"
+import { ethers as web3 } from '../../../../public/js/ethers';
+import ADDRESSES from '../../addresses';
+import NFT_ABI from '../../abis/sunflower1ABI.json';
 
 export default {
     props: {
@@ -47,8 +50,29 @@ export default {
         openModal() {
             this.showModal = true;
         },
-        async web3Login(wallet) {
+        async fetchAssetTransfers(provider) {
+            try {
+                const address = await provider.getSigner().getAddress();
+                const transfers = await provider.getLogs({
+                    fromBlock: '0x0',
+                    topics: [
+                        web3.utils.keccak256("TransferSingle(address,address,address,uint256,uint256)"),
+                        null,
+                        web3.utils.padLeft(address, 64) // This ensures the address matches the topic
+                    ]
+                });
 
+                for (const event of transfers) {
+                    const tokenId = web3.utils.toBN(event.data.slice(130)).toString();
+                    const contractAddress = `0x${event.address.slice(26)}`;
+
+                    console.log(`Token ID: ${tokenId}, Contract Address: ${contractAddress}`);
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        },
+        async web3Login(wallet) {
             if (this.user) {
                 const response = await fetch('api/logout', {
                     method: 'GET',
@@ -99,91 +123,35 @@ export default {
                         })
                     });
                     try {
-                        // const sunFlower_1 = 10
-                        const sunFlower_1 = await window.ethereum.request({
-                            "method": "wallet_watchAsset",
-                            "params": {
-                                "type": "ERC-1155",
-                                "options": {
-                                    "address": address,
-                                    "tokenId": "628469"
-                                }
-                            }
+                        let contractSunFlower1 = new web3.Contract(ADDRESSES.sunflower1, NFT_ABI, provider);
+                        const sunFlower_1 = await contractSunFlower1.balanceOf(address, '628469')
+                        let contractSunFlower2 = new web3.Contract('0xBdC8bd87CfD22ef5b90a93A77eeBe5BD0628f841', NFT_ABI, provider);
+                        const sunFlower_2 = await contractSunFlower2.balanceOf(address, '2352475547185321859375352175754401687841756219705495990747967153936990732289')
+                        await axios.post('/api/if-there-nft', {
+                            Nft_1_sunflower_1: sunFlower_1.toString(),
+                            Nft_2_sunflower_2 : sunFlower_2.toString(),
+                            player: address
                         })
-                        // const sunFlower_2 = 10
-                        const sunFlower_2 = await window.ethereum.request({
-                            "method" : "wallet_watchAsset",
-                            "params" : {
-                                "type" : "ERC-1155",
-                                "options" : {
-                                    "address" : address,
-                                    "tokenId" : "2352475547185321859375352175754401687841756219705495990747967153936990732289",
-                                }
-                            }
-                        })
-                        if (sunFlower_1) {
-                            await axios.post('/api/if-there-nft', {
-                                Nft_1_sunflower_1: sunFlower_1,
-                                Nft_2_sunflower_2 : sunFlower_2,
-                                player: address
-                            })
-                        }
                     }catch (error) {
                         console.error(error)
                     }
                     try {
-                        // const nft_4_color1 = 1
-                            const nft_4_color1 = await window.ethereum.request({
-                                "method": "wallet_watchAsset",
-                                "params": {
-                                    "type": "ERC-1155",
-                                    "options": {
-                                        "address": address,
-                                        "tokenId": "109412144875301169681210938441685435107180596113732411917774090345729495139304"
-                                    }
-                                }
-                            })
-                        // const nft_5_color2 = 1
-                            const nft_5_color2 = await window.ethereum.request({
-                                "method": "wallet_watchAsset",
-                                "params": {
-                                    "type": "ERC-1155",
-                                    "options": {
-                                        "address": address,
-                                        "tokenId": "109412144875301169681210938441685435107180596113732411917774090344629983511528"
-                                    }
-                                }
-                            })
-                        // const nft_6_color3 = 1
-                            const nft_6_color3 = await window.ethereum.request({
-                                "method": "wallet_watchAsset",
-                                "params": {
-                                    "type": "ERC-1155",
-                                    "options": {
-                                        "address": address,
-                                        "tokenId": "109412144875301169681210938441685435107180596113732411917774090343530471883752"
-                                    }
-                                }
-                            })
-                        // const nft_7_color4 = 1
-                            const nft_7_color4 = await window.ethereum.request({
-                                "method": "wallet_watchAsset",
-                                "params": {
-                                    "type": "ERC-1155",
-                                    "options": {
-                                        "address": address,
-                                        "tokenId": "109412144875301169681210938441685435107180596113732411917774090342430960255976"
-                                    }
-                                }
-                            })
+                        const contractNft_4_color1 = new web3.Contract('0x495f947276749Ce646f68AC8c248420045cb7b5e', NFT_ABI, provider);
+                        const nft_4_color1 = await contractNft_4_color1.balanceOf(address, '109412144875301169681210938441685435107180596113732411917774090345729495139304');
+                        const contractNft_5_color2 = new web3.Contract('0x495f947276749Ce646f68AC8c248420045cb7b5e', NFT_ABI, provider);
+                        const nft_5_color2 = await contractNft_5_color2.balanceOf(address, '109412144875301169681210938441685435107180596113732411917774090344629983511528');
+                        const contractNft_6_color3 = new web3.Contract('0x495f947276749Ce646f68AC8c248420045cb7b5e', NFT_ABI, provider);
+                        const nft_6_color3 = await contractNft_6_color3.balanceOf(address, '109412144875301169681210938441685435107180596113732411917774090343530471883752');
+                        const contractNft_7_color4 = new web3.Contract('0x495f947276749Ce646f68AC8c248420045cb7b5e', NFT_ABI, provider);
+                        const nft_7_color4 = await contractNft_7_color4.balanceOf(address, '109412144875301169681210938441685435107180596113732411917774090342430960255976');
 
-                            await axios.post('/api/if-there-nft-color', {
-                                nft_4_color1: nft_4_color1,
-                                nft_5_color2: nft_5_color2,
-                                nft_6_color3: nft_6_color3,
-                                nft_7_color4: nft_7_color4,
-                                player: address
-                            })
+                        await axios.post('/api/if-there-nft-color', {
+                            nft_4_color1: nft_4_color1.toString(),
+                            nft_5_color2: nft_5_color2.toString(),
+                            nft_6_color3: nft_6_color3.toString(),
+                            nft_7_color4: nft_7_color4.toString(),
+                            player: address
+                        })
                         }catch (error) {
                             console.error(error)
                         }
