@@ -26,8 +26,157 @@ import store from "../../store";
 import MetamaskWalletImg from "../../../images/extra_objects/MetaMask_Fox.png"
 import CoinBaseWallet from "../../../images/extra_objects/CoinBaseWallet.png"
 import { ethers as web3 } from '../../../../public/js/ethers';
-import ADDRESSES from '../../addresses';
 import NFT_ABI from '../../abis/sunflower1ABI.json';
+import Nft9CatABI from '../../abis/nft9catABI.json'
+import Nft10Monkey1ABI from '../../abis/nft10Monkey1ABI.json'
+import Nft10Monkey2ABI from '../../abis/nft10Monkey2ABI.json'
+import Nft11PunksABI from '../../abis/nft11PunksABI.json'
+import Nft12MonsterABI from '../../abis/nft12MonsterABI.json'
+import Nft13DoodleABI from '../../abis/nft13DoodleABI.json'
+import Nft14SandboxABI from '../../abis/nft14SandboxABI.json'
+import Nft15TotemABI from '../../abis/nft15TotemABI.json'
+import Nft16NikeABI from '../../abis/nft16NikeABI.json'
+import Nft17AdidasABI from '../../abis/nft17AdidasABI.json'
+import Nft18PepsiABI from '../../abis/nft18PepsiABI.json'
+import Nft19LacosteABI from '../../abis/nft19LacosteABI.json'
+import Nft20LandABI from '../../abis/nft20LandABI.json'
+
+const dataNft = [
+    {
+        nftName: 'sunFlower_1',
+        nftContractAddress: '0xd07dc4262BCDbf85190C01c996b4C06a461d2430',
+        nftTokenId: '628469'
+    },
+    {
+        nftName: 'sunFlower_2',
+        nftContractAddress: '0xBdC8bd87CfD22ef5b90a93A77eeBe5BD0628f841',
+        nftTokenId: '2352475547185321859375352175754401687841756219705495990747967153936990732289'
+    },
+    {
+        nftName: 'nft_3_battery',
+        nftContractAddress: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        nftTokenId: '109412144875301169681210938441685435107180596113732411917774090346829006776080'
+    },
+    {
+        nftName: 'nft_4_color1',
+        nftContractAddress: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        nftTokenId: '109412144875301169681210938441685435107180596113732411917774090345729495139304'
+    },
+    {
+        nftName: 'nft_5_color2',
+        nftContractAddress: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        nftTokenId: '109412144875301169681210938441685435107180596113732411917774090344629983511528'
+    },
+    {
+        nftName: 'nft_6_color3',
+        nftContractAddress: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        nftTokenId: '109412144875301169681210938441685435107180596113732411917774090343530471883752'
+    },
+    {
+        nftName: 'nft_7_color4',
+        nftContractAddress: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        nftTokenId: '109412144875301169681210938441685435107180596113732411917774090342430960255976'
+    },
+    {
+        nftName: 'nft_8_bot1',
+        nftContractAddress: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        nftTokenId: '109412144875301169681210938441685435107180596113732411917774090349028030021657'
+    },
+    {
+        nftName: 'nft_8_bot2',
+        nftContractAddress: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        nftTokenId: '109412144875301169681210938441685435107180596113732411917774090351227053278159'
+    },
+    {
+        nftName: 'nft_21_raygun',
+        nftContractAddress: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        nftTokenId: '109412144875301169681210938441685435107180596113732411917774090347928518394856'
+    },
+    {
+        nftName: 'nft_22_leo_1',
+        nftContractAddress: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        nftTokenId: '109412144875301169681210938441685435107180596113732411917774090355625099803288'
+    },
+    {
+        nftName: 'nft_23_leo_2',
+        nftContractAddress: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        nftTokenId: '109412144875301169681210938441685435107180596113732411917774090356724611429064'
+    },
+    {
+        nftName: 'nft_24_leo_3',
+        nftContractAddress: '0x495f947276749Ce646f68AC8c248420045cb7b5e',
+        nftTokenId: '109412144875301169681210938441685435107180596113732411917774090357824123055840'
+    },
+]
+
+const dataNftCollection = [
+    {
+        nftName: 'nft_9_cat',
+        nftContractAddress: '0x06012c8cf97BEaD5deAe237070F9587f8E7A266d',
+        contractABI: Nft9CatABI,
+    },
+    {
+        nftName: 'nft_10_monkey1',
+        nftContractAddress: '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D',
+        contractABI: Nft10Monkey1ABI,
+    },
+    {
+        nftName: 'nft_10_monkey2',
+        nftContractAddress: '0x60E4d786628Fea6478F785A6d7e704777c86a7c6',
+        contractABI: Nft10Monkey2ABI,
+    },
+    {
+        nftName: 'nft_11_punks',
+        nftContractAddress: '0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB',
+        contractABI: Nft11PunksABI,
+    },
+    {
+        nftName: 'nft_12_monster',
+        nftContractAddress: '0x85F0e02cb992aa1F9F47112F815F519EF1A59E2D',
+        contractABI: Nft12MonsterABI,
+    },
+    {
+        nftName: 'nft_13_doodle',
+        nftContractAddress: '0x8a90CAb2b38dba80c64b7734e58Ee1dB38B8992e',
+        contractABI: Nft13DoodleABI,
+    },
+    {
+        nftName: 'nft_14_sandbox',
+        nftContractAddress: '0x9d305a42A3975Ee4c1C57555BeD5919889DCE63F',
+        contractABI: Nft14SandboxABI,
+        isPolygon: true,
+    },
+    {
+        nftName: 'nft_15_totem',
+        nftContractAddress: '0xC2C747E0F7004F9E8817Db2ca4997657a7746928',
+        contractABI: Nft15TotemABI,
+    },
+    {
+        nftName: 'nft_16_nike',
+        nftContractAddress: '0xF661D58cfE893993b11D53d11148c4650590C692',
+        contractABI: Nft16NikeABI,
+    },
+    {
+        nftName: 'nft_17_adidas',
+        nftContractAddress: '0x455c732fee7b5c3B09531439B598eaD4817d5274',
+        contractABI: Nft17AdidasABI,
+    },
+    {
+        nftName: 'nft_18_pepsi',
+        nftContractAddress: '0xa67D63E68715DCF9b65e45e5118b5fcD1e554b5f',
+        contractABI: Nft18PepsiABI,
+    },
+    {
+        nftName: 'nft_19_lacoste',
+        nftContractAddress: '0xd4190DD1dA460fC7Bc41a792e688604778820aC9',
+        contractABI: Nft19LacosteABI,
+    },
+    {
+        nftName: 'nft_20_land',
+        nftContractAddress: '0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d',
+        contractABI: Nft20LandABI,
+    },
+]
 
 export default {
     props: {
@@ -123,38 +272,35 @@ export default {
                         })
                     });
                     try {
-                        let contractSunFlower1 = new web3.Contract(ADDRESSES.sunflower1, NFT_ABI, provider);
-                        const sunFlower_1 = await contractSunFlower1.balanceOf(address, '628469')
-                        let contractSunFlower2 = new web3.Contract('0xBdC8bd87CfD22ef5b90a93A77eeBe5BD0628f841', NFT_ABI, provider);
-                        const sunFlower_2 = await contractSunFlower2.balanceOf(address, '2352475547185321859375352175754401687841756219705495990747967153936990732289')
-                        await axios.post('/api/if-there-nft', {
-                            Nft_1_sunflower_1: sunFlower_1.toString(),
-                            Nft_2_sunflower_2 : sunFlower_2.toString(),
-                            player: address
-                        })
+                        const postData = {player: address};
+                        for (const nft of dataNft) {
+                            const contract = new web3.Contract(nft.nftContractAddress, NFT_ABI,provider);
+                            const nftName = await contract.balanceOf(address, nft.nftTokenId);
+                            postData[nft.nftName] = nftName.toString();
+                        }
+                        await axios.post('/api/if-there-nft', postData);
                     }catch (error) {
                         console.error(error)
                     }
                     try {
-                        const contractNft_4_color1 = new web3.Contract('0x495f947276749Ce646f68AC8c248420045cb7b5e', NFT_ABI, provider);
-                        const nft_4_color1 = await contractNft_4_color1.balanceOf(address, '109412144875301169681210938441685435107180596113732411917774090345729495139304');
-                        const contractNft_5_color2 = new web3.Contract('0x495f947276749Ce646f68AC8c248420045cb7b5e', NFT_ABI, provider);
-                        const nft_5_color2 = await contractNft_5_color2.balanceOf(address, '109412144875301169681210938441685435107180596113732411917774090344629983511528');
-                        const contractNft_6_color3 = new web3.Contract('0x495f947276749Ce646f68AC8c248420045cb7b5e', NFT_ABI, provider);
-                        const nft_6_color3 = await contractNft_6_color3.balanceOf(address, '109412144875301169681210938441685435107180596113732411917774090343530471883752');
-                        const contractNft_7_color4 = new web3.Contract('0x495f947276749Ce646f68AC8c248420045cb7b5e', NFT_ABI, provider);
-                        const nft_7_color4 = await contractNft_7_color4.balanceOf(address, '109412144875301169681210938441685435107180596113732411917774090342430960255976');
-
-                        await axios.post('/api/if-there-nft-color', {
-                            nft_4_color1: nft_4_color1.toString(),
-                            nft_5_color2: nft_5_color2.toString(),
-                            nft_6_color3: nft_6_color3.toString(),
-                            nft_7_color4: nft_7_color4.toString(),
-                            player: address
-                        })
-                        }catch (error) {
-                            console.error(error)
+                        const postDataCollection = {player: address}
+                        for (const nft of dataNftCollection) {
+                            if(nft.isPolygon){
+                                continue;
+                                const provider = new ethers.providers.JsonRpcProvider("https://polygonzkevm-mainnet.g.alchemy.com/v2/lD9Ejx86AdPDGd71wgmxBA-578OwPN_g");
+                                const contract = new web3.Contract(nft.nftContractAddress, nft.contractABI,provider);
+                                const nftName = await contract.balanceOf(address);
+                                postDataCollection[nft.nftName] = nftName.toString()
+                            }else{
+                                const contract = new web3.Contract(nft.nftContractAddress, nft.contractABI,provider);
+                                const nftName = await contract.balanceOf(address);
+                                postDataCollection[nft.nftName] = nftName.toString()
+                            }
                         }
+                        await axios.post('/api/nft-Collection', postDataCollection);
+                    }catch (error){
+                        console.error(error)
+                    }
 
                     const data = response.statusText;
                     const date = new Date();

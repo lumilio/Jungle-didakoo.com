@@ -446,7 +446,13 @@ export default {
                 this.playColors.light = backgroundColors[data.colors.board]
             }else{
                 let blackColor = 1 + Math.floor(Math.random() * 6)
-                let whiteColor = this.userData?.color_id
+                let colorID = this.userData?.color_id
+                let whiteColor;
+                if(colorID === 0){
+                    whiteColor = 1 + Math.floor(Math.random() * 6)
+                }else{
+                    whiteColor = this.userData?.color_id
+                }
                 allowedColors.forEach(block => {
                     if(block.animalColors.includes(blackColor) && block.animalColors.length > 1){
                         while (blackColor === whiteColor){
