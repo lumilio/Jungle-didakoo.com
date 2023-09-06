@@ -95,7 +95,7 @@
 
 
             <!-- Looping through players --------------------------------------------------->
-                <div v-for="players in playersArray" v-bind:key="players.id" style="background-color:#EDEB52;"  class="record ">
+                <div v-for="players in playersArray" v-bind:key="players.id"  class="record ">
                     <router-link :to="{ path: 'avatar', query: { wallet_address: players.wallet_address } }">
                     <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>{{players.id}}
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='../../../images/extra_objects/iconaplayB.png'/>

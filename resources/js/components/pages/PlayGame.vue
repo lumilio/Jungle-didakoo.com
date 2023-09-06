@@ -67,7 +67,7 @@
                     <div class="board-player">
                         <div
                             style="
-                                background-color: #edeb52;
+                                background-color: red;
                                 width: 100%;
                                 border: 0;
                             "
@@ -75,7 +75,7 @@
                         >
                             <p
                                 style="
-                                    color: black;
+                                    color: white;
                                     font-size: x-smal;
                                     padding: 10px;
                                     margin: 0;
