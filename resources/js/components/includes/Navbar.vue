@@ -5,7 +5,7 @@
             <router-link :to="this.$route.name === 'avatar' ? 'rank': 'menu'">
                 <i class="fa-solid burger_menu fa-bars"></i>
             </router-link>
-            <router-link class="avatar_link" v-if="user" to="avatar">
+            <router-link class="avatar_link" v-if="user" :to="{ path: 'avatar', query: { wallet_address: address } }">
                 <img src='images/extra_objects/iconaplay1.png' alt="">
             </router-link>
         </div>
@@ -14,16 +14,34 @@
 
 <script>
 import store from "../../store";
+import axios from "axios";
 export default {
     name: "Navbar",
+    data() {
+        return {
+            currentPlayer:{}
+        }
+    },
     computed: {
         user () {
             return store.state.user
+        },
+        address() {
+            return store.state.address
         }
     },
     mounted() {
 
-    }
+    },
+    methods:{
+        async getAllUsers()
+        {
+            this.url = window.location.host;
+            const response = await axios.get('http://'+this.url+'/api/get-users');
+            console.log(response,"responseRankk")
+            this.playersArray = response.data.users;
+        }
+    },
 }
 </script>
 

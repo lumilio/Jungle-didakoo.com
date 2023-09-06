@@ -35,6 +35,7 @@ const routes = [
                 path: 'avatar',
                 name: 'avatar',
                 component: AvatarPage,
+                props: (route) => ({ walletAddress: route.query.wallet_address }),
             },
             {
                 path: 'menu',

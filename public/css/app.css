@@ -11088,7 +11088,8 @@ body,
 
 .avatar-address {
   /* border: 1px solid blue; */
-  box-shadow: 0 0 6px 1px blue;
+  /* box-shadow: 0 0 6px 1px blue; */
+  font-size: 30px;
   border-radius: 8px;
   margin-bottom: 20px !important;
   margin-top: 15px !important;

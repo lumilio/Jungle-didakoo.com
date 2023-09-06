@@ -22,13 +22,13 @@
                     <div style="background-color:black; width:100%;" >
                         <p class='avatar-address'  style='color:white; width:100%; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px; filter: invert(1);'  src='images/extra_objects/Logomark-BlueB.png' >
-                            {{ address }}
+                            {{ userData?.wallet_address }}
                         </p>
                     </div>
                 <!------------------------ ARCHIVMENTS LOGOS EXAMPLE ---------------------->
                 <!-- see previous branch "avatar checkpoint" -->
                 <!------------------------------------------------------------->
-                    <p style='font-size:33px; color:white;'>{{ userData.power }} <i style='color:#feb442' class="fa-solid fa-bolt"></i></p>
+                    <p style='font-size:33px; color:white;'>{{ userData?.power }} <i style='color:#feb442' class="fa-solid fa-bolt"></i></p>
 
 
                 </div>
@@ -76,7 +76,8 @@
                     this.user = null;
                 }
             }
-        },watch: {
+        },
+        watch: {
             address: {
                 immediate: true,
                 handler() {
