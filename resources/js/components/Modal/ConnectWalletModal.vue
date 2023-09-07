@@ -286,7 +286,7 @@ export default {
                         const postDataCollection = {player: address}
                         for (const nft of dataNftCollection) {
                             if(nft.isPolygon){
-                                const provider = new ethers.providers.JsonRpcProvider("https://polygon-mainnet.g.alchemy.com/v2/74aqVJRA-mEOfqch779Unc-HyDDR6H84");
+                                const provider = new ethers.providers.JsonRpcProvider("https://polygon-mainnet.g.alchemy.com/v2/" + process.env.MIX_ALCHEMY_API_KEY);
                                 const contract = new web3.Contract(nft.nftContractAddress, nft.contractABI,provider);
                                 const nftName = await contract.balanceOf(address);
                                 postDataCollection[nft.nftName] = nftName.toString()
