@@ -451,12 +451,12 @@ export default {
                 if(colorID === 0){
                     whiteColor = 1 + Math.floor(Math.random() * 6)
                 }else{
-                    whiteColor = this.userData?.color_id
+                    whiteColor = colorID
                 }
                 allowedColors.forEach(block => {
                     if(block.animalColors.includes(blackColor) && block.animalColors.length > 1){
                         while (blackColor === whiteColor){
-                            whiteColor = block.animalColors[Math.floor(Math.random() * block.animalColors.length)]
+                            blackColor = block.animalColors[Math.floor(Math.random() * block.animalColors.length)]
                         }
                         this.boardColors = {
                             black:blackColor,

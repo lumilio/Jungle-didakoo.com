@@ -95,9 +95,10 @@
 
 
             <!-- Looping through players --------------------------------------------------->
-                <div v-for="players in playersArray" v-bind:key="players.id"  class="record ">
+                <div v-for="players in playersArray" v-bind:key="players.id"  class="record" :style="{backgroundColor : backgroundBord}">
                     <router-link :to="{ path: 'avatar', query: { wallet_address: players.wallet_address } }">
-                    <p  style='color:black; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>{{players.id}}
+                        <p :style="{ color: colorAddress, fontSize: 'x-small', padding: '10px', margin: '0', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }">
+                        {{players.id}}
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='../../../images/extra_objects/iconaplayB.png'/>
                         {{players.wallet_address}}
 
@@ -271,13 +272,20 @@
 import axios from 'axios';
 import store from "../../store";
 import NFT_LINKS from "../../constants/nftLinks";
+import { getColorStyles } from '../../utilites/getColorByUserColorId';
  export default {
     data(){
         return{
             playersArray: [],
             url: '',
+            backgroundBord: '',
+            colorAddress:'',
+            userData: {}
         }
     },
+     created() {
+         this.getColorByUserColorId();
+     },
      computed: {
          NFT_LINKS() {
              return NFT_LINKS
@@ -296,8 +304,29 @@ import NFT_LINKS from "../../constants/nftLinks";
                 const response = await axios.get('http://'+this.url+'/api/get-users');
                 console.log(response,"responseRankk")
                 this.playersArray = response.data.users;
+            },
+        async getColorByUserColorId() {
+            try {
+                const walletAddress = this.address;
+                const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
+                this.userData = response.data.user;
+
+                const colorStyles = getColorStyles(this.userData.color_id);
+                this.backgroundBord = colorStyles.backgroundBord;
+                this.colorAddress = colorStyles.colorAddress;
+            } catch (error) {
+                console.error(error);
+                this.user = null;
             }
+        },
     },
+     watch:{
+         address(newAddress) {
+             if (newAddress !== null) {
+                 this.getColorByUserColorId();
+             }
+         }
+     },
     async mounted()
     {
         await this.getAllUsers();

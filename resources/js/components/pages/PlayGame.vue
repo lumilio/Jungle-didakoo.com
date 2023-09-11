@@ -26,11 +26,11 @@
                     <!-------------- PLAYER 2 DATA ---------------->
                     <div class="board-player">
                         <div
-                            style="
-                                background-color: #edeb52;
-                                width: 100%;
-                                border: 0;
-                            "
+                            :style="{
+                                backgroundColor: backgroundBord,
+                                width: '100%',
+                                border: '0',
+                            }"
                             class="record"
                         >
                             <p>
@@ -66,23 +66,23 @@
                     <!-------------- PLAYER 1 DATA ---------------->
                     <div class="board-player">
                         <div
-                            style="
-                                background-color: red;
-                                width: 100%;
-                                border: 0;
-                            "
+                            :style="{
+                                backgroundColor: backgroundBord,
+                                width: '100%',
+                                border: '0',
+                            }"
                             class="record"
                         >
                             <p
-                                style="
-                                    color: white;
-                                    font-size: x-smal;
-                                    padding: 10px;
-                                    margin: 0;
-                                    text-overflow: ellipsis;
-                                    white-space: nowrap;
-                                    overflow: hidden;
-                                "
+                                :style="{
+                                    color: colorAddress,
+                                    fontSize: 'x-small',
+                                    padding: '10px',
+                                    margin: '0',
+                                    textOverflow: 'ellipsis',
+                                    whiteSpace: 'nowrap',
+                                    overflow: 'hidden'
+                                }"
                             >
                                 1°
                                 <img
@@ -144,6 +144,8 @@ import Game from "../Game/Game";
 import Modal from "../Modal/Modal";
 import axios from "axios";
 import store from "../../store";
+import { getColorStyles } from '../../utilites/getColorByUserColorId';
+
 export default {
     data() {
         return {
@@ -154,7 +156,11 @@ export default {
             readyToStart: false,
             game: null,
             message: '',
-            buttons: []
+            buttons: [],
+            placeA:false,
+            backgroundBord:'',
+            colorAddress:'',
+            userData: {}
         };
     },
     created() {
@@ -170,6 +176,8 @@ export default {
                 onclick: this.quitGame
             }
         ];
+
+        this.getColorByUserColorId();
     },
     components: {
         Game,
@@ -196,6 +204,21 @@ export default {
         }
     },
     methods: {
+        async getColorByUserColorId() {
+            try {
+                const walletAddress = this.address;
+                const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
+                this.userData = response.data.user;
+
+                const colorStyles = getColorStyles(this.userData.color_id);
+                this.backgroundBord = colorStyles.backgroundBord;
+                this.colorAddress = colorStyles.colorAddress;
+            } catch (error) {
+                console.error(error);
+                this.user = null;
+            }
+        },
+
         openModal(message = null) {
             this.open = true;
             if(message){
@@ -236,6 +259,17 @@ export default {
             }
         },
     },
+    watch:{
+        test()
+        {
+            this.getStatus();
+        },
+        address(newAddress) {
+            if (newAddress !== null) {
+                this.getColorByUserColorId();
+            }
+        }
+    },
 };
 </script>
 <style lang="scss">
@@ -246,7 +280,6 @@ export default {
         align-items: center;
     }
     .board-player .record {
-        background-color: rgb(237, 235, 82);
         width: 100%;
         border: 0;
         p {

@@ -12,7 +12,7 @@
         <div v-show="!showModal" style="height:calc(80vh - 80px);" class="justify-content-center align-content-center d-flex">
             <div class="bt" v-show="!showModal">
                 <a type="button" >
-                    <div class="square" @click="openModal">
+                    <div class="square" :style="{ border: borderStyle }" @click="openModal">
                         <i id="led" class="fa-solid fa-circle" :style="{color: user? '#46e546' : 'red'}" ></i>
                         <i class="fa-solid fa-power-off"></i>
                     </div>
@@ -20,14 +20,14 @@
 
                 <router-link to="rank">
                     <div id="modalz">
-                        <div class="square">
+                        <div class="square" :style="{ border: borderStyle }">
                             <img id="buttton_v_1" src="images/extra_objects/scarabeo.png" alt="" />
                         </div>
                     </div>
                 </router-link>
                 <router-link to="info">
                     <div id="modaly">
-                        <div class="square">
+                        <div class="square" :style="{ border: borderStyle }">
                             <!-- <i class="fa-solid fa-sheet-plastic"></i> -->
                             <span class="text-white">1.0</span>
                         </div>
@@ -45,25 +45,51 @@
 <script>
 import store from "../../store";
 import ConnectWalletModal from "../Modal/ConnectWalletModal.vue";
+import { getColorStyles } from '../../utilites/getColorByUserColorId';
+import axios from "axios";
 export default {
 
-    data(){
+    data() {
         return {
             test: false,
             showModal: false,
+            placeA: false,
+            borderStyle: '',
+            userData: {}
         }
     },
-
-    components:{
+    created() {
+        this.getColorByUserColorId();
+    },
+    components: {
         ConnectWalletModal
     },
     computed: {
         user() {
             return store.state.user
-        }
+        },
+        address() {
+            return store.state.address
+        },
     },
 
-    methods:{
+
+    methods: {
+        async getColorByUserColorId() {
+            try {
+                const walletAddress = this.address;
+                const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
+                this.userData = response.data.user;
+
+                const colorStyles = getColorStyles(this.userData.color_id);
+                this.borderStyle = colorStyles.borderStyle;
+            } catch (error) {
+                console.error(error);
+                this.user = null;
+            }
+        },
+
+
         async openModal() {
             if (this.user) {
                 const response = await fetch('api/logout', {
@@ -78,8 +104,8 @@ export default {
             } else {
                 this.showModal = true;
             }
-
         },
+
         closeModal() {
             this.showModal = false;
         },
@@ -89,6 +115,11 @@ export default {
         test()
         {
             this.getStatus();
+        },
+        address(newAddress) {
+            if (newAddress !== null) {
+                this.getColorByUserColorId();
+            }
         }
     },
 
