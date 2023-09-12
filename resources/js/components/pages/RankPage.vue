@@ -282,7 +282,6 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
             url: '',
             backgroundBord: '',
             colorAddress:'',
-            userData: {},
             colorPower: '',
             avatarSrc: '',
         }
@@ -299,6 +298,9 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
          },
          address() {
              return store.state.address
+         },
+         userData(){
+             return store.state.userData
          }
      },
     methods:{
@@ -309,12 +311,8 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
                 console.log(response,"responseRankk")
                 this.playersArray = response.data.users;
             },
-        async getColorByUserColorId() {
+         getColorByUserColorId() {
             try {
-                const walletAddress = this.address;
-                const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
-                this.userData = response.data.user;
-
                 const colorStyles = getColorStyles(this.userData.color_id);
                 this.backgroundBord = colorStyles.backgroundBord;
                 this.colorAddress = colorStyles.colorAddress;
@@ -327,10 +325,8 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
         },
     },
      watch:{
-         address(newAddress) {
-             if (newAddress !== null) {
+         userData() {
                  this.getColorByUserColorId();
-             }
          }
      },
     async mounted()

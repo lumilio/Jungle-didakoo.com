@@ -29,5 +29,9 @@ const colorIdData = {
     }
 }
 export function getColorStyles(colorId) {
-    return colorIdData[colorId];
+    if(colorIdData[colorId]){
+        return colorIdData[colorId];
+    } else{
+        return {}
+    }
 }

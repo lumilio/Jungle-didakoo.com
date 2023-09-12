@@ -71,7 +71,7 @@ class Web3LoginController extends Controller
             'alias'             => 'required|string|min:3|max:255'
         ]);
         $player = Player::create([
-            'wallet_address'    => $validatedData['ethwalletaddr'],
+            'wallet_address'    => $validatedData['wallet_address'],
             'balance'           => $validatedData['balance'],
             'alias'             => $validatedData['alias'],
         ]);
@@ -105,7 +105,12 @@ class Web3LoginController extends Controller
 
     public function getSession(Request $request)
     {
-        return $request->session()->has('loggedIn') ? $request->session()->get('userSession') : 'failed';
+        if ($request->session()->has('loggedIn')){
+            $player = Player::query()->where('wallet_address', $request->session()->get('userSession'))->first();
+            if ($player)
+            return response()->json(['address' => $player->wallet_address, "color" => $player->color_id]);
+        }
+        return 'failed';
     }
     public function logout(Request $request)
     {
@@ -168,11 +173,13 @@ class Web3LoginController extends Controller
             if ($Nft_7_color4) {
                 $color[] = 1;
             }
+            $color_id = 0;
             if (count($color) !== 0){
+                $color_id = $color[rand(0, count($color) - 1)];
                 $creator->update(['color_id' => $color[rand(0, count($color) - 1)]]);
-            }else{
-                $creator->update(['color_id' => 0]);
             }
+            $creator->update(['color_id' => $color_id]);
+
             $creator->update([
                 'nft_4_color1' => !!$Nft_4_color1,
                 'nft_5_color2' => !!$Nft_5_color2,

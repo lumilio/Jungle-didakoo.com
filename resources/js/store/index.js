@@ -16,7 +16,8 @@ const store = new Vuex.Store({
       },
     ],
     svg: null,
-    errors: []
+    errors: [],
+      userData: {},
   },
 
   getters: {
@@ -43,6 +44,9 @@ const store = new Vuex.Store({
       },
       SET_USER_ADDRESS(state, val) {
           state.address = val;
+      },
+      SET_USER_DATA(state, UsersData) {
+          state.userData = UsersData;
       },
       LOG_OUT_USER (state){
           state.user = null;

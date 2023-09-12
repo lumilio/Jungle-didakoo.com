@@ -55,14 +55,13 @@ export default {
             showModal: false,
             placeA: false,
             borderStyle: '',
-            userData: {}
         }
-    },
-    created() {
-        this.getColorByUserColorId();
     },
     components: {
         ConnectWalletModal
+    },
+    created() {
+        this.getColorByUserColorId();
     },
     computed: {
         user() {
@@ -71,16 +70,15 @@ export default {
         address() {
             return store.state.address
         },
+        userData(){
+            return store.state.userData
+        }
     },
 
 
     methods: {
-        async getColorByUserColorId() {
+        getColorByUserColorId() {
             try {
-                const walletAddress = this.address;
-                const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
-                this.userData = response.data.user;
-
                 const colorStyles = getColorStyles(this.userData.color_id);
                 this.borderStyle = colorStyles.borderStyle;
             } catch (error) {
@@ -116,15 +114,14 @@ export default {
         {
             this.getStatus();
         },
-        address(newAddress) {
-            if (newAddress !== null) {
+        userData() {
                 this.getColorByUserColorId();
-            }
         }
     },
 
     mounted () {
         console.log("Menu PAge Component mounted.");
+        this.getColorByUserColorId();
     },
 
 };

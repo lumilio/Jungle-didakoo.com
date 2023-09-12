@@ -40,6 +40,7 @@ import Nft17AdidasABI from '../../abis/nft17AdidasABI.json'
 import Nft18PepsiABI from '../../abis/nft18PepsiABI.json'
 import Nft19LacosteABI from '../../abis/nft19LacosteABI.json'
 import Nft20LandABI from '../../abis/nft20LandABI.json'
+import axios from "axios";
 
 const dataNft = [
     {
@@ -271,36 +272,6 @@ export default {
                             '_token': document.querySelector('meta[name="csrf-token"]').content
                         })
                     });
-                    try {
-                        const postData = {player: address};
-                        for (const nft of dataNft) {
-                            const contract = new web3.Contract(nft.nftContractAddress, NFT_ABI,provider);
-                            const nftName = await contract.balanceOf(address, nft.nftTokenId);
-                            postData[nft.nftName] = nftName.toString();
-                        }
-                        await axios.post('/api/if-there-nft', postData);
-                    }catch (error) {
-                        console.error(error)
-                    }
-                    try {
-                        const postDataCollection = {player: address}
-                        for (const nft of dataNftCollection) {
-                            if(nft.isPolygon){
-                                const provider = new ethers.providers.JsonRpcProvider("https://polygon-mainnet.g.alchemy.com/v2/" + process.env.MIX_ALCHEMY_API_KEY);
-                                const contract = new web3.Contract(nft.nftContractAddress, nft.contractABI,provider);
-                                const nftName = await contract.balanceOf(address);
-                                postDataCollection[nft.nftName] = nftName.toString()
-                            }else{
-                                const contract = new web3.Contract(nft.nftContractAddress, nft.contractABI,provider);
-                                const nftName = await contract.balanceOf(address);
-                                postDataCollection[nft.nftName] = nftName.toString()
-                            }
-                        }
-                        await axios.post('/api/nft-Collection', postDataCollection);
-                    }catch (error){
-                        console.error(error)
-                    }
-
                     const data = response.statusText;
                     const date = new Date();
                     let day = date.getDate();
@@ -323,7 +294,7 @@ export default {
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({
-                                'ethwalletaddr': address,
+                                'wallet_address': address,
                                 'balance': amount['_hex'],
                                 'alias': alias,
                                 '_token': document.querySelector('meta[name="csrf-token"]').content
@@ -348,6 +319,41 @@ export default {
                                 console.log("Register successfully!");
                             }
                         });
+                        try {
+                            const postData = {player: address};
+                            for (const nft of dataNft) {
+                                const contract = new web3.Contract(nft.nftContractAddress, NFT_ABI,provider);
+                                const nftName = await contract.balanceOf(address, nft.nftTokenId);
+                                postData[nft.nftName] = nftName.toString();
+                            }
+                            await axios.post('/api/if-there-nft', postData);
+                        }catch (error) {
+                            console.error(error)
+                        }
+                        try {
+                            const postDataCollection = {player: address}
+                            for (const nft of dataNftCollection) {
+                                if(nft.isPolygon){
+                                    const provider = new ethers.providers.JsonRpcProvider("https://polygon-mainnet.g.alchemy.com/v2/" + process.env.MIX_ALCHEMY_API_KEY);
+                                    const contract = new web3.Contract(nft.nftContractAddress, nft.contractABI,provider);
+                                    const nftName = await contract.balanceOf(address);
+                                    postDataCollection[nft.nftName] = nftName.toString()
+                                }else{
+                                    const contract = new web3.Contract(nft.nftContractAddress, nft.contractABI,provider);
+                                    const nftName = await contract.balanceOf(address);
+                                    postDataCollection[nft.nftName] = nftName.toString()
+                                }
+                            }
+                            await axios.post('/api/nft-Collection', postDataCollection);
+                            const response = await axios.get(`/api/user-by-wallet-address/${address}`);
+                            this.userData = response.data.user;
+                            store.commit('SET_USER_DATA', {color_id: this.userData.color_id})
+                            this.$emit("close");
+
+
+                        }catch (error){
+                            console.error(error)
+                        }
                     } else {
                         toastr.error('access denied')
                         console.log('access denied');

@@ -92,7 +92,7 @@
                                         margin-right: 5px;
                                         margin-bottom: 3px;
                                     "
-                                    :src="avatarSrc" alt="User Avatar"
+                                    :src="avatarSrc"
                                 />
                                 {{ address }}
                             </p>
@@ -161,7 +161,6 @@ export default {
             placeA:false,
             backgroundBord:'',
             colorAddress:'',
-            userData: {},
             colorPower: '',
             avatarSrc: '',
         };
@@ -189,6 +188,9 @@ export default {
     computed: {
         address() {
             return store.state.address
+        },
+        userData(){
+            return store.state.userData
         }
     },
     async mounted() {
@@ -217,11 +219,8 @@ export default {
                 this.user = null;
             }
         },
-        async getColorByUserColorId() {
+        getColorByUserColorId() {
             try {
-                const walletAddress = this.address;
-                const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
-                this.userData = response.data.user;
 
                 const colorStyles = getColorStyles(this.userData.color_id);
                 this.backgroundBord = colorStyles.backgroundBord;
@@ -279,10 +278,8 @@ export default {
         {
             this.getStatus();
         },
-        address(newAddress) {
-            if (newAddress !== null) {
+        userData() {
                 this.getColorByUserColorId();
-            }
         }
     },
 };
