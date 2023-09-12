@@ -92,7 +92,7 @@
                                         margin-right: 5px;
                                         margin-bottom: 3px;
                                     "
-                                    src="../../../images/extra_objects/iconaplayB.png"
+                                    :src="avatarSrc" alt="User Avatar"
                                 />
                                 {{ address }}
                             </p>
@@ -108,17 +108,18 @@
                             </div>
                             <span
                                 class="align-items-center"
-                                style="
-                                    color: black;
-                                    margin-right: 10px;
-                                    white-space: nowrap;
-                                    background-color: ;
-                                    padding: 0 10px;
-                                    border-radius: 20px;
-                                    display: flex;
-                                "
+                                :style="{
+                                    color: colorPower,
+                                    marginRight: '10px',
+                                    whiteSpace: 'nowrap',
+                                    backgroundColor: '',
+                                    padding: '0 10px',
+                                    borderRadius: '20px',
+                                    display: 'flex',
+                                }"
                             >
-                                100 <i class="fa-solid fa-bolt ml-1"></i
+                                {{ userData?.power }}
+                                <i class="fa-solid fa-bolt ml-1"></i
                             ></span>
                         </div>
                     </div>
@@ -160,7 +161,9 @@ export default {
             placeA:false,
             backgroundBord:'',
             colorAddress:'',
-            userData: {}
+            userData: {},
+            colorPower: '',
+            avatarSrc: '',
         };
     },
     created() {
@@ -204,6 +207,16 @@ export default {
         }
     },
     methods: {
+        async getUserByWalletAddress() {
+            try {
+                const walletAddress = this.$route.query.wallet_address;
+                const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
+                this.userData = response.data.user;
+            } catch (error) {
+                console.error(error);
+                this.user = null;
+            }
+        },
         async getColorByUserColorId() {
             try {
                 const walletAddress = this.address;
@@ -213,6 +226,8 @@ export default {
                 const colorStyles = getColorStyles(this.userData.color_id);
                 this.backgroundBord = colorStyles.backgroundBord;
                 this.colorAddress = colorStyles.colorAddress;
+                this.colorPower = colorStyles.colorPower;
+                this.avatarSrc = colorStyles.avatarSrc;
             } catch (error) {
                 console.error(error);
                 this.user = null;

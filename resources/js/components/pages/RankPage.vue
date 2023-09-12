@@ -99,7 +99,7 @@
                     <router-link :to="{ path: 'avatar', query: { wallet_address: players.wallet_address } }">
                         <p :style="{ color: colorAddress, fontSize: 'x-small', padding: '10px', margin: '0', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }">
                         {{players.id}}
-                        <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   src='../../../images/extra_objects/iconaplayB.png'/>
+                        <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   :src="avatarSrc" alt="User Avatar"/>
                         {{players.wallet_address}}
 
                     </p>
@@ -131,7 +131,9 @@
                     <!--                          <img style='width:23px; margin:0 5px; filter: invert(1);' src='../../../images/extra_objects/raygun.png' alt=""> &lt;!&ndash; nft_21_raygun &ndash;&gt;-->
                     <!--                          <i style='font-size:20px; color:black; margin:0 5px;'  class="fa-solid fa-battery-full"></i> &lt;!&ndash; nft_3_battery &ndash;&gt;-->
                     <!--                      </div>-->
-                    <span class='align-items-center' style='color:black; margin-right: 10px;     white-space: nowrap;     background-color: ;  padding:0 10px;  border-radius: 20px; display:flex;'> {{players.power}} <i class="fa-solid fa-bolt ml-1"></i></span>
+                    <span class='align-items-center' :style="{color:colorPower, marginRight: '10px',whiteSpace: 'nowrap',  backgroundColor: '',  padding:'0 10px',  borderRadius: '20px', display:'flex'}">
+                          {{players.power}}
+                        <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
 
             <!------------------------------------------------------------------------------>
@@ -280,7 +282,9 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
             url: '',
             backgroundBord: '',
             colorAddress:'',
-            userData: {}
+            userData: {},
+            colorPower: '',
+            avatarSrc: '',
         }
     },
      created() {
@@ -314,6 +318,8 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
                 const colorStyles = getColorStyles(this.userData.color_id);
                 this.backgroundBord = colorStyles.backgroundBord;
                 this.colorAddress = colorStyles.colorAddress;
+                this.colorPower = colorStyles.colorPower;
+                this.avatarSrc = colorStyles.avatarSrc;
             } catch (error) {
                 console.error(error);
                 this.user = null;
