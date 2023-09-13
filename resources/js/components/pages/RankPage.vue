@@ -99,7 +99,7 @@
                     <router-link :to="{ path: 'avatar', query: { wallet_address: players.wallet_address } }">
                         <p :style="{ color: colorAddress, fontSize: 'x-small', padding: '10px', margin: '0', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }">
                         {{players.id}}
-                        <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   :src="avatarSrc" alt="User Avatar"/>
+                        <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   :src="avatarSrc? avatarSrc : '../../../images/extra_objects/iconaplayW.png'" alt="User Avatar"/>
                         {{players.wallet_address}}
 
                     </p>
@@ -308,7 +308,6 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
             {
                 this.url = window.location.host;
                 const response = await axios.get('http://'+this.url+'/api/get-users');
-                console.log(response,"responseRankk")
                 this.playersArray = response.data.users;
             },
          getColorByUserColorId() {
