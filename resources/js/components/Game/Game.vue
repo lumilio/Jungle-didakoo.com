@@ -274,7 +274,6 @@ export default {
     },
     async mounted()
     {
-        await this.getUserByWalletAddress();
         this.setInitialConfig()
         // console.log(this.playColors, 'playcolors')
         // console.log(this.boardColors, 'boardColors')
@@ -293,19 +292,12 @@ export default {
         },
         address() {
             return store.state.address
-        }
+        },
+        userData(){
+          return store.state.userData
+        },
     },
     methods: {
-        async getUserByWalletAddress() {
-            try {
-                const walletAddress = this.address;
-                const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
-                this.userData = response.data.user;
-            } catch (error) {
-                console.error(error);
-                this.user = null;
-            }
-        },
         setInitialConfig(){
             if(this.game && this.game.state){
                 this.fillState(this.game.state.state)

@@ -146,6 +146,7 @@ import Modal from "../Modal/Modal";
 import axios from "axios";
 import store from "../../store";
 import { getColorStyles } from '../../utilites/getColorByUserColorId';
+import user from "../../store/modules/user";
 
 export default {
     data() {
@@ -186,6 +187,9 @@ export default {
         Modal,
     },
     computed: {
+        user() {
+            return user
+        },
         address() {
             return store.state.address
         },
@@ -209,19 +213,8 @@ export default {
         }
     },
     methods: {
-        async getUserByWalletAddress() {
-            try {
-                const walletAddress = this.$route.query.wallet_address;
-                const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
-                this.userData = response.data.user;
-            } catch (error) {
-                console.error(error);
-                this.user = null;
-            }
-        },
         getColorByUserColorId() {
             try {
-
                 const colorStyles = getColorStyles(this.userData.color_id);
                 this.backgroundBord = colorStyles.backgroundBord;
                 this.colorAddress = colorStyles.colorAddress;

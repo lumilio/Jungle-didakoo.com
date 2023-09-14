@@ -108,7 +108,10 @@ class Web3LoginController extends Controller
         if ($request->session()->has('loggedIn')){
             $player = Player::query()->where('wallet_address', $request->session()->get('userSession'))->first();
             if ($player)
-            return response()->json(['address' => $player->wallet_address, "color" => $player->color_id]);
+            return response()->json([
+                'address' => $player->wallet_address,
+                'color' => $player->color_id,
+                'power' =>$player->power ]);
         }
         return 'failed';
     }

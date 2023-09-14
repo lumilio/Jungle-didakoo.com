@@ -347,7 +347,7 @@ export default {
                             await axios.post('/api/nft-Collection', postDataCollection);
                             const response = await axios.get(`/api/user-by-wallet-address/${address}`);
                             this.userData = response.data.user;
-                            store.commit('SET_USER_DATA', {color_id: this.userData.color_id})
+                            store.commit('SET_USER_DATA', {color_id: this.userData.color_id , power :this.userData.power})
                             this.$emit("close");
 
 

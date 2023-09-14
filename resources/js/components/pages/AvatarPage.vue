@@ -82,12 +82,8 @@
                 handler() {
                     this.getUserByWalletAddress();
                 }
-            } },
-        mounted() {
-            if(!this.user){
-                this.$router.push('/rank')
             }
-        }
+        },
 
     }
 </script>
