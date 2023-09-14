@@ -81,7 +81,8 @@
                                     margin: '0',
                                     textOverflow: 'ellipsis',
                                     whiteSpace: 'nowrap',
-                                    overflow: 'hidden'
+                                    overflow: 'hidden',
+                                    textDecoration: textDecorationAddress,
                                 }"
                             >
                                 1°
@@ -164,6 +165,7 @@ export default {
             colorAddress:'',
             colorPower: '',
             avatarSrc: '',
+            textDecorationAddress: '',
         };
     },
     created() {
@@ -220,6 +222,7 @@ export default {
                 this.colorAddress = colorStyles.colorAddress;
                 this.colorPower = colorStyles.colorPower;
                 this.avatarSrc = colorStyles.avatarSrc;
+                this.textDecorationAddress = colorStyles.textDecorationAddress;
             } catch (error) {
                 console.error(error);
                 this.user = null;

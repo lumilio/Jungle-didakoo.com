@@ -5,6 +5,7 @@ const colorIdData = {
         colorAddress: 'black',
         colorPower: 'black',
         avatarSrc: '../../../images/extra_objects/iconaplayB.png',
+        textDecorationAddress: 'underline black',
     },
     2: {
         borderStyle: '3px solid red',
@@ -12,6 +13,7 @@ const colorIdData = {
         colorAddress: 'white',
         colorPower: 'black',
         avatarSrc: '../../../images/extra_objects/iconaplayB.png',
+        textDecorationAddress: 'underline white',
     },
     3: {
         borderStyle: '3px solid blue',
@@ -19,6 +21,7 @@ const colorIdData = {
         colorAddress: 'white',
         colorPower: 'white',
         avatarSrc: '../../../images/extra_objects/iconaplayW.png',
+        textDecorationAddress: 'underline white',
     },
     4: {
         borderStyle: '3px solid #EE5E81',
@@ -26,6 +29,7 @@ const colorIdData = {
         colorAddress: 'black',
         colorPower: 'black',
         avatarSrc: '../../../images/extra_objects/iconaplayB.png',
+        textDecorationAddress: 'underline black',
     }
 }
 export function getColorStyles(colorId) {

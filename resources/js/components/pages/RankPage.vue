@@ -97,7 +97,7 @@
             <!-- Looping through players --------------------------------------------------->
                 <div v-for="players in playersArray" v-bind:key="players.id"  class="record" :style="{backgroundColor : backgroundBord}">
                     <router-link :to="{ path: 'avatar', query: { wallet_address: players.wallet_address } }">
-                        <p :style="{ color: colorAddress, fontSize: 'x-small', padding: '10px', margin: '0', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }">
+                        <p :style="{ color: colorAddress, fontSize: 'x-small', padding: '10px', margin: '0', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden',textDecoration: textDecorationAddress}">
                         {{players.id}}
                         <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   :src="avatarSrc? avatarSrc : '../../../images/extra_objects/iconaplayW.png'" alt="User Avatar"/>
                         {{players.wallet_address}}
@@ -284,6 +284,7 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
             colorAddress:'',
             colorPower: '',
             avatarSrc: '',
+            textDecorationAddress: '',
         }
     },
      created() {
@@ -317,6 +318,7 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
                 this.colorAddress = colorStyles.colorAddress;
                 this.colorPower = colorStyles.colorPower;
                 this.avatarSrc = colorStyles.avatarSrc;
+                this.textDecorationAddress = colorStyles.textDecorationAddress;
             } catch (error) {
                 console.error(error);
                 this.user = null;
