@@ -96,14 +96,15 @@
 
             <!-- Looping through players --------------------------------------------------->
                 <div v-for="players in playersArray" v-bind:key="players.id"  class="record" :style="{backgroundColor : backgroundBord}">
+                    <div :style="{ color: colorAddress, textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden'}">
                     <router-link :to="{ path: 'avatar', query: { wallet_address: players.wallet_address } }">
-                        <p :style="{ color: colorAddress, fontSize: 'x-small', padding: '10px', margin: '0', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden',textDecoration: textDecorationAddress}">
-                        {{players.id}}
-                        <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px;'   :src="avatarSrc? avatarSrc : '../../../images/extra_objects/iconaplayW.png'" alt="User Avatar"/>
-                        {{players.wallet_address}}
-
-                    </p>
+                        <p :style="{ color: colorAddress, fontSize: 'x-small', padding: '10px', margin: '0', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden', textDecoration: textDecorationAddress }">
+                                {{ players.id }}
+                                <img style="width: 20px; margin-left: 5px; margin-right: 5px; margin-bottom: 3px;" :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayW.png'" alt="User Avatar" />
+                                {{ players.wallet_address }}
+                        </p>
                     </router-link>
+                    </div>
                     <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <template v-for="(item, key) in NFT_LINKS" v-if="players[key] > 0 && item">
                             <img style='width:35px;' :src="item" alt=""/>
