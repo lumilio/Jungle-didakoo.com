@@ -76,7 +76,7 @@
                             <p
                                 :style="{
                                     color: colorAddress,
-                                    fontSize: 'x-small',
+                                    fontSize: '14.5px',
                                     padding: '10px',
                                     margin: '0',
                                     textOverflow: 'ellipsis',
@@ -93,7 +93,7 @@
                                         margin-right: 5px;
                                         margin-bottom: 3px;
                                     "
-                                    :src="avatarSrc"
+                                    :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayB.png'" alt="User Avatar"
                                 />
                                 {{ address }}
                             </p>
