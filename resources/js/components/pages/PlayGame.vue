@@ -27,7 +27,7 @@
                     <div class="board-player">
                         <div
                             :style="{
-                                backgroundColor: backgroundBord,
+                                backgroundColor: backgroundBord ? backgroundBord : '#EDEB52',
                                 width: '100%',
                                 border: '0',
                             }"
@@ -67,7 +67,7 @@
                     <div class="board-player">
                         <div
                             :style="{
-                                backgroundColor: backgroundBord,
+                                backgroundColor: backgroundBord ? backgroundBord : '#EDEB52',
                                 width: '100%',
                                 border: '0',
                             }"
@@ -75,14 +75,14 @@
                         >
                             <p
                                 :style="{
-                                    color: colorAddress,
+                                    color: colorAddress ? colorAddress : 'black',
                                     fontSize: '14.5px',
                                     padding: '10px',
                                     margin: '0',
                                     textOverflow: 'ellipsis',
                                     whiteSpace: 'nowrap',
                                     overflow: 'hidden',
-                                    textDecoration: textDecorationAddress,
+                                    textDecoration: textDecorationAddress ? textDecorationAddress : 'underline black',
                                 }"
                             >
                                 1°

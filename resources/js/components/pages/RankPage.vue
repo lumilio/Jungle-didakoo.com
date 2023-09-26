@@ -65,7 +65,7 @@
             <!-- BANNER EVENT IMPORTANT  -->
             <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-top:25px; '>Sun Dec 17 2034 03:24:00 UTC+1 ROME</p> -->
             <!-- <p class='text-white' style='font-family: "VT323", monospace;   margin-bottom:35px; '>Next token recharge 23h 59m 59s</p> -->
-            <img id='scarabeo'  style='display:; margin-top:20px;' src='images/extra_objects/17.svg' alt="">
+            <img id='scarabeo'  style='margin-top:20px;' src='images/extra_objects/17.svg' alt="">
         </div>
         <div class="d-flex container-sm  mt-3 flex-column"></div>
         <!---------------------------------------------------->
@@ -95,12 +95,12 @@
 
 
             <!-- Looping through players --------------------------------------------------->
-                <div v-for="players in playersArray" v-bind:key="players.id"  class="record" :style="{backgroundColor : backgroundBord}">
-                    <div :style="{ color: colorAddress, textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden'}">
+                <div v-for="players in playersArray" v-bind:key="players.id"  class="record" :style="{backgroundColor : backgroundBord ? backgroundBord : '#EDEB52'}">
+                    <div :style="{ color: colorAddress ? colorAddress : 'black', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden'}">
                     <router-link :to="{ path: 'avatar', query: { wallet_address: players.wallet_address } }">
-                        <p :style="{ color: colorAddress, fontSize: '14.5px', padding: '10px', margin: '0', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden', textDecoration: textDecorationAddress }">
+                        <p :style="{ color: colorAddress ? colorAddress : 'black', fontSize: '14.5px', padding: '10px', margin: '0', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden', textDecoration: textDecorationAddress ? textDecorationAddress : 'underline black'}">
                                 {{ players.id }}
-                                <img style="width: 20px; margin-left: 5px; margin-right: 5px; margin-bottom: 3px;" :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayW.png'" alt="User Avatar" />
+                                <img style="width: 20px; margin-left: 5px; margin-right: 5px; margin-bottom: 3px;" :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayB.png'" alt="User Avatar" />
                                 {{ players.wallet_address }}
                         </p>
                     </router-link>
@@ -132,7 +132,7 @@
                     <!--                          <img style='width:23px; margin:0 5px; filter: invert(1);' src='../../../images/extra_objects/raygun.png' alt=""> &lt;!&ndash; nft_21_raygun &ndash;&gt;-->
                     <!--                          <i style='font-size:20px; color:black; margin:0 5px;'  class="fa-solid fa-battery-full"></i> &lt;!&ndash; nft_3_battery &ndash;&gt;-->
                     <!--                      </div>-->
-                    <span class='align-items-center' :style="{color:colorPower, marginRight: '10px',whiteSpace: 'nowrap',  backgroundColor: '',  padding:'0 10px',  borderRadius: '20px', display:'flex'}">
+                    <span class='align-items-center' :style="{color:colorPower ? colorPower : 'black', marginRight: '10px',whiteSpace: 'nowrap',  backgroundColor: '',  padding:'0 10px',  borderRadius: '20px', display:'flex'}">
                           {{players.power}}
                         <i class="fa-solid fa-bolt ml-1"></i></span>
                 </div>
