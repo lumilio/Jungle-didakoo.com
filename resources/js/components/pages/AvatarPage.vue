@@ -46,6 +46,7 @@
 
 
 <script>
+import axios from "axios";
     export default {
         data() {
             return {
@@ -61,6 +62,20 @@
                 return this.$store.state.address
             }
         },
+
+        async beforeRouteUpdate(to, from, next) {
+            try {
+                const walletAddress = to.query.wallet_address;
+                const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
+                this.userData = response.data.user;
+                next();
+            } catch (error) {
+                console.error(error);
+                this.user = null;
+                next();
+            }
+        },
+
       async created() {
         await this.getUserByWalletAddress();
       },
