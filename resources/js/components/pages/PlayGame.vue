@@ -199,21 +199,6 @@ export default {
             return store.state.userData
         }
     },
-    async mounted() {
-        try {
-            const response = await axios.get(
-                `/api/get-game/${this.$route.params.id}`
-            );
-            if (response.status === 200) {
-                this.game = response.data.game
-                this.isLoading = false;
-            } else {
-                this.$router.push("/game");
-            }
-        } catch (e) {
-            this.$router.push("/game");
-        }
-    },
     methods: {
         getColorByUserColorId() {
             try {
@@ -276,6 +261,25 @@ export default {
         },
         userData() {
                 this.getColorByUserColorId();
+        },
+        async address() {
+            try {
+                if (!this.address) return;
+                const response = await axios.post(
+                    `/api/get-game/${this.$route.params.id}`,
+                    {
+                        address: this.address,
+                    }
+                );
+                if (response.status === 200) {
+                    this.game = response.data.game
+                    this.isLoading = false;
+                } else {
+                    this.$router.push("/game");
+                }
+            } catch (e) {
+                this.$router.push("/game");
+            }
         }
     },
 };

@@ -17,18 +17,35 @@ class GameController extends Controller
         if (!$player){
             return response()->json(['message' => 'Bed request'], 400);
         }
+        $status = 'started';
+        if ($request->invite){
+            $status = 'pending';
+        }
         Game::create([
             'creator_id' => $player->id,
             'url' => $uniqueUrl,
-            'status' => 'pending'
+            'status' => $status
         ]);
         return response()->json(['message' => 'success', 'url' => $uniqueUrl], 201);
     }
 
-    public function getGame($url){
+    public function getGame(Request $request, $url){
         $game = Game::query()->where('url', $url)->first();
+        $player = Player::where('wallet_address', $request->address)->first();
+        if (!$player){
+            return response()->json(['message' => 'Bed request'], 400);
+        }
         if (!$game){
             return response()->json(['message' => 'Not Found'], 404);
+        }
+        if ($game->status === "started" && !($player->id === $game->creator_id || $player->id === $game->opponent_id)){
+            return response()->json(['message' => 'Bed request'], 400);
+        }
+        if ($game->status === "pending" && $player->creator_id !== $player->id){
+            $game->update([
+                'opponent_id' => $player->id,
+                'status' => 'started'
+            ]);
         }
 //        if ($game->creator !== auth('api')->id()){
 //            $game->update([
@@ -41,8 +58,9 @@ class GameController extends Controller
         $id = $request->id;
         $game = Game::where('url',$id)->first();
         $game->status = 'started';
-        $game -> state = ['state' => $request->state, 'turn' => $request->turn, 'colors' => $request->colors];
+        $game->state = ['state' => $request->state, 'turn' => $request->turn, 'colors' => $request->colors];
         $game->save();
+        event(new \App\Events\DoStep($game->state));
         return response()->json([
             'data' => $request->all(),
             'game' => $game

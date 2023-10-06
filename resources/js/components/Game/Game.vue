@@ -274,6 +274,11 @@ export default {
     },
     async mounted()
     {
+        window.Echo.private('my-event')
+            .listen('DoStep', (data) => {
+                console.log(data,'datadata');
+            });
+
         this.setInitialConfig()
         // console.log(this.playColors, 'playcolors')
         // console.log(this.boardColors, 'boardColors')
@@ -513,8 +518,8 @@ export default {
             }
             // console.log("this.squares", this.squares);
         },
-
         squareClick( rowIndex, colIndex) {
+            if(this.game.status !== "started") return;
             let square = this.squares[rowIndex][colIndex];
             // this.saveState();
             // console.log(square.content.piece, 'piece')

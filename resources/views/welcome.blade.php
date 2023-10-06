@@ -27,5 +27,7 @@
 
     </div>
 </body>
-
+<script>
+    window.laravel_echo_port='{{env("LARAVEL_ECHO_PORT")}}';
+</script>
 </html>

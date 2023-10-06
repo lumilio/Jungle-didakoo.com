@@ -9,11 +9,8 @@ import VueRouter from "vue-router";
 import store from "./store";
 import router from "./router";
 import App from "./App.vue"
-import {createApp} from 'vue';
 
 Vue.use(VueRouter);
-
-
 
 const app = new Vue({
     el: '#app',

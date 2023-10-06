@@ -25,7 +25,7 @@ Route::get('/web3-login-message', 'Web3LoginController@message');
 Route::get('/get-users', 'UserController@getUsers');
 
 Route::post('/make-game', 'GameController@makeGame');
-Route::get('/get-game/{url}', 'GameController@getGame');
+Route::post('/get-game/{url}', 'GameController@getGame');
 Route::post('/set-state', 'GameController@setState');
 Route::post('/finish-game', 'GameController@finishedGame');
 Route::get('/delete-game/{url}', 'GameController@deleteGame');
