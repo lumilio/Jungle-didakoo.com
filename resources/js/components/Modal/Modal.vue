@@ -16,6 +16,9 @@
                 </div>
                 <template v-if="(this.gameStarted && this.canStart) || startNewGame">
                     <div class="d-flex flex-wrap flex-column justify-content-center">
+                        <div v-if="showNotification" class="notification">
+                          Room ID copied to clipboard!
+                        </div>
                         <div class="mb-3" v-for="(item, index) in buttons" :key="index">
                             <Button
                                 v-on:handelClick="() => item.onclick()"
@@ -52,6 +55,10 @@ export default {
             default: false
         },
         startNewGame: {
+            type: Boolean,
+            default: false
+        },
+       showNotification: {
             type: Boolean,
             default: false
         },
@@ -115,6 +122,18 @@ export default {
 </script>
 
 <style lang="scss">
+
+.notification {
+  position: fixed;
+  right: 20px;
+  top:20px;
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .gameStarted-wrapper{
     display: flex;
     flex-direction: column;

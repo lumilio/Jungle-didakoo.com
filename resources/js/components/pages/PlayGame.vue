@@ -135,6 +135,7 @@
             :message="message"
             :readyToStart="readyToStart"
             :buttons="buttons"
+            :showNotification="showNotification"
             v-on:handelReadyToStart="handelReadyToStart()"
             v-on:quitGame="quitGame()"
         />
@@ -166,6 +167,7 @@ export default {
             colorPower: '',
             avatarSrc: '',
             textDecorationAddress: '',
+            showNotification: false
         };
     },
     created() {
@@ -260,7 +262,33 @@ export default {
         },
 
          share() {
-           console.log('fffffffffff')
+           const url = window.location.href;
+
+           const el = document.createElement('textarea');
+           el.value = url;
+           el.setAttribute('readonly', '');
+           el.style.position = 'absolute';
+           el.style.left = '-9999px';
+           document.body.appendChild(el);
+
+           const selected =
+               document.getSelection().rangeCount > 0
+                   ? document.getSelection().getRangeAt(0)
+                   : false;
+
+           el.select();
+           document.execCommand('copy');
+           document.body.removeChild(el);
+
+           if (selected) {
+             document.getSelection().removeAllRanges();
+             document.getSelection().addRange(selected);
+           }
+
+           this.showNotification = true;
+           setTimeout(() => {
+             this.showNotification = false;
+           }, 2000);
         },
     },
     watch:{
