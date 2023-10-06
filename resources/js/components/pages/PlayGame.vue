@@ -171,6 +171,11 @@ export default {
     created() {
         this.buttons = [
             {
+              title: 'SHARE',
+              image: '../../../images/board/piramids/piramid_4.png',
+              onclick: this.share
+            },
+            {
                 title: 'REASUME',
                 image: '../../../images/board/tree.png',
                 onclick: this.closeModal
@@ -252,6 +257,10 @@ export default {
             } catch (e) {
                 console.log(e);
             }
+        },
+
+         share() {
+           console.log('fffffffffff')
         },
     },
     watch:{

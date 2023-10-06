@@ -15,6 +15,10 @@
                 <img :src=CoinBaseWallet alt="MetamaskWallet" class="imgSize">
                 <p class="WalletCoinButtonText"> COINBASE </p>
             </button>
+          <button class="WalletCoinButton" id="guest">
+            <img :src=Guest alt="guest" class="imgSize">
+            <p class="WalletCoinButtonText"> GUEST </p>
+          </button>
             <span class="close1" @click="closeModal" >&times;</span>
             <slot></slot>
         </div>
@@ -25,6 +29,7 @@
 import store from "../../store";
 import MetamaskWalletImg from "../../../images/extra_objects/MetaMask_Fox.png"
 import CoinBaseWallet from "../../../images/extra_objects/CoinBaseWallet.png"
+import Guest from "../../../images/extra_objects/ghost.png"
 import { ethers as web3 } from '../../../../public/js/ethers';
 import NFT_ABI from '../../abis/sunflower1ABI.json';
 import Nft9CatABI from '../../abis/nft9catABI.json'
@@ -190,7 +195,8 @@ export default {
     data(){
         return {
             MetamaskWalletImg: MetamaskWalletImg,
-            CoinBaseWallet :CoinBaseWallet
+            CoinBaseWallet :CoinBaseWallet,
+            Guest :Guest
         }
     },
     methods: {
@@ -423,7 +429,7 @@ mounted () {
     background: black;
     padding: 20px;
     width: 350px;
-    height: 400px;
+    height: 440px;
     overflow: auto;
     position: relative;
     display: flex;
