@@ -153,12 +153,12 @@ import user from "../../store/modules/user";
 export default {
     data() {
         return {
-            isLoading: true,
+            isLoading: false,
             open: !localStorage.getItem('canStart'),
             canStart: !!localStorage.getItem('canStart'),
             isStarted: true,
             readyToStart: false,
-            game: null,
+            game: {},
             message: '',
             buttons: [],
             placeA:false,
@@ -301,7 +301,7 @@ export default {
         },
         async address() {
             try {
-                if (!this.address) return;
+                this.isLoading = true;
                 const response = await axios.post(
                     `/api/get-game/${this.$route.params.id}`,
                     {

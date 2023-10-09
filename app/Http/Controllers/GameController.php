@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\GuestGame;
 use App\Player;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -13,25 +14,59 @@ class GameController extends Controller
         do{
             $uniqueUrl = Str::random(30);
         }while(Game::query()->where('url', $uniqueUrl)->first());
-        $player = Player::where('wallet_address', $request->address)->first();
-        if (!$player){
-            return response()->json(['message' => 'Bed request'], 400);
+        if ($request->session()->has('isGuest')){
+            $player = $request->session()->get('userSession');
+            $status = 'started';
+            if ($request->invite){
+                $status = 'pending';
+            }
+            GuestGame::create([
+                'creator' => $player,
+                'url' => $uniqueUrl,
+                'status' => $status
+            ]);
+        }else{
+            $player = Player::where('wallet_address', $request->address)->first();
+            if (!$player){
+                return response()->json(['message' => 'Bed request'], 400);
+            }
+            $status = 'started';
+            if ($request->invite){
+                $status = 'pending';
+            }
+            Game::create([
+                'creator_id' => $player->id,
+                'url' => $uniqueUrl,
+                'status' => $status
+            ]);
         }
-        $status = 'started';
-        if ($request->invite){
-            $status = 'pending';
-        }
-        Game::create([
-            'creator_id' => $player->id,
-            'url' => $uniqueUrl,
-            'status' => $status
-        ]);
+
         return response()->json(['message' => 'success', 'url' => $uniqueUrl], 201);
     }
 
     public function getGame(Request $request, $url){
-        $game = Game::query()->where('url', $url)->first();
-        $player = Player::where('wallet_address', $request->address)->first();
+
+        if ($request->session()->has('isGuest')){
+            try {
+                $game = GuestGame::query()->where('url', $url)->first();
+                $player = $request->session()->get('userSession');
+                if ($game->status === "started" && !($player === $game->creator || $player === $game->opponent)){
+                    return response()->json(['message' => 'Bed request'], 400);
+                }if ($game->status === "pending" && $player->creator !== $player){
+                    $game->update([
+                        'opponent' => $player,
+                        'status' => 'started'
+                    ]);
+                }
+                return response()->json(['message' => 'success', 'game' => $game]);
+            }catch (\Exception $e){
+                return response()->json(['message' => 'Bed request'], 400);
+            }
+
+        }else{
+            $game = Game::query()->where('url', $url)->first();
+            $player = Player::where('wallet_address', $request->address)->first();
+        }
         if (!$player){
             return response()->json(['message' => 'Bed request'], 400);
         }
@@ -47,38 +82,37 @@ class GameController extends Controller
                 'status' => 'started'
             ]);
         }
-//        if ($game->creator !== auth('api')->id()){
-//            $game->update([
-//                'opponent' => auth('api')->id()
-//            ]);
-//        }
         return response()->json(['message' => 'success', 'game' => $game]);
     }
     public function setState(Request $request){
         $id = $request->id;
-        $game = Game::where('url',$id)->first();
+        if ($request->session()->has('isGuest')){
+            $game = GuestGame::where('url',$id)->first();
+        }else{
+            $game = Game::where('url',$id)->first();
+        }
+
         $game->status = 'started';
         $game->state = ['state' => $request->state, 'turn' => $request->turn, 'colors' => $request->colors];
         $game->save();
-        event(new \App\Events\DoStep($game->state));
+//        event(new \App\Events\DoStep($game->state));
         return response()->json([
             'data' => $request->all(),
             'game' => $game
         ]);
     }
-    public function deleteGame($url){
-        $game = Game::query()->where('url', $url)->first();
+    public function deleteGame(Request $request, $url){
+        if ($request->session()->has('isGuest')){
+            $game = GuestGame::query()->where('url', $url)->first();
+        }else{
+            $game = Game::query()->where('url', $url)->first();
+        }
         if (!$game){
             return response()->json(['message' => 'Not Found'], 404);
         }
         if(!$game->opponent){
             $game->delete();
         }
-//        if ($game->creator !== auth('api')->id()){
-//            $game->update([
-//                'opponent' => auth('api')->id()
-//            ]);
-//        }
         return response()->json(['message' => 'deleted']);
     }
     public function finishedGame(Request $request){

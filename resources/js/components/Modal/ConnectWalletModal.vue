@@ -15,7 +15,7 @@
                 <img :src=CoinBaseWallet alt="MetamaskWallet" class="imgSize">
                 <p class="WalletCoinButtonText"> COINBASE </p>
             </button>
-          <button class="WalletCoinButton" id="guest">
+          <button class="WalletCoinButton" id="guest" @click="web3Login('guest')">
             <img :src=Guest alt="guest" class="imgSize">
             <p class="WalletCoinButtonText"> GUEST </p>
           </button>
@@ -236,9 +236,31 @@ export default {
                         'Content-Type': 'application/json'
                     }
                 });
-                store.commit('LOG_OUT_USER')
+                store.commit('LOG_OUT_USER');
             } else {
                 try {
+                    if (wallet === "guest"){
+                      const result = await fetch('api/login-as-guest', {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json'
+                        },
+                          body: JSON.stringify({
+                              '_token': document.querySelector('meta[name="csrf-token"]').content
+                          })
+                      });
+                      if(result.status !== 200){
+                          throw "Bad request";
+                      }
+                        store.commit('LOG_IN_USER', true);
+                        store.commit('SET_USER_ADDRESS', 'guest');
+                        this.userData = {address: 'guest', balance: 0, power: 0, color_id: 1};
+                        store.commit('SET_USER_DATA', {color_id: this.userData.color_id , power :this.userData.power})
+                        this.$emit("close");
+                        toastr.success('Log in successfully!');
+                      return;
+                    }
+
                     if (!window.ethereum) {
                         toastr.error('MetaMask not detected.Please install MetaMask first.');
                         return;
@@ -247,7 +269,6 @@ export default {
                     let provider = {};
                     try {
                         provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
-                        console.log(window.ethereum.providers,'provider')
                         provider = new ethers.providers.Web3Provider(provider);
                     }catch (e) {
                         if (wallet === 'metamask'){
@@ -292,7 +313,7 @@ export default {
                         store.commit('LOG_IN_USER', true)
                         store.commit('SET_USER_ADDRESS', address)
                         this.$emit("close");
-                        toastr.success('Log in succeesfully!');
+                        toastr.success('Log in successfully!');
 
                         response = await fetch('api/web3-register-ethwallet', {
                             method: 'POST',

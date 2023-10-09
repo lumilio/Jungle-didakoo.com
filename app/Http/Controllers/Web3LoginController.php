@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Session;
-
 use Illuminate\Support\Facades\DB;
 use Elliptic\EC;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use kornrunner\Keccak;
-use App\Userethwallet;
 use App\Player;
 
 class Web3LoginController extends Controller
@@ -105,7 +100,15 @@ class Web3LoginController extends Controller
 
     public function getSession(Request $request)
     {
+
         if ($request->session()->has('loggedIn')){
+            if ($request->session()->has('isGuest')){
+                return response()->json([
+                    'address' => $request->session()->get('userSession'),
+                    'color' => 1,
+                    'power' =>0
+                ]);
+            }
             $player = Player::query()->where('wallet_address', $request->session()->get('userSession'))->first();
             if ($player)
             return response()->json([
@@ -117,7 +120,7 @@ class Web3LoginController extends Controller
     }
     public function logout(Request $request)
     {
-        $request->session()->forget(['loggedIn','userSession']);
+        $request->session()->forget(['loggedIn','userSession', 'isGuest']);
         return true;
     }
 
@@ -233,5 +236,16 @@ class Web3LoginController extends Controller
             ]);
         }
     }
+    public function loginAsGuest(Request $request){
+        try {
+            $id = Str::random(30);
+            $request->session()->put('userSession', $id);
+            $request->session()->put('isGuest', true);
+            $request->session()->put('loggedIn', 'success');
+            return response()->json(['message' => 'Success']);
+        }catch (\Exception $e){
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
 
+    }
 }

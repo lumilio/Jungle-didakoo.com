@@ -73,7 +73,7 @@
                     :y="0"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
-                    :color="boardColors.black"
+                    :color="boardColors?.black"
                 />
             </g>
             <g @click="squareClick(8,3)">
@@ -82,7 +82,7 @@
                     :y="boardSettings.square.height * 8"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
-                    :color="boardColors.white"
+                    :color="boardColors?.white"
                 />
             </g>
             <g @click="squareClick(0,2)">
@@ -191,6 +191,7 @@ import Den1 from "./Elements/Den1";
 import Den2 from "./Elements/Den2";
 import Trap from "./Elements/Trap";
 import {trapGuards} from "./constants";
+import axios from "axios";
 
 const animals = helper.getAnimalPowers();
 const waterCodes = helper.getWaterCodes()
@@ -274,12 +275,15 @@ export default {
     },
     async mounted()
     {
-        window.Echo.private('my-event')
-            .listen('DoStep', (data) => {
-                console.log(data,'datadata');
-            });
+        // window.Echo.private('my-event')
+        //     .listen('DoStep', (data) => {
+        //         console.log(data,'datadata');
+        //     });Echo.private('my-event')
+        //     .listen('DoStep', (data) => {
+        //         console.log(data,'datadata');
+        //     });
 
-        this.setInitialConfig()
+        this.setInitialConfig();
         // console.log(this.playColors, 'playcolors')
         // console.log(this.boardColors, 'boardColors')
         if(this.turn === 'black'){
@@ -305,9 +309,10 @@ export default {
     methods: {
         setInitialConfig(){
             if(this.game && this.game.state){
-                this.fillState(this.game.state.state)
-                this.fillColors(this.game.state)
-                this.turn = this.game.state.turn
+                const state = JSON.parse(this.game.state);
+                this.fillState(state.state)
+                this.fillColors(state)
+                this.turn = state.turn
             }else{
                 this.fillColors()
                 this.fillState()
@@ -434,13 +439,13 @@ export default {
         },
         fillColors(data){
             if (data){
-                this.boardColors = data.colors
-                if (data.colors.board === 2 ){
+                this.boardColors = data.colors;
+                if (this.boardColors.board === 2 ){
                     this.possibleMove = "#9be8b4"
                 }else {
                     this.possibleMove = "#FFE194"
                 }
-                this.playColors.light = backgroundColors[data.colors.board]
+                this.playColors.light = backgroundColors[this.boardColors.board]
             }else{
                 let blackColor = 1 + Math.floor(Math.random() * 6)
                 let colorID = this.userData?.color_id
@@ -485,15 +490,11 @@ export default {
                         this.boardSettings
                     );
                     let code = helper.getSquareCode(i, j);
-                    // console.log(code, 'code')
-                    // console.log(squareContent, 'squareContent')
                     let content = squareContent[code] || {}
-                    // console.log(content)
                     let pieceSize = {
                         width: this.boardSettings.square.width,
                         height: this.boardSettings.square.height,
                     };
-
                     this.squares[i].push({
                         isPossibleMove: false,
                         code,
@@ -521,8 +522,6 @@ export default {
         squareClick( rowIndex, colIndex) {
             if(this.game.status !== "started") return;
             let square = this.squares[rowIndex][colIndex];
-            // this.saveState();
-            // console.log(square.content.piece, 'piece')
             if (!this.releasePiece(square)) {
                 if (square.content.piece && square.content.color === "white" && this.turn === 'white') {
                     this.showPossibleMoves(rowIndex, colIndex);
