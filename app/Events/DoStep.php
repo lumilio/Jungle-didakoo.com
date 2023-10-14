@@ -2,13 +2,14 @@
 
 namespace App\Events;
 
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class DoStep implements ShouldBroadcast
+class DoStep implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -20,19 +21,25 @@ class DoStep implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct($state)
+    public function __construct()
     {
-        $this->state = $state;
+        return "Hello";
     }
 
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return \Illuminate\Broadcasting\Channel
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('my-channel');
-    }
+        return new Channel('test-event');
 
+    }
+    public function broadcastWith()
+    {
+        return [
+            'data' =>'key'
+        ];
+    }
 }

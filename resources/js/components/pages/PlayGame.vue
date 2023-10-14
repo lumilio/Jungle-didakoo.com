@@ -291,6 +291,9 @@ export default {
            }, 2000);
         },
     },
+    async mounted() {
+
+    },
     watch:{
         test()
         {
@@ -317,7 +320,7 @@ export default {
             } catch (e) {
                 this.$router.push("/game");
             }
-        }
+        },
     },
 };
 </script>

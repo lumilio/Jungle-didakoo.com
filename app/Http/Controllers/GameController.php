@@ -50,9 +50,11 @@ class GameController extends Controller
             try {
                 $game = GuestGame::query()->where('url', $url)->first();
                 $player = $request->session()->get('userSession');
+
                 if ($game->status === "started" && !($player === $game->creator || $player === $game->opponent)){
                     return response()->json(['message' => 'Bed request'], 400);
-                }if ($game->status === "pending" && $player->creator !== $player){
+                }
+                if ($game->status === "pending" && $game->creator !== $player){
                     $game->update([
                         'opponent' => $player,
                         'status' => 'started'
@@ -119,6 +121,16 @@ class GameController extends Controller
         $game_id = $request->game_id;
         $player = $request->player;
         $win  = $request->win;
+        if ($request->session()->has('isGuest')){
+            $game = GuestGame::where('url', $game_id)->where('status', 'started')->first();
+            if(!$game){
+                return response()->json(['message' => 'Bed request'], 400);
+            }
+            $game->update([
+                'status' => "finished"
+            ]);
+            return response()->json(['message' => 'finished']);
+        }
         $game = Game::where('url', $game_id)->where('status', 'started')->first();
         if(!$game){
             return response()->json(['message' => 'Bed request'], 400);

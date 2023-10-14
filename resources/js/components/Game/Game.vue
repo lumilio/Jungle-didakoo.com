@@ -275,6 +275,9 @@ export default {
     },
     async mounted()
     {
+        this.$echo.channel("test-event").listen("ExampleEvent", e => {
+            console.log(e,'-----------');
+        });
         // window.Echo.private('my-event')
         //     .listen('DoStep', (data) => {
         //         console.log(data,'datadata');
@@ -284,8 +287,6 @@ export default {
         //     });
 
         this.setInitialConfig();
-        // console.log(this.playColors, 'playcolors')
-        // console.log(this.boardColors, 'boardColors')
         if(this.turn === 'black'){
             this.playComputer()
         }
@@ -314,9 +315,12 @@ export default {
                 this.fillColors(state)
                 this.turn = state.turn
             }else{
-                this.fillColors()
-                this.fillState()
-                this.saveState()
+                if (this.userData?.color_id){
+                    this.fillColors()
+                    this.fillState()
+                    this.saveState()
+                }
+
             }
             this.initSquares();
         },
@@ -446,7 +450,7 @@ export default {
                     this.possibleMove = "#FFE194"
                 }
                 this.playColors.light = backgroundColors[this.boardColors.board]
-            }else{
+            }
                 let blackColor = 1 + Math.floor(Math.random() * 6)
                 let colorID = this.userData?.color_id
                 let whiteColor;
@@ -474,9 +478,6 @@ export default {
                         }
                     }
                 })
-
-            }
-
         },
         initSquares() {
             this.squares = [];
@@ -517,10 +518,10 @@ export default {
                     });
                 }
             }
-            // console.log("this.squares", this.squares);
         },
         squareClick( rowIndex, colIndex) {
-            if(this.game.status !== "started") return;
+            //todo
+            // if(this.game.status !== "started") return;
             let square = this.squares[rowIndex][colIndex];
             if (!this.releasePiece(square)) {
                 if (square.content.piece && square.content.color === "white" && this.turn === 'white') {
@@ -568,7 +569,6 @@ export default {
                 id:this.id,
                 colors: this.boardColors
             })
-            // console.log(response.data, 'response-----------,')
         },
         async alertWin(winner){
             try {

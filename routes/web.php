@@ -31,3 +31,6 @@ Route::post('/api/set-state', 'GameController@setState');
 Route::get('/{any}', function () {
     return view('welcome');
 })->where('any', '.*');
+Route::get('test-broadcast', function(){
+    broadcast(new \App\Events\DoStep);
+});
