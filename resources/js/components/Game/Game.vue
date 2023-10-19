@@ -275,16 +275,10 @@ export default {
     },
     async mounted()
     {
-        this.$echo.channel("test-event").listen("ExampleEvent", e => {
-            console.log(e,'-----------');
-        });
-        // window.Echo.private('my-event')
-        //     .listen('DoStep', (data) => {
-        //         console.log(data,'datadata');
-        //     });Echo.private('my-event')
-        //     .listen('DoStep', (data) => {
-        //         console.log(data,'datadata');
-        //     });
+        window.Echo.channel('channel')
+            .listen('DoStep', (data) => {
+                return console.log(data,'datadata');
+            });
 
         this.setInitialConfig();
         if(this.turn === 'black'){
@@ -309,18 +303,18 @@ export default {
     },
     methods: {
         setInitialConfig(){
+
             if(this.game && this.game.state){
-                const state = JSON.parse(this.game.state);
+                const state = this.game.state;
                 this.fillState(state.state)
                 this.fillColors(state)
                 this.turn = state.turn
             }else{
-                if (this.userData?.color_id){
+                // if (this.userData?.color_id){
                     this.fillColors()
                     this.fillState()
                     this.saveState()
-                }
-
+                // }
             }
             this.initSquares();
         },
@@ -434,6 +428,7 @@ export default {
             }
         },
         fillState(data){
+
             if(!data){
                 this.state = helper.getInitialState()
             }
@@ -452,7 +447,7 @@ export default {
                 this.playColors.light = backgroundColors[this.boardColors.board]
             }
                 let blackColor = 1 + Math.floor(Math.random() * 6)
-                let colorID = this.userData?.color_id
+                let colorID = this.userData?.color_id || 0;
                 let whiteColor;
                 if(colorID === 0){
                     whiteColor = 1 + Math.floor(Math.random() * 6)

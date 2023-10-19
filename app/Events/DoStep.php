@@ -5,16 +5,12 @@ namespace App\Events;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class DoStep implements ShouldBroadcastNow
+class DoStep implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
-
-    public $state;
 
     /**
      * Create a new event instance.
@@ -23,9 +19,14 @@ class DoStep implements ShouldBroadcastNow
      */
     public function __construct()
     {
-        return "Hello";
+        //
     }
-
+    public function broadcastWith()
+    {
+        return [
+            'channel' => 'ok'
+        ];
+    }
     /**
      * Get the channels the event should broadcast on.
      *
@@ -33,13 +34,7 @@ class DoStep implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new Channel('test-event');
+        return new Channel('channel');
 
-    }
-    public function broadcastWith()
-    {
-        return [
-            'data' =>'key'
-        ];
     }
 }

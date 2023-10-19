@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\DoStep;
 use App\Game;
 use App\GuestGame;
 use App\Player;
@@ -45,7 +46,6 @@ class GameController extends Controller
     }
 
     public function getGame(Request $request, $url){
-
         if ($request->session()->has('isGuest')){
             try {
                 $game = GuestGame::query()->where('url', $url)->first();
@@ -97,7 +97,7 @@ class GameController extends Controller
         $game->status = 'started';
         $game->state = ['state' => $request->state, 'turn' => $request->turn, 'colors' => $request->colors];
         $game->save();
-//        event(new \App\Events\DoStep($game->state));
+
         return response()->json([
             'data' => $request->all(),
             'game' => $game
