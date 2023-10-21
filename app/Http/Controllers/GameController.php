@@ -97,6 +97,7 @@ class GameController extends Controller
         $game->status = 'started';
         $game->state = ['state' => $request->state, 'turn' => $request->turn, 'colors' => $request->colors];
         $game->save();
+        event(new DoStep('hello world'));
 
         return response()->json([
             'data' => $request->all(),

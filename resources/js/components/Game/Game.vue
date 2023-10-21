@@ -275,9 +275,9 @@ export default {
     },
     async mounted()
     {
-        window.Echo.channel('channel')
-            .listen('DoStep', (data) => {
-                return console.log(data,'datadata');
+        window.Echo?.channel('channel')
+            .listen('new_message', (data) => {
+                console.log(data,'datadata');
             });
 
         this.setInitialConfig();

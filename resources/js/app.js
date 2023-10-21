@@ -3,27 +3,22 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
 import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "./store";
 import router from "./router";
 import App from "./App.vue";
-import Echo from "laravel-echo";
-
-window.Pusher = require('pusher-js');
-
-window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: 'local',
-    wsHost: '127.0.0.1',
-    wsPort: 6001,
-    forceTLS: false,
-    disableStats: true,
-    cluster: 'mt1'
-});
 
 Vue.use(VueRouter);
+
+Pusher.logToConsole = true;
+var pusher = new Pusher('d2d5db7fd21bb0f8fd65', {
+    cluster: 'mt1'
+});
+var channel = pusher.subscribe('my-channel');
+channel.bind('my-event', function(data) {
+    console.log(data,'---------------')
+});
 
 const app = new Vue({
     el: '#app',
