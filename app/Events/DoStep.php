@@ -27,4 +27,9 @@ class DoStep implements ShouldBroadcast
     {
         return 'my-event';
     }
+    public function broadcastWith()
+    {
+        // Additional data you want to send with the event
+        return ['message' => $this->message];
+    }
 }

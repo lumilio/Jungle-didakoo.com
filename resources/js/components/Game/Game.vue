@@ -276,7 +276,7 @@ export default {
     async mounted()
     {
         window.Echo?.channel('channel')
-            .listen('new_message', (data) => {
+            .listen('my-event', (data) => {
                 console.log(data,'datadata');
             });
 

@@ -7,7 +7,9 @@ use App\Game;
 use App\GuestGame;
 use App\Player;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Str;
+use Pusher\Pusher;
 
 class GameController extends Controller
 {
@@ -97,7 +99,20 @@ class GameController extends Controller
         $game->status = 'started';
         $game->state = ['state' => $request->state, 'turn' => $request->turn, 'colors' => $request->colors];
         $game->save();
-        event(new DoStep('hello world'));
+        Event::dispatch(new DoStep('hello world'));
+//        $pusher = new Pusher(
+//            '88dfab940f882d473671',
+//            '615883f737ed0cbfe2f6',
+//            '1693333',
+//            [
+//                'cluster' => 'mt1',
+//                'useTLS' => true,
+//            ]
+//        );
+//        $channel = 'channel';
+//        $event = 'new_message';
+//        $data = ['key' => 'value'];
+//        $pusher->trigger($channel, $event, $data);
 
         return response()->json([
             'data' => $request->all(),

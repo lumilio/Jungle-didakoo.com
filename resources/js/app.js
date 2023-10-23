@@ -8,18 +8,19 @@ import VueRouter from "vue-router";
 import store from "./store";
 import router from "./router";
 import App from "./App.vue";
-
+import Echo from "laravel-echo";
 Vue.use(VueRouter);
 
-Pusher.logToConsole = true;
-var pusher = new Pusher('d2d5db7fd21bb0f8fd65', {
-    cluster: 'mt1'
+window.Pusher = require('pusher-js');
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: '88dfab940f882d473671',
+    cluster: 'mt1',
+    encrypted: true,
 });
-var channel = pusher.subscribe('my-channel');
-channel.bind('my-event', function(data) {
-    console.log(data,'---------------')
-});
-
+// Echo.channel('my-channel').listen('my-event', e => {
+//     console.log(e)
+// })
 const app = new Vue({
     el: '#app',
     store,
