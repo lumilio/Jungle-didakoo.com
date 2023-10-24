@@ -275,15 +275,13 @@ export default {
     },
     async mounted()
     {
-        window.Echo?.channel('channel')
-            .listen('my-event', (data) => {
-                console.log(data,'datadata');
-            });
-
         this.setInitialConfig();
         if(this.turn === 'black'){
             this.playComputer()
         }
+        window.Echo.private(`game.7`).listen("DoStep", (e) => {
+            console.log("MoveEvent", e)
+        })
     },
     computed: {
         turn: {

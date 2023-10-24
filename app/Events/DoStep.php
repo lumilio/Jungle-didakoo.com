@@ -3,33 +3,31 @@
 namespace App\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class DoStep implements ShouldBroadcast
+class DoStep implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $message;
-
-    public function __construct($message)
+    public function __construct()
     {
-        $this->message = $message;
+        //
     }
 
     public function broadcastOn()
     {
-        return ['my-channel'];
+        return new PrivateChannel('game.7');
     }
 
-    public function broadcastAs()
-    {
-        return 'my-event';
-    }
     public function broadcastWith()
     {
         // Additional data you want to send with the event
-        return ['message' => $this->message];
+        return [
+            'state' => 'test',
+            'game' =>  '7',
+            ];
     }
 }

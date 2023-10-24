@@ -99,20 +99,7 @@ class GameController extends Controller
         $game->status = 'started';
         $game->state = ['state' => $request->state, 'turn' => $request->turn, 'colors' => $request->colors];
         $game->save();
-        Event::dispatch(new DoStep('hello world'));
-//        $pusher = new Pusher(
-//            '88dfab940f882d473671',
-//            '615883f737ed0cbfe2f6',
-//            '1693333',
-//            [
-//                'cluster' => 'mt1',
-//                'useTLS' => true,
-//            ]
-//        );
-//        $channel = 'channel';
-//        $event = 'new_message';
-//        $data = ['key' => 'value'];
-//        $pusher->trigger($channel, $event, $data);
+        event(new DoStep($game));
 
         return response()->json([
             'data' => $request->all(),
