@@ -12,7 +12,6 @@ import App from "./App.vue";
 Vue.use(VueRouter);
 
 // resources/assets/js/app.js
-
 const app = new Vue({
     el: '#app',
     store,

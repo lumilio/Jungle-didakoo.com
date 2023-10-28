@@ -12,22 +12,26 @@ class DoStep implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public function __construct()
+    public $game;
+    public $player_id;
+    public function __construct($game, $player)
     {
-        //
+        $this->game = $game;
+        $this->player = $player;
     }
 
     public function broadcastOn()
     {
-        return new PrivateChannel('game.7');
+        return ['game.' . $this->game->id];
     }
 
     public function broadcastWith()
     {
         // Additional data you want to send with the event
         return [
-            'state' => 'test',
-            'game' =>  '7',
+            'state' => $this->game->state,
+            'game' =>  $this->game->id,
+            'player' =>  $this->player,
             ];
     }
 }

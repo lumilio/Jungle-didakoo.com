@@ -279,9 +279,20 @@ export default {
         if(this.turn === 'black'){
             this.playComputer()
         }
-        window.Echo.private(`game.7`).listen("DoStep", (e) => {
-            console.log("MoveEvent", e)
-        })
+        if (store.state.address){
+            Pusher.logToConsole = true;
+            const pusher = new Pusher('88dfab940f882d473671', {
+                cluster: 'mt1'
+            });
+            console.log(store.state.userData,'store.state.userData')
+            const channel = pusher.subscribe('game.' + this.game.id);
+            channel.bind('App\\Events\\DoStep', function(data) {
+                if (data.player === store.state.address){
+                    console.log(data,'111')
+                }
+            });
+        }
+
     },
     computed: {
         turn: {
@@ -556,7 +567,7 @@ export default {
             }
         },
         async saveState(){
-            const response = await axios.post('/api/set-state',{
+            await axios.post('/api/set-state',{
                 state: this.state,
                 turn: this.turn,
                 id:this.id,
@@ -606,9 +617,11 @@ export default {
             }else{
                 this.turn = this.getOpponentColor(this.turn);
                 this.saveState()
-                setTimeout(() => {
-                    this.playComputer();
-                }, 500);
+                if (!(this.game?.opponent_id || this.game?.opponent)){
+                    setTimeout(() => {
+                        this.playComputer();
+                    }, 500);
+                }
             }
             return true;
         },

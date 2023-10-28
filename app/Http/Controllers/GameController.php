@@ -7,9 +7,7 @@ use App\Game;
 use App\GuestGame;
 use App\Player;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Str;
-use Pusher\Pusher;
 
 class GameController extends Controller
 {
@@ -99,7 +97,7 @@ class GameController extends Controller
         $game->status = 'started';
         $game->state = ['state' => $request->state, 'turn' => $request->turn, 'colors' => $request->colors];
         $game->save();
-        event(new DoStep($game));
+        event(new DoStep($game, $request->turn === 'black' ? $game->opponent->wallet_address : $game->crerator->wallet_address));
 
         return response()->json([
             'data' => $request->all(),
