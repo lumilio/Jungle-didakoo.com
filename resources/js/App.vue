@@ -22,7 +22,7 @@ export default {
         if(response.data !== "failed"){
             store.commit('LOG_IN_USER',true)
             store.commit('SET_USER_ADDRESS', response.data.address)
-            store.commit('SET_USER_DATA', {color_id: response.data.color, power: response.data.power})
+            store.commit('SET_USER_DATA', {color_id: response.data.color, power: response.data.power, id: response.data.id})
         }
 
     }

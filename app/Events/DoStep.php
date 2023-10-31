@@ -13,7 +13,6 @@ class DoStep implements ShouldBroadcastNow
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $game;
-    public $player_id;
     public function __construct($game, $player)
     {
         $this->game = $game;
@@ -22,7 +21,7 @@ class DoStep implements ShouldBroadcastNow
 
     public function broadcastOn()
     {
-        return ['game.' . $this->game->id];
+        return ['game.' . $this->game->id . '.' . $this->player];
     }
 
     public function broadcastWith()

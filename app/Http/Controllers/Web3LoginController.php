@@ -106,7 +106,7 @@ class Web3LoginController extends Controller
                 return response()->json([
                     'address' => $request->session()->get('userSession'),
                     'color' => 1,
-                    'power' =>0
+                    'power' => 0
                 ]);
             }
             $player = Player::query()->where('wallet_address', $request->session()->get('userSession'))->first();
@@ -114,7 +114,9 @@ class Web3LoginController extends Controller
             return response()->json([
                 'address' => $player->wallet_address,
                 'color' => $player->color_id,
-                'power' =>$player->power ]);
+                'power' =>$player->power ,
+                'id' =>$player->id ,
+            ]);
         }
         return 'failed';
     }

@@ -238,6 +238,7 @@ export default {
     },
     data() {
         return {
+            gameStarted: false,
             possibleMove:  "" ,
             GreenBoardColor:"#9be8b4",
             OrangeBoardColor:"#FFE194",
@@ -279,20 +280,39 @@ export default {
         if(this.turn === 'black'){
             this.playComputer()
         }
-        if (store.state.address){
-            Pusher.logToConsole = true;
-            const pusher = new Pusher('88dfab940f882d473671', {
-                cluster: 'mt1'
-            });
+        Pusher.logToConsole = true;
+        const pusher = new Pusher('88dfab940f882d473671', {
+            cluster: 'mt1'
+        });
+        if (store.state.address && this.game.status === "started"){
             console.log(store.state.userData,'store.state.userData')
-            const channel = pusher.subscribe('game.' + this.game.id);
+            const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address );
             channel.bind('App\\Events\\DoStep', function(data) {
                 if (data.player === store.state.address){
                     console.log(data,'111')
                 }
             });
+        }else if (store.state.address){
+            const channel = pusher.subscribe('connect.' + store.state.address);
+            channel.bind('App\\Events\\ConnectGame', function(data) {
+                if (data.player === store.state.address){
+                    this.gameStarted = true;
+                }
+            });
         }
 
+    },
+    watch: {
+        gameStarted(data){
+            if (data){
+                const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address);
+                channel.bind('App\\Events\\DoStep', function(data) {
+                    if (data.player === store.state.address){
+                        console.log(data,'111')
+                    }
+                });
+            }
+        }
     },
     computed: {
         turn: {
@@ -320,9 +340,9 @@ export default {
                 this.turn = state.turn
             }else{
                 // if (this.userData?.color_id){
-                    this.fillColors()
-                    this.fillState()
-                    this.saveState()
+                //     this.fillColors()
+                //     this.fillState()
+                //     this.saveState()
                 // }
             }
             this.initSquares();
@@ -485,7 +505,14 @@ export default {
         },
         initSquares() {
             this.squares = [];
-            const squareContent =  this.getSquareContent()
+            let squareContent =  this.getSquareContent()
+            if(this.userData.id === this.game.opponent_id){
+                const newSquareContent = {};
+                for (const [key, value] of Object.entries(squareContent)) {
+                    newSquareContent[`${key[0]}${10 - key[1]}`] = value;
+                }
+                squareContent = newSquareContent;
+            }
             for (let i = 0; i < 9; i++) {
                 this.squares.push([]);
                 for (let j = 0; j < 7; j++) {
@@ -524,8 +551,7 @@ export default {
             }
         },
         squareClick( rowIndex, colIndex) {
-            //todo
-            // if(this.game.status !== "started") return;
+            if(this.game.status !== "started") return;
             let square = this.squares[rowIndex][colIndex];
             if (!this.releasePiece(square)) {
                 if (square.content.piece && square.content.color === "white" && this.turn === 'white') {
@@ -571,7 +597,8 @@ export default {
                 state: this.state,
                 turn: this.turn,
                 id:this.id,
-                colors: this.boardColors
+                colors: this.boardColors,
+                address: this.address
             })
         },
         async alertWin(winner){

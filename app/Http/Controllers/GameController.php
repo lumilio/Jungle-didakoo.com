@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ConnectGame;
 use App\Events\DoStep;
 use App\Game;
 use App\GuestGame;
@@ -59,6 +60,7 @@ class GameController extends Controller
                         'opponent' => $player,
                         'status' => 'started'
                     ]);
+                    event(new ConnectGame($game->creator->wallet_address));
                 }
                 return response()->json(['message' => 'success', 'game' => $game]);
             }catch (\Exception $e){
@@ -78,12 +80,13 @@ class GameController extends Controller
         if ($game->status === "started" && !($player->id === $game->creator_id || $player->id === $game->opponent_id)){
             return response()->json(['message' => 'Bed request'], 400);
         }
-        if ($game->status === "pending" && $player->creator_id !== $player->id){
+        if ($game->status === "pending" && $game->creator_id !== $player->id){
             $game->update([
                 'opponent_id' => $player->id,
                 'status' => 'started'
             ]);
         }
+
         return response()->json(['message' => 'success', 'game' => $game]);
     }
     public function setState(Request $request){
@@ -93,11 +96,10 @@ class GameController extends Controller
         }else{
             $game = Game::where('url',$id)->first();
         }
-
-        $game->status = 'started';
         $game->state = ['state' => $request->state, 'turn' => $request->turn, 'colors' => $request->colors];
         $game->save();
-        event(new DoStep($game, $request->turn === 'black' ? $game->opponent->wallet_address : $game->crerator->wallet_address));
+        if ($game->opponent->wallet_address)
+        event(new DoStep($game, $request->address === $game->opponent->wallet_address ? $game->creator->wallet_address : $game->opponent->wallet_address));
 
         return response()->json([
             'data' => $request->all(),
