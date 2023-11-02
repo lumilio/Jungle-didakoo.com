@@ -13,6 +13,7 @@
     import axios from "axios";
     import Modal from "../Modal/Modal";
     import store from "../../store";
+    import helper from "../Game/GameHelper";
     export default {
         components: {Modal},
         data(){
@@ -21,12 +22,14 @@
                     {
                         title: 'QUICK GAME',
                         icon: 'fa-solid fa-bolt icons',
-                        onclick: this.createGame
+                        onclick: this.createGame,
+                        params: {multiPlay: false}
                     },
                     {
                         title: 'INVITE P2',
                         image: '../../../images/extra_objects/iconaplay1.png',
-                        onclick: this.createGame
+                        onclick: this.createGame,
+                        params: {multiPlay: true}
                     },
                     {
                         title: 'QUIT',
@@ -48,11 +51,12 @@
             quitGame(){
                 this.$router.push('/rank')
             },
-            async createGame(){
+            async createGame(multiPlay){
                 try {
                     if(this.user){
                         this.url = window.location.host;
-                        const response = await axios.post('/api/make-game',{address: this.address});
+                        const state = helper.getInitialState();
+                        const response = await axios.post('/api/make-game',{multiPlay: multiPlay, address: this.address, state: state});
                         this.$router.push(`/room/${response.data.url}`);
                     }
 

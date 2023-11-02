@@ -280,12 +280,11 @@ export default {
         if(this.turn === 'black'){
             this.playComputer()
         }
-        Pusher.logToConsole = true;
+        Pusher.logToConsole = false;
         const pusher = new Pusher('88dfab940f882d473671', {
             cluster: 'mt1'
         });
         if (store.state.address && this.game.status === "started"){
-            console.log(store.state.userData,'store.state.userData')
             const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address );
             channel.bind('App\\Events\\DoStep', function(data) {
                 if (data.player === store.state.address){
@@ -332,18 +331,12 @@ export default {
     },
     methods: {
         setInitialConfig(){
-
             if(this.game && this.game.state){
+                this.state = this.game.state
                 const state = this.game.state;
                 this.fillState(state.state)
                 this.fillColors(state)
                 this.turn = state.turn
-            }else{
-                // if (this.userData?.color_id){
-                //     this.fillColors()
-                //     this.fillState()
-                //     this.saveState()
-                // }
             }
             this.initSquares();
         },
@@ -584,6 +577,8 @@ export default {
         },
         updateState(data){
             const {fromCode, toCode, piece, color } = data
+            console.log(this.state, '---')
+            console.log(toCode, 'toCode')
             this.state[toCode] = {
                 color,
                 piece
@@ -624,6 +619,8 @@ export default {
         releasePiece(toSquare) {
             if (!this.isHoldingChessPiece) return false;
             let fromSquare = this.squares[this.holding.row][this.holding.col];
+            console.log(this.holding.row,'this.holding.row')
+            console.log(this.holding.col,'this.holding.col')
             if (!toSquare.isPossibleMove) {
                 this.isHoldingChessPiece = null;
                 fromSquare.visible = true;

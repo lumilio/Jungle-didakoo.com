@@ -21,7 +21,7 @@
                         </div>
                         <div class="mb-3" v-for="(item, index) in buttons" :key="index">
                             <Button
-                                v-on:handelClick="() => item.onclick()"
+                                v-on:handelClick="() => item.onclick(item.params ?? '')"
                                 :title="item.title"
                                 :icons="item.icon"
                                 :image="item.image"

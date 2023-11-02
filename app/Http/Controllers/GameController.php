@@ -19,13 +19,22 @@ class GameController extends Controller
         if ($request->session()->has('isGuest')){
             $player = $request->session()->get('userSession');
             $status = 'started';
-            if ($request->invite){
+            if ($request->multiPlay){
                 $status = 'pending';
             }
             GuestGame::create([
                 'creator' => $player,
                 'url' => $uniqueUrl,
-                'status' => $status
+                'status' => $status,
+                'state' => [
+                    'state' => $request->state,
+                    'turn' => 'white',
+                    "colors" => [
+                        "black" => 3,
+                        "board" => 2,
+                        "white" => 1
+                    ]
+                ]
             ]);
         }else{
             $player = Player::where('wallet_address', $request->address)->first();
@@ -33,13 +42,22 @@ class GameController extends Controller
                 return response()->json(['message' => 'Bed request'], 400);
             }
             $status = 'started';
-            if ($request->invite){
+            if ($request->multiPlay){
                 $status = 'pending';
             }
             Game::create([
                 'creator_id' => $player->id,
                 'url' => $uniqueUrl,
-                'status' => $status
+                'status' => $status,
+                'state' => [
+                    'state' => $request->state,
+                    'turn' => 'white',
+                    "colors" => [
+                        "black" => 3,
+                        "board" => 2,
+                        "white" => 1
+                    ]
+                ]
             ]);
         }
 
