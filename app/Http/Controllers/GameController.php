@@ -114,7 +114,8 @@ class GameController extends Controller
         }else{
             $game = Game::where('url',$id)->first();
         }
-        $game->state = ['state' => $request->state, 'turn' => $request->turn, 'colors' => $request->colors];
+//        'turn' => $request->turn,
+        $game->state = ['state' => $request->state, 'turn'=> 'white','colors' => $request->colors];
         $game->save();
         if ($game->opponent->wallet_address)
         event(new DoStep($game, $request->address === $game->opponent->wallet_address ? $game->creator->wallet_address : $game->opponent->wallet_address));

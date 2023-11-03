@@ -278,17 +278,41 @@ export default {
     {
         this.setInitialConfig();
         if(this.turn === 'black'){
-            this.playComputer()
+            // this.playComputer()
         }
         Pusher.logToConsole = false;
         const pusher = new Pusher('88dfab940f882d473671', {
             cluster: 'mt1'
         });
         if (store.state.address && this.game.status === "started"){
+            console.log(this.squares);
             const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address );
-            channel.bind('App\\Events\\DoStep', function(data) {
+            channel.bind('App\\Events\\DoStep', (data) => {
                 if (data.player === store.state.address){
-                    console.log(data,'111')
+                    console.log(Object.keys(data.state.state),'111')
+                    console.log(Object.keys(this.game.state.state),'222')
+                    const keys = {
+                        'A': 0,
+                        'B': 1,
+                        'C': 2,
+                        'D': 3,
+                        'E': 4,
+                        'F': 5,
+                        'G': 6,
+                    }
+                    let fromSquare = {};
+                    let toSquare = {};
+                    Object.keys(data.state.state).forEach((item) => {
+                        if (!this.game.state.state[item]){
+                            toSquare = this.squares[item[1] - 1][keys[item[0]]];
+                        }
+                    })
+                    Object.keys(this.game.state.state).forEach((item) => {
+                        if (!data.state.state[item]){
+                            fromSquare = this.squares[item[1] - 1][keys[item[0]]];
+                        }
+                    })
+                    this.makeMove(fromSquare, toSquare);
                 }
             });
         }else if (store.state.address){
@@ -307,7 +331,33 @@ export default {
                 const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address);
                 channel.bind('App\\Events\\DoStep', function(data) {
                     if (data.player === store.state.address){
-                        console.log(data,'111')
+                        if (data.player === store.state.address){
+                            console.log(data,'111')
+                            const keys = {
+                                'A': 0,
+                                'B': 1,
+                                'C': 2,
+                                'D': 3,
+                                'E': 4,
+                                'F': 5,
+                                'G': 6,
+                            }
+                            let fromSquare = {};
+                            let toSquare = {};
+                            Object.keys(data.state.state).forEach((item) => {
+                                if (!this.game.state.state[item]){
+                                    toSquare = this.squares[keys[item[0]]][item[1] - 1];
+                                }
+                            })
+                            Object.keys(this.game.state.state).forEach((item) => {
+                                if (!data.state.state[item]){
+                                    fromSquare = this.squares[keys[item[0]]][item[1] - 1];
+                                }
+                            })
+                            console.log(fromSquare,'fromSquare')
+                            console.log(toSquare,'toSquare')
+                            this.makeMove(fromSquare, toSquare);
+                        }
                     }
                 });
             }
@@ -556,12 +606,14 @@ export default {
             }
         },
         makeMove(fromSquare, toSquare) {
+            console.log(this.gamePieceMoveCoords)
             this.gamePieceMoveCoords = {
                 piece: fromSquare.content?.piece,
                 toX: toSquare.x - fromSquare.x,
                 toY: toSquare.y - fromSquare.y,
                 color: this.turn,
             };
+            console.log(this.gamePieceMoveCoords)
             this.updateState({
                 fromCode: fromSquare.code,
                 toCode: toSquare.code,
@@ -577,8 +629,6 @@ export default {
         },
         updateState(data){
             const {fromCode, toCode, piece, color } = data
-            console.log(this.state, '---')
-            console.log(toCode, 'toCode')
             this.state[toCode] = {
                 color,
                 piece
