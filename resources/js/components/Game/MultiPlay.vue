@@ -276,16 +276,16 @@ export default {
     },
     async mounted()
     {
+        console.log('muilty')
         this.setInitialConfig();
         if(this.turn === 'black'){
-            // this.playComputer()
+
         }
-        Pusher.logToConsole = false;
+        Pusher.logToConsole = true;
         const pusher = new Pusher('88dfab940f882d473671', {
             cluster: 'mt1'
         });
         if (store.state.address && this.game.status === "started"){
-            console.log(this.squares);
             const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address );
             channel.bind('App\\Events\\DoStep', (data) => {
                 if (data.player === store.state.address){
@@ -316,9 +316,13 @@ export default {
                 }
             });
         }else if (store.state.address){
+            console.log(111)
             const channel = pusher.subscribe('connect.' + store.state.address);
             channel.bind('App\\Events\\ConnectGame', function(data) {
+                console.log('ConnectGame')
+                console.log(data)
                 if (data.player === store.state.address){
+                    console.log(data)
                     this.gameStarted = true;
                 }
             });
@@ -694,7 +698,7 @@ export default {
                 this.saveState()
                 if (!(this.game?.opponent_id || this.game?.opponent)){
                     setTimeout(() => {
-                        this.playComputer();
+
                     }, 500);
                 }
             }
@@ -948,25 +952,6 @@ export default {
                 }
             });
             return secured;
-        },
-        playComputer() {
-            let move = this.calculateBestMove([...this.squares], this.turn, 3);
-            const { fromRow, fromCol, toRow, toCol } = move;
-            const fromSquare = this.squares[fromRow][fromCol];
-            const toSquare = this.squares[toRow][toCol];
-            this.makeMove(fromSquare, toSquare);
-            this.turnNumber++
-            let checkmate = this.isCheckmate(this.squares)
-            if(checkmate){
-                setTimeout(() => {
-                    this.alertWin(checkmate)
-                },500)
-
-            }else{
-                this.turn = this.getOpponentColor(this.turn);
-                this.saveState()
-            }
-
         },
         checkPossibleWin(board, moves, color) {
             const opponentsColor = this.getOpponentColor(color);

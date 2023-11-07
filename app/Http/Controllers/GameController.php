@@ -103,6 +103,7 @@ class GameController extends Controller
                 'opponent_id' => $player->id,
                 'status' => 'started'
             ]);
+            event(new ConnectGame($game->creator->wallet_address));
         }
 
         return response()->json(['message' => 'success', 'game' => $game]);
@@ -117,7 +118,7 @@ class GameController extends Controller
 //        'turn' => $request->turn,
         $game->state = ['state' => $request->state, 'turn'=> 'white','colors' => $request->colors];
         $game->save();
-        if ($game->opponent->wallet_address)
+        if ($game->opponent?->wallet_address)
         event(new DoStep($game, $request->address === $game->opponent->wallet_address ? $game->creator->wallet_address : $game->opponent->wallet_address));
 
         return response()->json([

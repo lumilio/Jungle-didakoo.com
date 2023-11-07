@@ -59,10 +59,10 @@
                     <div
                         class="board d-flex justify-content-center bg-transparent align-items-center"
                     >
-<!--                        <template  v-if="game.status === 'pending' || game.opponent_id">-->
-<!--                            <MultiPlay @gameover="gameOver" :game="game" :id="$route.params.id" />-->
-<!--                        </template>-->
-                        <template >
+                        <template  v-if="game.status === 'pending' || game.opponent_id">
+                            <MultiPlay @gameover="gameOver" :game="game" :id="$route.params.id" />
+                        </template>
+                        <template v-else>
                             <Game @gameover="gameOver" :game="game" :id="$route.params.id" />
                         </template>
                     </div>

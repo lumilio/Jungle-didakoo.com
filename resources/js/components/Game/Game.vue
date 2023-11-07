@@ -275,35 +275,27 @@ export default {
     },
     async mounted()
     {
+        if (this.address){
+            const response = await axios.post(
+                `/api/get-game/${this.$route.params.id}`,
+                {
+                    address: this.address,
+                }
+            );
+            if (response.status === 200) {
+                this.game = response.data.game
+                this.isLoading = false;
+                this.setInitialConfig();
+                if(this.turn === 'black'){
+                    this.playComputer()
+                }
+            }
+        }
+
         this.setInitialConfig();
         if(this.turn === 'black'){
             this.playComputer()
         }
-    },
-    watch:{
-        async address() {
-            try {
-                this.isLoading = true;
-                const response = await axios.post(
-                    `/api/get-game/${this.$route.params.id}`,
-                    {
-                        address: this.address,
-                    }
-                );
-                if (response.status === 200) {
-                    this.game = response.data.game
-                    this.isLoading = false;
-                    this.setInitialConfig();
-                    if(this.turn === 'black'){
-                        this.playComputer()
-                    }
-                } else {
-                    this.$router.push("/game");
-                }
-            } catch (e) {
-                this.$router.push("/game");
-            }
-        },
     },
     computed: {
         turn: {
