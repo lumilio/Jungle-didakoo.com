@@ -24,8 +24,8 @@
                                         <p style='color:white;'>Buy sun flower  Nft :</p>
 
                     <p style='font-size:20px;' >
-                        >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">sun flower <span style="font-size:30px;">🌻</span> </a> <<< 
-            
+                        >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">sun flower <span style="font-size:30px;">🌻</span> </a> <<<
+
                     </p>
                     <hr width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
@@ -46,14 +46,14 @@
 
 
 
-                    <!-- <p>🌻 v.2 = + 1/1 GAME TOKENS <img style='width:30px;' src='images/extra_objects/ff.png' alt=""></p> --> 
-                    <!-- 
+                    <!-- <p>🌻 v.2 = + 1/1 GAME TOKENS <img style='width:30px;' src='images/extra_objects/ff.png' alt=""></p> -->
+                    <!--
                     <p> Every day you total token will recharged:</p>
                     <p class='text-white' style='font-family: "VT323", monospace;   margin-top:25px; '> 00:00:00 UTC+1 ROME</p>
-                    <p style="font-size:30px">  0/2 <img style='width:50px;' src='images/extra_objects/ff.png' alt="">    
+                    <p style="font-size:30px">  0/2 <img style='width:50px;' src='images/extra_objects/ff.png' alt="">
                     --->    <!-- 2/2 <img style='width:50px;' src='images/extra_objects/ff.png' alt=""> </p>  -->
 
-                    
+
 
 
 

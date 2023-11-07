@@ -59,9 +59,12 @@
                     <div
                         class="board d-flex justify-content-center bg-transparent align-items-center"
                     >
-                        <Game @gameover="gameOver" :game="game" :id="$route.params.id" />
-                        <!-- <img class='board ' src="images/concepts/blue-red.jpeg" alt=""> -->
-                        <!-- <img class='board ' src="images/concepts/yellow-blue.jpg" alt=""> -->
+<!--                        <template  v-if="game.status === 'pending' || game.opponent_id">-->
+<!--                            <MultiPlay @gameover="gameOver" :game="game" :id="$route.params.id" />-->
+<!--                        </template>-->
+                        <template >
+                            <Game @gameover="gameOver" :game="game" :id="$route.params.id" />
+                        </template>
                     </div>
                     <!-------------- PLAYER 1 DATA ---------------->
                     <div class="board-player">
@@ -149,6 +152,7 @@ import axios from "axios";
 import store from "../../store";
 import { getColorStyles } from '../../utilites/getColorByUserColorId';
 import user from "../../store/modules/user";
+import MultiPlay from "../Game/MultiPlay.vue";
 
 export default {
     data() {
@@ -192,6 +196,7 @@ export default {
         this.getColorByUserColorId();
     },
     components: {
+        MultiPlay,
         Game,
         Modal,
     },

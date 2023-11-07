@@ -238,7 +238,6 @@ export default {
     },
     data() {
         return {
-            gameStarted: false,
             possibleMove:  "" ,
             GreenBoardColor:"#9be8b4",
             OrangeBoardColor:"#FFE194",
@@ -278,90 +277,33 @@ export default {
     {
         this.setInitialConfig();
         if(this.turn === 'black'){
-            // this.playComputer()
+            this.playComputer()
         }
-        Pusher.logToConsole = false;
-        const pusher = new Pusher('88dfab940f882d473671', {
-            cluster: 'mt1'
-        });
-        if (store.state.address && this.game.status === "started"){
-            console.log(this.squares);
-            const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address );
-            channel.bind('App\\Events\\DoStep', (data) => {
-                if (data.player === store.state.address){
-                    console.log(Object.keys(data.state.state),'111')
-                    console.log(Object.keys(this.game.state.state),'222')
-                    const keys = {
-                        'A': 0,
-                        'B': 1,
-                        'C': 2,
-                        'D': 3,
-                        'E': 4,
-                        'F': 5,
-                        'G': 6,
-                    }
-                    let fromSquare = {};
-                    let toSquare = {};
-                    Object.keys(data.state.state).forEach((item) => {
-                        if (!this.game.state.state[item]){
-                            toSquare = this.squares[item[1] - 1][keys[item[0]]];
-                        }
-                    })
-                    Object.keys(this.game.state.state).forEach((item) => {
-                        if (!data.state.state[item]){
-                            fromSquare = this.squares[item[1] - 1][keys[item[0]]];
-                        }
-                    })
-                    this.makeMove(fromSquare, toSquare);
-                }
-            });
-        }else if (store.state.address){
-            const channel = pusher.subscribe('connect.' + store.state.address);
-            channel.bind('App\\Events\\ConnectGame', function(data) {
-                if (data.player === store.state.address){
-                    this.gameStarted = true;
-                }
-            });
-        }
-
     },
-    watch: {
-        gameStarted(data){
-            if (data){
-                const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address);
-                channel.bind('App\\Events\\DoStep', function(data) {
-                    if (data.player === store.state.address){
-                        if (data.player === store.state.address){
-                            console.log(data,'111')
-                            const keys = {
-                                'A': 0,
-                                'B': 1,
-                                'C': 2,
-                                'D': 3,
-                                'E': 4,
-                                'F': 5,
-                                'G': 6,
-                            }
-                            let fromSquare = {};
-                            let toSquare = {};
-                            Object.keys(data.state.state).forEach((item) => {
-                                if (!this.game.state.state[item]){
-                                    toSquare = this.squares[keys[item[0]]][item[1] - 1];
-                                }
-                            })
-                            Object.keys(this.game.state.state).forEach((item) => {
-                                if (!data.state.state[item]){
-                                    fromSquare = this.squares[keys[item[0]]][item[1] - 1];
-                                }
-                            })
-                            console.log(fromSquare,'fromSquare')
-                            console.log(toSquare,'toSquare')
-                            this.makeMove(fromSquare, toSquare);
-                        }
+    watch:{
+        async address() {
+            try {
+                this.isLoading = true;
+                const response = await axios.post(
+                    `/api/get-game/${this.$route.params.id}`,
+                    {
+                        address: this.address,
                     }
-                });
+                );
+                if (response.status === 200) {
+                    this.game = response.data.game
+                    this.isLoading = false;
+                    this.setInitialConfig();
+                    if(this.turn === 'black'){
+                        this.playComputer()
+                    }
+                } else {
+                    this.$router.push("/game");
+                }
+            } catch (e) {
+                this.$router.push("/game");
             }
-        }
+        },
     },
     computed: {
         turn: {
@@ -382,7 +324,6 @@ export default {
     methods: {
         setInitialConfig(){
             if(this.game && this.game.state){
-                this.state = this.game.state
                 const state = this.game.state;
                 this.fillState(state.state)
                 this.fillColors(state)
@@ -500,7 +441,6 @@ export default {
             }
         },
         fillState(data){
-
             if(!data){
                 this.state = helper.getInitialState()
             }
@@ -549,13 +489,6 @@ export default {
         initSquares() {
             this.squares = [];
             let squareContent =  this.getSquareContent()
-            if(this.userData.id === this.game.opponent_id){
-                const newSquareContent = {};
-                for (const [key, value] of Object.entries(squareContent)) {
-                    newSquareContent[`${key[0]}${10 - key[1]}`] = value;
-                }
-                squareContent = newSquareContent;
-            }
             for (let i = 0; i < 9; i++) {
                 this.squares.push([]);
                 for (let j = 0; j < 7; j++) {
@@ -594,8 +527,8 @@ export default {
             }
         },
         squareClick( rowIndex, colIndex) {
-            if(this.game.status !== "started") return;
             let square = this.squares[rowIndex][colIndex];
+            console.log(square,'square')
             if (!this.releasePiece(square)) {
                 if (square.content.piece && square.content.color === "white" && this.turn === 'white') {
                     this.showPossibleMoves(rowIndex, colIndex);
@@ -606,14 +539,12 @@ export default {
             }
         },
         makeMove(fromSquare, toSquare) {
-            console.log(this.gamePieceMoveCoords)
             this.gamePieceMoveCoords = {
                 piece: fromSquare.content?.piece,
                 toX: toSquare.x - fromSquare.x,
                 toY: toSquare.y - fromSquare.y,
                 color: this.turn,
             };
-            console.log(this.gamePieceMoveCoords)
             this.updateState({
                 fromCode: fromSquare.code,
                 toCode: toSquare.code,
@@ -669,8 +600,6 @@ export default {
         releasePiece(toSquare) {
             if (!this.isHoldingChessPiece) return false;
             let fromSquare = this.squares[this.holding.row][this.holding.col];
-            console.log(this.holding.row,'this.holding.row')
-            console.log(this.holding.col,'this.holding.col')
             if (!toSquare.isPossibleMove) {
                 this.isHoldingChessPiece = null;
                 fromSquare.visible = true;
@@ -691,11 +620,9 @@ export default {
             }else{
                 this.turn = this.getOpponentColor(this.turn);
                 this.saveState()
-                if (!(this.game?.opponent_id || this.game?.opponent)){
                     setTimeout(() => {
                         this.playComputer();
                     }, 500);
-                }
             }
             return true;
         },
