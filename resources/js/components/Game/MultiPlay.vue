@@ -276,11 +276,9 @@ export default {
     },
     async mounted()
     {
-        console.log('muilty')
+        console.log('MultiPlay')
         this.setInitialConfig();
-        if(this.turn === 'black'){
-
-        }
+        this.board = this.game.state.board;
         Pusher.logToConsole = true;
         const pusher = new Pusher('88dfab940f882d473671', {
             cluster: 'mt1'
@@ -288,6 +286,7 @@ export default {
         if (store.state.address && this.game.status === "started"){
             const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address );
             channel.bind('App\\Events\\DoStep', (data) => {
+                console.log(this.game,'this.game')
                 if (data.player === store.state.address){
                     console.log(Object.keys(data.state.state),'111')
                     console.log(Object.keys(this.game.state.state),'222')
@@ -313,16 +312,16 @@ export default {
                         }
                     })
                     this.makeMove(fromSquare, toSquare);
+                    console.log(this.game.state.turn,'this.game.state.turn')
+                    console.log(this.game.state.board,'this.game.state.board')
+                    this.turn = this.game.state.turn
+                    this.board = this.game.state.board
                 }
             });
         }else if (store.state.address){
-            console.log(111)
             const channel = pusher.subscribe('connect.' + store.state.address);
             channel.bind('App\\Events\\ConnectGame', function(data) {
-                console.log('ConnectGame')
-                console.log(data)
                 if (data.player === store.state.address){
-                    console.log(data)
                     this.gameStarted = true;
                 }
             });
@@ -331,13 +330,15 @@ export default {
     },
     watch: {
         gameStarted(data){
-            console.log('1')
             if (data){
+                Pusher.logToConsole = true;
+                const pusher = new Pusher('88dfab940f882d473671', {
+                    cluster: 'mt1'
+                });
                 const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address);
-                channel.bind('App\\Events\\DoStep', function(data) {
+                channel.bind('App\\Events\\DoStep', (data) => {
                     if (data.player === store.state.address){
                         if (data.player === store.state.address){
-                            console.log(data,'111')
                             const keys = {
                                 'A': 0,
                                 'B': 1,
@@ -359,8 +360,7 @@ export default {
                                     fromSquare = this.squares[keys[item[0]]][item[1] - 1];
                                 }
                             })
-                            console.log(fromSquare,'fromSquare')
-                            console.log(toSquare,'toSquare')
+
                             this.makeMove(fromSquare, toSquare);
                         }
                     }
@@ -601,6 +601,7 @@ export default {
         squareClick( rowIndex, colIndex) {
             if(this.game.status !== "started") return;
             let square = this.squares[rowIndex][colIndex];
+            console.log(square,'square')
             if (!this.releasePiece(square)) {
                 if (square.content.piece && square.content.color === "white" && this.turn === 'white') {
                     this.showPossibleMoves(rowIndex, colIndex);
@@ -611,14 +612,12 @@ export default {
             }
         },
         makeMove(fromSquare, toSquare) {
-            console.log(this.gamePieceMoveCoords)
             this.gamePieceMoveCoords = {
                 piece: fromSquare.content?.piece,
                 toX: toSquare.x - fromSquare.x,
                 toY: toSquare.y - fromSquare.y,
                 color: this.turn,
             };
-            console.log(this.gamePieceMoveCoords)
             this.updateState({
                 fromCode: fromSquare.code,
                 toCode: toSquare.code,
@@ -674,8 +673,7 @@ export default {
         releasePiece(toSquare) {
             if (!this.isHoldingChessPiece) return false;
             let fromSquare = this.squares[this.holding.row][this.holding.col];
-            console.log(this.holding.row,'this.holding.row')
-            console.log(this.holding.col,'this.holding.col')
+
             if (!toSquare.isPossibleMove) {
                 this.isHoldingChessPiece = null;
                 fromSquare.visible = true;

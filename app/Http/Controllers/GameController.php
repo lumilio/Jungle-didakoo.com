@@ -29,6 +29,7 @@ class GameController extends Controller
                 'state' => [
                     'state' => $request->state,
                     'turn' => 'white',
+                    'board' => true,
                     "colors" => [
                         "black" => 3,
                         "board" => 2,
@@ -52,6 +53,7 @@ class GameController extends Controller
                 'state' => [
                     'state' => $request->state,
                     'turn' => 'white',
+                    'board' => true,
                     "colors" => [
                         "black" => 3,
                         "board" => 2,
@@ -115,10 +117,12 @@ class GameController extends Controller
         }else{
             $game = Game::where('url',$id)->first();
         }
-//        'turn' => $request->turn,
-        $game->state = ['state' => $request->state, 'turn'=> 'white','colors' => $request->colors];
+
+        $turn = $request->address === $game->opponent->wallet_address ? "white" : "black";
+        $board = $request->address === $game->opponent->wallet_address  ? 'true' : 'false';
+        $game->state = ['state' => $request->state, 'turn'=> $turn, 'board' => $board,'colors' => $request->colors];
         $game->save();
-        if ($game->opponent?->wallet_address)
+        if ($game->opponent->wallet_address)
         event(new DoStep($game, $request->address === $game->opponent->wallet_address ? $game->creator->wallet_address : $game->opponent->wallet_address));
 
         return response()->json([

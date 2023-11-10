@@ -520,7 +520,6 @@ export default {
         },
         squareClick( rowIndex, colIndex) {
             let square = this.squares[rowIndex][colIndex];
-            console.log(square,'square')
             if (!this.releasePiece(square)) {
                 if (square.content.piece && square.content.color === "white" && this.turn === 'white') {
                     this.showPossibleMoves(rowIndex, colIndex);

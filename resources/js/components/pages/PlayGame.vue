@@ -297,7 +297,25 @@ export default {
         },
     },
     async mounted() {
-
+        if (this.address){
+            try {
+                this.isLoading = true;
+                const response = await axios.post(
+                    `/api/get-game/${this.$route.params.id}`,
+                    {
+                        address: this.address,
+                    }
+                );
+                if (response.status === 200) {
+                    this.game = response.data.game
+                    this.isLoading = false;
+                } else {
+                    this.$router.push("/game");
+                }
+            } catch (e) {
+                this.$router.push("/game");
+            }
+        }
     },
     watch:{
         test()
