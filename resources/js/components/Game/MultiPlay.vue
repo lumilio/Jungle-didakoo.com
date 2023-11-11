@@ -238,6 +238,7 @@ export default {
     },
     data() {
         return {
+            openBoard: false,
             gameStarted: false,
             possibleMove:  "" ,
             GreenBoardColor:"#9be8b4",
@@ -276,20 +277,22 @@ export default {
     },
     async mounted()
     {
-        console.log('MultiPlay')
+
         this.setInitialConfig();
-        this.board = this.game.state.board;
-        Pusher.logToConsole = true;
+        if (this.game?.opponent?.wallet_address === store.state.address && this.game.state.turn === "black"){
+            this.openBoard = true
+        }else if(this.game?.creator?.wallet_address === store.state.address && this.game.state.turn === "white"){
+            this.openBoard = true
+        }
+        Pusher.logToConsole = false;
         const pusher = new Pusher('88dfab940f882d473671', {
             cluster: 'mt1'
         });
+        console.log(this.squares,'this.squares')
         if (store.state.address && this.game.status === "started"){
             const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address );
             channel.bind('App\\Events\\DoStep', (data) => {
-                console.log(this.game,'this.game')
                 if (data.player === store.state.address){
-                    console.log(Object.keys(data.state.state),'111')
-                    console.log(Object.keys(this.game.state.state),'222')
                     const keys = {
                         'A': 0,
                         'B': 1,
@@ -302,20 +305,34 @@ export default {
                     let fromSquare = {};
                     let toSquare = {};
                     Object.keys(data.state.state).forEach((item) => {
-                        if (!this.game.state.state[item]){
-                            toSquare = this.squares[item[1] - 1][keys[item[0]]];
+                        if (!this.state[item]){
+                            if (store.state.address === this.game?.opponent?.wallet_address){
+                                toSquare = this.squares[item[1] - 1][keys[item[0]]];
+                            }else{
+                                toSquare = this.squares[9 - item[1]][keys[item[0]]]
+                            }
                         }
                     })
-                    Object.keys(this.game.state.state).forEach((item) => {
+                    Object.keys(this.state).forEach((item) => {
                         if (!data.state.state[item]){
-                            fromSquare = this.squares[item[1] - 1][keys[item[0]]];
+                            if (store.state.address === this.game?.opponent?.wallet_address){
+                                fromSquare = this.squares[item[1] - 1][keys[item[0]]];
+                            }else{
+                                fromSquare = this.squares[9 - item[1]][keys[item[0]]]
+                            }
                         }
                     })
+                    if(!toSquare.code){
+                        if (store.state.address === this.game?.opponent?.wallet_address){
+                            toSquare = this.squares[9 - data.lastMove.to[1]][keys[data.lastMove.to[0]]]
+                        }else{
+                            toSquare = this.squares[data.lastMove.to[1] - 1][keys[data.lastMove.to[0]]];
+                        }
+                    }
                     this.makeMove(fromSquare, toSquare);
-                    console.log(this.game.state.turn,'this.game.state.turn')
-                    console.log(this.game.state.board,'this.game.state.board')
-                    this.turn = this.game.state.turn
-                    this.board = this.game.state.board
+                    this.turn = data.state.turn
+                    this.state = data.state.state
+                    this.openBoard = true;
                 }
             });
         }else if (store.state.address){
@@ -331,6 +348,7 @@ export default {
     watch: {
         gameStarted(data){
             if (data){
+                this.openBoard = this.game.state.turn === "white";
                 Pusher.logToConsole = true;
                 const pusher = new Pusher('88dfab940f882d473671', {
                     cluster: 'mt1'
@@ -362,6 +380,8 @@ export default {
                             })
 
                             this.makeMove(fromSquare, toSquare);
+                            this.turn = this.game.state.turn
+                            this.openBoard = false;
                         }
                     }
                 });
@@ -601,9 +621,8 @@ export default {
         squareClick( rowIndex, colIndex) {
             if(this.game.status !== "started") return;
             let square = this.squares[rowIndex][colIndex];
-            console.log(square,'square')
             if (!this.releasePiece(square)) {
-                if (square.content.piece && square.content.color === "white" && this.turn === 'white') {
+                if (square.content.piece && square.content.color === this.turn && this.openBoard) {
                     this.showPossibleMoves(rowIndex, colIndex);
                     this.holding.row = rowIndex;
                     this.holding.col = colIndex;
@@ -612,6 +631,8 @@ export default {
             }
         },
         makeMove(fromSquare, toSquare) {
+            console.log(fromSquare,'fromSquare222222222222222222')
+            console.log(toSquare,'toSquare1111111111111111')
             this.gamePieceMoveCoords = {
                 piece: fromSquare.content?.piece,
                 toX: toSquare.x - fromSquare.x,
@@ -633,17 +654,36 @@ export default {
         },
         updateState(data){
             const {fromCode, toCode, piece, color } = data
-            this.state[toCode] = {
-                color,
-                piece
+            if (this.address === this.game?.opponent?.wallet_address && this.turn === "black"){
+                console.log(111)
+                this.state[`${toCode[0]}${10 - toCode[1]}`] = {
+                    color,
+                    piece
+                }
+                if(this.state[`${fromCode[0]}${10 - fromCode[1]}`]){
+                    delete this.state[`${fromCode[0]}${10 - fromCode[1]}`]
+                }
+            }else{
+                this.state[toCode] = {
+                    color,
+                    piece
+                }
+                if(this.state[fromCode]){
+                    delete this.state[fromCode]
+                }
             }
-            if(this.state[fromCode]){
-                delete this.state[fromCode]
-            }
+
+
+
+            this.openBoard = false;
         },
-        async saveState(){
+        async saveState(fromSquareCode, toSquareCode){
             await axios.post('/api/set-state',{
                 state: this.state,
+                lastMove: {
+                    from: fromSquareCode,
+                    to: toSquareCode
+                },
                 turn: this.turn,
                 id:this.id,
                 colors: this.boardColors,
@@ -693,7 +733,7 @@ export default {
                 },500)
             }else{
                 this.turn = this.getOpponentColor(this.turn);
-                this.saveState()
+                this.saveState(fromSquare.code, toSquare.code)
                 if (!(this.game?.opponent_id || this.game?.opponent)){
                     setTimeout(() => {
 

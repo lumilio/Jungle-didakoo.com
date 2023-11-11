@@ -14,10 +14,12 @@ class DoStep implements ShouldBroadcastNow
 
     public $game;
     public $player;
-    public function __construct($game, $player)
+    public $lastMove;
+    public function __construct($game, $player, $lastMove)
     {
         $this->game = $game;
         $this->player = $player;
+        $this->lastMove = $lastMove;
     }
 
     public function broadcastOn()
@@ -32,6 +34,7 @@ class DoStep implements ShouldBroadcastNow
             'state' => $this->game->state,
             'game' =>  $this->game->id,
             'player' =>  $this->player,
+            'lastMove' =>  $this->lastMove,
             ];
     }
 }
