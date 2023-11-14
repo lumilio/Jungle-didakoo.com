@@ -37,6 +37,7 @@ body, .centratore {
 
 #page1{
     display: flex;
+    position: relative;
 }
 
 /* ----------------------------------------------------------------------------- */
@@ -733,6 +734,34 @@ body, .centratore {
 
 .pepar p {
     color: white;
+}
+
+@media screen and (max-width: 390px) {
+    .pepar {
+        margin: 0 30px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-height: 555px) {
+    .wallet-login-title h2 {
+        font-size: 20px;
+    }
+
+    .connect-modal-content {
+        height: 380px !important;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .wallet-login-title h2 {
+        font-size: 20px;
+    }
+
+    .connect-modal-content {
+        width: 280px !important;
+        min-width: 200px !important;
+    }
 }
 
 /* ----------------------------------------------------------------------------- */
