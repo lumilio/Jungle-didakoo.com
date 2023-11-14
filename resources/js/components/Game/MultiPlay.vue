@@ -73,7 +73,7 @@
                     :y="0"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
-                    :color="boardColors?.black"
+                    :color="this.game.opponent.wallet_address === this.address ? this.game.creator.color_id : this.game.opponent.color_id"
                 />
             </g>
             <g @click="squareClick(8,3)">
@@ -82,7 +82,7 @@
                     :y="boardSettings.square.height * 8"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
-                    :color="boardColors?.white"
+                    :color="this.game.creator.wallet_address === this.address ? this.game.creator.color_id : this.game.opponent.color_id"
                 />
             </g>
             <g @click="squareClick(0,2)">
@@ -378,7 +378,6 @@ export default {
                                     fromSquare = this.squares[keys[item[0]]][item[1] - 1];
                                 }
                             })
-
                             this.makeMove(fromSquare, toSquare);
                             this.turn = this.game.state.turn
                             this.openBoard = false;
@@ -451,7 +450,7 @@ export default {
             if (houseCodes.all.includes(code)) {
                 return {
                     type: "dom",
-                    position: code === "D9" ? "black" : "white",
+                    position: code === "D9" ? this.game.creator.wallet_address === this.address ? "black" : "white" : this.game.opponent.wallet_address === this.address ? "black" : "white",
                 };
             }
             return {
@@ -543,31 +542,19 @@ export default {
                 }
                 this.playColors.light = backgroundColors[this.boardColors.board]
             }
-            let blackColor = 1 + Math.floor(Math.random() * 6)
-            let colorID = this.userData?.color_id || 0;
-            let whiteColor;
-            if(colorID === 0){
-                whiteColor = 1 + Math.floor(Math.random() * 6)
-            }else{
-                whiteColor = colorID
-            }
-            allowedColors.forEach(block => {
-                if(block.animalColors.includes(blackColor) && block.animalColors.length > 1){
-                    while (blackColor === whiteColor){
-                        blackColor = block.animalColors[Math.floor(Math.random() * block.animalColors.length)]
-                    }
-                    this.boardColors = {
-                        black:blackColor,
-                        white:whiteColor,
-                        board: block.boardColors.light
-                    }
-                    this.playColors.light = backgroundColors[block.boardColors.light]
-                    if (block.boardColors.light === 2 ){
-                        this.possibleMove = "#9be8b4"
-                    }else {
-                        this.possibleMove = "#FFE194"
 
-                    }
+            allowedColors.forEach(block => {
+                this.boardColors = {
+                    black:this.game.opponent.color_id,
+                    white:this.game.creator.color_id,
+                    board: block.boardColors.light
+                }
+
+                this.playColors.light = backgroundColors[block.boardColors.light]
+                if (block.boardColors.light === 2 ){
+                    this.possibleMove = "#9be8b4"
+                }else {
+                    this.possibleMove = "#FFE194"
                 }
             })
         },
@@ -631,8 +618,6 @@ export default {
             }
         },
         makeMove(fromSquare, toSquare) {
-            console.log(fromSquare,'fromSquare222222222222222222')
-            console.log(toSquare,'toSquare1111111111111111')
             this.gamePieceMoveCoords = {
                 piece: fromSquare.content?.piece,
                 toX: toSquare.x - fromSquare.x,
@@ -655,7 +640,6 @@ export default {
         updateState(data){
             const {fromCode, toCode, piece, color } = data
             if (this.address === this.game?.opponent?.wallet_address && this.turn === "black"){
-                console.log(111)
                 this.state[`${toCode[0]}${10 - toCode[1]}`] = {
                     color,
                     piece
@@ -672,8 +656,6 @@ export default {
                     delete this.state[fromCode]
                 }
             }
-
-
 
             this.openBoard = false;
         },
@@ -694,7 +676,7 @@ export default {
             try {
                 await axios.post('/api/finish-game',{
                     player: this.address,
-                    win: winner === 'white',
+                    win: winner === this.game.creator.wallet_address === this.address ? "white" : "black",
                     game_id: this.id
                 })
                 localStorage.removeItem('canStart')
@@ -755,7 +737,7 @@ export default {
             }
             const pieces = {
                 white: false,
-                black:false,
+                black: false,
             }
             for (let row = 0; row < 9; row++) {
                 for (let col = 0; col < 7; col++) {

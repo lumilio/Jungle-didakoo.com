@@ -161,24 +161,26 @@ class GameController extends Controller
         if(!$game){
             return response()->json(['message' => 'Bed request'], 400);
         }
-        if ($player !== $game->creator->wallet_address){
+        if ($player === $game->creator->wallet_address || $player === $game->opponent->wallet_address){
+            $creator = Player::query()->where('wallet_address', $player)->first();
+
+            if ($win){
+                $creator->update([
+                    "power" => $creator->power + 3,
+                    'wins' => $creator->wins + 1
+                ]);
+            }else{
+                $creator->update([
+                    "power" => $creator->power + 1
+                ]);
+            }
+            $game->update([
+                'status' => "finished"
+            ]);
+            return response()->json(['message' => 'finished']);
+        }else{
             return response()->json(['message' => 'Bed request'], 400);
         }
-        $creator = Player::query()->where('wallet_address', $player)->first();
 
-        if ($win){
-            $creator->update([
-                "power" => $creator->power + 1,
-                'wins' => $creator->wins + 1
-            ]);
-        }else{
-            $creator->update([
-                "power" => $creator->power + 0
-            ]);
-        }
-        $game->update([
-            'status' => "finished"
-        ]);
-        return response()->json(['message' => 'finished']);
     }
 }
