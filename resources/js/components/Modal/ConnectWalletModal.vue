@@ -6,19 +6,25 @@
                 <img class="modal_logo" style='width:100px;' src="../../../images/extra_objects/ddd.jpg">
                 <span class="version_sign text-white">v 1.0.0</span>
             </div>
-            <div> <h2 class=" mt-4 mb-5 ml-3" style='font-family: "VT323", monospace; color:white;'>Select wallet to login</h2> </div>
-            <button class="WalletCoinButton" @click="web3Login('metamask')" id="metamask">
+            <div class="wallet-login-title">
+                <h2 class=" mt-4 mb-5 ml-3" style='font-family: "VT323", monospace; color:white;'>
+                    Select wallet to login
+                </h2>
+            </div>
+            <div class="web3-login-buttons">
+                <button class="WalletCoinButton" @click="web3Login('metamask')" id="metamask">
                 <img :src=MetamaskWalletImg alt="MetamaskWallet" class="imgSize">
-                <p class="WalletCoinButtonText"> METAMSK </p>
+                <p class="WalletCoinButtonText"> METAMASK </p>
             </button>
             <button class="WalletCoinButton" @click="web3Login('coinbase')" id="coinbase">
                 <img :src=CoinBaseWallet alt="MetamaskWallet" class="imgSize">
                 <p class="WalletCoinButtonText"> COINBASE </p>
             </button>
-          <button class="WalletCoinButton" id="guest" @click="web3Login('guest')">
-            <img :src=Guest alt="guest" class="imgSize">
-            <p class="WalletCoinButtonText"> GUEST </p>
-          </button>
+            <button class="WalletCoinButton" id="guest" @click="web3Login('guest')">
+                <img :src=Guest alt="guest" class="imgSize">
+                <p class="WalletCoinButtonText"> GUEST </p>
+            </button>
+            </div>
             <span class="close1" @click="closeModal" >&times;</span>
             <slot></slot>
         </div>
@@ -423,7 +429,7 @@ mounted () {
 /* Style the modal */
 .modal1 {
 
-    position: fixed;
+    position: absolute;
     z-index: 1;
     left: 0;
     top: 0;
@@ -499,6 +505,7 @@ mounted () {
     width: 150px;
     display: flex;
     gap: 10px;
+    margin-bottom: 10px;
 }
 .WalletCoinButton:hover {
     box-shadow: 0 0 7px 1px rgba(255, 255, 255, 0.5);
