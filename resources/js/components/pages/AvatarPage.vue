@@ -21,7 +21,11 @@
                     <div style="background-color:black; width:100%;" >
                         <p class='avatar-address'  style='color:white; width:100%; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px; filter: invert(1);'  src='images/extra_objects/Logomark-BlueB.png' >
-                            <a :href="`https://opensea.io/${userData?.wallet_address}`">{{ userData?.wallet_address }}</a>
+                            <a
+                                :href="`https://opensea.io/${userData?.wallet_address}`"
+                                style="color: #fff;">
+                                {{ userData?.wallet_address }}
+                            </a>
                         </p>
                     </div>
                 <!------------------------ ARCHIVMENTS LOGOS EXAMPLE ---------------------->
