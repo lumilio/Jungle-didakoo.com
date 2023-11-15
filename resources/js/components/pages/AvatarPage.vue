@@ -69,7 +69,6 @@ import axios from "axios";
                 const walletAddress = to.query.wallet_address;
                 const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
                 this.userData = response.data.user;
-                this.playerListIndex = to.query.player_list_index
                 next();
             } catch (error) {
                 console.error(error);
@@ -83,6 +82,8 @@ import axios from "axios";
       },
         methods: {
             async getUserByWalletAddress() {
+                this.playerListIndex = this.$route.query.player_list_index
+
                 try {
                     const walletAddress = this.$route.query.wallet_address;
                     const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
