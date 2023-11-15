@@ -95,11 +95,11 @@
 
 
             <!-- Looping through players --------------------------------------------------->
-                <div v-for="players in playersArray" v-bind:key="players.id"  class="record" :style="{backgroundColor : backgroundBord ? backgroundBord : '#EDEB52'}">
+                <div v-for="(players, playerListIndex) in playersArray" v-bind:key="players.id"  class="record" :style="{backgroundColor : backgroundBord ? backgroundBord : '#EDEB52'}">
                     <div :style="{ color: colorAddress ? colorAddress : 'black', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden'}">
-                    <router-link :to="{ path: 'avatar', query: { wallet_address: players.wallet_address } }">
+                    <router-link :to="{ path: 'avatar', query: { wallet_address: players.wallet_address, player_list_index: playerListIndex + 1 } }">
                         <p :style="{ color: colorAddress ? colorAddress : 'black', fontSize: '14.5px', padding: '10px', margin: '0', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden', textDecoration: textDecorationAddress ? textDecorationAddress : 'underline black'}">
-                                {{ players.id }}
+                                {{ playerListIndex + 1 }}°
                                 <img style="width: 20px; margin-left: 5px; margin-right: 5px; margin-bottom: 3px;" :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayB.png'" alt="User Avatar" />
                                 {{ players.wallet_address }}
                         </p>
@@ -306,12 +306,12 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
          }
      },
     methods:{
-            async getAllUsers()
-            {
-                this.url = window.location.host;
-                const response = await axios.get('http://'+this.url+'/api/get-users');
-                this.playersArray = response.data.users;
-            },
+        async getAllUsers()
+        {
+            this.url = window.location.host;
+            const response = await axios.get('http://'+this.url+'/api/get-users');
+            this.playersArray = response.data.users;
+        },
          getColorByUserColorId() {
             try {
                 const colorStyles = getColorStyles(this.userData.color_id);

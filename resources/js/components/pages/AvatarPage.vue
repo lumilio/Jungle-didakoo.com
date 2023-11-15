@@ -15,13 +15,17 @@
 
                     <!-- <p style='position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;'> <i  class="fa-solid fa-circle" style="color: #46e546" ></i> &nbsp Online</p> -->
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:white;'> </p>
-                    <p style='position:absolute; display:block; margin-top:10px;  font-size:33px; right:15px; top:5px; color:white;'>32°</p>
+                    <p style='position:absolute; display:block; margin-top:10px;  font-size:33px; right:15px; top:5px; color:white;'>{{ playerListIndex }}°</p>
                     <img id='avataricon' style='margin-top:80px; margin-bottom:20px;' src='images/extra_objects/iconaplayW.png' alt="">
                     <!-- <p class="text-white">Avatar v.1</p> -->
                     <div style="background-color:black; width:100%;" >
                         <p class='avatar-address'  style='color:white; width:100%; font-size:x-smal; padding: 10px; margin: 0; text-overflow: ellipsis; white-space: nowrap;  overflow:hidden;'>
                             <img style='width:20px; margin-left:5px; margin-right:5px;  margin-bottom:3px; filter: invert(1);'  src='images/extra_objects/Logomark-BlueB.png' >
-                            {{ userData?.wallet_address }}
+                            <a
+                                :href="`https://opensea.io/${userData?.wallet_address}`"
+                                style="color: #fff;">
+                                {{ userData?.wallet_address }}
+                            </a>
                         </p>
                     </div>
                 <!------------------------ ARCHIVMENTS LOGOS EXAMPLE ---------------------->
@@ -51,6 +55,7 @@ import axios from "axios";
         data() {
             return {
                 userData: null,
+                playerListIndex: null
             };
         },
 
@@ -81,6 +86,8 @@ import axios from "axios";
       },
         methods: {
             async getUserByWalletAddress() {
+                this.playerListIndex = this.$route.query.player_list_index
+
                 try {
                     const walletAddress = this.$route.query.wallet_address;
                     const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
