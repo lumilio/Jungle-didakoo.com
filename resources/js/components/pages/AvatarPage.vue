@@ -15,7 +15,7 @@
 
                     <!-- <p style='position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;'> <i  class="fa-solid fa-circle" style="color: #46e546" ></i> &nbsp Online</p> -->
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:white;'> </p>
-                    <p style='position:absolute; display:block; margin-top:10px;  font-size:33px; right:15px; top:5px; color:white;'>32°</p>
+                    <p style='position:absolute; display:block; margin-top:10px;  font-size:33px; right:15px; top:5px; color:white;'>{{ playerListIndex }}°</p>
                     <img id='avataricon' style='margin-top:80px; margin-bottom:20px;' src='images/extra_objects/iconaplayW.png' alt="">
                     <!-- <p class="text-white">Avatar v.1</p> -->
                     <div style="background-color:black; width:100%;" >
@@ -51,6 +51,7 @@ import axios from "axios";
         data() {
             return {
                 userData: null,
+                playerListIndex: null
             };
         },
 
@@ -68,6 +69,7 @@ import axios from "axios";
                 const walletAddress = to.query.wallet_address;
                 const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
                 this.userData = response.data.user;
+                this.playerListIndex = to.query.player_list_index
                 next();
             } catch (error) {
                 console.error(error);
