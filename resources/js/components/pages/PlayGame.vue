@@ -59,7 +59,7 @@
                     <div
                         class="board d-flex justify-content-center bg-transparent align-items-center"
                     >
-                        <template  v-if="game.status === 'pending' || game.opponent_id">
+                        <template  v-if="game.status === 'pending' || game.opponent_id || !address">
                             <MultiPlay @gameover="gameOver" :game="game" :id="$route.params.id" />
                         </template>
                         <template v-else>
@@ -308,6 +308,7 @@ export default {
                 );
                 if (response.status === 200) {
                     this.game = response.data.game
+                  console.log(this.game, 'this.gaame')
                     this.isLoading = false;
                 } else {
                     this.$router.push("/game");

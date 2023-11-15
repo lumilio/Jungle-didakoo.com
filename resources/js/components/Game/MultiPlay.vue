@@ -73,7 +73,7 @@
                     :y="0"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
-                    :color="this.game.opponent.wallet_address === this.address ? this.game.creator.color_id : this.game.opponent.color_id"
+                    :color="this.game?.opponent?.wallet_address === this.address ? this.game?.creator?.color_id : this.game?.opponent?.color_id"
                 />
             </g>
             <g @click="squareClick(8,3)">
@@ -82,7 +82,7 @@
                     :y="boardSettings.square.height * 8"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
-                    :color="this.game.creator.wallet_address === this.address ? this.game.creator.color_id : this.game.opponent.color_id"
+                    :color="this.game?.creator?.wallet_address === this.address ? this.game?.creator?.color_id : this.game?.opponent?.color_id"
                 />
             </g>
             <g @click="squareClick(0,2)">
@@ -178,6 +178,7 @@
         <!-- <img class='profile_cover' src="images/concepts/zzz.png" alt=""> -->
         <!-- </div>
     </div>   -->
+      <ConnectWalletModal :show="showModal" @close="closeModal" style="margin: 0"></ConnectWalletModal>
     </div>
 </template>
 
@@ -192,6 +193,7 @@ import Den2 from "./Elements/Den2";
 import Trap from "./Elements/Trap";
 import {trapGuards} from "./constants";
 import axios from "axios";
+import ConnectWalletModal from "../Modal/ConnectWalletModal.vue";
 
 const animals = helper.getAnimalPowers();
 const waterCodes = helper.getWaterCodes()
@@ -203,6 +205,7 @@ const allowedColors = helper.getAllowedColors();
 export default {
     name: "MultiPlay",
     components: {
+        ConnectWalletModal,
         Piece,
         River,
         Den1,
@@ -238,6 +241,7 @@ export default {
     },
     data() {
         return {
+            showModal: false,
             openBoard: false,
             gameStarted: false,
             possibleMove:  "" ,
@@ -277,6 +281,11 @@ export default {
     },
     async mounted()
     {
+      console.log(this.address,'this.address')
+        if (!this.address){
+          this.showModal = true;
+          console.log(this.showModal,'this.showModal')
+        }
 
         this.setInitialConfig();
         if (this.game?.opponent?.wallet_address === store.state.address && this.game.state.turn === "black"){
@@ -330,6 +339,11 @@ export default {
                         }
                     }
                     this.makeMove(fromSquare, toSquare);
+                    if(toSquare.code === 'D1' && (data.state.turn === "white" || data.state.turn === "black")){
+                        this.$emit('gameover', "black")
+                        localStorage.removeItem('canStart')
+                        this.playAgain()
+                    }
                     this.turn = data.state.turn
                     this.state = data.state.state
                     this.openBoard = true;
@@ -347,6 +361,9 @@ export default {
     },
     watch: {
         gameStarted(data){
+          console.log(this.address,'this.address-watch')
+
+
             if (data){
                 this.openBoard = this.game.state.turn === "white";
                 Pusher.logToConsole = true;
@@ -404,6 +421,9 @@ export default {
         },
     },
     methods: {
+      closeModal() {
+        this.showModal = false;
+      },
         setInitialConfig(){
             if(this.game && this.game.state){
                 this.state = this.game.state
@@ -450,7 +470,7 @@ export default {
             if (houseCodes.all.includes(code)) {
                 return {
                     type: "dom",
-                    position: code === "D9" ? this.game.creator.wallet_address === this.address ? "black" : "white" : this.game.opponent.wallet_address === this.address ? "black" : "white",
+                    position: code === "D9" ? this.game?.creator?.wallet_address === this.address ? "black" : "white" : this.game?.opponent?.wallet_address === this.address ? "black" : "white",
                 };
             }
             return {
@@ -545,8 +565,8 @@ export default {
 
             allowedColors.forEach(block => {
                 this.boardColors = {
-                    black:this.game.opponent.color_id,
-                    white:this.game.creator.color_id,
+                    black:this.game?.opponent?.color_id,
+                    white:this.game?.creator?.color_id,
                     board: block.boardColors.light
                 }
 
@@ -676,7 +696,7 @@ export default {
             try {
                 await axios.post('/api/finish-game',{
                     player: this.address,
-                    win: winner === this.game.creator.wallet_address === this.address ? "white" : "black",
+                    win: winner === this.game?.creator?.wallet_address === this.address ? "white" : "black",
                     game_id: this.id
                 })
                 localStorage.removeItem('canStart')
@@ -709,18 +729,13 @@ export default {
 
             this.clearPossibleMoves();
             let checkmate = this.isCheckmate(this.squares)
+            this.saveState(fromSquare.code, toSquare.code)
             if(checkmate){
                 setTimeout(() => {
                     this.alertWin(checkmate)
                 },500)
             }else{
                 this.turn = this.getOpponentColor(this.turn);
-                this.saveState(fromSquare.code, toSquare.code)
-                if (!(this.game?.opponent_id || this.game?.opponent)){
-                    setTimeout(() => {
-
-                    }, 500);
-                }
             }
             return true;
         },
