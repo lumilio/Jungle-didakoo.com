@@ -95,15 +95,35 @@
 
 
             <!-- Looping through players --------------------------------------------------->
-                <div v-for="(players, playerListIndex) in playersArray" v-bind:key="players.id"  class="record" :style="{backgroundColor : backgroundBord ? backgroundBord : '#EDEB52'}">
-                    <div :style="{ color: colorAddress ? colorAddress : 'black', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden'}">
-                    <router-link :to="{ path: 'avatar', query: { wallet_address: players.wallet_address, player_list_index: playerListIndex + 1 } }">
-                        <p :style="{ color: colorAddress ? colorAddress : 'black', fontSize: '14.5px', padding: '10px', margin: '0', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden', textDecoration: textDecorationAddress ? textDecorationAddress : 'underline black'}">
-                                {{ playerListIndex + 1 }}°
-                                <img style="width: 20px; margin-left: 5px; margin-right: 5px; margin-bottom: 3px;" :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayB.png'" alt="User Avatar" />
-                                {{ players.wallet_address }}
+                <router-link
+                    v-for="(players, playerListIndex) in playersArray"
+                    v-bind:key="players.id"
+                    class="record"
+                    :style="{backgroundColor : backgroundBord ? backgroundBord : '#EDEB52', textDecoration: 'none'}"
+                    :to="{ path: 'avatar', query: { wallet_address: players.wallet_address, player_list_index: playerListIndex + 1 } }"
+                >
+                    <div :style="{
+                        color: colorAddress ?? 'black',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden'
+                    }">
+                        <p :style="{
+                            color: colorAddress ?? 'black',
+                            fontSize: '14.5px',
+                            padding: '10px',
+                            margin: '0',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textDecoration: textDecorationAddress ? textDecorationAddress : 'black'}"
+                        >
+                            {{ playerListIndex + 1 }}°
+                            <img
+                                :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayB.png'" alt="User Avatar"
+                                style="width: 20px; margin-left: 5px; margin-right: 5px; margin-bottom: 3px;" />
+                            {{ players.wallet_address }}
                         </p>
-                    </router-link>
                     </div>
                     <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <template v-for="(item, key) in NFT_LINKS" v-if="players[key] > 0 && item">
@@ -133,9 +153,9 @@
                     <!--                          <i style='font-size:20px; color:black; margin:0 5px;'  class="fa-solid fa-battery-full"></i> &lt;!&ndash; nft_3_battery &ndash;&gt;-->
                     <!--                      </div>-->
                     <span class='align-items-center' :style="{color:colorPower ? colorPower : 'black', marginRight: '10px',whiteSpace: 'nowrap',  backgroundColor: '',  padding:'0 10px',  borderRadius: '20px', display:'flex'}">
-                          {{players.power}}
-                        <i class="fa-solid fa-bolt ml-1"></i></span>
-                </div>
+                        {{ formatPower(players.power) }} <i class="fa-solid fa-bolt ml-1"></i>
+                    </span>
+                </router-link>
 
             <!------------------------------------------------------------------------------>
 
@@ -312,7 +332,7 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
             const response = await axios.get('http://'+this.url+'/api/get-users');
             this.playersArray = response.data.users;
         },
-         getColorByUserColorId() {
+        getColorByUserColorId() {
             try {
                 const colorStyles = getColorStyles(this.userData.color_id);
                 this.backgroundBord = colorStyles.backgroundBord;
@@ -325,6 +345,9 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
                 this.user = null;
             }
         },
+        formatPower(power) {
+            return power >= 1000000 ? `${Math.floor(power / 1000000)}M+` : ( power >= 1000 ? `${Math.floor(power / 1000)}k+` : `${power}` )
+        }
     },
      watch:{
          userData() {
