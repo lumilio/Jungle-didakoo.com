@@ -53,9 +53,9 @@ class GameController extends Controller
                     'state' => $request->state,
                     'turn' => 'white',
                     "colors" => [
-                        "black" => 3,
-                        "board" => 2,
-                        "white" => 1
+                        "black" => $player->color_id === 3 ? 4 : 3,
+                        "board" => $player->color_id !== 0 ? $player->color_id : 1,
+                        "white" => $player->color_id !== 0 ? $player->color_id : 1
                     ]
                 ]
             ]);

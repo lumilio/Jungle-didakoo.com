@@ -23,6 +23,10 @@ export default {
             store.commit('LOG_IN_USER',true)
             store.commit('SET_USER_ADDRESS', response.data.address)
             store.commit('SET_USER_DATA', {color_id: response.data.color, power: response.data.power, id: response.data.id})
+        }else{
+            if (window.location.pathname.includes('room')){
+                this.$router.push('/menu');
+            }
         }
 
     }

@@ -33,12 +33,19 @@
                             }"
                             class="record"
                         >
-                            <p>
+                            <p
+                                class="player-info"
+                                :style="{
+                                    color: colorAddress ? colorAddress : 'black',
+                                    textDecoration: textDecorationAddress ? textDecorationAddress : 'underline black',
+                                }"
+                            >
                                 1°
                                 <img
-                                    src="../../../images/extra_objects/iconaplayB.png"
+                                    :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayB.png'"
+                                    alt="..."
                                 />
-
+                                {{ this.game?.opponent?.wallet_address }}
                             </p>
                             <div
                                 class="d-flex align-items-center flex-row flex-nowrap"
@@ -77,14 +84,9 @@
                             class="record"
                         >
                             <p
+                                class="player-info"
                                 :style="{
                                     color: colorAddress ? colorAddress : 'black',
-                                    fontSize: '14.5px',
-                                    padding: '10px',
-                                    margin: '0',
-                                    textOverflow: 'ellipsis',
-                                    whiteSpace: 'nowrap',
-                                    overflow: 'hidden',
                                     textDecoration: textDecorationAddress ? textDecorationAddress : 'underline black',
                                 }"
                             >
@@ -308,7 +310,6 @@ export default {
                 );
                 if (response.status === 200) {
                     this.game = response.data.game
-                  console.log(this.game, 'this.gaame')
                     this.isLoading = false;
                 } else {
                     this.$router.push("/game");
@@ -400,5 +401,12 @@ export default {
         display: flex;
         justify-content: center;
     }
-}
+}   .player-info{
+        font-size: 14.5px;
+        padding: 10px;
+        margin: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
 </style>

@@ -73,7 +73,7 @@
                     :y="0"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
-                    :color="this.game?.opponent?.wallet_address === this.address ? this.game?.creator?.color_id : this.game?.opponent?.color_id"
+                    :color="opponentColor"
                 />
             </g>
             <g @click="squareClick(8,3)">
@@ -82,7 +82,7 @@
                     :y="boardSettings.square.height * 8"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
-                    :color="this.game?.creator?.wallet_address === this.address ? this.game?.creator?.color_id : this.game?.opponent?.color_id"
+                    :color="creatorColor"
                 />
             </g>
             <g @click="squareClick(0,2)">
@@ -178,7 +178,6 @@
         <!-- <img class='profile_cover' src="images/concepts/zzz.png" alt=""> -->
         <!-- </div>
     </div>   -->
-      <ConnectWalletModal :show="showModal" @close="closeModal" style="margin: 0"></ConnectWalletModal>
     </div>
 </template>
 
@@ -193,7 +192,6 @@ import Den2 from "./Elements/Den2";
 import Trap from "./Elements/Trap";
 import {trapGuards} from "./constants";
 import axios from "axios";
-import ConnectWalletModal from "../Modal/ConnectWalletModal.vue";
 
 const animals = helper.getAnimalPowers();
 const waterCodes = helper.getWaterCodes()
@@ -205,7 +203,6 @@ const allowedColors = helper.getAllowedColors();
 export default {
     name: "MultiPlay",
     components: {
-        ConnectWalletModal,
         Piece,
         River,
         Den1,
@@ -241,7 +238,6 @@ export default {
     },
     data() {
         return {
-            showModal: false,
             openBoard: false,
             gameStarted: false,
             possibleMove:  "" ,
@@ -281,13 +277,8 @@ export default {
     },
     async mounted()
     {
-      console.log(this.address,'this.address')
-        if (!this.address){
-          this.showModal = true;
-          console.log(this.showModal,'this.showModal')
-        }
-
         this.setInitialConfig();
+
         if (this.game?.opponent?.wallet_address === store.state.address && this.game.state.turn === "black"){
             this.openBoard = true
         }else if(this.game?.creator?.wallet_address === store.state.address && this.game.state.turn === "white"){
@@ -297,7 +288,6 @@ export default {
         const pusher = new Pusher('88dfab940f882d473671', {
             cluster: 'mt1'
         });
-        console.log(this.squares,'this.squares')
         if (store.state.address && this.game.status === "started"){
             const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address );
             channel.bind('App\\Events\\DoStep', (data) => {
@@ -361,9 +351,6 @@ export default {
     },
     watch: {
         gameStarted(data){
-          console.log(this.address,'this.address-watch')
-
-
             if (data){
                 this.openBoard = this.game.state.turn === "white";
                 Pusher.logToConsole = true;
@@ -419,11 +406,18 @@ export default {
         userData(){
             return store.state.userData
         },
+
+        opponentColor(){
+            return this.game?.opponent?.wallet_address === this.address ? this.game?.state?.colors?.white : this.game?.state?.colors?.black
+        },
+        creatorColor(){
+            return this.game?.opponent?.wallet_address === this.address ? this.game?.state?.colors?.black: this.game?.state?.colors?.white
+        },
+        borderColor(){
+            return this.game?.state?.colors?.border
+        },
     },
     methods: {
-      closeModal() {
-        this.showModal = false;
-      },
         setInitialConfig(){
             if(this.game && this.game.state){
                 this.state = this.game.state
@@ -562,12 +556,11 @@ export default {
                 }
                 this.playColors.light = backgroundColors[this.boardColors.board]
             }
-
             allowedColors.forEach(block => {
                 this.boardColors = {
-                    black:this.game?.opponent?.color_id,
-                    white:this.game?.creator?.color_id,
-                    board: block.boardColors.light
+                    black:this.game?.state?.colors.black,
+                    white:this.game?.state?.colors.white,
+                    board: this.game?.state?.colors.board
                 }
 
                 this.playColors.light = backgroundColors[block.boardColors.light]

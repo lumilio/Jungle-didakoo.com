@@ -387,6 +387,7 @@ export default {
                         }catch (error){
                             console.error(error)
                         }
+                        this.$router.go(-1)
                     } else {
                         toastr.error('access denied')
                         console.log('access denied');
