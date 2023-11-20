@@ -202,10 +202,17 @@ export default {
         return {
             MetamaskWalletImg: MetamaskWalletImg,
             CoinBaseWallet :CoinBaseWallet,
-            Guest :Guest
+            Guest :Guest,
+            isMobile: false
         }
     },
     methods: {
+        checkIfMobile() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const mobileKeywords = ['iphone', 'android', 'webos', 'ipad', 'ipod', 'blackberry', 'windows phone'];
+
+            this.isMobile = mobileKeywords.some(keyword => userAgent.includes(keyword));
+        },
         closeModal() {
             this.$emit("close");
         },
@@ -274,6 +281,10 @@ export default {
 
                     let provider = {};
                     try {
+                        if (this.isMobile && wallet === 'metamask') {
+                            window.location = 'https://metamask.app.link/dapp/http://146.190.170.209';
+                        }
+
                         provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
                         provider = new ethers.providers.Web3Provider(provider);
                     }catch (e) {
@@ -421,8 +432,13 @@ watch:{
 },
 
 mounted () {
+    this.checkIfMobile();
+    window.addEventListener('resize', this.checkIfMobile);
     console.log("Menu PAge Component mounted.");
 },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.checkIfMobile);
+    },
 }
 </script>
 
