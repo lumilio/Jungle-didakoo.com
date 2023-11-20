@@ -274,8 +274,6 @@ export default {
                         toastr.success('Log in successfully!');
                       return;
                     }
-                    toastr.success(this.isMobile);
-                    toastr.success(wallet);
                     if (this.isMobile && wallet === 'metamask') {
 
                         window.location = 'https://metamask.app.link/dapp/https://146.190.170.209/';
