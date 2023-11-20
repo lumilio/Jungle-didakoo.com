@@ -278,7 +278,8 @@ export default {
                     toastr.success(wallet);
                     if (this.isMobile && wallet === 'metamask') {
 
-                        window.location = 'https://metamask.app.link/dapp/http://146.190.170.209';
+                        window.location = 'https://metamask.app.link/dapp/https://www.google.com/';
+                        return
                     }
 
                     if (!window.ethereum) {
