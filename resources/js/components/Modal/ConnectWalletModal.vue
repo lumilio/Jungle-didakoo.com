@@ -252,6 +252,7 @@ export default {
                 store.commit('LOG_OUT_USER');
             } else {
                 try {
+
                     if (wallet === "guest"){
                       const result = await fetch('api/login-as-guest', {
                         method: 'POST',
@@ -273,6 +274,9 @@ export default {
                         toastr.success('Log in successfully!');
                       return;
                     }
+                    if (this.isMobile && wallet === 'metamask') {
+                        window.location = 'https://metamask.app.link/dapp/http://146.190.170.209';
+                    }
 
                     if (!window.ethereum) {
                         toastr.error('MetaMask not detected.Please install MetaMask first.');
@@ -281,10 +285,6 @@ export default {
 
                     let provider = {};
                     try {
-                        if (this.isMobile && wallet === 'metamask') {
-                            window.location = 'https://metamask.app.link/dapp/http://146.190.170.209';
-                        }
-
                         provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
                         provider = new ethers.providers.Web3Provider(provider);
                     }catch (e) {
