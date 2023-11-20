@@ -4,8 +4,8 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-      user: null,
-      address: null,
+    user: null,
+    address: null,
     turn: "white",
     turnNumber: 1,
     squares: [],
@@ -17,7 +17,8 @@ const store = new Vuex.Store({
     ],
     svg: null,
     errors: [],
-      userData: {},
+    userData: {},
+    connectWallet: false
   },
 
   getters: {
@@ -51,6 +52,9 @@ const store = new Vuex.Store({
       LOG_OUT_USER (state){
           state.user = null;
           state.address = null;
+      },
+      TOGGLE_WALLET_MODAL(state) {
+          state.connectWallet = !state.connectWallet;
       },
     ADD_MOVE_HISTORY(state, move) {
       let lastMove = state.movesHistory[state.movesHistory.length - 1];

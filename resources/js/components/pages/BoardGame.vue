@@ -1,11 +1,14 @@
 <template>
     <div class="allineatore2 board_game">
         <Modal
-            :open="true"
+            :open="!toggleModal"
             :gameStarted="false"
             :buttons="buttons"
             :startNewGame="true"
         />
+        <div v-show="!toggleModal" style="height:100vh;" class="justify-content-center align-content-center d-flex modal-outgame">
+            <ConnectWalletModal :show="toggleModal" style="margin: 0"></ConnectWalletModal>
+        </div>
     </div>
 </template>
 
@@ -14,8 +17,9 @@
     import Modal from "../Modal/Modal";
     import store from "../../store";
     import helper from "../Game/GameHelper";
+    import ConnectWalletModal from "../Modal/ConnectWalletModal.vue";
     export default {
-        components: {Modal},
+        components: {ConnectWalletModal, Modal},
         data(){
             return {
                 buttons: [
@@ -45,6 +49,9 @@
             },
             address() {
                 return store.state.address
+            },
+            toggleModal(){
+                return store.state.connectWallet
             }
         },
         methods: {
@@ -58,6 +65,8 @@
                         const state = helper.getInitialState();
                         const response = await axios.post('/api/make-game',{multiPlay: multiPlay, address: this.address, state: state});
                         this.$router.push(`/room/${response.data.url}`);
+                    }else{
+                        return store.commit('TOGGLE_WALLET_MODAL');
                     }
 
                 }catch (e) {

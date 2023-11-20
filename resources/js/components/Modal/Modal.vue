@@ -106,11 +106,6 @@ export default {
             return minutes + ':' + seconds
 
         },
-        async createGame() {
-            this.url = window.location.host;
-            const response = await axios.get('http://' + this.url + '/api/make-game');
-            this.$router.push(`/room/${response.data.url}`);
-        },
         closeModal() {
             this.$emit("closeModal")
         },

@@ -148,6 +148,9 @@
             v-on:handelReadyToStart="handelReadyToStart()"
             v-on:quitGame="quitGame()"
         />
+        <div v-show="!toggleModal" style="height:100vh; z-index: 1000;" class="justify-content-center align-content-center d-flex modal-outgame">
+            <ConnectWalletModal :show="toggleModal" style="margin: 0"></ConnectWalletModal>
+        </div>
     </div>
 </template>
 
@@ -159,6 +162,7 @@ import store from "../../store";
 import { getColorStyles } from '../../utilites/getColorByUserColorId';
 import user from "../../store/modules/user";
 import MultiPlay from "../Game/MultiPlay.vue";
+import ConnectWalletModal from "../Modal/ConnectWalletModal.vue";
 
 export default {
     data() {
@@ -205,6 +209,7 @@ export default {
         MultiPlay,
         Game,
         Modal,
+        ConnectWalletModal,
     },
     computed: {
         user() {
@@ -215,6 +220,9 @@ export default {
         },
         userData(){
             return store.state.userData
+        },
+        toggleModal(){
+            return store.state.connectWallet
         }
     },
     methods: {
@@ -259,14 +267,15 @@ export default {
         },
         async quitGame() {
             try {
-                const response = await axios.get(
-                    `/api/delete-game/${this.$route.params.id}`
-                );
-                localStorage.removeItem('canStart')
-                if (this.readyToStart) {
-                    return this.$router.push("/rank");
-                }
-                return this.$router.push("/game");
+                    await axios.get(
+                        `/api/delete-game/${this.$route.params.id}`
+                    );
+                    localStorage.removeItem('canStart')
+                    if (this.readyToStart) {
+                        return this.$router.push("/rank");
+                    }
+                    return this.$router.push("/game");
+
             } catch (e) {
                 console.log(e);
             }

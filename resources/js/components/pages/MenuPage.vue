@@ -9,8 +9,8 @@
         <!----------------------------------------------------------------------------->
 
         <!-------------------------- BUTTONS  ------------------------------>
-        <div v-show="!showModal" style="height:calc(80vh - 80px);" class="justify-content-center align-content-center d-flex">
-            <div class="bt" v-show="!showModal">
+        <div v-show="!toggleModal" style="height:calc(80vh - 80px);" class="justify-content-center align-content-center d-flex">
+            <div class="bt" v-show="!toggleModal">
                 <a type="button" >
                     <div class="square" :style="{ border: borderStyle }" @click="openModal">
                         <i id="led" class="fa-solid fa-circle" :style="{color: user? '#46e546' : 'red'}" ></i>
@@ -34,7 +34,7 @@
                     </div>
                 </router-link>
             </div>
-            <ConnectWalletModal :show="showModal" @close="closeModal" style="margin: 0"></ConnectWalletModal>
+            <ConnectWalletModal :show="toggleModal" style="margin: 0"></ConnectWalletModal>
         </div>
         <!------------------------------------------------------------------>
 
@@ -52,7 +52,6 @@ export default {
     data() {
         return {
             test: false,
-            showModal: false,
             placeA: false,
             borderStyle: '',
         }
@@ -72,6 +71,9 @@ export default {
         },
         userData(){
             return store.state.userData
+        },
+        toggleModal(){
+            return store.state.connectWallet
         }
     },
 
@@ -90,22 +92,18 @@ export default {
 
         async openModal() {
             if (this.user) {
-                const response = await fetch('api/logout', {
+                await fetch('api/logout', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
                 store.commit('LOG_OUT_USER')
-                this.showModal = false;
+                store.commit('TOGGLE_WALLET_MODAL')
                 toastr.info("User log outed")
             } else {
-                this.showModal = true;
+                store.commit('TOGGLE_WALLET_MODAL')
             }
-        },
-
-        closeModal() {
-            this.showModal = false;
         },
     },
 

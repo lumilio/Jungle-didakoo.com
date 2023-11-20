@@ -14,6 +14,10 @@ export default {
       },
     ];
   },
+  TOGGLE_WALLET_MODAL(state) {
+      console.log(state.connectWallet,'state.connectWallet')
+    state.connectWallet = !state.connectWallet;
+  },
   ADD_MOVE_HISTORY(state, move) {
     let lastMove = state.movesHistory[state.movesHistory.length - 1];
     if (Object.keys(lastMove[move.color]).length) {

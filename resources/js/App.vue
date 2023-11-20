@@ -25,7 +25,7 @@ export default {
             store.commit('SET_USER_DATA', {color_id: response.data.color, power: response.data.power, id: response.data.id})
         }else{
             if (window.location.pathname.includes('room')){
-                this.$router.push('/menu');
+                store.commit('TOGGLE_WALLET_MODAL');
             }
         }
 

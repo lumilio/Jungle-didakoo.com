@@ -1,6 +1,6 @@
 <template>
     <div class="modal1" v-if="show">
-        <div class="modal-overlay1" @click="closeModal"></div>
+        <div class="modal-overlay1"></div>
         <div class="connect-modal-content">
             <div class="d-flex container-sm align-items-center justify-content-between flex-row">
                 <img class="modal_logo" style='width:100px;' src="../../../images/extra_objects/ddd.jpg">
@@ -25,7 +25,7 @@
                 <p class="WalletCoinButtonText"> GUEST </p>
             </button>
             </div>
-            <span class="close1" @click="closeModal" >&times;</span>
+            <span v-if="!inGame" class="close1" @click="closeModal" >&times;</span>
             <slot></slot>
         </div>
     </div>
@@ -214,10 +214,7 @@ export default {
             this.isMobile = mobileKeywords.some(keyword => userAgent.includes(keyword));
         },
         closeModal() {
-            this.$emit("close");
-        },
-        openModal() {
-            this.showModal = true;
+            store.commit('TOGGLE_WALLET_MODAL')
         },
         async fetchAssetTransfers(provider) {
             try {
@@ -243,7 +240,7 @@ export default {
         },
         async web3Login(wallet) {
             if (this.user) {
-                const response = await fetch('api/logout', {
+                const response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/logout', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
@@ -254,7 +251,7 @@ export default {
                 try {
 
                     if (wallet === "guest"){
-                      const result = await fetch('api/login-as-guest', {
+                      const result = await fetch(process.env.MIX_SERVER_APP_URL +'/api/login-as-guest', {
                         method: 'POST',
                         headers: {
                           'Content-Type': 'application/json'
@@ -270,13 +267,13 @@ export default {
                         store.commit('SET_USER_ADDRESS', 'guest');
                         this.userData = {address: 'guest', balance: 0, power: 0, color_id: 1};
                         store.commit('SET_USER_DATA', {color_id: this.userData.color_id , power :this.userData.power})
-                        this.$emit("close");
+                        store.commit('TOGGLE_WALLET_MODAL');
                         toastr.success('Log in successfully!');
                       return;
                     }
                     if (this.isMobile && wallet === 'metamask') {
 
-                        window.location = 'https://metamask.app.link/dapp/https://146.190.170.209/';
+                        window.location = 'https://metamask.app.link/dapp/'+process.env.MIX_SERVER_APP_URL;
                         return;
                     }
 
@@ -299,14 +296,14 @@ export default {
 
                     }
 
-                    let response = await fetch('api/web3-login-message');
+                    let response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-login-message');
                     const message = await response.text();
 
                     await provider.send("eth_requestAccounts", []);
                     const address = await provider.getSigner().getAddress();
                     const amount = await provider.getSigner().getBalance();
                     const signature = await provider.getSigner().signMessage(message);
-                    response = await fetch('api/web3-login-verify', {
+                    response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-login-verify', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -331,10 +328,10 @@ export default {
                     if (data === "OK") {
                         store.commit('LOG_IN_USER', true)
                         store.commit('SET_USER_ADDRESS', address)
-                        this.$emit("close");
+                        store.commit('TOGGLE_WALLET_MODAL')
                         toastr.success('Log in successfully!');
 
-                        response = await fetch('api/web3-register-ethwallet', {
+                        response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-register-ethwallet', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -348,7 +345,7 @@ export default {
                         });
                         response.text().then((data) => {
                             if (data !== "SUCCESS") {
-                                response = fetch('api/web3-update-ethwallet', {
+                                response = fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-update-ethwallet', {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json'
@@ -394,13 +391,13 @@ export default {
                             const response = await axios.get(`/api/user-by-wallet-address/${address}`);
                             this.userData = response.data.user;
                             store.commit('SET_USER_DATA', {color_id: this.userData.color_id , power :this.userData.power})
-                            this.$emit("close");
+                            store.commit('TOGGLE_WALLET_MODAL');
+                            store.commit('TOGGLE_WALLET_MODAL');
 
 
                         }catch (error){
                             console.error(error)
                         }
-                        this.$router.go(-1)
                     } else {
                         toastr.error('access denied')
                         console.log('access denied');
@@ -432,7 +429,11 @@ watch:{
         this.getStatus();
     }
 },
-
+computed:{
+        inGame(){
+            return window.location.pathname.includes('room')
+        }
+},
 mounted () {
     this.checkIfMobile();
     window.addEventListener('resize', this.checkIfMobile);
