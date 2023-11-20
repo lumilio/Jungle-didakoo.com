@@ -22,7 +22,10 @@
                 <!----------------------------------------->
                 <div
                     class="allineatore d-flex flex-column container-sm justify-content-center align-items-center"
+                    style="position: relative;"
                 >
+                    <div class="allineatore-inner-container">
+
                     <!-------------- PLAYER 2 DATA ---------------->
                     <div class="board-player">
                         <div
@@ -130,6 +133,7 @@
                         </div>
                     </div>
                     <!--------------------------------------------->
+                </div>
                 </div>
             </template>
         </div>
@@ -401,7 +405,15 @@ export default {
         display: flex;
         justify-content: center;
     }
-}   .player-info{
+
+    .allineatore-inner-container {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+  .player-info{
         font-size: 14.5px;
         padding: 10px;
         margin: 0;
