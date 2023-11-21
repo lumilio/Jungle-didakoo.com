@@ -323,7 +323,7 @@ export default {
                     })
                     if(!toSquare.code){
                         if (store.state.address === this.game?.opponent?.wallet_address){
-                            toSquare = this.squares[9 - data.lastMove.to[1]][keys[data.lastMove.to[0]]]
+                            toSquare = this.squares[data.lastMove.to[1] - 1][keys[data.lastMove.to[0]]]
                         }else{
                             toSquare = this.squares[data.lastMove.to[1] - 1][keys[data.lastMove.to[0]]];
                         }

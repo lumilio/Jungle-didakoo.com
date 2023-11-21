@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import Button from "../Button/Button.vue";
 
 export default {
