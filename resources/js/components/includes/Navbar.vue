@@ -37,7 +37,7 @@ export default {
         async getAllUsers()
         {
             this.url = window.location.host;
-            const response = await axios.get('http://'+this.url+'/api/get-users');
+            const response = await axios.get(process.env.MIX_SERVER_APP_URL +'/api/get-users');
             console.log(response,"responseRankk")
             this.playersArray = response.data.users;
         }

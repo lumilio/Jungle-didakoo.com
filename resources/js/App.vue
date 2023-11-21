@@ -13,7 +13,7 @@ export default {
     },
     async mounted() {
         this.url = window.location.host;
-        const response = await axios.get('http://'+this.url+'/api/getSession', {
+        const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/getSession', {
             headers: {
                 'Content-Type': 'application/json',
                 '_token': document.querySelector('meta[name="csrf-token"]').content
