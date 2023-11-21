@@ -272,7 +272,7 @@ export default {
                       return;
                     }
                     if (this.isMobile && wallet === 'metamask' && !window.ethereum) {
-                        window.location = 'https://metamask.app.link/dapp/'+window.location.host;
+                        window.location = 'https://metamask.app.link/dapp/'+window.location.href;
                         return;
                     }
 
