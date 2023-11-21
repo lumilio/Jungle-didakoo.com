@@ -59,9 +59,6 @@
                 this.$router.push('/rank')
             },
             async createGame({ multiPlay }){
-                alert(this.user)
-                alert(this.address)
-                alert(window.location.host)
                 try {
                     if(this.user){
                         this.url = window.location.host;
