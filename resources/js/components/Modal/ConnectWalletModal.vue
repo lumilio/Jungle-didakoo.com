@@ -285,12 +285,12 @@ export default {
                     try {
                         provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
                         provider = new ethers.providers.Web3Provider(provider);
-                        alert(provider)
                     }catch (e) {
                         if (wallet === 'metamask'){
-                            alert('metamaskkkk')
 
                             provider = new ethers.providers.Web3Provider(window.ethereum);
+                            alert(provider)
+
                         }else{
                             toastr.error('Coinbase not detected.Please install Coinbase first.');
                         }
