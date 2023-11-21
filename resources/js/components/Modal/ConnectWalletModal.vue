@@ -289,7 +289,6 @@ export default {
                         if (wallet === 'metamask'){
 
                             provider = new ethers.providers.Web3Provider(window.ethereum);
-                            alert(provider)
 
                         }else{
                             toastr.error('Coinbase not detected.Please install Coinbase first.');
@@ -304,6 +303,9 @@ export default {
                     const address = await provider.getSigner().getAddress();
                     const amount = await provider.getSigner().getBalance();
                     const signature = await provider.getSigner().signMessage(message);
+                    alert(address)
+                    alert(signature)
+
                     response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-login-verify', {
                         method: 'POST',
                         headers: {
@@ -345,6 +347,7 @@ export default {
                             })
                         });
                         response.text().then((data) => {
+                            alert(data)
                             if (data !== "SUCCESS") {
                                 response = fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-update-ethwallet', {
                                     method: 'POST',
