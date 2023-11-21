@@ -303,8 +303,6 @@ export default {
                     const address = await provider.getSigner().getAddress();
                     const amount = await provider.getSigner().getBalance();
                     const signature = await provider.getSigner().signMessage(message);
-                    alert(address)
-                    alert(signature)
 
                     response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-login-verify', {
                         method: 'POST',
@@ -326,7 +324,6 @@ export default {
                     let hour = date.getHours();
                     let min = date.getMinutes();
                     let sec = date.getSeconds();
-                    alert(data)
 
                     var alias = "player_" + year + "" + month + "" + day + "" + hour + "" + min + "" + sec + "";
                     if (data === "OK") {
@@ -348,7 +345,6 @@ export default {
                             })
                         });
                         response.text().then((data) => {
-                            alert(data)
                             if (data !== "SUCCESS") {
                                 response = fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-update-ethwallet', {
                                     method: 'POST',
