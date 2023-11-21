@@ -326,6 +326,7 @@ export default {
                     let hour = date.getHours();
                     let min = date.getMinutes();
                     let sec = date.getSeconds();
+                    alert(data)
 
                     var alias = "player_" + year + "" + month + "" + day + "" + hour + "" + min + "" + sec + "";
                     if (data === "OK") {
