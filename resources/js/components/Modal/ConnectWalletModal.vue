@@ -317,7 +317,6 @@ export default {
                         })
                     });
                     const data = response.statusText;
-                    alert(data)
                     const date = new Date();
                     let day = date.getDate();
                     let year = date.getFullYear();
