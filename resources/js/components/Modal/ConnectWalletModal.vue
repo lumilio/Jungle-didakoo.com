@@ -318,6 +318,12 @@ export default {
                     if (data === "OK") {
                         store.commit('LOG_IN_USER', true)
                         store.commit('SET_USER_ADDRESS', address)
+                        
+                        const getUsersResponse = await axios.get(`http://${window.location.host}/api/get-users`);
+                        const playersArray = getUsersResponse.data.users;
+                        const currentLoggedInPlayerNumber = playersArray.findIndex((player) => player.wallet_address == address) + 1
+                        store.commit('SET_PLAYER_NUMBER', currentLoggedInPlayerNumber)
+
                         this.$emit("close");
                         toastr.success('Log in successfully!');
 

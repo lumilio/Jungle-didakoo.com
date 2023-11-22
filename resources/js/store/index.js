@@ -6,7 +6,7 @@ const store = new Vuex.Store({
   state: {
     user: null,
     address: null,
-    playerNumber: null,
+    playerNumber: localStorage.getItem('playerNumber') ?? null,
     turn: "white",
     turnNumber: 1,
     squares: [],
@@ -47,7 +47,8 @@ const store = new Vuex.Store({
         state.address = val;
     },
     SET_PLAYER_NUMBER(state, val) {
-        state.playerNumber = val;
+        localStorage.setItem('playerNumber', val);
+        state.playerNumber = val
     },
     SET_USER_DATA(state, UsersData) {
         state.userData = UsersData;
