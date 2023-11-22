@@ -100,7 +100,7 @@
                     v-bind:key="players.id"
                     class="record"
                     :style="{backgroundColor : backgroundBord ? backgroundBord : '#EDEB52', textDecoration: 'none'}"
-                    :to="{ path: 'avatar', query: { wallet_address: players.wallet_address, player_list_index: playerListIndex + 1 } }"
+                    :to="{ path: 'avatar', query: { wallet_address: players.wallet_address } }"
                 >
                     <div :style="{
                         color: colorAddress ?? 'black',
@@ -331,6 +331,11 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
             this.url = window.location.host;
             const response = await axios.get('http://'+this.url+'/api/get-users');
             this.playersArray = response.data.users;
+            
+            if (this.address) {
+                const currentLoggedInPlayerNumber = this.playersArray.findIndex((player) => player.wallet_address == this.address) + 1
+                store.commit('SET_PLAYER_NUMBER', currentLoggedInPlayerNumber)
+            }
         },
         getColorByUserColorId() {
             try {
@@ -351,7 +356,7 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
     },
      watch:{
          userData() {
-                 this.getColorByUserColorId();
+            this.getColorByUserColorId();
          }
      },
     async mounted()
