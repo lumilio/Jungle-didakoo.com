@@ -16,7 +16,7 @@
                         class="d-flex bg-transparent border-0 align-items-center"
                     >
                         <p class="avatar_helper">Console</p>
-                        <i class="fa-solid gamepad fa-gamepad"></i>
+                        <i class="fa-solid burger_menu fa-bars" style="margin: 0 auto; position: static; font-size: 20px;"></i>
                     </button>
                 </div>
                 <!----------------------------------------->
