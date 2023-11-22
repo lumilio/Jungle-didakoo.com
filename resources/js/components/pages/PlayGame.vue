@@ -22,115 +22,112 @@
                 <!----------------------------------------->
                 <div
                     class="allineatore d-flex flex-column container-sm justify-content-center align-items-center"
-                    style="position: relative;"
                 >
-                    <div class="allineatore-inner-container">
-                        <!-------------- PLAYER 2 DATA ---------------->
-                        <div class="board-player">
-                            <div
-                                :style="{
-                                    backgroundColor: backgroundBord ? backgroundBord : '#EDEB52',
-                                    width: '100%',
-                                    border: '0',
-                                }"
-                                class="record"
-                            >
-                                <p>
-                                    1°
-                                    <img
-                                        src="../../../images/extra_objects/iconaplayB.png"
-                                    />
-
-                                </p>
-                                <div
-                                    class="d-flex align-items-center flex-row flex-nowrap"
-                                >
-                                    <img
-                                        style="width: 30px"
-                                        src="../../../images/extra_objects/icon-59.png"
-                                        alt=""
-                                    />
-                                    <!-- <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i> -->
-                                </div>
-                                <span class="align-items-center">
-                                    100 <i class="fa-solid fa-bolt ml-1"></i
-                                ></span>
-                            </div>
-                        </div>
-                        <!--------------------------------------------->
+                    <!-------------- PLAYER 2 DATA ---------------->
+                    <div class="board-player">
                         <div
-                            class="board d-flex justify-content-center bg-transparent align-items-center"
+                            :style="{
+                                backgroundColor: backgroundBord ? backgroundBord : '#EDEB52',
+                                width: '100%',
+                                border: '0',
+                            }"
+                            class="record"
                         >
-                            <template  v-if="game.status === 'pending' || game.opponent_id">
-                                <MultiPlay @gameover="gameOver" :game="game" :id="$route.params.id" />
-                            </template>
-                            <template v-else>
-                                <Game @gameover="gameOver" :game="game" :id="$route.params.id" />
-                            </template>
-                        </div>
-                        <!-------------- PLAYER 1 DATA ---------------->
-                        <div class="board-player">
+                            <p>
+                                1°
+                                <img
+                                    src="../../../images/extra_objects/iconaplayB.png"
+                                />
+
+                            </p>
                             <div
-                                :style="{
-                                    backgroundColor: backgroundBord ? backgroundBord : '#EDEB52',
-                                    width: '100%',
-                                    border: '0',
-                                }"
-                                class="record"
+                                class="d-flex align-items-center flex-row flex-nowrap"
                             >
-                                <p
-                                    :style="{
-                                        color: colorAddress ? colorAddress : 'black',
-                                        fontSize: '14.5px',
-                                        padding: '10px',
-                                        margin: '0',
-                                        textOverflow: 'ellipsis',
-                                        whiteSpace: 'nowrap',
-                                        overflow: 'hidden',
-                                        textDecoration: textDecorationAddress ? textDecorationAddress : 'underline black',
-                                    }"
-                                >
-                                    1°
-                                    <img
-                                        style="
-                                            width: 20px;
-                                            margin-left: 5px;
-                                            margin-right: 5px;
-                                            margin-bottom: 3px;
-                                        "
-                                        :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayB.png'" alt="User Avatar"
-                                    />
-                                    {{ address }}
-                                </p>
-                                <div
-                                    class="d-flex align-items-center flex-row flex-nowrap"
-                                >
-                                    <img
-                                        style="width: 30px"
-                                        src="../../../images/extra_objects/icon-59.png"
-                                        alt=""
-                                    />
-                                    <!-- <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i> -->
-                                </div>
-                                <span
-                                    class="align-items-center"
-                                    :style="{
-                                        color: colorPower,
-                                        marginRight: '10px',
-                                        whiteSpace: 'nowrap',
-                                        backgroundColor: '',
-                                        padding: '0 10px',
-                                        borderRadius: '20px',
-                                        display: 'flex',
-                                    }"
-                                >
-                                    {{ userData?.power }}
-                                    <i class="fa-solid fa-bolt ml-1"></i
-                                ></span>
+                                <img
+                                    style="width: 30px"
+                                    src="../../../images/extra_objects/icon-59.png"
+                                    alt=""
+                                />
+                                <!-- <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i> -->
                             </div>
+                            <span class="align-items-center">
+                                100 <i class="fa-solid fa-bolt ml-1"></i
+                            ></span>
                         </div>
-                        <!--------------------------------------------->
                     </div>
+                    <!--------------------------------------------->
+                    <div
+                        class="board d-flex justify-content-center bg-transparent align-items-center"
+                    >
+                        <template  v-if="game.status === 'pending' || game.opponent_id">
+                            <MultiPlay @gameover="gameOver" :game="game" :id="$route.params.id" />
+                        </template>
+                        <template v-else>
+                            <Game @gameover="gameOver" :game="game" :id="$route.params.id" />
+                        </template>
+                    </div>
+                    <!-------------- PLAYER 1 DATA ---------------->
+                    <div class="board-player">
+                        <div
+                            :style="{
+                                backgroundColor: backgroundBord ? backgroundBord : '#EDEB52',
+                                width: '100%',
+                                border: '0',
+                            }"
+                            class="record"
+                        >
+                            <p
+                                :style="{
+                                    color: colorAddress ? colorAddress : 'black',
+                                    fontSize: '14.5px',
+                                    padding: '10px',
+                                    margin: '0',
+                                    textOverflow: 'ellipsis',
+                                    whiteSpace: 'nowrap',
+                                    overflow: 'hidden',
+                                    textDecoration: textDecorationAddress ? textDecorationAddress : 'underline black',
+                                }"
+                            >
+                                1°
+                                <img
+                                    style="
+                                        width: 20px;
+                                        margin-left: 5px;
+                                        margin-right: 5px;
+                                        margin-bottom: 3px;
+                                    "
+                                    :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayB.png'" alt="User Avatar"
+                                />
+                                {{ address }}
+                            </p>
+                            <div
+                                class="d-flex align-items-center flex-row flex-nowrap"
+                            >
+                                <img
+                                    style="width: 30px"
+                                    src="../../../images/extra_objects/icon-59.png"
+                                    alt=""
+                                />
+                                <!-- <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i> -->
+                            </div>
+                            <span
+                                class="align-items-center"
+                                :style="{
+                                    color: colorPower,
+                                    marginRight: '10px',
+                                    whiteSpace: 'nowrap',
+                                    backgroundColor: '',
+                                    padding: '0 10px',
+                                    borderRadius: '20px',
+                                    display: 'flex',
+                                }"
+                            >
+                                {{ userData?.power }}
+                                <i class="fa-solid fa-bolt ml-1"></i
+                            ></span>
+                        </div>
+                    </div>
+                    <!--------------------------------------------->
                 </div>
             </template>
         </div>
@@ -401,13 +398,6 @@ export default {
     .spinner_handler {
         display: flex;
         justify-content: center;
-    }
-
-    .allineatore-inner-container {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
     }
 }
 </style>
