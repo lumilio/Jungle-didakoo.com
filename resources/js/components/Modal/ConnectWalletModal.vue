@@ -11,6 +11,8 @@
                     Select wallet to login
                 </h2>
             </div>
+            <button @click="connectWallet">Connect Wallet</button>
+
             <div class="web3-login-buttons">
                 <button class="WalletCoinButton" @click="web3Login('metamask')" id="metamask">
                 <img :src=MetamaskWalletImg alt="MetamaskWallet" class="imgSize">
@@ -52,6 +54,7 @@ import Nft18PepsiABI from '../../abis/nft18PepsiABI.json'
 import Nft19LacosteABI from '../../abis/nft19LacosteABI.json'
 import Nft20LandABI from '../../abis/nft20LandABI.json'
 import axios from "axios";
+import WalletConnectClient from "@walletconnect/client";
 
 const dataNft = [
     {
@@ -207,6 +210,34 @@ export default {
         }
     },
     methods: {
+        async connectWallet() {
+            try {
+                const connector = new WalletConnectClient({
+                    bridge: 'https://bridge.walletconnect.org',
+                    rpc: {
+                        1: 'https://mainnet.infura.io/v3/92def00fe703450bb5990bd819a97293',
+                        4: 'https://rinkeby.infura.io/v3/92def00fe703450bb5990bd819a97293',
+                    },
+                    chainId: 1,
+                    pollingInterval: 15000,
+                    qrcodeModalOptions: {
+                        mobileLinks: ['rainbow', 'metamask', 'trust'],
+                    },
+                    storageOptions: {
+                        sessionStorage: window.sessionStorage,
+                    },
+                });
+
+                // Use connector methods for connecting to a wallet
+
+                // Example:
+                await connector.createSession();
+                // Handle the connection and continue with the wallet integration
+            } catch (error) {
+                console.error("WalletConnect error:", error);
+                // Handle error
+            }
+        },
         checkIfMobile() {
             const userAgent = navigator.userAgent.toLowerCase();
             const mobileKeywords = ['iphone', 'android', 'webos', 'ipad', 'ipod', 'blackberry', 'windows phone'];
