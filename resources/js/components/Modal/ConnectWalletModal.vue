@@ -62,6 +62,7 @@ import Nft20LandABI from '../../abis/nft20LandABI.json'
 import axios from "axios";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
+
 const dataNft = [
     {
         nftName: 'sunFlower_1',
