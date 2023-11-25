@@ -224,9 +224,11 @@ export default {
 
                 try {
                     await provider.enable();
+                    alert(provider);
 
                     if (provider.connected) {
 
+                        alert(provider);
                         const accounts = await provider.send("eth_accounts");
                         alert(accounts[0]);
                         return provider
