@@ -11,9 +11,14 @@
                     Select wallet to login
                 </h2>
             </div>
-            <button @click="connectWallet">Connect Wallet</button>
 
             <div class="web3-login-buttons">
+
+                <button class="WalletCoinButton" @click="connectWallet" id="metamask">
+                    <img :src=walletConnect alt="MetamaskWallet" class="imgSize">
+                    <p class="WalletCoinButtonText"> Connect Wallet </p>
+                </button>
+
                 <button class="WalletCoinButton" @click="web3Login('metamask')" id="metamask">
                 <img :src=MetamaskWalletImg alt="MetamaskWallet" class="imgSize">
                 <p class="WalletCoinButtonText"> METAMASK </p>
@@ -36,6 +41,7 @@
 <script>
 import store from "../../store";
 import MetamaskWalletImg from "../../../images/extra_objects/MetaMask_Fox.png"
+import walletConnect from "../../../images/extra_objects/walletConnect.svg"
 import CoinBaseWallet from "../../../images/extra_objects/CoinBaseWallet.png"
 import Guest from "../../../images/extra_objects/ghost.png"
 import { ethers as web3 } from '../../../../public/js/ethers';
@@ -204,6 +210,7 @@ export default {
     data(){
         return {
             MetamaskWalletImg: MetamaskWalletImg,
+            walletConnect: walletConnect,
             CoinBaseWallet :CoinBaseWallet,
             Guest :Guest,
             isMobile: false
