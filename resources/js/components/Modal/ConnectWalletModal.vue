@@ -60,6 +60,7 @@ import Nft18PepsiABI from '../../abis/nft18PepsiABI.json'
 import Nft19LacosteABI from '../../abis/nft19LacosteABI.json'
 import Nft20LandABI from '../../abis/nft20LandABI.json'
 import axios from "axios";
+import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
 const dataNft = [
@@ -212,33 +213,23 @@ export default {
             MetamaskWalletImg: MetamaskWalletImg,
             walletConnect: walletConnect,
             CoinBaseWallet :CoinBaseWallet,
-            Guest :Guest
+            Guest :Guest,
+            web3Modal: null,
+            provider: null,
+            error: null
         }
     },
     methods: {
         async connectWallet() {
             try {
-                const provider = new WalletConnectProvider({
-                    infuraId: "737d9da66c5944ea9ef714aa86fb56fd"
-                });
-
-                try {
-                    await provider.enable();
-                    alert(provider);
-
-                    if (provider.connected) {
-
-                        alert(provider);
-                        const accounts = await provider.send("eth_accounts");
-                        alert(accounts[0]);
-                        return provider
-                    }
-                } catch (error) {
-                    console.error("Error connecting wallet:", error);
+                this.provider = await this.web3Modal.connect();
+                if (this.provider) {
+                    // Wallet connected, handle further operations
+                    console.log("Wallet connected:", this.provider);
                 }
             } catch (error) {
+                this.error = error.message || "Error connecting wallet.";
                 console.error("WalletConnect error:", error);
-                // Handle error
             }
         },
         closeModal() {
@@ -462,7 +453,20 @@ computed:{
             return window.location.pathname.includes('room')
         }
 },
-
+    mounted() {
+        this.web3Modal = new Web3Modal({
+            network: "mainnet", // Replace with the desired network
+            cacheProvider: true,
+            providerOptions: {
+                walletconnect: {
+                    package: WalletConnectProvider,
+                    options: {
+                        infuraId: "737d9da66c5944ea9ef714aa86fb56fd"
+                    }
+                }
+            }
+        });
+    },
     beforeDestroy() {
         window.removeEventListener('resize', this.checkIfMobile);
     },
