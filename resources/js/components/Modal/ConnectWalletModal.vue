@@ -14,7 +14,7 @@
 
             <div class="web3-login-buttons">
 
-                <button class="WalletCoinButton" @click="connectWallet" id="metamask">
+                <button class="WalletCoinButton" @click="web3Login('connectWallet')" id="metamask">
                     <img :src=walletConnect alt="MetamaskWallet" class="imgSize">
                     <p class="WalletCoinButtonText"> Connect Wallet </p>
                 </button>
@@ -212,22 +212,21 @@ export default {
             MetamaskWalletImg: MetamaskWalletImg,
             walletConnect: walletConnect,
             CoinBaseWallet :CoinBaseWallet,
-            Guest :Guest,
-            isMobile: false
+            Guest :Guest
         }
     },
     methods: {
         async connectWallet() {
             try {
                 const provider = new WalletConnectProvider({
-                    infuraId: "92def00fe703450bb5990bd819a97293" // Replace with your Infura Project ID
-                    // You may need to configure other options based on your requirements
+                    infuraId: "92def00fe703450bb5990bd819a97293"
                 });
 
                 try {
                     await provider.enable();
 
                     if (provider.connected) {
+                        return provider
                         const accounts = await provider.send("eth_accounts");
                         console.log("Connected wallet accounts:", accounts);
                     }
@@ -238,12 +237,6 @@ export default {
                 console.error("WalletConnect error:", error);
                 // Handle error
             }
-        },
-        checkIfMobile() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            const mobileKeywords = ['iphone', 'android', 'webos', 'ipad', 'ipod', 'blackberry', 'windows phone'];
-
-            this.isMobile = mobileKeywords.some(keyword => userAgent.includes(keyword));
         },
         closeModal() {
             store.commit('TOGGLE_WALLET_MODAL')
@@ -303,31 +296,30 @@ export default {
                         toastr.success('Log in successfully!');
                       return;
                     }
-                    if (this.isMobile && wallet === 'metamask' && !window.ethereum) {
-                        window.location = 'https://metamask.app.link/dapp/'+window.location.href;
-                        return;
+                    let provider = {};
+                    if (wallet === 'connectWallet'){
+                        provider = await this.connectWallet();
                     }
-
                     if (!window.ethereum) {
                         toastr.error('MetaMask not detected.Please install MetaMask first.');
                         return;
                     }
 
-                    let provider = {};
-                    try {
-                        provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
-                        provider = new ethers.providers.Web3Provider(provider);
-                    }catch (e) {
-                        if (wallet === 'metamask'){
+                    if (wallet !== 'connectWallet'){
+                        try {
+                            provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
+                            provider = new ethers.providers.Web3Provider(provider);
+                        }catch (e) {
+                            if (wallet === 'metamask'){
 
-                            provider = new ethers.providers.Web3Provider(window.ethereum);
+                                provider = new ethers.providers.Web3Provider(window.ethereum);
 
-                        }else{
-                            toastr.error('Coinbase not detected.Please install Coinbase first.');
+                            }else{
+                                toastr.error('Coinbase not detected.Please install Coinbase first.');
+                            }
+
                         }
-
                     }
-
                     let response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-login-message');
                     const message = await response.text();
 
@@ -467,11 +459,7 @@ computed:{
             return window.location.pathname.includes('room')
         }
 },
-mounted () {
-    this.checkIfMobile();
-    window.addEventListener('resize', this.checkIfMobile);
-    console.log("Menu PAge Component mounted.");
-},
+
     beforeDestroy() {
         window.removeEventListener('resize', this.checkIfMobile);
     },
