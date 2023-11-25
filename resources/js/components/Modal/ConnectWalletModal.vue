@@ -219,16 +219,17 @@ export default {
         async connectWallet() {
             try {
                 const provider = new WalletConnectProvider({
-                    infuraId: "92def00fe703450bb5990bd819a97293"
+                    infuraId: "https://mainnet.infura.io/v3/737d9da66c5944ea9ef714aa86fb56fd"
                 });
 
                 try {
                     await provider.enable();
 
                     if (provider.connected) {
-                        return provider
+
                         const accounts = await provider.send("eth_accounts");
-                        console.log("Connected wallet accounts:", accounts);
+                        alert(accounts[0]);
+                        return provider
                     }
                 } catch (error) {
                     console.error("Error connecting wallet:", error);

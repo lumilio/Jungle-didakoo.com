@@ -284,12 +284,16 @@ export default {
         }else if(this.game?.creator?.wallet_address === store.state.address && this.game.state.turn === "white"){
             this.openBoard = true
         }
+
+        // Pusher.logToConsole = true;
         Pusher.logToConsole = false;
         const pusher = new Pusher('88dfab940f882d473671', {
             cluster: 'mt1'
         });
         if (store.state.address && this.game.status === "started"){
+            // TODO subscribe
             const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address );
+
             channel.bind('App\\Events\\DoStep', (data) => {
                 if (data.player === store.state.address){
                     const keys = {
