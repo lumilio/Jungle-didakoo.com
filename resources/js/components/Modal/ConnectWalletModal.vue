@@ -219,7 +219,7 @@ export default {
         async connectWallet() {
             try {
                 const provider = new WalletConnectProvider({
-                    infuraId: "https://mainnet.infura.io/v3/737d9da66c5944ea9ef714aa86fb56fd"
+                    infuraId: "737d9da66c5944ea9ef714aa86fb56fd"
                 });
 
                 try {
