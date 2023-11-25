@@ -217,12 +217,12 @@ export default {
     },
     methods: {
         async connectWallet() {
-            try {
+            // try {
                 const provider = new WalletConnectProvider({
                     infuraId: "737d9da66c5944ea9ef714aa86fb56fd"
                 });
 
-                try {
+                // try {
                     await provider.enable();
                     alert(provider);
 
@@ -232,13 +232,13 @@ export default {
                         alert(accounts[0]);
                         return provider
                     }
-                } catch (error) {
-                    console.error("Error connecting wallet:", error);
-                }
-            } catch (error) {
-                console.error("WalletConnect error:", error);
-                // Handle error
-            }
+            //     } catch (error) {
+            //         console.error("Error connecting wallet:", error);
+            //     }
+            // } catch (error) {
+            //     console.error("WalletConnect error:", error);
+            //     // Handle error
+            // }
         },
         closeModal() {
             store.commit('TOGGLE_WALLET_MODAL')

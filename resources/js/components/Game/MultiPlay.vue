@@ -286,7 +286,7 @@ export default {
         }
 
         // Pusher.logToConsole = true;
-        Pusher.logToConsole = false;
+        Pusher.logToConsole = true;
         const pusher = new Pusher('88dfab940f882d473671', {
             cluster: 'mt1'
         });
