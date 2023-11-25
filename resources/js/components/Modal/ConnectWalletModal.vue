@@ -54,7 +54,7 @@ import Nft18PepsiABI from '../../abis/nft18PepsiABI.json'
 import Nft19LacosteABI from '../../abis/nft19LacosteABI.json'
 import Nft20LandABI from '../../abis/nft20LandABI.json'
 import axios from "axios";
-import WalletConnectClient from "@walletconnect/client";
+import WalletConnectProvider from "@walletconnect/web3-provider";
 
 const dataNft = [
     {
@@ -212,27 +212,21 @@ export default {
     methods: {
         async connectWallet() {
             try {
-                const connector = new WalletConnectClient({
-                    bridge: 'https://bridge.walletconnect.org',
-                    rpc: {
-                        1: 'https://mainnet.infura.io/v3/92def00fe703450bb5990bd819a97293',
-                        4: 'https://rinkeby.infura.io/v3/92def00fe703450bb5990bd819a97293',
-                    },
-                    chainId: 1,
-                    pollingInterval: 15000,
-                    qrcodeModalOptions: {
-                        mobileLinks: ['rainbow', 'metamask', 'trust'],
-                    },
-                    storageOptions: {
-                        sessionStorage: window.sessionStorage,
-                    },
+                const provider = new WalletConnectProvider({
+                    infuraId: "92def00fe703450bb5990bd819a97293" // Replace with your Infura Project ID
+                    // You may need to configure other options based on your requirements
                 });
 
-                // Use connector methods for connecting to a wallet
+                try {
+                    await provider.enable();
 
-                // Example:
-                await connector.createSession();
-                // Handle the connection and continue with the wallet integration
+                    if (provider.connected) {
+                        const accounts = await provider.send("eth_accounts");
+                        console.log("Connected wallet accounts:", accounts);
+                    }
+                } catch (error) {
+                    console.error("Error connecting wallet:", error);
+                }
             } catch (error) {
                 console.error("WalletConnect error:", error);
                 // Handle error
