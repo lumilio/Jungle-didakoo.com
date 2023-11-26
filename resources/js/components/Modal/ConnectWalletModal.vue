@@ -60,8 +60,8 @@ import Nft18PepsiABI from '../../abis/nft18PepsiABI.json'
 import Nft19LacosteABI from '../../abis/nft19LacosteABI.json'
 import Nft20LandABI from '../../abis/nft20LandABI.json'
 import axios from "axios";
-import WalletConnectProvider from "@walletconnect/web3-provider";
-import Web3 from 'web3';
+import WalletConnectProvider from '@walletconnect/web3-provider';
+
 
 const dataNft = [
     {
@@ -218,24 +218,22 @@ export default {
             web3: null,
             connected: false,
             connectedAddress: null,
-            error: null
+            error: null,
         }
     },
     methods: {
         async connectWallet() {
-            alert('lllll')
-            // try {
+            try {
                 this.provider = new WalletConnectProvider({
                     rpc: {
-                        1: 'https://mainnet.infura.io/v3/ba5412d9a95e4f0885dbe27acea6bfcd'
-                    }
+                        1: 'https://mainnet.infura.io/v3/ba5412d9a95e4f0885dbe27acea6bfcd',
+                    },
                 });
 
                 await this.provider.enable();
-                alert(this.provider)
-                this.web3 = new Web3(this.provider);
-            alert(this.web3)
-                const accounts = await this.web3.eth.getAccounts();
+                this.web3 = new ethers.providers.Web3Provider(this.provider);
+
+                const accounts = await this.web3.listAccounts();
                 if (accounts && accounts.length > 0) {
                     this.connected = true;
                     this.connectedAddress = accounts[0];
@@ -245,23 +243,10 @@ export default {
                     this.connected = false;
                     this.connectedAddress = null;
                 });
-            // } catch (error) {
-            //     console.error('Wallet connection error:', error);
-            //     this.error = 'Error connecting to wallet';
-            // }
-        },
-        async signMessage() {
-            // try {
-                const message = 'Hello, signing message!';
-                const signature = await this.web3.eth.personal.sign(message, this.connectedAddress, '');
-                console.log('Signature:', signature);
-                alert('Signature:');
-                // Handle the signature as needed
-            // } catch (error) {
-            //     alert('error:');
-            //     console.error('Message signing error:', error);
-            //     // Handle signing error
-            // }
+            } catch (error) {
+                console.error('Wallet connection error:', error);
+                this.error = 'Error connecting to wallet';
+            }
         },
         closeModal() {
             store.commit('TOGGLE_WALLET_MODAL')
