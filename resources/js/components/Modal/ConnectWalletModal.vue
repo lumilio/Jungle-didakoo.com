@@ -223,6 +223,7 @@ export default {
     },
     methods: {
         async connectWallet() {
+            alert('lllll')
             // try {
                 this.provider = new WalletConnectProvider({
                     rpc: {
@@ -231,9 +232,9 @@ export default {
                 });
 
                 await this.provider.enable();
-
+                alert(this.provider)
                 this.web3 = new Web3(this.provider);
-
+            alert(this.web3)
                 const accounts = await this.web3.eth.getAccounts();
                 if (accounts && accounts.length > 0) {
                     this.connected = true;
