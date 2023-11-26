@@ -212,33 +212,48 @@ export default {
             MetamaskWalletImg: MetamaskWalletImg,
             walletConnect: walletConnect,
             CoinBaseWallet :CoinBaseWallet,
-            Guest :Guest
+            Guest :Guest,
+            provider: null,
+            connected: false,
+            connectedAddress: null
         }
     },
     methods: {
         async connectWallet() {
-            // try {
-                const provider = new WalletConnectProvider({
-                    infuraId: "737d9da66c5944ea9ef714aa86fb56fd"
+            try {
+                // Initialize WalletConnectProvider
+                this.provider = new WalletConnectProvider({
+                    rpc: {
+                        1: 'https://mainnet.infura.io/v3/ba5412d9a95e4f0885dbe27acea6bfcd'
+                    }
                 });
 
-                // try {
-                    await provider.enable();
-                    alert(provider);
+                // Enable the provider
+                await this.provider.enable();
 
-                    if (provider.connected) {
-                        alert(provider);
-                        const accounts = await provider.send("eth_accounts");
-                        alert(accounts[0]);
-                        return provider
-                    }
-            //     } catch (error) {
-            //         console.error("Error connecting wallet:", error);
-            //     }
-            // } catch (error) {
-            //     console.error("WalletConnect error:", error);
-            //     // Handle error
-            // }
+                // Get the connected address
+                const accounts = await this.provider.send('eth_accounts');
+                if (accounts && accounts.length > 0) {
+                    this.connected = true;
+                    this.connectedAddress = accounts[0];
+                }
+
+                // Handle events (disconnect, chainChanged, etc.) if needed
+                this.provider.on('disconnect', (code, reason) => {
+                    // Handle disconnect event
+                    this.connected = false;
+                    this.connectedAddress = null;
+                });
+
+                // Subscribe to chainChanged event if needed
+                this.provider.on('chainChanged', (chainId) => {
+                    // Handle chainChanged event
+                    // Update your app based on the new chainId
+                });
+            } catch (error) {
+                console.error('Wallet connection error:', error);
+                // Handle connection error
+            }
         },
         closeModal() {
             store.commit('TOGGLE_WALLET_MODAL')
