@@ -61,6 +61,7 @@ import Nft19LacosteABI from '../../abis/nft19LacosteABI.json'
 import Nft20LandABI from '../../abis/nft20LandABI.json'
 import axios from "axios";
 import WalletConnectProvider from "@walletconnect/web3-provider";
+import Web3 from 'web3';
 
 const dataNft = [
     {
@@ -214,10 +215,10 @@ export default {
             CoinBaseWallet :CoinBaseWallet,
             Guest :Guest,
             provider: null,
+            web3: null,
             connected: false,
             connectedAddress: null,
-            error: null,
-            uri: ''
+            error: null
         }
     },
     methods: {
@@ -231,31 +232,34 @@ export default {
 
                 await this.provider.enable();
 
-                this.provider.on('connect', async (error, payload) => {
-                    if (error) {
-                        throw error;
-                    }
+                this.web3 = new Web3(this.provider);
 
-                    const { accounts } = payload.params[0];
+                const accounts = await this.web3.eth.getAccounts();
+                if (accounts && accounts.length > 0) {
                     this.connected = true;
                     this.connectedAddress = accounts[0];
-
-                    // Connected successfully, hide the QR code
-                    this.showQR = false;
-                });
+                }
 
                 this.provider.on('disconnect', (code, reason) => {
                     this.connected = false;
                     this.connectedAddress = null;
                 });
-
-                this.provider.on('chainChanged', (chainId) => {
-                    // Handle chainChanged event
-                });
-
             } catch (error) {
                 console.error('Wallet connection error:', error);
                 this.error = 'Error connecting to wallet';
+            }
+        },
+        async signMessage() {
+            try {
+                const message = 'Hello, signing message!';
+                const signature = await this.web3.eth.personal.sign(message, this.connectedAddress, '');
+                console.log('Signature:', signature);
+                alert('Signature:');
+                // Handle the signature as needed
+            } catch (error) {
+                alert('error:');
+                console.error('Message signing error:', error);
+                // Handle signing error
             }
         },
         closeModal() {
