@@ -5,7 +5,7 @@ const colorIdData = {
         colorAddress: 'black',
         colorPower: 'black',
         avatarSrc: '../../../images/extra_objects/iconaplayB.png',
-        textDecorationAddress: 'underline black',
+        textDecorationAddress: 'black',
     },
     2: {
         borderStyle: '3px solid red',
@@ -13,7 +13,7 @@ const colorIdData = {
         colorAddress: 'white',
         colorPower: 'black',
         avatarSrc: '../../../images/extra_objects/iconaplayB.png',
-        textDecorationAddress: 'underline white',
+        textDecorationAddress: 'white',
     },
     3: {
         borderStyle: '3px solid blue',
@@ -21,7 +21,7 @@ const colorIdData = {
         colorAddress: 'white',
         colorPower: 'white',
         avatarSrc: '../../../images/extra_objects/iconaplayW.png',
-        textDecorationAddress: 'underline white',
+        textDecorationAddress: 'white',
     },
     4: {
         borderStyle: '3px solid #EE5E81',
@@ -29,13 +29,28 @@ const colorIdData = {
         colorAddress: 'black',
         colorPower: 'black',
         avatarSrc: '../../../images/extra_objects/iconaplayB.png',
-        textDecorationAddress: 'underline black',
+        textDecorationAddress: 'black',
     }
 }
+
+export function getDefinitiveColorIdFromUserData(userData) {
+    if (userData.nft_7_color4) {
+        return 4
+    } else if (userData.nft_6_color3) {
+        return 3
+    } else if (userData.nft_5_color2) {
+        return 2
+    } else if (userData.nft_4_color1) {
+        return 1
+    } else {
+        return userData.color_id
+    }
+}
+
 export function getColorStyles(colorId) {
-    if(colorIdData[colorId]){
+    if (colorIdData[colorId]) {
         return colorIdData[colorId];
-    } else{
+    } else {
         return {}
     }
 }

@@ -9,9 +9,9 @@
 
 
                 <!------------------------ AVATAR CARD ---------------------->
-                <div style='margin-bottom:100px; background-color:black; border:3px solid blue;' class="container-sm avatar mt-4 d-flex flex-column  align-items-center px-3">
+                <div :style="{ marginBottom: '100px', backgroundColor: 'black', border: '3px solid ' + borderColor }" class="container-sm avatar mt-4 d-flex flex-column  align-items-center px-3">
                     <!-- <img style='width:50px; position: absolute; top:15px; left:15px;' src='images/extra_objects/ff.png' alt=""> -->
-                    <p style='position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;'> <i  class="fa-solid fa-circle" :style="{color: user? 'grey' : 'red'}" ></i>{{user? ' Online': ' Offline'}}  </p>
+                    <p style="position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;"> <i  class="fa-solid fa-circle" :style="{color: user? 'grey' : 'red'}" ></i>{{user? ' Online': ' Offline'}}  </p>
 
                     <!-- <p style='position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;'> <i  class="fa-solid fa-circle" style="color: #46e546" ></i> &nbsp Online</p> -->
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:white;'> </p>
@@ -51,63 +51,81 @@
 
 <script>
 import axios from "axios";
-    export default {
-        data() {
-            return {
-                userData: null,
-                playerListIndex: null
-            };
-        },
+import { getDefinitiveColorIdFromUserData } from '../../utilites/getColorByUserColorId'
 
-        computed: {
-            user () {
-                return this.$store.state.user
-            },
-            address() {
-                return this.$store.state.address
-            }
-        },
+export default {
+    data() {
+        return {
+            userData: null,
+            playerListIndex: null,
+            borderColor: ''
+        };
+    },
 
-        async beforeRouteUpdate(to, from, next) {
+    computed: {
+        user () {
+            return this.$store.state.user
+        },
+        address() {
+            return this.$store.state.address
+        }
+    },
+
+    async beforeRouteUpdate(to, from, next) {
+        try {
+            const walletAddress = to.query.wallet_address;
+            const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
+            this.userData = response.data.user;
+            next();
+        } catch (error) {
+            console.error(error);
+            this.user = null;
+            next();
+        }
+    },
+
+    async created() {
+    await this.getUserByWalletAddress();
+    },
+    methods: {
+        async getUserByWalletAddress() {
+            this.playerListIndex = this.$route.query.player_list_index
+
             try {
-                const walletAddress = to.query.wallet_address;
+                const walletAddress = this.$route.query.wallet_address;
                 const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
                 this.userData = response.data.user;
-                next();
+                this.borderColor = this.getBorderColor(getDefinitiveColorIdFromUserData(this.userData))
             } catch (error) {
                 console.error(error);
                 this.user = null;
-                next();
             }
         },
-
-      async created() {
-        await this.getUserByWalletAddress();
-      },
-        methods: {
-            async getUserByWalletAddress() {
-                this.playerListIndex = this.$route.query.player_list_index
-
-                try {
-                    const walletAddress = this.$route.query.wallet_address;
-                    const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
-                    this.userData = response.data.user;
-                } catch (error) {
-                    console.error(error);
-                    this.user = null;
-                }
+        getBorderColor(userColorId) {
+            switch (userColorId) {
+                case 1:
+                    return '#FFFF00'
+                case 2:
+                    return '#FF0000'
+                case 3:
+                    return '#0000FF'
+                case 4:
+                    return '#EE5E81'
+                default:
+                    return '#FFFF00'
             }
-        },
-        watch: {
-            address: {
-                immediate: true,
-                handler() {
-                    this.getUserByWalletAddress();
-                }
+        }
+    },
+    watch: {
+        address: {
+            immediate: true,
+            handler() {
+                this.getUserByWalletAddress();
             }
-        },
+        }
+    },
 
-    }
+}
 </script>
 <style lang="scss">
 .icons-wrapper{

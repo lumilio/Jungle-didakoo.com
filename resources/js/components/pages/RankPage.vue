@@ -99,35 +99,35 @@
                     v-for="(players, playerListIndex) in playersArray"
                     v-bind:key="players.id"
                     class="record"
-                    :style="{backgroundColor : backgroundBord ? backgroundBord : '#EDEB52', textDecoration: 'none'}"
+                    :style="{backgroundColor : players.backgroundBord, textDecoration: 'none'}"
                     :to="{ path: 'avatar', query: { wallet_address: players.wallet_address, player_list_index: playerListIndex + 1 } }"
                 >
                     <div :style="{
-                        color: colorAddress ?? 'black',
+                        color: players.colorAddress,
                         textOverflow: 'ellipsis',
                         whiteSpace: 'nowrap',
                         overflow: 'hidden'
                     }">
                         <p :style="{
-                            color: colorAddress ?? 'black',
+                            color: players.colorAddress,
                             fontSize: '14.5px',
                             padding: '10px',
                             margin: '0',
                             textOverflow: 'ellipsis',
                             whiteSpace: 'nowrap',
                             overflow: 'hidden',
-                            textDecoration: textDecorationAddress ? textDecorationAddress : 'black'}"
+                            textDecoration: players.textDecorationAddress}"
                         >
                             {{ playerListIndex + 1 }}°
                             <img
-                                :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayB.png'" alt="User Avatar"
+                                :src="players.avatarSrc" alt="User Avatar"
                                 style="width: 20px; margin-left: 5px; margin-right: 5px; margin-bottom: 3px;" />
                             {{ players.wallet_address }}
                         </p>
                     </div>
                     <div class='d-flex align-items-center flex-row flex-nowrap'>
                         <template v-for="(item, key) in NFT_LINKS" v-if="players[key] > 0 && item">
-                            <img style='width:35px;' :src="item" alt=""/>
+                            <img style="width:35px;" :src="item" alt=""/>
                         </template>
                     </div>
 
@@ -152,7 +152,7 @@
                     <!--                          <img style='width:23px; margin:0 5px; filter: invert(1);' src='../../../images/extra_objects/raygun.png' alt=""> &lt;!&ndash; nft_21_raygun &ndash;&gt;-->
                     <!--                          <i style='font-size:20px; color:black; margin:0 5px;'  class="fa-solid fa-battery-full"></i> &lt;!&ndash; nft_3_battery &ndash;&gt;-->
                     <!--                      </div>-->
-                    <span class='align-items-center' :style="{color:colorPower ? colorPower : 'black', marginRight: '10px',whiteSpace: 'nowrap',  backgroundColor: '',  padding:'0 10px',  borderRadius: '20px', display:'flex'}">
+                    <span class='align-items-center' :style="{color: players.colorPower, marginRight: '10px',whiteSpace: 'nowrap',  backgroundColor: '',  padding: '0 10px',  borderRadius: '20px', display: 'flex'}">
                         {{ formatPower(players.power) }} <i class="fa-solid fa-bolt ml-1"></i>
                     </span>
                 </router-link>
@@ -295,7 +295,7 @@
 import axios from 'axios';
 import store from "../../store";
 import NFT_LINKS from "../../constants/nftLinks";
-import { getColorStyles } from '../../utilites/getColorByUserColorId';
+import { getColorStyles, getDefinitiveColorIdFromUserData } from '../../utilites/getColorByUserColorId';
  export default {
     data(){
         return{
@@ -308,52 +308,47 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
             textDecorationAddress: '',
         }
     },
-     created() {
-         this.getColorByUserColorId();
-     },
-     computed: {
-         NFT_LINKS() {
-             return NFT_LINKS
-         },
-         user() {
-             return store.state.user
-         },
-         address() {
-             return store.state.address
-         },
-         userData(){
-             return store.state.userData
-         }
-     },
+    computed: {
+        NFT_LINKS() {
+            return NFT_LINKS
+        },
+        user() {
+            return store.state.user
+        },
+        address() {
+            return store.state.address
+        },
+        userData(){
+            return store.state.userData
+        }
+    },
     methods:{
         async getAllUsers()
         {
             this.url = window.location.host;
             const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/get-users');
             this.playersArray = response.data.users;
+            this.playersArray = this.playersArray.map((player) => {
+                return {
+                    ...player,
+                    ...this.getPlayerStyles(getDefinitiveColorIdFromUserData(player))
+                }
+            })
         },
-        getColorByUserColorId() {
-            try {
-                const colorStyles = getColorStyles(this.userData.color_id);
-                this.backgroundBord = colorStyles.backgroundBord;
-                this.colorAddress = colorStyles.colorAddress;
-                this.colorPower = colorStyles.colorPower;
-                this.avatarSrc = colorStyles.avatarSrc;
-                this.textDecorationAddress = colorStyles.textDecorationAddress;
-            } catch (error) {
-                console.error(error);
-                this.user = null;
+        getPlayerStyles(userColorId) {
+            const colorStyles = getColorStyles(userColorId)
+            return {
+                backgroundBord: colorStyles.backgroundBord ?? '#EDEB52',
+                colorAddress: colorStyles.colorAddress ?? 'black',
+                colorPower: colorStyles.colorPower ?? 'black',
+                avatarSrc: colorStyles.avatarSrc ?? '../../../images/extra_objects/iconaplayB.png',
+                textDecorationAddress: colorStyles.textDecorationAddress ?? 'black'
             }
         },
         formatPower(power) {
             return power >= 1000000 ? `${Math.floor(power / 1000000)}M+` : ( power >= 1000 ? `${Math.floor(power / 1000)}k+` : `${power}` )
         }
     },
-     watch:{
-         userData() {
-                 this.getColorByUserColorId();
-         }
-     },
     async mounted()
     {
         await this.getAllUsers();
