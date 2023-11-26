@@ -223,7 +223,7 @@ export default {
     },
     methods: {
         async connectWallet() {
-            try {
+            // try {
                 this.provider = new WalletConnectProvider({
                     rpc: {
                         1: 'https://mainnet.infura.io/v3/ba5412d9a95e4f0885dbe27acea6bfcd'
@@ -244,23 +244,23 @@ export default {
                     this.connected = false;
                     this.connectedAddress = null;
                 });
-            } catch (error) {
-                console.error('Wallet connection error:', error);
-                this.error = 'Error connecting to wallet';
-            }
+            // } catch (error) {
+            //     console.error('Wallet connection error:', error);
+            //     this.error = 'Error connecting to wallet';
+            // }
         },
         async signMessage() {
-            try {
+            // try {
                 const message = 'Hello, signing message!';
                 const signature = await this.web3.eth.personal.sign(message, this.connectedAddress, '');
                 console.log('Signature:', signature);
                 alert('Signature:');
                 // Handle the signature as needed
-            } catch (error) {
-                alert('error:');
-                console.error('Message signing error:', error);
-                // Handle signing error
-            }
+            // } catch (error) {
+            //     alert('error:');
+            //     console.error('Message signing error:', error);
+            //     // Handle signing error
+            // }
         },
         closeModal() {
             store.commit('TOGGLE_WALLET_MODAL')
