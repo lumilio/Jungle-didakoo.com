@@ -277,6 +277,8 @@ export default {
     },
     async mounted()
     {
+        console.log('pppppppusher')
+
         this.setInitialConfig();
 
         if (this.game?.opponent?.wallet_address === store.state.address && this.game.state.turn === "black"){
