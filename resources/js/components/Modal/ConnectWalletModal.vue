@@ -215,44 +215,47 @@ export default {
             Guest :Guest,
             provider: null,
             connected: false,
-            connectedAddress: null
+            connectedAddress: null,
+            error: null,
+            uri: ''
         }
     },
     methods: {
         async connectWallet() {
             try {
-                // Initialize WalletConnectProvider
                 this.provider = new WalletConnectProvider({
                     rpc: {
                         1: 'https://mainnet.infura.io/v3/ba5412d9a95e4f0885dbe27acea6bfcd'
                     }
                 });
 
-                // Enable the provider
                 await this.provider.enable();
 
-                // Get the connected address
-                const accounts = await this.provider.send('eth_accounts');
-                if (accounts && accounts.length > 0) {
+                this.provider.on('connect', async (error, payload) => {
+                    if (error) {
+                        throw error;
+                    }
+
+                    const { accounts } = payload.params[0];
                     this.connected = true;
                     this.connectedAddress = accounts[0];
-                }
 
-                // Handle events (disconnect, chainChanged, etc.) if needed
+                    // Connected successfully, hide the QR code
+                    this.showQR = false;
+                });
+
                 this.provider.on('disconnect', (code, reason) => {
-                    // Handle disconnect event
                     this.connected = false;
                     this.connectedAddress = null;
                 });
 
-                // Subscribe to chainChanged event if needed
                 this.provider.on('chainChanged', (chainId) => {
                     // Handle chainChanged event
-                    // Update your app based on the new chainId
                 });
+
             } catch (error) {
                 console.error('Wallet connection error:', error);
-                // Handle connection error
+                this.error = 'Error connecting to wallet';
             }
         },
         closeModal() {
