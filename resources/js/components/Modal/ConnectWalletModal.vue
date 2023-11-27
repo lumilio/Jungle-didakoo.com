@@ -219,9 +219,15 @@ export default {
             connected: false,
             connectedAddress: null,
             error: null,
+            isMobile: false
         }
     },
     methods: {
+        checkIfMobile() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const mobileKeywords = ['iphone', 'android', 'webos', 'ipad', 'ipod', 'blackberry', 'windows phone'];
+            this.isMobile = mobileKeywords.some(keyword => userAgent.includes(keyword));
+        },
         async connectWallet() {
             try {
                 this.provider = new WalletConnectProvider({
@@ -317,6 +323,11 @@ export default {
 
                     if (wallet !== 'connectWallet'){
                         try {
+
+                            if (this.isMobile && wallet === 'metamask') {
+                                window.location = 'https://metamask.app.link/dapp/'+process.env.MIX_SERVER_APP_URL;
+                            }
+
                             provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
                             provider = new ethers.providers.Web3Provider(provider);
                         }catch (e) {
@@ -465,17 +476,21 @@ export default {
             }
         },2000);
     },
-watch:{
-    test()
-    {
-        this.getStatus();
-    }
-},
-computed:{
-        inGame(){
-            return window.location.pathname.includes('room')
+    watch:{
+        test()
+        {
+            this.getStatus();
         }
-},
+    },
+    computed:{
+            inGame(){
+                return window.location.pathname.includes('room')
+            }
+    },
+    mounted () {
+        this.checkIfMobile();
+        window.addEventListener('resize', this.checkIfMobile);
+    },
     beforeDestroy() {
         window.removeEventListener('resize', this.checkIfMobile);
     },
