@@ -16,13 +16,12 @@
                         class="d-flex bg-transparent border-0 align-items-center"
                     >
                         <p class="avatar_helper">Console</p>
-                        <i class="fa-solid gamepad fa-gamepad"></i>
+                        <i class="fa-solid burger_menu fa-bars" style="margin: 0 auto; position: static; font-size: 20px;"></i>
                     </button>
                 </div>
                 <!----------------------------------------->
                 <div
                     class="allineatore d-flex flex-column container-sm justify-content-center align-items-center"
-                    style="position: relative;"
                 >
                     <div class="allineatore-inner-container">
 
@@ -90,7 +89,7 @@
                                 class="player-info"
                                 :style="{
                                     color: colorAddress ? colorAddress : 'black',
-                                    textDecoration: textDecorationAddress ? textDecorationAddress : 'underline black',
+                                                                        textDecoration: textDecorationAddress ? textDecorationAddress : 'underline black',
                                 }"
                             >
                                 1°
@@ -413,13 +412,6 @@ export default {
     .spinner_handler {
         display: flex;
         justify-content: center;
-    }
-
-    .allineatore-inner-container {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
     }
 }
   .player-info{

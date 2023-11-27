@@ -12,7 +12,7 @@
         <div v-show="!toggleModal" style="height:calc(80vh - 80px);" class="justify-content-center align-content-center d-flex">
             <div class="bt" v-show="!toggleModal">
                 <a type="button" >
-                    <div class="square" :style="{ border: borderStyle }" @click="openModal">
+                    <div class="square" @click="openModal">
                         <i id="led" class="fa-solid fa-circle" :style="{color: user? '#46e546' : 'red'}" ></i>
                         <i class="fa-solid fa-power-off"></i>
                     </div>
@@ -20,14 +20,14 @@
 
                 <router-link to="rank">
                     <div id="modalz">
-                        <div class="square" :style="{ border: borderStyle }">
+                        <div class="square">
                             <img id="buttton_v_1" src="images/extra_objects/scarabeo.png" alt="" />
                         </div>
                     </div>
                 </router-link>
                 <router-link to="info">
                     <div id="modaly">
-                        <div class="square" :style="{ border: borderStyle }">
+                        <div class="square">
                             <!-- <i class="fa-solid fa-sheet-plastic"></i> -->
                             <span class="text-white">1.0</span>
                         </div>
@@ -45,8 +45,6 @@
 <script>
 import store from "../../store";
 import ConnectWalletModal from "../Modal/ConnectWalletModal.vue";
-import { getColorStyles } from '../../utilites/getColorByUserColorId';
-import axios from "axios";
 export default {
 
     data() {
@@ -59,18 +57,12 @@ export default {
     components: {
         ConnectWalletModal
     },
-    created() {
-        this.getColorByUserColorId();
-    },
     computed: {
         user() {
             return store.state.user
         },
         address() {
             return store.state.address
-        },
-        userData(){
-            return store.state.userData
         },
         toggleModal(){
             return store.state.connectWallet
@@ -79,17 +71,6 @@ export default {
 
 
     methods: {
-        getColorByUserColorId() {
-            try {
-                const colorStyles = getColorStyles(this.userData.color_id);
-                this.borderStyle = colorStyles.borderStyle;
-            } catch (error) {
-                console.error(error);
-                this.user = null;
-            }
-        },
-
-
         async openModal() {
             if (this.user) {
                 await fetch('api/logout', {
@@ -100,7 +81,7 @@ export default {
                 });
                 store.commit('LOG_OUT_USER')
                 store.commit('TOGGLE_WALLET_MODAL')
-                toastr.info("User log outed")
+                toastr.info("User logged out")
             } else {
                 store.commit('TOGGLE_WALLET_MODAL')
             }
@@ -111,15 +92,11 @@ export default {
         test()
         {
             this.getStatus();
-        },
-        userData() {
-                this.getColorByUserColorId();
         }
     },
 
     mounted () {
-        console.log("Menu PAge Component mounted.");
-        this.getColorByUserColorId();
+        console.log("Menu Page Component mounted.");
     },
 
 };
