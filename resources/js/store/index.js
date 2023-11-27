@@ -6,6 +6,7 @@ const store = new Vuex.Store({
   state: {
     user: null,
     address: null,
+    playerNumber: localStorage.getItem('playerNumber') ?? null,
     turn: "white",
     turnNumber: 1,
     squares: [],
@@ -40,22 +41,26 @@ const store = new Vuex.Store({
         },
       ];
     },
-      LOG_IN_USER(state, val) {
-          state.user = val;
-      },
-      SET_USER_ADDRESS(state, val) {
-          state.address = val;
-      },
-      SET_USER_DATA(state, UsersData) {
-          state.userData = UsersData;
-      },
-      LOG_OUT_USER (state){
-          state.user = null;
-          state.address = null;
-      },
-      TOGGLE_WALLET_MODAL(state) {
-          state.connectWallet = !state.connectWallet;
-      },
+    LOG_IN_USER(state, val) {
+        state.user = val;
+    },
+    SET_USER_ADDRESS(state, val) {
+        state.address = val;
+    },
+    SET_PLAYER_NUMBER(state, val) {
+        localStorage.setItem('playerNumber', val);
+        state.playerNumber = val
+    },
+    SET_USER_DATA(state, UsersData) {
+        state.userData = UsersData;
+    },
+    LOG_OUT_USER (state){
+        state.user = null;
+        state.address = null;
+    },
+    TOGGLE_WALLET_MODAL(state) {
+      state.connectWallet = !state.connectWallet;
+  },
     ADD_MOVE_HISTORY(state, move) {
       let lastMove = state.movesHistory[state.movesHistory.length - 1];
       if (Object.keys(lastMove[move.color]).length) {

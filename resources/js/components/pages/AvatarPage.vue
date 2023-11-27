@@ -15,7 +15,7 @@
 
                     <!-- <p style='position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;'> <i  class="fa-solid fa-circle" style="color: #46e546" ></i> &nbsp Online</p> -->
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:white;'> </p>
-                    <p style='position:absolute; display:block; margin-top:10px;  font-size:33px; right:15px; top:5px; color:white;'>{{ playerListIndex }}°</p>
+                    <p style='position:absolute; display:block; margin-top:10px;  font-size:33px; right:15px; top:5px; color:white;'>{{ playerNumber }}°</p>
                     <img id='avataricon' style='margin-top:80px; margin-bottom:20px;' src='images/extra_objects/iconaplayW.png' alt="">
                     <!-- <p class="text-white">Avatar v.1</p> -->
                     <div style="background-color:black; width:100%;" >
@@ -57,7 +57,6 @@ export default {
     data() {
         return {
             userData: null,
-            playerListIndex: null,
             borderColor: ''
         };
     },
@@ -68,6 +67,9 @@ export default {
         },
         address() {
             return this.$store.state.address
+        },
+        playerNumber() {
+            return this.$store.state.playerNumber
         }
     },
 
@@ -85,12 +87,10 @@ export default {
     },
 
     async created() {
-    await this.getUserByWalletAddress();
+        await this.getUserByWalletAddress();
     },
     methods: {
         async getUserByWalletAddress() {
-            this.playerListIndex = this.$route.query.player_list_index
-
             try {
                 const walletAddress = this.$route.query.wallet_address;
                 const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
