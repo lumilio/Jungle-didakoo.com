@@ -364,8 +364,8 @@ export default {
                         store.commit('LOG_IN_USER', true)
                         store.commit('SET_USER_ADDRESS', address)
                         store.commit('TOGGLE_WALLET_MODAL')
-                        
-                        const getUsersResponse = await axios.get(`http://${window.location.host}/api/get-users`);
+
+                        const getUsersResponse = await axios.get(process.env.MIX_SERVER_APP_URL+`/api/get-users`);
                         const playersArray = getUsersResponse.data.users;
                         const currentLoggedInPlayerNumber = playersArray.findIndex((player) => player.wallet_address == address) + 1
                         store.commit('SET_PLAYER_NUMBER', currentLoggedInPlayerNumber)
