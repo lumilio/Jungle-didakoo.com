@@ -351,7 +351,7 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
             }
         },
         formatPower(power) {
-            return power >= 1000000 ? `${Math.floor(power / 1000000)}M+` : ( power >= 1000 ? `${Math.floor(power / 1000)}k+` : `${power}` )
+            return power >= 1000000 ? `${Math.floor(power / 1000000)}M` : ( power >= 1000 ? `${Math.floor(power / 1000)}k` : `${power}` )
         }
     },
      watch:{
