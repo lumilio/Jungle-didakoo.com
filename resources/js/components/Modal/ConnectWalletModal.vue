@@ -35,7 +35,6 @@
 <script>
 import store from "../../store";
 import MetamaskWalletImg from "../../../images/extra_objects/MetaMask_Fox.png"
-import walletConnect from "../../../images/extra_objects/walletConnect.svg"
 import CoinBaseWallet from "../../../images/extra_objects/CoinBaseWallet.png"
 import Guest from "../../../images/extra_objects/ghost.png"
 import { ethers as web3 } from '../../../../public/js/ethers';
@@ -203,7 +202,6 @@ export default {
     data(){
         return {
             MetamaskWalletImg: MetamaskWalletImg,
-            walletConnect: walletConnect,
             CoinBaseWallet :CoinBaseWallet,
             Guest :Guest,
             isMobile: false

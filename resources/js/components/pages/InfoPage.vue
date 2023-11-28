@@ -19,7 +19,7 @@
                 <div style="margin-top:30px;" class="container-sm pepar  ">
                     <p style='font-size:30px;'> v 1.0.0  <a style="color:white; font-size:20px;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">  斗兽棋 </a> &nbsp <a href=""><i class="fa-brands fa-ethereum"></i></a>
                     </p>
-                    <p>Players : 20 </p>
+                    <p>Players : {{ totalCurrentUsers }} </p>
                     <p>Flower to play : 0<!-- <i class="fa-solid fa-bolt ml-1"></i> </p> -->
                                         <p style='color:white;'>Buy sun flower  Nft :</p>
 
@@ -91,22 +91,29 @@
 
 
 <script>
+import axios from "axios";
+
 export default {
-//    data(){
-//           return {
-//                  loggedIn: localStorage.getItem('user_status')?true:false,
-//                 }
-//       },
-//   watch:{
-//         loggedIn:function(newValue)
-//         {
-//            this.loggedIn = newValue;
-//        },
-//         },
-//  mounted () {
-//   //this.status();
-//    console.log("Info PAge Component mounted.");
-//         },
+    data() {
+        return {
+            totalCurrentUsers: 1,
+        }
+    },
+    mounted() {
+        this.getTotalCurrentUsers()
+    },
+    methods: {
+        async getTotalCurrentUsers() {
+            try {
+                const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/active-sessions')
+                const activeSessions = response.data.total
+                this.totalCurrentUsers = activeSessions
+            } catch (error) {
+                console.log(error)
+                this.totalCurrentUsers = 'Could not fetch current users'
+            }
+        }
+    }
 }
 </script>
 
