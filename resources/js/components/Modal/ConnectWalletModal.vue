@@ -13,12 +13,6 @@
             </div>
 
             <div class="web3-login-buttons">
-
-                <button class="WalletCoinButton" @click="web3Login('connectWallet')" id="metamask">
-                    <img :src=walletConnect alt="MetamaskWallet" class="imgSize">
-                    <p class="WalletCoinButtonText"> Connect Wallet </p>
-                </button>
-
                 <button class="WalletCoinButton" @click="web3Login('metamask')" id="metamask">
                 <img :src=MetamaskWalletImg alt="MetamaskWallet" class="imgSize">
                 <p class="WalletCoinButtonText"> METAMASK </p>
@@ -60,8 +54,6 @@ import Nft18PepsiABI from '../../abis/nft18PepsiABI.json'
 import Nft19LacosteABI from '../../abis/nft19LacosteABI.json'
 import Nft20LandABI from '../../abis/nft20LandABI.json'
 import axios from "axios";
-import WalletConnectProvider from '@walletconnect/web3-provider';
-
 
 const dataNft = [
     {
@@ -214,11 +206,6 @@ export default {
             walletConnect: walletConnect,
             CoinBaseWallet :CoinBaseWallet,
             Guest :Guest,
-            provider: null,
-            web3: null,
-            connected: false,
-            connectedAddress: null,
-            error: null,
             isMobile: false
         }
     },
@@ -227,32 +214,6 @@ export default {
             const userAgent = navigator.userAgent.toLowerCase();
             const mobileKeywords = ['iphone', 'android', 'webos', 'ipad', 'ipod', 'blackberry', 'windows phone'];
             this.isMobile = mobileKeywords.some(keyword => userAgent.includes(keyword));
-        },
-        async connectWallet() {
-            try {
-                this.provider = new WalletConnectProvider({
-                    rpc: {
-                        1: 'https://mainnet.infura.io/v3/ba5412d9a95e4f0885dbe27acea6bfcd',
-                    },
-                });
-
-                await this.provider.enable();
-                this.web3 = new ethers.providers.Web3Provider(this.provider);
-
-                const accounts = await this.web3.listAccounts();
-                if (accounts && accounts.length > 0) {
-                    this.connected = true;
-                    this.connectedAddress = accounts[0];
-                }
-
-                this.provider.on('disconnect', (code, reason) => {
-                    this.connected = false;
-                    this.connectedAddress = null;
-                });
-            } catch (error) {
-                console.error('Wallet connection error:', error);
-                this.error = 'Error connecting to wallet';
-            }
         },
         closeModal() {
             store.commit('TOGGLE_WALLET_MODAL')
@@ -313,16 +274,12 @@ export default {
                       return;
                     }
                     let provider = {};
-                    if (wallet === 'connectWallet'){
-                        provider = await this.connectWallet();
-                    }
-                    if (!window.ethereum) {
-                        toastr.error('MetaMask not detected.Please install MetaMask first.');
-                        return;
-                    }
 
-                    if (wallet !== 'connectWallet'){
-                        try {
+                    // if (!window.ethereum) {
+                    //     toastr.error('MetaMask not detected.Please install MetaMask first.');
+                    //     return;
+                    // }
+                     try {
 
                             if (this.isMobile && wallet === 'metamask') {
                                 window.location = 'https://metamask.app.link/dapp/'+process.env.MIX_SERVER_APP_URL;
@@ -340,7 +297,7 @@ export default {
                             }
 
                         }
-                    }
+
                     let response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-login-message');
                     const message = await response.text();
 
