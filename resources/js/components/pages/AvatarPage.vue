@@ -4,7 +4,7 @@
 
             <!------------------  white ----------------------->
 
-            <div style='height:calc(100vh - 80px);' class="allineatore d-flex container-fluid flex-column justify-content-center px-4 align-items-center">
+            <div style='height:calc(100vh - 80px);' class="allineatore d-flex container-fluid flex-column justify-content-center px-4 align-items-center modal-outgame">
 
 
 

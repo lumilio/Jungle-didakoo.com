@@ -103,6 +103,8 @@ class GameController extends Controller
                 'opponent_id' => $player->id,
                 'status' => 'started'
             ]);
+            $game = Game::query()->where('url', $url)->with(['opponent', 'creator'])->first();
+
             event(new ConnectGame($game->creator->wallet_address));
         }
 
@@ -115,15 +117,22 @@ class GameController extends Controller
         }else{
             $game = Game::where('url',$id)->first();
         }
-        $turn = $request->address === $game->opponent->wallet_address ? "white" : "black";
-        $game->state = ['state' => $request->state, 'turn'=> $turn, 'colors' => $request->colors];
-        $game->save();
-        if ($game->opponent->wallet_address)
-        event(new DoStep(
-            $game,
-            $request->address === $game->opponent->wallet_address ? $game->creator->wallet_address : $game->opponent->wallet_address,
-            $request->lastMove
-        ));
+        if($game->opponent_id && $game->opponent->wallet_address){
+            $turn = $request->address === $game->opponent->wallet_address ? "white" : "black";
+            $game->state = ['state' => $request->state, 'turn'=> $turn, 'colors' => $request->colors];
+            $game->save();
+            if ($game->opponent->wallet_address)
+                event(new DoStep(
+                    $game,
+                    $request->address === $game->opponent->wallet_address ? $game->creator->wallet_address : $game->opponent->wallet_address,
+                    $request->lastMove
+                ));
+        }else{
+            $turn = $request->turn;
+            $game->state = ['state' => $request->state, 'turn'=> $turn, 'colors' => $request->colors];
+            $game->save();
+        }
+
         return response()->json([
             'data' => $request->all(),
             'game' => $game

@@ -151,7 +151,7 @@
                             squareClick(squareRowIndex, squareColIndex)
                         "
                     >
-                        <g v-if="square.content.piece">
+                        <g v-if="square.content.piece" v-show="game?.opponent_id ? square.content.y >= 0 : square.content.y >= 170">
                             <Piece
                                 :avatar-color="boardColors[square.content.color]"
                                 :key="square.code"
@@ -209,7 +209,7 @@ export default {
         Den2,
         Trap,
     },
-    emits: ['gameover'],
+    emits: ['gameover','connected'],
     props: {
         boardSettings: {
             required: false,
@@ -277,7 +277,6 @@ export default {
     },
     async mounted()
     {
-        console.log('pppppppusher')
 
         this.setInitialConfig();
 
@@ -292,7 +291,6 @@ export default {
         const pusher = new Pusher('aaf9c43e10a6d5e65efe', {
             cluster: 'eu'
         });
-        console.log(pusher, 'pusher')
         if (store.state.address && this.game.status === "started"){
             // TODO subscribe
             const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address );
@@ -348,18 +346,16 @@ export default {
             });
         }else if (store.state.address){
             const channel = pusher.subscribe('connect.' + store.state.address);
-            channel.bind('App\\Events\\ConnectGame', function(data) {
-                if (data.player === store.state.address){
-                    this.gameStarted = true;
-                }
+            channel.bind('App\\Events\\ConnectGame', (data) => {
+                this.gameStarted = true;
+                this.openBoard = true;
+                this.$emit('connected')
             });
         }
 
     },
     watch: {
         gameStarted(data){
-            console.log(data, 'data')
-
             if (data){
                 this.openBoard = this.game.state.turn === "white";
                 Pusher.logToConsole = true;

@@ -69,7 +69,7 @@
                         class="board d-flex justify-content-center bg-transparent align-items-center"
                     >
                         <template  v-if="game.status === 'pending' || game.opponent_id || !address">
-                            <MultiPlay @gameover="gameOver" :game="game" :id="$route.params.id" />
+                            <MultiPlay @gameover="gameOver" @connected="connected" :game="game" :id="$route.params.id" />
                         </template>
                         <template v-else>
                             <Game @gameover="gameOver" :game="game" :id="$route.params.id" />
@@ -147,7 +147,7 @@
             v-on:handelReadyToStart="handelReadyToStart()"
             v-on:quitGame="quitGame()"
         />
-        <div v-show="!toggleModal" style="height:100vh; z-index: 1000;" class="justify-content-center align-content-center d-flex modal-outgame">
+        <div v-show="!toggleModal" style="z-index: 1000;" class="justify-content-center align-content-center d-flex">
             <ConnectWalletModal :show="toggleModal" style="margin: 0"></ConnectWalletModal>
         </div>
     </div>
@@ -263,6 +263,33 @@ export default {
             this.readyToStart = true;
             localStorage.setItem('canStart', 'true');
             this.open = false;
+        },
+        async connected() {
+            this.readyToStart = true;
+            localStorage.setItem('canStart', 'true');
+            this.open = false;
+            try {
+                this.isLoading = true;
+                const response = await axios.post(
+                    `/api/get-game/${this.$route.params.id}`,
+                    {
+                        address: this.address,
+                    }
+                );
+                if (response.status === 200) {
+                    this.game = response.data.game
+                    this.isLoading = false;
+
+                    if(this.game.status === "started" && this.address === this.game?.creator?.wallet_address){
+                        const opponentAddress = this.game?.opponent?.wallet_address
+                        toastr.success(opponentAddress.slice(0, 6) + '......' + opponentAddress.slice(-5) + '<br>Connected successfully!');
+                    }
+                } else {
+                    this.$router.push("/game");
+                }
+            } catch (e) {
+                this.$router.push("/game");
+            }
         },
         async quitGame() {
             try {

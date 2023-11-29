@@ -1,7 +1,7 @@
 <template>
     <div v-show="open" class="allineatore2">
         <!----------------- MODALS UTILITY ------------------->
-        <div class="modal d-flex main_modal align-items-center modal-outgame">
+        <div class="modal d-flex main_modal align-items-center modal-outgame" :style="{background: modalBackground}">
             <!-- Modal content -->
             <div class="modal-content container-sm d-flex flex-column align-items-center">
                 <div class="d-flex container-sm align-items-center justify-content-between flex-row">
@@ -74,6 +74,14 @@ export default {
         }
     },
     computed: {
+        modalBackground() {
+
+          if(!this.message){
+            if(this.gameStarted && this.canStart){
+              return 'transparent';
+            }
+          }
+        },
         mainMessage(){
             if(this.gameStarted && !this.canStart){
                 return 'CountDown Message'
@@ -82,6 +90,7 @@ export default {
         },
     },
     created() {
+
         if(this.gameStarted && !this.canStart){
             let timeout = 4
             let interval = setInterval(() => {
