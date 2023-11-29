@@ -36,7 +36,8 @@ const routes = [
                 name: 'avatar',
                 component: AvatarPage,
                 props: (route) => ({
-                    walletAddress: route.query.wallet_address
+                    walletAddress: route.query.wallet_address,
+                    playerListIndex: route.query.player_list_index
                 }),
             },
             {
