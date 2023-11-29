@@ -10,10 +10,10 @@ const colorIdData = {
     2: {
         borderStyle: '3px solid red',
         backgroundBord: '#EE3634',
-        colorAddress: 'white',
+        colorAddress: 'black',
         colorPower: 'black',
         avatarSrc: '../../../images/extra_objects/iconaplayB.png',
-        textDecorationAddress: 'white',
+        textDecorationAddress: 'black',
     },
     3: {
         borderStyle: '3px solid blue',
