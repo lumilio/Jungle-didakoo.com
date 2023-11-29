@@ -31,7 +31,7 @@
                 <!------------------------ ARCHIVMENTS LOGOS EXAMPLE ---------------------->
                 <!-- see previous branch "avatar checkpoint" -->
                 <!------------------------------------------------------------->
-                    <p style='font-size:33px; color:white;'>{{ userData?.power }} <i style='color:#feb442' class="fa-solid fa-bolt"></i></p>
+                    <p style='font-size:33px; color:white;'>{{ userData?.power !== undefined ? formatPower(userData?.power) : '' }} <i style='color:#feb442' class="fa-solid fa-bolt"></i></p>
 
 
                 </div>
@@ -52,6 +52,7 @@
 <script>
 import axios from "axios";
 import { getDefinitiveColorIdFromUserData } from '../../utilites/getColorByUserColorId'
+import { formatNumberWithSuffix } from '../../utilites/formatNumberWithSuffix'
 
 export default {
     data() {
@@ -120,6 +121,9 @@ export default {
                 default:
                     return '#FFFF00'
             }
+        },
+        formatPower(power) {
+            return formatNumberWithSuffix(power)
         }
     },
     watch: {
