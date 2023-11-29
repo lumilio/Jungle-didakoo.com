@@ -366,21 +366,24 @@ export default {
         userData() {
                 this.getColorByUserColorId();
         },
-        async address() {
+        async address(data) {
             try {
+              if (data){
                 this.isLoading = true;
                 const response = await axios.post(
                     `/api/get-game/${this.$route.params.id}`,
                     {
-                        address: this.address,
+                      address: this.address,
                     }
                 );
                 if (response.status === 200) {
-                    this.game = response.data.game
-                    this.isLoading = false;
+                  this.game = response.data.game
+                  this.isLoading = false;
                 } else {
-                    this.$router.push("/game");
+                  this.$router.push("/game");
                 }
+              }
+
             } catch (e) {
                 this.$router.push("/game");
             }

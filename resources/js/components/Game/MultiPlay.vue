@@ -74,6 +74,7 @@
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
                     :color="opponentColor"
+                    v-show="game?.opponent_id"
                 />
             </g>
             <g @click="squareClick(8,3)">
@@ -277,7 +278,6 @@ export default {
     },
     async mounted()
     {
-
         this.setInitialConfig();
 
         if (this.game?.opponent?.wallet_address === store.state.address && this.game.state.turn === "black"){
@@ -579,7 +579,7 @@ export default {
         initSquares() {
             this.squares = [];
             let squareContent =  this.getSquareContent()
-            if(this.userData.id === this.game.opponent_id){
+            if(this.game?.opponent?.wallet_address === store.state.address){
                 const newSquareContent = {};
                 for (const [key, value] of Object.entries(squareContent)) {
                     newSquareContent[`${key[0]}${10 - key[1]}`] = value;
