@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Player;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -24,5 +25,19 @@ class UserController extends Controller
         }
 
         return response()->json(['user' => $player]);
+    }
+
+    public function getActiveSessions(Request $request) {
+        $NUMBER_OF_MINUTES = 5;
+
+        $totalActiveUsersInLastFiveMinutes = DB::table(config('session.table'))
+            ->distinct()
+            ->where('sessions.last_activity', '>', now()->subMinutes($NUMBER_OF_MINUTES)->getTimestamp())
+            ->get()
+            ->count();
+
+        return response()->json([
+            'total' => $totalActiveUsersInLastFiveMinutes
+        ]);
     }
 }

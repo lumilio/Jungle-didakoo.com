@@ -24,6 +24,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/web3-login-message', 'Web3LoginController@message');
 
 Route::get('/get-users', 'UserController@getUsers');
+Route::get('/active-sessions', 'UserController@getActiveSessions');
 
 
 Route::post('/if-there-nft', 'Web3LoginController@IfThereNft');
