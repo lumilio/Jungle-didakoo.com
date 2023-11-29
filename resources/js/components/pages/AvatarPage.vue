@@ -11,7 +11,7 @@
                 <!------------------------ AVATAR CARD ---------------------->
                 <div :style="{ marginBottom: '100px', backgroundColor: 'black', border: '3px solid ' + borderColor }" class="container-sm avatar mt-4 d-flex flex-column  align-items-center px-3">
                     <!-- <img style='width:50px; position: absolute; top:15px; left:15px;' src='images/extra_objects/ff.png' alt=""> -->
-                    <p style="position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;"> <i  class="fa-solid fa-circle" :style="{color: user ? '#46e546' : 'grey'}" ></i>{{user ? ' Online' : ' Offline'}}  </p>
+                    <p style="position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;"> <i  class="fa-solid fa-circle" :style="{color: user ? '#46e546' : 'red'}" ></i>{{user ? ' Online' : ' Offline'}}  </p>
 
                     <!-- <p style='position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;'> <i  class="fa-solid fa-circle" style="color: #46e546" ></i> &nbsp Online</p> -->
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:white;'> </p>
