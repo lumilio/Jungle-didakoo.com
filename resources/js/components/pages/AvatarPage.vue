@@ -11,11 +11,11 @@
                 <!------------------------ AVATAR CARD ---------------------->
                 <div :style="{ marginBottom: '100px', backgroundColor: 'black', border: '3px solid ' + borderColor }" class="container-sm avatar mt-4 d-flex flex-column  align-items-center px-3">
                     <!-- <img style='width:50px; position: absolute; top:15px; left:15px;' src='images/extra_objects/ff.png' alt=""> -->
-                    <p style="position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;"> <i  class="fa-solid fa-circle" :style="{color: user ? '#46e546' : 'grey'}" ></i>{{user ? ' Online' : ' Offline'}}  </p>
+                    <p style="position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;"> <i  class="fa-solid fa-circle" :style="{color: userIsLoggedIn ? '#46e546' : 'red'}" ></i>{{user ? ' Online' : ' Offline'}}  </p>
 
                     <!-- <p style='position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;'> <i  class="fa-solid fa-circle" style="color: #46e546" ></i> &nbsp Online</p> -->
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:white;'> </p>
-                    <p style='position:absolute; display:block; margin-top:10px;  font-size:33px; right:15px; top:5px; color:white;'>{{ playerNumber }}°</p>
+                    <p style='position:absolute; display:block; margin-top:10px;  font-size:33px; right:15px; top:5px; color:white;'>{{ playerListIndex ?? playerNumber }}°</p>
                     <img id='avataricon' style='margin-top:80px; margin-bottom:20px;' src='images/extra_objects/iconaplayW.png' alt="">
                     <!-- <p class="text-white">Avatar v.1</p> -->
                     <div style="background-color:black; width:100%;" >
@@ -31,7 +31,7 @@
                 <!------------------------ ARCHIVMENTS LOGOS EXAMPLE ---------------------->
                 <!-- see previous branch "avatar checkpoint" -->
                 <!------------------------------------------------------------->
-                    <p style='font-size:33px; color:white;'>{{ userData?.power }} <i style='color:#feb442' class="fa-solid fa-bolt"></i></p>
+                    <p style='font-size:33px; color:white;'>{{ userData?.power !== undefined ? formatPower(userData?.power) : '' }} <i style='color:#feb442' class="fa-solid fa-bolt"></i></p>
 
 
                 </div>
@@ -52,11 +52,13 @@
 <script>
 import axios from "axios";
 import { getDefinitiveColorIdFromUserData } from '../../utilites/getColorByUserColorId'
+import { formatNumberWithSuffix } from '../../utilites/formatNumberWithSuffix'
 
 export default {
     data() {
         return {
             userData: null,
+            playerListIndex: null,
             borderColor: ''
         };
     },
@@ -70,6 +72,9 @@ export default {
         },
         playerNumber() {
             return this.$store.state.playerNumber
+        },
+        userIsLoggedIn() {
+            return this.user && this.address == this.userData?.wallet_address
         }
     },
 
@@ -91,6 +96,8 @@ export default {
     },
     methods: {
         async getUserByWalletAddress() {
+            this.playerListIndex = this.$route.query.player_list_index
+
             try {
                 const walletAddress = this.$route.query.wallet_address;
                 const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
@@ -114,6 +121,9 @@ export default {
                 default:
                     return '#FFFF00'
             }
+        },
+        formatPower(power) {
+            return formatNumberWithSuffix(power)
         }
     },
     watch: {

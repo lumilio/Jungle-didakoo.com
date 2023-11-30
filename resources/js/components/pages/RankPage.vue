@@ -296,6 +296,8 @@ import axios from 'axios';
 import store from "../../store";
 import NFT_LINKS from "../../constants/nftLinks";
 import { getColorStyles, getDefinitiveColorIdFromUserData } from '../../utilites/getColorByUserColorId';
+import { formatNumberWithSuffix } from '../../utilites/formatNumberWithSuffix'
+
  export default {
     data(){
         return{
@@ -346,7 +348,7 @@ import { getColorStyles, getDefinitiveColorIdFromUserData } from '../../utilites
             }
         },
         formatPower(power) {
-            return power >= 1000000 ? `${Math.floor(power / 1000000)}M` : ( power >= 1000 ? `${Math.floor(power / 1000)}k` : `${power}` )
+            return formatNumberWithSuffix(power)
         }
     },
     async mounted()
