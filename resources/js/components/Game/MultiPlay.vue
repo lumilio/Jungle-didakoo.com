@@ -74,7 +74,7 @@
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
                     :color="opponentColor"
-                    v-show="game?.opponent_id"
+                    v-show="game?.opponent"
                 />
             </g>
             <g @click="squareClick(8,3)">
@@ -152,7 +152,7 @@
                             squareClick(squareRowIndex, squareColIndex)
                         "
                     >
-                        <g v-if="square.content.piece" v-show="game?.opponent_id ? square.content.y >= 0 : square.content.y >= 170">
+                        <g v-if="square.content.piece" v-show="game?.opponent ? square.content.y >= 0 : square.content.y >= 170">
                             <Piece
                                 :avatar-color="boardColors[square.content.color]"
                                 :key="square.code"
@@ -285,7 +285,6 @@ export default {
         }else if(this.game?.creator?.wallet_address === store.state.address && this.game.state.turn === "white"){
             this.openBoard = true
         }
-
         // Pusher.logToConsole = true;
         Pusher.logToConsole = true;
         const pusher = new Pusher('aaf9c43e10a6d5e65efe', {

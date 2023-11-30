@@ -47,7 +47,7 @@
                                     :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayB.png'"
                                     alt="..."
                                 />
-                                {{ this.game?.opponent?.wallet_address }}
+                                {{ this.game?.opponent?.wallet_address === address ? this.game?.creator?.wallet_address : this.game?.opponent?.wallet_address }}
                             </p>
                             <div
                                 class="d-flex align-items-center flex-row flex-nowrap"
@@ -68,7 +68,7 @@
                     <div
                         class="board d-flex justify-content-center bg-transparent align-items-center"
                     >
-                        <template  v-if="game.status === 'pending' || game.opponent_id || !address">
+                        <template  v-if="game.status === 'pending' || game.opponent_id || game.opponent || !address">
                             <MultiPlay @gameover="gameOver" @connected="connected" :game="game" :id="$route.params.id" />
                         </template>
                         <template v-else>
@@ -251,7 +251,7 @@ export default {
                 {
                     title: 'QUIT',
                     image: '../../../images/board/animals/icon-17.png',
-                    onclick: this.quitGame
+                    onclick: this.finishedGame
                 }
             ];
             this.openModal(message)
@@ -305,6 +305,9 @@ export default {
             } catch (e) {
                 console.log(e);
             }
+        },
+        async finishedGame() {
+            return this.$router.push("/rank");
         },
 
          share() {

@@ -67,20 +67,43 @@ class GameController extends Controller
     public function getGame(Request $request, $url){
         if ($request->session()->has('isGuest')){
             try {
-                $game = GuestGame::query()->where('url', $url)->first();
                 $player = $request->session()->get('userSession');
+                $game = GuestGame::query()->where('url', $url)->first();
+                if (!$game){
+                    $game = Game::query()->where('url', $url)->first();
+                    if ($game->status === "pending"){
+                        $newGame = GuestGame::create([
+                            'creator' => $game->creator->wallet_address,
+                            'opponent' => $player,
+                            'url' => $game->url,
+                            'status' => 'started',
+                            'state' => $game->state,
+                        ]);
+                        $game->delete();
+                        $creator = $newGame->creator;
+                        $newGame['opponent'] = ['wallet_address' => $newGame->opponent];
+                        $newGame['creator'] = ['wallet_address' => $newGame->creator];
+                        event(new ConnectGame($creator));
+                        return response()->json(['message' => 'success', 'game' => $newGame]);
+                    }
+                }else{
+                    $player = $request->session()->get('userSession');
+                    if ($game->status === "started" && !($player === $game->creator || $player === $game->opponent)){
+                        return response()->json(['message' => 'Bed request'], 400);
+                    }
+                    if ($game->status === "pending" && $game->creator !== $player){
+                        $game->update([
+                            'opponent' => $player,
+                            'status' => 'started'
+                        ]);
+                        $game = GuestGame::query()->where('url', $url)->first();
+                        event(new ConnectGame($game->creator));
+                    }
+                    $game['opponent'] = ['wallet_address' => $game->opponent];
+                    $game['creator'] = ['wallet_address' => $game->creator];
+                    return response()->json(['message' => 'success', 'game' => $game]);
+                }
 
-                if ($game->status === "started" && !($player === $game->creator || $player === $game->opponent)){
-                    return response()->json(['message' => 'Bed request'], 400);
-                }
-                if ($game->status === "pending" && $game->creator !== $player){
-                    $game->update([
-                        'opponent' => $player,
-                        'status' => 'started'
-                    ]);
-                    event(new ConnectGame($game->creator->wallet_address));
-                }
-                return response()->json(['message' => 'success', 'game' => $game]);
             }catch (\Exception $e){
                 return response()->json(['message' => 'Bed request'], 400);
             }
@@ -93,7 +116,27 @@ class GameController extends Controller
             return response()->json(['message' => 'Bed request'], 400);
         }
         if (!$game){
-            return response()->json(['message' => 'Not Found'], 404);
+            $game = GuestGame::query()->where('url', $url)->first();
+            if (!$game) return response()->json(['message' => 'Not Found'], 404);
+            if ($game->status === "started" && !($player->wallet_address === $game->creator || $player->wallet_address === $game->opponent) ){
+                return response()->json(['message' => 'Bed request'], 400);
+            }
+            if ($game->status === "pending"){
+                $game->update([
+                    'opponent' => $player->wallet_address,
+                    'status' => 'started'
+                ]);
+                $game = GuestGame::query()->where('url', $url)->first();
+                $creator = $game->creator;
+                $game['opponent'] = ['wallet_address' => $game->opponent];
+                $game['creator'] = ['wallet_address' => $game->creator];
+                event(new ConnectGame($creator));
+                return response()->json(['message' => 'success', 'game' => $game]);
+            }
+            $game['opponent'] = ['wallet_address' => $game->opponent];
+            $game['creator'] = ['wallet_address' => $game->creator];
+            return response()->json(['message' => 'success', 'game' => $game]);
+
         }
         if ($game->status === "started" && !($player->id === $game->creator_id || $player->id === $game->opponent_id)){
             return response()->json(['message' => 'Bed request'], 400);
@@ -114,25 +157,58 @@ class GameController extends Controller
         $id = $request->id;
         if ($request->session()->has('isGuest')){
             $game = GuestGame::where('url',$id)->first();
+            if($game->opponent){
+                $turn = $request->address === $game->opponent ? "white" : "black";
+                $game->state = ['state' => $request->state, 'turn'=> $turn, 'colors' => $request->colors];
+                $game->save();
+                    event(new DoStep(
+                        $game,
+                        $request->address === $game->opponent ? $game->creator : $game->opponent,
+                        $request->lastMove
+                    ));
+            }else{
+                $turn = $request->turn;
+                $game->state = ['state' => $request->state, 'turn'=> $turn, 'colors' => $request->colors];
+                $game->save();
+            }
         }else{
             $game = Game::where('url',$id)->first();
-        }
-        if($game->opponent_id && $game->opponent->wallet_address){
-            $turn = $request->address === $game->opponent->wallet_address ? "white" : "black";
-            $game->state = ['state' => $request->state, 'turn'=> $turn, 'colors' => $request->colors];
-            $game->save();
-            if ($game->opponent->wallet_address)
+            if ($game){
+                if($game->opponent_id && $game->opponent->wallet_address){
+                    $turn = $request->address === $game->opponent->wallet_address ? "white" : "black";
+                    $game->state = ['state' => $request->state, 'turn'=> $turn, 'colors' => $request->colors];
+                    $game->save();
+                    if ($game->opponent->wallet_address)
+                        event(new DoStep(
+                            $game,
+                            $request->address === $game->opponent->wallet_address ? $game->creator->wallet_address : $game->opponent->wallet_address,
+                            $request->lastMove
+                        ));
+                    if ($game->opponent)
+                        event(new DoStep(
+                            $game,
+                            $request->address === $game->opponent ? $game->creator : $game->opponent,
+                            $request->lastMove
+                        ));
+                }else{
+                    $turn = $request->turn;
+                    $game->state = ['state' => $request->state, 'turn'=> $turn, 'colors' => $request->colors];
+                    $game->save();
+                }
+            }else{
+                $game = GuestGame::where('url',$id)->first();
+                $turn = $request->address === $game->opponent ? "white" : "black";
+                $game->state = ['state' => $request->state, 'turn'=> $turn, 'colors' => $request->colors];
+                $game->save();
                 event(new DoStep(
                     $game,
-                    $request->address === $game->opponent->wallet_address ? $game->creator->wallet_address : $game->opponent->wallet_address,
+                    $request->address === $game->opponent ? $game->creator : $game->opponent,
                     $request->lastMove
                 ));
-        }else{
-            $turn = $request->turn;
-            $game->state = ['state' => $request->state, 'turn'=> $turn, 'colors' => $request->colors];
-            $game->save();
-        }
+            }
 
+
+        }
         return response()->json([
             'data' => $request->all(),
             'game' => $game
@@ -157,18 +233,30 @@ class GameController extends Controller
         $player = $request->player;
         $win  = $request->win;
         if ($request->session()->has('isGuest')){
-            $game = GuestGame::where('url', $game_id)->where('status', 'started')->first();
+            $game = GuestGame::where('url', $game_id)->where('status', 'started')->orWhere('status', 'finished')->first();
             if(!$game){
                 return response()->json(['message' => 'Bed request'], 400);
             }
+
             $game->update([
                 'status' => "finished"
             ]);
             return response()->json(['message' => 'finished']);
         }
         $game = Game::where('url', $game_id)->where('status', 'started')->first();
+        $finishedGame = Game::where('url', $game_id)->where('status', 'finished')->first();
+        if ($finishedGame){
+            return response()->json(['message' => 'finished']);
+        }
         if(!$game){
-            return response()->json(['message' => 'Bed request'], 400);
+            $game = GuestGame::where('url', $game_id)->where('status', 'started')->orWhere('status', 'finished')->first();
+            if (!$game){
+                return response()->json(['message' => 'Bed request'], 400);
+            }
+            $game->update([
+                'status' => "finished"
+            ]);
+            return response()->json(['message' => 'finished']);
         }
         if ($player === $game->creator->wallet_address || $player === $game->opponent->wallet_address){
             $creator = Player::query()->where('wallet_address', $player)->first();

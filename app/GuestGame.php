@@ -14,4 +14,8 @@ class GuestGame extends Model
         'status',
         'state'
     ];
+    protected $casts = [
+        'state' => Json::class,
+    ];
+
 }
