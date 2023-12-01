@@ -127,7 +127,6 @@ class Web3LoginController extends Controller
     }
 
     //Get users
-
     public function getUsers()
     {
         $players = Player::all()->toArray();
