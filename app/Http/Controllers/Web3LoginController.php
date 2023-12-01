@@ -120,6 +120,29 @@ class Web3LoginController extends Controller
         }
         return 'failed';
     }
+
+    public function updatePlayerLastActivity(Request $request)
+    {
+        $player = Player::query()->where('wallet_address', $request->session()->get('userSession'))->first();
+
+        if (!$player) {
+            return response()->json([
+                'message' => 'No player found'
+            ], 404);
+        }
+
+        $player->last_activity = now('UTC');
+        $player->save();
+
+        return response()->json([
+            'address' => $player->wallet_address,
+            'color' => $player->color_id,
+            'power' => $player->power,
+            'id' => $player->id,
+            'last_activity' => $player->last_activity
+        ]);
+    }
+
     public function logout(Request $request)
     {
         $request->session()->forget(['loggedIn','userSession', 'isGuest']);
