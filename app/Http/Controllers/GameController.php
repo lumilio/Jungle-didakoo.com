@@ -184,13 +184,7 @@ class GameController extends Controller
                             $request->address === $game->opponent->wallet_address ? $game->creator->wallet_address : $game->opponent->wallet_address,
                             $request->lastMove
                         ));
-                    if ($game->opponent)
-                        event(new DoStep(
-                            $game,
-                            $request->address === $game->opponent ? $game->creator : $game->opponent,
-                            $request->lastMove
-                        ));
-                }else{
+                   }else{
                     $turn = $request->turn;
                     $game->state = ['state' => $request->state, 'turn'=> $turn, 'colors' => $request->colors];
                     $game->save();

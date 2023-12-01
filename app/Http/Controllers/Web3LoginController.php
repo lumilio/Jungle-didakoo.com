@@ -244,7 +244,7 @@ class Web3LoginController extends Controller
             $request->session()->put('userSession', $id);
             $request->session()->put('isGuest', true);
             $request->session()->put('loggedIn', 'success');
-            return response()->json(['message' => 'Success']);
+            return response()->json(['message' => 'Success', 'address' => $id]);
         }catch (\Exception $e){
             return response()->json(['message' => $e->getMessage()], 400);
         }

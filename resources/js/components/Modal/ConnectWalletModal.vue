@@ -251,21 +251,15 @@ export default {
                 try {
 
                     if (wallet === "guest"){
-                      const result = await fetch(process.env.MIX_SERVER_APP_URL +'/api/login-as-guest', {
-                        method: 'POST',
-                        headers: {
-                          'Content-Type': 'application/json'
-                        },
-                          body: JSON.stringify({
+                      const result = await axios.post(process.env.MIX_SERVER_APP_URL +'/api/login-as-guest', {
                               '_token': document.querySelector('meta[name="csrf-token"]').content
-                          })
                       });
                       if(result.status !== 200){
                           throw "Bad request";
                       }
                         store.commit('LOG_IN_USER', true);
-                        store.commit('SET_USER_ADDRESS', 'guest');
-                        this.userData = {address: 'guest', balance: 0, power: 0, color_id: 1};
+                        store.commit('SET_USER_ADDRESS', result.data.address);
+                        this.userData = {address: result.data.address, balance: 0, power: 0, color_id: 1};
                         store.commit('SET_USER_DATA', {color_id: this.userData.color_id , power :this.userData.power})
                         store.commit('TOGGLE_WALLET_MODAL');
                         toastr.success('Log in successfully!');
