@@ -92,14 +92,16 @@ const router = new VueRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-    await _throttleActivityLog(async () => {
-        await axios.post(process.env.MIX_SERVER_APP_URL + '/api/update-player-last-activity', {
-            headers: {
-                'Content-Type': 'application/json',
-                '_token': document.querySelector('meta[name="csrf-token"]').content
-            }
-        })
-    }, 1)
+    if (store.state.user) {
+        await _throttleActivityLog(async () => {
+            await axios.post(process.env.MIX_SERVER_APP_URL + '/api/update-player-last-activity', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    '_token': document.querySelector('meta[name="csrf-token"]').content
+                }
+            })
+        }, 1)
+    }
 
     next()
 })
