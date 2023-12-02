@@ -34,23 +34,33 @@ const colorIdData = {
 }
 
 export function getDefinitiveColorIdFromUserData(userData) {
+    let colors = []
     if (userData.nft_7_color4) {
-        return 4
-    } else if (userData.nft_6_color3) {
-        return 3
-    } else if (userData.nft_5_color2) {
-        return 2
-    } else if (userData.nft_4_color1) {
-        return 1
-    } else {
-        return userData.color_id
+        colors.push(4)
     }
+    
+    if (userData.nft_6_color3) {
+        colors.push(3)
+    }
+    
+    if (userData.nft_5_color2) {
+        colors.push(2)
+    }
+    
+    if (userData.nft_4_color1) {
+        colors.push(1)
+    }
+    
+    return colors.length
+        ? colors[Math.floor(Math.random() * colors.length)]
+        : 0
 }
 
 export function getColorStyles(colorId) {
     if (colorIdData[colorId]) {
         return colorIdData[colorId];
     } else {
-        return {}
+        const randomKey = Math.round(Math.random() * (Object.keys(colorIdData).length - 1)) + 1
+        return colorIdData[randomKey]
     }
 }
