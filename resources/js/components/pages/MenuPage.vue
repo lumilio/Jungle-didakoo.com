@@ -80,7 +80,7 @@ export default {
                     }
                 });
                 store.commit('LOG_OUT_USER')
-                store.commit('TOGGLE_WALLET_MODAL')
+                // store.commit('TOGGLE_WALLET_MODAL')
                 toastr.info("User logged out")
             } else {
                 store.commit('TOGGLE_WALLET_MODAL')
