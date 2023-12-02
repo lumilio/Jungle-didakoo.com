@@ -19,7 +19,8 @@ const store = new Vuex.Store({
     svg: null,
     errors: [],
     userData: {},
-    connectWallet: false
+    connectWallet: false,
+    lastActivityLogged: null
   },
 
   getters: {
@@ -75,6 +76,9 @@ const store = new Vuex.Store({
     },
     setErrors(state, errors) {
       state.errors = errors;
+    },
+    SET_LAST_LOGGED_ACTIVITY(state, lastActivityLogged) {
+      state.lastActivityLogged = lastActivityLogged
     }
   },
 
