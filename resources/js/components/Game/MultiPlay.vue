@@ -74,7 +74,7 @@
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
                     :color="opponentColor"
-                    v-show="game?.opponent"
+                    v-show="game?.opponent?.wallet_address"
                 />
             </g>
             <g @click="squareClick(8,3)">
@@ -152,7 +152,7 @@
                             squareClick(squareRowIndex, squareColIndex)
                         "
                     >
-                        <g v-if="square.content.piece" v-show="game?.opponent ? square.content.y >= 0 : square.content.y >= 170">
+                        <g v-if="square.content.piece" v-show="game?.opponent?.wallet_address ? square.content.y >= 0 : square.content.y >= 170">
                             <Piece
                                 :avatar-color="boardColors[square.content.color]"
                                 :key="square.code"

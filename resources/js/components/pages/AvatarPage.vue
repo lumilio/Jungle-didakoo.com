@@ -4,7 +4,7 @@
 
             <!------------------  white ----------------------->
 
-            <div style='height:calc(100vh - 80px);' class="allineatore d-flex container-fluid flex-column justify-content-center px-4 align-items-center modal-outgame">
+            <div style='height:calc(100vh - 80px);' class="allineatore d-flex container-fluid flex-column justify-content-center px-4 align-items-center">
 
 
 
@@ -82,7 +82,7 @@ export default {
             } else {
                 const currentDateUTC = new Date(new Date().toUTCString().slice(0, 25))
                 const lastActivityDate = new Date(this.userData.last_activity)
-                
+
                 return (currentDateUTC - lastActivityDate) / 1000 < 5 * 60
             }
         }

@@ -12,10 +12,15 @@
                 <!----------------- NAV ------------------->
                 <div class="d-flex banner-board-helper align-items-center">
                     <button
+                        @click="reloadPage"
+                        class="d-flex bg-transparent border-0 align-items-center"
+                    >
+                        <i class="fa-solid fa-arrows-rotate" style="color: white;font-size: 18px;"></i>
+                    </button>
+                    <button
                         @click="openModal()"
                         class="d-flex bg-transparent border-0 align-items-center"
                     >
-                        <p class="avatar_helper">Console</p>
                         <i class="fa-solid burger_menu fa-bars" style="margin: 0 auto; position: static; font-size: 20px;"></i>
                     </button>
                 </div>
@@ -238,7 +243,9 @@ export default {
                 this.user = null;
             }
         },
-
+        reloadPage() {
+            window.location.reload();
+        },
         openModal(message = null) {
             this.open = true;
             if(message){

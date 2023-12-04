@@ -124,11 +124,18 @@ class Web3LoginController extends Controller
     public function updatePlayerLastActivity(Request $request)
     {
         $player = Player::query()->where('wallet_address', $request->session()->get('userSession'))->first();
-
-        if (!$player) {
-            return response()->json([
-                'message' => 'No player found'
-            ], 404);
+        if (!$player){
+            if ($request->session()->has('isGuest')){
+                return response()->json([
+                    'address' => $request->session()->get('userSession'),
+                    'color' => 1,
+                    'power' => 0
+                ]);
+            } else{
+                return response()->json([
+                    'message' => 'No player found'
+                ], 404);
+            }
         }
 
         $player->last_activity = now('UTC');
