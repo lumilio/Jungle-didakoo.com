@@ -100,7 +100,7 @@
 <script>
 import axios from 'axios';
 import store from "../../store";
-import { getColorStyles, getDefinitiveColorIdFromUserData } from '../../utilites/getColorByUserColorId';
+import { getColorStyles } from '../../utilites/getColorByUserColorId';
 import { formatNumberWithSuffix } from '../../utilites/formatNumberWithSuffix'
 import colorIconNft from "../../constants/nftLinks";
 
@@ -114,6 +114,8 @@ import colorIconNft from "../../constants/nftLinks";
             colorPower: '',
             avatarSrc: '',
             textDecorationAddress: '',
+            colorId: '',
+            changeColorId: [],
         }
     },
     computed: {
@@ -137,18 +139,24 @@ import colorIconNft from "../../constants/nftLinks";
             this.playersArray = this.playersArray.map((player) => {
                 return {
                     ...player,
-                    ...this.getPlayerStyles(getDefinitiveColorIdFromUserData(player))
+                    ...this.getPlayerStyles()
                 }
             })
         },
-        getPlayerStyles(userColorId) {
-            const colorStyles = getColorStyles(userColorId)
+        getPlayerStyles() {
+            let colorStyles = {};
+            do{
+                colorStyles = getColorStyles()
+            }while(colorStyles.colorId === this.changeColorId[this.changeColorId.length - 1] || colorStyles.colorId === this.changeColorId[this.changeColorId.length - 2])
+            this.changeColorId.push(colorStyles.colorId)
+
             return {
                 backgroundBord: colorStyles.backgroundBord ?? '#EDEB52',
                 colorAddress: colorStyles.colorAddress ?? 'black',
                 colorPower: colorStyles.colorPower ?? 'black',
                 avatarSrc: colorStyles.avatarSrc ?? '../../../images/extra_objects/iconaplayB.png',
-                textDecorationAddress: colorStyles.textDecorationAddress ?? 'black'
+                textDecorationAddress: colorStyles.textDecorationAddress ?? 'black',
+                colorId: colorStyles.colorId,
             }
         },
         formatPower(power) {

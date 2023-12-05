@@ -450,33 +450,11 @@ export default {
                 }
                 this.playColors.light = backgroundColors[this.boardColors.board]
             }
-                let blackColor = 1 + Math.floor(Math.random() * 6)
-                let colorID = this.userData?.color_id || 0;
-                let whiteColor;
-                if(colorID === 0){
-                    whiteColor = 1 + Math.floor(Math.random() * 6)
-                }else{
-                    whiteColor = colorID
+                this.boardColors = {
+                    black: data.colors.black,
+                    white: data.colors.white,
+                    board: data.colors.board
                 }
-                allowedColors.forEach(block => {
-                    if(block.animalColors.includes(blackColor) && block.animalColors.length > 1){
-                        while (blackColor === whiteColor){
-                            blackColor = block.animalColors[Math.floor(Math.random() * block.animalColors.length)]
-                        }
-                        this.boardColors = {
-                            black:blackColor,
-                            white:whiteColor,
-                            board: block.boardColors.light
-                        }
-                        this.playColors.light = backgroundColors[block.boardColors.light]
-                        if (block.boardColors.light === 2 ){
-                            this.possibleMove = "#9be8b4"
-                        }else {
-                            this.possibleMove = "#FFE194"
-
-                        }
-                    }
-                })
         },
         initSquares() {
             this.squares = [];

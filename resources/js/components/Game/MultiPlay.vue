@@ -286,7 +286,7 @@ export default {
             this.openBoard = true
         }
         // Pusher.logToConsole = true;
-        Pusher.logToConsole = true;
+        Pusher.logToConsole = false;
         const pusher = new Pusher('aaf9c43e10a6d5e65efe', {
             cluster: 'eu'
         });
@@ -357,7 +357,7 @@ export default {
         gameStarted(data){
             if (data){
                 this.openBoard = this.game.state.turn === "white";
-                Pusher.logToConsole = true;
+                Pusher.logToConsole = false;
                 const pusher = new Pusher('aaf9c43e10a6d5e65efe', {
                     cluster: 'eu'
                 });
@@ -560,20 +560,10 @@ export default {
                 }
                 this.playColors.light = backgroundColors[this.boardColors.board]
             }
-            allowedColors.forEach(block => {
-                this.boardColors = {
-                    black:this.game?.state?.colors.black,
-                    white:this.game?.state?.colors.white,
-                    board: this.game?.state?.colors.board
-                }
-
-                this.playColors.light = backgroundColors[block.boardColors.light]
-                if (block.boardColors.light === 2 ){
-                    this.possibleMove = "#9be8b4"
-                }else {
-                    this.possibleMove = "#FFE194"
-                }
-            })
+            this.boardColors = {
+                black: this.game?.state?.colors.black,
+                white: this.game?.state?.colors.white,
+                board: this.game?.state?.colors.board            }
         },
         initSquares() {
             this.squares = [];

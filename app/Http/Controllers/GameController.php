@@ -22,6 +22,23 @@ class GameController extends Controller
             if ($request->multiPlay){
                 $status = 'pending';
             }
+            $colorsCaseA = [
+                "black" => rand(5, 6),
+                "board" => 1,
+                "white" => rand(5, 6),
+            ];
+            while ($colorsCaseA["black"] === $colorsCaseA["white"]) {
+                $colorsCaseA["white"] = rand(5, 6);
+            }
+            $colorsCaseB = [
+                "black" => rand(1, 4),
+                "board" => rand(1, 2),
+                "white" => rand(1, 4),
+            ];
+            while ($colorsCaseB["black"] === $colorsCaseB["white"]) {
+                $colorsCaseB["white"] = rand(1, 4);
+            }
+            $randomColors = rand(0, 1) ? $colorsCaseA : $colorsCaseB;
             GuestGame::create([
                 'creator' => $player,
                 'url' => $uniqueUrl,
@@ -29,11 +46,7 @@ class GameController extends Controller
                 'state' => [
                     'state' => $request->state,
                     'turn' => 'white',
-                    "colors" => [
-                        "black" => 3,
-                        "board" => 2,
-                        "white" => 1
-                    ]
+                    "colors" => $randomColors
                 ]
             ]);
         }else{
@@ -45,6 +58,23 @@ class GameController extends Controller
             if ($request->multiPlay){
                 $status = 'pending';
             }
+            $colorsCaseA = [
+                "black" => rand(5, 6),
+                "board" => 1,
+                "white" => rand(5, 6),
+            ];
+            while ($colorsCaseA["black"] === $colorsCaseA["white"]) {
+                $colorsCaseA["white"] = rand(5, 6);
+            }
+            $colorsCaseB = [
+                "black" => rand(1, 4),
+                "board" => rand(1, 2),
+                "white" => rand(1, 4),
+            ];
+            while ($colorsCaseB["black"] === $colorsCaseB["white"]) {
+                $colorsCaseB["white"] = rand(1, 4);
+            }
+            $randomColors = rand(0, 1) ? $colorsCaseA : $colorsCaseB;
             Game::create([
                 'creator_id' => $player->id,
                 'url' => $uniqueUrl,
@@ -52,11 +82,7 @@ class GameController extends Controller
                 'state' => [
                     'state' => $request->state,
                     'turn' => 'white',
-                    "colors" => [
-                        "black" => $player->color_id === 3 ? 4 : 3,
-                        "board" => $player->color_id !== 0 ? $player->color_id : 1,
-                        "white" => $player->color_id !== 0 ? $player->color_id : 1
-                    ]
+                    "colors" => $randomColors
                 ]
             ]);
         }

@@ -34,7 +34,7 @@
                     <div class="board-player">
                         <div
                             :style="{
-                                backgroundColor: backgroundBord ? backgroundBord : '#EDEB52',
+                                backgroundColor: backgroundBord,
                                 width: '100%',
                                 border: '0',
                             }"
@@ -59,14 +59,26 @@
                             >
                                 <img
                                     style="width: 30px"
-                                    src="../../../images/extra_objects/icon-59.png"
+                                    :src="nftIconSrc"
                                     alt=""
                                 />
                                 <!-- <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i> -->
                             </div>
-                            <span class="align-items-center">
-                                100 <i class="fa-solid fa-bolt ml-1"></i
-                            ></span>
+                            <span
+                                class="align-items-center"
+                                :style="{
+                                    color: colorPower,
+                                    marginRight: '10px',
+                                    whiteSpace: 'nowrap',
+                                    backgroundColor: '',
+                                    padding: '0 10px',
+                                    borderRadius: '20px',
+                                    display: 'flex',
+                                }"
+                            >
+                                100
+                                <i class="fa-solid fa-bolt ml-1"></i
+                                ></span>
                         </div>
                     </div>
                     <!--------------------------------------------->
@@ -84,7 +96,7 @@
                     <div class="board-player">
                         <div
                             :style="{
-                                backgroundColor: backgroundBord ? backgroundBord : '#EDEB52',
+                                backgroundColor: backgroundBord,
                                 width: '100%',
                                 border: '0',
                             }"
@@ -94,7 +106,7 @@
                                 class="player-info"
                                 :style="{
                                     color: colorAddress ? colorAddress : 'black',
-                                                                        textDecoration: textDecorationAddress ? textDecorationAddress : 'underline black',
+                                    textDecoration: textDecorationAddress ? textDecorationAddress : 'underline black',
                                 }"
                             >
                                 1°
@@ -114,7 +126,7 @@
                             >
                                 <img
                                     style="width: 30px"
-                                    src="../../../images/extra_objects/icon-59.png"
+                                    :src="nftIconSrc"
                                     alt=""
                                 />
                                 <!-- <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i> -->
@@ -185,7 +197,8 @@ export default {
             colorPower: '',
             avatarSrc: '',
             textDecorationAddress: '',
-            showNotification: false
+            showNotification: false,
+            nftIconSrc: '',
         };
     },
     created() {
@@ -232,12 +245,14 @@ export default {
     methods: {
         getColorByUserColorId() {
             try {
-                const colorStyles = getColorStyles(this.userData.color_id);
+                const colorUser = this.game?.creator?.wallet_address === this.address ? this.game.state.colors.white : this.game.state.colors.black;
+                const colorStyles = getColorStyles(colorUser);
                 this.backgroundBord = colorStyles.backgroundBord;
                 this.colorAddress = colorStyles.colorAddress;
                 this.colorPower = colorStyles.colorPower;
                 this.avatarSrc = colorStyles.avatarSrc;
                 this.textDecorationAddress = colorStyles.textDecorationAddress;
+                this.nftIconSrc = colorStyles.nftIconSrc;
             } catch (error) {
                 console.error(error);
                 this.user = null;
@@ -285,6 +300,7 @@ export default {
                 );
                 if (response.status === 200) {
                     this.game = response.data.game
+                    this.getColorByUserColorId()
                     this.isLoading = false;
 
                     if(this.game.status === "started" && this.address === this.game?.creator?.wallet_address){
@@ -359,6 +375,7 @@ export default {
                 );
                 if (response.status === 200) {
                     this.game = response.data.game
+                    this.getColorByUserColorId()
                     this.isLoading = false;
                 } else {
                     this.$router.push("/game");
@@ -388,6 +405,7 @@ export default {
                 );
                 if (response.status === 200) {
                   this.game = response.data.game
+                  this.getColorByUserColorId()
                   this.isLoading = false;
                 } else {
                   this.$router.push("/game");
