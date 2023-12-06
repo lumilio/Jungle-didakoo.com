@@ -332,38 +332,27 @@ export default {
 
                         this.$emit("close");
                         toastr.success('Log in successfully!');
+                        try {
+                          response = await axios.post(process.env.MIX_SERVER_APP_URL +'/api/web3-register-ethwallet', {
+                            'wallet_address': address,
+                            'balance': amount['_hex'],
+                            'alias': alias,
+                            '_token': document.querySelector('meta[name="csrf-token"]').content
+                          });
+                        }catch (error){
+                          console.log(error,'error')
+                        }
 
-                        response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-register-ethwallet', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                'wallet_address': address,
-                                'balance': amount['_hex'],
-                                'alias': alias,
-                                '_token': document.querySelector('meta[name="csrf-token"]').content
-                            })
-                        });
-                        response.text().then((data) => {
-                            if (data !== "SUCCESS") {
-                                response = fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-update-ethwallet', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify({
-                                        'ethwalletaddr': address,
-                                        'balance': amount['_hex'],
-                                        '_token': document.querySelector('meta[name="csrf-token"]').content
-                                    })
-                                });
-
-                                console.log("Update successfully!");
-                            } else {
-                                console.log("Register successfully!");
-                            }
-                        });
+                        if (response.data !== "SUCCESS") {
+                            response = axios.post(process.env.MIX_SERVER_APP_URL +'/api/web3-update-ethwallet', {
+                                    'ethwalletaddr': address,
+                                    'balance': amount['_hex'],
+                                    '_token': document.querySelector('meta[name="csrf-token"]').content
+                            });
+                            console.log("Update successfully!");
+                        } else {
+                            console.log("Register successfully!");
+                        }
                         try {
                             const postData = {player: address};
                             for (const nft of dataNft) {

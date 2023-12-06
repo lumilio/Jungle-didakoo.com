@@ -115,7 +115,6 @@ import colorIconNft from "../../constants/nftLinks";
             avatarSrc: '',
             textDecorationAddress: '',
             colorId: '',
-            changeColorId: [],
         }
     },
     computed: {
@@ -136,19 +135,18 @@ import colorIconNft from "../../constants/nftLinks";
             this.url = window.location.host;
             const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/get-users');
             this.playersArray = response.data.users;
+            this.playersArray.forEach(user =>{
+            return this.getPlayerStyles(user.color_id)
+          })
             this.playersArray = this.playersArray.map((player) => {
                 return {
                     ...player,
-                    ...this.getPlayerStyles()
+                    ...this.getPlayerStyles(player.color_id)
                 }
             })
         },
-        getPlayerStyles() {
-            let colorStyles = {};
-            do{
-                colorStyles = getColorStyles()
-            }while(colorStyles.colorId === this.changeColorId[this.changeColorId.length - 1] || colorStyles.colorId === this.changeColorId[this.changeColorId.length - 2])
-            this.changeColorId.push(colorStyles.colorId)
+        getPlayerStyles(colorId) {
+            const colorStyles = getColorStyles(colorId)
 
             return {
                 backgroundBord: colorStyles.backgroundBord ?? '#EDEB52',

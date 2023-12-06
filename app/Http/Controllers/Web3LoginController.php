@@ -213,7 +213,8 @@ class Web3LoginController extends Controller
             $color_id = 0;
             if (count($color) !== 0){
                 $color_id = $color[rand(0, count($color) - 1)];
-                $creator->update(['color_id' => $color[rand(0, count($color) - 1)]]);
+            }else{
+                $color_id = rand(1, 4);
             }
             $creator->update(['color_id' => $color_id]);
 

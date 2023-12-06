@@ -51,7 +51,7 @@
 
 <script>
 import axios from "axios";
-import { getDefinitiveColorIdFromUserData } from '../../utilites/getColorByUserColorId'
+import {getColorStyles} from '../../utilites/getColorByUserColorId'
 import { formatNumberWithSuffix } from '../../utilites/formatNumberWithSuffix'
 
 export default {
@@ -105,6 +105,11 @@ export default {
         await this.getUserByWalletAddress();
     },
     methods: {
+      getPlayerStyles(colorId) {
+        const colorStyles = getColorStyles(colorId)
+        this.borderColor = colorStyles.backgroundBord
+
+      },
         async getUserByWalletAddress() {
             this.playerListIndex = this.$route.query.player_list_index
 
@@ -112,26 +117,26 @@ export default {
                 const walletAddress = this.$route.query.wallet_address;
                 const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
                 this.userData = response.data.user;
-                this.borderColor = this.getBorderColor(getDefinitiveColorIdFromUserData(this.userData))
+              this.getPlayerStyles(this.userData.color_id)
             } catch (error) {
                 console.error(error);
                 this.user = null;
             }
         },
-        getBorderColor(userColorId) {
-            switch (userColorId) {
-                case 1:
-                    return '#FFFF00'
-                case 2:
-                    return '#FF0000'
-                case 3:
-                    return '#0000FF'
-                case 4:
-                    return '#EE5E81'
-                default:
-                    return '#FFFF00'
-            }
-        },
+        // getBorderColor(userColorId) {
+        //     switch (userColorId) {
+        //         case 1:
+        //             return '#FFFF00'
+        //         case 2:
+        //             return '#FF0000'
+        //         case 3:
+        //             return '#0000FF'
+        //         case 4:
+        //             return '#EE5E81'
+        //         default:
+        //             return '#FFFF00'
+        //     }
+        // },
         formatPower(power) {
             return formatNumberWithSuffix(power)
         }
@@ -140,7 +145,7 @@ export default {
         address: {
             immediate: true,
             handler() {
-                this.getUserByWalletAddress();
+              this.getUserByWalletAddress();
             }
         }
     },
