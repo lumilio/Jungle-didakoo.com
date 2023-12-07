@@ -9,7 +9,7 @@
 
 
                 <!------------------------ AVATAR CARD ---------------------->
-                <div :style="{ marginBottom: '100px', backgroundColor: 'black', border: '3px solid ' + borderColor }" class="container-sm avatar mt-4 d-flex flex-column  align-items-center px-3">
+                <div :style="{ marginBottom: '100px', backgroundColor: 'black', border: '3px solid ' + boardColorAvatar }" class="container-sm avatar mt-4 d-flex flex-column  align-items-center px-3">
                     <!-- <img style='width:50px; position: absolute; top:15px; left:15px;' src='images/extra_objects/ff.png' alt=""> -->
                     <p style="position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;"> <i  class="fa-solid fa-circle" :style="{color: isUserOnline ? '#46e546' : 'red'}" ></i>{{isUserOnline ? ' Online' : ' Offline'}}  </p>
 
@@ -59,7 +59,7 @@ export default {
         return {
             userData: null,
             playerListIndex: null,
-            borderColor: ''
+            boardColorAvatar: ''
         };
     },
 
@@ -108,7 +108,7 @@ export default {
     methods: {
       getPlayerStyles(colorId) {
         const colorStyles = getColorStyles(colorId)
-        this.borderColor = colorStyles.backgroundBord
+        this.boardColorAvatar = colorStyles.boardColorAvatar
 
       },
         async getUserByWalletAddress() {
