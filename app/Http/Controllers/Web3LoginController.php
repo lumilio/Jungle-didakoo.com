@@ -199,16 +199,16 @@ class Web3LoginController extends Controller
                 $creator->update(["nft_3_battery"=>$Nft_3_battery, 'power' => $power]);
             }
             if ($Nft_4_color1) {
-                $color[] = 4;
+                $color[] = 1;
             }
             if ($Nft_5_color2) {
-                $color[] = 3;
-            }
-            if ($Nft_6_color3) {
                 $color[] = 2;
             }
+            if ($Nft_6_color3) {
+                $color[] = 3;
+            }
             if ($Nft_7_color4) {
-                $color[] = 1;
+                $color[] = 4;
             }
             if (count($color) !== 0){
                 $color_id = $color[rand(0, count($color) - 1)];
