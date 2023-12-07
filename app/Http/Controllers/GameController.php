@@ -32,7 +32,7 @@ class GameController extends Controller
             }
             $colorsCaseB = [
                 "black" => rand(1, 4),
-                "board" => rand(1, 2),
+                "board" => 2,
                 "white" => rand(1, 4),
             ];
             while ($colorsCaseB["black"] === $colorsCaseB["white"]) {
@@ -68,7 +68,7 @@ class GameController extends Controller
             }
             $colorsCaseB = [
                 "black" => rand(1, 4),
-                "board" => rand(1, 2),
+                "board" => 2,
                 "white" => rand(1, 4),
             ];
             while ($colorsCaseB["black"] === $colorsCaseB["white"]) {
