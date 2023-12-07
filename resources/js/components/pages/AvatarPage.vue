@@ -93,6 +93,7 @@ export default {
             const walletAddress = to.query.wallet_address;
             const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
             this.userData = response.data.user;
+            this.getPlayerStyles(this.userData.color_id);
             next();
         } catch (error) {
             console.error(error);
@@ -114,10 +115,10 @@ export default {
             this.playerListIndex = this.$route.query.player_list_index
 
             try {
-                const walletAddress = this.$route.query.wallet_address;
-                const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
-                this.userData = response.data.user;
-              this.getPlayerStyles(this.userData.color_id)
+            const walletAddress = this.$route.query.wallet_address;
+            const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
+            this.userData = response.data.user;
+            this.getPlayerStyles(this.userData.color_id);
             } catch (error) {
                 console.error(error);
                 this.user = null;

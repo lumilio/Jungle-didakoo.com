@@ -210,13 +210,16 @@ class Web3LoginController extends Controller
             if ($Nft_7_color4) {
                 $color[] = 1;
             }
-            $color_id = 0;
             if (count($color) !== 0){
                 $color_id = $color[rand(0, count($color) - 1)];
+                $creator->update(['color_id' => $color_id]);
             }else{
-                $color_id = rand(1, 4);
+                if($creator->color_id === 0){
+                    $color_id = rand(1, 4);
+                    $creator->update(['color_id' => $color_id]);
+                }
             }
-            $creator->update(['color_id' => $color_id]);
+
 
             $creator->update([
                 'nft_4_color1' => !!$Nft_4_color1,

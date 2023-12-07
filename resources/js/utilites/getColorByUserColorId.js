@@ -1,7 +1,7 @@
 const colorIdData = {
     1: {
         borderStyle: '3px solid yellow',
-        backgroundBord: '#EDEB52',
+        backgroundBord: '#FFFF00',
         colorAddress: 'black',
         colorPower: 'black',
         avatarSrc: '../../../images/extra_objects/iconaplayB.png',
@@ -11,7 +11,7 @@ const colorIdData = {
     },
     2: {
         borderStyle: '3px solid red',
-        backgroundBord: '#EE3634',
+        backgroundBord: '#FF0000',
         colorAddress: 'black',
         colorPower: 'black',
         avatarSrc: '../../../images/extra_objects/iconaplayB.png',
@@ -21,7 +21,7 @@ const colorIdData = {
     },
     3: {
         borderStyle: '3px solid blue',
-        backgroundBord: '#3C5FA1',
+        backgroundBord: '#0000FF',
         colorAddress: 'white',
         colorPower: 'white',
         avatarSrc: '../../../images/extra_objects/iconaplayW.png',
@@ -31,7 +31,7 @@ const colorIdData = {
     },
     4: {
         borderStyle: '3px solid #EE5E81',
-        backgroundBord: '#EE5E81',
+        backgroundBord: '#ee5e81',
         colorAddress: 'black',
         colorPower: 'black',
         avatarSrc: '../../../images/extra_objects/iconaplayB.png',
