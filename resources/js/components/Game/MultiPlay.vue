@@ -246,9 +246,9 @@ export default {
             OrangeBoardColor:"#FFE194",
             viewBox: { x: 560, y: 720 },
             boardColors: {
-                black:1,
-                white:2,
-                board:1
+                black: '',
+                white: '',
+                board: ''
             },
             playColors: {
                 light: '#feb442',
@@ -410,12 +410,19 @@ export default {
         userData(){
             return store.state.userData
         },
-
-        opponentColor(){
-            return this.game?.opponent?.wallet_address === this.address ? this.game?.state?.colors?.white : this.game?.state?.colors?.black
-        },
         creatorColor(){
-            return this.game?.opponent?.wallet_address === this.address ? this.game?.state?.colors?.black: this.game?.state?.colors?.white
+            if(this.game?.creator?.color_id){
+                return this.game?.creator?.wallet_address === this.address ? this.game?.creator?.color_id : this.game?.opponent?.color_id
+            }else{
+                return this.game?.opponent?.wallet_address === this.address ? this.game?.state?.colors?.black: this.game?.state?.colors?.white
+            }
+        },
+        opponentColor(){
+            if(this.game?.opponent?.color_id){
+                return this.game?.opponent?.wallet_address === this.address ? this.game?.creator?.color_id : this.game?.opponent?.color_id
+            }else{
+                return this.game?.opponent?.wallet_address === this.address ? this.game?.state?.colors?.white : this.game?.state?.colors?.black
+            }
         },
         borderColor(){
             return this.game?.state?.colors?.border
@@ -552,18 +559,22 @@ export default {
         },
         fillColors(data){
             if (data){
-                this.boardColors = data.colors;
-                if (this.boardColors.board === 2 ){
+                if(this.game?.creator?.color_id){
+                    this.boardColors = {
+                        black : this.game?.opponent?.color_id,
+                        board : 2,
+                        white : this.game?.creator?.color_id
+                    }
+                }else{
+                    this.boardColors = data.colors;
+                }
+                if (data.colors.board === 2){
                     this.possibleMove = "#9be8b4"
                 }else {
                     this.possibleMove = "#FFE194"
                 }
                 this.playColors.light = backgroundColors[this.boardColors.board]
             }
-            this.boardColors = {
-                black: this.game?.state?.colors.black,
-                white: this.game?.state?.colors.white,
-                board: this.game?.state?.colors.board            }
         },
         initSquares() {
             this.squares = [];

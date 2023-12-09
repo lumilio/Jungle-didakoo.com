@@ -443,18 +443,13 @@ export default {
         fillColors(data){
             if (data){
                 this.boardColors = data.colors;
-                if (this.boardColors.board === 2 ){
+                if (data.colors.board === 2){
                     this.possibleMove = "#9be8b4"
                 }else {
                     this.possibleMove = "#FFE194"
                 }
                 this.playColors.light = backgroundColors[this.boardColors.board]
             }
-                this.boardColors = {
-                    black: data.colors.black,
-                    white: data.colors.white,
-                    board: data.colors.board
-                }
         },
         initSquares() {
             this.squares = [];

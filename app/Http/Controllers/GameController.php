@@ -55,26 +55,23 @@ class GameController extends Controller
                 return response()->json(['message' => 'Bed request'], 400);
             }
             $status = 'started';
-            if ($request->multiPlay){
+            if ($request->multiPlay) {
                 $status = 'pending';
+                $randomColors = [
+                    "black" => rand(1, 4),
+                    "board" => 2,
+                    "white" => $player->color_id,
+                ];
+            }else{
+                do{
+                    $randomColors = [
+                        "black" => rand(1, 4),
+                        "board" => 2,
+                        "white" => $player->color_id,
+                    ];
+                }
+                while ($randomColors["black"] === $randomColors["white"]);
             }
-            $colorsCaseA = [
-                "black" => rand(5, 6),
-                "board" => 1,
-                "white" => rand(5, 6),
-            ];
-            while ($colorsCaseA["black"] === $colorsCaseA["white"]) {
-                $colorsCaseA["white"] = rand(5, 6);
-            }
-            $colorsCaseB = [
-                "black" => rand(1, 4),
-                "board" => 2,
-                "white" => rand(1, 4),
-            ];
-            while ($colorsCaseB["black"] === $colorsCaseB["white"]) {
-                $colorsCaseB["white"] = rand(1, 4);
-            }
-            $randomColors = rand(0, 1) ? $colorsCaseA : $colorsCaseB;
             Game::create([
                 'creator_id' => $player->id,
                 'url' => $uniqueUrl,

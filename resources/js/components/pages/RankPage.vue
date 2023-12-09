@@ -81,7 +81,7 @@
                         </p>
                     </div>
                     <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <template v-for="(item, key) in colorIconNft(players.backgroundBord)" v-if="players[key] > 0 && item">
+                        <template v-for="(item, key) in colorIconNft(players.color_id)" v-if="players[key] > 0 && item">
                             <img style="width:35px;" :src="item" alt=""/>
                         </template>
                     </div>

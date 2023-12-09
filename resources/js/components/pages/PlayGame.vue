@@ -52,17 +52,14 @@
                                     :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayB.png'"
                                     alt="..."
                                 />
-                                {{ this.game?.opponent?.wallet_address === address ? this.game?.creator?.wallet_address : this.game?.opponent?.wallet_address }}
+                                {{ opponentUser ? creator?.wallet_address : opponent?.wallet_address }}
                             </p>
                             <div
                                 class="d-flex align-items-center flex-row flex-nowrap"
                             >
-                                <img
-                                    style="width: 30px"
-                                    :src="nftIconSrc"
-                                    alt=""
-                                />
-                                <!-- <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i> -->
+                                <template v-for="(item, key) in colorIconNft(creatorUser ? creator?.color_id : opponent?.color_id)" v-if="(creatorUser ? opponent : creator)?.[key] > 0 && item">
+                                    <img style="width:30px;" :src="item" alt=""/>
+                                </template>
                             </div>
                             <span
                                 class="align-items-center"
@@ -76,7 +73,7 @@
                                     display: 'flex',
                                 }"
                             >
-                                100
+                                {{ creatorUser ? (opponent ? opponent?.power : 100) : creator?.power }}
                                 <i class="fa-solid fa-bolt ml-1"></i
                                 ></span>
                         </div>
@@ -124,12 +121,9 @@
                             <div
                                 class="d-flex align-items-center flex-row flex-nowrap"
                             >
-                                <img
-                                    style="width: 30px"
-                                    :src="nftIconSrc"
-                                    alt=""
-                                />
-                                <!-- <i style='font-size:20px; color:black;'  class="fa-solid fa-battery-full"></i> -->
+                                <template v-for="(item, key) in colorIconNft(creatorUser ? creator?.color_id : opponent?.color_id)" v-if="(creatorUser ? creator : opponent)?.[key] > 0 && item">
+                                    <img style="width:30px;" :src="item" alt=""/>
+                                </template>
                             </div>
                             <span
                                 class="align-items-center"
@@ -179,6 +173,7 @@ import { getColorStyles } from '../../utilites/getColorByUserColorId';
 import user from "../../store/modules/user";
 import MultiPlay from "../Game/MultiPlay.vue";
 import ConnectWalletModal from "../Modal/ConnectWalletModal.vue";
+import colorIconNft from "../../constants/nftLinks";
 
 export default {
     data() {
@@ -240,12 +235,30 @@ export default {
         },
         toggleModal(){
             return store.state.connectWallet
+        },
+        creatorUser(){
+            return this.game?.creator?.wallet_address === this.address ? this.game?.creator : null;
+        },
+        opponentUser(){
+            return this.game?.opponent?.wallet_address === this.address ? this.game?.opponent : null;
+        },
+        creator(){
+            return this.game?.creator;
+        },
+        opponent(){
+            return this.game?.opponent;
         }
     },
     methods: {
+        colorIconNft,
         getColorByUserColorId() {
             try {
-                const colorUser = this.game?.creator?.wallet_address === this.address ? this.game.state.colors.white : this.game.state.colors.black;
+                let colorUser;
+                if(this.creator.color_id || this.opponent.color_id){
+                     colorUser = this.creatorUser ? this.creator?.color_id : this.opponent?.color_id;
+                } else{
+                     colorUser = this.creatorUser ? this.game.state.colors.white : this.game.state.colors.black;
+                }
                 const colorStyles = getColorStyles(colorUser);
                 this.backgroundBord = colorStyles.backgroundBord;
                 this.colorAddress = colorStyles.colorAddress;
@@ -262,6 +275,9 @@ export default {
             window.location.reload();
         },
         openModal(message = null) {
+            if(this.game.status === "started" && this.buttons.length > 2){
+                this.buttons.splice(0, 1);
+            }
             this.open = true;
             if(message){
                 this.message = message

@@ -8,23 +8,23 @@
             </div>
             <div class="wallet-login-title">
                 <h2 class=" mt-4 mb-5 ml-3" style='font-family: "VT323", monospace; color:white;'>
-                    Select wallet to login
+                    SELECT A WAY TO LOGIN
                 </h2>
             </div>
 
             <div class="web3-login-buttons">
+                <button class="WalletCoinButton" id="guest" @click="web3Login('guest')">
+                    <img :src=Guest alt="guest" class="imgSize">
+                    <p class="WalletCoinButtonText"> GUEST </p>
+                </button>
                 <button class="WalletCoinButton" @click="web3Login('metamask')" id="metamask">
-                <img :src=MetamaskWalletImg alt="MetamaskWallet" class="imgSize">
-                <p class="WalletCoinButtonText"> METAMASK </p>
-            </button>
-            <button class="WalletCoinButton" @click="web3Login('coinbase')" id="coinbase">
-                <img :src=CoinBaseWallet alt="MetamaskWallet" class="imgSize">
-                <p class="WalletCoinButtonText"> COINBASE </p>
-            </button>
-            <button class="WalletCoinButton" id="guest" @click="web3Login('guest')">
-                <img :src=Guest alt="guest" class="imgSize">
-                <p class="WalletCoinButtonText"> GUEST </p>
-            </button>
+                    <img :src=MetamaskWalletImg alt="MetamaskWallet" class="imgSize">
+                    <p class="WalletCoinButtonText"> METAMASK </p>
+                </button>
+                <button class="WalletCoinButton" @click="web3Login('coinbase')" id="coinbase">
+                    <img :src=CoinBaseWallet alt="MetamaskWallet" class="imgSize">
+                    <p class="WalletCoinButtonText"> COINBASE </p>
+                </button>
             </div>
             <span v-if="!inGame" class="close1" @click="closeModal" >&times;</span>
             <slot></slot>

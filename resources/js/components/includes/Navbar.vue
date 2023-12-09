@@ -5,7 +5,7 @@
             <router-link :to="this.$route.name === 'avatar' ? 'rank': 'menu'">
                 <i class="fa-solid burger_menu fa-bars"></i>
             </router-link>
-            <router-link class="avatar_link" v-if="user" :to="{ path: 'avatar', query: { wallet_address: address } }">
+            <router-link class="avatar_link" v-if="userAddress" :to="{ path: 'avatar', query: { wallet_address: address } }">
                 <img src='images/extra_objects/iconaplay1.png' alt="">
             </router-link>
         </div>
@@ -19,7 +19,8 @@ export default {
     name: "Navbar",
     data() {
         return {
-            currentPlayer:{}
+            currentPlayer:{},
+            userAddress: false
         }
     },
     computed: {
@@ -31,9 +32,14 @@ export default {
         }
     },
     mounted() {
-
+        this.changeAddress()
     },
     methods:{
+        changeAddress(){
+            return ((store.state.address.length === 42) &&
+                store.state.address[0] === '0' &&
+                store.state.address[1] === 'x') ? this.userAddress = true : this.userAddress = false;
+        },
         async getAllUsers()
         {
             this.url = window.location.host;
@@ -42,6 +48,11 @@ export default {
             this.playersArray = response.data.users;
         }
     },
+    watch:{
+        address() {
+            this.changeAddress()
+        },
+    }
 }
 </script>
 
