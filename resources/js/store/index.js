@@ -20,7 +20,13 @@ const store = new Vuex.Store({
     errors: [],
     userData: {},
     connectWallet: false,
-    lastActivityLogged: null
+    lastActivityLogged: null,
+    playersList: localStorage.getItem('playersList')
+      ? JSON.parse(localStorage.getItem('playersList'))
+      : [],
+    playersListLastFetched: localStorage.getItem('playersListLastFetched')
+      ? parseInt(localStorage.getItem('playersListLastFetched'))
+      : null
   },
 
   getters: {
@@ -79,6 +85,14 @@ const store = new Vuex.Store({
     },
     SET_LAST_LOGGED_ACTIVITY(state, lastActivityLogged) {
       state.lastActivityLogged = lastActivityLogged
+    },
+    SET_PLAYERS_LIST(state, playersList) {
+      localStorage.setItem('playersList', JSON.stringify(playersList));
+      state.playersList = playersList
+    },
+    SET_PLAYERS_LIST_LAST_FETCHED(state, date) {
+      localStorage.setItem('playersListLastFetched', date);
+      state.playersListLastFetched = date
     }
   },
 
