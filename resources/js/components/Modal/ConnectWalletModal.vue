@@ -8,7 +8,7 @@
             </div>
             <div class="wallet-login-title">
                 <h2 class=" mt-4 mb-5 ml-3" style='font-family: "VT323", monospace; color:white;'>
-                    SELECT A WAY TO LOGIN
+                    Select a way to login
                 </h2>
             </div>
 
