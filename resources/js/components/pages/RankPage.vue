@@ -169,6 +169,7 @@ import colorIconNft from "../../constants/nftLinks";
     async mounted()
     {
         await this.updatePlayersListIfNeeded();
+        setInterval(async () => await this.fetchAllUsers(), 60 * 1000)
     },
 
  }
