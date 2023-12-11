@@ -107,7 +107,6 @@ import colorIconNft from "../../constants/nftLinks";
  export default {
     data(){
         return{
-            playersArray: [],
             url: '',
             backgroundBord: '',
             colorAddress:'',
@@ -127,6 +126,9 @@ import colorIconNft from "../../constants/nftLinks";
         },
         userData(){
             return store.state.userData
+        },
+        playersArray() {
+            return store.state.playersList
         }
     },
     methods:{
@@ -142,12 +144,8 @@ import colorIconNft from "../../constants/nftLinks";
         },
         async fetchAllUsers() {
             this.url = window.location.host;
-            const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/get-users');
-            this.playersArray = response.data.users;
-            this.playersArray.forEach(user =>{
-            return this.getPlayerStyles(user.color_id)
-          })
-            this.playersArray = this.playersArray.map((player) => {
+            const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/get-users');;
+            const players = response.data.users.map((player) => {
                 return {
                     ...player,
                     ...this.getPlayerStyles(player.color_id)
