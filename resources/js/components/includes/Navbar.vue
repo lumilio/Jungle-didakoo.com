@@ -32,13 +32,11 @@ export default {
         }
     },
     mounted() {
-        this.changeAddress()
+        this.checkToAddress()
     },
     methods:{
-        changeAddress(){
-            return ((store.state.address.length === 42) &&
-                store.state.address[0] === '0' &&
-                store.state.address[1] === 'x') ? this.userAddress = true : this.userAddress = false;
+        checkToAddress(){
+            return this.address?.length === 42 && this.address?.substring(0, 2) === '0x' ? this.userAddress = true : this.userAddress = false;
         },
         async getAllUsers()
         {
@@ -50,7 +48,7 @@ export default {
     },
     watch:{
         address() {
-            this.changeAddress()
+            this.checkToAddress()
         },
     }
 }

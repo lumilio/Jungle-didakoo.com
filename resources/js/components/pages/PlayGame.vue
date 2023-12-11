@@ -1,6 +1,6 @@
 <template>
-    <div class="game_main" :class="{ loading: isLoading }">
-        <div class="allineatore2">
+    <div class="game_main" :class="{'modal-outgame': toggleModal || open,'loading': isLoading }" style="height: 100%">
+        <div class="allineatore2" :class="{'modal-outgame': toggleModal || open}" style="height: 100%">
             <template v-if="isLoading">
                 <div class="spinner_handler">
                     <div class="spinner-border text-light" role="status">
@@ -39,6 +39,7 @@
                                 border: '0',
                             }"
                             class="record"
+                            v-show="checkSectionTop()"
                         >
                             <p
                                 class="player-info"
@@ -73,7 +74,7 @@
                                     display: 'flex',
                                 }"
                             >
-                                {{ creatorUser ? (opponent ? opponent?.power : 100) : creator?.power }}
+                                {{ creatorUser ? opponent?.power : creator?.power }}
                                 <i class="fa-solid fa-bolt ml-1"></i
                                 ></span>
                         </div>
@@ -98,6 +99,7 @@
                                 border: '0',
                             }"
                             class="record"
+                            v-show="checkSectionBottom()"
                         >
                             <p
                                 class="player-info"
@@ -251,6 +253,15 @@ export default {
     },
     methods: {
         colorIconNft,
+        checkSectionBottom(){
+           return ((this.creatorUser && this.checkToAddress(this.creator?.wallet_address)) || (this.opponentUser && this.checkToAddress(this.opponent?.wallet_address)));
+        },
+        checkSectionTop(){
+            return ((this.opponentUser && this.checkToAddress(this.creator?.wallet_address)) || (this.creatorUser && this.checkToAddress(this.opponent?.wallet_address)));
+        },
+        checkToAddress(address) {
+            return (address?.length === 42 && address?.substring(0, 2) === '0x');
+        },
         getColorByUserColorId() {
             try {
                 let colorUser;
@@ -407,7 +418,7 @@ export default {
             this.getStatus();
         },
         userData() {
-                this.getColorByUserColorId();
+            this.getColorByUserColorId();
         },
         async address(data) {
             try {

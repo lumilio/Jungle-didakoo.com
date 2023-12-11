@@ -6,9 +6,9 @@
             :buttons="buttons"
             :startNewGame="true"
         />
-        <div v-show="!toggleModal" style="height:100vh;" class="justify-content-center align-content-center d-flex modal-outgame">
-            <ConnectWalletModal :show="toggleModal" style="margin: 0"></ConnectWalletModal>
-        </div>
+<!--        <div v-show="!toggleModal" style="height:100vh;" class="justify-content-center align-content-center d-flex modal-outgame">-->
+<!--            <ConnectWalletModal :show="toggleModal" style="margin: 0"></ConnectWalletModal>-->
+<!--        </div>-->
     </div>
 </template>
 
@@ -65,9 +65,10 @@
                         const state = helper.getInitialState();
                         const response = await axios.post('/api/make-game',{multiPlay: multiPlay, address: this.address, state: state});
                         this.$router.push(`/room/${response.data.url}`);
-                    }else{
-                        return store.commit('TOGGLE_WALLET_MODAL');
                     }
+                    // else{
+                    //     return store.commit('TOGGLE_WALLET_MODAL');
+                    // }
 
                 }catch (e) {
                     console.log(e)
