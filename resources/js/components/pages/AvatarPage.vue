@@ -15,7 +15,7 @@
 
                     <!-- <p style='position:absolute; display:block; font-size:15px; left:35px; top:30px; color:white;'> <i  class="fa-solid fa-circle" style="color: #46e546" ></i> &nbsp Online</p> -->
                     <p style='position:absolute; display:block;  font-size:20px; left:84px; top:25px; color:white;'> </p>
-                    <p style='position:absolute; display:block; margin-top:10px;  font-size:33px; right:15px; top:5px; color:white;'>{{ playerListIndex ?? playerNumber }}°</p>
+                    <p style='position:absolute; display:block; margin-top:10px;  font-size:33px; right:15px; top:5px; color:white;'>{{ playerListIndex }}°</p>
                     <img id='avataricon' style='margin-top:80px; margin-bottom:20px;' src='images/extra_objects/iconaplayW.png' alt="">
                     <!-- <p class="text-white">Avatar v.1</p> -->
                     <div style="background-color:black; width:100%;" >
@@ -57,6 +57,7 @@ import { formatNumberWithSuffix } from '../../utilites/formatNumberWithSuffix'
 export default {
     data() {
         return {
+            playersArray: [],
             userData: null,
             playerListIndex: null,
             boardColorAvatar: ''
@@ -106,6 +107,16 @@ export default {
         await this.getUserByWalletAddress();
     },
     methods: {
+        async getAllUsers()
+        {
+            const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/get-users');
+            this.playersArray = response.data.users;
+            this.playersArray = this.playersArray.filter((player,index) => {
+                if(player.wallet_address === this.$route.query.wallet_address){
+                    this.playerListIndex = index + 1
+                }
+            })
+        },
       getPlayerStyles(colorId) {
         const colorStyles = getColorStyles(colorId)
         this.boardColorAvatar = colorStyles.boardColorAvatar
@@ -141,6 +152,10 @@ export default {
         formatPower(power) {
             return formatNumberWithSuffix(power)
         }
+    },
+    async mounted()
+    {
+        await this.getAllUsers();
     },
     watch: {
         address: {
