@@ -130,9 +130,6 @@ import colorIconNft from "../../constants/nftLinks";
     },
     methods:{
         colorIconNft,
-        checkToAddress() {
-            return this.address?.length === 42 && this.address?.substring(0, 2) === '0x';
-        },
         async getAllUsers()
         {
             this.url = window.location.host;
@@ -166,13 +163,7 @@ import colorIconNft from "../../constants/nftLinks";
     },
     async mounted()
     {
-        this.checkToAddress()
         await this.getAllUsers();
-    },
-    watch:{
-        address() {
-            this.checkToAddress()
-        },
     }
  }
 </script>

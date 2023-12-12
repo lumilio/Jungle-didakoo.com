@@ -10,7 +10,8 @@
             </template>
             <template v-else>
                 <!----------------- NAV ------------------->
-                <div class="d-flex banner-board-helper align-items-center">
+                <div v-show="!(toggleModal || open)">
+                <div class="d-flex banner-board-helper align-items-center" >
                     <button
                         @click="reloadPage"
                         class="d-flex bg-transparent border-0 align-items-center"
@@ -24,6 +25,7 @@
                         <i class="fa-solid burger_menu fa-bars" style="margin: 0 auto; position: static; font-size: 20px;"></i>
                     </button>
                 </div>
+                </div>
                 <!----------------------------------------->
                 <div
                     class="allineatore d-flex flex-column container-sm justify-content-center align-items-center"
@@ -31,7 +33,7 @@
                     <div class="allineatore-inner-container">
 
                     <!-------------- PLAYER 2 DATA ---------------->
-                    <div class="board-player">
+                    <div class="board-player" v-show="!(toggleModal || open)">
                         <div
                             :style="{
                                 backgroundColor: backgroundBord,
@@ -80,18 +82,20 @@
                         </div>
                     </div>
                     <!--------------------------------------------->
-                    <div
+                    <div v-show="!(toggleModal || open)">
+                        <div
                         class="board d-flex justify-content-center bg-transparent align-items-center"
-                    >
+                        >
                         <template  v-if="game.status === 'pending' || game?.opponent_id || game.opponent?.wallet_address || !address">
                             <MultiPlay @gameover="gameOver" @connected="connected" :game="game" :id="$route.params.id" />
                         </template>
                         <template v-else>
                             <Game @gameover="gameOver" :game="game" :id="$route.params.id" />
                         </template>
+                        </div>
                     </div>
                     <!-------------- PLAYER 1 DATA ---------------->
-                    <div class="board-player">
+                    <div class="board-player" v-show="!(toggleModal || open)">
                         <div
                             :style="{
                                 backgroundColor: backgroundBord,
@@ -139,7 +143,7 @@
                                     display: 'flex',
                                 }"
                             >
-                                {{ userData?.power }}
+                                {{  creatorUser ? creator?.power : opponent?.power  }}
                                 <i class="fa-solid fa-bolt ml-1"></i
                             ></span>
                         </div>
