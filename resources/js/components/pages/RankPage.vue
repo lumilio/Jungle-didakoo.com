@@ -55,7 +55,7 @@
                     v-bind:key="players.id"
                     class="record"
                     :style="{backgroundColor : players.backgroundBord, textDecoration: 'none'}"
-                    :to="{ path: checkToAddress() ? 'avatar' : 'rank', query: { wallet_address: players?.wallet_address, player_list_index: playerListIndex + 1 } }"
+                    :to="{ path: 'avatar', query: { wallet_address: players?.wallet_address, player_list_index: playerListIndex + 1 } }"
                 >
                     <div :style="{
                         color: players.colorAddress,
