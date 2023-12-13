@@ -39,7 +39,7 @@
 
             <button class='refresh-button' style='background-color:black;'>
                 <div class='d-flex justify-content-center align-items-center' style='color:white; padding: 10px; margin: 0;'>
-                    <p class='text-white' style='font-family: "VT323", monospace;'>Next update list in 15 sec </p>
+                    <p class='text-white' style='font-family: "VT323", monospace;'>Next update list in 1 minute </p>
                     <div class="d-flex">
 
                         <img style='width:30px;' src="images/extra_objects/sandtime.png" alt="">
@@ -130,8 +130,16 @@ import colorIconNft from "../../constants/nftLinks";
     },
     methods:{
         colorIconNft,
-        async getAllUsers()
-        {
+        async updatePlayersListIfNeeded() {
+            const playersListLastFetched = store.state.playersListLastFetched
+            const now = Math.floor(Date.now() / 1000)
+
+            // If last time fetched is more than 1 minute ago, fetch
+            if (playersListLastFetched === null || now - playersListLastFetched > 60) {
+                await this.fetchAllUsers()
+            }
+        },
+        async fetchAllUsers() {
             this.url = window.location.host;
             const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/get-users');
             this.playersArray = response.data.users;
@@ -144,6 +152,8 @@ import colorIconNft from "../../constants/nftLinks";
                     ...this.getPlayerStyles(player.color_id)
                 }
             })
+            store.commit('SET_PLAYERS_LIST', players)
+            store.commit('SET_PLAYERS_LIST_LAST_FETCHED', Math.floor(Date.now() / 1000))
         },
         getPlayerStyles(colorId) {
             const colorStyles = getColorStyles(colorId)
@@ -163,7 +173,9 @@ import colorIconNft from "../../constants/nftLinks";
     },
     async mounted()
     {
-        await this.getAllUsers();
-    }
+        await this.updatePlayersListIfNeeded();
+        setInterval(async () => await this.fetchAllUsers(), 60 * 1000)
+    },
+
  }
 </script>

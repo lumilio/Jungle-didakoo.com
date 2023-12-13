@@ -55,7 +55,7 @@ class GameController extends Controller
                 return response()->json(['message' => 'Bed request'], 400);
             }
             $status = 'started';
-            if ($request->multiPlay) {
+            if ($request->multiPlay){
                 $status = 'pending';
                 $randomColors = [
                     "black" => rand(1, 4),

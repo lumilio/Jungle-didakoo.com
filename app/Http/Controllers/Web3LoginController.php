@@ -191,7 +191,7 @@ class Web3LoginController extends Controller
                 $creator->update(["nft_1_sunflower_1" => $Nft_1_sunflower_1, 'power' => $power]);
             }
             if ($Nft_2_sunflower_2 && $Nft_2_sunflower_2 !== $creator->nft_2_sunflower_2) {
-                $power = $creator->power + ($Nft_2_sunflower_2 - $creator->nft_2_sunflower_2) * 5;
+                $power = $creator->power + ($Nft_2_sunflower_2 - $creator->nft_2_sunflower_2) * 9;
                 $creator->update(["nft_2_sunflower_2" => $Nft_2_sunflower_2, 'power' => $power]);
             }
             if ($Nft_3_battery && $Nft_3_battery !== $creator->nft_3_battery) {
