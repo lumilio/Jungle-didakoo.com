@@ -1196,8 +1196,8 @@ export default {
             const piecePowers = {
                 mouse: 8,
                 cat: 5,
-                monkey: 6,
-                dog: 7,
+                dog: 6,
+                monkey: 7,
                 leopard: 10,
                 tiger: 15,
                 lion: 25,

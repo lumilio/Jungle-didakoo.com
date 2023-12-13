@@ -11,12 +11,12 @@ const animals =  {
         name: "cat",
         power: 1,
     },
-    monkey: {
-        name: "monkey",
-        power: 2,
-    },
     dog: {
         name: "dog",
+        power: 2,
+    },
+    monkey: {
+        name: "monkey",
         power: 3,
     },
     leopard: {
@@ -24,11 +24,11 @@ const animals =  {
         power: 4,
     },
     tiger: {
-        power: 5,
         name: "tiger",
+        power: 5,
         specialPower: {
             canJumpOverTheRiver: true,
-            jumpDirections: ["vertical"],
+            jumpDirections: ["vertical", "horizontal"],
         },
     },
     lion: {
