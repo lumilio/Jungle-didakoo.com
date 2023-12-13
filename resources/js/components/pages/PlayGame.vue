@@ -11,7 +11,7 @@
             <template v-else>
                 <!----------------- NAV ------------------->
                 <div v-show="!(toggleModal || open)">
-                <div class="d-flex banner-board-helper align-items-center" >
+                <div style='margin-right:6px;' class="d-flex banner-board-helper align-items-center" >
                     <button
                         @click="reloadPage"
                         class="d-flex bg-transparent border-0 align-items-center"
