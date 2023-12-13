@@ -7,6 +7,7 @@ use App\Events\DoStep;
 use App\Game;
 use App\GuestGame;
 use App\Player;
+use App\GameMode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -273,5 +274,10 @@ class GameController extends Controller
             return response()->json(['message' => 'Bed request'], 400);
         }
 
+    }
+
+    public function getActiveGameMode(Request $request)
+    {
+        return response()->json(['game_mode' => GameMode::select('level')->where('active', true)->first()]);
     }
 }

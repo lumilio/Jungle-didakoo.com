@@ -5,7 +5,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     user: null,
-    address: null,
+    address: localStorage.getItem('address') ?? null,
     playerNumber: localStorage.getItem('playerNumber') ?? null,
     turn: "white",
     turnNumber: 1,
@@ -18,7 +18,9 @@ const store = new Vuex.Store({
     ],
     svg: null,
     errors: [],
-    userData: {},
+    userData: localStorage.getItem('userData')
+      ? JSON.parse(localStorage.getItem('userData'))
+      : {},
     connectWallet: false,
     lastActivityLogged: null,
     playersList: localStorage.getItem('playersList')
@@ -52,14 +54,16 @@ const store = new Vuex.Store({
         state.user = val;
     },
     SET_USER_ADDRESS(state, val) {
-        state.address = val;
+      localStorage.setItem('address', val)
+      state.address = val;
     },
     SET_PLAYER_NUMBER(state, val) {
         localStorage.setItem('playerNumber', val);
         state.playerNumber = val
     },
     SET_USER_DATA(state, UsersData) {
-        state.userData = UsersData;
+      localStorage.setItem('userData', JSON.stringify(UsersData))
+      state.userData = UsersData;
     },
     LOG_OUT_USER (state){
         state.user = null;
