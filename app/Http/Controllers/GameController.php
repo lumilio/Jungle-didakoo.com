@@ -232,13 +232,12 @@ class GameController extends Controller
         ]);
     }
     public function deleteGame(Request $request, $url){
-        if ($request->session()->has('isGuest')){
-            $game = GuestGame::query()->where('url', $url)->first();
-        }else{
-            $game = Game::query()->where('url', $url)->first();
-        }
+        $game = GuestGame::query()->where('url', $url)->first();
         if (!$game){
-            return response()->json(['message' => 'Not Found'], 404);
+            $game = Game::query()->where('url', $url)->first();
+            if(!$game){
+                return response()->json(['message' => 'Not Found'], 404);
+            }
         }
         if(!$game->opponent){
             $game->delete();

@@ -24,8 +24,8 @@ export default function colorIconNft(colorIcon){
         nft_7_color4: '',
         nft_8_bot: '',
         nft_21_raygun: '',
-        nft_9_cat: colorIcon === 3 ? CatIconWhite : CatIconBlack,
-        nft_10_monkey: colorIcon === 3 ? MonkeyIconWhite : MonkeyIconBlack,
+        nft_9_cat: (colorIcon === 3 || colorIcon === 5) ? CatIconWhite : CatIconBlack,
+        nft_10_monkey: (colorIcon === 3 || colorIcon === 5) ? MonkeyIconWhite : MonkeyIconBlack,
         nft_11_punks: '',
         nft_12_monster: '',
         nft_13_doodle: '',
@@ -36,9 +36,9 @@ export default function colorIconNft(colorIcon){
         nft_18_pepsi: PepsiIcon,
         nft_19_lacoste: LacosteIcon,
         nft_20_land: LandIcon,
-        nft_22_leo_1: colorIcon === 3 ? LionIconWhite : LionIconBlack,
-        nft_23_leo_2: colorIcon === 3 ? LionIconWhite : LionIconBlack,
-        nft_24_leo_3: colorIcon === 3 ? LionIconWhite : LionIconBlack,
+        nft_22_leo_1: (colorIcon === 3 || colorIcon === 5) ? LionIconWhite : LionIconBlack,
+        nft_23_leo_2: (colorIcon === 3 || colorIcon === 5) ? LionIconWhite : LionIconBlack,
+        nft_24_leo_3: (colorIcon === 3 || colorIcon === 5) ? LionIconWhite : LionIconBlack,
         nft_25_wb: WBIcon,
     };
 }

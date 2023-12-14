@@ -34,7 +34,23 @@ const colorIdData = {
         colorPower: 'black',
         avatarSrc: '../../../images/extra_objects/iconaplayB.png',
         textDecorationAddress: 'black',
-    }
+    },
+    5: {
+        borderStyle: '3px solid black',
+        backgroundBord: 'black',
+        colorAddress: 'white',
+        colorPower: 'white',
+        avatarSrc: '../../../images/extra_objects/iconaplayW.png',
+        textDecorationAddress: 'white',
+    },
+    6: {
+        borderStyle: '3px solid white',
+        backgroundBord: 'white',
+        colorAddress: 'black',
+        colorPower: 'black',
+        avatarSrc: '../../../images/extra_objects/iconaplayB.png',
+        textDecorationAddress: 'black',
+    },
 }
 
 export function getDefinitiveColorIdFromUserData(userData) {
@@ -42,19 +58,19 @@ export function getDefinitiveColorIdFromUserData(userData) {
     if (userData.nft_7_color4) {
         colors.push(4)
     }
-    
+
     if (userData.nft_6_color3) {
         colors.push(3)
     }
-    
+
     if (userData.nft_5_color2) {
         colors.push(2)
     }
-    
+
     if (userData.nft_4_color1) {
         colors.push(1)
     }
-    
+
     return colors.length
         ? colors[Math.floor(Math.random() * colors.length)]
         : 0

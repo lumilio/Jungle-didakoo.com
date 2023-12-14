@@ -73,7 +73,7 @@
                     :y="0"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
-                    :color="opponentColor"
+                    :color="userColorTop"
                     v-show="game?.opponent?.wallet_address"
                 />
             </g>
@@ -83,7 +83,7 @@
                     :y="boardSettings.square.height * 8"
                     :width="boardSettings.square.width"
                     :height="boardSettings.square.height"
-                    :color="creatorColor"
+                    :color="userColorBottom"
                 />
             </g>
             <g @click="squareClick(0,2)">
@@ -272,7 +272,8 @@ export default {
             svg: ref(null),
             isHoldingChessPiece: ref(false),
             holding: ref({ row: null, col: null }),
-
+            userColorTop: '',
+            userColorBottom: '',
         };
 
     },
@@ -410,20 +411,6 @@ export default {
         userData(){
             return store.state.userData
         },
-        creatorColor(){
-            if(this.game?.creator?.color_id){
-                return this.game?.creator?.wallet_address === this.address ? this.game?.creator?.color_id : this.game?.opponent?.color_id
-            }else{
-                return this.game?.opponent?.wallet_address === this.address ? this.game?.state?.colors?.black: this.game?.state?.colors?.white
-            }
-        },
-        opponentColor(){
-            if(this.game?.opponent?.color_id){
-                return this.game?.opponent?.wallet_address === this.address ? this.game?.creator?.color_id : this.game?.opponent?.color_id
-            }else{
-                return this.game?.opponent?.wallet_address === this.address ? this.game?.state?.colors?.white : this.game?.state?.colors?.black
-            }
-        },
         borderColor(){
             return this.game?.state?.colors?.border
         },
@@ -559,19 +546,46 @@ export default {
         },
         fillColors(data){
             if (data){
-                if(this.game?.creator?.color_id){
+                let checkAddress = this.game?.creator?.wallet_address === this.address ?? true
+                if(this.game?.creator?.color_id || this.game?.opponent?.color_id){
                     this.boardColors = {
                         black : this.game?.opponent?.color_id,
                         board : 2,
                         white : this.game?.creator?.color_id
                     }
-                }else{
-                    this.boardColors = data.colors;
-                }
-                if (data.colors.board === 2){
                     this.possibleMove = "#9be8b4"
-                }else {
-                    this.possibleMove = "#FFE194"
+                    this.userColorTop =  checkAddress ? this.game?.opponent?.color_id : this.game?.creator?.color_id;
+                    this.userColorBottom = checkAddress ?  this.game?.creator?.color_id : this.game?.opponent?.color_id;
+                    if(this.game?.creator?.color_id === this.game?.opponent?.color_id){
+                        this.boardColors = {
+                            black : 5,
+                            board : 1,
+                            white : 6
+                        }
+                        this.possibleMove = "#FFE194"
+                        this.userColorTop =  checkAddress ? this.boardColors.black : this.boardColors.white;
+                        this.userColorBottom = checkAddress ?  this.boardColors.white : this.boardColors.black;
+                    }else{
+                        if(!this.game?.opponent?.color_id && this.game?.creator?.color_id){
+                            this.boardColors = {
+                                black : data.colors.black !== this.game?.creator?.color_id ? data.colors.black : (this.game?.creator?.color_id === 4 ? this.game?.creator?.color_id - 1 : this.game?.creator?.color_id + 1),
+                                board : 2,
+                                white : this.game?.creator?.color_id
+                            }
+                            this.possibleMove = "#9be8b4"
+                            this.userColorTop =  checkAddress ? this.boardColors.black : this.boardColors.white;
+                            this.userColorBottom = checkAddress ?  this.boardColors.white : this.boardColors.black;
+                        }
+                    }
+                }else{
+                     this.boardColors = data.colors;
+                     this.userColorTop =  checkAddress ? this.boardColors.black : this.boardColors.white;
+                     this.userColorBottom = checkAddress ?  this.boardColors.white : this.boardColors.black;
+                    if (data.colors.board === 2){
+                        this.possibleMove = "#9be8b4"
+                    }else {
+                        this.possibleMove = "#FFE194"
+                    }
                 }
                 this.playColors.light = backgroundColors[this.boardColors.board]
             }

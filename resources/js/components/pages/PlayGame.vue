@@ -36,7 +36,7 @@
                     <div class="board-player" v-show="!(toggleModal || open)">
                         <div
                             :style="{
-                                backgroundColor: backgroundBord,
+                                backgroundColor: backgroundBordTop,
                                 width: '100%',
                                 border: '0',
                             }"
@@ -46,13 +46,13 @@
                             <p
                                 class="player-info"
                                 :style="{
-                                    color: colorAddress ? colorAddress : 'black',
-                                    textDecoration: textDecorationAddress ? textDecorationAddress : 'underline black',
+                                    color: colorAddressTop ? colorAddressTop : 'black',
+                                    textDecoration: textDecorationAddressTop ? textDecorationAddressTop : 'underline black',
                                 }"
                             >
                                 1°
                                 <img
-                                    :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayB.png'"
+                                    :src="avatarSrcTop ? avatarSrcTop : '../../../images/extra_objects/iconaplayB.png'"
                                     alt="..."
                                 />
                                 {{ opponentUser ? creator?.wallet_address : opponent?.wallet_address }}
@@ -60,14 +60,14 @@
                             <div
                                 class="d-flex align-items-center flex-row flex-nowrap"
                             >
-                                <template v-for="(item, key) in colorIconNft(creatorUser ? creator?.color_id : opponent?.color_id)" v-if="(creatorUser ? opponent : creator)?.[key] > 0 && item">
+                                <template v-for="(item, key) in colorIconNft(colorUserTop)" v-if="(creatorUser ? opponent : creator)?.[key] > 0 && item">
                                     <img style="width:30px;" :src="item" alt=""/>
                                 </template>
                             </div>
                             <span
                                 class="align-items-center"
                                 :style="{
-                                    color: colorPower,
+                                    color: colorPowerTop,
                                     marginRight: '10px',
                                     whiteSpace: 'nowrap',
                                     backgroundColor: '',
@@ -98,7 +98,7 @@
                     <div class="board-player" v-show="!(toggleModal || open)">
                         <div
                             :style="{
-                                backgroundColor: backgroundBord,
+                                backgroundColor: backgroundBordBottom,
                                 width: '100%',
                                 border: '0',
                             }"
@@ -108,8 +108,8 @@
                             <p
                                 class="player-info"
                                 :style="{
-                                    color: colorAddress ? colorAddress : 'black',
-                                    textDecoration: textDecorationAddress ? textDecorationAddress : 'underline black',
+                                    color: colorAddressBottom ? colorAddressBottom : 'black',
+                                    textDecoration: textDecorationAddressBottom ? textDecorationAddressBottom : 'underline black',
                                 }"
                             >
                                 1°
@@ -120,21 +120,21 @@
                                         margin-right: 5px;
                                         margin-bottom: 3px;
                                     "
-                                    :src="avatarSrc ? avatarSrc : '../../../images/extra_objects/iconaplayB.png'" alt="User Avatar"
+                                    :src="avatarSrcBottom ? avatarSrcBottom : '../../../images/extra_objects/iconaplayB.png'" alt="User Avatar"
                                 />
                                 {{ address }}
                             </p>
                             <div
                                 class="d-flex align-items-center flex-row flex-nowrap"
                             >
-                                <template v-for="(item, key) in colorIconNft(creatorUser ? creator?.color_id : opponent?.color_id)" v-if="(creatorUser ? creator : opponent)?.[key] > 0 && item">
+                                <template v-for="(item, key) in colorIconNft(colorUserBottom)" v-if="(creatorUser ? creator : opponent)?.[key] > 0 && item">
                                     <img style="width:30px;" :src="item" alt=""/>
                                 </template>
                             </div>
                             <span
                                 class="align-items-center"
                                 :style="{
-                                    color: colorPower,
+                                    color: colorPowerBottom,
                                     marginRight: '10px',
                                     whiteSpace: 'nowrap',
                                     backgroundColor: '',
@@ -193,13 +193,19 @@ export default {
             message: '',
             buttons: [],
             placeA:false,
-            backgroundBord:'',
-            colorAddress:'',
-            colorPower: '',
-            avatarSrc: '',
-            textDecorationAddress: '',
+            backgroundBordTop:'',
+            colorAddressTop:'',
+            colorPowerTop: '',
+            avatarSrcTop: '',
+            textDecorationAddressTop: '',
+            backgroundBordBottom:'',
+            colorAddressBottom:'',
+            colorPowerBottom: '',
+            avatarSrcBottom: '',
+            textDecorationAddressBottom: '',
             showNotification: false,
-            nftIconSrc: '',
+            colorUserTop: '',
+            colorUserBottom: '',
         };
     },
     created() {
@@ -268,19 +274,38 @@ export default {
         },
         getColorByUserColorId() {
             try {
-                let colorUser;
-                if(this.creator.color_id || this.opponent.color_id){
-                     colorUser = this.creatorUser ? this.creator?.color_id : this.opponent?.color_id;
-                } else{
-                     colorUser = this.creatorUser ? this.game.state.colors.white : this.game.state.colors.black;
+                let colorUserTop, colorUserBottom;
+                if(this.creator?.color_id || this.opponent?.color_id){
+                    colorUserTop = this.creatorUser ? this.opponent?.color_id : this.creator?.color_id;
+                    colorUserBottom = this.creatorUser ? this.creator?.color_id : this.opponent?.color_id;
+                    this.colorUserTop = colorUserTop
+                    this.colorUserBottom = colorUserBottom
+                    if(this.creator?.color_id === this.opponent?.color_id){
+                        colorUserTop = this.creatorUser ? 5 : 6;
+                        colorUserBottom = this.creatorUser ? 6 : 5;
+                        this.colorUserTop = colorUserTop
+                        this.colorUserBottom = colorUserBottom
+                    }
+                }else{
+                    colorUserTop = this.creatorUser ? this.game.state.colors.black : this.game.state.colors.white;
+                    colorUserBottom = this.creatorUser ? this.game.state.colors.white : this.game.state.colors.black;
+                    this.colorUserTop = colorUserTop
+                    this.colorUserBottom = colorUserBottom
                 }
-                const colorStyles = getColorStyles(colorUser);
-                this.backgroundBord = colorStyles.backgroundBord;
-                this.colorAddress = colorStyles.colorAddress;
-                this.colorPower = colorStyles.colorPower;
-                this.avatarSrc = colorStyles.avatarSrc;
-                this.textDecorationAddress = colorStyles.textDecorationAddress;
-                this.nftIconSrc = colorStyles.nftIconSrc;
+
+                const colorStylesTop = getColorStyles(colorUserTop);
+                this.backgroundBordTop = colorStylesTop.backgroundBord;
+                this.colorAddressTop = colorStylesTop.colorAddress;
+                this.colorPowerTop = colorStylesTop.colorPower;
+                this.avatarSrcTop = colorStylesTop.avatarSrc;
+                this.textDecorationAddressTop = colorStylesTop.textDecorationAddress;
+
+                const colorStylesBottom = getColorStyles(colorUserBottom);
+                this.backgroundBordBottom = colorStylesBottom.backgroundBord;
+                this.colorAddressBottom = colorStylesBottom.colorAddress;
+                this.colorPowerBottom = colorStylesBottom.colorPower;
+                this.avatarSrcBottom = colorStylesBottom.avatarSrc;
+                this.textDecorationAddressBottom = colorStylesBottom.textDecorationAddress;
             } catch (error) {
                 console.error(error);
                 this.user = null;
