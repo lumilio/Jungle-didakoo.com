@@ -39,7 +39,7 @@
 
             <button class='refresh-button' style='background-color:black;'>
                 <div class='d-flex justify-content-center align-items-center' style='color:white; padding: 10px; margin: 0;'>
-                    <p class='text-white' style='font-family: "VT323", monospace;'>Next update list in 1 minute </p>
+                    <p class='text-white' style='font-family: "VT323", monospace;'>Next update list in {{ secondsUntilUpdate }} sec </p>
                     <div class="d-flex">
 
                         <img style='width:30px;' src="images/extra_objects/sandtime.png" alt="">
@@ -113,6 +113,7 @@ import colorIconNft from "../../constants/nftLinks";
             colorPower: '',
             avatarSrc: '',
             textDecorationAddress: '',
+            secondsUntilUpdate: 60,
         }
     },
     computed: {
@@ -169,7 +170,15 @@ import colorIconNft from "../../constants/nftLinks";
     async mounted()
     {
         await this.updatePlayersListIfNeeded();
-        setInterval(async () => await this.fetchAllUsers(), 60 * 1000)
+        setInterval(() => {
+            if (this.secondsUntilUpdate > 1) {
+                this.secondsUntilUpdate--
+            }
+        }, 1000)
+        setInterval(async () => {
+            await this.fetchAllUsers()
+            this.secondsUntilUpdate = 60
+        }, 60 * 1000)
     },
 
  }
