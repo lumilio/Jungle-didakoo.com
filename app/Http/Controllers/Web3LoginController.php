@@ -152,7 +152,7 @@ class Web3LoginController extends Controller
 
     public function logout(Request $request)
     {
-        $request->session()->forget(['loggedIn','userSession', 'isGuest']);
+        $request->session()->flush();
         return true;
     }
 

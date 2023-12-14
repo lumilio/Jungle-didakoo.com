@@ -27,6 +27,7 @@ export default {
             if (window.location.pathname.includes('room')){
                 store.commit('TOGGLE_WALLET_MODAL');
             }
+            store.commit('LOG_OUT_USER');
         }
 
     }

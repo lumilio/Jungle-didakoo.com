@@ -76,8 +76,6 @@
                         const response = await axios.post('/api/make-game', { multiPlay: multiPlay, address: this.address, state: state });
                         this.$router.push(`/room/${response.data.url}`);
                     } else if (!this.user) {
-                        return store.commit('TOGGLE_WALLET_MODAL');
-                    } else {
                         this.showLowSunflowerErrorModal()
                     }
                     // else{
