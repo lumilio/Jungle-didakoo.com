@@ -20,7 +20,6 @@
     import store from "../../store";
     import helper from "../Game/GameHelper";
     import ConnectWalletModal from "../Modal/ConnectWalletModal.vue";
-    import Swal from 'sweetalert2'
 
     export default {
         components: {ConnectWalletModal, Modal},
@@ -76,11 +75,8 @@
                         const response = await axios.post('/api/make-game', { multiPlay: multiPlay, address: this.address, state: state });
                         this.$router.push(`/room/${response.data.url}`);
                     } else if (!this.user) {
-                        this.showLowSunflowerErrorModal()
+                        return store.commit('TOGGLE_WALLET_MODAL');
                     }
-                    // else{
-                    //     return store.commit('TOGGLE_WALLET_MODAL');
-                    // }
 
                 }catch (e) {
                     console.log(e)
@@ -111,21 +107,6 @@
                 const gameModeLevel = response.data.game_mode.level
 
                 return gameModeLevel
-            },
-            showLowSunflowerErrorModal() {
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'You don\'t have enough sunflower',
-                    icon: 'error',
-                    confirmButtonText: 'OK',
-                    background: '#000',
-                    color: '#fff',
-                    confirmButtonColor: '#000',
-                    customClass: {
-                        container: 'error-modal-font',
-                        confirmButton: 'btn-button console-screen'
-                    }
-                })
             }
         },
     }
