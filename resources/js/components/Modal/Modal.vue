@@ -10,7 +10,7 @@
                 </div>
                 <div class="console-screen d-flex justify-content-center align-items-center">
                     <p class="main_message">
-                        {{mainMessage}}
+                        <span v-html="mainMessage"></span>
                         <span v-if="!canStart">Your Game Will Start in {{timeoutIndicator}}</span>
                     </p>
                 </div>
@@ -36,6 +36,7 @@
 
 <script>
 import Button from "../Button/Button.vue";
+import store from "../../store";
 
 export default {
     props: {
@@ -43,7 +44,7 @@ export default {
         gameStarted: Boolean,
         message: {
             type: String,
-            default: 'You win / You Lose / Other data'
+            default: 'Login required ' + '<i class="fa-solid fa-bars"></i> ' + '<i class="fa-solid fa-power-off"></i>'
         },
         delay: {
             type: Boolean,
@@ -57,13 +58,21 @@ export default {
             type: Boolean,
             default: false
         },
-       showNotification: {
+        showNotification: {
             type: Boolean,
             default: false
         },
         buttons: {
             type: Array,
             default: [],
+        },
+        nftSunflowerPoints: {
+            type: Number,
+            default: 0
+        },
+        gameModeLevel: {
+            type: Number,
+            default: 0
         }
     },
     components: { Button },
@@ -82,11 +91,29 @@ export default {
             }
           }
         },
+        user() {
+            return store.state.user
+        },
         mainMessage(){
-            if(this.gameStarted && !this.canStart){
+            if (this.gameStarted && !this.canStart) {
                 return 'CountDown Message'
             }
-            return this.message ? this.message :'YOU WIN / YOU LOSE / Other data'
+
+            if (this.user) {
+                let copy = `You must keep ${this.gameModeLevel} flower to play <img src="images/extra_objects/sunflower_1f33b.png"> ${this.nftSunflowerPoints} / ${this.gameModeLevel} ... `
+
+                if (this.nftSunflowerPoints >= this.gameModeLevel) {
+                    copy += '<span style="color: green;">You can play</span>'
+                } else {
+                    copy += '<span style="color: #ee3635;">You can\'t play</span>'
+                }
+
+                return copy
+            }
+
+            return this.message
+                ? this.message
+                : 'Login required' + '<i class="fa-solid fa-bars"></i>' + '<i class="fa-solid fa-power-off"></i>'
         },
     },
     created() {
@@ -155,18 +182,37 @@ export default {
     background-position: center;
     background-size: 600px;
 }
-.main_modal{
-    .modal_logo{
+.main_modal {
+    .modal_logo {
         width:80px
     }
-    .version_sign{
+    .version_sign {
         color: white;
         margin-top: 5px;
     }
-    .main_message{
-        color: white;
-        font-size: 17px;
+    .main_message {
         padding: 10px;
+
+        & > span {
+            color: white;
+            font-size: 17px;
+
+            .fa-bars {
+                margin-top: 0;
+                margin-left: 0;
+                position: static;
+                font-size: inherit;
+            }
+
+            .fa-power-off {
+                color: #ee3635;
+            }
+
+            img {
+                width: auto;
+                height: 1em;
+            }
+        }
     }
 }
 </style>

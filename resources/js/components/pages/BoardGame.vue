@@ -5,6 +5,8 @@
             :gameStarted="false"
             :buttons="buttons"
             :startNewGame="true"
+            :nftSunflowerPoints="nftSunflowerPoints"
+            :gameModeLevel="gameModeLevel"
         />
         <div v-show="!toggleModal" style="height:100vh;" class="justify-content-center align-content-center d-flex modal-outgame">
             <ConnectWalletModal :show="toggleModal" style="margin: 0"></ConnectWalletModal>
@@ -42,7 +44,10 @@
                         image: '../../../images/board/animals/icon-17.png',
                         onclick: this.quitGame
                     }
-                ]
+                ],
+                gameModeLevel: 0,
+                nftSunflowerPoints: 0,
+                doesUserHaveEnoughSunflower: false
             }
         },
         computed: {
@@ -56,13 +61,16 @@
                 return store.state.connectWallet
             }
         },
+        async mounted() {
+            await this.verifyUserHasEnoughNftSunflowerPoints()
+        },
         methods: {
             quitGame(){
                 this.$router.push('/rank')
             },
             async createGame({ multiPlay }){
                 try {
-                    if (this.user && await this.verifyUserHasEnoughNftSunflowerPoints()) {
+                    if (this.user && this.doesUserHaveEnoughSunflower) {
                         this.url = window.location.host;
                         const state = helper.getInitialState();
                         const response = await axios.post('/api/make-game', { multiPlay: multiPlay, address: this.address, state: state });
@@ -78,10 +86,10 @@
 
             },
             async verifyUserHasEnoughNftSunflowerPoints() {
-                const nftSunflowerPoints = await this.getUserLevelFromNftSunflowerPoints()
-                const gameModeLevel = await this.getActiveGameMode()
+                this.nftSunflowerPoints = await this.getUserLevelFromNftSunflowerPoints()
+                this.gameModeLevel = await this.getActiveGameMode()
 
-                return nftSunflowerPoints >= gameModeLevel
+                this.doesUserHaveEnoughSunflower = this.nftSunflowerPoints >= this.gameModeLevel
             },
             async getUserLevelFromNftSunflowerPoints() {
                 const response = await axios.get(`/api/user-by-wallet-address/${this.address}`);
