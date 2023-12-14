@@ -36,7 +36,7 @@ export default {
     },
     methods:{
         checkToAddress(){
-            return this.address?.length === 42 && this.address?.substring(0, 2) === '0x' ? this.userAddress = true : this.userAddress = false;
+            return (this.address !== null && this.address?.length === 42 && this.address?.substring(0, 2) === '0x') ? this.userAddress = true : this.userAddress = false;
         },
         async getAllUsers()
         {
