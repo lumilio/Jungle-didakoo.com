@@ -20,6 +20,7 @@ Route::post('/api/web3-update-ethwallet', 'Web3LoginController@update');
 Route::get('/api/getUsers', 'UserController@getUsers');
 Route::get('api/user-by-wallet-address/{address}', 'UserController@getUserByWalletAddress');
 Route::post('/api/make-game', 'GameController@makeGame');
+Route::get('/api/active-game-mode', 'GameController@getActiveGameMode');
 Route::post('/api/get-game/{url}', 'GameController@getGame');
 Route::get('/api/getSession', 'Web3LoginController@getSession');
 Route::get('/api/logout', 'Web3LoginController@logout');
