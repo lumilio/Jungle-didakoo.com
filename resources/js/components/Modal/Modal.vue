@@ -100,7 +100,7 @@ export default {
             }
 
             if (this.user) {
-                let copy = `You must keep ${this.gameModeLevel} flower to play <img src='../../../images/extra_objects/sunflower_1f33b.png'> ${this.nftSunflowerPoints} / ${this.gameModeLevel} ... `
+                let copy = `You must keep ${this.gameModeLevel} flower to play ${this.nftSunflowerPoints} / ${this.gameModeLevel} ... `
 
                 if (this.nftSunflowerPoints >= this.gameModeLevel) {
                     copy += '<span style="color: green;">You can play</span>'
@@ -205,7 +205,7 @@ export default {
             }
 
             .fa-power-off {
-                color: #ee3635;
+                /* color: #ee3635; */
             }
 
             img {
