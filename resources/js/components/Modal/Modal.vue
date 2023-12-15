@@ -8,14 +8,18 @@
                     <img class="modal_logo" src="../../../images/extra_objects/ddd.jpg">
                     <span class="version_sign">v 1.0.0</span>
                 </div>
-                <div class="console-screen d-flex justify-content-center align-items-center">
-                    <p class="main_message">
+                <div v-if="checkGameStatus" class="console-screen d-flex justify-content-center align-items-center">
+                    <p  class="main_message">
                         <span v-html="mainMessage"></span>
-                        <span v-if="!canStart">Your Game Will Start in {{timeoutIndicator}}</span>
+                    </p>
+                </div>
+                <div v-if="!canStart" class="console-screen d-flex justify-content-center align-items-center">
+                    <p  class="main_message">
+                        <span >Your Game Will Start in {{timeoutIndicator}}</span>
                     </p>
                 </div>
                 <template v-if="(this.gameStarted && this.canStart) || startNewGame">
-                    <div class="d-flex flex-wrap flex-column justify-content-center">
+                    <div class="d-flex flex-wrap flex-column justify-content-center" :style="{paddingTop : checkGameStatus ? 0 : '30px'}">
                         <div v-if="showNotification" class="notification">
                           Room ID copied to clipboard!
                         </div>
@@ -73,7 +77,8 @@ export default {
         gameModeLevel: {
             type: Number,
             default: 0
-        }
+        },
+        game: {}
     },
     components: { Button },
     data () {
@@ -83,8 +88,10 @@ export default {
         }
     },
     computed: {
+        checkGameStatus(){
+            return (this.game?.status !== 'started') && (!this.gameStarted)
+        },
         modalBackground() {
-
           if(!this.message){
             if(this.gameStarted && this.canStart){
               return 'transparent';

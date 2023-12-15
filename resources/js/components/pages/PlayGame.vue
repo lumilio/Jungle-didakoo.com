@@ -161,6 +161,7 @@
             :readyToStart="readyToStart"
             :buttons="buttons"
             :showNotification="showNotification"
+            :game="game"
             v-on:handelReadyToStart="handelReadyToStart()"
             v-on:quitGame="quitGame()"
         />

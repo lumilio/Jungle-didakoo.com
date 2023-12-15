@@ -8,9 +8,7 @@
             :nftSunflowerPoints="nftSunflowerPoints"
             :gameModeLevel="gameModeLevel"
         />
-<!--        <div v-show="!toggleModal" style="height:100vh;" class="justify-content-center align-content-center d-flex modal-outgame">-->
-<!--            <ConnectWalletModal :show="toggleModal" style="margin: 0"></ConnectWalletModal>-->
-<!--        </div>-->
+
     </div>
 </template>
 
@@ -20,6 +18,7 @@
     import store from "../../store";
     import helper from "../Game/GameHelper";
     import ConnectWalletModal from "../Modal/ConnectWalletModal.vue";
+    import Swal from 'sweetalert2'
 
     export default {
         components: {ConnectWalletModal, Modal},
@@ -75,7 +74,7 @@
                         const response = await axios.post('/api/make-game', { multiPlay: multiPlay, address: this.address, state: state });
                         this.$router.push(`/room/${response.data.url}`);
                     } else if (!this.user) {
-                        return store.commit('TOGGLE_WALLET_MODAL');
+                        this.showLowSunflowerErrorModal()
                     }
 
                 }catch (e) {
@@ -107,6 +106,21 @@
                 const gameModeLevel = response.data.game_mode.level
 
                 return gameModeLevel
+            },
+            showLowSunflowerErrorModal() {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'You don\'t have enough sunflower',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                    background: '#000',
+                    color: '#fff',
+                    confirmButtonColor: '#000',
+                    customClass: {
+                        container: 'error-modal-font',
+                        confirmButton: 'btn-button console-screen'
+                    }
+                })
             }
         },
     }

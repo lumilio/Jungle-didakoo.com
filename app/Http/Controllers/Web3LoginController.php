@@ -152,7 +152,8 @@ class Web3LoginController extends Controller
 
     public function logout(Request $request)
     {
-        $request->session()->flush();
+        $request->session()->forget(['loggedIn','userSession', 'isGuest']);
+//        $request->session()->flush();
         return true;
     }
 
@@ -191,7 +192,7 @@ class Web3LoginController extends Controller
                 $creator->update(["nft_1_sunflower_1" => $Nft_1_sunflower_1, 'power' => $power]);
             }
             if ($Nft_2_sunflower_2 && $Nft_2_sunflower_2 !== $creator->nft_2_sunflower_2) {
-                $power = $creator->power + ($Nft_2_sunflower_2 - $creator->nft_2_sunflower_2) * 9;
+                $power = $creator->power + ($Nft_2_sunflower_2 - $creator->nft_2_sunflower_2) * 5;
                 $creator->update(["nft_2_sunflower_2" => $Nft_2_sunflower_2, 'power' => $power]);
             }
             if ($Nft_3_battery && $Nft_3_battery !== $creator->nft_3_battery) {
