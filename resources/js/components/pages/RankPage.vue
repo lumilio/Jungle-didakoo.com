@@ -178,7 +178,10 @@ import colorIconNft from "../../constants/nftLinks";
                 this.secondsUntilUpdate--
             }
         }, 1000)
-        setInterval(async () => await this.fetchAllUsers(), 60 * 1000)
+        setInterval(async () => {
+            await this.fetchAllUsers()
+            this.secondsUntilUpdate = 60
+        }, 60 * 1000)
     },
 
  }
