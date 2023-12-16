@@ -15,6 +15,10 @@ class UserController extends Controller
     }
     public function getUserByWalletAddress(Request $request, $address): \Illuminate\Http\JsonResponse
     {
+        if ($request->session()->has('isGuest')){
+            return response()->json(['user' => ['wallet_address' => $request->session()->get('userSession'), 'balance'=> 0, 'power' => 0, 'color_id' => 1]]);
+        }
+
         $player = Player::where('wallet_address', $address)->first();
 
         if (!$player) {
