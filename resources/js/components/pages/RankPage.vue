@@ -50,12 +50,12 @@
 
 
             <!-- Looping through players --------------------------------------------------->
-                <router-link
+                <div
                     v-for="(players, playerListIndex) in playersArray"
-                    v-bind:key="players.id"
-                    class="record"
+                    @click="goToAvatarPage(players)"
+                    :key="players.id"
+                    class="record pointer"
                     :style="{backgroundColor : players.backgroundBord, textDecoration: 'none'}"
-                    :to="{ path: 'avatar', query: { wallet_address: players?.wallet_address} }"
                 >
                     <div :style="{
                         color: players.colorAddress,
@@ -89,7 +89,7 @@
                     <span class='align-items-center' :style="{color: players.colorPower, marginRight: '10px',whiteSpace: 'nowrap',  backgroundColor: '',  padding: '0 10px',  borderRadius: '20px', display: 'flex'}">
                         {{ formatPower(players.power) }} <i class="fa-solid fa-bolt ml-1"></i>
                     </span>
-                </router-link>
+                </div>
 
 
         </div>
@@ -168,6 +168,9 @@ import colorIconNft from "../../constants/nftLinks";
         },
         formatPower(power) {
             return formatNumberWithSuffix(power)
+        },
+        goToAvatarPage(players){
+            this.$router.push({path: "/avatar", query: {wallet_address: players?.wallet_address}});
         }
     },
     async mounted()
@@ -186,3 +189,8 @@ import colorIconNft from "../../constants/nftLinks";
 
  }
 </script>
+<style>
+.pointer{
+    cursor: pointer;
+}
+</style>

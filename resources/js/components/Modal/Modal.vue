@@ -89,7 +89,7 @@ export default {
     },
     computed: {
         checkGameStatus(){
-            return (this.game?.status !== 'started') && (!this.gameStarted)
+            return ((this.game?.status !== 'started') && (!this.gameStarted)) || this.message
         },
         modalBackground() {
           if(!this.message){
@@ -105,7 +105,9 @@ export default {
             if (this.gameStarted && !this.canStart) {
                 return 'CountDown Message'
             }
-
+            if (this.message){
+                return this.message
+            }
             if (this.user) {
                 let copy = `You must keep ${this.gameModeLevel} flower to play ${this.nftSunflowerPoints} / ${this.gameModeLevel} ... `
 
