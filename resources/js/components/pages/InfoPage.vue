@@ -20,6 +20,8 @@
                     <p style='font-size:30px;'> v 1.0.0  <a style="color:white; font-size:20px;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">  斗兽棋 </a> &nbsp <a href=""><i class="fa-brands fa-ethereum"></i></a>
                     </p>
                     <p>Players online : {{ totalCurrentUsers }} </p>
+                    <hr width="100%" size="20" color="white">
+                    <br width="100%" size="20" color="white">
                     <p style='color:white;'>Buy flower Nft :</p>
 
                     <p style='font-size:20px;' >
@@ -34,7 +36,7 @@
                     <p>🌻 x 4 : Ultimate Pass</p>  
 
 
-
+                    <br width="100%" size="20" color="white">
                     <hr width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
                     <!-- <p>At the cout down end an immage of the entire rank will be mint. </p> -->
@@ -47,8 +49,7 @@
 
 
                     <br width="100%" size="20" color="white">
-                    <hr width="100%" size="20" color="white">
-                    <br width="100%" size="20" color="white">
+
 
 
 
