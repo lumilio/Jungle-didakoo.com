@@ -288,8 +288,8 @@ export default {
                         this.colorUserBottom = colorUserBottom
                     }
                 }else{
-                    colorUserTop = this.creatorUser ? this.game.state.colors.black : this.game.state.colors.white;
-                    colorUserBottom = this.creatorUser ? this.game.state.colors.white : this.game.state.colors.black;
+                    colorUserTop = this.creatorUser ? this.game.state?.colors?.black : this.game.state?.colors?.white;
+                    colorUserBottom = this.creatorUser ? this.game.state?.colors?.white : this.game.state?.colors?.black;
                     this.colorUserTop = colorUserTop
                     this.colorUserBottom = colorUserBottom
                 }

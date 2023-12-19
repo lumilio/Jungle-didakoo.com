@@ -19,13 +19,13 @@
 
                 <div class="d-flex justify-content-center  alingn-items-center">
                     <img style="width: 60px; margin-bottom: 20px; display: inline; transform: scaleX(-1);" src="images/extra_objects/icon-06.png" alt=""/>
-                    <router-link :to="{ path: 'game' }" style="display: contents">
+                    <div @click="startGame()" style="display: contents" class="pointer">
                         <button id="modalx" class="no-wrap align-items-center text-big d-flex px-4 call_button">
                             <span>
                                 START GAME
                             </span>
                         </button>
-                    </router-link>
+                    </div>
                     <img style="width: 60px; margin-bottom: 20px; display: inline" src="images/extra_objects/icon-05.png" alt="" />
                 </div>
             </div>
@@ -132,6 +132,9 @@ import colorIconNft from "../../constants/nftLinks";
         }
     },
     methods:{
+        startGame() {
+            this.$router.push({path: 'game'});
+        },
         colorIconNft,
         async updatePlayersListIfNeeded() {
             const playersListLastFetched = store.state.playersListLastFetched

@@ -2,12 +2,12 @@
     <div class="navbar d-flex banner-board-helper align-items-center">
         <div class="d-flex align-items-center">
             <img class="didakoo" src="images/extra_objects/ddd.jpg" alt="" />
-            <router-link :to="this.$route.name === 'avatar' ? 'rank': 'menu'">
+            <div @click="getLinkBurger()" class="pointer" >
                 <i class="fa-solid burger_menu fa-bars"></i>
-            </router-link>
-            <router-link class="avatar_link" v-if="userAddress" :to="{ path: 'avatar', query: { wallet_address: address } }">
+            </div>
+            <div class="avatar_link pointer" v-if="userAddress" @click="navigateToAvatar">
                 <img src='images/extra_objects/iconaplay1.png' alt="">
-            </router-link>
+            </div>
         </div>
     </div>
 </template>
@@ -35,6 +35,14 @@ export default {
         this.checkToAddress()
     },
     methods:{
+        navigateToAvatar() {
+            if (this.userAddress) {
+                this.$router.push({path: 'avatar', query: {wallet_address: this.address}});
+            }
+        },
+        getLinkBurger() {
+            this.$route.name === 'avatar' ? this.$router.push({path: 'rank'}) : this.$router.push({path: 'menu'})
+        },
         checkToAddress(){
             return (this.address !== null && this.address?.length === 42 && this.address?.substring(0, 2) === '0x') ? this.userAddress = true : this.userAddress = false;
         },
@@ -79,6 +87,9 @@ export default {
         margin-left: 5px;
         margin-bottom: 3px;
     }
+}
+.pointer{
+    cursor: pointer;
 }
 
 </style>

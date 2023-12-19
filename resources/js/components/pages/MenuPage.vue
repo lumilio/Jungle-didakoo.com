@@ -18,21 +18,21 @@
                     </div>
                 </a>
 
-                <router-link to="rank">
+                <div @click="navigateToRank()" class="pointer">
                     <div id="modalz">
                         <div class="square">
                             <img id="buttton_v_1" src="images/extra_objects/scarabeo.png" alt="" />
                         </div>
                     </div>
-                </router-link>
-                <router-link to="info">
-                    <div id="modaly">
+                </div>
+                <div @click="navigateToInfo()" class="pointer">
+                    <div id="modaly" style="padding-top: 20px">
                         <div class="square">
                             <!-- <i class="fa-solid fa-sheet-plastic"></i> -->
                             <span class="text-white">1.0</span>
                         </div>
                     </div>
-                </router-link>
+                </div>
             </div>
             <ConnectWalletModal :show="toggleModal" style="margin: 0"></ConnectWalletModal>
         </div>
@@ -71,6 +71,12 @@ export default {
 
 
     methods: {
+        navigateToRank(){
+            this.$router.push({path: 'rank'})
+        },
+        navigateToInfo(){
+            this.$router.push({path: 'info'})
+        },
         async openModal() {
             if (this.user) {
                 await fetch('api/logout', {
@@ -102,3 +108,8 @@ export default {
 };
 </script>
 
+<style>
+.pointer{
+    cursor: pointer;
+}
+</style>
