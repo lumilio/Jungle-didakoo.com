@@ -19,18 +19,26 @@
                 <div style="margin-top:30px;" class="container-sm pepar  ">
                     <p style='font-size:30px;'> v 1.0.0  <a style="color:white; font-size:20px;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">  斗兽棋 </a> &nbsp <a href=""><i class="fa-brands fa-ethereum"></i></a>
                     </p>
-                    <p>Players : {{ totalCurrentUsers }} </p>
-                    <p>Flower to play : 0<!-- <i class="fa-solid fa-bolt ml-1"></i> </p> -->
-                                        <p style='color:white;'>Buy sun flower  Nft :</p>
+                    <p>Players online : {{ totalCurrentUsers }} </p>
+                    <p style='color:white;'>Buy flower Nft :</p>
 
                     <p style='font-size:20px;' >
-                        >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">sun flower <span style="font-size:30px;">🌻</span> </a> <<<
-
+                        >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469"><!-- sun flower pass  --><span style="font-size:30px;">🌻</span> </a> <<<
                     </p>
+                    
+
+                    <p>🌻 x 0 : Basic pass</p> 
+                    <p>🌻 x 1 : Big pass</p>   
+                    <p>🌻 x 2 : Mega pass</p> 
+                    <p>🌻 x 3 : Priority pass</p> 
+                    <p>🌻 x 4 : Ultimate Pass</p>  
+
+
+
                     <hr width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
                     <!-- <p>At the cout down end an immage of the entire rank will be mint. </p> -->
-                    <span style='color:white;'>Install an Ethereum wallet to play and save your data :   </span>
+                    <span style='color:white;'>Download an Ethereum wallet to get the pass and save your data :   </span>
                     <span>> <a style="color:#D1230F;" href="https://metamask.io/"> Metamask</a> <</span>
                     <span>> <a style="color:#D1230F;" href="https://metamask.io/">Coin Base</a> <</span>
                     <br width="100%" size="20" color="white">
