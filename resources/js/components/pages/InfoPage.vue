@@ -23,7 +23,7 @@
                     <p style='color:white;'>Buy flower Nft :</p>
 
                     <p style='font-size:20px;' >
-                        >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469"><!-- sun flower pass  --><span style="font-size:30px;">🌻</span> </a> <<<
+                        >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">flower Nft <span style="font-size:30px;">🌻</span> </a> <<<
                     </p>
                     
 
@@ -39,8 +39,8 @@
                     <br width="100%" size="20" color="white">
                     <!-- <p>At the cout down end an immage of the entire rank will be mint. </p> -->
                     <span style='color:white;'>Download an Ethereum wallet to get the pass and save your data :   </span>
-                    <span>> <a style="color:#D1230F;" href="https://metamask.io/"> Metamask</a> <</span>
-                    <span>> <a style="color:#D1230F;" href="https://metamask.io/">Coin Base</a> <</span>
+                    <p>> <a style="color:#D1230F;" href="https://metamask.io/"> Metamask</a> <</p>
+                    <p>> <a style="color:#D1230F;" href="https://metamask.io/">Coin Base</a> <</p>
                     <br width="100%" size="20" color="white">
 
 
@@ -82,12 +82,6 @@
                 <p>
                     help@didakoo.com
                 </p>
-
-                <p>
-                     Follow on instagram
-                </p>
-
-                <p>Follow on twitter</p>
                 </div>
             </div>
             <!----------------------------------------------->
