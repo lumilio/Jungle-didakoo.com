@@ -15,20 +15,25 @@
             </div>
 
             <!---------------------- BODY ------------------->
+
+
+
+
+
+
+
             <div class="allineatore d-flex justify-content-top ">
                 <div style="margin-top:30px;" class="container-sm pepar  ">
-                    <p style='font-size:30px;'> v 1.0.0  <a style="color:white; font-size:20px;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">  斗兽棋 </a> &nbsp <a href=""><i class="fa-brands fa-ethereum"></i></a>
-                    </p>
+
+                    <p style='font-size:30px;'> v 1.0.0  <a style="color:white; font-size:20px;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">  斗兽棋 </a> &nbsp <a href=""><i class="fa-brands fa-ethereum"></i></a></p>
                     <p>Players online : {{ totalCurrentUsers }} </p>
+
                     <hr width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
+
                     <p style='color:white;'>Buy flower Nft :</p>
-
-                    <p style='font-size:20px;' >
-                        >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">flower Nft <span style="font-size:30px;">🌻</span> </a> <<<
-                    </p>
+                    <p style='font-size:18px;'> >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">flower Nft <span style="font-size:30px;">🌻</span> </a> <<< </p>
                     
-
                     <p>🌻 x 0 : Basic pass</p> 
                     <p>🌻 x 1 : Big pass</p>   
                     <p>🌻 x 2 : Mega pass</p> 
@@ -37,32 +42,19 @@
 
 
                     <br width="100%" size="20" color="white">
-                    <hr width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
+
+
+
                     <!-- <p>At the cout down end an immage of the entire rank will be mint. </p> -->
-                    <span style='color:white;'>Download an Ethereum wallet to get the pass and save your data :   </span>
+                    <p style='color:white;'>Chose an Ethereum wallet to get the pass and save your data.</p>
                     <p>> <a style="color:#D1230F;" href="https://metamask.io/"> Metamask</a> <</p>
                     <p>> <a style="color:#D1230F;" href="https://metamask.io/">Coin Base</a> <</p>
-                    <br width="100%" size="20" color="white">
-
 
 
 
                     <br width="100%" size="20" color="white">
-
-
-
-
-
-
-                    <!-- <p>🌻 v.2 = + 1/1 GAME TOKENS <img style='width:30px;' src='images/extra_objects/ff.png' alt=""></p> -->
-                    <!--
-                    <p> Every day you total token will recharged:</p>
-                    <p class='text-white' style='font-family: "VT323", monospace;   margin-top:25px; '> 00:00:00 UTC+1 ROME</p>
-                    <p style="font-size:30px">  0/2 <img style='width:50px;' src='images/extra_objects/ff.png' alt="">
-                    --->    <!-- 2/2 <img style='width:50px;' src='images/extra_objects/ff.png' alt=""> </p>  -->
-
-
+                    <br width="100%" size="20" color="white">
 
 
 
@@ -76,13 +68,16 @@
                     <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/cryptopunks">The sandbox  </a> </p>
                     <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/cryptopunks">Doodles  </a> </p>
                     <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/cryptopunks">Hash Masks  </a> </p>
+
+
+
                     <hr width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
 
 
-                <p>
-                    help@didakoo.com
-                </p>
+                    <p>help@didakoo.com</p>
+
+
                 </div>
             </div>
             <!----------------------------------------------->
