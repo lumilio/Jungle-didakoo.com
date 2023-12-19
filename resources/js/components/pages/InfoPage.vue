@@ -65,7 +65,7 @@
 
 
 
-                    <p>The following NFTs are recognized by the game and allow you to unlock extra content.</p>
+                    <p>The following NFTs allow you to unlock in game extra content.</p>
                     <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/cryptopunks">sun flower V.2  (by didakoo) </a> </p>
                     <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/cryptopunks">didakoo items (by didakoo) </a> </p>
                     <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/cryptokitties">CryptoKitties</a> </p>
