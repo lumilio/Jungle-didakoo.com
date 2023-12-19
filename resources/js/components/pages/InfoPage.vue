@@ -42,7 +42,6 @@
 
 
                     <br width="100%" size="20" color="white">
-                    <hr width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
 
 
