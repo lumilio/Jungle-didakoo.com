@@ -25,7 +25,7 @@ const authGuard = (to, from, next) => {
 const routes = [
     {
         path: '/',
-        redirect: '/rank',
+        redirect: '/menu',
         component: DefaultContainer,
         children: [
             {
