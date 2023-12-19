@@ -92,9 +92,7 @@ export default {
     async beforeRouteUpdate(to, from, next) {
         try {
             const walletAddress = to.query.wallet_address;
-            const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
-            this.userData = response.data.user;
-            this.getPlayerStyles(this.userData.color_id);
+            await this.getAllUsers(walletAddress)
             next();
         } catch (error) {
             console.error(error);
@@ -107,13 +105,14 @@ export default {
         await this.getUserByWalletAddress();
     },
     methods: {
-        async getAllUsers()
+        async getAllUsers(walletAddress)
         {
             const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/get-users');
-            this.playersArray = response.data.users;
-            this.playersArray = this.playersArray.filter((player,index) => {
-                if(player.wallet_address === this.$route.query.wallet_address){
+            this.playersArray = response.data.users.filter((player,index) => {
+                if(player.wallet_address === walletAddress){
                     this.playerListIndex = index + 1
+                    this.userData = player
+                    this.getPlayerStyles(this.userData.color_id)
                 }
             })
         },
@@ -123,13 +122,9 @@ export default {
 
       },
         async getUserByWalletAddress() {
-            this.playerListIndex = this.$route.query.player_list_index
-
             try {
             const walletAddress = this.$route.query.wallet_address;
-            const response = await axios.get(`/api/user-by-wallet-address/${walletAddress}`);
-            this.userData = response.data.user;
-            this.getPlayerStyles(this.userData.color_id);
+                await this.getAllUsers(walletAddress)
             } catch (error) {
                 console.error(error);
                 this.user = null;
