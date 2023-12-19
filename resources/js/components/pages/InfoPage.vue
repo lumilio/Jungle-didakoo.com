@@ -31,7 +31,7 @@
                     <hr width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
 
-                    <p style='color:white;'>Buy flower Nft :</p>
+                    <p style='color:white;'>GAME PASS</p>
                     <p style='font-size:18px;'> >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">flower Nft <span style="font-size:30px;">🌻</span> </a> <<< </p>
                     
                     <p>🌻 x 0 : Basic pass</p> 
