@@ -1,22 +1,9 @@
 <template>
     <div id='page2' >
 
-        <!----------------------- UTILITY MODAL usless now ----------------------->
-        <div id='myModalkoo' class="modal">
-            <div class="modal-content d-flex flex-column align-items-center">
-                <span class="closekoo_rank">&times;</span>
-                <button id='btnkoo_2_1' class="rainbow-button" > H𐍈ME </button>
-                <button id='btnkoo_2_2' > Y𐍈U  </button>
-                <button id='btnkoo_2_3' > LOG𐍈UT </button>
-            </div>
-        </div>
-
         <!----------------------- LOGO ----------------------->
         <div id="_box1_" class="container-sm d-flex justify-content-center align-items-center flex-column">
-
-
             <div class="d-flex flex-column justify-content-center  alingn-items-center">
-
                 <div class="d-flex justify-content-center  alingn-items-center">
                     <img style="width: 60px; margin-bottom: 20px; display: inline; transform: scaleX(-1);" src="images/extra_objects/icon-06.png" alt=""/>
                     <router-link :to="{ path: 'game' }" style="display: contents">
@@ -29,10 +16,10 @@
                     <img style="width: 60px; margin-bottom: 20px; display: inline" src="images/extra_objects/icon-05.png" alt="" />
                 </div>
             </div>
-
             <img id='scarabeo'  style='margin-top:20px;' src='images/extra_objects/17.svg' alt="">
         </div>
         <div class="d-flex container-sm  mt-3 flex-column"></div>
+
 
         <!--------------------------------------- RANK LIST ------------------------------------------>
         <div style='max-width:800px' class="rank d-flex container-sm  flex-column align-items-center text-white">
@@ -46,9 +33,6 @@
                     </div>
                 </div>
             </button>
-
-
-
             <!-- Looping through players --------------------------------------------------->
                 <div
                     v-for="(players, playerListIndex) in playersArray"
