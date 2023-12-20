@@ -26,7 +26,7 @@
             return {
                 buttons: [
                     {
-                        title: 'QUICK GAME',
+                        title: 'PLAY',
                         icon: 'fa-solid fa-bolt icons',
                         onclick: this.createGame,
                         params: {multiPlay: false}
