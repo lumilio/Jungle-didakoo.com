@@ -106,7 +106,7 @@ export default {
             }
 
             if (this.user && !this.message) {
-                let copy = `You must keep ${this.gameModeLevel} flower to play ${this.nftSunflowerPoints} / ${this.gameModeLevel} ... `
+                let copy = `You must keep ${this.gameModeLevel} flowers to play ${this.nftSunflowerPoints} / ${this.gameModeLevel} ... `
 
                 if (this.nftSunflowerPoints >= this.gameModeLevel) {
                     copy += '<span style="color: green;">You can play</span>'
