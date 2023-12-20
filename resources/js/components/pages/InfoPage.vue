@@ -30,6 +30,11 @@
                     <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/sandbox">The sandbox  </a> </p>
                     <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/doodles-official">Doodles  </a> </p>
                     <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/hashmasks">Hash Masks  </a> </p>
+                    <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/adidascapsule">adidas IMPOSSIBLE BOX  </a> </p>
+                    <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/rtfkt-nike-cryptokicks">RTFKT x Nike Dunk Genesis CRYPTOKICKS  </a> </p>
+                    <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/pepsi-mic-drop">Pepsi Mic Drop  </a> </p>
+                    <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/lacoste-undw3-the-emerge">Lacoste UNDW3: The Emerge  </a> </p>
+                    <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/decentraland">Decentraland  </a> </p>
                     <br width="100%" size="20" color="white">
                     <hr width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
