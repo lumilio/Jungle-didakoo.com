@@ -325,7 +325,10 @@ export default {
             }
         },
         gameOver(color) {
-            let message = color === 'white' ? 'You Won' : 'You Lost'
+            const creator = this.checkToAddress(this.game?.creator?.wallet_address)
+            const opponent = this.checkToAddress(this.game?.opponent?.wallet_address)
+            const wonMessage = (creator && opponent) ? 'You Won ' + 3 + '<i class="fa-solid fa-bolt ml-1"></i>' : 'You Won'
+            let message = color === 'white' ? wonMessage : 'You Lost'
             this.buttons = [
                 {
                     title: 'QUIT',

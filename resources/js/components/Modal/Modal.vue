@@ -48,7 +48,6 @@ export default {
         gameStarted: Boolean,
         message: {
             type: String,
-            default: 'Login required ' + '<i class="fa-solid fa-bars"></i> ' + '<i class="fa-solid fa-power-off"></i>'
         },
         delay: {
             type: Boolean,
@@ -105,10 +104,8 @@ export default {
             if (this.gameStarted && !this.canStart) {
                 return 'CountDown Message'
             }
-            if (this.message){
-                return this.message
-            }
-            if (this.user) {
+
+            if (this.user && !this.message) {
                 let copy = `You must keep ${this.gameModeLevel} flower to play ${this.nftSunflowerPoints} / ${this.gameModeLevel} ... `
 
                 if (this.nftSunflowerPoints >= this.gameModeLevel) {
@@ -122,7 +119,7 @@ export default {
 
             return this.message
                 ? this.message
-                : 'Login required' + '<i class="fa-solid fa-bars"></i>' + '<i class="fa-solid fa-power-off"></i>'
+                : 'Login required' + ' <i class="fa-solid fa-bars"></i>' + ' <i class="fa-solid fa-power-off"></i>'
         },
     },
     created() {
