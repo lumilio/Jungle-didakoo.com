@@ -72,7 +72,7 @@
                         this.url = window.location.host;
                         const state = helper.getInitialState();
                         const response = await axios.post('/api/make-game', { multiPlay: multiPlay, address: this.address, state: state });
-                        this.$router.push(`/room/${response.data.url}`);
+                        await this.$router.push(`/room/${response.data.url}`);
                     } else if (!this.user) {
                         // this.showLowSunflowerErrorModal()
                     }

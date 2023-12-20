@@ -288,8 +288,8 @@ export default {
                         this.colorUserBottom = colorUserBottom
                     }
                 }else{
-                    colorUserTop = this.creatorUser ? this.game.state.colors.black : this.game.state.colors.white;
-                    colorUserBottom = this.creatorUser ? this.game.state.colors.white : this.game.state.colors.black;
+                    colorUserTop = this.creatorUser ? this.game.state?.colors?.black : this.game.state?.colors?.white;
+                    colorUserBottom = this.creatorUser ? this.game.state?.colors?.white : this.game.state?.colors?.black;
                     this.colorUserTop = colorUserTop
                     this.colorUserBottom = colorUserBottom
                 }
@@ -325,7 +325,10 @@ export default {
             }
         },
         gameOver(color) {
-            let message = color === 'white' ? 'You Won' : 'You Lost'
+            const creator = this.checkToAddress(this.game?.creator?.wallet_address)
+            const opponent = this.checkToAddress(this.game?.opponent?.wallet_address)
+            const wonMessage = (creator && opponent) || (creator && this.game?.opponent === null) ? 'You Won ' + 3 + '<i class="fa-solid fa-bolt ml-1"></i>' : 'You Won'
+            let message = color === 'white' ? wonMessage : 'You Lost'
             this.buttons = [
                 {
                     title: 'QUIT',

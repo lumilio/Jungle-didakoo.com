@@ -563,31 +563,31 @@ export default {
                             white : 6
                         }
                         this.possibleMove = "#FFE194"
-                        this.userColorTop =  checkAddress ? this.boardColors.black : this.boardColors.white;
-                        this.userColorBottom = checkAddress ?  this.boardColors.white : this.boardColors.black;
+                        this.userColorTop =  checkAddress ? this.boardColors?.black : this.boardColors?.white;
+                        this.userColorBottom = checkAddress ?  this.boardColors?.white : this.boardColors?.black;
                     }else{
                         if(!this.game?.opponent?.color_id && this.game?.creator?.color_id){
                             this.boardColors = {
-                                black : data.colors.black !== this.game?.creator?.color_id ? data.colors.black : (this.game?.creator?.color_id === 4 ? this.game?.creator?.color_id - 1 : this.game?.creator?.color_id + 1),
+                                black : data.colors?.black !== this.game?.creator?.color_id ? data.colors?.black : (this.game?.creator?.color_id === 4 ? this.game?.creator?.color_id - 1 : this.game?.creator?.color_id + 1),
                                 board : 2,
                                 white : this.game?.creator?.color_id
                             }
                             this.possibleMove = "#9be8b4"
-                            this.userColorTop =  checkAddress ? this.boardColors.black : this.boardColors.white;
-                            this.userColorBottom = checkAddress ?  this.boardColors.white : this.boardColors.black;
+                            this.userColorTop =  checkAddress ? this.boardColors?.black : this.boardColors?.white;
+                            this.userColorBottom = checkAddress ?  this.boardColors?.white : this.boardColors?.black;
                         }
                     }
                 }else{
                      this.boardColors = data.colors;
-                     this.userColorTop =  checkAddress ? this.boardColors.black : this.boardColors.white;
-                     this.userColorBottom = checkAddress ?  this.boardColors.white : this.boardColors.black;
+                     this.userColorTop =  checkAddress ? this.boardColors?.black : this.boardColors?.white;
+                     this.userColorBottom = checkAddress ?  this.boardColors?.white : this.boardColors?.black;
                     if (data.colors.board === 2){
                         this.possibleMove = "#9be8b4"
                     }else {
                         this.possibleMove = "#FFE194"
                     }
                 }
-                this.playColors.light = backgroundColors[this.boardColors.board]
+                this.playColors.light = backgroundColors[this.boardColors?.board]
             }
         },
         initSquares() {
