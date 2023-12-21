@@ -4,15 +4,15 @@
             <div class="allineatore d-flex justify-content-top ">
                 <div style="margin-top:30px;" class="container-sm pepar  ">
                     <p style='font-size:30px;'> v 1.0.0  <a style="color:white; font-size:20px;" href="https://en.wikipedia.org/wiki/Jungle_(board_game)">  斗兽棋 </a> &nbsp <a href="https://ethereum.org/en/"><i class="fa-brands fa-ethereum"></i></a></p>
-                    <p>Players in list : </p>
+                    <p>Players in list : {{players}}</p>
                     <p>Players online : {{ totalCurrentUsers }} </p>
                     <br width="100%" size="20" color="white">
                     <p style='font-size:18px;'> >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">GAME PASS </a> <<< </p>
-                    <p>🌻 x 0 : Basic pass</p> 
-                    <p>🌻 x 1 : Big pass</p>   
-                    <p>🌻 x 2 : Mega pass</p> 
-                    <p>🌻 x 3 : Priority pass</p> 
-                    <p>🌻 x 4 : Ultimate Pass</p>  
+                    <p>🌻 x 0 : Basic pass</p>
+                    <p>🌻 x 1 : Big pass</p>
+                    <p>🌻 x 2 : Mega pass</p>
+                    <p>🌻 x 3 : Priority pass</p>
+                    <p>🌻 x 4 : Ultimate Pass</p>
                     <br width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
                     <p style='color:white;'>Chose an Ethereum wallet to get the pass and save your data.</p>
@@ -52,11 +52,13 @@ import axios from "axios";
 export default {
     data() {
         return {
+            players: '',
             totalCurrentUsers: 1,
         }
     },
     mounted() {
         this.getTotalCurrentUsers()
+        this.getAllUsers()
     },
     methods: {
         async getTotalCurrentUsers() {
@@ -68,6 +70,10 @@ export default {
                 console.log(error)
                 this.totalCurrentUsers = 'Could not fetch current users'
             }
+        },
+        async getAllUsers() {
+            const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/get-users');
+            this.players = response.data.users.length
         }
     }
 }
