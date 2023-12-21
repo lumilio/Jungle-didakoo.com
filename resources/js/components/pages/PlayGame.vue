@@ -86,7 +86,7 @@
                         <div
                         class="board d-flex justify-content-center bg-transparent align-items-center"
                         >
-                        <template  v-if="game.status === 'pending' || game?.opponent_id || game.opponent?.wallet_address || !address">
+                        <template  v-if="checkGame">
                             <MultiPlay @gameover="gameOver" @connected="connected" :game="game" :id="$route.params.id" />
                         </template>
                         <template v-else>
@@ -260,6 +260,9 @@ export default {
         },
         opponent(){
             return this.game?.opponent;
+        },
+        checkGame(){
+            return this.game?.status === 'pending' || this.game?.opponent !== null || this.game?.opponent?.wallet_address || !this.address
         }
     },
     methods: {

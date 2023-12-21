@@ -272,8 +272,8 @@ export default {
             svg: ref(null),
             isHoldingChessPiece: ref(false),
             holding: ref({ row: null, col: null }),
-            userColorTop: '',
-            userColorBottom: '',
+            userColorTop: null,
+            userColorBottom: null,
         };
 
     },

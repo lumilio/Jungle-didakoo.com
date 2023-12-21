@@ -147,7 +147,7 @@ import colorIconNft from "../../constants/nftLinks";
         },
         async fetchAllUsers() {
             this.url = window.location.host;
-            const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/get-users');;
+            const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/get-users');
             const players = response.data.users.map((player) => {
                 return {
                     ...player,
