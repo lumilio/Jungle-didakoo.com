@@ -5699,16 +5699,6 @@ a.badge-dark.focus {
   color: #040505;
 }
 
-@-webkit-keyframes progress-bar-stripes {
-  from {
-    background-position: 1rem 0;
-  }
-
-  to {
-    background-position: 0 0;
-  }
-}
-
 @keyframes progress-bar-stripes {
   from {
     background-position: 1rem 0;
@@ -5753,14 +5743,12 @@ a.badge-dark.focus {
 }
 
 .progress-bar-animated {
-  -webkit-animation: 1s linear infinite progress-bar-stripes;
-          animation: 1s linear infinite progress-bar-stripes;
+  animation: 1s linear infinite progress-bar-stripes;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .progress-bar-animated {
-    -webkit-animation: none;
-            animation: none;
+    animation: none;
   }
 }
 
@@ -6287,7 +6275,6 @@ a.close.disabled {
 .modal-dialog-centered::before {
   display: block;
   height: calc(100vh - 1rem);
-  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
   content: "";
@@ -6407,7 +6394,6 @@ a.close.disabled {
 
   .modal-dialog-centered::before {
     height: calc(100vh - 3.5rem);
-    height: -webkit-min-content;
     height: -moz-min-content;
     height: min-content;
   }
@@ -6758,8 +6744,7 @@ a.close.disabled {
   float: left;
   width: 100%;
   margin-right: -100%;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   transition: transform 0.6s ease-in-out;
 }
 
@@ -6925,12 +6910,6 @@ a.close.disabled {
   text-align: center;
 }
 
-@-webkit-keyframes spinner-border {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes spinner-border {
   to {
     transform: rotate(360deg);
@@ -6945,25 +6924,13 @@ a.close.disabled {
   border: 0.25em solid currentcolor;
   border-right-color: transparent;
   border-radius: 50%;
-  -webkit-animation: 0.75s linear infinite spinner-border;
-          animation: 0.75s linear infinite spinner-border;
+  animation: 0.75s linear infinite spinner-border;
 }
 
 .spinner-border-sm {
   width: 1rem;
   height: 1rem;
   border-width: 0.2em;
-}
-
-@-webkit-keyframes spinner-grow {
-  0% {
-    transform: scale(0);
-  }
-
-  50% {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 @keyframes spinner-grow {
@@ -6985,8 +6952,7 @@ a.close.disabled {
   background-color: currentcolor;
   border-radius: 50%;
   opacity: 0;
-  -webkit-animation: 0.75s linear infinite spinner-grow;
-          animation: 0.75s linear infinite spinner-grow;
+  animation: 0.75s linear infinite spinner-grow;
 }
 
 .spinner-grow-sm {
@@ -6997,8 +6963,7 @@ a.close.disabled {
 @media (prefers-reduced-motion: reduce) {
   .spinner-border,
   .spinner-grow {
-    -webkit-animation-duration: 1.5s;
-            animation-duration: 1.5s;
+    animation-duration: 1.5s;
   }
 }
 
@@ -10979,7 +10944,6 @@ html {
   height: 100%;
   margin: 0px;
   background-color: black;
-  /* overflow: hidden; */
   font-family: "Poppins", sans-serif;
   /* font-family: 'VT323', monospace ; */
 }
@@ -10989,15 +10953,12 @@ html {
   height: 100%;
   margin: 0px;
   background-color: black;
-  /* overflow: hidden; */
   font-family: "Poppins", sans-serif;
 }
 
 body,
 .centratore {
   background-color: black;
-  width: 100vw;
-  height: 100vh;
 }
 
 /* ----------------------------------------------------------------------------- */
@@ -11006,15 +10967,9 @@ body,
 
 /* ----------------------------------------------------------------------------- */
 
-#page2 {
-  display: block;
-}
-
-#page1,
-#page3,
-#page4,
-#page5 {
-  display: none;
+#page1 {
+  display: flex;
+  position: relative;
 }
 
 /* ----------------------------------------------------------------------------- */
@@ -11026,55 +10981,47 @@ body,
 /* #page1{
     background:
     linear-gradient(
-      rgba(0, 0, 0, 0.1), 
-      rgba(0, 0, 0, 0.1)
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
     ),
-    url("images/wallpepars/sky.png"); 
-    background-position:  bottom ;
+    url("images/wallpepars/jungle.jpg");
     background-repeat: repeat;
-    min-height: 100vh;
-    background-size: cover;
+    background-size: 300px;
 } */
 
-/* #page2{
+/* #page2 {
     background:
     linear-gradient(
-    rgba(0, 0, 0, 0.8), 
-    rgba(0, 0, 0, 0.8)
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.9)
     ),
-    url("images/board/water4.jpg"); 
-    background-repeat: repeat;
-    background-size: 100vw;
-    min-height: 100vw;
-    height: 100%;
-    width: 100%;
-    background-position: top;
-} */
-
-/* #page3{
-    background:
-    url("images/wallpepars/space.jpeg");     
-    background-repeat: repeat;
-    background-position: left;
-} */
-
-/* #page3{
-    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.7), 
-      rgba(0, 0, 0, 0.7)
-    ), 
-    url("images/wallpepars/chess3.jpg") ; 
+    url("images/board/black_forest6.png") ;
     background-repeat: repeat ;
-    background-size: 100vh ;
-    min-height: 100vh ;
-    width: 100% ;
-    background-position: center  ;
-} */
-
-#page3 {
-  background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)), url(/images/water4.jpg?0a53390684384b5f43b5383cff54c9b4);
+    background-position: top ;
+    height: 89vh;
 }
+ */
+
+#modalx {
+  background: repeating-linear-gradient(to right, blue 0%, blue 12.5%, yellow 12.5%, yellow 25%, red 25%, red 37.5%, #EE5E81 37.5%, #EE5E81 50%, black 50%, black 62.5%, blue 62.5%, blue 75%, yellow 75%, yellow 87.5%, red 87.5%, red 100%), black;
+  background-size: 100% 10px, 50% 50%;
+  background-repeat: no-repeat;
+  rotate: 180deg;
+  border: 1px solid #3c3c3c;
+}
+
+#modalx span {
+  rotate: 180deg;
+}
+
+/* #page3{
+    background:
+    linear-gradient(
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.4)
+    ),
+    url("images/board/water4.jpg");
+} */
 
 .modal {
   display: none;
@@ -11085,31 +11032,66 @@ body,
   /* Sit on top */
   left: 0;
   top: 0;
-  height: 100vh;
+  height: 100%;
   /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/images/nilo.jpg?a7af08fedccdb689be60a2c03699c2cb);
+  background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
   background-repeat: repeat;
-  background-size: 100vh;
-  /* background-size: 100%; */
-  /* padding-top: 1rem; */
-  /* animation: fade-in 0.6s; */
-  /* font-family: 'VT323', monospace ; */
-  /* font-size: 20px !important; */
+  background-size: 700px;
+}
+
+.modal-ingame {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 600px;
+}
+
+/* #page1 {
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("images/board/bignilo3.jpg") ;
+    background-size: 550px ;
+    background-position: center ;
+    background-repeat: repeat ;
+    height: 89vh;
+} */
+
+#page5,
+#page1 {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/bignilo3.jpg?f59feddceecdafca8ecaff8ca2dd9179);
+  background-repeat: repeat;
+  background-position: top;
+  background-size: 550px;
 }
 
 #page4 {
-  background-color: black;
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 1150px;
 }
 
-#page5 {
-  background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)), url(/images/nilo.jpg?a7af08fedccdb689be60a2c03699c2cb);
-  background-repeat: repeat;
-  background-size: 100vw;
-  min-height: 100vh;
-  height: 100%;
-  background-position: center;
+/* #page5  {
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("images/board/green_nilo2.jpg") ;
+    background-repeat: repeat ;
+    background-position: right ;
+    background-size: 800px;
+} */
+
+.avatar-address {
+  /* border: 1px solid blue; */
+  /* box-shadow: 0 0 6px 1px blue; */
+  font-size: 30px;
+  border-radius: 8px;
+  margin-bottom: 20px !important;
+  margin-top: 15px !important;
 }
 
 /* ----------------------------------------------------------------------------- */
@@ -11121,12 +11103,11 @@ body,
 .allineatore {
   width: 100%;
   /* height: 100%; */
-  margin-bottom: 300px;
+  /* margin-bottom: 300px; */
   /* padding-top: 70px ; */
 }
 
 .allineatore2 {
-  width: 100vw;
   /* height: 100vh; */
   position: relative;
 }
@@ -11256,6 +11237,7 @@ body,
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: red;
 }
 
 #page2 .record {
@@ -11265,17 +11247,18 @@ body,
 
 #page4 .record {
   width: 280px;
-  border: 1px solid white;
+  /* border:1px solid white; */
   margin-bottom: 10px;
   border-radius: 10px;
 }
 
 .refresh-button {
   width: 100%;
+  border: 1px solid black;
 }
 
 #scarabeo {
-  max-width: 800px;
+  max-width: 566px;
   margin-bottom: 15px;
 }
 
@@ -11354,7 +11337,7 @@ body,
 
 /* ----------------------------------------------------------------------------- */
 
-#console-screen {
+.console-screen {
   font-family: "VT323", monospace;
 }
 
@@ -11373,19 +11356,8 @@ body,
     height: 358px;
   }
 
-  #console-screen {
+  .console-screen {
     width: 150px;
-  }
-
-  .modal button {
-    width: 50px;
-    min-height: 60px;
-    font-size: 10px;
-    margin: 5px;
-    color: white !important;
-    border: 1px solid white;
-    border-radius: 30px;
-    font-size: small;
   }
 }
 
@@ -11404,19 +11376,8 @@ body,
     height: 389px;
   }
 
-  #console-screen {
+  .console-screen {
     width: 100%;
-  }
-
-  .modal button {
-    width: 50px;
-    min-height: 60px;
-    font-size: 10px;
-    margin: 5px;
-    color: white !important;
-    border: 1px solid white;
-    border-radius: 30px;
-    font-size: small;
   }
 }
 
@@ -11435,19 +11396,8 @@ body,
     height: 421px;
   }
 
-  #console-screen {
+  .console-screen {
     width: 100%;
-  }
-
-  .modal button {
-    width: 50px;
-    min-height: 60px;
-    font-size: 10px;
-    margin: 5px;
-    color: white !important;
-    border: 1px solid white;
-    border-radius: 30px;
-    font-size: small;
   }
 }
 
@@ -11466,19 +11416,8 @@ body,
     height: 460px;
   }
 
-  #console-screen {
+  .console-screen {
     width: 200px;
-  }
-
-  .modal button {
-    width: 90px;
-    min-height: 60px;
-    font-size: 10px;
-    margin: 5px;
-    color: white !important;
-    border: 1px solid white;
-    border-radius: 30px;
-    font-size: small;
   }
 }
 
@@ -11497,19 +11436,8 @@ body,
     height: 524px;
   }
 
-  #console-screen {
+  .console-screen {
     width: 200px;
-  }
-
-  .modal button {
-    width: 100px;
-    min-height: 60px;
-    font-size: 10px;
-    margin: 5px;
-    color: white !important;
-    border: 1px solid white;
-    border-radius: 30px;
-    font-size: small;
   }
 }
 
@@ -11528,19 +11456,8 @@ body,
     height: 550px;
   }
 
-  #console-screen {
+  .console-screen {
     width: 240px;
-  }
-
-  .modal button {
-    width: 110px;
-    min-height: 60px;
-    font-size: 10px;
-    margin: 5px;
-    color: white !important;
-    border: 1px solid white;
-    border-radius: 30px;
-    font-size: small;
   }
 }
 
@@ -11559,19 +11476,8 @@ body,
     height: 600px;
   }
 
-  #console-screen {
+  .console-screen {
     width: 280px;
-  }
-
-  .modal button {
-    width: 130px;
-    min-height: 60px;
-    font-size: 10px;
-    margin: 5px;
-    color: white !important;
-    border: 1px solid white;
-    border-radius: 30px;
-    font-size: small;
   }
 }
 
@@ -11590,19 +11496,8 @@ body,
     height: 652px;
   }
 
-  #console-screen {
+  .console-screen {
     width: 290px;
-  }
-
-  .modal button {
-    width: 140px;
-    min-height: 60px;
-    font-size: 10px;
-    margin: 7px;
-    color: white !important;
-    border: 1px solid white;
-    border-radius: 30px;
-    font-size: small;
   }
 }
 
@@ -11621,18 +11516,12 @@ body,
     height: 704px;
   }
 
-  #console-screen {
+  .console-screen {
     width: 280px;
   }
 
-  .modal button {
-    width: 140px;
-    min-height: 60px;
-    margin: 10px;
-    color: white !important;
-    border: 1px solid white;
-    border-radius: 30px;
-    font-size: small;
+  .modal-ingame {
+    background-size: 600px;
   }
 }
 
@@ -11651,18 +11540,12 @@ body,
     height: 807px;
   }
 
-  #console-screen {
+  .console-screen {
     width: 350px;
   }
 
-  .modal button {
-    width: 170px;
-    min-height: 60px;
-    margin: 10px;
-    color: white !important;
-    border: 1px solid white;
-    border-radius: 30px;
-    font-size: small;
+  .modal-ingame {
+    background-size: 600px;
   }
 }
 
@@ -11681,18 +11564,12 @@ body,
     height: 935px;
   }
 
-  #console-screen {
+  .console-screen {
     width: 350px;
   }
 
-  .modal button {
-    width: 170px;
-    min-height: 60px;
-    margin: 10px;
-    color: white !important;
-    border: 1px solid white;
-    border-radius: 30px;
-    font-size: small;
+  .modal-ingame {
+    background-size: 600px;
   }
 }
 
@@ -11772,7 +11649,11 @@ body,
 /* ----------------------------------------------------------------------------- */
 
 .pepar {
-  margin-top: 40px !important;
+  margin-bottom: 40px !important;
+  background-color: black;
+  padding: 30px;
+  border-radius: 20px;
+  background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
 }
 
 @media screen and (min-width: 350px) and (min-height: 550px) {
@@ -11796,6 +11677,34 @@ body,
   color: white;
 }
 
+@media screen and (max-width: 390px) {
+  .pepar {
+    margin: 0 30px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-height: 555px) {
+  .wallet-login-title h2 {
+    font-size: 20px;
+  }
+
+  .connect-modal-content {
+    height: 380px !important;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .wallet-login-title h2 {
+    font-size: 20px;
+  }
+
+  .connect-modal-content {
+    width: 280px !important;
+    min-width: 200px !important;
+  }
+}
+
 /* ----------------------------------------------------------------------------- */
 
 /* --------------------------- UTILITY MODALS ---------------------------------- */
@@ -11815,13 +11724,34 @@ body,
     border-radius: 30px;
 } */
 
-#console-screen {
-  border: 4px solid white;
-  border-radius: 0px;
+.console-screen {
+  box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.3882352941);
+  border: 1px solid rgba(255, 255, 255, 0.3490196078);
+  border-radius: 8px;
   /* width: 350px; */
   margin: 30px 30px 30px 30px;
   padding-bottom: 40px;
+  transition: 0.5s ease;
   margin-top: 10px;
+  animation: pulse 3s infinite;
+}
+
+.console-screen:hover {
+  box-shadow: 0 0 16px 0 rgba(255, 255, 255, 0.5803921569);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
+  }
+
+  90% {
+    box-shadow: 0 0 1px 15px rgba(255, 255, 255, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
 }
 
 #myModalkoo6 {
@@ -11849,13 +11779,16 @@ body,
 
 .modal-content {
   background-color: black;
+  /* box-shadow: 0 0 11px 2px #000000; */
   /* box-shadow: 10px 10px purple; */
-  border-radius: 30px;
+  /* border-radius: 30px; */
   margin: 15% auto;
-  padding: 20px;
+  /* padding: 20px; */
+  padding: 30px;
+  border-radius: 20px;
+  min-width: 350px;
   /* border: 8px solid BLACK; */
   /* width: 280px; */
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   /* border: 5px solid #FCB341 ; */
@@ -11863,6 +11796,34 @@ body,
 
 #modalx div {
   background-color: black;
+}
+
+/* ----------------------------------------------------------------------------- */
+
+/* ----------------------- UTILITY MODALS RESPONSIVE --------------------------- */
+
+/* ----------------------------------------------------------------------------- */
+
+@media screen and (max-width: 415px) {
+  .modal-content {
+    min-width: 300px;
+  }
+
+  .main_modal .modal-content .main_message {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 315px) {
+  .modal-content {
+    min-width: 250px;
+  }
+}
+
+@media screen and (max-width: 277px) {
+  .main_modal .modal-content .main_message {
+    font-size: 12px;
+  }
 }
 
 /* ----------------------------------------------------------------------------- */
@@ -11893,56 +11854,8 @@ body,
 /* ----------------------------------------------------------------------------- */
 
 .shake {
-  -webkit-animation: shake 0s;
-          animation: shake 0s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-}
-
-@-webkit-keyframes shake {
-  0% {
-    transform: translate(1px, 0px);
-  }
-
-  10% {
-    transform: translate(-1px, 0px);
-  }
-
-  20% {
-    transform: translate(-3px, 0px);
-  }
-
-  30% {
-    transform: translate(3px, 0px);
-  }
-
-  40% {
-    transform: translate(1px, 0px);
-  }
-
-  50% {
-    transform: translate(-1px, 0px);
-  }
-
-  60% {
-    transform: translate(-3px, 0px);
-  }
-
-  70% {
-    transform: translate(3px, 0px);
-  }
-
-  80% {
-    transform: translate(-1px, 0px);
-  }
-
-  90% {
-    transform: translate(1px, 0px);
-  }
-
-  100% {
-    transform: translate(1px, 0px);
-  }
+  animation: shake 0s;
+  animation-iteration-count: infinite;
 }
 
 @keyframes shake {
@@ -11988,16 +11901,6 @@ body,
 
   100% {
     transform: translate(1px, 0px);
-  }
-}
-
-@-webkit-keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
 

@@ -1,179 +1,153 @@
-import { iteratee } from "lodash";
-
+import {
+    animals,
+    waterCodes,
+    trapCodes,
+    houseCodes,
+    highGuardCodes,
+    lowGuardCodes,
+    trapGuards,
+    protectHouseCodes,
+    initialState,
+    boardColors,
+    allowedColors
+} from "./constants";
 export default {
-  /**
-   * A function to get every square code based on array indexes
-   * @param {Number} row
-   * @param {Number} col
-   * @returns {String}
-   */
-  getSquareCode(row, col) {
-    let rowMapping = ["9", "8", "7", "6", "5", "4", "3", "2", "1"];
-    let colMapping = ["A", "B", "C", "D", "E", "F", "G"];
+    getSquareCode(row, col) {
+        let rowMapping = ["9", "8", "7", "6", "5", "4", "3", "2", "1"];
+        let colMapping = ["A", "B", "C", "D", "E", "F", "G"];
 
-    return colMapping[col] + rowMapping[row];
-  },
+        return colMapping[col] + rowMapping[row];
+    },
+    getIndexesByCode(code) {
+        let rowMapping = ["9", "8", "7", "6", "5", "4", "3", "2", "1"];
+        let colMapping = ["A", "B", "C", "D", "E", "F", "G"];
+        return {
+            rowIndex: rowMapping.indexOf(code[1]),
+            colIndex: colMapping.indexOf(code[0]),
+        };
+    },
 
-  /**
-   * Get a square color based on given row and column index
-   * @param {Number} row
-   * @param {Number} col
-   * @returns {String}
-   */
-  getSquareColor(row, col) {
-    if (((row > 2 && row < 6) && (col != 0 && col != 3 && col != 6))
-      // ((row == 0 || row == 8) && col >= 2 && col <= 4) ||
-      // ((row == 1 || row == 7) && col == 3)
-    )
-      return "dark";
-    else return "light";
-  },
+    /**
+     * Get a square color based on given row and column index
+     * @param {Number} row
+     * @param {Number} col
+     * @returns {String}
+     */
+    getSquareColor(row, col) {
+        if (
+            row > 2 &&
+            row < 6 &&
+            col !== 0 &&
+            col !== 3 &&
+            col !== 6
+        )
+            return "dark";
+        else return "light";
+    },
 
-  /**
-   * Get Square Position Coordinate (x,y)
-   * @param {Number} row square row index
-   * @param {Number} col square column index
-   */
-  getSquarePosition(row, col, option = {}) {
-    return {
-      x: col * option.square.width + option.padding,
-      y: row * option.square.height,
-    };
-  },
+    /**
+     * Get Square Position Coordinate (x,y)
+     * @param row
+     * @param col
+     * @param option
+     * @returns {{x: *, y: number}}
+     */
+    getSquarePosition(row, col, option = {}) {
+        return {
+            x: col * option.square.width + option.padding,
+            y: row * option.square.height,
+        };
+    },
 
-  isDen(i, j) {
-    if((i==2 && j==0) || (i==4 && j==0) || (i==3 && j==1) || (i==2 && j==8) || (i==4 && j==8) || (i==3 && j==7))
-      return true;
-    else return false;
-  },
-  
-  denOwner(i, j) {
-    if((i==2 && j==0) || (i==4 && j==0) || (i==3 && j==1))
-      return 1;
-    else
-      if ((i==2 && j==8) || (i==4 && j==8) || (i==3 && j==7))
-        return 2
-      else return -1;
-  },
+    /**
+     * Get chess piece mapped by square code.
+     * @param {String} squareCode
+     * @returns {String} The chess piece name
+     */
+    getInitialRandomState() {
+        const indexes = [0, 1, 2, 3, 4, 5, 6, 7];
+        const whiteIndexes = [...indexes].sort((a, b) => 0.5 - Math.random());
+        const blackIndexes = [...indexes].sort((a, b) => 0.5 - Math.random());
 
-  isTrap(i, j) {
-    if((i==3 && j==0) || (i==3 && j==8))
-      return true;
-    else return false;
-  },
-  
-  trapOwner(i, j) {
-    if(i==3 && j==0)
-      return 1;
-    else
-      if (i==3 && j==8)
-        return 2
-      else return -1;
-  },
+        const animalTypes = [
+            "tiger",
+            "lion",
+            "cat",
+            "dog",
+            "elephant",
+            "monkey",
+            "leopard",
+            "mouse"
+        ]
+        const res = {}
+        let blackCodes = [
+            "A9", "G9", "B8", "F8",
+            "A7", "C7", "E7", "G7"
+        ]
+        let whiteCodes = [
+            "A1", "G1", "B2", "F2",
+            "A3", "C3", "E3", "G3"
+        ]
+        for (let i = 0; i < 8; i++){
+            res[blackCodes[i]] = {
+                color: "black",
+                piece: animalTypes[blackIndexes[i]]
+            }
+            res[whiteCodes[i]] = {
+                color: "white",
+                piece: animalTypes[whiteIndexes[i]]
+            }
+        }
+        return res;
+    },
 
-  isWater(i, j) {
-    if(j>=3 && j<=5 && (i==1 || i==2 || i==4 || i==5))
-      return true;
-    else return false;
-  },
+    /**
+     * Get knight possible moves indexes
+     * @param {Number} squareRowIndex
+     * @param {Number} squareColIndex
+     * @returns
+     */
+    getKnightPossibleMoves(squareRowIndex, squareColIndex) {
+        return [
+            { rowIndex: squareRowIndex, colIndex: squareColIndex + 1 },
+            { rowIndex: squareRowIndex, colIndex: squareColIndex - 1 },
 
-  /**
-   * Get chess piece mapped by square code.
-   * @param {String} squareCode
-   * @returns {String} The chess piece name
-   */
-  getSquareContent(squareCode) {
-    let contentMapping = {
+            { rowIndex: squareRowIndex - 1, colIndex: squareColIndex },
+            { rowIndex: squareRowIndex + 1, colIndex: squareColIndex },
+        ];
+    },
 
-      A1: "tiger",
-      G1: "lion",
-      B2: "cat",
-      F2: "dog",
-      A3: "elephant",
-      C3: "monkey",
-      E3: "leopard",
-      G3: "mouse",
-
-      A9: "lion",
-      G9: "tiger",
-      B8: "dog",
-      F8: "cat",
-      A7: "mouse",
-      C7: "leopard",
-      E7: "monkey",
-      G7: "elephant",
-    };
-    return contentMapping[squareCode];
-  },
-
-  /**
-   * Get knight possible moves indexes
-   * @param {Number} squareRowIndex
-   * @param {Number} squareColIndex
-   * @returns
-   */
-  getKnightPossibleMoves(squareRowIndex, squareColIndex) {
-
-    return [
-      { rowIndex: squareRowIndex, colIndex: squareColIndex + 1 },
-      { rowIndex: squareRowIndex, colIndex: squareColIndex - 1 },
-
-      { rowIndex: squareRowIndex - 1, colIndex: squareColIndex },
-      { rowIndex: squareRowIndex + 1, colIndex: squareColIndex },
-    ];
-  },
-
-  /**
-   * Get king possible moves mapping array
-   * @param {Number} squareRowIndex The current row index number
-   * @param {Number} squareColIndex The current col index number
-   * @returns {Array}
-   */
-  getKingPossibleMoves(squareRowIndex, squareColIndex) {
-    return [
-      { targetRow: squareRowIndex + 1, targetCol: squareColIndex },
-      { targetRow: squareRowIndex - 1, targetCol: squareColIndex },
-      { targetRow: squareRowIndex, targetCol: squareColIndex + 1 },
-      { targetRow: squareRowIndex, targetCol: squareColIndex - 1 },
-
-      // diagonal
-      { targetRow: squareRowIndex + 1, targetCol: squareColIndex + 1 },
-      { targetRow: squareRowIndex + 1, targetCol: squareColIndex - 1 },
-      { targetRow: squareRowIndex - 1, targetCol: squareColIndex + 1 },
-      { targetRow: squareRowIndex - 1, targetCol: squareColIndex - 1 },
-    ];
-  },
-
-  /**
-   * Convert object to chess move notations
-   * @param {Object} move
-   * @returns String
-   */
-  notationsFromObject(move) {
-    if (!Object.keys(move).length) return "";
-
-    let pieceNotationMapping = {
-      mouse: "1",
-      cat: "2",
-      dog: "3",
-      monkey: "4",
-      leopard: "5",
-      tiger: "6", 
-      lion: "7", 
-      elephant: "8", 
-    };
-    // console.log("piece notation: ", pieceNotationMapping[move.piece]);
-
-    let fromKey = move.from.toLowerCase();
-    let toKey = move.to.toLowerCase();
-
-    if (fromKey[0] == toKey[0]) fromKey = fromKey.substr(1, 2);
-    if (fromKey[1] == toKey[1]) fromKey = fromKey.substr(0, 1);
-
-    return (
-      pieceNotationMapping[move.piece] +
-      fromKey.toLowerCase() +
-      toKey.toLowerCase()
-    );
-  },
+    getAnimalPowers(){
+        return animals
+    },
+    getWaterCodes (){
+        return waterCodes;
+    },
+    getTrapCodes() {
+        return trapCodes
+    },
+    getHouseCodes(){
+        return houseCodes
+    },
+    getHighGuardCodes(){
+        return highGuardCodes
+    },
+    getLowGuardCodes(){
+        return lowGuardCodes
+    },
+    getTrapGuards(){
+        return trapGuards
+    },
+    getProtectHouseCodes(){
+        return protectHouseCodes
+    },
+    getInitialState(){
+        return this.getInitialRandomState()
+    },
+    getBoardColors(){
+        return boardColors
+    },
+    getAllowedColors(){
+        return allowedColors
+    }
 };

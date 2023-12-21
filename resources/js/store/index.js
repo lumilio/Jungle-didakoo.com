@@ -4,6 +4,9 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
+    user: null,
+    address: localStorage.getItem('address') ?? null,
+    playerNumber: localStorage.getItem('playerNumber') ?? null,
     turn: "white",
     turnNumber: 1,
     squares: [],
@@ -13,8 +16,19 @@ const store = new Vuex.Store({
         white: {},
       },
     ],
-    svg: null,  
-    errors: []
+    svg: null,
+    errors: [],
+    userData: localStorage.getItem('userData')
+      ? JSON.parse(localStorage.getItem('userData'))
+      : {},
+    connectWallet: false,
+    lastActivityLogged: null,
+    playersList: localStorage.getItem('playersList')
+      ? JSON.parse(localStorage.getItem('playersList'))
+      : [],
+    playersListLastFetched: localStorage.getItem('playersListLastFetched')
+      ? parseInt(localStorage.getItem('playersListLastFetched'))
+      : null
   },
 
   getters: {
@@ -36,6 +50,28 @@ const store = new Vuex.Store({
         },
       ];
     },
+    LOG_IN_USER(state, val) {
+        state.user = val;
+    },
+    SET_USER_ADDRESS(state, val) {
+      localStorage.setItem('address', val)
+      state.address = val;
+    },
+    SET_PLAYER_NUMBER(state, val) {
+        localStorage.setItem('playerNumber', val);
+        state.playerNumber = val
+    },
+    SET_USER_DATA(state, UsersData) {
+      localStorage.setItem('userData', JSON.stringify(UsersData))
+      state.userData = UsersData;
+    },
+    LOG_OUT_USER (state){
+        state.user = null;
+        state.address = null;
+    },
+    TOGGLE_WALLET_MODAL(state) {
+      state.connectWallet = !state.connectWallet;
+  },
     ADD_MOVE_HISTORY(state, move) {
       let lastMove = state.movesHistory[state.movesHistory.length - 1];
       if (Object.keys(lastMove[move.color]).length) {
@@ -45,11 +81,22 @@ const store = new Vuex.Store({
         };
         state.movesHistory.push(lastMove);
       }
-  
+
       lastMove[move.color] = move;
     },
     setErrors(state, errors) {
       state.errors = errors;
+    },
+    SET_LAST_LOGGED_ACTIVITY(state, lastActivityLogged) {
+      state.lastActivityLogged = lastActivityLogged
+    },
+    SET_PLAYERS_LIST(state, playersList) {
+      localStorage.setItem('playersList', JSON.stringify(playersList));
+      state.playersList = playersList
+    },
+    SET_PLAYERS_LIST_LAST_FETCHED(state, date) {
+      localStorage.setItem('playersListLastFetched', date);
+      state.playersListLastFetched = date
     }
   },
 
@@ -72,7 +119,7 @@ const store = new Vuex.Store({
           // commit("setUserData", response.data.data.user);
           // localStorage.setItem("authToken", response.data.data.token);
         });
-      
+
     }
   },
 })

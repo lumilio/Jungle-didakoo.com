@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\DoStep;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,11 +22,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('/web3-login-message', 'Web3LoginController@message');
-Route::post('/web3-login-verify', 'Web3LoginController@verify');
 
-Route::post('/web3-register-ethwallet', 'Web3LoginController@register');
-Route::post('/web3-update-ethwallet', 'Web3LoginController@update');
+Route::get('/get-users', 'UserController@getUsers');
+Route::get('/active-sessions', 'UserController@getActiveSessions');
 
-Route::get('/getSession', 'Web3LoginController@getSession');
-Route::get('/logout', 'Web3LoginController@logout');
- 
+
+Route::post('/if-there-nft', 'Web3LoginController@IfThereNft');
+Route::post('/nft-Collection', 'Web3LoginController@NftCollection');
