@@ -10,8 +10,8 @@
                     <p style='font-size:18px;'> >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">GAME PASS </a> <<< </p>
                     <p>🌻 x 0 : Basic pass</p>
                     <p>🌻 x 1 : Big pass</p>
-                    <p>🌻 x 2 : Mega pass</p>
-                    <p>🌻 x 3 : Priority pass</p>
+                    <p>🌻 x 2 : Priority pass</p>
+                    <p>🌻 x 3 : Mega pass</p>
                     <p>🌻 x 4 : Ultimate Pass</p>
                     <br width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
