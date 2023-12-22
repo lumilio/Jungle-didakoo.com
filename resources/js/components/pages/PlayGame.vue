@@ -262,7 +262,7 @@ export default {
             return this.game?.opponent;
         },
         checkGame(){
-            return this.game?.status === 'pending' || this.game?.opponent !== null || this.game?.opponent?.wallet_address || !this.address
+            return this.game?.status === 'pending' || this.game?.opponent_id || this.game?.opponent?.wallet_address || !this.address
         }
     },
     methods: {
