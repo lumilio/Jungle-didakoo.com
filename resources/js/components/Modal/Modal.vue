@@ -41,6 +41,7 @@
 <script>
 import Button from "../Button/Button.vue";
 import store from "../../store";
+import passMessages from "../../constants/gameMode"
 
 export default {
     props: {
@@ -105,13 +106,13 @@ export default {
                 return 'CountDown Message'
             }
 
-            if (this.user && !this.message) {
-                let copy = `You must keep ${this.gameModeLevel} flowers to play ${this.nftSunflowerPoints} / ${this.gameModeLevel} ... `
+            if (this.user) {
+                let copy = `${passMessages[this.gameModeLevel]} required...`
 
                 if (this.nftSunflowerPoints >= this.gameModeLevel) {
-                    copy += '<span style="color: green;">You can play</span>'
+                    copy += ' <span style="color: green;">You can play</span>'
                 } else {
-                    copy += '<span style="color: #ee3635;">You can\'t play</span>'
+                    copy += ' <span style="color: #ee3635;">You can\'t play</span>'
                 }
 
                 return copy
