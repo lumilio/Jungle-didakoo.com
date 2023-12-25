@@ -106,7 +106,7 @@ export default {
                 return 'CountDown Message'
             }
 
-            if (this.user) {
+            if (this.user && !this.message) {
                 let copy = `${passMessages[this.gameModeLevel]} required...`
 
                 if (this.nftSunflowerPoints >= this.gameModeLevel) {
