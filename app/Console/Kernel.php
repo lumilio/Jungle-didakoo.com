@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new DeleteOldGames)->twiceDaily(1, 13);
+        $schedule->job(new DeleteOldGames)->daily();
     }
 
     /**

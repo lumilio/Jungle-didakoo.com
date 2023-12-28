@@ -30,7 +30,7 @@ class DeleteOldGames implements ShouldQueue
     public function handle()
     {
         try {
-            Game::where('created_at', '<=', now()->subHours(12))->delete();
+            Game::where('created_at', '<=', now()->subDay())->delete();
         } catch (\Exception $e) {
             logger()->error('Error while deleting old games');
             logger()->error($e->getMessage());
@@ -38,7 +38,7 @@ class DeleteOldGames implements ShouldQueue
         }
 
         try {
-            GuestGame::where('created_at', '<=', now()->subHours(12))->delete();
+            GuestGame::where('created_at', '<=', now()->subDay())->delete();
         } catch (\Exception $e) {
             logger()->error('Error while deleting old guest games');
             logger()->error($e->getMessage());
