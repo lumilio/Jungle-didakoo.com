@@ -6,11 +6,11 @@
                 <img class="modal_logo" style='width:100px;' src="../../../images/extra_objects/ddd.jpg">
                 <span class="version_sign text-white">v 1.0.0</span>
             </div>
-            <div class="wallet-login-title">
+            <!-- <div class="wallet-login-title">
                 <h2 class=" mt-4 mb-5 ml-3" style='font-family: "VT323", monospace; color:white;'>
                     Select a way to login
                 </h2>
-            </div>
+            </div> -->
 
             <div class="web3-login-buttons">
                 <button class="WalletCoinButton" id="guest" @click="web3Login('guest')">
@@ -466,7 +466,7 @@ export default {
     background: black;
     padding: 20px;
     width: 350px;
-    height: 440px;
+    /* height: 440px; */
     overflow: auto;
     position: relative;
     display: flex;
