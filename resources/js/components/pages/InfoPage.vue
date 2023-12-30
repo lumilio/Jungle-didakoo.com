@@ -7,6 +7,13 @@
                     <p>Players in list : {{players}}</p>
                     <p>Players online : {{ totalCurrentUsers }} </p>
                     <br width="100%" size="20" color="white">
+
+                    <p style='color:white;'>Play as guest or use an Ethereum wallet to get the pass and save your data.</p>
+                    <p>> <a style="color:#D1230F;" href="https://metamask.io/"> Metamask</a> <</p>
+                    <!-- <p>> <a style="color:#D1230F;" href="https://metamask.io/">Coin Base</a> <</p> -->
+                    <br width="100%" size="20" color="white">
+                    <br width="100%" size="20" color="white">
+
                     <p style='font-size:18px;'> >>> <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">GAME PASS </a> <<< </p>
                     <p>🌻 x 0 : Basic pass</p>
                     <p>🌻 x 1 : Big pass</p>
@@ -15,11 +22,7 @@
                     <p>🌻 x 4 : Ultimate Pass</p>
                     <br width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
-                    <p style='color:white;'>Chose an Ethereum wallet to get the pass and save your data.</p>
-                    <p>> <a style="color:#D1230F;" href="https://metamask.io/"> Metamask</a> <</p>
-                    <p>> <a style="color:#D1230F;" href="https://metamask.io/">Coin Base</a> <</p>
-                    <br width="100%" size="20" color="white">
-                    <br width="100%" size="20" color="white">
+
                     <p>The following NFTs allow you to unlock in game extra content.</p>
                     <p> > <a style="color:#556FEE;" href="https://rarible.com/token/0xbdc8bd87cfd22ef5b90a93a77eebe5bd0628f841:2352475547185321859375352175754401687841756219705495990747967153936990732289?tab=overview">sun flower V.2  (by didakoo) </a> </p>
                     <p> > <a style="color:#556FEE;" href="https://opensea.io/collection/didakoo-items">didakoo items (by didakoo) </a> </p>
