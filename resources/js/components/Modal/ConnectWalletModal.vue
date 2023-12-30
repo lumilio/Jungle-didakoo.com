@@ -2,7 +2,7 @@
     <div class="modal1" v-if="show">
         <div class="modal-overlay1"></div>
         <div class="connect-modal-content">
-            <div class="d-flex container-sm align-items-center justify-content-between flex-row">
+            <div style='margin-bottom:10px' class="d-flex container-sm align-items-center justify-content-between flex-row">
                 <img class="modal_logo" style='width:100px;' src="../../../images/extra_objects/ddd.jpg">
                 <span class="version_sign text-white">v 1.0.0</span>
             </div>
@@ -11,7 +11,6 @@
                     Select a way to login
                 </h2>
             </div> -->
-
             <div class="web3-login-buttons">
                 <button class="WalletCoinButton" id="guest" @click="web3Login('guest')">
                     <img :src=Guest alt="guest" class="imgSize">
@@ -21,10 +20,10 @@
                     <img :src=MetamaskWalletImg alt="MetamaskWallet" class="imgSize">
                     <p class="WalletCoinButtonText"> METAMASK </p>
                 </button>
-                <button class="WalletCoinButton" @click="web3Login('coinbase')" id="coinbase">
+                <!-- <button class="WalletCoinButton" @click="web3Login('coinbase')" id="coinbase">
                     <img :src=CoinBaseWallet alt="MetamaskWallet" class="imgSize">
                     <p class="WalletCoinButtonText"> COINBASE </p>
-                </button>
+                </button> -->
             </div>
             <span v-if="!inGame" class="close1" @click="closeModal" >&times;</span>
             <slot></slot>
