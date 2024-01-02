@@ -530,10 +530,6 @@ export default {
             margin-bottom: 3px;
         }
     }
-    .spinner_handler {
-        display: flex;
-        justify-content: center;
-    }
 }
   .player-info{
         font-size: 14.5px;

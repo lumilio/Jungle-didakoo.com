@@ -35,47 +35,51 @@
             </button>
             <!-- Looping through players --------------------------------------------------->
                 <div
-                    v-for="(players, playerListIndex) in playersArray"
-                    @click="goToAvatarPage(players)"
-                    :key="players.id"
+                    v-for="(player, playerListIndex) in players"
+                    @click="goToAvatarPage(player)"
+                    :key="player.id"
                     class="record pointer"
-                    :style="{backgroundColor : players.backgroundBord, textDecoration: 'none'}"
+                    :style="{backgroundColor : player.backgroundBord, textDecoration: 'none'}"
                 >
                     <div :style="{
-                        color: players.colorAddress,
+                        color: player.colorAddress,
                         textOverflow: 'ellipsis',
                         whiteSpace: 'nowrap',
                         overflow: 'hidden'
                     }">
                         <p :style="{
-                            color: players.colorAddress,
+                            color: player.colorAddress,
                             fontSize: '14.5px',
                             padding: '10px',
                             margin: '0',
                             textOverflow: 'ellipsis',
                             whiteSpace: 'nowrap',
                             overflow: 'hidden',
-                            textDecoration: players.textDecorationAddress}"
+                            textDecoration: player.textDecorationAddress}"
                         >
                             {{ playerListIndex + 1 }}°
                             <img
-                                :src="players.avatarSrc" alt="User Avatar"
+                                :src="player.avatarSrc" alt="User Avatar"
                                 style="width: 20px; margin-left: 5px; margin-right: 5px; margin-bottom: 3px;" />
-                            {{ players.wallet_address }}
+                            {{ player.wallet_address }}
                         </p>
                     </div>
                     <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <template v-for="(item, key) in colorIconNft(players.color_id)" v-if="players[key] > 0 && item">
+                        <template v-for="(item, key) in colorIconNft(player.color_id)" v-if="player[key] > 0 && item">
                             <img style="width:35px;" :src="item" alt=""/>
                         </template>
                     </div>
 
-                    <span class='align-items-center' :style="{color: players.colorPower, marginRight: '10px',whiteSpace: 'nowrap',  backgroundColor: '',  padding: '0 10px',  borderRadius: '20px', display: 'flex'}">
-                        {{ formatPower(players.power) }} <i class="fa-solid fa-bolt ml-1"></i>
+                    <span class='align-items-center' :style="{color: player.colorPower, marginRight: '10px',whiteSpace: 'nowrap',  backgroundColor: '',  padding: '0 10px',  borderRadius: '20px', display: 'flex'}">
+                        {{ formatPower(player.power) }} <i class="fa-solid fa-bolt ml-1"></i>
                     </span>
                 </div>
 
-
+            <div class="spinner_handler my-5" v-if="isLoading">
+                <div class="spinner-border text-light" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -87,10 +91,12 @@ import store from "../../store";
 import { getColorStyles } from '../../utilites/getColorByUserColorId';
 import { formatNumberWithSuffix } from '../../utilites/formatNumberWithSuffix'
 import colorIconNft from "../../constants/nftLinks";
+import _ from 'lodash'
 
  export default {
     data(){
-        return{
+        return {
+            players: [],
             url: '',
             backgroundBord: '',
             colorAddress:'',
@@ -99,6 +105,9 @@ import colorIconNft from "../../constants/nftLinks";
             textDecorationAddress: '',
             colorId: '',
             secondsUntilUpdate: 60,
+            page: 1,
+            isLoading: false,
+            scrollToBottomLastCalled: 0
         }
     },
     computed: {
@@ -126,20 +135,30 @@ import colorIconNft from "../../constants/nftLinks";
 
             // If last time fetched is more than 1 minute ago, fetch
             if (playersListLastFetched === null || now - playersListLastFetched > 60) {
-                await this.fetchAllUsers()
+                await this.fetchAllUsers(1)
             }
         },
-        async fetchAllUsers() {
+        async fetchAllUsers(page) {
             this.url = window.location.host;
-            const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/get-users');
+            const response = await axios.get(process.env.MIX_SERVER_APP_URL + `/api/get-users?page=${page}`);
             const players = response.data.users.map((player) => {
                 return {
                     ...player,
                     ...this.getPlayerStyles(player.color_id)
                 }
             })
-            store.commit('SET_PLAYERS_LIST', players)
-            store.commit('SET_PLAYERS_LIST_LAST_FETCHED', Math.floor(Date.now() / 1000))
+
+            if (page == 1) {
+                store.commit('SET_PLAYERS_LIST', players)
+                store.commit('SET_PLAYERS_LIST_LAST_FETCHED', Math.floor(Date.now() / 1000))
+
+                this.players = [...players]
+            } else {
+                this.players = [
+                    ...this.players,
+                    ...players.slice(this.players.length)
+                ]
+            }
         },
         getPlayerStyles(colorId) {
             const colorStyles = getColorStyles(colorId)
@@ -158,20 +177,40 @@ import colorIconNft from "../../constants/nftLinks";
         },
         goToAvatarPage(players){
             this.$router.push({path: "/avatar", query: {wallet_address: players?.wallet_address}});
+        },
+        initWindowScrollListener() {
+            window.addEventListener('scroll', (event) => {
+                if (Date.now() > this.scrollToBottomLastCalled + 2000) {
+                    if ((event.target.scrollingElement.offsetHeight + event.target.scrollingElement.scrollTop) >= event.target.scrollingElement.scrollHeight) {
+                        this.scrollToBottomLastCalled = Date.now()
+                        this.isLoading = true;
+                        this.page++;
+                        setTimeout(() => {
+                            this.fetchAllUsers(this.page)
+                                .then(() => {
+                                    this.isLoading = false
+                                })
+                        }, 1000)
+                    }
+                }
+            })
         }
     },
     async mounted()
     {
         await this.updatePlayersListIfNeeded();
+        this.players = [...this.playersArray]
         setInterval(() => {
             if (this.secondsUntilUpdate > 1) {
                 this.secondsUntilUpdate--
             }
         }, 1000)
         setInterval(async () => {
-            await this.fetchAllUsers()
+            await this.fetchAllUsers(1)
             this.secondsUntilUpdate = 60
+            this.page = 1
         }, 60 * 1000)
+        this.initWindowScrollListener()
     },
 
  }
