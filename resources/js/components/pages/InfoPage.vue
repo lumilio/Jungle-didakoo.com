@@ -8,8 +8,8 @@
                     <p>Players online : {{ totalCurrentUsers }} </p>
                     <br width="100%" size="20" color="white">
 
-                    <p style='color:white;'>Play as guest or use an Ethereum wallet to get the pass and save your data.</p>
-                    <p>> <a style="color:#D1230F;" href="https://metamask.io/"> Metamask</a> <</p>
+                    <p style='color:white;'>Play as guest <img :src=Guest alt="guest" class="imgSize"> or use an Ethereum wallet to get the pass and save your data.</p>
+                    <p>> <a style="color:#D1230F;" href="https://metamask.io/"> Metamask</a> < <img :src=Metamask alt="guest" class="imgSize"></p>
                     <!-- <p>> <a style="color:#D1230F;" href="https://metamask.io/">Coin Base</a> <</p> -->
                     <br width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
@@ -51,12 +51,16 @@
 
 <script>
 import axios from "axios";
+import Guest from '../../../images/extra_objects/ghost.png'
+import Metamask from '../../../images/extra_objects/MetaMask_Fox.png'
 
 export default {
     data() {
         return {
             players: '',
             totalCurrentUsers: 1,
+            Guest: Guest,
+            Metamask: Metamask
         }
     },
     mounted() {
@@ -81,6 +85,16 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.imgSize{
+    max-width: 20px;
+    margin: 0;
+    align-self: center;
+    padding: 2px 0;
+
+}
+</style>
 
 
 
