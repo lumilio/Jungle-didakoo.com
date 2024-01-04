@@ -14,7 +14,7 @@
                     <br width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
 
-                    <p style='font-size:18px;'> >>> ⚡️ <a style="color:#FAEA09;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">GAME PASS </a> ⚡️ <<< </p>
+                    <p style='font-size:15px;'> >>> ⚡️ <a style="color:#FAEA09; text-decoration: underline;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">GAME PASS </a> ⚡️ <<< </p>
                     <p>🌻 x 0 : Basic pass</p>
                     <p>🌻 x 1 : Big pass</p>
                     <p>🌻 x 2 : Priority pass</p>
