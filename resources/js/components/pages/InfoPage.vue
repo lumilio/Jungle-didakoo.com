@@ -8,12 +8,11 @@
                     <p>Players online : {{ totalCurrentUsers }} </p>
                     <br width="100%" size="20" color="white">
 
-                    <p style='color:white;'>Play as guest <img :src=Guest alt="guest" class="imgSize"> or use an Ethereum wallet to get the pass and save your data.</p>
+                    <p style='color:white;'>Play as guest <img :src=Guest alt="guest" class="imgSize"> or use a game supported <a style='color:#3490dc;' href="https://ethereum.org/en/">Ethereum</a> wallet to get the pass and save your data.</p>
                     <p>> <a style="color:#D1230F;" href="https://metamask.io/"> Metamask</a> < <img :src=Metamask alt="guest" class="imgSize"></p>
                     <!-- <p>> <a style="color:#D1230F;" href="https://metamask.io/">Coin Base</a> <</p> -->
                     <br width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
-
                     <p style='font-size:15px;'> >>> ⚡️ <a style="color:#FAEA09; text-decoration: underline;" href="https://opensea.io/assets/ethereum/0xd07dc4262bcdbf85190c01c996b4c06a461d2430/628469">GAME PASS </a> ⚡️ <<< </p>
                     <p>🌻 x 0 : Basic pass</p>
                     <p>🌻 x 1 : Big pass</p>
