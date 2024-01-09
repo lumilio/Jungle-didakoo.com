@@ -15,25 +15,28 @@ import leopardIconBlack from '../../../public/images/board/animals/icon-37.png'
 import leopardIconWhite from '../../../public/images/board/animals/icon-45.png'
 import LionIconBlack from '../../../public/images/board/animals/icon-39.png';
 import LionIconWhite from '../../../public/images/board/animals/icon-47.png';
-
+import BotIcon from '../../images/extra_objects/bot.png';
+import RaygunIcon from '../../images/extra_objects/raygun.png';
+import DoodleIcon from '../../images/extra_objects/8.png';
+import TotemIcon from '../../images/extra_objects/ghost.png';
 export default function colorIconNft(colorIcon){
     return {
         nft_1_sunflower_1: '',
         nft_2_sunflower_2: '',
-        nft_3_battery: '',
+        nft_3_battery: 'icon',
         nft_4_color1: '',
         nft_5_color2: '',
         nft_6_color3: '',
         nft_7_color4: '',
-        nft_8_bot: '',
-        nft_21_raygun: '',
+        nft_8_bot: BotIcon,
+        nft_21_raygun: RaygunIcon,
         nft_9_cat: (colorIcon === 3 || colorIcon === 5) ? CatIconWhite : CatIconBlack,
         nft_10_monkey: (colorIcon === 3 || colorIcon === 5) ? MonkeyIconWhite : MonkeyIconBlack,
         nft_11_punks: '',
         nft_12_monster: '',
-        nft_13_doodle: '',
+        nft_13_doodle: DoodleIcon,
         nft_14_sandbox: SandboxIcon,
-        nft_15_totem: '',
+        nft_15_totem: TotemIcon,
         nft_16_nike: NikeIcon,
         nft_17_adidas: AdidasIcon,
         nft_18_pepsi: PepsiIcon,

@@ -61,6 +61,8 @@
                                 class="d-flex align-items-center flex-row flex-nowrap"
                             >
                                 <template v-for="(item, key) in colorIconNft(colorUserTop)" v-if="(creatorUser ? opponent : creator)?.[key] > 0 && item">
+                                    <i v-if="key === 'nft_3_battery'" style="font-size: 24px"
+                                       :style="{color: [3,5].includes(colorUserTop) ? 'white' : 'black'}" class="fa-solid fa-battery-full "></i>
                                     <img style="width:30px;" :src="item" alt=""/>
                                 </template>
                             </div>
@@ -128,7 +130,9 @@
                                 class="d-flex align-items-center flex-row flex-nowrap"
                             >
                                 <template v-for="(item, key) in colorIconNft(colorUserBottom)" v-if="(creatorUser ? creator : opponent)?.[key] > 0 && item">
-                                    <img style="width:30px;" :src="item" alt=""/>
+                                    <i v-if="key === 'nft_3_battery'" style="font-size: 24px"
+                                       :style="{color: [3,5].includes(colorUserBottom) ? 'white' : 'black'}" class="fa-solid fa-battery-full "></i>
+                                    <img v-else style="width:30px;" :src="item" alt=""/>
                                 </template>
                             </div>
                             <span
