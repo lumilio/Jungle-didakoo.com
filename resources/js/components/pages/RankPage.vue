@@ -68,7 +68,7 @@
                         <template v-for="(item, key) in colorIconNft(player.color_id)" v-if="player[key] > 0 && item">
                             <i v-if="key === 'nft_3_battery'" style="font-size: 24px"
                                :style="{color: [3,5].includes(player.color_id) ? 'white' : 'black'}" class="fa-solid fa-battery-full "></i>
-                            <img v-else style="width:35px;" :src="item" alt=""/>
+                            <img v-else style="width:25px;" :src="item" alt=""/>
                         </template>
                     </div>
 

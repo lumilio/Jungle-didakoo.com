@@ -29,10 +29,10 @@
                         </p>
                     </div>
                     <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <template v-for="(item, key) in colorIconNft(3)" v-if="userData[key] > 0 && item">
-                            <i v-if="key === 'nft_3_battery'" style="font-size: 24px" class="fa-solid fa-battery-full text-white"></i>
-                            <img v-else style="width:45px; padding-bottom: 5px" :src="item" alt=""/>
-                        </template>
+<!--                        <template v-for="(item, key) in colorIconNft(3)" v-if="userData[key] > 0 && item">-->
+<!--                            <i v-if="key === 'nft_3_battery'" style="font-size: 24px" class="fa-solid fa-battery-full text-white"></i>-->
+<!--                            <img v-else style="width:45px; padding-bottom: 5px" :src="item" alt=""/>-->
+<!--                        </template>-->
                     </div>
 
                 <!------------------------ ARCHIVMENTS LOGOS EXAMPLE ---------------------->
