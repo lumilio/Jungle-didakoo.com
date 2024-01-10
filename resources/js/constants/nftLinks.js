@@ -15,8 +15,10 @@ import leopardIconBlack from '../../../public/images/board/animals/icon-37.png'
 import leopardIconWhite from '../../../public/images/board/animals/icon-45.png'
 import LionIconBlack from '../../../public/images/board/animals/icon-39.png';
 import LionIconWhite from '../../../public/images/board/animals/icon-47.png';
-import BotIcon from '../../images/extra_objects/bot.png';
-import RaygunIcon from '../../images/extra_objects/raygun.png';
+import BotIconWhite from '../../images/extra_objects/bot.png';
+import BotIconBlack from '../../images/extra_objects/bot_black.png';
+import RaygunIconWhite from '../../images/extra_objects/raygun.png';
+import RaygunIconBlack from '../../images/extra_objects/raygun_black.png';
 import DoodleIcon from '../../images/extra_objects/8.png';
 import TotemIcon from '../../images/extra_objects/ghost.png';
 export default function colorIconNft(colorIcon){
@@ -28,8 +30,8 @@ export default function colorIconNft(colorIcon){
         nft_5_color2: '',
         nft_6_color3: '',
         nft_7_color4: '',
-        nft_8_bot: BotIcon,
-        nft_21_raygun: RaygunIcon,
+        nft_8_bot: (colorIcon === 3 || colorIcon === 5) ? BotIconWhite : BotIconBlack,
+        nft_21_raygun: (colorIcon === 3 || colorIcon === 5) ? RaygunIconWhite : RaygunIconBlack,
         nft_9_cat: (colorIcon === 3 || colorIcon === 5) ? CatIconWhite : CatIconBlack,
         nft_10_monkey: (colorIcon === 3 || colorIcon === 5) ? MonkeyIconWhite : MonkeyIconBlack,
         nft_11_punks: '',

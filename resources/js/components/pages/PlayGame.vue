@@ -63,7 +63,6 @@
                                 <template v-for="(item, key) in colorIconNft(colorUserTop)" v-if="(creatorUser ? opponent : creator)?.[key] > 0 && item">
                                     <i v-if="key === 'nft_3_battery'" style="font-size: 24px; margin-right: 5px;"
                                        :style="{color: [3,5].includes(colorUserTop) ? 'white' : 'black'}" class="fa-solid fa-battery-full "></i>
-                                    <img v-else-if="key === 'nft_8_bot' || key === 'nft_21_raygun'" style="width:25px;" :src="item" alt=""/>
                                     <img style="width:30px;" :src="item" alt=""/>
                                 </template>
                             </div>
@@ -133,7 +132,6 @@
                                 <template v-for="(item, key) in colorIconNft(colorUserBottom)" v-if="(creatorUser ? creator : opponent)?.[key] > 0 && item">
                                     <i v-if="key === 'nft_3_battery'" style="font-size: 24px; margin-right:  5px;"
                                        :style="{color: [3,5].includes(colorUserBottom) ? 'white' : 'black'}" class="fa-solid fa-battery-full "></i>
-                                    <img v-else-if="key === 'nft_8_bot' || key === 'nft_21_raygun'" style="width:25px;" :src="item" alt=""/>
                                     <img v-else style="width:30px;" :src="item" alt=""/>
                                 </template>
                             </div>
