@@ -170,7 +170,7 @@
             v-on:quitGame="quitGame()"
         />
         <div v-show="!toggleModal" style="z-index: 1000;" class="justify-content-center align-content-center d-flex">
-            <ConnectWalletModal :show="toggleModal" style="margin: 0"></ConnectWalletModal>
+            <ConnectWalletModal @login="loggedIn" :show="toggleModal" style="margin: 0"></ConnectWalletModal>
         </div>
     </div>
 </template>
@@ -190,7 +190,7 @@ export default {
     data() {
         return {
             isLoading: false,
-            open: !localStorage.getItem('canStart'),
+            open: !localStorage.getItem('canStart') && store.state.user,
             canStart: !!localStorage.getItem('canStart'),
             isStarted: true,
             readyToStart: false,
@@ -352,6 +352,9 @@ export default {
             this.readyToStart = true;
             localStorage.setItem('canStart', 'true');
             this.open = false;
+        },
+        loggedIn(){
+            this.open = true;
         },
         async connected() {
             this.readyToStart = true;

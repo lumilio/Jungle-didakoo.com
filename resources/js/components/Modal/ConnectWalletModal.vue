@@ -256,6 +256,7 @@ export default {
                       if(result.status !== 200){
                           throw "Bad request";
                       }
+                      this.$emit('login')
                         store.commit('LOG_IN_USER', true);
                         store.commit('SET_USER_ADDRESS', result.data.address);
                         this.userData = {address: result.data.address, balance: 0, power: 0, color_id: 1};
@@ -320,6 +321,7 @@ export default {
 
                     var alias = "player_" + year + "" + month + "" + day + "" + hour + "" + min + "" + sec + "";
                     if (data === "OK") {
+                        this.$emit('login')
                         store.commit('LOG_IN_USER', true)
                         store.commit('SET_USER_ADDRESS', address)
                         store.commit('TOGGLE_WALLET_MODAL')
