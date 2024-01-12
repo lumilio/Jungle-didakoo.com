@@ -28,6 +28,13 @@
                             </a>
                         </p>
                     </div>
+                    <div class='d-flex align-items-center flex-row flex-nowrap'>
+                        <template v-for="(item, key) in colorIconNft(3)" v-if="userData[key] > 0 && item">
+                            <i v-if="key === 'nft_3_battery'" style="font-size: 24px" class="fa-solid fa-battery-full text-white"></i>
+                            <img v-else style="width:40px; padding-bottom: 5px" :src="item" alt=""/>
+                        </template>
+                    </div>
+
                 <!------------------------ ARCHIVMENTS LOGOS EXAMPLE ---------------------->
                 <!-- see previous branch "avatar checkpoint" -->
                 <!------------------------------------------------------------->
@@ -53,6 +60,7 @@
 import axios from "axios";
 import {getColorStyles} from '../../utilites/getColorByUserColorId'
 import { formatNumberWithSuffix } from '../../utilites/formatNumberWithSuffix'
+import colorIconNft from "../../constants/nftLinks";
 
 export default {
     data() {
@@ -105,6 +113,7 @@ export default {
         await this.getUserByWalletAddress();
     },
     methods: {
+        colorIconNft,
         async getAllUsers(walletAddress)
         {
             const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/get-users');
@@ -112,6 +121,7 @@ export default {
                 if(player.wallet_address === walletAddress){
                     this.playerListIndex = index + 1
                     this.userData = player
+                    console.log(player,'player')
                     this.getPlayerStyles(this.userData.color_id)
                 }
             })

@@ -124,8 +124,7 @@ export default {
         },
     },
     created() {
-
-        if(this.gameStarted && !this.canStart){
+        if(this.gameStarted && !this.canStart && this.user){
             let timeout = 4
             let interval = setInterval(() => {
                 this.timeoutIndicator = this.numberToTime(timeout)
@@ -138,6 +137,23 @@ export default {
                 timeout --;
             },1000)
         }
+    },
+    watch: {
+        user: function (value){
+            if(value){
+                let timeout = 4
+                let interval = setInterval(() => {
+                    this.timeoutIndicator = this.numberToTime(timeout)
+                    if(!timeout){
+                        clearInterval(interval)
+                        this.canStart = true
+                        this.closeModal();
+                        this.$emit("handelReadyToStart")
+                    }
+                    timeout --;
+                },1000)
+            }
+        },
     },
     methods: {
         numberToTime(time){

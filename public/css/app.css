@@ -11656,7 +11656,7 @@ body,
   background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
 }
 
-@media screen and (min-width: 350px) and (min-height: 550px) {
+@media screen and (min-width: 350px) {
   .pepar {
     width: 350px;
     /* height: 450px; */
@@ -11687,10 +11687,6 @@ body,
 @media screen and (max-height: 555px) {
   .wallet-login-title h2 {
     font-size: 20px;
-  }
-
-  .connect-modal-content {
-    height: 380px !important;
   }
 }
 
@@ -11730,7 +11726,7 @@ body,
   border-radius: 8px;
   /* width: 350px; */
   margin: 30px 30px 30px 30px;
-  padding-bottom: 40px;
+  /* padding-bottom: 40px; */
   transition: 0.5s ease;
   margin-top: 10px;
   animation: pulse 3s infinite;

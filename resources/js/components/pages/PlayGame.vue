@@ -61,6 +61,8 @@
                                 class="d-flex align-items-center flex-row flex-nowrap"
                             >
                                 <template v-for="(item, key) in colorIconNft(colorUserTop)" v-if="(creatorUser ? opponent : creator)?.[key] > 0 && item">
+                                    <i v-if="key === 'nft_3_battery'" style="font-size: 24px; margin-right: 5px;"
+                                       :style="{color: [3,5].includes(colorUserTop) ? 'white' : 'black'}" class="fa-solid fa-battery-full "></i>
                                     <img style="width:30px;" :src="item" alt=""/>
                                 </template>
                             </div>
@@ -128,7 +130,9 @@
                                 class="d-flex align-items-center flex-row flex-nowrap"
                             >
                                 <template v-for="(item, key) in colorIconNft(colorUserBottom)" v-if="(creatorUser ? creator : opponent)?.[key] > 0 && item">
-                                    <img style="width:30px;" :src="item" alt=""/>
+                                    <i v-if="key === 'nft_3_battery'" style="font-size: 24px; margin-right:  5px;"
+                                       :style="{color: [3,5].includes(colorUserBottom) ? 'white' : 'black'}" class="fa-solid fa-battery-full "></i>
+                                    <img v-else style="width:30px;" :src="item" alt=""/>
                                 </template>
                             </div>
                             <span
@@ -166,7 +170,7 @@
             v-on:quitGame="quitGame()"
         />
         <div v-show="!toggleModal" style="z-index: 1000;" class="justify-content-center align-content-center d-flex">
-            <ConnectWalletModal :show="toggleModal" style="margin: 0"></ConnectWalletModal>
+            <ConnectWalletModal @login="loggedIn" :show="toggleModal" style="margin: 0"></ConnectWalletModal>
         </div>
     </div>
 </template>
@@ -186,7 +190,7 @@ export default {
     data() {
         return {
             isLoading: false,
-            open: !localStorage.getItem('canStart'),
+            open: !localStorage.getItem('canStart') && store.state.user,
             canStart: !!localStorage.getItem('canStart'),
             isStarted: true,
             readyToStart: false,
@@ -348,6 +352,9 @@ export default {
             this.readyToStart = true;
             localStorage.setItem('canStart', 'true');
             this.open = false;
+        },
+        loggedIn(){
+            this.open = true;
         },
         async connected() {
             this.readyToStart = true;
