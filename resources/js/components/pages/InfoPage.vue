@@ -41,9 +41,9 @@
                     <hr width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
                     <p>help@didakoo.com</p>
-                    <a href=""><i class="fa-brands fa-threads"></i></a>
-                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href=""><i class="fa-brands fa-discord"></i></a>
+                    <a href=""><i style='font-size: 20px; margin-left: 0px; color: white;' class="fa-brands fa-threads"></i></a>
+                    <a href=""><i style='font-size: 20px; margin-left: 7px; color: white;' class="fa-brands fa-x-twitter"></i></a>
+                    <a href=""><i style='font-size: 20px; margin-left: 7px; color: white;' class="fa-brands fa-discord"></i></a>
                 </div>
             </div>
         </div>
