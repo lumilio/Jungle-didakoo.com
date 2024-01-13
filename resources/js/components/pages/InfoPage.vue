@@ -23,20 +23,20 @@
                     <br width="100%" size="20" color="white">
 
                     <p>The following NFTs allow you to unlock in game extra content.</p>
-                    <p style="color:rgb(51 56 79);"> > <a style="color:#556FEE;" href="https://rarible.com/token/0xbdc8bd87cfd22ef5b90a93a77eebe5bd0628f841:2352475547185321859375352175754401687841756219705495990747967153936990732289?tab=overview">sun flower V.2  (by didakoo) </a> </p>
-                    <p style="color:rgb(51 56 79);"> > <a style="color:#556FEE;" href="https://opensea.io/collection/didakoo-items">didakoo items (by didakoo) </a> </p>
-                    <p style="color:rgb(51 56 79);"> > <a style="color:#556FEE;" href="https://opensea.io/collection/cryptokitties">CryptoKitties</a> </p>
-                    <p style="color:rgb(51 56 79);"> > <a style="color:#556FEE;" href="https://opensea.io/collection/boredapeyachtclub">Bored Ape Yacht Club</a> (soon) </p>
-                    <p style="color:rgb(51 56 79);"> > <a style="color:#556FEE;" href="https://opensea.io/collection/cryptopunks">CryptoPunks</a> (soon) </p>
-                    <p style="color:rgb(51 56 79);"> > <a style="color:#556FEE;" href="https://opensea.io/collection/polychainmonsters">Polychain Monsters</a> (soon) </p>
-                    <p style="color:rgb(51 56 79);"> > <a style="color:#556FEE;" href="https://opensea.io/collection/sandbox">The sandbox  </a> (soon) </p>
-                    <p style="color:rgb(51 56 79);"> > <a style="color:#556FEE;" href="https://opensea.io/collection/doodles-official">Doodles  </a> (soon) </p>
-                    <p style="color:rgb(51 56 79);"> > <a style="color:#556FEE;" href="https://opensea.io/collection/hashmasks">Hash Masks  </a> (soon) </p>
-                    <p style="color:rgb(51 56 79);"> > <a style="color:#556FEE;" href="https://opensea.io/collection/adidascapsule">adidas IMPOSSIBLE BOX  </a> (soon) </p>
-                    <p style="color:rgb(51 56 79);"> > <a style="color:#556FEE;" href="https://opensea.io/collection/rtfkt-nike-cryptokicks">RTFKT x Nike Dunk Genesis CRYPTOKICKS  </a> (soon) </p>
-                    <p style="color:rgb(51 56 79);"> > <a style="color:#556FEE;" href="https://opensea.io/collection/pepsi-mic-drop">Pepsi Mic Drop  </a> (soon) </p>
-                    <p style="color:rgb(51 56 79);"> > <a style="color:#556FEE;" href="https://opensea.io/collection/lacoste-undw3-the-emerge">Lacoste UNDW3: The Emerge  </a> (soon) </p>
-                    <p style="color:rgb(51 56 79);"> > <a style="color:#556FEE;" href="https://opensea.io/collection/decentraland">Decentraland  </a> (soon) </p>
+                    <p> <a style="color:#556FEE;" href="https://rarible.com/token/0xbdc8bd87cfd22ef5b90a93a77eebe5bd0628f841:2352475547185321859375352175754401687841756219705495990747967153936990732289?tab=overview">sun flower V.2  (by didakoo) </a> </p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/didakoo-items">didakoo items (by didakoo) </a> </p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/cryptokitties">CryptoKitties</a> </p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/boredapeyachtclub">Bored Ape Yacht Club</a> <span style="color:rgb(51 56 79);"> > (soon) </span> </p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/cryptopunks">CryptoPunks</a> <span style="color:rgb(51 56 79);"> > (soon) </span> </p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/polychainmonsters">Polychain Monsters</a> <span style="color:rgb(51 56 79);"> > (soon) </span> </p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/sandbox">The sandbox  </a> <span style="color:rgb(51 56 79);"> > (soon) </span> </p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/doodles-official">Doodles  </a> <span style="color:rgb(51 56 79);"> > (soon) </span> </p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/hashmasks">Hash Masks  </a> <span style="color:rgb(51 56 79);"> > (soon) </span> </p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/adidascapsule">adidas IMPOSSIBLE BOX  </a> <span style="color:rgb(51 56 79);"> > (soon) </span> </p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/rtfkt-nike-cryptokicks">RTFKT x Nike Dunk Genesis CRYPTOKICKS  </a> <span style="color:rgb(51 56 79);"> > (soon) </span> </p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/pepsi-mic-drop">Pepsi Mic Drop  </a> <span style="color:rgb(51 56 79);"> > (soon) </span> </p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/lacoste-undw3-the-emerge">Lacoste UNDW3: The Emerge  </a> <span style="color:rgb(51 56 79);"> > (soon) </span> </p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/decentraland">Decentraland  </a> <span style="color:rgb(51 56 79);"> > (soon) </span> </p>
                     <br width="100%" size="20" color="white">
                     <hr width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
