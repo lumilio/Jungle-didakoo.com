@@ -548,14 +548,16 @@ export default {
             if (data){
                 let checkAddress = this.game?.creator?.wallet_address === this.address ?? true
                 if(this.game?.creator?.color_id || this.game?.opponent?.color_id){
-                    this.boardColors = {
-                        black : this.game?.opponent?.color_id,
-                        board : 2,
-                        white : this.game?.creator?.color_id
+                    if(this.game?.creator?.color_id && this.game?.opponent?.color_id) {
+                        this.boardColors = {
+                            black: this.game?.opponent?.color_id,
+                            board: 2,
+                            white: this.game?.creator?.color_id
+                        }
+                        this.possibleMove = "#9be8b4"
+                        this.userColorTop = checkAddress ? this.game?.opponent?.color_id : this.game?.creator?.color_id;
+                        this.userColorBottom = checkAddress ? this.game?.creator?.color_id : this.game?.opponent?.color_id;
                     }
-                    this.possibleMove = "#9be8b4"
-                    this.userColorTop =  checkAddress ? this.game?.opponent?.color_id : this.game?.creator?.color_id;
-                    this.userColorBottom = checkAddress ?  this.game?.creator?.color_id : this.game?.opponent?.color_id;
                     if(this.game?.creator?.color_id === this.game?.opponent?.color_id){
                         this.boardColors = {
                             black : 5,
@@ -571,6 +573,19 @@ export default {
                                 black : data.colors?.black !== this.game?.creator?.color_id ? data.colors?.black : (this.game?.creator?.color_id === 4 ? this.game?.creator?.color_id - 1 : this.game?.creator?.color_id + 1),
                                 board : 2,
                                 white : this.game?.creator?.color_id
+                            }
+                            this.possibleMove = "#9be8b4"
+                            this.userColorTop =  checkAddress ? this.boardColors?.black : this.boardColors?.white;
+                            this.userColorBottom = checkAddress ?  this.boardColors?.white : this.boardColors?.black;
+                        }
+                        if (this.game?.opponent?.color_id && !this.game?.creator?.color_id){
+                            this.boardColors = {
+                                black : this.game?.opponent?.color_id,
+                                board : 2,
+                                white : data.colors?.white !== this.game?.opponent?.color_id ? data.colors?.white : (this.game?.opponent?.color_id === 4 ? this.game?.opponent?.color_id - 1 : this.game?.opponent?.color_id + 1),
+                            }
+                            if(data.colors?.white === 5 || data.colors?.white === 6){
+                                this.boardColors.white = this.game?.opponent?.color_id === 4 ? this.game?.opponent?.color_id - 1 : this.game?.opponent?.color_id + 1
                             }
                             this.possibleMove = "#9be8b4"
                             this.userColorTop =  checkAddress ? this.boardColors?.black : this.boardColors?.white;
