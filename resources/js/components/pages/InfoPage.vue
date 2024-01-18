@@ -40,7 +40,7 @@
                     <br width="100%" size="20" color="white">
                     <hr width="100%" size="20" color="white">
                     <br width="100%" size="20" color="white">
-                    <p>help@didakoo.com</p>
+                    <p>info@didakoo.com</p>
                     <a href="https://www.instagram.com/didakoo.games/"><i style='font-size: 20px; margin-left: 0px; color: white;' class="fa-brands fa-instagram"></i></a> 
                     <a href="https://twitter.com/didakoo_games"><i style='font-size: 20px; margin-left: 7px; color: white;' class="fa-brands fa-x-twitter"></i></a>
                     <a href=""><i style='font-size: 20px; margin-left: 7px; color: white;' class="fa-brands fa-discord"></i></a>
