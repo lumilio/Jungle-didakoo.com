@@ -43,7 +43,7 @@
                     <p>info@didakoo.com</p>
                     <a href="https://www.instagram.com/didakoo.games/"><i style='font-size: 20px; margin-left: 0px; color: white;' class="fa-brands fa-instagram"></i></a> 
                     <a href="https://twitter.com/didakoo_games"><i style='font-size: 20px; margin-left: 7px; color: white;' class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://discord.gg/jumxkt6EQN"><i style='font-size: 20px; margin-left: 7px; color: white;' class="fa-brands fa-discord"></i></a>
+                    <a href="https://discord.gg/5pWJft5muW"><i style='font-size: 20px; margin-left: 7px; color: white;' class="fa-brands fa-discord"></i></a>
                 </div>
             </div>
         </div>
