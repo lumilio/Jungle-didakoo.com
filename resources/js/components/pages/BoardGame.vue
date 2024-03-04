@@ -96,10 +96,10 @@
 
                 if (user.nft_1_sunflower_1 !== undefined && user.nft_2_sunflower_2 !== undefined) {
                     // Multiply by 100, get floor and divide by 100 to avoid having float number issues
-                    nftSunflowerPoints = Math.floor((user.nft_1_sunflower_1 + (user.nft_2_sunflower_2 / 4)) * 100) / 100
+                    nftSunflowerPoints = user.nft_1_sunflower_1 + user.nft_2_sunflower_2
                 }
 
-                return Math.floor(nftSunflowerPoints) <= 4 ? Math.floor(nftSunflowerPoints) : 4
+                return nftSunflowerPoints <= 4 ? nftSunflowerPoints : 4
             },
             async getActiveGameMode() {
                 const response = await axios.get('/api/active-game-mode')
