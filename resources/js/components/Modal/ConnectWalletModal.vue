@@ -14,7 +14,7 @@
             <div class="web3-login-buttons">
                 <button class="WalletCoinButton" id="guest" @click="web3Login('guest')">
                     <img :src=Guest alt="guest" class="imgSize">
-                    <p class="WalletCoinButtonText"> GUEST </p>
+                    <p class="WalletCoinButtonText"> GUEST ( FREE ) </p>
                 </button>
                 <button class="WalletCoinButton" @click="web3Login('metamask')" id="metamask">
                     <img :src=MetamaskWalletImg alt="MetamaskWallet" class="imgSize">
@@ -502,7 +502,7 @@ export default {
     text-transform: uppercase;
     background-clip: border-box;
     color: #fff;
-    font-size: 14px;
+    font-size: 13px;
 }
 .WalletCoinButton{
     background: black;
