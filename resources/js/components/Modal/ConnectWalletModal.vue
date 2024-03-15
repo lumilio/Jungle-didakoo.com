@@ -1,6 +1,6 @@
 <template>
     <div class="modal1" v-if="show">
-        <div class="modal-overlay1"></div>
+        <div class="modal-overlay1" @click="closeModal"></div>
         <div class="connect-modal-content">
             <div style='margin-bottom:10px' class="d-flex container-sm align-items-center justify-content-between flex-row">
                 <img class="modal_logo" style='width:100px;' src="../../../images/extra_objects/ddd.jpg">

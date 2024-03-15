@@ -72,10 +72,14 @@ export default {
 
     methods: {
         navigateToRank(){
-            this.$router.push({path: 'rank'})
+            if(this.user){
+                this.$router.push({path: 'rank'})
+            }
         },
         navigateToInfo(){
-            this.$router.push({path: 'info'})
+            if(this.user){
+                this.$router.push({path: 'info'})
+            }
         },
         async openModal() {
             if (this.user) {
