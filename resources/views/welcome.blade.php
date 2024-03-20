@@ -26,9 +26,100 @@
     <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 {{--    <link rel="shortcut icon" href="https://cdn.iconscout.com/icon/free/png-256/free-avatar-370-456322.png?f=webp&w=256" />--}}
+
+    <style>
+        #loader {
+            display: block;
+        }
+
+        .loading-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999;
+        }
+
+        .load-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            border: 3px solid white;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .ready-text {
+            color: white;
+            font-size: 16px;
+            font-family: VT323, monospace;
+        }
+    </style>
+
 </head>
 
 <body>
+
+<div id="loader" class="loading-container">
+    <div class="load-container">
+        <div class="load-container">
+            <canvas id="batteryCanvas" width="120" height="32"></canvas>
+            <p class="ready-text">Ready in a few seconds ...</p>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    const canvas = document.getElementById('batteryCanvas');
+    const ctx = canvas.getContext('2d');
+    let batteryLevel = 0;
+
+    function drawBattery() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.strokeStyle = 'white';
+        ctx.stroke();
+
+        ctx.fillStyle = 'green';
+        for (let i = 0; i < 10; i++) {
+            if (isActive(i)) {
+                ctx.fillRect(9 * i + 5 + 2 * i, 4, 7, 24);
+            }
+        }
+    }
+
+    function isActive(i) {
+        return i === 9 ? batteryLevel >= (i + 1) * 10 : batteryLevel >= (i + 1) * 10 - 5;
+    }
+
+    function chargeBattery() {
+        let interval = setInterval(() => {
+            batteryLevel += 5;
+            if (batteryLevel >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    batteryLevel = 0;
+                    chargeBattery();
+                }, 1000);
+            }
+            drawBattery();
+        }, 180);
+    }
+
+    chargeBattery();
+</script>
+
     <div id="app">
 
     </div>
