@@ -9,8 +9,8 @@
                     <span class="version_sign">v 1.0.2</span>
                 </div>
                 <div v-if="checkGameStatus" class="console-screen d-flex justify-content-center align-items-center">
-                    <p  class="main_message">
-                        <span v-html="mainMessage"></span>
+                    <p  class="main_message" >
+                        <span v-html="mainMessage" :style="{fontSize: gameFinished ? '21px' : '17px'}"></span>
                     </p>
                 </div>
                 <div v-if="!canStart" class="console-screen d-flex justify-content-center align-items-center">
@@ -84,7 +84,8 @@ export default {
     data () {
         return {
             canStart:this.delay,
-            timeoutIndicator: null
+            timeoutIndicator: null,
+            gameFinished: false
         }
     },
     computed: {
@@ -118,6 +119,9 @@ export default {
                 return copy
             }
 
+           if(this.message){
+               this.gameFinished = true;
+           }
             return this.message
                 ? this.message
                 : 'Login required' + ' <i class="fa-solid fa-bars"></i>' + ' <i class="fa-solid fa-power-off"></i>'
