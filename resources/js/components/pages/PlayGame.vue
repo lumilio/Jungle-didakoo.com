@@ -434,6 +434,7 @@ export default {
         },
     },
     async mounted() {
+        toastr.options.timeOut = 1500;
         if (this.address){
             try {
                 this.isLoading = true;

@@ -267,28 +267,24 @@ export default {
                     }
                     let provider = {};
 
-                    // if (!window.ethereum) {
-                    //     toastr.error('MetaMask not detected.Please install MetaMask first.');
-                    //     return;
-                    // }
-                     try {
+                    if (!window.ethereum) {
+                        toastr.error('MetaMask not found.');
+                        return;
+                    }
 
-                            if (this.isMobile && wallet === 'metamask' && !window.ethereum) {
-                                window.location = 'https://metamask.app.link/dapp/'+process.env.MIX_SERVER_APP_URL;
-                            }
-
-                            provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
-                            provider = new ethers.providers.Web3Provider(provider);
-                        }catch (e) {
-                            if (wallet === 'metamask'){
-
-                                provider = new ethers.providers.Web3Provider(window.ethereum);
-
-                            }else{
-                                toastr.error('Coinbase not detected.Please install Coinbase first.');
-                            }
-
+                    try {
+                        if (this.isMobile && wallet === 'metamask' && !window.ethereum) {
+                            window.location = 'https://metamask.app.link/dapp/'+process.env.MIX_SERVER_APP_URL;
                         }
+                        provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
+                        provider = new ethers.providers.Web3Provider(provider);
+                    }catch (e) {
+                        if (wallet === 'metamask'){
+                            provider = new ethers.providers.Web3Provider(window.ethereum);
+                        }else{
+                            toastr.error('Coinbase not detected.Please install Coinbase first.');
+                        }
+                    }
 
                     let response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-login-message');
                     const message = await response.text();
@@ -427,6 +423,7 @@ export default {
             }
     },
     mounted () {
+        toastr.options.timeOut = 1500;
         this.checkIfMobile();
         window.addEventListener('resize', this.checkIfMobile);
     },
