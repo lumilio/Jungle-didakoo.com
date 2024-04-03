@@ -65,13 +65,22 @@ class GameController extends Controller
                 ];
             }else{
                 do{
-                    $randomColors = [
-                        "black" => rand(1, 4),
+                    $colorsCaseA = [
+                        "black" => rand(5, 6),
                         "board" => 2,
-                        "white" => $player->color_id,
+                        "white" => rand(5, 6),
                     ];
                 }
-                while ($randomColors["black"] === $randomColors["white"]);
+                while ($colorsCaseA["black"] === $colorsCaseA["white"]);
+                do{
+                    $colorsCaseB = [
+                        "black" => rand(1, 4),
+                        "board" => 2,
+                        "white" => rand(1, 4),
+                    ];
+                }
+                while ($colorsCaseB["black"] === $colorsCaseB["white"]);
+                $randomColors = rand(0, 1) == 0 ? $colorsCaseA : $colorsCaseB;
             }
             Game::create([
                 'creator_id' => $player->id,
