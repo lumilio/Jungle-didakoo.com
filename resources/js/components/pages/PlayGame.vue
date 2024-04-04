@@ -300,12 +300,6 @@ export default {
                     this.colorUserTop = colorUserTop
                     this.colorUserBottom = colorUserBottom
                 }
-                if(!this.checkGame){
-                    colorUserTop = this.game.state?.colors?.black
-                    colorUserBottom = this.game.state?.colors?.white
-                    this.colorUserTop = colorUserTop
-                    this.colorUserBottom = colorUserBottom
-                }
 
                 const colorStylesTop = getColorStyles(colorUserTop);
                 this.backgroundBordTop = colorStylesTop.backgroundBord;
