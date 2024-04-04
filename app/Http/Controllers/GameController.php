@@ -67,7 +67,7 @@ class GameController extends Controller
                 do{
                     $colorsCaseA = [
                         "black" => rand(5, 6),
-                        "board" => 2,
+                        "board" => 1,
                         "white" => rand(5, 6),
                     ];
                 }
