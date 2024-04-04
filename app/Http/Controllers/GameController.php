@@ -23,22 +23,25 @@ class GameController extends Controller
             if ($request->multiPlay){
                 $status = 'pending';
             }
-            $colorsCaseA = [
-                "black" => rand(5, 6),
-                "board" => 1,
-                "white" => rand(5, 6),
-            ];
-            while ($colorsCaseA["black"] === $colorsCaseA["white"]) {
-                $colorsCaseA["white"] = rand(5, 6);
+            do{
+                $colorsCaseA = [
+                    "black" => rand(5, 6),
+                    "board" => 1,
+                    "white" => rand(5, 6),
+                ];
             }
-            $colorsCaseB = [
-                "black" => rand(1, 4),
-                "board" => 2,
-                "white" => rand(1, 4),
-            ];
-            while ($colorsCaseB["black"] === $colorsCaseB["white"]) {
-                $colorsCaseB["white"] = rand(1, 4);
+            while ($colorsCaseA["black"] === $colorsCaseA["white"]);
+            do{
+                $colorsCaseB = [
+                    "black" => rand(1, 4),
+                    "board" => 2,
+                    "white" => rand(1, 4),
+                ];
             }
+            while (($colorsCaseB["black"] === $colorsCaseB["white"]) ||
+            ($colorsCaseB["white"] === 4 && $colorsCaseB["black"] === 2) ||
+            ($colorsCaseB["black"] === 4 && $colorsCaseB["white"] === 2)
+            );
             $randomColors = rand(0, 1) ? $colorsCaseA : $colorsCaseB;
             GuestGame::create([
                 'creator' => $player,
@@ -79,7 +82,10 @@ class GameController extends Controller
                         "white" => rand(1, 4),
                     ];
                 }
-                while ($colorsCaseB["black"] === $colorsCaseB["white"]);
+                while (($colorsCaseB["black"] === $colorsCaseB["white"]) ||
+                       ($colorsCaseB["white"] === 4 && $colorsCaseB["black"] === 2) ||
+                       ($colorsCaseB["black"] === 4 && $colorsCaseB["white"] === 2)
+                );
                 $randomColors = rand(0, 1) == 0 ? $colorsCaseA : $colorsCaseB;
             }
             Game::create([
