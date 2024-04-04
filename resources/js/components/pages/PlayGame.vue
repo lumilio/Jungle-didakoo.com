@@ -288,12 +288,6 @@ export default {
                     colorUserBottom = this.creatorUser ? this.creator?.color_id : this.opponent?.color_id;
                     this.colorUserTop = colorUserTop
                     this.colorUserBottom = colorUserBottom
-                    if(this.creator?.color_id === this.opponent?.color_id){
-                        colorUserTop = this.creatorUser ? 5 : 6;
-                        colorUserBottom = this.creatorUser ? 6 : 5;
-                        this.colorUserTop = colorUserTop
-                        this.colorUserBottom = colorUserBottom
-                    }
                 }else{
                     colorUserTop = this.creatorUser ? this.game.state?.colors?.black : this.game.state?.colors?.white;
                     colorUserBottom = this.creatorUser ? this.game.state?.colors?.white : this.game.state?.colors?.black;
