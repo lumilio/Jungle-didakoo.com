@@ -29,21 +29,22 @@
 
     <style>
         #loader {
-            display: block;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .loading-container {
             position: fixed;
-            width: 100%;
-            height: 100%;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            z-index: 999;
         }
 
-        .load-container {
+        .main-container {
             width: 100%;
             height: 100%;
             display: flex;
@@ -52,10 +53,146 @@
             align-items: center;
         }
 
-        canvas {
-            border: 3px solid white;
-            border-radius: 5px;
-            margin-bottom: 20px;
+        .load-container{
+            padding-left: 150px;
+            display: flex;
+            gap: 30px;
+            @media (max-width: 720px) {
+                padding-left: 90px;
+            }
+        }
+
+        .image-container{
+            display: flex;
+            align-items: center;
+        }
+
+        .image-elephant{
+            width: 110px;
+            height: 110px;
+            @media (max-width: 720px){
+            width: 95px;
+            height: 95px;
+        };
+        }
+
+        #container{
+            width: 104px;
+            height: 176px;
+        }
+
+
+        #hourglass{
+            width: 104px;
+            margin: 0 auto;
+        }
+
+        #sand{
+            margin: 0 auto;
+            width: 56px;
+            height: 120px;
+            position: relative;
+            top: -144px;
+        }
+
+        .grain {
+            background-color: black;
+            height: 8px;
+            width: 8px;
+            position: absolute;
+        }
+
+        .a, .b, .c, .d, .e, .f{
+            background-color: #FFFFFF;
+            height: 8px;
+            margin: 0 auto;
+        }
+
+        .a, .b, .c, .d, .e, .f{
+            border-right: 14px solid black;
+            border-left: 14px solid black;
+        }
+
+        .a{
+            width: 92px;
+            height: 20px;
+            border-top: 7px solid black;
+            border-bottom: 7px solid black;
+        }
+
+        .b{
+            width: 78px;
+            height: 32px;
+            border-right: 8px solid black;
+            border-left: 8px solid black;
+        }
+
+        .c{width: 78px;}
+        .d{width: 64px;}
+        .e{width: 50px;}
+        .f{width: 36px;}
+
+        .g1{top: 0;left: 0;}
+        .g2{top: 0;left: 16px;}
+        .g3{top: 0;left: 32px;}
+        .g4{top: 0;left: 48px;}
+        .g5{top: 8px;left: 8px;}
+        .g6{top: 8px;left: 24px;}
+        .g7{top: 8px;left: 40px;}
+        .g8{top: 16px;left: 16px;}
+        .g9{top: 16px;left: 32px;}
+        .g10{top: 24px;left: 24px;}
+        .g11{top: 40px;left: 24px;}
+        .g12{top: 64px;left: 24px;}
+        .g13{top: 72px;left: 24px;}
+
+        .hide{
+            display: none;
+        }
+
+        .moveg1{
+            left: 16px;
+            top: 112px;
+        }
+
+        .moveg2{
+            left: 48px;
+            top: 112px;
+        }
+
+        .moveg3{
+            top: 112px;
+        }
+
+        .moveg4{
+            left: 24px;
+            top: 104px;
+        }
+
+        .moveg5{
+            top: 112px;
+            left: 0;
+        }
+
+        .moveg6{
+            left: 8px;
+            top: 104px;
+        }
+
+        .moveg7{
+            top: 104px;
+        }
+
+        .moveg8{
+            top: 96px;
+        }
+
+        .moveg9{
+            top: 96px;
+        }
+
+        .moveg10{
+            top: 88px;
         }
 
         .ready-text {
@@ -70,54 +207,237 @@
 <body>
 
 <div id="loader" class="loading-container">
-    <div class="load-container">
+    <div class="main-container">
         <div class="load-container">
-            <canvas id="batteryCanvas" width="120" height="32"></canvas>
+            <div id="container" class="center">
+                <div id="hourglass">
+                    <div class="a"></div>
+                    <div class="b"></div>
+                    <div class="c"></div>
+                    <div class="d"></div>
+                    <div class="e"></div>
+                    <div class="f"></div>
+                    <div class="f"></div>
+                    <div class="e"></div>
+                    <div class="d"></div>
+                    <div class="c"></div>
+                    <div class="b"></div>
+                    <div class="a"></div>
+                </div>
+                <div id="sand">
+                    <div class="grain g1"></div>
+                    <div class="grain g2"></div>
+                    <div class="grain g3"></div>
+                    <div class="grain g4"></div>
+                    <div class="grain g5"></div>
+                    <div class="grain g6"></div>
+                    <div class="grain g7"></div>
+                    <div class="grain g8"></div>
+                    <div class="grain g9"></div>
+                    <div class="grain g10"></div>
+                    <div class="grain g11"></div>
+                    <div class="grain g12 hide"></div>
+                    <div class="grain g13"></div>
+                </div>
+            </div>
+            <div class="image-container">
+                <img class="image-elephant" src="../images/board/animals/elephant_4.png">
+            </div>
+        </div>
+        <div>
             <p class="ready-text">Ready in a few seconds ...</p>
         </div>
     </div>
+
 </div>
 
 
-
 <script>
-    const canvas = document.getElementById('batteryCanvas');
-    const ctx = canvas.getContext('2d');
-    let batteryLevel = 0;
 
-    function drawBattery() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    $(document).ready(function () {
 
-        ctx.strokeStyle = 'white';
-        ctx.stroke();
+        for(let i=0;i<1;i++){
+            setInterval(function () {
+                setTimeout(function () {
+                    $('.g1').toggleClass('moveg1');
+                }, 350);
 
-        ctx.fillStyle = 'green';
-        for (let i = 0; i < 10; i++) {
-            if (isActive(i)) {
-                ctx.fillRect(9 * i + 5 + 2 * i, 4, 7, 24);
-            }
+                setTimeout(function () {
+                    $('.g3').toggleClass('moveg3');
+                }, 700);
+
+                setTimeout(function () {
+                    $('.g4').toggleClass('moveg4');
+                }, 1050);
+
+                setTimeout(function () {
+                    $('.g2').toggleClass('moveg2');
+                }, 1400);
+
+                setTimeout(function () {
+                    $('.g6').toggleClass('moveg6');
+                }, 1750);
+
+                setTimeout(function () {
+                    $('.g5').toggleClass('moveg5');
+                }, 2100);
+
+                setTimeout(function () {
+                    $('.g7').toggleClass('moveg7');
+                }, 2450);
+
+                setTimeout(function () {
+                    $('.g9').toggleClass('moveg9');
+                }, 2800);
+
+                setTimeout(function () {
+                    $('.g8').toggleClass('moveg8');
+                }, 3150);
+
+                setTimeout(function () {
+                    $('.g10').toggleClass('moveg10');
+                }, 3500);
+
+                setTimeout(function () {
+                    rotation += 45;
+                    $('#container').rotate(rotation);
+                }, 3850);
+
+                setTimeout(function () {
+                    rotation += 45;
+                    $('#container').rotate(rotation);
+                }, 4200);
+
+                setTimeout(function () {
+                    rotation += 45;
+                    $('#container').rotate(rotation);
+                }, 4550);
+
+                setTimeout(function () {
+                    rotation += 45;
+                    $('#container').rotate(rotation);
+                }, 4900);
+
+                setTimeout(function () {
+                    rotation += 180;
+                    $('#container').rotate(rotation);
+                    $('.g1').toggleClass('moveg1');
+                    $('.g2').toggleClass('moveg2');
+                    $('.g3').toggleClass('moveg3');
+                    $('.g4').toggleClass('moveg4');
+                    $('.g5').toggleClass('moveg5');
+                    $('.g6').toggleClass('moveg6');
+                    $('.g7').toggleClass('moveg7');
+                    $('.g8').toggleClass('moveg8');
+                    $('.g9').toggleClass('moveg9');
+                    $('.g10').toggleClass('moveg10');
+                }, 5250);
+            }, 5250);
         }
-    }
 
-    function isActive(i) {
-        return i === 9 ? batteryLevel >= (i + 1) * 10 : batteryLevel >= (i + 1) * 10 - 5;
-    }
+        setInterval(function () {
+            $('.g12').toggleClass('hide');
 
-    function chargeBattery() {
-        let interval = setInterval(() => {
-            batteryLevel += 5;
-            if (batteryLevel >= 100) {
-                clearInterval(interval);
-                setTimeout(() => {
-                    batteryLevel = 0;
-                    chargeBattery();
-                }, 1000);
+            if($('.g12').hasClass('hide'))
+            {
+                $('.g11').removeClass('hide');
+                $('.g13').removeClass('hide');
             }
-            drawBattery();
-        }, 180);
-    }
 
-    chargeBattery();
+            else
+            {
+                $('.g11').addClass('hide');
+                $('.g13').addClass('hide');
+            }
+        }, 350);
+
+        //Order - 1,3,4,2,6,5,7,9,8,10
+
+        setTimeout(function () {
+            $('.g1').toggleClass('moveg1');
+        }, 350);
+
+        setTimeout(function () {
+            $('.g3').toggleClass('moveg3');
+        }, 700);
+
+        setTimeout(function () {
+            $('.g4').toggleClass('moveg4');
+        }, 1050);
+
+        setTimeout(function () {
+            $('.g2').toggleClass('moveg2');
+        }, 1400);
+
+        setTimeout(function () {
+            $('.g6').toggleClass('moveg6');
+        }, 1750);
+
+        setTimeout(function () {
+            $('.g5').toggleClass('moveg5');
+        }, 2100);
+
+        setTimeout(function () {
+            $('.g7').toggleClass('moveg7');
+        }, 2450);
+
+        setTimeout(function () {
+            $('.g9').toggleClass('moveg9');
+        }, 2800);
+
+        setTimeout(function () {
+            $('.g8').toggleClass('moveg8');
+        }, 3150);
+
+        setTimeout(function () {
+            $('.g10').toggleClass('moveg10');
+        }, 3500);
+
+        var rotation = 0;
+        jQuery.fn.rotate = function (degrees) {
+            $(this).css({
+                '-webkit-transform': 'rotate(' + degrees + 'deg)',
+                '-moz-transform': 'rotate(' + degrees + 'deg)',
+                '-ms-transform': 'rotate(' + degrees + 'deg)',
+                'transform': 'rotate(' + degrees + 'deg)'
+            });
+        };
+
+        setTimeout(function () {
+            rotation += 45;
+            $('#container').rotate(rotation);
+        }, 3850);
+
+        setTimeout(function () {
+            rotation += 45;
+            $('#container').rotate(rotation);
+        }, 4200);
+
+        setTimeout(function () {
+            rotation += 45;
+            $('#container').rotate(rotation);
+        }, 4550);
+
+        setTimeout(function () {
+            rotation += 45;
+            $('#container').rotate(rotation);
+        }, 4900);
+
+        setTimeout(function () {
+            rotation += 180;
+            $('#container').rotate(rotation);
+            $('.g1').toggleClass('moveg1');
+            $('.g2').toggleClass('moveg2');
+            $('.g3').toggleClass('moveg3');
+            $('.g4').toggleClass('moveg4');
+            $('.g5').toggleClass('moveg5');
+            $('.g6').toggleClass('moveg6');
+            $('.g7').toggleClass('moveg7');
+            $('.g8').toggleClass('moveg8');
+            $('.g9').toggleClass('moveg9');
+            $('.g10').toggleClass('moveg10');
+        }, 5250);
+    });
 </script>
 
     <div id="app">
