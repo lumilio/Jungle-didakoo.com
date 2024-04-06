@@ -44,27 +44,14 @@
             bottom: 0;
         }
 
-        .main-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
         .load-container{
-            padding-left: 150px;
             display: flex;
-            gap: 30px;
-            @media (max-width: 720px) {
-                padding-left: 90px;
-            }
+            flex-direction: column-reverse;
+            gap: 20px;
         }
 
         .image-container{
             display: flex;
-            align-items: center;
         }
 
         .image-elephant{
@@ -80,7 +67,6 @@
             width: 104px;
             height: 176px;
         }
-
 
         #hourglass{
             width: 104px;
@@ -195,11 +181,6 @@
             top: 88px;
         }
 
-        .ready-text {
-            color: white;
-            font-size: 16px;
-            font-family: VT323, monospace;
-        }
     </style>
 
 </head>
@@ -207,243 +188,228 @@
 <body>
 
 <div id="loader" class="loading-container">
-    <div class="main-container">
-        <div class="load-container">
-            <div id="container" class="center">
-                <div id="hourglass">
-                    <div class="a"></div>
-                    <div class="b"></div>
-                    <div class="c"></div>
-                    <div class="d"></div>
-                    <div class="e"></div>
-                    <div class="f"></div>
-                    <div class="f"></div>
-                    <div class="e"></div>
-                    <div class="d"></div>
-                    <div class="c"></div>
-                    <div class="b"></div>
-                    <div class="a"></div>
-                </div>
-                <div id="sand">
-                    <div class="grain g1"></div>
-                    <div class="grain g2"></div>
-                    <div class="grain g3"></div>
-                    <div class="grain g4"></div>
-                    <div class="grain g5"></div>
-                    <div class="grain g6"></div>
-                    <div class="grain g7"></div>
-                    <div class="grain g8"></div>
-                    <div class="grain g9"></div>
-                    <div class="grain g10"></div>
-                    <div class="grain g11"></div>
-                    <div class="grain g12 hide"></div>
-                    <div class="grain g13"></div>
-                </div>
+    <div class="load-container">
+        <div id="container" class="center">
+            <div id="hourglass">
+                <div class="a"></div>
+                <div class="b"></div>
+                <div class="c"></div>
+                <div class="d"></div>
+                <div class="e"></div>
+                <div class="f"></div>
+                <div class="f"></div>
+                <div class="e"></div>
+                <div class="d"></div>
+                <div class="c"></div>
+                <div class="b"></div>
+                <div class="a"></div>
             </div>
-            <div class="image-container">
-                <img class="image-elephant" src="../images/board/animals/elephant_4.png">
+            <div id="sand">
+                <div class="grain g1"></div>
+                <div class="grain g2"></div>
+                <div class="grain g3"></div>
+                <div class="grain g4"></div>
+                <div class="grain g5"></div>
+                <div class="grain g6"></div>
+                <div class="grain g7"></div>
+                <div class="grain g8"></div>
+                <div class="grain g9"></div>
+                <div class="grain g10"></div>
+                <div class="grain g11"></div>
+                <div class="grain g12 hide"></div>
+                <div class="grain g13"></div>
             </div>
         </div>
-        <div>
-            <p class="ready-text">Ready in a few seconds ...</p>
+        <div class="image-container">
+            <img class="image-elephant" src="../images/board/animals/elephant_4.png">
         </div>
     </div>
 </div>
 
 
 <script>
-    let animation = document.getElementById("loader").style.display
-    console.log(animation,'animation')
-
-    let intervalId;
-
-    if (animation.style.display === 'none') {
-        clearInterval(intervalId);
-    }
 
     $(document).ready(function () {
-        for(let i=0;i<1;i++){
-            intervalId = setInterval(function () {
-                setTimeout(function () {
-                    $('.g1').toggleClass('moveg1');
-                }, 350);
+            for (let i = 0; i < 1; i++) {
+                setInterval(function () {
+                    setTimeout(function () {
+                        $('.g1').toggleClass('moveg1');
+                    }, 350);
 
-                setTimeout(function () {
-                    $('.g3').toggleClass('moveg3');
-                }, 700);
+                    setTimeout(function () {
+                        $('.g3').toggleClass('moveg3');
+                    }, 700);
 
-                setTimeout(function () {
-                    $('.g4').toggleClass('moveg4');
-                }, 1050);
+                    setTimeout(function () {
+                        $('.g4').toggleClass('moveg4');
+                    }, 1050);
 
-                setTimeout(function () {
-                    $('.g2').toggleClass('moveg2');
-                }, 1400);
+                    setTimeout(function () {
+                        $('.g2').toggleClass('moveg2');
+                    }, 1400);
 
-                setTimeout(function () {
-                    $('.g6').toggleClass('moveg6');
-                }, 1750);
+                    setTimeout(function () {
+                        $('.g6').toggleClass('moveg6');
+                    }, 1750);
 
-                setTimeout(function () {
-                    $('.g5').toggleClass('moveg5');
-                }, 2100);
+                    setTimeout(function () {
+                        $('.g5').toggleClass('moveg5');
+                    }, 2100);
 
-                setTimeout(function () {
-                    $('.g7').toggleClass('moveg7');
-                }, 2450);
+                    setTimeout(function () {
+                        $('.g7').toggleClass('moveg7');
+                    }, 2450);
 
-                setTimeout(function () {
-                    $('.g9').toggleClass('moveg9');
-                }, 2800);
+                    setTimeout(function () {
+                        $('.g9').toggleClass('moveg9');
+                    }, 2800);
 
-                setTimeout(function () {
-                    $('.g8').toggleClass('moveg8');
-                }, 3150);
+                    setTimeout(function () {
+                        $('.g8').toggleClass('moveg8');
+                    }, 3150);
 
-                setTimeout(function () {
-                    $('.g10').toggleClass('moveg10');
-                }, 3500);
+                    setTimeout(function () {
+                        $('.g10').toggleClass('moveg10');
+                    }, 3500);
 
-                setTimeout(function () {
-                    rotation += 45;
-                    $('#container').rotate(rotation);
-                }, 3850);
+                    setTimeout(function () {
+                        rotation += 45;
+                        $('#container').rotate(rotation);
+                    }, 3850);
 
-                setTimeout(function () {
-                    rotation += 45;
-                    $('#container').rotate(rotation);
-                }, 4200);
+                    setTimeout(function () {
+                        rotation += 45;
+                        $('#container').rotate(rotation);
+                    }, 4200);
 
-                setTimeout(function () {
-                    rotation += 45;
-                    $('#container').rotate(rotation);
-                }, 4550);
+                    setTimeout(function () {
+                        rotation += 45;
+                        $('#container').rotate(rotation);
+                    }, 4550);
 
-                setTimeout(function () {
-                    rotation += 45;
-                    $('#container').rotate(rotation);
-                }, 4900);
+                    setTimeout(function () {
+                        rotation += 45;
+                        $('#container').rotate(rotation);
+                    }, 4900);
 
-                setTimeout(function () {
-                    rotation += 180;
-                    $('#container').rotate(rotation);
-                    $('.g1').toggleClass('moveg1');
-                    $('.g2').toggleClass('moveg2');
-                    $('.g3').toggleClass('moveg3');
-                    $('.g4').toggleClass('moveg4');
-                    $('.g5').toggleClass('moveg5');
-                    $('.g6').toggleClass('moveg6');
-                    $('.g7').toggleClass('moveg7');
-                    $('.g8').toggleClass('moveg8');
-                    $('.g9').toggleClass('moveg9');
-                    $('.g10').toggleClass('moveg10');
+                    setTimeout(function () {
+                        rotation += 180;
+                        $('#container').rotate(rotation);
+                        $('.g1').toggleClass('moveg1');
+                        $('.g2').toggleClass('moveg2');
+                        $('.g3').toggleClass('moveg3');
+                        $('.g4').toggleClass('moveg4');
+                        $('.g5').toggleClass('moveg5');
+                        $('.g6').toggleClass('moveg6');
+                        $('.g7').toggleClass('moveg7');
+                        $('.g8').toggleClass('moveg8');
+                        $('.g9').toggleClass('moveg9');
+                        $('.g10').toggleClass('moveg10');
+                    }, 5250);
                 }, 5250);
+            }
+
+            setInterval(function () {
+                $('.g12').toggleClass('hide');
+
+                if ($('.g12').hasClass('hide')) {
+                    $('.g11').removeClass('hide');
+                    $('.g13').removeClass('hide');
+                } else {
+                    $('.g11').addClass('hide');
+                    $('.g13').addClass('hide');
+                }
+            }, 350);
+
+            //Order - 1,3,4,2,6,5,7,9,8,10
+
+            setTimeout(function () {
+                $('.g1').toggleClass('moveg1');
+            }, 350);
+
+            setTimeout(function () {
+                $('.g3').toggleClass('moveg3');
+            }, 700);
+
+            setTimeout(function () {
+                $('.g4').toggleClass('moveg4');
+            }, 1050);
+
+            setTimeout(function () {
+                $('.g2').toggleClass('moveg2');
+            }, 1400);
+
+            setTimeout(function () {
+                $('.g6').toggleClass('moveg6');
+            }, 1750);
+
+            setTimeout(function () {
+                $('.g5').toggleClass('moveg5');
+            }, 2100);
+
+            setTimeout(function () {
+                $('.g7').toggleClass('moveg7');
+            }, 2450);
+
+            setTimeout(function () {
+                $('.g9').toggleClass('moveg9');
+            }, 2800);
+
+            setTimeout(function () {
+                $('.g8').toggleClass('moveg8');
+            }, 3150);
+
+            setTimeout(function () {
+                $('.g10').toggleClass('moveg10');
+            }, 3500);
+
+            var rotation = 0;
+            jQuery.fn.rotate = function (degrees) {
+                $(this).css({
+                    '-webkit-transform': 'rotate(' + degrees + 'deg)',
+                    '-moz-transform': 'rotate(' + degrees + 'deg)',
+                    '-ms-transform': 'rotate(' + degrees + 'deg)',
+                    'transform': 'rotate(' + degrees + 'deg)'
+                });
+            };
+
+            setTimeout(function () {
+                rotation += 45;
+                $('#container').rotate(rotation);
+            }, 3850);
+
+            setTimeout(function () {
+                rotation += 45;
+                $('#container').rotate(rotation);
+            }, 4200);
+
+            setTimeout(function () {
+                rotation += 45;
+                $('#container').rotate(rotation);
+            }, 4550);
+
+            setTimeout(function () {
+                rotation += 45;
+                $('#container').rotate(rotation);
+            }, 4900);
+
+            setTimeout(function () {
+                rotation += 180;
+                $('#container').rotate(rotation);
+                $('.g1').toggleClass('moveg1');
+                $('.g2').toggleClass('moveg2');
+                $('.g3').toggleClass('moveg3');
+                $('.g4').toggleClass('moveg4');
+                $('.g5').toggleClass('moveg5');
+                $('.g6').toggleClass('moveg6');
+                $('.g7').toggleClass('moveg7');
+                $('.g8').toggleClass('moveg8');
+                $('.g9').toggleClass('moveg9');
+                $('.g10').toggleClass('moveg10');
             }, 5250);
-        }
 
-        setInterval(function () {
-            $('.g12').toggleClass('hide');
-
-            if($('.g12').hasClass('hide'))
-            {
-                $('.g11').removeClass('hide');
-                $('.g13').removeClass('hide');
-            }
-
-            else
-            {
-                $('.g11').addClass('hide');
-                $('.g13').addClass('hide');
-            }
-        }, 350);
-
-        //Order - 1,3,4,2,6,5,7,9,8,10
-
-        setTimeout(function () {
-            $('.g1').toggleClass('moveg1');
-        }, 350);
-
-        setTimeout(function () {
-            $('.g3').toggleClass('moveg3');
-        }, 700);
-
-        setTimeout(function () {
-            $('.g4').toggleClass('moveg4');
-        }, 1050);
-
-        setTimeout(function () {
-            $('.g2').toggleClass('moveg2');
-        }, 1400);
-
-        setTimeout(function () {
-            $('.g6').toggleClass('moveg6');
-        }, 1750);
-
-        setTimeout(function () {
-            $('.g5').toggleClass('moveg5');
-        }, 2100);
-
-        setTimeout(function () {
-            $('.g7').toggleClass('moveg7');
-        }, 2450);
-
-        setTimeout(function () {
-            $('.g9').toggleClass('moveg9');
-        }, 2800);
-
-        setTimeout(function () {
-            $('.g8').toggleClass('moveg8');
-        }, 3150);
-
-        setTimeout(function () {
-            $('.g10').toggleClass('moveg10');
-        }, 3500);
-
-        var rotation = 0;
-        jQuery.fn.rotate = function (degrees) {
-            $(this).css({
-                '-webkit-transform': 'rotate(' + degrees + 'deg)',
-                '-moz-transform': 'rotate(' + degrees + 'deg)',
-                '-ms-transform': 'rotate(' + degrees + 'deg)',
-                'transform': 'rotate(' + degrees + 'deg)'
-            });
-        };
-
-        setTimeout(function () {
-            rotation += 45;
-            $('#container').rotate(rotation);
-        }, 3850);
-
-        setTimeout(function () {
-            rotation += 45;
-            $('#container').rotate(rotation);
-        }, 4200);
-
-        setTimeout(function () {
-            rotation += 45;
-            $('#container').rotate(rotation);
-        }, 4550);
-
-        setTimeout(function () {
-            rotation += 45;
-            $('#container').rotate(rotation);
-        }, 4900);
-
-        setTimeout(function () {
-            rotation += 180;
-            $('#container').rotate(rotation);
-            $('.g1').toggleClass('moveg1');
-            $('.g2').toggleClass('moveg2');
-            $('.g3').toggleClass('moveg3');
-            $('.g4').toggleClass('moveg4');
-            $('.g5').toggleClass('moveg5');
-            $('.g6').toggleClass('moveg6');
-            $('.g7').toggleClass('moveg7');
-            $('.g8').toggleClass('moveg8');
-            $('.g9').toggleClass('moveg9');
-            $('.g10').toggleClass('moveg10');
-        }, 5250);
     });
+
 </script>
 
     <div id="app">

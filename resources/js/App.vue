@@ -29,7 +29,7 @@ export default {
             }
             store.commit('LOG_OUT_USER');
         }
-        document.getElementById('loader').style.display='none'
+        document.getElementById('loader').remove()
     }
 }
 </script>
