@@ -248,16 +248,22 @@
             <p class="ready-text">Ready in a few seconds ...</p>
         </div>
     </div>
-
 </div>
 
 
 <script>
+    let animation = document.getElementById("loader").style.display
+    console.log(animation,'animation')
+
+    let intervalId;
+
+    if (animation.style.display === 'none') {
+        clearInterval(intervalId);
+    }
 
     $(document).ready(function () {
-
         for(let i=0;i<1;i++){
-            setInterval(function () {
+            intervalId = setInterval(function () {
                 setTimeout(function () {
                     $('.g1').toggleClass('moveg1');
                 }, 350);
