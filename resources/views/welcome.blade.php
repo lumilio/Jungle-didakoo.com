@@ -47,6 +47,7 @@
         .load-container{
             display: flex;
             flex-direction: column-reverse;
+            align-items: center;
             gap: 20px;
         }
 
@@ -63,122 +64,108 @@
         };
         }
 
-        #container{
-            width: 104px;
-            height: 176px;
+        #container {
+            width: 69px;
+            height: 117px;
         }
 
-        #hourglass{
-            width: 104px;
+        #hourglass {
+            width: 69px;
             margin: 0 auto;
         }
 
-        #sand{
+        #sand {
             margin: 0 auto;
-            width: 56px;
-            height: 120px;
+            width: 40px;
+            height: 80px;
             position: relative;
-            top: -144px;
+            top: -96px;
         }
 
         .grain {
             background-color: black;
-            height: 8px;
-            width: 8px;
+            height: 5px;
+            width: 5px;
             position: absolute;
         }
 
-        .a, .b, .c, .d, .e, .f{
+        .a, .b, .c, .d, .e, .f {
             background-color: #FFFFFF;
-            height: 8px;
+            height: 5px;
             margin: 0 auto;
         }
 
-        .a, .b, .c, .d, .e, .f{
-            border-right: 14px solid black;
-            border-left: 14px solid black;
+        .a, .b, .c, .d, .e, .f {
+            border-right: 9px solid black;
+            border-left: 9px solid black;
         }
 
-        .a{
-            width: 92px;
-            height: 20px;
-            border-top: 7px solid black;
-            border-bottom: 7px solid black;
+        .a {
+            width: 61px;
+            height: 13px;
+            border-top: 5px solid black;
+            border-bottom: 5px solid black;
         }
 
-        .b{
-            width: 78px;
-            height: 32px;
-            border-right: 8px solid black;
-            border-left: 8px solid black;
+        .b {
+            width: 52px;
+            height: 21px;
+            border-right: 5px solid black;
+            border-left: 5px solid black;
         }
 
-        .c{width: 78px;}
-        .d{width: 64px;}
-        .e{width: 50px;}
-        .f{width: 36px;}
+        .c {width: 52px;}
+        .d {width: 43px;}
+        .e {width: 34px;}
+        .f {width: 23px;}
 
-        .g1{top: 0;left: 0;}
-        .g2{top: 0;left: 16px;}
-        .g3{top: 0;left: 32px;}
-        .g4{top: 0;left: 48px;}
-        .g5{top: 8px;left: 8px;}
-        .g6{top: 8px;left: 24px;}
-        .g7{top: 8px;left: 40px;}
-        .g8{top: 16px;left: 16px;}
-        .g9{top: 16px;left: 32px;}
-        .g10{top: 24px;left: 24px;}
-        .g11{top: 40px;left: 24px;}
-        .g12{top: 64px;left: 24px;}
-        .g13{top: 72px;left: 24px;}
+        .g1 {top: 3px;left: 1px;}
+        .g2 {top: 3px;left: 12px;}
+        .g3 {top: 3px;left: 24px;}
+        .g4 {top: 3px;left: 34px;}
+        .g5 {top: 8px;left: 6px;}
+        .g6 {top: 8px;left: 18px;}
+        .g7 {top: 8px;left: 29px;}
+        .g8 {top: 13px;left: 12px;}
+        .g9 {top: 13px;left: 23px;}
+        .g10 {top: 18px;left: 18px;}
+        .g11{top: 28px;left: 18px;}
+        .g12{top: 38px;left: 18px;}
+        .g13{top: 54px;left: 18px;}
 
-        .hide{
+        .hide {
             display: none;
         }
 
-        .moveg1{
-            left: 16px;
-            top: 112px;
+        .moveg1 {
+            top: 76px;
         }
-
-        .moveg2{
-            left: 48px;
-            top: 112px;
+        .moveg2 {
+            top: 76px;
         }
-
-        .moveg3{
-            top: 112px;
+        .moveg3 {
+            top: 76px;
         }
-
-        .moveg4{
-            left: 24px;
-            top: 104px;
+        .moveg4 {
+            top: 76px;
         }
-
-        .moveg5{
-            top: 112px;
-            left: 0;
+        .moveg5 {
+            top: 71px;
         }
-
-        .moveg6{
-            left: 8px;
-            top: 104px;
+        .moveg6 {
+            top: 71px;
         }
-
-        .moveg7{
-            top: 104px;
+        .moveg7 {
+            top: 71px;
         }
-
-        .moveg8{
-            top: 96px;
+        .moveg8 {
+            top: 66px;
         }
-
         .moveg9{
-            top: 96px;
+            top: 66px;
         }
-
         .moveg10{
-            top: 88px;
+            top: 61px;
         }
 
     </style>
