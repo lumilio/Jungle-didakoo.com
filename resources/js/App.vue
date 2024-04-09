@@ -29,7 +29,9 @@ export default {
             }
             store.commit('LOG_OUT_USER');
         }
-        document.getElementById('loader').remove()
+        setTimeout(() =>{
+            document.getElementById('loader').remove()
+        },500);
     }
 }
 </script>
