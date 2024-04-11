@@ -6,11 +6,11 @@
             <div class="modal-content container-sm d-flex flex-column align-items-center">
                 <div class="d-flex container-sm align-items-center justify-content-between flex-row">
                     <img class="modal_logo" src="../../../images/extra_objects/ddd.jpg">
-                    <span class="version_sign">v 1.0.0</span>
+                    <span class="version_sign">v 1.0.3</span>
                 </div>
                 <div v-if="checkGameStatus" class="console-screen d-flex justify-content-center align-items-center">
-                    <p  class="main_message">
-                        <span v-html="mainMessage"></span>
+                    <p  class="main_message" >
+                        <span v-html="mainMessage" :style="{fontSize: gameFinished ? '21px' : '17px'}"></span>
                     </p>
                 </div>
                 <div v-if="!canStart" class="console-screen d-flex justify-content-center align-items-center">
@@ -41,6 +41,7 @@
 <script>
 import Button from "../Button/Button.vue";
 import store from "../../store";
+import passMessages from "../../constants/gameMode"
 
 export default {
     props: {
@@ -83,7 +84,8 @@ export default {
     data () {
         return {
             canStart:this.delay,
-            timeoutIndicator: null
+            timeoutIndicator: null,
+            gameFinished: false
         }
     },
     computed: {
@@ -106,25 +108,27 @@ export default {
             }
 
             if (this.user && !this.message) {
-                let copy = `You must keep ${this.gameModeLevel} flowers to play ${this.nftSunflowerPoints} / ${this.gameModeLevel} ... `
+                let copy = `${passMessages[this.gameModeLevel]} required...`
 
                 if (this.nftSunflowerPoints >= this.gameModeLevel) {
-                    copy += '<span style="color: green;">You can play</span>'
+                    copy += ' <span style="color: green;">You can play</span>'
                 } else {
-                    copy += '<span style="color: #ee3635;">You can\'t play</span>'
+                    copy += ' <span style="color: #ee3635;">You can\'t play</span>'
                 }
 
                 return copy
             }
 
+           if(this.message){
+               this.gameFinished = true;
+           }
             return this.message
                 ? this.message
                 : 'Login required' + ' <i class="fa-solid fa-bars"></i>' + ' <i class="fa-solid fa-power-off"></i>'
         },
     },
     created() {
-
-        if(this.gameStarted && !this.canStart){
+        if(this.gameStarted && !this.canStart && this.user){
             let timeout = 4
             let interval = setInterval(() => {
                 this.timeoutIndicator = this.numberToTime(timeout)
@@ -137,6 +141,23 @@ export default {
                 timeout --;
             },1000)
         }
+    },
+    watch: {
+        user: function (value){
+            if(value){
+                let timeout = 4
+                let interval = setInterval(() => {
+                    this.timeoutIndicator = this.numberToTime(timeout)
+                    if(!timeout){
+                        clearInterval(interval)
+                        this.canStart = true
+                        this.closeModal();
+                        this.$emit("handelReadyToStart")
+                    }
+                    timeout --;
+                },1000)
+            }
+        },
     },
     methods: {
         numberToTime(time){

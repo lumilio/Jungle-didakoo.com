@@ -1,30 +1,29 @@
 <template>
     <div class="modal1" v-if="show">
-        <div class="modal-overlay1"></div>
+        <div class="modal-overlay1" @click="closeModal"></div>
         <div class="connect-modal-content">
-            <div class="d-flex container-sm align-items-center justify-content-between flex-row">
+            <div style='margin-bottom:10px' class="d-flex container-sm align-items-center justify-content-between flex-row">
                 <img class="modal_logo" style='width:100px;' src="../../../images/extra_objects/ddd.jpg">
-                <span class="version_sign text-white">v 1.0.0</span>
+                <span class="version_sign text-white">v 1.0.3</span>
             </div>
-            <div class="wallet-login-title">
+            <!-- <div class="wallet-login-title">
                 <h2 class=" mt-4 mb-5 ml-3" style='font-family: "VT323", monospace; color:white;'>
                     Select a way to login
                 </h2>
-            </div>
-
+            </div> -->
             <div class="web3-login-buttons">
                 <button class="WalletCoinButton" id="guest" @click="web3Login('guest')">
                     <img :src=Guest alt="guest" class="imgSize">
-                    <p class="WalletCoinButtonText"> GUEST </p>
+                    <p class="WalletCoinButtonText"> GUEST ( FREE ) </p>
                 </button>
                 <button class="WalletCoinButton" @click="web3Login('metamask')" id="metamask">
                     <img :src=MetamaskWalletImg alt="MetamaskWallet" class="imgSize">
                     <p class="WalletCoinButtonText"> METAMASK </p>
                 </button>
-                <button class="WalletCoinButton" @click="web3Login('coinbase')" id="coinbase">
+                <!-- <button class="WalletCoinButton" @click="web3Login('coinbase')" id="coinbase">
                     <img :src=CoinBaseWallet alt="MetamaskWallet" class="imgSize">
                     <p class="WalletCoinButtonText"> COINBASE </p>
-                </button>
+                </button> -->
             </div>
             <span v-if="!inGame" class="close1" @click="closeModal" >&times;</span>
             <slot></slot>
@@ -257,6 +256,7 @@ export default {
                       if(result.status !== 200){
                           throw "Bad request";
                       }
+                      this.$emit('login')
                         store.commit('LOG_IN_USER', true);
                         store.commit('SET_USER_ADDRESS', result.data.address);
                         this.userData = {address: result.data.address, balance: 0, power: 0, color_id: 1};
@@ -267,28 +267,24 @@ export default {
                     }
                     let provider = {};
 
-                    // if (!window.ethereum) {
-                    //     toastr.error('MetaMask not detected.Please install MetaMask first.');
-                    //     return;
-                    // }
-                     try {
+                    if (!window.ethereum) {
+                        toastr.error('MetaMask not found.');
+                        return;
+                    }
 
-                            if (this.isMobile && wallet === 'metamask' && !window.ethereum) {
-                                window.location = 'https://metamask.app.link/dapp/'+process.env.MIX_SERVER_APP_URL;
-                            }
-
-                            provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
-                            provider = new ethers.providers.Web3Provider(provider);
-                        }catch (e) {
-                            if (wallet === 'metamask'){
-
-                                provider = new ethers.providers.Web3Provider(window.ethereum);
-
-                            }else{
-                                toastr.error('Coinbase not detected.Please install Coinbase first.');
-                            }
-
+                    try {
+                        if (this.isMobile && wallet === 'metamask' && !window.ethereum) {
+                            window.location = 'https://metamask.app.link/dapp/'+process.env.MIX_SERVER_APP_URL;
                         }
+                        provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
+                        provider = new ethers.providers.Web3Provider(provider);
+                    }catch (e) {
+                        if (wallet === 'metamask'){
+                            provider = new ethers.providers.Web3Provider(window.ethereum);
+                        }else{
+                            toastr.error('Coinbase not detected.Please install Coinbase first.');
+                        }
+                    }
 
                     let response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-login-message');
                     const message = await response.text();
@@ -321,6 +317,7 @@ export default {
 
                     var alias = "player_" + year + "" + month + "" + day + "" + hour + "" + min + "" + sec + "";
                     if (data === "OK") {
+                        this.$emit('login')
                         store.commit('LOG_IN_USER', true)
                         store.commit('SET_USER_ADDRESS', address)
                         store.commit('TOGGLE_WALLET_MODAL')
@@ -426,6 +423,7 @@ export default {
             }
     },
     mounted () {
+        toastr.options.timeOut = 1500;
         this.checkIfMobile();
         window.addEventListener('resize', this.checkIfMobile);
     },
@@ -466,7 +464,7 @@ export default {
     background: black;
     padding: 20px;
     width: 350px;
-    height: 440px;
+    /* height: 440px; */
     overflow: auto;
     position: relative;
     display: flex;
@@ -501,7 +499,7 @@ export default {
     text-transform: uppercase;
     background-clip: border-box;
     color: #fff;
-    font-size: 14px;
+    font-size: 13px;
 }
 .WalletCoinButton{
     background: black;

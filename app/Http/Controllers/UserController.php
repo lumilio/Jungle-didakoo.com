@@ -8,9 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function getUsers(): \Illuminate\Http\JsonResponse
+    public function getUsers(Request $request): \Illuminate\Http\JsonResponse
     {
-        $players = Player::query()->orderBy('power', 'desc')->get();
+        $players = Player::query()
+            ->orderBy('power', 'desc')
+            ->limit($request->query('page') ? $request->query('page') * 60 : null)
+            ->get();
+        
         return response()->json(['users' => $players]);
     }
     public function getUserByWalletAddress(Request $request, $address): \Illuminate\Http\JsonResponse

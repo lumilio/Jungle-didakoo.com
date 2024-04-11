@@ -489,7 +489,7 @@ body, .centratore {
     }
 }
 
-@media screen and (min-width: 370px) and (min-height: 582px){
+@media screen and (min-width: 370px) and (min-height: 538px){
     .board{
         width: 330px;
         /* height: 450px; */
@@ -715,7 +715,7 @@ body, .centratore {
     )
 }
 
-@media screen and (min-width: 350px) and (min-height: 550px){
+@media screen and (min-width: 350px) {
     .pepar{
         width: 350px;
         /* height: 450px; */
@@ -749,7 +749,7 @@ body, .centratore {
     }
 
     .connect-modal-content {
-        height: 380px !important;
+        //height: 380px !important;
     }
 }
 
@@ -785,7 +785,7 @@ body, .centratore {
     border-radius: 8px;
     /* width: 350px; */
     margin: 30px 30px 30px 30px;
-    padding-bottom: 40px;
+    /* padding-bottom: 40px; */
     transition: 0.5s ease;
     margin-top: 10px;
     animation: pulse 3s infinite;

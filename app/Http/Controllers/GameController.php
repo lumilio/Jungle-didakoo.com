@@ -23,22 +23,25 @@ class GameController extends Controller
             if ($request->multiPlay){
                 $status = 'pending';
             }
-            $colorsCaseA = [
-                "black" => rand(5, 6),
-                "board" => 1,
-                "white" => rand(5, 6),
-            ];
-            while ($colorsCaseA["black"] === $colorsCaseA["white"]) {
-                $colorsCaseA["white"] = rand(5, 6);
+            do{
+                $colorsCaseA = [
+                    "black" => rand(5, 6),
+                    "board" => 1,
+                    "white" => rand(5, 6),
+                ];
             }
-            $colorsCaseB = [
-                "black" => rand(1, 4),
-                "board" => 2,
-                "white" => rand(1, 4),
-            ];
-            while ($colorsCaseB["black"] === $colorsCaseB["white"]) {
-                $colorsCaseB["white"] = rand(1, 4);
+            while ($colorsCaseA["black"] === $colorsCaseA["white"]);
+            do{
+                $colorsCaseB = [
+                    "black" => rand(1, 4),
+                    "board" => 2,
+                    "white" => rand(1, 4),
+                ];
             }
+            while (($colorsCaseB["black"] === $colorsCaseB["white"]) ||
+            ($colorsCaseB["white"] === 4 && $colorsCaseB["black"] === 2) ||
+            ($colorsCaseB["black"] === 4 && $colorsCaseB["white"] === 2)
+            );
             $randomColors = rand(0, 1) ? $colorsCaseA : $colorsCaseB;
             GuestGame::create([
                 'creator' => $player,
@@ -65,13 +68,25 @@ class GameController extends Controller
                 ];
             }else{
                 do{
-                    $randomColors = [
-                        "black" => rand(1, 4),
-                        "board" => 2,
-                        "white" => $player->color_id,
+                    $colorsCaseA = [
+                        "black" => rand(5, 6),
+                        "board" => 1,
+                        "white" => rand(5, 6),
                     ];
                 }
-                while ($randomColors["black"] === $randomColors["white"]);
+                while ($colorsCaseA["black"] === $colorsCaseA["white"]);
+                do{
+                    $colorsCaseB = [
+                        "black" => rand(1, 4),
+                        "board" => 2,
+                        "white" => rand(1, 4),
+                    ];
+                }
+                while (($colorsCaseB["black"] === $colorsCaseB["white"]) ||
+                       ($colorsCaseB["white"] === 4 && $colorsCaseB["black"] === 2) ||
+                       ($colorsCaseB["black"] === 4 && $colorsCaseB["white"] === 2)
+                );
+                $randomColors = rand(0, 1) == 0 ? $colorsCaseA : $colorsCaseB;
             }
             Game::create([
                 'creator_id' => $player->id,
@@ -104,10 +119,24 @@ class GameController extends Controller
                             'state' => $game->state,
                         ]);
                         $game->delete();
-                        $creator = $newGame->creator;
-                        $newGame['opponent'] = ['wallet_address' => $newGame->opponent];
-                        $newGame['creator'] = ['wallet_address' => $newGame->creator];
-                        event(new ConnectGame($creator));
+                        $address = $newGame->creator;
+                        if ($newGame->creator !== $player) {
+                            $creator = Player::where('wallet_address', $newGame->creator)->first();
+                            if($creator !== null){
+                                $newGame['opponent'] = ['wallet_address' => $newGame->opponent];
+                                $newGame['creator'] = [
+                                    'wallet_address' => $creator->wallet_address,
+                                    'color_id' => $creator->color_id];
+                            }else{
+                                $newGame['opponent'] = ['wallet_address' => $newGame->opponent];
+                                $newGame['creator'] = ['wallet_address' => $newGame->creator];
+                            }
+                        }else{
+                            $newGame['opponent'] = ['wallet_address' => $newGame->opponent];
+                            $newGame['creator'] = ['wallet_address' => $newGame->creator];
+                        }
+
+                        event(new ConnectGame($address));
                         return response()->json(['message' => 'success', 'game' => $newGame]);
                     }
                 }else{
@@ -120,11 +149,36 @@ class GameController extends Controller
                             'opponent' => $player,
                             'status' => 'started'
                         ]);
+                        $game['opponent'] = ['wallet_address' => $game->opponent];
                         $game = GuestGame::query()->where('url', $url)->first();
                         event(new ConnectGame($game->creator));
                     }
-                    $game['opponent'] = ['wallet_address' => $game->opponent];
-                    $game['creator'] = ['wallet_address' => $game->creator];
+                    if ($game->opponent){
+                        if ($game->opponent === $player){
+                            $creator = Player::where('wallet_address', $game->creator)->first();
+                            if($creator !== null){
+                                $game['opponent'] = ['wallet_address' => $game->opponent];
+                                $game['creator'] = ['wallet_address' => $game->creator,
+                                      'color_id' => $creator->color_id];
+                            }else{
+                                $game['opponent'] = ['wallet_address' => $game->opponent];
+                                $game['creator'] = ['wallet_address' => $game->creator];
+                            }
+                        }else{
+                            $opponent = Player::where('wallet_address', $game->opponent)->first();
+                            if($opponent !== null){
+                                $game['opponent'] = ['wallet_address' => $game->opponent,
+                                      'color_id' => $opponent->color_id];
+                                $game['creator'] = ['wallet_address' => $game->creator];
+                            }else{
+                                $game['opponent'] = ['wallet_address' => $game->opponent];
+                                $game['creator'] = ['wallet_address' => $game->creator];
+                            }
+                        }
+                    }else{
+                        $game['opponent'] = ['wallet_address' => $game->opponent];
+                        $game['creator'] = ['wallet_address' => $game->creator];
+                    }
                     return response()->json(['message' => 'success', 'game' => $game]);
                 }
 
@@ -152,13 +206,30 @@ class GameController extends Controller
                 ]);
                 $game = GuestGame::query()->where('url', $url)->first();
                 $creator = $game->creator;
-                $game['opponent'] = ['wallet_address' => $game->opponent];
-                $game['creator'] = ['wallet_address' => $game->creator];
+                if ($player->wallet_address === $game->creator){
+                    $game['opponent'] = ['wallet_address' => $game->opponent];
+                    $game['creator'] = ['wallet_address' => $game->creator,
+                          'color_id' => $player->color_id];
+                }
+                if ($player->wallet_address === $game->opponent){
+                    $game['opponent'] = ['wallet_address' => $game->opponent,
+                          'color_id' => $player->color_id];
+                    $game['creator'] = ['wallet_address' => $game->creator];
+                }
                 event(new ConnectGame($creator));
                 return response()->json(['message' => 'success', 'game' => $game]);
             }
-            $game['opponent'] = ['wallet_address' => $game->opponent];
-            $game['creator'] = ['wallet_address' => $game->creator];
+            if ($player->wallet_address === $game->creator){
+                $game['opponent'] = ['wallet_address' => $game->opponent];
+                $game['creator'] = ['wallet_address' => $game->creator,
+                      'color_id' => $player->color_id];
+            }
+            if ($player->wallet_address === $game->opponent){
+                $game['opponent'] = ['wallet_address' => $game->opponent,
+                      'color_id' => $player->color_id];
+                $game['creator'] = ['wallet_address' => $game->creator];
+            }
+
             return response()->json(['message' => 'success', 'game' => $game]);
 
         }

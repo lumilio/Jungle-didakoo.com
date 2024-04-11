@@ -72,10 +72,14 @@ export default {
 
     methods: {
         navigateToRank(){
-            this.$router.push({path: 'rank'})
+            if(this.user){
+                this.$router.push({path: 'rank'})
+            }
         },
         navigateToInfo(){
-            this.$router.push({path: 'info'})
+            if(this.user){
+                this.$router.push({path: 'info'})
+            }
         },
         async openModal() {
             if (this.user) {
@@ -102,6 +106,7 @@ export default {
     },
 
     mounted () {
+        toastr.options.timeOut = 1500;
         console.log("Menu Page Component mounted.");
     },
 
@@ -111,5 +116,10 @@ export default {
 <style>
 .pointer{
     cursor: pointer;
+}
+
+#toast-container > .toast-info {
+    background-image: url("../../../images/extra_objects/arrow-right-from.png") !important;
+    background-size: 24px 24px;
 }
 </style>

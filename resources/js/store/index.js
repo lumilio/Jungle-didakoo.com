@@ -4,7 +4,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    user: null,
+    user: localStorage.getItem('user') ?? null,
     address: localStorage.getItem('address') ?? null,
     playerNumber: localStorage.getItem('playerNumber') ?? null,
     turn: "white",
@@ -51,6 +51,7 @@ const store = new Vuex.Store({
       ];
     },
     LOG_IN_USER(state, val) {
+        localStorage.setItem('user', val)
         state.user = val;
     },
     SET_USER_ADDRESS(state, val) {
@@ -66,6 +67,8 @@ const store = new Vuex.Store({
       state.userData = UsersData;
     },
     LOG_OUT_USER (state){
+        localStorage.removeItem('address')
+        localStorage.removeItem('user')
         state.user = null;
         state.address = null;
     },
