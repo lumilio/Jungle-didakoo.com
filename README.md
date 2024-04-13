@@ -1,4 +1,4 @@
-<p align="center"><a href="https://didakoo.com" target="_blank"><img src="https://imgur.com/a/WYn6O5W" width="400"></a></p>
+<p align="center"><a href="https://didakoo.com" target="_blank"><img src="https://imgur.com/a/WYn6O5W.jpg" width="400"></a></p>
 
 
 ## About Laravel
