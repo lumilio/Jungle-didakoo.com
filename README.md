@@ -1,7 +1,7 @@
 ![Imgur Image](http://i.imgur.com/3SqZpCN.jpg)
 
 
-## About Laravel
+## About 
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
