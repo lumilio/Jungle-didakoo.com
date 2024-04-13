@@ -1,5 +1,7 @@
 <p align="center"><a href="https://didakoo.com" target="_blank"><img src="https://imgur.com/3SqZpCN" width="400"></a></p>
 
+<blockquote class="imgur-embed-pub" lang="en" data-id="3SqZpCN"><a href="https://imgur.com/3SqZpCN">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
