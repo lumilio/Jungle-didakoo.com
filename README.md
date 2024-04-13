@@ -1,5 +1,7 @@
 <p align="center"><a href="https://didakoo.com" target="_blank"><img src="https://imgur.com/a/WYn6O5W.jpg" width="400"></a></p>
 
+![Imgur Image](http://i.imgur.com/zTONrOD.jpg)
+
 
 ## About Laravel
 
