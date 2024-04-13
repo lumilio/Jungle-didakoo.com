@@ -1,4 +1,4 @@
-<p align="center"><a href="https://didakoo.com" target="_blank"> ![Imgur Image](http://i.imgur.com/3SqZpCN.jpg) width="400"></a></p>
+![Imgur Image](http://i.imgur.com/3SqZpCN.jpg)
 
 
 
