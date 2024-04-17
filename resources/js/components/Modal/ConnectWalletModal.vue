@@ -4,7 +4,7 @@
         <div class="connect-modal-content">
             <div style='margin-bottom:10px' class="d-flex container-sm align-items-center justify-content-between flex-row">
                 <img class="modal_logo" style='width:100px;' src="../../../images/extra_objects/ddd.jpg">
-                <span class="version_sign text-white">v 1.0.2</span>
+                <span class="version_sign text-white">v 1.0.3</span>
             </div>
             <!-- <div class="wallet-login-title">
                 <h2 class=" mt-4 mb-5 ml-3" style='font-family: "VT323", monospace; color:white;'>
