@@ -393,7 +393,7 @@ export default {
         getAnimalByCode(x, y) {
             // getting animal info with square coordinates
             let square = this.squares[y][x];
-            if (square.content?.piece) {
+            if (square?.content?.piece) {
                 return {
                     animal: square.content.piece,
                     color: square.content.color,
