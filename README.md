@@ -7,6 +7,7 @@ An independent videogame that integrates Ethereum Blockchain smart contracts int
 
 
 Check the [Game pepar](https://medium.com/@didakoo/jungle-game-pepar-afd5fb84f18e)
+
 Play now  ---> [didakoo.com](https://didakoo.com) 
 
 
