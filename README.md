@@ -3,7 +3,7 @@
 
 ## Version 1.0.3
 
-An independent videogame that integrates a custom minimax algorithm and Ethereum Blockchain smart contracts into a single-page website built in PHP and JavaScript, it also recognize some of the most popular Ethereum nfts and allow you to unlock extra contents for your avatar. The project is free and open-source. You can play as guest in your regular browser or join with Metamask on Ethereum main network. 
+An independent multiplyer videogame that integrates a custom minimax algorithm and Ethereum Blockchain smart contracts into a single-page website built in PHP and JavaScript, it also recognize some of the most popular Ethereum nfts and allow you to unlock extra contents for your avatar. The project is free and open-source. You can play as guest in your regular browser or join with Metamask on Ethereum main network. 
 
 
 Check the [Game pepar](https://medium.com/@didakoo/jungle-game-pepar-afd5fb84f18e)
