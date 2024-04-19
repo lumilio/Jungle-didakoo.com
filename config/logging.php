@@ -80,6 +80,12 @@ return [
                 'stream' => 'php://stderr',
             ],
         ],
+        
+        'crontab' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/crontab.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
 
         'syslog' => [
             'driver' => 'syslog',
