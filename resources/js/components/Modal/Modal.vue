@@ -10,7 +10,7 @@
                 </div>
                 <div v-if="checkGameStatus" class="console-screen d-flex justify-content-center align-items-center">
                     <p  class="main_message" >
-                        <span v-html="mainMessage" :style="{fontSize: gameFinished ? '21px' : '17px'}"></span>
+                        <span v-html="mainMessage" :style="{fontSize: gameFinished ? '21px' : '17px', color: finishedText ?? finishedText}"></span>
                     </p>
                 </div>
                 <div v-if="!canStart" class="console-screen d-flex justify-content-center align-items-center">
@@ -85,7 +85,8 @@ export default {
         return {
             canStart:this.delay,
             timeoutIndicator: null,
-            gameFinished: false
+            gameFinished: false,
+            finishedText: null,
         }
     },
     computed: {
@@ -121,6 +122,9 @@ export default {
 
            if(this.message){
                this.gameFinished = true;
+           }
+           if (this.message){
+               this.finishedText = this.message === 'You Lose' ? 'red' : 'green';
            }
             return this.message
                 ? this.message

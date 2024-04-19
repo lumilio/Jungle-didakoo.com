@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\ConnectGame;
 use App\Events\DoStep;
+use App\Events\QuitGame;
 use App\Game;
 use App\GuestGame;
 use App\Player;
@@ -349,7 +350,7 @@ class GameController extends Controller
         if ($player === $game->creator->wallet_address || $player === $game->opponent->wallet_address){
             $creator = Player::query()->where('wallet_address', $player)->first();
 
-            if ($win){
+            if ($win === 'white'){
                 $creator->update([
                     "power" => $creator->power + 3,
                     'wins' => $creator->wins + 1
@@ -359,6 +360,7 @@ class GameController extends Controller
                     "power" => $creator->power + 1
                 ]);
             }
+//            event(new QuitGame($player));
             $game->update([
                 'status' => "finished"
             ]);

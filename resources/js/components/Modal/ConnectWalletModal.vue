@@ -44,7 +44,8 @@ import Nft10Monkey2ABI from '../../abis/nft10Monkey2ABI.json'
 import Nft11PunksABI from '../../abis/nft11PunksABI.json'
 import Nft12MonsterABI from '../../abis/nft12MonsterABI.json'
 import Nft13DoodleABI from '../../abis/nft13DoodleABI.json'
-import Nft14SandboxABI from '../../abis/nft14SandboxABI.json'
+import Nft14Sandbox1ABI from '../../abis/nft14Sandbox1ABI.json'
+import Nft14Sandbox2ABI from '../../abis/nft14Sandbox2ABI.json'
 import Nft15TotemABI from '../../abis/nft15TotemABI.json'
 import Nft16NikeABI from '../../abis/nft16NikeABI.json'
 import Nft17AdidasABI from '../../abis/nft17AdidasABI.json'
@@ -153,10 +154,15 @@ const dataNftCollection = [
         contractABI: Nft13DoodleABI,
     },
     {
-        nftName: 'nft_14_sandbox',
+        nftName: 'nft_14_sandbox1',
         nftContractAddress: '0x9d305a42A3975Ee4c1C57555BeD5919889DCE63F',
-        contractABI: Nft14SandboxABI,
+        contractABI: Nft14Sandbox1ABI,
         isPolygon: true,
+    },
+    {
+        nftName: 'nft_14_sandbox2',
+        nftContractAddress: '0x7Fbf5C9aF42A6D146dCC18762F515692CD5f853B',
+        contractABI: Nft14Sandbox2ABI,
     },
     {
         nftName: 'nft_15_totem',
