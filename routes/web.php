@@ -26,7 +26,6 @@ Route::get('/api/getSession', 'Web3LoginController@getSession');
 Route::get('/api/logout', 'Web3LoginController@logout');
 Route::post('/api/login-as-guest', 'Web3LoginController@loginAsGuest');
 Route::post('/api/finish-game', 'GameController@finishedGame');
-Route::post('/api/quit-game', 'GameController@quitGame');
 Route::get('/api/delete-game/{url}', 'GameController@deleteGame');
 Route::post('/api/set-state', 'GameController@setState');
 Route::post('/api/update-player-last-activity', 'Web3LoginController@updatePlayerLastActivity');
