@@ -289,15 +289,12 @@ export default {
         const pusher = new Pusher('aaf9c43e10a6d5e65efe', {
             cluster: 'eu'
         });
-            // console.log(data,'data')
-            // const channel = pusher.subscribe('quit.' + store.state.address)
-            // channel.bind('App\\Events\\QuitGame', (data) => {
-            //     {
-            //         setTimeout(() => {
-            //             this.alertWin('white')
-            //         }, 500)
-            //     }
-            // });
+        const channel = pusher.subscribe('quit.' + store.state.address)
+        channel.bind('App\\Events\\QuitGame', (data) => {
+            setTimeout(() => {
+                this.alertWin('white')
+            }, 500)
+        });
 
         if (store.state.address && this.game.status === "started"){
             // TODO subscribe

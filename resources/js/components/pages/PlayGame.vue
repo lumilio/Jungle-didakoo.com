@@ -382,12 +382,9 @@ export default {
 
         async quitGame() {
             try {
-                await axios.get(
-                    `/api/delete-game/${this.$route.params.id}`
-                );
                 localStorage.removeItem('canStart')
                 if (this.readyToStart) {
-                    if(!this.game.opponent){
+                    if(this.game.opponent){
                         await axios.post('/api/finish-game',{
                             player: this.address,
                             win: 'black',
