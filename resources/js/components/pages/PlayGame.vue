@@ -132,7 +132,7 @@
                             >
                                 <template v-for="(item, key) in colorIconNft(colorUserBottom)" v-if="(creatorUser ? creator : opponent)?.[key] > 0 && item">
                                     <i v-if="item?.type === 'icon'"
-                                       :style="{fontSize: item?.size, marginRight: '5px', color: [3,5].includes(colorPowerBottom) ? 'white' : 'black'}"
+                                       :style="{fontSize: item?.size, marginRight: '5px', color: [3,5].includes(colorUserBottom) ? 'white' : 'black'}"
                                        :class=item.class></i>
                                     <img v-else :style="{width: item?.size ? item.size : '30px', marginRight: '5px'}" :src="item?.image ? item.image : item" alt=""/>
                                 </template>
@@ -334,8 +334,7 @@ export default {
             let message = color === 'white' ? wonMessage : 'You Lose'
             this.buttons = [
                 {
-                    title: 'QUIT',
-                    image: '../../../images/board/animals/icon-17.png',
+                    title: 'QUIT END',
                     onclick: this.finishedGame
                 }
             ];
@@ -380,17 +379,23 @@ export default {
                 this.$router.push("/game");
             }
         },
+
         async quitGame() {
             try {
-                    await axios.get(
-                        `/api/delete-game/${this.$route.params.id}`
-                    );
-                    localStorage.removeItem('canStart')
-                    if (this.readyToStart) {
-                        return this.$router.push("/rank");
+                localStorage.removeItem('canStart')
+                if (this.readyToStart) {
+                    if(this.game.opponent){
+                        await axios.post('/api/finish-game',{
+                            player: this.address,
+                            win: 'black',
+                            game_id: this.$route.params.id
+                        })
+                        return this.gameOver('black');
+                    }else{
+                        return this.$router.push("/rank")
                     }
-                    return this.$router.push("/game");
-
+                }
+                return this.$router.push("/game");
             } catch (e) {
                 console.log(e);
             }

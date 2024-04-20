@@ -7,11 +7,12 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ConnectGame implements ShouldBroadcastNow
+class QuitGame implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $address;
+
     public function __construct($address)
     {
         $this->address = $address;
@@ -19,14 +20,14 @@ class ConnectGame implements ShouldBroadcastNow
 
     public function broadcastOn()
     {
-        return ['connect.' . $this->address];
+        return ['quit.' . $this->address];
     }
 
     public function broadcastWith()
     {
         // Additional data you want to send with the event
         return [
-            'message' => 'connected',
+            'message' => 'quit',
         ];
     }
 }

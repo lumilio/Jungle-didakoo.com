@@ -534,11 +534,6 @@ export default {
                 localStorage.removeItem('canStart')
                 this.$emit('gameover',winner)
                 this.playAgain()
-                return;
-                alert(winner + ' Won in ' + this.turnNumber + ' moves !')
-                if(confirm("want to play again")){
-                    this.playAgain()
-                }
             }catch (e) {
                 console.log(e,'error message')
             }
