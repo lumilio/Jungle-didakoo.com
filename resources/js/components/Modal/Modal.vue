@@ -10,7 +10,7 @@
                 </div>
                 <div v-if="checkGameStatus" class="console-screen d-flex justify-content-center align-items-center">
                     <p  class="main_message" >
-                        <span v-html="mainMessage" :style="{fontSize: gameFinished ? '21px' : '17px', color: finishedText ?? finishedText}"></span>
+                        <span v-html="mainMessage" :class="finishedText ? 'blink-text' : ''" :style="{fontSize: gameFinished ? '21px' : '17px', color: finishedText ?? finishedText}"></span>
                     </p>
                 </div>
                 <div v-if="!canStart" class="console-screen d-flex justify-content-center align-items-center">
@@ -183,6 +183,17 @@ export default {
 </script>
 
 <style lang="scss">
+
+@keyframes blink {
+    0% { opacity: 0; }
+    35% { opacity: 0; }
+    36% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+.blink-text {
+    animation: blink 0.9s infinite;
+}
 
 .notification {
   position: fixed;
