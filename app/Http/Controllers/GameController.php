@@ -356,7 +356,9 @@ class GameController extends Controller
                     'wins' => $creator->wins + 1
                 ]);
             }else{
-                $winner_address = $game->opponent->wallet_address;
+                if ($game->opponent){
+                    $winner_address = $game->opponent->wallet_address;
+                }
                 $creator->update([
                     "power" => $creator->power + 1
                 ]);

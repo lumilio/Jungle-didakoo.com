@@ -334,7 +334,7 @@ export default {
             let message = color === 'white' ? wonMessage : 'You Lose'
             this.buttons = [
                 {
-                    title: 'QUIT END',
+                    title: 'END',
                     onclick: this.finishedGame
                 }
             ];
