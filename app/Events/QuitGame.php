@@ -27,7 +27,7 @@ class QuitGame implements ShouldBroadcastNow
     {
         // Additional data you want to send with the event
         return [
-            'message' => 'quit',
+            'message' => $this->address,
         ];
     }
 }

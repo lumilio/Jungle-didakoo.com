@@ -292,7 +292,9 @@ export default {
         const channel = pusher.subscribe('quit.' + store.state.address)
         channel.bind('App\\Events\\QuitGame', (data) => {
             setTimeout(() => {
-                this.alertWin('white')
+                localStorage.removeItem('canStart')
+                this.$emit('gameover','white')
+                this.playAgain()
             }, 500)
         });
 
