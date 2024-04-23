@@ -384,7 +384,7 @@ export default {
             try {
                 localStorage.removeItem('canStart')
                 if (this.readyToStart) {
-                    if(this.game.opponent){
+                    if(!this.checkGame){
                         await axios.post('/api/finish-game',{
                             player: this.address,
                             win: 'black',
@@ -392,7 +392,20 @@ export default {
                         })
                         return this.gameOver('black');
                     }else{
-                        return this.$router.push("/rank")
+                        if(this.game.opponent){
+                            if(this.game.opponent?.wallet_address === null){
+                                return this.$router.push("/rank")
+                            }
+                            await axios.post('/api/finish-game',{
+                                player: this.address,
+                                win: 'black',
+                                game_id: this.$route.params.id,
+                                type: 'quit'
+                            })
+                            return this.gameOver('black');
+                        }else{
+                            return this.$router.push("/rank");
+                        }
                     }
                 }
                 return this.$router.push("/game");

@@ -290,10 +290,17 @@ export default {
             cluster: 'eu'
         });
         const channel = pusher.subscribe('quit.' + store.state.address)
-        channel.bind('App\\Events\\QuitGame', (data) => {
-            setTimeout(() => {
+        channel.bind('App\\Events\\QuitGame',  (data) => {
+            setTimeout(async () => {
+                if (this.game.creator?.power && this.game.opponent?.power) {
+                    await axios.post('/api/finish-game', {
+                        player: this.address,
+                        win: 'white',
+                        game_id: this.id
+                    })
+                }
                 localStorage.removeItem('canStart')
-                this.$emit('gameover','white')
+                this.$emit('gameover', 'white')
                 this.playAgain()
             }, 500)
         });

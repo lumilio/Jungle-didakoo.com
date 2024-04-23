@@ -321,8 +321,9 @@ class GameController extends Controller
         $game_id = $request->game_id;
         $player = $request->player;
         $win  = $request->win;
+        $type = $request->type;
         if ($request->session()->has('isGuest')){
-            $game = GuestGame::where('url', $game_id)->where('status', 'started')->orWhere('status', 'finished')->first();
+            $game = GuestGame::where('url', $game_id)->where('status', 'started')->first();
             if(!$game){
                 return response()->json(['message' => 'Bed request'], 400);
             }
@@ -336,21 +337,33 @@ class GameController extends Controller
             if ($player === $game->opponent){
                 $winner_address = $game->creator;
             }
-            event(new QuitGame($winner_address));
             if ($player !== $game->opponent){
                 $winner_address = $game->opponent;
             }
 
-            event(new QuitGame($winner_address));
+            if($type){
+                event(new QuitGame($winner_address));
+            }
             return response()->json(['message' => 'finished']);
         }
         $game = Game::where('url', $game_id)->where('status', 'started')->first();
         $finishedGame = Game::where('url', $game_id)->where('status', 'finished')->first();
         if ($finishedGame){
+            $creator = Player::query()->where('wallet_address', $player)->first();
+            if ($win == 'white') {
+                $creator->update([
+                    "power" => $creator->power + 3,
+                    'wins' => $creator->wins + 1
+                ]);
+            } else {
+                $creator->update([
+                    "power" => $creator->power + 1
+                ]);
+            }
             return response()->json(['message' => 'finished']);
         }
         if(!$game){
-            $game = GuestGame::where('url', $game_id)->where('status', 'started')->orWhere('status', 'finished')->first();
+            $game = GuestGame::where('url', $game_id)->where('status', 'started')->first();
             if (!$game){
                 return response()->json(['message' => 'Bed request'], 400);
             }
@@ -364,29 +377,25 @@ class GameController extends Controller
             if ($player === $game->opponent){
                 $winner_address = $game->creator;
             }
-            event(new QuitGame($winner_address));
+            if($type){
+                event(new QuitGame($winner_address));
+            }
             return response()->json(['message' => $game]);
         }
         if ($player === $game->creator->wallet_address || $player === $game->opponent->wallet_address){
             $creator = Player::query()->where('wallet_address', $player)->first();
             $winner_address = $creator->wallet_address;
 
-            if ($win === 'white'){
+            if ($win == 'white'){
                 $creator->update([
                     "power" => $creator->power + 3,
                     'wins' => $creator->wins + 1
                 ]);
             }else{
-                if ($game->opponent){
-                    $winner_address = $game->opponent->wallet_address;
-                }
                 $creator->update([
                     "power" => $creator->power + 1
                 ]);
             }
-            $game->update([
-                'status' => "finished"
-            ]);
             if ($game->opponent){
                 if ($player === $game->creator->wallet_address){
                     $winner_address = $game->opponent->wallet_address;
@@ -394,8 +403,13 @@ class GameController extends Controller
                 if ($player === $game->opponent->wallet_address){
                     $winner_address = $game->creator->wallet_address;
                 }
-                event(new QuitGame($winner_address));
+                if($type){
+                    event(new QuitGame($winner_address));
+                }
             }
+            $game->update([
+                'status' => "finished"
+            ]);
             return response()->json(['message' => 'finished']);
         }else{
             return response()->json(['message' => 'Bed request'], 400);
