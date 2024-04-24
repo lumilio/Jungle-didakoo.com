@@ -35,6 +35,7 @@
       },
       color: {
           type: Number,
+          default: 0
       },
     }
   }
