@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\ConnectGame;
 use App\Events\DoStep;
+use App\Events\QuitGame;
 use App\Game;
 use App\GuestGame;
 use App\Player;
@@ -320,44 +321,102 @@ class GameController extends Controller
         $game_id = $request->game_id;
         $player = $request->player;
         $win  = $request->win;
+        $type = $request->type;
         if ($request->session()->has('isGuest')){
-            $game = GuestGame::where('url', $game_id)->where('status', 'started')->orWhere('status', 'finished')->first();
+            $game = GuestGame::where('url', $game_id)->where('status', 'started')->first();
             if(!$game){
                 return response()->json(['message' => 'Bed request'], 400);
             }
-
             $game->update([
                 'status' => "finished"
             ]);
+            $winner_address = $game->creator;
+            if ($player === $game->creator){
+                $winner_address = $game->opponent;
+            }
+            if ($player === $game->opponent){
+                $winner_address = $game->creator;
+            }
+            if ($player !== $game->opponent){
+                $winner_address = $game->opponent;
+            }
+
+            if($type){
+                event(new QuitGame($winner_address));
+            }
             return response()->json(['message' => 'finished']);
         }
         $game = Game::where('url', $game_id)->where('status', 'started')->first();
         $finishedGame = Game::where('url', $game_id)->where('status', 'finished')->first();
-        if ($finishedGame){
+        if ($finishedGame) {
             return response()->json(['message' => 'finished']);
         }
         if(!$game){
-            $game = GuestGame::where('url', $game_id)->where('status', 'started')->orWhere('status', 'finished')->first();
+            $game = GuestGame::where('url', $game_id)->where('status', 'started')->first();
             if (!$game){
                 return response()->json(['message' => 'Bed request'], 400);
             }
             $game->update([
                 'status' => "finished"
             ]);
-            return response()->json(['message' => 'finished']);
+            $winner_address = $game->creator;
+            if ($player === $game->creator){
+                $winner_address = $game->opponent;
+            }
+            if ($player === $game->opponent){
+                $winner_address = $game->creator;
+            }
+            if($type){
+                event(new QuitGame($winner_address));
+            }
+            return response()->json(['message' => $game]);
         }
-        if ($player === $game->creator->wallet_address || $player === $game->opponent->wallet_address){
-            $creator = Player::query()->where('wallet_address', $player)->first();
+        if ($player === $game->creator->wallet_address || $player === $game->opponent->wallet_address) {
+            $user = Player::query()->where('wallet_address', $player)->first();
 
-            if ($win){
-                $creator->update([
-                    "power" => $creator->power + 3,
-                    'wins' => $creator->wins + 1
+            if ($game->opponent) {
+                if($win === 'white'){
+                    if ($user->wallet_address === $game->creator->wallet_address) {
+                        $winner = $game->creator;
+                        $loser = $game->opponent;
+                    } else {
+                        $winner = $game->opponent;
+                        $loser = $game->creator;
+                    }
+                }else{
+                    if ($user->wallet_address === $game->creator->wallet_address) {
+                        $winner = $game->opponent;
+                        $loser = $game->creator;
+                    } else {
+                        $winner = $game->creator;
+                        $loser = $game->opponent;
+                    }
+                }
+
+                $winner->update([
+                    "power" => $winner->power + 3,
+                    'wins' => $winner->wins + 1
                 ]);
-            }else{
-                $creator->update([
-                    "power" => $creator->power + 1
+                $loser->update([
+                    "power" => $loser->power + 1
                 ]);
+
+                if($type){
+                    $winner_address = $winner->wallet_address;
+                    event(new QuitGame($winner_address));
+                }
+
+            }else {
+                if ($win) {
+                    $user->update([
+                        "power" => $user->power + 3,
+                        'wins' => $user->wins + 1
+                    ]);
+                } else {
+                    $user->update([
+                        "power" => $user->power + 1
+                    ]);
+                }
             }
             $game->update([
                 'status' => "finished"

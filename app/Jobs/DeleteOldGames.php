@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class DeleteOldGames implements ShouldQueue
 {
@@ -31,6 +32,8 @@ class DeleteOldGames implements ShouldQueue
     {
         try {
             Game::where('created_at', '<=', now()->subDay())->delete();
+            Log::channel('crontab')->info('Old games deleted successfully');
+
         } catch (\Exception $e) {
             logger()->error('Error while deleting old games');
             logger()->error($e->getMessage());
@@ -39,6 +42,8 @@ class DeleteOldGames implements ShouldQueue
 
         try {
             GuestGame::where('created_at', '<=', now()->subDay())->delete();
+            Log::channel('crontab')->info('Old guest games deleted successfully');
+            
         } catch (\Exception $e) {
             logger()->error('Error while deleting old guest games');
             logger()->error($e->getMessage());

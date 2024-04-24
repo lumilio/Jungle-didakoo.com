@@ -393,7 +393,7 @@ export default {
         getAnimalByCode(x, y) {
             // getting animal info with square coordinates
             let square = this.squares[y][x];
-            if (square.content?.piece) {
+            if (square?.content?.piece) {
                 return {
                     animal: square.content.piece,
                     color: square.content.color,
@@ -534,11 +534,6 @@ export default {
                 localStorage.removeItem('canStart')
                 this.$emit('gameover',winner)
                 this.playAgain()
-                return;
-                alert(winner + ' Won in ' + this.turnNumber + ' moves !')
-                if(confirm("want to play again")){
-                    this.playAgain()
-                }
             }catch (e) {
                 console.log(e,'error message')
             }

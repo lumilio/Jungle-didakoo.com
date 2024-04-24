@@ -61,9 +61,10 @@
                                 class="d-flex align-items-center flex-row flex-nowrap"
                             >
                                 <template v-for="(item, key) in colorIconNft(colorUserTop)" v-if="(creatorUser ? opponent : creator)?.[key] > 0 && item">
-                                    <i v-if="key === 'nft_3_battery'" style="font-size: 24px; margin-right: 5px;"
-                                       :style="{color: [3,5].includes(colorUserTop) ? 'white' : 'black'}" class="fa-solid fa-battery-full "></i>
-                                    <img style="width:30px;" :src="item" alt=""/>
+                                    <i v-if="item?.type === 'icon'"
+                                       :style="{fontSize: item?.size, marginRight: '5px', color: [3,5].includes(colorUserTop) ? 'white' : 'black'}"
+                                       :class=item.class></i>
+                                    <img v-else :style="{width: item?.size ? item.size : '30px', marginRight: '5px'}" :src="item?.image ? item.image : item" alt=""/>
                                 </template>
                             </div>
                             <span
@@ -130,9 +131,10 @@
                                 class="d-flex align-items-center flex-row flex-nowrap"
                             >
                                 <template v-for="(item, key) in colorIconNft(colorUserBottom)" v-if="(creatorUser ? creator : opponent)?.[key] > 0 && item">
-                                    <i v-if="key === 'nft_3_battery'" style="font-size: 24px; margin-right:  5px;"
-                                       :style="{color: [3,5].includes(colorUserBottom) ? 'white' : 'black'}" class="fa-solid fa-battery-full "></i>
-                                    <img v-else style="width:30px;" :src="item" alt=""/>
+                                    <i v-if="item?.type === 'icon'"
+                                       :style="{fontSize: item?.size, marginRight: '5px', color: [3,5].includes(colorUserBottom) ? 'white' : 'black'}"
+                                       :class=item.class></i>
+                                    <img v-else :style="{width: item?.size ? item.size : '30px', marginRight: '5px'}" :src="item?.image ? item.image : item" alt=""/>
                                 </template>
                             </div>
                             <span
@@ -216,7 +218,7 @@ export default {
     created() {
         this.buttons = [
             {
-              title: 'SHARE',
+              title: 'INVITE',
               image: '../../../images/board/piramids/piramid_4.png',
               onclick: this.share
             },
@@ -332,8 +334,7 @@ export default {
             let message = color === 'white' ? wonMessage : 'You Lose'
             this.buttons = [
                 {
-                    title: 'QUIT',
-                    image: '../../../images/board/animals/icon-17.png',
+                    title: 'END',
                     onclick: this.finishedGame
                 }
             ];
@@ -378,17 +379,36 @@ export default {
                 this.$router.push("/game");
             }
         },
+
         async quitGame() {
             try {
-                    await axios.get(
-                        `/api/delete-game/${this.$route.params.id}`
-                    );
-                    localStorage.removeItem('canStart')
-                    if (this.readyToStart) {
-                        return this.$router.push("/rank");
+                localStorage.removeItem('canStart')
+                if (this.readyToStart) {
+                    if(!this.checkGame){
+                        await axios.post('/api/finish-game',{
+                            player: this.address,
+                            win: 'black',
+                            game_id: this.$route.params.id
+                        })
+                        return this.gameOver('black');
+                    }else{
+                        if(this.game.opponent){
+                            if(this.game.opponent?.wallet_address === null){
+                                return this.$router.push("/rank")
+                            }
+                            await axios.post('/api/finish-game',{
+                                player: this.address,
+                                win: 'black',
+                                game_id: this.$route.params.id,
+                                type: 'quit'
+                            })
+                            return this.gameOver('black');
+                        }else{
+                            return this.$router.push("/rank");
+                        }
                     }
-                    return this.$router.push("/game");
-
+                }
+                return this.$router.push("/game");
             } catch (e) {
                 console.log(e);
             }

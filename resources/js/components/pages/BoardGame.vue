@@ -32,7 +32,7 @@
                         params: {multiPlay: false}
                     },
                     {
-                        title: 'INVITE P2',
+                        title: 'PLAYER 2',
                         image: '../../../images/extra_objects/iconaplay1.png',
                         onclick: this.createGame,
                         params: {multiPlay: true}

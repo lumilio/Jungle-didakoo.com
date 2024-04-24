@@ -289,6 +289,12 @@ export default {
         const pusher = new Pusher('aaf9c43e10a6d5e65efe', {
             cluster: 'eu'
         });
+        const channel = pusher.subscribe('quit.' + store.state.address)
+        channel.bind('App\\Events\\QuitGame',  async (data) => {
+            localStorage.removeItem('canStart')
+            this.$emit('gameover', 'white')
+        });
+
         if (store.state.address && this.game.status === "started"){
             // TODO subscribe
             const channel = pusher.subscribe('game.' + this.game.id + '.' + store.state.address );
@@ -739,17 +745,12 @@ export default {
             try {
                 await axios.post('/api/finish-game',{
                     player: this.address,
-                    win: winner === this.game?.creator?.wallet_address === this.address ? "white" : "black",
+                    win: winner,
                     game_id: this.id
                 })
                 localStorage.removeItem('canStart')
                 this.$emit('gameover',winner)
                 this.playAgain()
-                return;
-                alert(winner + ' Won in ' + this.turnNumber + ' moves !')
-                if(confirm("want to play again")){
-                    this.playAgain()
-                }
             }catch (e) {
                 console.log(e,'error message')
             }
