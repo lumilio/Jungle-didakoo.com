@@ -6,11 +6,11 @@
             <div class="modal-content container-sm d-flex flex-column align-items-center">
                 <div class="d-flex container-sm align-items-center justify-content-between flex-row">
                     <img class="modal_logo" src="../../../images/extra_objects/ddd.jpg">
-                    <span class="version_sign">v 1.0.3</span>
+                    <span class="version_sign">v 1.0.4</span>
                 </div>
                 <div v-if="checkGameStatus" class="console-screen d-flex justify-content-center align-items-center">
                     <p  class="main_message" >
-                        <span v-html="mainMessage" :class="finishedText ? 'blink-text' : ''" :style="{fontSize: gameFinished ? '21px' : '17px', color: finishedText ?? finishedText}"></span>
+                        <span v-html="mainMessage" :class="finishedText ? 'blink-text' : ''" :style="{fontSize: gameFinished ? '25px' : '17px', color: finishedText ?? finishedText}"></span>
                     </p>
                 </div>
                 <div v-if="!canStart" class="console-screen d-flex justify-content-center align-items-center">
@@ -192,7 +192,7 @@ export default {
 }
 
 .blink-text {
-    animation: blink 0.9s infinite;
+    animation: blink 0.4s infinite;
 }
 
 .notification {

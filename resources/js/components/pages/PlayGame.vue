@@ -218,7 +218,7 @@ export default {
     created() {
         this.buttons = [
             {
-              title: 'SHARE',
+              title: 'INVITE',
               image: '../../../images/board/piramids/piramid_4.png',
               onclick: this.share
             },
