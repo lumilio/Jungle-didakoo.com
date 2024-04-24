@@ -348,18 +348,7 @@ class GameController extends Controller
         }
         $game = Game::where('url', $game_id)->where('status', 'started')->first();
         $finishedGame = Game::where('url', $game_id)->where('status', 'finished')->first();
-        if ($finishedGame){
-            $creator = Player::query()->where('wallet_address', $player)->first();
-            if ($win == 'white') {
-                $creator->update([
-                    "power" => $creator->power + 3,
-                    'wins' => $creator->wins + 1
-                ]);
-            } else {
-                $creator->update([
-                    "power" => $creator->power + 1
-                ]);
-            }
+        if ($finishedGame) {
             return response()->json(['message' => 'finished']);
         }
         if(!$game){
@@ -382,29 +371,51 @@ class GameController extends Controller
             }
             return response()->json(['message' => $game]);
         }
-        if ($player === $game->creator->wallet_address || $player === $game->opponent->wallet_address){
-            $creator = Player::query()->where('wallet_address', $player)->first();
-            $winner_address = $creator->wallet_address;
+        if ($player === $game->creator->wallet_address || $player === $game->opponent->wallet_address) {
+            $user = Player::query()->where('wallet_address', $player)->first();
 
-            if ($win == 'white'){
-                $creator->update([
-                    "power" => $creator->power + 3,
-                    'wins' => $creator->wins + 1
-                ]);
-            }else{
-                $creator->update([
-                    "power" => $creator->power + 1
-                ]);
-            }
-            if ($game->opponent){
-                if ($player === $game->creator->wallet_address){
-                    $winner_address = $game->opponent->wallet_address;
+            if ($game->opponent) {
+                if($win === 'white'){
+                    if ($user->wallet_address === $game->creator->wallet_address) {
+                        $winner = $game->creator;
+                        $loser = $game->opponent;
+                    } else {
+                        $winner = $game->opponent;
+                        $loser = $game->creator;
+                    }
+                }else{
+                    if ($user->wallet_address === $game->creator->wallet_address) {
+                        $winner = $game->opponent;
+                        $loser = $game->creator;
+                    } else {
+                        $winner = $game->creator;
+                        $loser = $game->opponent;
+                    }
                 }
-                if ($player === $game->opponent->wallet_address){
-                    $winner_address = $game->creator->wallet_address;
-                }
+
+                $winner->update([
+                    "power" => $winner->power + 3,
+                    'wins' => $winner->wins + 1
+                ]);
+                $loser->update([
+                    "power" => $loser->power + 1
+                ]);
+
                 if($type){
+                    $winner_address = $winner->wallet_address;
                     event(new QuitGame($winner_address));
+                }
+
+            }else {
+                if ($win) {
+                    $user->update([
+                        "power" => $user->power + 3,
+                        'wins' => $user->wins + 1
+                    ]);
+                } else {
+                    $user->update([
+                        "power" => $user->power + 1
+                    ]);
                 }
             }
             $game->update([
