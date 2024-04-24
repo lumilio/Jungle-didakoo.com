@@ -242,7 +242,8 @@ class Web3LoginController extends Controller
         $Nft_11_punks = $request->nft_11_punks;
         $Nft_12_monster = $request->nft_12_monster;
         $Nft_13_doodle = $request->nft_13_doodle;
-        $Nft_14_sandbox = $request->nft_14_sandbox;
+        $Nft_14_sandbox1 = $request->nft_14_sandbox1;
+        $Nft_14_sandbox2 = $request->nft_14_sandbox2;
         $Nft_15_totem = $request->nft_15_totem;
         $Nft_16_nike = $request->nft_16_nike;
         $Nft_17_adidas = $request->nft_17_adidas;
@@ -262,7 +263,7 @@ class Web3LoginController extends Controller
                 'nft_11_punks' => !!$Nft_11_punks,
                 'nft_12_monster' => !!$Nft_12_monster,
                 'nft_13_doodle' => !!$Nft_13_doodle,
-                'nft_14_sandbox' => !!$Nft_14_sandbox,
+                'nft_14_sandbox' => max(!!$Nft_14_sandbox1,!!$Nft_14_sandbox2),
                 'nft_15_totem' => !!$Nft_15_totem,
                 'nft_16_nike' => !!$Nft_16_nike,
                 'nft_17_adidas' => !!$Nft_17_adidas,
