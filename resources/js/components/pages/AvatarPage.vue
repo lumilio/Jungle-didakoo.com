@@ -29,9 +29,9 @@
                         </p>
                     </div>
                     <div class='d-flex align-items-center flex-row flex-nowrap'>
-                        <template v-for="(item, key) in colorIconNft(3)" v-if="userData && userData[key] > 0 && item">
-                            <i v-if="key === 'nft_3_battery'" style="font-size: 24px" class="fa-solid fa-battery-full text-white"></i>
-                            <img v-else style="width:40px; padding-bottom: 5px" :src="item" alt=""/>
+                        <template v-for="(item, key) in colorIconNft(3)" v-if="userData[key] > 0 && item">
+                            <i v-if="item?.type === 'icon'" :style="{fontSize: item?.size, marginRight: '5px'}" class="text-white" :class=item?.class></i>
+                            <img v-else :style="{width: item?.size ? item.size : '35px', paddingBottom: '5px', marginRight: '5px'}" :src="item?.image ? item.image : item" alt=""/>
                         </template>
                     </div>
 

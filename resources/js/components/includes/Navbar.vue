@@ -41,8 +41,7 @@ export default {
             }
         },
         getLinkBurger() {
-            if (this.$route.name === 'avatar')  this.$router.push({ path: 'rank' });
-            else if (this.$route.name !== 'menu') this.$router.push({ path: 'menu' });
+            this.$route.name === 'avatar' ? this.$router.push({path: 'rank'}) : this.$router.push({path: 'menu'})
         },
         checkToAddress(){
             return (this.address !== null && this.address?.length === 42 && this.address?.substring(0, 2) === '0x') ? this.userAddress = true : this.userAddress = false;
