@@ -11,16 +11,16 @@
                     Select a way to login
                 </h2>
             </div> -->
-            <div class="web3-login-buttons">
-                <button class="WalletCoinButton" id="guest" @click="web3Login('guest')">
+            <div class="ethers-login-buttons">
+                <button class="WalletCoinButton" id="guest" @click="ethersLogin('guest')">
                     <img :src=Guest alt="guest" class="imgSize">
                     <p class="WalletCoinButtonText"> GUEST ( FREE ) </p>
                 </button>
-                <button class="WalletCoinButton" @click="web3Login('metamask')" id="metamask">
+                <button class="WalletCoinButton" @click="ethersLogin('metamask')" id="metamask">
                     <img :src=MetamaskWalletImg alt="MetamaskWallet" class="imgSize">
                     <p class="WalletCoinButtonText"> METAMASK </p>
                 </button>
-                <!-- <button class="WalletCoinButton" @click="web3Login('coinbase')" id="coinbase">
+                <!-- <button class="WalletCoinButton" @click="ethersLogin('coinbase')" id="coinbase">
                     <img :src=CoinBaseWallet alt="MetamaskWallet" class="imgSize">
                     <p class="WalletCoinButtonText"> COINBASE </p>
                 </button> -->
@@ -36,7 +36,7 @@ import store from "../../store";
 import MetamaskWalletImg from "../../../images/extra_objects/MetaMask_Fox.png"
 import CoinBaseWallet from "../../../images/extra_objects/CoinBaseWallet.png"
 import Guest from "../../../images/extra_objects/ghost.png"
-import { ethers as web3 } from '../../../../public/js/ethers';
+const ethers = require("ethers")
 import NFT_ABI from '../../abis/sunflower1ABI.json';
 import Nft9CatABI from '../../abis/nft9catABI.json'
 import Nft10Monkey1ABI from '../../abis/nft10Monkey1ABI.json'
@@ -227,14 +227,14 @@ export default {
                 const transfers = await provider.getLogs({
                     fromBlock: '0x0',
                     topics: [
-                        web3.utils.keccak256("TransferSingle(address,address,address,uint256,uint256)"),
+                        ethers.utils.keccak256("TransferSingle(address,address,address,uint256,uint256)"),
                         null,
-                        web3.utils.padLeft(address, 64) // This ensures the address matches the topic
+                        ethers.utils.padLeft(address, 64) // This ensures the address matches the topic
                     ]
                 });
 
                 for (const event of transfers) {
-                    const tokenId = web3.utils.toBN(event.data.slice(130)).toString();
+                    const tokenId = ethers.utils.toBN(event.data.slice(130)).toString();
                     const contractAddress = `0x${event.address.slice(26)}`;
 
                     console.log(`Token ID: ${tokenId}, Contract Address: ${contractAddress}`);
@@ -243,7 +243,7 @@ export default {
                 console.error(err);
             }
         },
-        async web3Login(wallet) {
+        async ethersLogin(wallet) {
             if (this.user) {
                 const response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/logout', {
                     method: 'GET',
@@ -283,16 +283,16 @@ export default {
                             window.location = 'https://metamask.app.link/dapp/'+process.env.MIX_SERVER_APP_URL;
                         }
                         provider = wallet === 'metamask' ? window.ethereum.providers.find((provider) => provider.isMetaMask) : window.ethereum.providers.find((provider) => provider.isCoinbaseWallet);
-                        provider = new ethers.providers.Web3Provider(provider);
+                        provider = new ethers.providers.ethersProvider(provider);
                     }catch (e) {
                         if (wallet === 'metamask'){
-                            provider = new ethers.providers.Web3Provider(window.ethereum);
+                            provider = new ethers.providers.ethersProvider(window.ethereum);
                         }else{
                             toastr.error('Coinbase not detected.Please install Coinbase first.');
                         }
                     }
 
-                    let response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-login-message');
+                    let response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/ethers-login-message');
                     const message = await response.text();
 
                     await provider.send("eth_requestAccounts", []);
@@ -300,7 +300,7 @@ export default {
                     const amount = await provider.getSigner().getBalance();
                     const signature = await provider.getSigner().signMessage(message);
 
-                    response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/web3-login-verify', {
+                    response = await fetch(process.env.MIX_SERVER_APP_URL +'/api/ethers-login-verify', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -336,7 +336,7 @@ export default {
                         this.$emit("close");
                         toastr.success('Log in successfully!');
                         try {
-                          response = await axios.post(process.env.MIX_SERVER_APP_URL +'/api/web3-register-ethwallet', {
+                          response = await axios.post(process.env.MIX_SERVER_APP_URL +'/api/ethers-register-ethwallet', {
                             'wallet_address': address,
                             'balance': amount['_hex'],
                             'alias': alias,
@@ -347,7 +347,7 @@ export default {
                         }
 
                         if (response.data !== "SUCCESS") {
-                            response = axios.post(process.env.MIX_SERVER_APP_URL +'/api/web3-update-ethwallet', {
+                            response = axios.post(process.env.MIX_SERVER_APP_URL +'/api/ethers-update-ethwallet', {
                                     'ethwalletaddr': address,
                                     'balance': amount['_hex'],
                                     '_token': document.querySelector('meta[name="csrf-token"]').content
@@ -359,7 +359,7 @@ export default {
                         try {
                             const postData = {player: address};
                             for (const nft of dataNft) {
-                                const contract = new web3.Contract(nft.nftContractAddress, NFT_ABI,provider);
+                                const contract = new ethers.Contract(nft.nftContractAddress, NFT_ABI,provider);
                                 const nftName = await contract.balanceOf(address, nft.nftTokenId);
                                 postData[nft.nftName] = nftName.toString();
                             }
@@ -372,11 +372,11 @@ export default {
                             for (const nft of dataNftCollection) {
                                 if(nft.isPolygon){
                                     const provider = new ethers.providers.JsonRpcProvider("https://polygon-mainnet.g.alchemy.com/v2/" + process.env.MIX_ALCHEMY_API_KEY);
-                                    const contract = new web3.Contract(nft.nftContractAddress, nft.contractABI,provider);
+                                    const contract = new ethers.Contract(nft.nftContractAddress, nft.contractABI,provider);
                                     const nftName = await contract.balanceOf(address);
                                     postDataCollection[nft.nftName] = nftName.toString()
                                 }else{
-                                    const contract = new web3.Contract(nft.nftContractAddress, nft.contractABI,provider);
+                                    const contract = new ethers.Contract(nft.nftContractAddress, nft.contractABI,provider);
                                     const nftName = await contract.balanceOf(address);
                                     postDataCollection[nft.nftName] = nftName.toString()
                                 }

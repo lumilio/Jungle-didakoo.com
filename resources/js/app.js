@@ -19,6 +19,7 @@ const app = new Vue({
     router
 });
 
+
 // require('./bootstrap');
 /* require ('./initial'); */
 

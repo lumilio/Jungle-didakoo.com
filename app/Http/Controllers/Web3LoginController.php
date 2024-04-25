@@ -14,9 +14,8 @@ class Web3LoginController extends Controller
     public function message(): string
     {
         $nonce = Str::random();
-        $message = "Sign this message to confirm you own this wallet address. This action will not cost any gas fees.\n\nNonce: " . $nonce;
-    //    Session::put('sign_message','Sign this message to confirm');
-        return $message;
+        //    Session::put('sign_message','Sign this message to confirm');
+        return "Sign this message to confirm you own this wallet address. This action will not cost any gas fees.\n\nNonce: " . $nonce;
     }
 
     public function verify(Request $request): string
