@@ -461,9 +461,16 @@ export default {
                 };
             }
             if (trapCodes.all.includes(code)) {
+
+                let position
+                if(this.turn === 'black'){
+                    position =  trapCodes.all.indexOf(code) >= 3 ? "black" : "white";
+                }else if(this.turn === 'white'){
+                    position = trapCodes.all.indexOf(code) < 3 ? "black" : "white"
+                }
                 return {
                     type: "trap",
-                    position: trapCodes.all.indexOf(code) < 3 ? "black" : "white",
+                    position: position
                 };
             }
             if (houseCodes.all.includes(code)) {
