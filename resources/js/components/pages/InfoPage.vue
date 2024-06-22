@@ -12,7 +12,6 @@
                     <p style='font-size:15px;'> >>>  <a style="color:#FFA500; text-decoration: underline;" href="https://medium.com/@didakoo/jungle-game-pepar-afd5fb84f18e">GAME RULES </a>  <<< </p>
 
                     <br width="100%" size="20" color="white">
-                    <br width="100%" size="20" color="white">
 
 
                     <p style='color:white;'>Play as guest <img :src=Guest alt="guest" class="imgSize"> or use a supported <a style='color:#3490dc;' href="https://ethereum.org/en/">Ethereum</a> wallet to get the pass and save your game progress.</p>
