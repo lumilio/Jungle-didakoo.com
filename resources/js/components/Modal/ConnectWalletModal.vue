@@ -14,7 +14,7 @@
             <div class="web3-login-buttons">
                 <button class="WalletCoinButton" id="guest" @click="web3Login('guest')">
                     <img :src=Guest alt="guest" class="imgSize">
-                    <p class="WalletCoinButtonText"> GUEST ( FREE ) </p>
+                    <p class="WalletCoinButtonText"> NO WALLET </p>
                 </button>
                 <button class="WalletCoinButton" @click="web3Login('metamask')" id="metamask">
                     <img :src=MetamaskWalletImg alt="MetamaskWallet" class="imgSize">
