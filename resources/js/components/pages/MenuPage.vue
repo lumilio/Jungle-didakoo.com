@@ -77,9 +77,7 @@ export default {
             }
         },
         navigateToInfo(){
-            if(this.user){
-                this.$router.push({path: 'info'})
-            }
+            this.$router.push({path: 'info'})
         },
         async openModal() {
             if (this.user) {
