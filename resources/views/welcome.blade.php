@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="title" content="Jungle - didakoo games">
     <meta property="og:title" content="Jungle - didakoo games" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content=" https://i.imgur.com/NerES9J.jpeg" />
