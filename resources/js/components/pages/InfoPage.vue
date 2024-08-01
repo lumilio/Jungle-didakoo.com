@@ -14,7 +14,7 @@
                     <br width="100%" size="20" color="white">
 
 
-                    <p style='color:white;'>Play as guest <img :src=Guest alt="guest" class="imgSize"> or use a supported <a style='color:#3490dc;' href="https://ethereum.org/en/">Ethereum</a> wallet to get the pass and save your game progress.</p>
+                    <p style='color:white;'>Play as guest <img :src=Guest alt="guest" class="imgSize"> or use a supported <a style='color:#3490dc;' href="https://ethereum.org/en/">Ethereum Mainnet</a> wallet to get the pass and save your game progress.</p>
                     <p>> <a style="color:#D1230F;" href="https://metamask.io/"> Metamask</a> < <img :src=Metamask alt="guest" class="imgSize"></p>
                     <!-- <p>> <a style="color:#D1230F;" href="https://metamask.io/">Coin Base</a> <</p> -->
 
