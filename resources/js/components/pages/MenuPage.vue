@@ -29,7 +29,8 @@
                     <div id="modaly" style="padding-top: 20px">
                         <div class="square">
                             <!-- <i class="fa-solid fa-sheet-plastic"></i> -->
-                            <span class="text-white">1.0</span>
+                            <!-- <span class="text-white">1.0</span> -->
+                            <img style="width:75px;" src="images/extra_objects/info-label.jpg" alt="" />
                         </div>
                     </div>
                 </div>
