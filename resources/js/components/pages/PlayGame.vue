@@ -50,7 +50,7 @@
                                     textDecoration: textDecorationAddressTop ? textDecorationAddressTop : 'underline black',
                                 }"
                             >
-                                1°
+                                {{ opponentUser ? creator?.rank : opponent?.rank + '°' }}
                                 <img
                                     :src="avatarSrcTop ? avatarSrcTop : '../../../images/extra_objects/iconaplayB.png'"
                                     alt="..."
@@ -115,7 +115,7 @@
                                     textDecoration: textDecorationAddressBottom ? textDecorationAddressBottom : 'underline black',
                                 }"
                             >
-                                1°
+                                {{ opponentUser ? opponent?.rank : creator?.rank + '°' }}
                                 <img
                                     style="
                                         width: 20px;

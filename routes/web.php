@@ -30,9 +30,4 @@ Route::get('/api/delete-game/{url}', 'GameController@deleteGame');
 Route::post('/api/set-state', 'GameController@setState');
 Route::post('/api/update-player-last-activity', 'Web3LoginController@updatePlayerLastActivity');
 
-Route::get('/{any}', function () {
-    return view('welcome');
-})->where('any', '.*');
-Route::post('test-broadcast', function(){
-    return true;
-});
+Route::get('{any}', 'HomeController@index')->where('any', '.*');

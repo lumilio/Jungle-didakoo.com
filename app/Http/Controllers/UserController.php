@@ -14,7 +14,7 @@ class UserController extends Controller
             ->orderBy('power', 'desc')
             ->limit($request->query('page') ? $request->query('page') * 60 : null)
             ->get();
-        
+
         return response()->json(['users' => $players]);
     }
     public function getUserByWalletAddress(Request $request, $address): \Illuminate\Http\JsonResponse
@@ -44,5 +44,10 @@ class UserController extends Controller
         return response()->json([
             'total' => $totalActiveUsersInLastFiveMinutes
         ]);
+    }
+
+    public function getUser(Request $request)
+    {
+        return $request->user();
     }
 }
