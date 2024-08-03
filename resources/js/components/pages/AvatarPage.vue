@@ -117,7 +117,7 @@ export default {
         async getAllUsers(walletAddress)
         {
             const response = await axios.get(process.env.MIX_SERVER_APP_URL + '/api/get-users');
-            this.playersArray = response.data.users.filter((player,index) => {
+            this.playersArray = response.data.users.map((player,index) => {
                 if(player.wallet_address === walletAddress){
                     this.playerListIndex = index + 1
                     this.userData = player

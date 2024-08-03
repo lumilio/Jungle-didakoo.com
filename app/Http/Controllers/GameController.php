@@ -103,7 +103,37 @@ class GameController extends Controller
 
         return response()->json(['message' => 'success', 'url' => $uniqueUrl], 201);
     }
-
+    public function setRanks($game)
+    {
+        $game = $game->toArray();
+        if($game['opponent'] && !is_array($game['opponent'])){
+            $game['opponent'] = $game['opponent']->toArray();
+        }
+        if($game['creator'] && !is_array($game['creator'])){
+            $game['creator'] = $game['creator']->toArray();
+        }
+        if($game['opponent'] && array_key_exists('wallet_address',$game['opponent']) && $game['opponent']['wallet_address']){
+            $address = $game['opponent']['wallet_address'];
+            $opponent = Player::where('wallet_address', $address)->first();
+            if($opponent){
+                $rank = Player::where('power', '>', $opponent->power)->count();
+                $rank+= Player::where('power', $opponent->power)->where('id','<',$opponent->id)->count();
+                $rank++;
+                $game['opponent']['rank'] = $rank;
+            }
+        }
+        if($game['creator'] && array_key_exists('wallet_address',$game['creator']) && $game['creator']['wallet_address']){
+            $address = $game['creator']['wallet_address'];
+            $creator = Player::where('wallet_address', $address)->first();
+            if($creator){
+                $rank = Player::where('power', '>', $creator->power)->count();
+                $rank+= Player::where('power', $creator->power)->where('id','<',$creator->id)->count();
+                $rank++;
+                $game['creator']['rank'] = $rank;
+            }
+        }
+        return $game;
+    }
     public function getGame(Request $request, $url){
         if ($request->session()->has('isGuest')){
             try {
@@ -138,6 +168,7 @@ class GameController extends Controller
                         }
 
                         event(new ConnectGame($address));
+                        $newGame = $this->setRanks($newGame);
                         return response()->json(['message' => 'success', 'game' => $newGame]);
                     }
                 }else{
@@ -180,6 +211,8 @@ class GameController extends Controller
                         $game['opponent'] = ['wallet_address' => $game->opponent];
                         $game['creator'] = ['wallet_address' => $game->creator];
                     }
+
+                    $game = $this->setRanks($game);
                     return response()->json(['message' => 'success', 'game' => $game]);
                 }
 
@@ -218,6 +251,7 @@ class GameController extends Controller
                     $game['creator'] = ['wallet_address' => $game->creator];
                 }
                 event(new ConnectGame($creator));
+                $game = $this->setRanks($game);
                 return response()->json(['message' => 'success', 'game' => $game]);
             }
             if ($player->wallet_address === $game->creator){
@@ -230,7 +264,7 @@ class GameController extends Controller
                       'color_id' => $player->color_id];
                 $game['creator'] = ['wallet_address' => $game->creator];
             }
-
+            $game = $this->setRanks($game);
             return response()->json(['message' => 'success', 'game' => $game]);
 
         }
@@ -246,7 +280,7 @@ class GameController extends Controller
 
             event(new ConnectGame($game->creator->wallet_address));
         }
-
+        $game = $this->setRanks($game);
         return response()->json(['message' => 'success', 'game' => $game]);
     }
     public function setState(Request $request){
