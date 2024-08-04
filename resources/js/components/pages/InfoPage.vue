@@ -40,7 +40,7 @@
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/boredapeyachtclub">Bored Ape Yacht Club</a></p>
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/cryptopunks">CryptoPunks</a></p>
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/polychainmonsters">Polychain Monsters</a></p>
-                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/sandbox">The sandbox  </a></p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/sandbox">The Sandbox LANDs </a></p>
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/doodles-official">Doodles  </a></p>
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/hashmasks">Hash Masks  </a></p>
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/adidascapsule">Adidas IMPOSSIBLE BOX  </a></p>
