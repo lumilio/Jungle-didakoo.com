@@ -29,7 +29,7 @@
                     <p class='text-white' style='font-family: "VT323", monospace;'>Next update list in {{ secondsUntilUpdate }} sec </p>
                     <div class="d-flex">
 
-                        <img style='width:30px;' src="images/extra_objects/sandtime.png" alt="">
+                        <img style='width:30px; height:30px;' src="images/extra_objects/sandtime.png" alt="">
                         <img style='width:30px;' src="images/extra_objects/tree.png" alt="">
                     </div>
                 </div>
