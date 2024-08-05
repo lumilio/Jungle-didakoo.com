@@ -27,10 +27,9 @@
             <button class='refresh-button' style='background-color:black;'>
                 <div class='d-flex justify-content-center align-items-center' style='color:white; padding: 10px; margin: 0;'>
                     <p class='text-white' style='font-family: "VT323", monospace;'>Next update list in {{ secondsUntilUpdate }} sec </p>
-                    <div class="d-flex">
-
+                    <div  class="d-flex mb-2 align-items-center">
                         <img style='width:30px; height:30px;' src="images/extra_objects/sandtime.png" alt="">
-                        <img style='width:30px;' src="images/extra_objects/tree.png" alt="">
+                        <img style='width:35px;' src="images/extra_objects/tree.png" alt="">
                     </div>
                 </div>
             </button>
