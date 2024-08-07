@@ -11183,6 +11183,10 @@ body,
   height: 25px;
 }
 
+.bt #buttton_info {
+  width: 54px;
+}
+
 .bt #buttton_v_2 {
   height: 35px;
 }
@@ -11284,6 +11288,10 @@ body,
 
   .bt #buttton_v_1 {
     height: 20px;
+  }
+
+  .bt #buttton_info {
+    width: 41px;
   }
 
   .bt {
