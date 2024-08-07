@@ -448,7 +448,7 @@ class GameController extends Controller
                     ]);
                 } else {
                     $user->update([
-                        "power" => $user->power + 1
+                        "power" => $user->power + 0
                     ]);
                 }
             }

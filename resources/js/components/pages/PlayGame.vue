@@ -387,7 +387,7 @@ export default {
                     if(!this.checkGame){
                         await axios.post('/api/finish-game',{
                             player: this.address,
-                            win: 'black',
+                            win: false,
                             game_id: this.$route.params.id
                         })
                         return this.gameOver('black');
