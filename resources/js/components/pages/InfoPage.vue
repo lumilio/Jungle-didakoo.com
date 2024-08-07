@@ -3,7 +3,7 @@
         <div class='allineatore2'>
             <div class="allineatore d-flex justify-content-top ">
                 <div style="margin-top:30px;" class="container-sm pepar  ">
-                    <p style='font-size:30px;'> v 1.0.4  <a style="color:white; font-size:20px; marging-right:9px;" href="https://en.wikipedia.org/wiki/Jungle_(board_game)"> Jungle </a> <a href="https://ethereum.org/en/"><i class="fa-brands fa-ethereum"></i></a></p>
+                    <p style='font-size:30px;'> v 1.0.5  <a style="color:white; font-size:20px; marging-right:9px;" href="https://en.wikipedia.org/wiki/Jungle_(board_game)"> Jungle </a> <a href="https://ethereum.org/en/"><i class="fa-brands fa-ethereum"></i></a></p>
                     <p style="margin-bottom:0px;" >Players in list : {{players}}</p>
                     <p>Players online : {{ totalCurrentUsers }} </p>
 

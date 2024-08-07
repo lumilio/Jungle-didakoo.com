@@ -6,7 +6,7 @@
             <div class="modal-content container-sm d-flex flex-column align-items-center">
                 <div class="d-flex container-sm align-items-center justify-content-between flex-row">
                     <img class="modal_logo" src="../../../images/extra_objects/ddd.jpg">
-                    <span class="version_sign">v 1.0.4</span>
+                    <span class="version_sign">v 1.0.5</span>
                 </div>
                 <div v-if="checkGameStatus" class="console-screen d-flex justify-content-center align-items-center">
                     <p  class="main_message" >
