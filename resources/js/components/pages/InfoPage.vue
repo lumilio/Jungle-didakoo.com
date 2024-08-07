@@ -35,15 +35,15 @@
                     <br width="100%" size="20" color="white">
 
                     <p> <a style="color:#556FEE;" href="https://rarible.com/token/0xbdc8bd87cfd22ef5b90a93a77eebe5bd0628f841:2352475547185321859375352175754401687841756219705495990747967153936990732289?tab=overview">sun flower V.2  (<span style="color:#FAEA09;" >GAME PASS v.2</span>) </a> </p>
-                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/didakoo-items">didakoo items </a> </p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/didakoo_games">Didakoo items </a> </p>
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/cryptokitties">CryptoKitties</a> </p>
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/boredapeyachtclub">Bored Ape Yacht Club</a></p>
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/cryptopunks">CryptoPunks</a></p>
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/polychainmonsters">Polychain Monsters</a></p>
-                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/sandbox">The sandbox  </a></p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/sandbox">The Sandbox LANDs </a></p>
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/doodles-official">Doodles  </a></p>
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/hashmasks">Hash Masks  </a></p>
-                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/adidascapsule">adidas IMPOSSIBLE BOX  </a></p>
+                    <p> <a style="color:#556FEE;" href="https://opensea.io/collection/adidascapsule">Adidas IMPOSSIBLE BOX  </a></p>
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/rtfkt-nike-cryptokicks">RTFKT x Nike Dunk Genesis CRYPTOKICKS  </a></p>
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/pepsi-mic-drop">Pepsi Mic Drop  </a></p>
                     <p> <a style="color:#556FEE;" href="https://opensea.io/collection/lacoste-undw3-the-emerge">Lacoste UNDW3: The Emerge  </a></p>
